@@ -1,6 +1,6 @@
 # pablo.life
 
->Personal Website
+_Personal Website. Inpsired (a lot) by https://github.com/rauchg/blog_
 
 ```shell
 cd pablo.life/
