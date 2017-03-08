@@ -48,7 +48,7 @@ export default () => (
         padding: .5em;
         text-decoration: none;
         font-size: .8em;
-        color: #FF4E50;
+        color: #E29587;
       }
     `}</style>
   </div>
