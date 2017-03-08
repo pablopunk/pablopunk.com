@@ -4,6 +4,7 @@ export default () => (
   <div id="main">
     <Head>
         <title>Pablo Varela</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no"/>
     </Head>
     <div className="home">
       <div className="main">
