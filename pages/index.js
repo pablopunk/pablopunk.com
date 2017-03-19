@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import gravatar from 'gravatar'
 
 export default () => (
   <div id="main">
@@ -8,6 +9,9 @@ export default () => (
     </Head>
     <div className="home">
       <div className="main">
+        <div className="profile-pic">
+          <img src={gravatar.url('pablovarela182@gmail.com')} />
+        </div>
         <h1>Pablo Varela</h1>
           <nav>
             <a target="_blank" href="https://twitter.com/pablopunk">Twitter</a>
@@ -35,6 +39,10 @@ export default () => (
       .main {
         flex: none;
         text-align: center;
+      }
+
+      .profile-pic img {
+        border-radius: 50px;
       }
 
       h1 {
