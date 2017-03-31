@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "global": "^4.3.1",
-    "next": "^1.2.3",
+    "next": "^2.0.1",
     "now": "^4.7.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
