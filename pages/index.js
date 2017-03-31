@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import gravatar from 'gravatar'
-import Pic from '../components/pic'
 
 export default () => (
   <div id="main">
@@ -10,7 +8,6 @@ export default () => (
     </Head>
     <div className="home">
       <div className="main">
-        <Pic />
         <h1>Pablo Varela</h1>
           <nav>
             <a target="_blank" href="https://twitter.com/pablopunk">Twitter</a>
