@@ -40,7 +40,7 @@ export default () => (
         text-align: center;
       }
       h1 {
-        font-family: Angel;
+        font-family: Angel, Menlo, monospace;
         font-size: 2.5em;
         font-weight: normal;
         color: #3a7bd5;
