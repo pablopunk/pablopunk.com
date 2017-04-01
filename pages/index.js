@@ -19,6 +19,10 @@ export default () => (
     </div>
 
     <style jsx>{`
+      @font-face {
+        font-family: Angel;
+        src: url('/static/fonts/Angelface.otf') format("opentype");
+      }
       .home {
         font-family: Menlo, monospace;
         position: absolute;
@@ -31,18 +35,16 @@ export default () => (
         justify-content: center;
         z-index: -1;
       }
-
       .main {
         flex: none;
         text-align: center;
       }
-
       h1 {
-        font-size: 1em;
+        font-family: Angel;
+        font-size: 2.5em;
         font-weight: normal;
         color: #3a7bd5;
       }
-
       a {
         display: inline-block;
         padding: .5em;
