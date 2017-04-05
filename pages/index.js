@@ -6,6 +6,9 @@ export default () => (
         <title>Pablo Varela</title>
         <meta name="viewport" content="width=device-width, user-scalable=no"/>
     </Head>
+    <div id="top-bar">
+      Made with <a target="_blank" href="https://github.com/zeit/next.js">Next.js</a> and hosted in <a target="_blank" href="https://github.com/pablopunk/pablo.life/tree/gh-pages">github pages</a>
+    </div>
     <div className="home">
       <div className="main">
         <h1>Pablo Varela</h1>
@@ -22,6 +25,15 @@ export default () => (
       @font-face {
         font-family: Angel;
         src: url('/static/fonts/Angelface.otf') format("opentype");
+      } 
+      #top-bar {
+        font-family: Menlo, monospace;
+        font-size: .7em;
+        font-style: italic;
+        color: steelblue;
+      }
+      #top-bar a {
+        color: turquoise;
       }
       .home {
         font-family: Menlo, monospace;
@@ -45,7 +57,7 @@ export default () => (
         font-weight: normal;
         color: #3a7bd5;
       }
-      a {
+      nav a {
         display: inline-block;
         padding: .5em;
         text-decoration: none;
