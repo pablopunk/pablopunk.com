@@ -73,6 +73,7 @@ export default () => (
         nav a {
           display: block;
           transition: .3s;
+          font-size: 1em;
         }
         #top-bar {
           opacity: 0;
