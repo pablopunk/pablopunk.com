@@ -32,6 +32,7 @@ export default () => (
         font-size: .7em;
         font-style: italic;
         color: steelblue;
+        transition: .5s;
       }
       #top-bar a {
         color: turquoise;
@@ -57,23 +58,40 @@ export default () => (
         font-size: 2.5em;
         font-weight: normal;
         color: #3a7bd5;
+        transition: .3s;
       }
       nav a {
         display: inline-block;
         padding: .5em;
         text-decoration: none;
-        font-size: .8em;
+        font-size: .7em;
         color: #F62459;
 				cursor: pointer;
+        transition: .3s;
       }
       @media (max-width: 768px) {
         nav a {
           display: block;
+          transition: .3s;
         }
         #top-bar {
-          display: none;
+          opacity: 0;
+          transition: .5s;
+        }
+        h1 {
+          font-size: 2.8em;
+          transition: .3s;
         }
       }
+      @media only screen /* Retina iPad landscape */
+        and (min-device-width : 768px) 
+        and (max-device-width : 1024px) 
+        and (-webkit-min-device-pixel-ratio: 1) {
+          nav a {
+            font-size: 1em;
+            transition: .3s;
+          }
+        }
     `}</style>
   </div>
 )

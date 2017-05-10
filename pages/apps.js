@@ -13,8 +13,16 @@ export default () => (
       <div className='main'>
         <nav>
           <ul>
-            <li><img src='/static/chronocube.png' /><a href='http://chronocube.live' className='app-name'>Chronocube</a><span className='description'>A minimal Rubik's cube timer</span></li>
-            <li><img src='/static/healthi.png' /><a href='http://pablopunk.com/healthi-app' className='app-name'>Healthi</a><span className='description'>Track your macbook's battery health</span></li>
+            <li>
+              <img src='/static/chronocube.png' />
+              <a href='http://chronocube.live' className='app-name'>Chronocube</a>
+              <div className='description'>A minimal Rubik's cube timer</div>
+            </li>
+            <li>
+              <img src='/static/healthi.png' />
+              <a href='http://pablopunk.com/healthi-app' className='app-name'>Healthi</a>
+              <div className='description'>Track your macbook's battery health</div>
+            </li>
           </ul>
         </nav>
       </div>
@@ -22,12 +30,14 @@ export default () => (
     <style jsx>{`
 			#top-bar {
 				margin: 1.5em 0 0 1.5em;
+        transition: .5s;
 			}
 			#top-bar img {
 				width: 25px;
 				background-color: whitesmoke;
 				padding: .9em;
 				border-radius: 50%;
+        transition: .3s;
 			}
 			#top-bar img:hover {
 				background-color: #ddd;
@@ -55,8 +65,9 @@ export default () => (
 				height: 4em;
 				line-height: 4em;
 				vertical-align: middle;
-				font-size: .7em;
+				font-size: .8em;
 				margin-top: 2em;
+        transition: .3s;
       }
 			ul li img {
 				vertical-align: middle;
@@ -77,14 +88,45 @@ export default () => (
         margin-left: 1em;
       }
       ul li .description {
-        width: 100%;
-        text-align: center;
+        float: right;
+        padding: .5em;
       }
       @media (max-width: 768px) {
-        .description {
+        #top-bar {
+          margin: 1.5em 0 0 0;
+          transition: .5s;
+        }
+        #top-bar img {
+          background-color: transparent;
+          transition: .3s;
+        }
+        #top-bar:after {
+          content: 'home';
+          color: #F62459;
+          font-family: Menlo, monospace;
+          padding: .9em 0 .9em 0;
+          position: absolute;
+          line-height: 25px;
+          height: 25px;
+          transition: .5s;
+        }
+        ul li .description {
           display: none;
         }
+        ul li {
+          font-size: 1em;
+          transition: .3s;
+        }
       }
+      @media only screen /* Retina iPad landscape */
+        and (min-device-width : 768px) 
+        and (max-device-width : 1024px) 
+        and (-webkit-min-device-pixel-ratio: 1) {
+          ul li {
+            font-size: 1em;
+            transition: .3s;
+          }
+        }
     `}</style>
   </div>
 )

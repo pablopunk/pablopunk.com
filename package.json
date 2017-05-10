@@ -6,7 +6,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start -p 3001",
-		"export": "next export && rm -rf ./docs && mv site docs"
+		"export": "next export"
   },
   "repository": "https://github.com/pablopunk/pablo.life",
   "author": "Pablo Varela",
