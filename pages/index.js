@@ -17,6 +17,7 @@ export default () => (
             <a target="_blank" href="https://youtube.com/varelapol13">YouTube</a>  
             <a target="_blank" href="https://pexels.com/u/pablopunk">Photography</a>
             <a target="_blank" href="https://github.com/pablopunk">Code</a>
+            <a href="/apps" className='Link'>Apps</a>
           </nav>
       </div>
     </div>
@@ -62,7 +63,16 @@ export default () => (
         padding: .5em;
         text-decoration: none;
         font-size: .8em;
-        color: #E29587;
+        color: #F62459;
+				cursor: pointer;
+      }
+      @media (max-width: 768px) {
+        nav a {
+          display: block;
+        }
+        #top-bar {
+          display: none;
+        }
       }
     `}</style>
   </div>
