@@ -4,6 +4,7 @@ export default () => (
   <div id="main">
     <Head>
         <title>Pablo Varela</title>
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
         <meta name="viewport" content="width=device-width, user-scalable=no"/>
     </Head>
     <div id="top-bar">
@@ -66,7 +67,7 @@ export default () => (
         text-decoration: none;
         font-size: .7em;
         color: #F62459;
-				cursor: pointer;
+        cursor: pointer;
         transition: .3s;
       }
       @media (max-width: 768px) {
