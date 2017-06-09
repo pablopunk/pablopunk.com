@@ -85,6 +85,11 @@ export default () => (
           transition: .3s;
         }
       }
+      @media screen and (orientation:landscape) {
+        nav a {
+          display: inline-block;
+        }
+      }
       @media only screen /* Retina iPad landscape */
         and (min-device-width : 768px) 
         and (max-device-width : 1024px) 
