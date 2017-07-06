@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Raleway');
+
+body {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+  --primary-color: #457fca;
+  --secondary-color: #fd746c;
+}
+
+ul, h1, h2, h3, h4, h5, h6 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.top-bar {
+  font-style: italic;
+  margin: 1em;
+  font-size: .8em;
+  opacity: .7;
+  transition: opacity .4s ease;
+}
+
+.top-bar a {
+  color: var(--primary-color);
+}
+
+.main-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.title {
+  color: var(--primary-color);
+  font-family: 'Amatic SC';
+  font-size: 2em;
+}
+
+.link-list {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  transition: font-size .2s ease;
+}
+
+.link-list li {
+  padding: .5em 1.5em .5em 1.5em;
+  cursor: pointer;
+}
+
+.link-list li:hover a {
+  color: var(--primary-color);
+}
+
+.apps-list {
+  min-width: 650px;
+  max-width: 700px;
+  margin: 0 auto;
+  --list-item-height: 50px;
+}
+
+.apps-list li {
+  display: flex;
+  justify-content: space-between;
+  line-height: var(--list-item-height);
+  vertical-align: middle;
+  margin-bottom: 2em;
+}
+
+.apps-list > li > img {
+  width: var(--list-item-height);
+  height: var(--list-item-height);
+}
+
+.apps-list > li > a, .apps-list > li > span {
+  width: 45%;
+}
+
+.apps-list > li > a {
+  padding-left: 2em; 
+  text-align: left;
+  transition: font-size .4s ease;
+}
+
+.apps-list > li > span {
+  text-align: right;
+}
+
+.go-back {
+  display: flex;
+  justify-content: center;
+}
+
+.go-back span {
+  color: var(--primary-color);
+}
+
+.back-button {
+  width: 20px;
+  height: 20px;
+  background-color: whitesmoke;
+  padding: 1em;
+  border-radius: 50%;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .top-bar {
+    opacity: 0;
+    height: 0;
+  }
+  .link-list {
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 1.3em;
+  }
+  .apps-list {
+    min-width: 0;
+  }
+  .apps-list li {
+    justify-content: center;
+  }
+  .apps-list > li > a {
+    font-size: 1.3em;
+  }
+  .apps-list > li > span {
+    display: none;
+  }
+  .go-back span {
+    visibility: hidden;
+  }
+  .back-button {
+    display: block;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  .link-list {
+    flex-direction: row;
+    font-size: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
