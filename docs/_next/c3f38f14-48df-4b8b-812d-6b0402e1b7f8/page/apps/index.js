@@ -1,6 +1,0 @@
-
-          window.__NEXT_REGISTER_PAGE('/apps', function() {
-            var comp = module.exports=webpackJsonp([5],{331:function(e,t,a){e.exports=a(332)},332:function(e,t,a){"use strict";function l(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var n=a(10),c=l(n),u=a(166),r=l(u);t.default=function(){return c.default.createElement(r.default,null,c.default.createElement("div",{className:"main-container"},c.default.createElement("ul",{className:"apps-list"},c.default.createElement("li",null,c.default.createElement("img",{src:"../static/images/chronocube.png"}),c.default.createElement("a",{target:"_blank",href:"http://chronocube.live"},"Chronocube"),c.default.createElement("span",null,"A minimal Rubik's cube timer")),c.default.createElement("li",null,c.default.createElement("img",{src:"../static/images/healthi.png"}),c.default.createElement("a",{target:"_blank",href:"http://pablopunk.com/healthi-app"},"Healthi"),c.default.createElement("span",null,"Track your macbook's battery health"))),c.default.createElement("div",{className:"go-back"},c.default.createElement("a",{href:"../"},c.default.createElement("span",null,"back"),c.default.createElement("img",{className:"back-button",src:"../static/images/back.svg"})))))}}},[331]);
-            return { page: comp.default }
-          })
-        

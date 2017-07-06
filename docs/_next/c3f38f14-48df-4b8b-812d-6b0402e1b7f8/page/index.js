@@ -1,6 +1,0 @@
-
-          window.__NEXT_REGISTER_PAGE('/', function() {
-            var comp = module.exports=webpackJsonp([4],{333:function(e,t,l){e.exports=l(334)},334:function(e,t,l){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var n=l(10),u=a(n),r=l(166),c=a(r);t.default=function(){return u.default.createElement(c.default,null,u.default.createElement("div",{className:"main-container"},u.default.createElement("div",{className:"title"},u.default.createElement("h2",null,"Pablo Varela")),u.default.createElement("ul",{className:"link-list"},u.default.createElement("li",null,u.default.createElement("a",{target:"_blank",href:"https://twitter.com/pablopunk"},"Twitter")),u.default.createElement("li",null,u.default.createElement("a",{target:"_blank",href:"https://youtube.com/varelapol13"},"YouTube")),u.default.createElement("li",null,u.default.createElement("a",{target:"_blank",href:"https://pexels.com/u/pablopunk"},"Photography")),u.default.createElement("li",null,u.default.createElement("a",{target:"_blank",href:"https://github.com/pablopunk"},"Code")),u.default.createElement("li",null,u.default.createElement("a",{href:"./apps",className:"Link"},"Apps")))))}}},[333]);
-            return { page: comp.default }
-          })
-        
