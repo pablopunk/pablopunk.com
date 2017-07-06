@@ -1,4 +1,5 @@
 import Layout from '../components/layout'
+import Link from 'next/link'
 
 export default () => (
   <Layout>
@@ -11,7 +12,7 @@ export default () => (
         <li><a target='_blank' href='https://youtube.com/varelapol13'>YouTube</a></li>
         <li><a target='_blank' href='https://pexels.com/u/pablopunk'>Photography</a></li>
         <li><a target='_blank' href='https://github.com/pablopunk'>Code</a></li>
-        <li><a href='./apps' className='Link'>Apps</a></li>
+        <li><Link href='./apps' prefetch><a>Apps</a></Link></li>
       </ul>
     </div>
   </Layout>
