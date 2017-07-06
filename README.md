@@ -1,6 +1,6 @@
 # pablo.life
 
-_Minimalist personal website. Inpsired (a lot) by https://github.com/rauchg/blog_
+_Minimalist personal website. Inpsired by https://github.com/rauchg/blog_
 
 ```shell
 cd pablo.life/
@@ -8,6 +8,10 @@ yarn install
 npm run build
 npm run start
 ```
+
+# Design
+
+![responsive](https://github.com/pablopunk/art/raw/master/pablo.life/responsive.png)
 
 # How
 
