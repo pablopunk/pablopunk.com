@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p 3001",
-    "export": "next build && next export && cd out && git checkout CNAME"
+    "start": "next start -p 3001"
   },
   "repository": "https://github.com/pablopunk/pablo.life",
   "author": "Pablo Varela",

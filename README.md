@@ -3,8 +3,7 @@
 _Minimalist personal website. Inpsired by https://github.com/rauchg/blog_
 
 ```shell
-cd pablo.life/
-yarn install
+npm install
 npm run build
 npm run start
 ```
@@ -16,18 +15,6 @@ npm run start
 # How
 
 It's made with [next.js](https://github.com/zeit/next.js).
-
-To deploy it on `gh-pages` you have to clone the branch into a folder called `out`:
-
-```shell
-git clone git@github.com:pablopunk/pablo.life -b gh-pages out
-```
-
-Now the export should update the subrepo:
-
-```shell
-npm run export # creates static content inside `out`
-```
 
 ## Author
 
