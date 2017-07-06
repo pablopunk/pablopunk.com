@@ -13,8 +13,16 @@ npm run start
 
 It's made with [next.js](https://github.com/zeit/next.js).
 
-```Shell
-npm export # creates static folder `out`
+To deploy it on `gh-pages` you have to clone the branch into a folder called `out`:
+
+```shell
+git clone git@github.com:pablopunk/pablo.life -b gh-pages out
+```
+
+Now the export should update the subrepo:
+
+```shell
+npm run export # creates static content inside `out`
 ```
 
 ## Author
