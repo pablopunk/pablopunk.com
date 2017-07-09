@@ -10,7 +10,7 @@ export default ({ children }) => (
     </Head>
     <main>
       <div className='top-bar'>
-        Made with <a target='_blank' href='https://github.com/zeit/next.js'>Next.js</a> and hosted in <a target='_blank' href='https://github.com/pablopunk/pablo.life/tree/gh-pages'>github pages</a>
+        Made with <a target='_blank' href='https://github.com/zeit/next.js'>Next.js</a> and hosted on <a target='_blank' href='https://zeit.co/now'>now</a>
       </div>
       { children }
     </main>
