@@ -33,10 +33,12 @@ main {
 
 .top-bar {
   font-style: italic;
-  margin: 1em;
+  margin-top: 1em;
+  margin-left: 1em;
   font-size: .8em;
   opacity: .7;
   transition: opacity .4s ease;
+  height: 5vh;
 }
 
 .top-bar a {
@@ -44,7 +46,7 @@ main {
 }
 
 .main-container {
-  height: 100vh;
+  height: 93vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
