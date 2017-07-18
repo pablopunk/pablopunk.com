@@ -51,12 +51,32 @@ main {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  animation: fadeIn .6s ease-in forwards;
 }
 
 .title {
   color: var(--primary-color);
   font-family: 'Amatic SC';
-  font-size: 2em;
+	font-size: 3em;
+}
+
+.title::after {
+	content: '1993';
+	color: #777;
+	font-size: 13px;
+	font-family: 'Operator Mono', Inconsolata, Menlo, monospace;
+	font-weight: lighter;
+	position: absolute;
+	margin-top: 1em;
+	margin-left: .3em;
+	opacity: 0;
+	animation: fadeIn .4s ease-in forwards;
+	animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+	0% { opacity: 0 }
+	100% { opacity: 1 }
 }
 
 .link-list {

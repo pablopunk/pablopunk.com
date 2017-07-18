@@ -4,8 +4,8 @@ import Link from 'next/link'
 export default () => (
   <Layout>
     <div className='main-container'>
-      <div className='title'>
-        <h2>Pablo Varela</h2>
+      <div>
+        <div className='title'>Pablo Varela</div>
       </div>
       <ul className='link-list'>
         <li><a target='_blank' href='https://twitter.com/pablopunk'>Twitter</a></li>
