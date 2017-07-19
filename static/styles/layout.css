@@ -113,6 +113,7 @@ main {
 .apps-list > li > img {
   width: var(--list-item-height);
   height: var(--list-item-height);
+  filter: drop-shadow(2px 2px 5px #bbb);
 }
 
 .apps-list > li > a, .apps-list > li > span {
@@ -122,7 +123,7 @@ main {
 .apps-list > li > a {
   padding-left: 2em; 
   text-align: left;
-  transition: font-size .4s ease;
+  transition: font-size .2s ease;
 }
 
 .apps-list > li > span {
@@ -145,6 +146,12 @@ main {
   padding: 1em;
   border-radius: 50%;
   display: none;
+  transition: padding .2s ease-in;
+}
+
+.back-button:hover {
+  background-color: #ccc;
+  padding: 1.2em;
 }
 
 @media (max-width: 768px) {

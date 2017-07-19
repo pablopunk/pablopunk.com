@@ -14,6 +14,11 @@ export default () => (
           <a target='_blank' href='http://pablopunk.com/healthi-app'>Healthi</a>
           <span>Track your macbook's battery health</span>
         </li>
+        <li>
+          <img src='../static/images/serve-bar.png' />
+          <a target='_blank' href='http://pablopunk.com/serve-bar'>Serve bar</a>
+          <span>Share files/folders in your network</span>
+        </li>
       </ul>
       <div className='go-back'>
         <a href='../'>
