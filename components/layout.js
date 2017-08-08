@@ -6,6 +6,7 @@ export default ({ children }) => (
       <title>Pablo Varela</title>
       <link rel='shortcut icon' href='../static/images/favicon.ico' type='image/x-icon' />
       <meta name='viewport' content='width=device-width, user-scalable=no' />
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Amatic+SC|Raleway' />
       <link rel='stylesheet' href='../static/styles/layout.css' />
     </Head>
     <main>

@@ -6,7 +6,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start -p 3001",
-    "export": "next export -o pablo.life-static",
+    "export": "npm run build && next export -o pablo.life-static",
     "deploy": "echo Use now-cli to deploy the exported folder: now pablo.life-static"
   },
   "repository": "https://github.com/pablopunk/pablo.life",
