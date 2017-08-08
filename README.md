@@ -14,7 +14,7 @@ npm run start
 
 # How
 
-It's made with [next.js](https://github.com/zeit/next.js).
+It's made with [next.js](https://github.com/zeit/next.js) and deployed with [now](https://now.sh).
 
 ## Author
 
