@@ -44,7 +44,7 @@ main {
 }
 
 .main-container {
-  height: 93vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
