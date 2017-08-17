@@ -16,7 +16,7 @@ npm run start
 
 It's made with [next.js](https://github.com/zeit/next.js) and deployed with [now](https://now.sh).
 
-## Author
+# Author
 
 
 | ![me](https://www.gravatar.com/avatar/fa50aeff0ddd6e63273a068b04353d9d?s=100) |
