@@ -2,8 +2,6 @@ body {
   font-family: 'Raleway', sans-serif;
   margin: 0;
   padding: 0;
-  --primary-color: #457fca;
-  --secondary-color: #fd746c;
 }
 
 ul, h1, h2, h3, h4, h5, h6 {
@@ -13,14 +11,14 @@ ul, h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: var(--secondary-color);
+  color: #fd746c;
   text-decoration: none;
   cursor: pointer;
   transition: color .2s ease;
 }
 
 a:hover {
-  color: var(--primary-color);
+  color: #457fca;
 }
 
 main {
@@ -40,7 +38,7 @@ main {
 }
 
 .top-bar a {
-  color: var(--primary-color);
+  color: #457fca;
 }
 
 .main-container {
@@ -53,7 +51,7 @@ main {
 }
 
 .title {
-  color: var(--primary-color);
+  color: #457fca;
   font-family: 'Amatic SC';
 	font-size: 3em;
 }
@@ -90,27 +88,26 @@ main {
 }
 
 .link-list li:hover a {
-  color: var(--primary-color);
+  color: #457fca;
 }
 
 .apps-list {
   min-width: 650px;
   max-width: 700px;
   margin: 0 auto;
-  --list-item-height: 50px;
 }
 
 .apps-list li {
   display: flex;
   justify-content: space-between;
-  line-height: var(--list-item-height);
+  line-height: 50px;
   vertical-align: middle;
   margin-bottom: 2em;
 }
 
 .apps-list > li > img {
-  width: var(--list-item-height);
-  height: var(--list-item-height);
+  width: 50px;
+  height: 50px;
   filter: drop-shadow(2px 2px 5px #bbb);
 }
 
@@ -134,7 +131,7 @@ main {
 }
 
 .go-back span {
-  color: var(--primary-color);
+  color: #457fca;
 }
 
 .back-button {
