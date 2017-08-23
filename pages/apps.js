@@ -1,24 +1,18 @@
 import Layout from '../components/layout'
 
-export default () => (
+const Apps = ({ apps }) => (
   <Layout>
     <div className='main-container'>
       <ul className='apps-list'>
-        <li>
-          <img src='../static/images/chronocube.png' />
-          <a target='_blank' href='http://chronocube.live'>Chronocube</a>
-          <span>A minimal Rubik's cube timer</span>
-        </li>
-        <li>
-          <img src='../static/images/healthi.png' />
-          <a target='_blank' href='http://pablopunk.com/healthi-app'>Healthi</a>
-          <span>Track your macbook's battery health</span>
-        </li>
-        <li>
-          <img src='../static/images/serve-bar.png' />
-          <a target='_blank' href='http://pablopunk.com/serve-bar'>Serve bar</a>
-          <span>Share files/folders in your network</span>
-        </li>
+        {
+          apps.map((app, i) => (
+            <li key={i}>
+              <img src={app.img} />
+              <a target='_blank' href={app.link}>{app.name}</a>
+              <span>{app.description}</span>
+            </li>
+          ))
+        }
       </ul>
       <div className='go-back'>
         <a href='../'>
@@ -29,3 +23,13 @@ export default () => (
     </div>
   </Layout>
 )
+
+Apps.getInitialProps = () => ({
+  'apps': [
+    { name: 'Chronocube', url: 'http://chronocube.live', img: '../static/images/chronocube.png', description: 'A minimal Rubik\'s cube timer' },
+    { name: 'Healthi', url: 'http://pablopunk.com/healthi-app', img: '../static/images/healthi.png', description: 'Track your macbook\'s battery health' },
+    { name: 'Serve bar', url: 'http://pablopunk.com/serve-bar', img: '../static/images/serve-bar.png', description: 'Share files/folders in your network' }
+  ]
+})
+
+export default Apps

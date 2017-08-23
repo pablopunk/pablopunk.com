@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start -p 3001",
     "export": "npm run build && next export -o pablo.life-static",
-    "deploy": "echo Use now-cli to deploy the exported folder: now pablo.life-static"
+    "deploy": "echo Use now-cli to deploy the exported folder: now pablo.life-static",
+    "test": "standard --fix"
   },
   "repository": "https://github.com/pablopunk/pablo.life",
   "author": "Pablo Varela",
@@ -17,5 +18,7 @@
     "react-dom": "^15.4.2",
     "next": "^3.0.1-beta.21"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
 }
