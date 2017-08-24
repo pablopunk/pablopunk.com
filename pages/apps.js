@@ -1,9 +1,11 @@
+import FadeIn from 'react-fade-in'
 import Layout from '../components/layout'
 
 const Apps = ({ apps }) => (
   <Layout>
     <div className='main-container'>
       <ul className='apps-list'>
+      <FadeIn>
         {
           apps.map((app, i) => (
             <li key={i}>
@@ -13,6 +15,7 @@ const Apps = ({ apps }) => (
             </li>
           ))
         }
+      </FadeIn>
       </ul>
       <div className='go-back'>
         <a href='../'>

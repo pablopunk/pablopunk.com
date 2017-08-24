@@ -105,23 +105,23 @@ main {
   margin-bottom: 2em;
 }
 
-.apps-list > li > img {
+.apps-list li img {
   width: 50px;
   height: 50px;
   filter: drop-shadow(2px 2px 5px #bbb);
 }
 
-.apps-list > li > a, .apps-list > li > span {
+.apps-list li a, .apps-list li span {
   width: 45%;
 }
 
-.apps-list > li > a {
+.apps-list li a {
   padding-left: 2em; 
   text-align: left;
   transition: font-size .2s ease;
 }
 
-.apps-list > li > span {
+.apps-list li span {
   text-align: right;
 }
 
@@ -165,10 +165,10 @@ main {
   .apps-list li {
     justify-content: center;
   }
-  .apps-list > li > a {
+  .apps-list li a {
     font-size: 1.3em;
   }
-  .apps-list > li > span {
+  .apps-list li span {
     display: none;
   }
   .go-back span {
