@@ -5,17 +5,17 @@ const Apps = ({ apps }) => (
   <Layout>
     <div className='main-container'>
       <ul className='apps-list'>
-      <FadeIn>
-        {
-          apps.map((app, i) => (
-            <li key={i}>
-              <img src={app.img} />
-              <a target='_blank' href={app.link}>{app.name}</a>
-              <span>{app.description}</span>
-            </li>
-          ))
-        }
-      </FadeIn>
+        <FadeIn>
+          {
+            apps.map((app, i) => (
+              <li key={i}>
+                <img src={app.img} />
+                <a target='_blank' href={app.link}>{app.name}</a>
+                <span>{app.description}</span>
+              </li>
+            ))
+          }
+        </FadeIn>
       </ul>
       <div className='go-back'>
         <a href='../'>
