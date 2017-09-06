@@ -1,22 +1,24 @@
 # pablo.life
 
-_Minimalist personal website. Inpsired by https://github.com/rauchg/blog_
+<p align="center"><i>Minimalist personal website.</i></p>
 
-```shell
-npm install
-npm run build
-npm run start
-```
+Hybrid server/client rendered thanks to [React](https://facebook.github.io/react/) and [Next.js](https://github.com/zeit/next.js)
 
-# Design
+
+## Design
 
 ![responsive](https://github.com/pablopunk/art/raw/master/pablo.life/responsive.png)
 
-# How
+## Install
 
-It's made with [next.js](https://github.com/zeit/next.js) and deployed with [now](https://now.sh).
+```
+npm install
+npm run build
+npm start
+```
 
-# Author
+
+## Author
 
 
 | ![me](https://www.gravatar.com/avatar/fa50aeff0ddd6e63273a068b04353d9d?s=100) |
