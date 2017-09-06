@@ -1,4 +1,5 @@
 import FadeIn from 'react-fade-in'
+import Link from 'next/link'
 import Layout from '../components/layout'
 
 const Apps = ({ apps }) => (
@@ -18,10 +19,12 @@ const Apps = ({ apps }) => (
         </FadeIn>
       </ul>
       <div className='go-back'>
-        <a href='../'>
-          <span>back</span>
-          <img className='back-button' src='../static/images/back.svg' />
-        </a>
+        <Link href='/' prefetch>
+          <a>
+            <span>back</span>
+            <img className='back-button' src='../static/images/back.svg' />
+          </a>
+        </Link>
       </div>
     </div>
   </Layout>
