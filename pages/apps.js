@@ -14,7 +14,7 @@ const Apps = ({ apps }) => (
             apps.map((app, i) => (
               <li key={i}>
                 <img src={app.img} />
-                <a target='_blank' href={app.link}>{app.name}</a>
+                <a target='_blank' href={app.url}>{app.name}</a>
                 <span>{app.description}</span>
               </li>
             ))
