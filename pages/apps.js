@@ -13,7 +13,6 @@ const Apps = ({ apps }) => (
           {
             apps.map((app, i) => (
               <li key={i}>
-                <img src={app.img} />
                 <a target='_blank' href={app.url}>{app.name}</a>
                 <span>{app.description}</span>
               </li>
@@ -32,7 +31,7 @@ const Apps = ({ apps }) => (
     </div>
     <style jsx>{`
       .apps-list {
-        min-width: 650px;
+        min-width: 500px;
         max-width: 700px;
         margin: 0 auto;
       }
@@ -42,14 +41,6 @@ const Apps = ({ apps }) => (
         line-height: 50px;
         vertical-align: middle;
         margin-bottom: 2em;
-      }
-      .apps-list li img {
-        width: 50px;
-        heigth: 50px;
-        filter: drop-shadow(2px 2px 5px #bbb);
-      }
-      .apps-list li a, .apps-list li span {
-        width: 45%;
       }
       .apps-list li a {
         padding-left: 2em;
@@ -83,9 +74,6 @@ const Apps = ({ apps }) => (
         .apps-list {
           min-width: 0;
         }
-        .apps-list li {
-          justify-content: center;
-        }
         .apps-list li a {
           font-size: 1.3em;
         }
@@ -105,9 +93,9 @@ const Apps = ({ apps }) => (
 
 Apps.getInitialProps = () => ({
   'apps': [
-    { name: 'Chronocube', url: 'http://chronocube.live', img: '../static/images/chronocube.png', description: 'A minimal Rubik\'s cube timer' },
-    { name: 'Healthi', url: 'http://pablopunk.com/healthi-app', img: '../static/images/healthi.png', description: 'Track your macbook\'s battery health' },
-    { name: 'Serve bar', url: 'http://pablopunk.com/serve-bar', img: '../static/images/serve-bar.png', description: 'Share files/folders in your network' }
+    { name: '/chronocube', url: 'http://chronocube.live', description: 'A minimal Rubik\'s cube timer' },
+    { name: '/healthi', url: 'http://pablopunk.com/healthi-app', description: 'Track your macbook\'s battery health' },
+    { name: '/serve-bar', url: 'http://pablopunk.com/serve-bar', description: 'Share files/folders in your network' }
   ]
 })
 
