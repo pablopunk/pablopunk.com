@@ -30,6 +30,7 @@ export default () => (
       <div className="appear" id="take-top">
         <Back link="/" text="go back" />
       </div>
+      <br />
     </div>
     <style jsx>{`
       .container {
