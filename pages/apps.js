@@ -1,6 +1,7 @@
 import FadeIn from 'react-fade-in'
 import Link from 'next/link'
 import Layout from '../components/layout'
+import Back from '../components/back.js'
 
 const mainColor = '#457fca'
 const linkColor = '#fd746c'
@@ -20,14 +21,7 @@ const Apps = ({ apps }) => (
           }
         </FadeIn>
       </ul>
-      <div className='go-back'>
-        <Link href='/' prefetch>
-          <a>
-            <span>back</span>
-            <img className='back-button' src='../static/images/back.svg' />
-          </a>
-        </Link>
-      </div>
+      <Back />
     </div>
     <style jsx>{`
       .apps-list {
@@ -50,26 +44,6 @@ const Apps = ({ apps }) => (
       .apps-list li span {
         text-align: right;
       }
-      .go-back {
-        display: flex;
-        justify-content: center;
-      }
-      .go-back span {
-        color: ${mainColor};
-      }
-      .back-button {
-        width: 20px;
-        height: 20px;
-        background-color: whitesmoke;
-        padding: 1em;
-        border-radius: 50%;
-        display: none;
-        transition: padding .2s ease-in;
-      }
-      .back-button:hover {
-        background-color: #ccc;
-        padding: 1.2em;
-      }
       @media (max-width: 768px) {
         .apps-list {
           min-width: 0;
@@ -88,7 +62,7 @@ const Apps = ({ apps }) => (
         }
       }
     `}</style>
-  </Layout>
+</Layout>
 )
 
 Apps.getInitialProps = () => ({
