@@ -1,9 +1,7 @@
 import {Component} from 'react'
 import ReactGA from 'react-ga'
 import Head from 'next/head'
-
-const mainColor = '#457fca'
-const linkColor = '#fd746c'
+import colors from './colors'
 
 export default class extends Component {
   componentDidMount () {
@@ -40,12 +38,12 @@ export default class extends Component {
           }
 
           a {
-            color: ${linkColor};
+            color: ${colors.secondary};
             text-decoration: none;
           }
 
           a:hover {
-            color: ${mainColor};
+            color: ${colors.main};
           }
 
           main {
@@ -64,7 +62,7 @@ export default class extends Component {
           }
 
           .top-bar a {
-            color: ${mainColor};
+            color: ${colors.main};
           }
 
           .main-container {
@@ -83,7 +81,7 @@ export default class extends Component {
             }
           }
         `}</style>
-    </div>
+      </div>
     )
   }
 }

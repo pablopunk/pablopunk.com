@@ -1,9 +1,7 @@
 import FadeIn from 'react-fade-in'
 import Link from 'next/link'
 import Layout from '../components/layout'
-
-const mainColor = '#457fca'
-const linkColor = '#fd746c'
+import colors from '../components/colors'
 
 export default () => (
   <Layout>
@@ -24,7 +22,7 @@ export default () => (
     </div>
     <style jsx>{`
       .title {
-        color: ${mainColor};
+        color: ${colors.main};
         font-family: 'Amatic SC';
         font-size: 3em;
       }

@@ -1,10 +1,6 @@
 import FadeIn from 'react-fade-in'
-import Link from 'next/link'
 import Layout from '../components/layout'
 import Back from '../components/back.js'
-
-const mainColor = '#457fca'
-const linkColor = '#fd746c'
 
 const Apps = ({ apps }) => (
   <Layout>
@@ -62,7 +58,7 @@ const Apps = ({ apps }) => (
         }
       }
     `}</style>
-</Layout>
+  </Layout>
 )
 
 Apps.getInitialProps = () => ({

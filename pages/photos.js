@@ -16,10 +16,10 @@ const images = [
 ]
 export default () => (
   <Layout>
-    <div className="container">
-      <p className="appear">
+    <div className='container'>
+      <p className='appear'>
         More in {' '}
-        <a href="https://pexels.com/u/pablopunk" alt="Pexels">
+        <a href='https://pexels.com/u/pablopunk' alt='Pexels'>
           pexels.com/pablopunk
         </a>
       </p>
@@ -27,8 +27,8 @@ export default () => (
         <Pexels images={images} />
       </FadeIn>
       <br />
-      <div className="appear" id="take-top">
-        <Back link="/" text="go back" />
+      <div className='appear' id='take-top'>
+        <Back link='/' text='go back' />
       </div>
       <br />
     </div>

@@ -1,14 +1,13 @@
 import Link from 'next/link'
-
-const mainColor = '#457fca'
+import colors from './colors'
 
 export default ({ link = '/', text = 'back' }) => (
   <div>
-    <div className="go-back">
+    <div className='go-back'>
       <Link href={link} prefetch>
         <a>
           <span>{text}</span>
-          <img className="back-button" src="../static/images/back.svg" />
+          <img className='back-button' src='../static/images/back.svg' />
         </a>
       </Link>
     </div>
@@ -18,7 +17,7 @@ export default ({ link = '/', text = 'back' }) => (
         justify-content: center;
       }
       .go-back span {
-        color: ${mainColor};
+        color: ${colors.main};
       }
       .back-button {
         width: 20px;
