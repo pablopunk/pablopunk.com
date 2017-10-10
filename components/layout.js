@@ -1,8 +1,15 @@
-import {Component} from 'react'
+import { Component } from 'react'
 import ReactGA from 'react-ga'
 import Head from 'next/head'
 import colors from './colors'
 import Center from './center'
+
+const getMain = (children, centered = true) => {
+  if (centered) {
+    return <Center height={90}>{children}</Center>
+  }
+  return <div>{children}</div>
+}
 
 export default class extends Component {
   componentDidMount () {
@@ -15,18 +22,31 @@ export default class extends Component {
       <div>
         <Head>
           <title>Pablo Varela</title>
-          <link rel='shortcut icon' href='../static/images/favicon.ico' type='image/x-icon' />
-          <meta name='viewport' content='width=device-width, user-scalable=no' />
-          <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Amatic+SC|Raleway' />
+          <link
+            rel='shortcut icon'
+            href='../static/images/favicon.ico'
+            type='image/x-icon'
+          />
+          <meta
+            name='viewport'
+            content='width=device-width, user-scalable=no'
+          />
+          <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css?family=Amatic+SC|Raleway'
+          />
         </Head>
         <div className='top-bar'>
-          Made with <a target='_blank' href='https://github.com/zeit/next.js'>Next.js</a> and hosted on <a target='_blank' href='https://zeit.co/now'>now</a>
+          Made with{' '}
+          <a target='_blank' href='https://github.com/zeit/next.js'>
+            Next.js
+          </a>{' '}
+          and hosted on{' '}
+          <a target='_blank' href='https://zeit.co/now'>
+            now
+          </a>
         </div>
-        <main>
-          <Center height={90}>
-            { this.props.children }
-          </Center>
-        </main>
+        <main>{getMain(this.props.children, this.props.centered)}</main>
         <style global jsx>{`
           body {
             font-family: 'Raleway', sans-serif;
@@ -34,7 +54,13 @@ export default class extends Component {
             padding: 0;
           }
 
-          ul, h1, h2, h3, h4, h5, h6 {
+          ul,
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
             list-style: none;
             margin: 0;
             padding: 0;
@@ -58,9 +84,9 @@ export default class extends Component {
           .top-bar {
             font-style: italic;
             margin: 1em;
-            font-size: .8em;
-            opacity: .7;
-            transition: opacity .4s ease;
+            font-size: 0.8em;
+            opacity: 0.7;
+            transition: opacity 0.4s ease;
             heigth: 5vh;
           }
 
