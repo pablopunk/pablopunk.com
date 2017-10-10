@@ -2,6 +2,7 @@ import {Component} from 'react'
 import ReactGA from 'react-ga'
 import Head from 'next/head'
 import colors from './colors'
+import Center from './center'
 
 export default class extends Component {
   componentDidMount () {
@@ -22,7 +23,9 @@ export default class extends Component {
           Made with <a target='_blank' href='https://github.com/zeit/next.js'>Next.js</a> and hosted on <a target='_blank' href='https://zeit.co/now'>now</a>
         </div>
         <main>
-          { this.props.children }
+          <Center height={90}>
+            { this.props.children }
+          </Center>
         </main>
         <style global jsx>{`
           body {
@@ -63,15 +66,6 @@ export default class extends Component {
 
           .top-bar a {
             color: ${colors.main};
-          }
-
-          .main-container {
-            height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            animation: fadeIn .6s ease-in forwards;
           }
 
           @media (max-width: 768px) {

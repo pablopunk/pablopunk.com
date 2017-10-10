@@ -5,7 +5,7 @@ import colors from '../components/colors'
 
 export default () => (
   <Layout>
-    <div className='main-container'>
+    <div>
       <FadeIn>
         <div>
           <div className='title'>Pablo Varela</div>
@@ -25,6 +25,7 @@ export default () => (
         color: ${colors.main};
         font-family: 'Amatic SC';
         font-size: 3em;
+        text-align: center;
       }
       .title::after {
         content: '1993';
@@ -48,6 +49,7 @@ export default () => (
         display:flex;
         justify-content: center;
         transition: font-size .2s ease-in;
+        text-align: center;
       }
       .link-list li {
         padding: .5em 1.5em;

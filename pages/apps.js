@@ -4,7 +4,7 @@ import Back from '../components/back.js'
 
 const Apps = ({ apps }) => (
   <Layout>
-    <div className='main-container'>
+    <div>
       <ul className='apps-list'>
         <FadeIn>
           {
