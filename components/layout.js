@@ -39,11 +39,7 @@ export default class extends Component {
         <div className='top-bar'>
           Made with{' '}
           <a target='_blank' href='https://github.com/zeit/next.js'>
-            Next.js
-          </a>{' '}
-          and hosted on{' '}
-          <a target='_blank' href='https://zeit.co/now'>
-            now
+            React
           </a>
         </div>
         <main>{getMain(this.props.children, this.props.centered)}</main>
