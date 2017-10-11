@@ -6,7 +6,7 @@ import Center from './center'
 
 const getMain = (children, centered = true) => {
   if (centered) {
-    return <Center height={90}>{children}</Center>
+    return <Center height={80}>{children}</Center>
   }
   return <div>{children}</div>
 }
