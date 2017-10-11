@@ -49,30 +49,30 @@ export default () => (
     </div>
     <style jsx>{`
       div {
-      margin-top: 1em;
-      text-align: center;
+        margin: 1em 2em;
+        text-align: center;
       }
       .back {
-      margin-bottom: 2em;
+        margin-bottom: 2em;
       }
       div:after {
-      content: "";
-      display: table;
-      clear: both;
+        content: '';
+        display: table;
+        clear: both;
       }
       .appear {
-      opacity: 0;
-      animation: fadeIn 1s ease-out forwards;
-      animation-delay: 1s;
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+        animation-delay: 1s;
       }
       @keyframes fadeIn {
-      0% {
-      opacity: 0;
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
       }
-      100% {
-      opacity: 1;
-      }
-      }
-      `}</style>
+    `}</style>
   </Layout>
 )
