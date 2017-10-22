@@ -40,10 +40,6 @@ export default () => (
         animation: fadeIn .4s ease-in forwards;
         animation-delay: 1s;
       }
-      @keyframes fadeIn {
-        0% { opacity: 0 }
-        100% { opacity: 1 }
-      }
       .link-list {
         margin-top: 20px;
         display:flex;

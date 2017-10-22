@@ -2,6 +2,7 @@ import FadeIn from 'react-fade-in'
 import Photos from 'react-photo-container'
 import Layout from '../components/layout'
 import Back from '../components/back'
+import Fade from '../components/fade'
 
 const imageUrl = id => `/static/images/pexels/pexels-photo-${id}.jpg`
 const pexelsUrl = id =>
@@ -32,15 +33,15 @@ const photos = pexels.map(p =>
 export default () => (
   <Layout centered={false}>
     <div>
-      <div className='appear'>
+      <Fade delay={0.7}>
         <Back link='/' text='go back' />
-      </div>
-      <div className='appear'>
+      </Fade>
+      <Fade delay={1}>
         More in {' '}
         <a href='https://pexels.com/u/pablopunk' alt='Pexels'>
           pexels.com/pablopunk
         </a>
-      </div>
+      </Fade>
       <div>
         <FadeIn>
           <Photos photos={photos} />
@@ -59,19 +60,6 @@ export default () => (
         content: '';
         display: table;
         clear: both;
-      }
-      .appear {
-        opacity: 0;
-        animation: fadeIn 1s ease-out forwards;
-        animation-delay: 1s;
-      }
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
       }
     `}</style>
   </Layout>
