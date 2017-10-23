@@ -31,7 +31,7 @@ export default () => (
         content: '1993';
         color: #777;
         font-size: 13px;
-        font-family: 'Operator Mono', Inconsolata, Menlo, monospace;
+        font-family: 'SF Mono', Menlo, monospace;
         font-weight: lighter;
         position: absolute;
         margin-top: 1em;
@@ -50,6 +50,10 @@ export default () => (
       .link-list li {
         padding: .5em 1.5em;
         cursor: pointer;
+      }
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
       }
       @media (max-width: 768px) {
         .link-list {
