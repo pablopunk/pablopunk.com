@@ -17,7 +17,8 @@ const pexels = [
   { id: 339738, width: 455, height: 310 },
   { id: 364846, width: 221, height: 143 },
   { id: 375944, width: 450, height: 342 },
-  { id: 568478, width: 442, height: 345 }
+  { id: 568478, width: 442, height: 345 },
+  { id: 366952, width: 450, height: 338 }
 ]
 
 const photos = pexels.map(p =>
