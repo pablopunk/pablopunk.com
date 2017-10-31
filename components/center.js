@@ -7,6 +7,7 @@ export default ({ height = 100, children }) => (
       div {
         display: flex;
         height: ${height}vh;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
       }

@@ -16,7 +16,7 @@ export default () => (
           <li><Link href='./photos' prefetch><a>Photos</a></Link></li>
           <li><a target='_blank' href='https://open.spotify.com/user/pablovarela12'>Music</a></li>
           <li><a target='_blank' href='https://github.com/pablopunk'>Code</a></li>
-          <li><Link href='./apps' prefetch><a>Apps</a></Link></li>
+          <li><Link href='./projects' prefetch><a>Projects</a></Link></li>
         </ul>
       </FadeIn>
     </div>
