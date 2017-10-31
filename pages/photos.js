@@ -35,8 +35,9 @@ export default () => (
   <Layout centered={false}>
     <div>
       <Fade delay={0.7}>
-        <Back link='/' text='go back' />
+        <Back link='/' text='go home' />
       </Fade>
+      <br />
       <Fade delay={1}>
         More in {' '}
         <a href='https://pexels.com/u/pablopunk' alt='Pexels'>

@@ -18,6 +18,7 @@ export default ({ link = '/', text = 'back' }) => (
       }
       .go-back span {
         color: ${colors.main};
+        border-bottom: 1px solid ${colors.main};
       }
       .back-button {
         width: 20px;
@@ -40,7 +41,6 @@ export default ({ link = '/', text = 'back' }) => (
           display: block;
         }
       }
-
     `}</style>
   </div>
 )

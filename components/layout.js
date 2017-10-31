@@ -3,6 +3,7 @@ import ReactGA from 'react-ga'
 import Head from 'next/head'
 import colors from './colors'
 import Center from './center'
+import Header from './header'
 
 const getMain = (children, centered = true) => {
   if (centered) {
@@ -36,12 +37,7 @@ export default class extends Component {
             href='https://fonts.googleapis.com/css?family=Amatic+SC|Raleway'
           />
         </Head>
-        <div className='top-bar'>
-          Made with{' '}
-          <a target='_blank' href='https://github.com/zeit/next.js'>
-            React
-          </a>
-        </div>
+        <Header />
         <main>{getMain(this.props.children, this.props.centered)}</main>
         <style global jsx>{`
           body {
@@ -76,27 +72,7 @@ export default class extends Component {
             max-width: 1200px;
             margin: auto;
           }
-
-          .top-bar {
-            font-style: italic;
-            margin: 1em;
-            font-size: 0.8em;
-            opacity: 0.7;
-            transition: opacity 0.4s ease;
-            heigth: 5vh;
-          }
-
-          .top-bar a {
-            color: ${colors.main};
-          }
-
-          @media (max-width: 768px) {
-            .top-bar {
-              opacity: 0;
-              heigth: 0;
-            }
-          }
-        `}</style>
+       `}</style>
       </div>
     )
   }

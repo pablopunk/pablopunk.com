@@ -21,7 +21,7 @@ const Projects = ({ recent = [], pinned = [] }) => (
     </div>
     <Fade delay={1}>
       <br />
-      <Back />
+      <Back text='go home' />
     </Fade>
     <style jsx>{`
       h1 {
