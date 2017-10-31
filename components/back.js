@@ -3,7 +3,7 @@ import colors from './colors'
 
 export default ({ link = '/', text = 'back' }) => (
   <div>
-    <div className='go-back'>
+    <div>
       <Link href={link} prefetch>
         <a>
           <span>{text}</span>
@@ -12,15 +12,22 @@ export default ({ link = '/', text = 'back' }) => (
       </Link>
     </div>
     <style jsx>{`
-      .go-back {
+      div {
         display: flex;
         justify-content: center;
       }
-      .go-back span {
+      span {
         color: ${colors.main};
-        border-bottom: 1px solid ${colors.main};
+        border: 1px solid ${colors.main};
+        padding: .4em .7em;
+        transition: background-color .2s, border .1s;
       }
-      .back-button {
+      span:hover {
+        color: white;
+        background-color: ${colors.main};
+        border: none;
+      }
+      img {
         width: 20px;
         height: 20px;
         background-color: whitesmoke;
@@ -29,15 +36,15 @@ export default ({ link = '/', text = 'back' }) => (
         display: none;
         transition: padding 0.2s ease-in;
       }
-      .back-button:hover {
+      img:hover {
         background-color: #ccc;
         padding: 1.2em;
       }
       @media (max-width: 768px) {
-        .go-back span {
+        div span {
           visibility: hidden;
         }
-        .back-button {
+        img {
           display: block;
         }
       }

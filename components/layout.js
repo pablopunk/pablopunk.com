@@ -7,7 +7,7 @@ import Header from './header'
 
 const getMain = (children, centered = true) => {
   if (centered) {
-    return <Center height={80}>{children}</Center>
+    return <Center height={75}>{children}</Center>
   }
   return <div>{children}</div>
 }
