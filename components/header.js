@@ -18,9 +18,8 @@ export default () => (
       <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
     </Head>
     <div className='top-bar'>
-      Made with{' '}
-      <a target='_blank' href='https://github.com/zeit/next.js'>
-        React
+      <a target='_blank' href='https://github.com/pablopunk/pablo.life'>
+        Made with React
       </a>
     </div>
     <style jsx>{`
@@ -33,8 +32,12 @@ export default () => (
         heigth: 5vh;
       }
 
-      .top-bar a {
+      a {
         color: ${colors.main};
+      }
+
+      a:hover {
+        color: ${colors.secondary};
       }
 
       @media (max-width: 768px) {
