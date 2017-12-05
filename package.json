@@ -6,9 +6,11 @@
     "dev": "next",
     "build": "next build",
     "start": "next start -p 3001",
-    "export": "npm run build && next export -o pablo.life-static",
-    "deploy": "now -v && npm run export && cd pablo.life-static && now",
+    "deploy": "now",
     "test": "standard --fix"
+  },
+  "now": {
+    "alias": "pablo.life"
   },
   "repository": "https://github.com/pablopunk/pablo.life",
   "author": "Pablo Varela",
