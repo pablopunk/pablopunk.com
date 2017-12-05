@@ -13,8 +13,8 @@ const Projects = ({ featured = [] }) => (
       <FadeList>
         <h1>Featured Projects</h1>
         {featured.map(project => (
-          <div className='repo'>
-            <a key={project.name} href={project.url}>
+          <div className='repo' key={project.name}>
+            <a href={project.url}>
               /{project.name}
             </a>
             <span className='stars'>{project.stars} ★</span>
