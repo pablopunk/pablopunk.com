@@ -40,10 +40,12 @@ const Projects = ({ featured = [] }) => (
       .repo {
         margin: 1em;
         width: 100%;
+        font-size: 1.2em;
       }
       .stars {
         float: right;
         color: orange;
+        margin-right: 1em;
       }
       `}</style>
   </Layout>
