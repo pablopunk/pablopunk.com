@@ -5,7 +5,7 @@ import Fade from '../components/fade'
 import Back from '../components/back'
 import colors from '../components/colors'
 
-const maxFeatured = 6
+const maxFeatured = 7
 
 const Projects = ({ featured = [] }) => (
   <Layout>
