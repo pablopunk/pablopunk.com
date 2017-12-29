@@ -6,11 +6,22 @@ class Fade extends React.Component {
     this.state = { hidden: true }
   }
   componentWillMount () {
-    setTimeout(() => this.setState({ hidden: false }), this.props.delay * 1000)
+    this.delayRender()
+  }
+  delayRender () {
+    setTimeout(() => {
+      // If the ref doesn't exist, the
+      // component hasn't been rendered yet
+      if (this.refs.hidden) {
+        this.setState({ hidden: false })
+      } else {
+        this.delayRender()
+      }
+    }, this.props.delay * 1000)
   }
   render () {
     if (this.state.hidden) {
-      return <div />
+      return <div ref='hidden' />
     }
     return <div>
       <div>
@@ -19,7 +30,6 @@ class Fade extends React.Component {
         div {
           opacity: 0;
           animation: fadeIn ${this.props.duration}s ease-in forwards;
-          animation-delay: ${this.props.delay}s;
         }
         @keyframes fadeIn {
           0% {

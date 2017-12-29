@@ -25,7 +25,7 @@ export default () =>
         </FadeIn>
       </Center>
       <Center cropTop height={0} className='history'>
-        <Fade delay={0.75}>
+        <Fade delay={1}>
           <h1>My story</h1>
           <History className='history' stories={[
             {
