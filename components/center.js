@@ -1,4 +1,4 @@
-export default ({ height = 100, children }) => (
+export default ({ height = 100, cropTop = false, children }) => (
   <div>
     <div>
       { children }
@@ -8,7 +8,7 @@ export default ({ height = 100, children }) => (
         display: flex;
         height: ${height}vh;
         flex-direction: column;
-        justify-content: center;
+        justify-content: ${cropTop ? 'flex-start' : 'center'};
         align-items: center;
       }
     `}</style>

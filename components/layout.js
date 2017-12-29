@@ -2,15 +2,7 @@ import { Component } from 'react'
 import ReactGA from 'react-ga'
 import Head from 'next/head'
 import colors from './colors'
-import Center from './center'
 import Header from './header'
-
-const getMain = (children, centered = true) => {
-  if (centered) {
-    return <Center height={75}>{children}</Center>
-  }
-  return <div>{children}</div>
-}
 
 export default class extends Component {
   componentDidMount () {
@@ -38,7 +30,7 @@ export default class extends Component {
           />
         </Head>
         <Header />
-        <main>{getMain(this.props.children, this.props.centered)}</main>
+        <main>{ this.props.children }</main>
         <style global jsx>{`
           body {
             font-family: 'Raleway', sans-serif;
