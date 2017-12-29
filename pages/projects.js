@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
 import FadeList from 'react-fade-in'
 import Layout from '../components/layout'
+import Center from '../components/center'
 import Fade from '../components/fade'
 import Back from '../components/back'
 import colors from '../components/colors'
@@ -9,7 +10,7 @@ const maxFeatured = 7
 
 const Projects = ({ featured = [] }) => (
   <Layout>
-    <div>
+    <Center height={70}>
       <FadeList>
         <h1>Featured Projects</h1>
         {featured.map(project => (
@@ -24,7 +25,7 @@ const Projects = ({ featured = [] }) => (
           <a href='https://github.com/pablopunk'>more...</a>
         </div>
       </FadeList>
-    </div>
+    </Center>
     <Fade delay={1}>
       <br />
       <Back text='home' />
