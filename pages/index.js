@@ -80,7 +80,7 @@ export default () =>
         margin-left: .3em;
         opacity: 0;
         animation: fadeIn .4s ease-in forwards;
-        animation-delay: 1s;
+        animation-delay: 2s;
       }
       .link-list {
         margin-top: 20px;
