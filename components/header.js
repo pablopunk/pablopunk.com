@@ -29,7 +29,7 @@ export default () => (
         font-size: 0.8em;
         opacity: 0.7;
         transition: opacity 0.4s ease;
-        heigth: 5vh;
+        height: 5vh;
       }
 
       a {
@@ -43,7 +43,7 @@ export default () => (
       @media (max-width: 768px) {
         .top-bar {
           opacity: 0;
-          heigth: 0;
+          height: 0;
         }
       }
     `}</style>

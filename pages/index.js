@@ -3,9 +3,10 @@ import Link from 'next/link'
 import Layout from '../components/layout'
 import Center from '../components/center'
 import History from '../components/history'
+import Fade from '../components/fade'
 import colors from '../components/colors'
 
-export default () => (
+export default () =>
   <Layout>
     <div>
       <Center height={70}>
@@ -24,33 +25,41 @@ export default () => (
         </FadeIn>
       </Center>
       <Center cropTop height={0} className='history'>
-        <h1>My story</h1>
-        <History className='history' stories={[
-          {
-            title: 'Sourcefabric',
-            subtitle: 'Senior Web Developer',
-            date: 'since 2018',
-            link: 'https://www.sourcefabric.org/'
-          },
-          {
-            title: 'LadJS',
-            subtitle: 'Core team member',
-            date: 'since 2017',
-            link: 'https://github.com/ladjs/lad'
-          },
-          {
-            title: 'Stang Decision Systems',
-            subtitle: 'Full Stack Web Developer',
-            date: '2016-2017',
-            link: 'http://stangds.com/'
-          },
-          {
-            title: 'USC',
-            subtitle: 'Degree in Computer Science',
-            date: '2011-2015',
-            link: 'http://www.usc.es/etse/'
-          }
-        ]} />
+        <Fade delay={0.75}>
+          <h1>My story</h1>
+          <History className='history' stories={[
+            {
+              title: 'Sourcefabric',
+              subtitle: 'Senior Web Developer',
+              date: 'since 2018',
+              link: 'https://www.sourcefabric.org/'
+            },
+            {
+              title: 'LadJS',
+              subtitle: 'Core team member',
+              date: 'since 2017',
+              link: 'https://github.com/ladjs/lad'
+            },
+            {
+              title: 'Keepcoding',
+              subtitle: 'Master in Full Stack Javascript',
+              date: '2017-2018',
+              link: 'https://keepcoding.io/es/keepcoding-web-development-master-bootcamp/'
+            },
+            {
+              title: 'Stang Decision Systems',
+              subtitle: 'Full Stack Web Developer',
+              date: '2016-2017',
+              link: 'http://stangds.com/'
+            },
+            {
+              title: 'USC',
+              subtitle: 'Degree in Computer Science',
+              date: '2011-2015',
+              link: 'http://www.usc.es/etse/'
+            }
+          ]} />
+        </Fade>
       </Center>
     </div>
     <style jsx>{`
@@ -88,6 +97,7 @@ export default () => (
         font-family: 'Amatic SC';
         font-size: 1.4em;
         color: ${colors.main};
+        text-align: center;
       }
       @keyframes fadeIn {
         0% { opacity: 0; }
@@ -111,6 +121,5 @@ export default () => (
           flex-wrap: wrap;
         }
       }
-    `}</style>
+      `}</style>
   </Layout>
-)
