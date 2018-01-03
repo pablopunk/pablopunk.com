@@ -95,9 +95,10 @@ export default () =>
       }
       h1 {
         font-family: 'Amatic SC';
-        font-size: 1.4em;
+        font-size: 1.5em;
         color: ${colors.main};
         text-align: center;
+        font-weight: lighter;
       }
       @keyframes fadeIn {
         0% { opacity: 0; }
