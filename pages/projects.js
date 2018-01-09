@@ -5,15 +5,16 @@ import Center from '../components/center'
 import Fade from '../components/fade'
 import Back from '../components/back'
 import colors from '../components/colors'
+import fonts from '../components/fonts'
 
-const maxFeatured = 7
+const maxPopular = 7
 
-const Projects = ({ featured = [] }) => (
+const Projects = ({ popular = [] }) => (
   <Layout>
     <Center height={70}>
       <FadeList>
-        <h1>Featured Projects</h1>
-        {featured.map(project => (
+        <h1>Popular Projects</h1>
+        {popular.map(project => (
           <div className='repo' key={project.name}>
             <a href={project.url}>
               /{project.name}
@@ -33,7 +34,8 @@ const Projects = ({ featured = [] }) => (
     <style jsx>{`
       h1 {
         color: ${colors.main}
-        font-size: 1.3em;
+        font-family: ${fonts.title};
+        font-weight: lighter;
         padding: .5em;
         text-align: center;
         width: 100%;
@@ -54,9 +56,9 @@ const Projects = ({ featured = [] }) => (
 
 Projects.getInitialProps = async () => {
   const res = await fetch('https://pablopunk-repos.now.sh/')
-  let featured = await res.json()
-  featured = featured.slice(0, maxFeatured)
-  return { featured }
+  let popular = await res.json()
+  popular = popular.slice(0, maxPopular)
+  return { popular }
 }
 
 export default Projects

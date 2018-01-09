@@ -2,6 +2,7 @@ import { Component } from 'react'
 import ReactGA from 'react-ga'
 import Head from 'next/head'
 import colors from './colors'
+import fonts from './fonts'
 import Header from './header'
 
 export default class extends Component {
@@ -33,7 +34,7 @@ export default class extends Component {
         <main>{ this.props.children }</main>
         <style global jsx>{`
           body {
-            font-family: 'Raleway', sans-serif;
+            font-family: ${fonts.body};
             margin: 0;
             padding: 0;
           }

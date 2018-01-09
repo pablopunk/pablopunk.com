@@ -5,6 +5,7 @@ import Center from '../components/center'
 import History from '../components/history'
 import Fade from '../components/fade'
 import colors from '../components/colors'
+import fonts from '../components/fonts'
 
 export default () =>
   <Layout>
@@ -65,7 +66,7 @@ export default () =>
     <style jsx>{`
       .title {
         color: ${colors.main};
-        font-family: 'Amatic SC';
+        font-family: ${fonts.title};
         font-size: 3em;
         text-align: center;
       }
@@ -73,7 +74,7 @@ export default () =>
         content: '1993';
         color: #777;
         font-size: 13px;
-        font-family: 'SF Mono', Menlo, monospace;
+        font-family: ${fonts.mono};
         font-weight: lighter;
         position: absolute;
         margin-top: 1em;
@@ -94,8 +95,8 @@ export default () =>
         cursor: pointer;
       }
       h1 {
-        font-family: 'Amatic SC';
-        font-size: 1.5em;
+        font-family: ${fonts.title};
+        font-size: 1.6em;
         color: ${colors.main};
         text-align: center;
         font-weight: lighter;
