@@ -55,9 +55,8 @@ const Projects = ({ popular = [] }) => (
 )
 
 Projects.getInitialProps = async () => {
-  const res = await fetch('https://pablopunk-repos.now.sh/')
-  let popular = await res.json()
-  popular = popular.slice(0, maxPopular)
+  const res = await fetch(`https://pablopunk-repos.now.sh/?max=${maxPopular}`)
+  const popular = await res.json()
   return { popular }
 }
 
