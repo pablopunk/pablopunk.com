@@ -12,31 +12,36 @@ const stories = [
     title: 'Sourcefabric',
     subtitle: 'Senior Web Developer',
     date: 'since 2018',
-    link: 'https://www.sourcefabric.org/'
+    link: 'https://www.sourcefabric.org/',
+    image: 'https://avatars3.githubusercontent.com/u/5527298?s=200&v=4'
   },
   {
     title: 'LadJS',
     subtitle: 'Core team member',
     date: 'since 2017',
-    link: 'https://github.com/ladjs/lad'
+    link: 'https://github.com/ladjs/lad',
+    image: 'https://avatars3.githubusercontent.com/u/30959108?s=200&v=4'
   },
   {
     title: 'Keepcoding',
     subtitle: 'Master in Full Stack Javascript',
     date: '2017-2018',
-    link: 'https://keepcoding.io/es/keepcoding-web-development-master-bootcamp/'
+    link: 'https://keepcoding.io/es/keepcoding-web-development-master-bootcamp/',
+    image: 'https://avatars0.githubusercontent.com/u/31599428?s=200&v=4'
   },
   {
-    title: 'Stang Decision Systems',
-    subtitle: 'Full Stack Web Developer',
+    title: 'StangDS',
+    subtitle: 'Web Developer',
     date: '2016-2017',
-    link: 'http://stangds.com/'
+    link: 'http://stangds.com/',
+    image: 'https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAANQAAAAJDA5ODFhNGZmLWZhNDQtNGIxOS04ODlkLWRmZThiOTAzOTRjOQ.png'
   },
   {
     title: 'USC',
     subtitle: 'Degree in Computer Science',
     date: '2011-2015',
-    link: 'http://www.usc.es/etse/'
+    link: 'http://www.usc.es/etse/',
+    image: 'http://quehacerensantiago.com/sites/default/files/styles/medium/public/usc_44.gif?itok=QfM9l-t5'
   }
 ]
 
@@ -46,48 +51,48 @@ export default () => (
       <Center height={70}>
         <FadeIn>
           <div>
-            <div className="title">Pablo Varela</div>
+            <div className='title'>Pablo Varela</div>
           </div>
-          <ul className="link-list">
+          <ul className='link-list'>
             <li>
-              <a target="_blank" href="https://twitter.com/pablopunk">
+              <a target='_blank' href='https://twitter.com/pablopunk'>
                 Twitter
               </a>
             </li>
             <li>
-              <a target="_blank" href="https://youtube.com/varelapol13">
+              <a target='_blank' href='https://youtube.com/varelapol13'>
                 YouTube
               </a>
             </li>
             <li>
-              <Link href="./photos" prefetch>
+              <Link href='./photos' prefetch>
                 <a>Photos</a>
               </Link>
             </li>
             <li>
               <a
-                target="_blank"
-                href="https://open.spotify.com/user/pablovarela12">
+                target='_blank'
+                href='https://open.spotify.com/user/pablovarela12'>
                 Music
               </a>
             </li>
             <li>
-              <a target="_blank" href="https://github.com/pablopunk">
+              <a target='_blank' href='https://github.com/pablopunk'>
                 Code
               </a>
             </li>
             <li>
-              <Link href="./projects" prefetch>
+              <Link href='./projects' prefetch>
                 <a>Projects</a>
               </Link>
             </li>
           </ul>
         </FadeIn>
       </Center>
-      <Center cropTop height={0} className="history">
+      <Center cropTop height={0} className='history'>
         <Fade delay={1}>
           <h1>My Story</h1>
-          <History className="history" fade stories={stories} />
+          <History className='history' fade stories={stories} />
         </Fade>
       </Center>
     </div>
