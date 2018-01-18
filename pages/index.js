@@ -50,6 +50,9 @@ export default () => (
     <div>
       <Center height={70}>
         <FadeIn>
+          <div className='image-wrapper'>
+            <img src='/static/images/me.png' />
+          </div>
           <div>
             <div className='title'>Pablo Varela</div>
           </div>
@@ -97,6 +100,15 @@ export default () => (
       </Center>
     </div>
     <style jsx>{`
+      .image-wrapper {
+        width: 130px;
+        height: 130px;
+        margin: 0 auto;
+      }
+      .image-wrapper img {
+        width: 100%;
+        height: 100%;
+      }
       .title {
         color: ${colors.main};
         font-family: ${fonts.title};
