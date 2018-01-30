@@ -1,13 +1,9 @@
-# pablo.life
-
 <p align="center"><i>Minimalist personal website.</i></p>
 
+![screenshot](https://github.com/pablopunk/art/raw/master/pablo.life/screenshot.png)
+
+
 Hybrid server/client rendered thanks to [React](https://facebook.github.io/react/) and [Next.js](https://github.com/zeit/next.js)
-
-
-## Design
-
-![responsive](https://github.com/pablopunk/art/raw/master/pablo.life/responsive.png)
 
 ## Install
 
