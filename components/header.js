@@ -3,6 +3,7 @@ import Head from 'next/head'
 import progress from 'nprogress'
 import Router from 'next/router'
 import colors from './colors'
+import fonts from './fonts'
 
 Router.onRouteChangeStart = url => {
   console.log(`Loading ${url}`)
@@ -13,13 +14,13 @@ Router.onRouteChangeComplete = Router.onRouteChangeError = () =>
   progress.done()
 
 export default () => (
-  <div style={{ marginBottom: 20 }}>
+  <div style={{ marginBottom: 20, fontFamily: fonts.mono }}>
     <Head>
       <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
     </Head>
     <div className='top-bar'>
       <a target='_blank' href='https://github.com/pablopunk/pablo.life'>
-        Made with React
+        View src/
       </a>
     </div>
     <style jsx>{`

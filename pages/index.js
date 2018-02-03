@@ -7,43 +7,7 @@ import Fade from '../components/fade'
 import colors from '../components/colors'
 import fonts from '../components/fonts'
 
-const stories = [
-  {
-    title: 'Sourcefabric',
-    subtitle: 'Senior Web Developer',
-    date: 'since 2018',
-    link: 'https://www.sourcefabric.org/',
-    image: 'https://avatars3.githubusercontent.com/u/5527298?s=200&v=4'
-  },
-  {
-    title: 'LadJS',
-    subtitle: 'Core team member',
-    date: 'since 2017',
-    link: 'https://github.com/ladjs/lad',
-    image: 'https://avatars3.githubusercontent.com/u/30959108?s=200&v=4'
-  },
-  {
-    title: 'Keepcoding',
-    subtitle: 'Master in Full Stack Javascript',
-    date: '2017-2018',
-    link: 'https://keepcoding.io/es/keepcoding-web-development-master-bootcamp/',
-    image: 'https://avatars0.githubusercontent.com/u/31599428?s=200&v=4'
-  },
-  {
-    title: 'StangDS',
-    subtitle: 'Web Developer',
-    date: '2016-2017',
-    link: 'http://stangds.com/',
-    image: 'https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAANQAAAAJDA5ODFhNGZmLWZhNDQtNGIxOS04ODlkLWRmZThiOTAzOTRjOQ.png'
-  },
-  {
-    title: 'USC',
-    subtitle: 'Degree in Computer Science',
-    date: '2011-2015',
-    link: 'http://www.usc.es/etse/',
-    image: 'http://quehacerensantiago.com/sites/default/files/styles/medium/public/usc_44.gif?itok=QfM9l-t5'
-  }
-]
+const {stories} = require('../stories')
 
 export default () => (
   <Layout>
@@ -63,6 +27,11 @@ export default () => (
               </a>
             </li>
             <li>
+              <Link href='./posts' prefetch>
+                <a>Blog</a>
+              </Link>
+            </li>
+            <li>
               <a target='_blank' href='https://youtube.com/varelapol13'>
                 YouTube
               </a>
@@ -77,11 +46,6 @@ export default () => (
                 target='_blank'
                 href='https://open.spotify.com/user/pablovarela12'>
                 Music
-              </a>
-            </li>
-            <li>
-              <a target='_blank' href='https://github.com/pablopunk'>
-                Code
               </a>
             </li>
             <li>
