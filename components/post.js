@@ -12,6 +12,7 @@ export default ({ children, content }) =>
     </FadeIn>
     <style jsx>{`
       article {
+        padding: 1em;
         margin-top: 6%;
         display: flex;
         flex-direction: column;
