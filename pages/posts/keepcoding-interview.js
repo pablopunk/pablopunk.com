@@ -16,6 +16,6 @@ The interview is in Spanish, you can [read it here](https://keepcoding.io/es/blo
 `
 
 export default () =>
-  <Post>
+  <Post title='Work from home as a web developer'>
     <Content />
   </Post>

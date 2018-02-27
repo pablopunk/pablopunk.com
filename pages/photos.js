@@ -21,7 +21,7 @@ const photos = pexels.map(p =>
 )
 
 export default () => (
-  <Layout>
+  <Layout title='Photos'>
     <div>
       <Fade delay={0.7}>
         <Back link='/' text='home' />

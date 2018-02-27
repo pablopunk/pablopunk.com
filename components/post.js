@@ -2,8 +2,8 @@ import FadeIn from 'react-fade-in'
 import Layout from './layout'
 import Back from './back'
 
-export default ({ children, content }) =>
-  <Layout>
+export default ({ children, title }) =>
+  <Layout title={title}>
     <FadeIn>
       <Back link='/' text='home' />
       <article>

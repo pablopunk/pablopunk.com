@@ -10,7 +10,7 @@ import fonts from '../components/fonts'
 const maxPopular = 7
 
 const Projects = ({ popular = [] }) => (
-  <Layout>
+  <Layout title='Projects'>
     <Center height={70}>
       <FadeList>
         <h1>Popular Projects</h1>

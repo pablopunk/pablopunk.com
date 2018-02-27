@@ -6,7 +6,7 @@ import Back from '../components/back'
 const { posts } = require('../posts')
 
 export default () => (
-  <Layout>
+  <Layout title='Blog'>
     <section>
       <FadeIn>
         <Back link='/' text='home' />
