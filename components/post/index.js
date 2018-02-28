@@ -1,6 +1,6 @@
 import FadeIn from 'react-fade-in'
-import Layout from './layout'
-import Back from './back'
+import Layout from '../layout'
+import Back from '../back'
 
 export default ({ children, title }) =>
   <Layout title={title}>

@@ -1,9 +1,9 @@
 import md from 'markdown-in-js'
 import Post from '../../components/post'
 
-const markdownElements = require('../../components/markdownElements')
+const mdElements = require('../../components/post/mdElements')
 
-const Content = () => md(markdownElements)`
+const Content = () => md(mdElements)`
 
 # Work from home as a web developer
 

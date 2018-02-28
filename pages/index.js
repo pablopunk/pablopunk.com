@@ -2,10 +2,10 @@ import FadeIn from 'react-fade-in'
 import Link from 'next/link'
 import History from 'react-simple-timeline'
 import Layout from '../components/layout'
-import Center from '../components/center'
+import Center from '../components/layout/center'
 import Fade from '../components/fade'
-import colors from '../components/colors'
-import fonts from '../components/fonts'
+import colors from '../components/styles/colors'
+import fonts from '../components/styles/fonts'
 
 const {stories} = require('../stories')
 

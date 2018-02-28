@@ -1,11 +1,11 @@
 import fetch from 'isomorphic-fetch'
 import FadeList from 'react-fade-in'
 import Layout from '../components/layout'
-import Center from '../components/center'
+import Center from '../components/layout/center'
 import Fade from '../components/fade'
 import Back from '../components/back'
-import colors from '../components/colors'
-import fonts from '../components/fonts'
+import colors from '../components/styles/colors'
+import fonts from '../components/styles/fonts'
 
 const maxPopular = 7
 

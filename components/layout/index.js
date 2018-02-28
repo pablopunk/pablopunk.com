@@ -1,9 +1,9 @@
 import { Component } from 'react'
 import ReactGA from 'react-ga'
 import Head from 'next/head'
-import colors from './colors'
-import fonts from './fonts'
 import Header from './header'
+import colors from '../styles/colors'
+import fonts from '../styles/fonts'
 
 export default class extends Component {
   componentDidMount () {

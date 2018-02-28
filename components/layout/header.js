@@ -2,8 +2,8 @@ import React from 'react'
 import Head from 'next/head'
 import progress from 'nprogress'
 import Router from 'next/router'
-import colors from './colors'
-import fonts from './fonts'
+import colors from '../styles/colors'
+import fonts from '../styles/fonts'
 
 Router.onRouteChangeStart = url => {
   console.log(`Loading ${url}`)

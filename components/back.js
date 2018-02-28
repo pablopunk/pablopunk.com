@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import colors from './colors'
+import colors from './styles/colors'
 
 export default ({ link = '/', text = 'back' }) => (
   <div>
