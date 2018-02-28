@@ -7,7 +7,7 @@ import Fade from '../components/fade'
 import colors from '../components/styles/colors'
 import fonts from '../components/styles/fonts'
 
-const {stories} = require('../stories')
+const { stories } = require('../stories')
 
 export default () => (
   <Layout>

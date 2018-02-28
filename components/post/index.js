@@ -2,13 +2,11 @@ import FadeIn from 'react-fade-in'
 import Layout from '../layout'
 import Back from '../back'
 
-export default ({ children, title }) =>
+export default ({ children, title }) => (
   <Layout title={title}>
     <FadeIn>
       <Back link='/' text='home' />
-      <article>
-        { children }
-      </article>
+      <article>{children}</article>
     </FadeIn>
     <style jsx>{`
       article {
@@ -20,3 +18,4 @@ export default ({ children, title }) =>
       }
     `}</style>
   </Layout>
+)

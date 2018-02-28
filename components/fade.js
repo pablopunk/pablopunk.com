@@ -23,25 +23,27 @@ class Fade extends React.Component {
     if (this.state.hidden) {
       return <div ref='hidden' />
     }
-    return <div>
+    return (
       <div>
-        {this.props.children}
-        <style jsx>{`
-        div {
-          opacity: 0;
-          animation: fadeIn ${this.props.duration}s ease-in forwards;
-        }
-        @keyframes fadeIn {
-          0% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-      `}</style>
+        <div>
+          {this.props.children}
+          <style jsx>{`
+            div {
+              opacity: 0;
+              animation: fadeIn ${this.props.duration}s ease-in forwards;
+            }
+            @keyframes fadeIn {
+              0% {
+                opacity: 0;
+              }
+              100% {
+                opacity: 1;
+              }
+            }
+          `}</style>
+        </div>
       </div>
-    </div>
+    )
   }
 }
 

@@ -1,4 +1,4 @@
-export default ({ src }) =>
+export default ({ src }) => (
   <img
     style={{
       maxWidth: '600px',
@@ -8,3 +8,4 @@ export default ({ src }) =>
     }}
     src={src}
   />
+)

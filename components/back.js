@@ -19,8 +19,8 @@ export default ({ link = '/', text = 'back' }) => (
       span {
         color: ${colors.main};
         border: 1px solid ${colors.main};
-        padding: .4em .7em;
-        transition: background-color .2s, border .1s;
+        padding: 0.4em 0.7em;
+        transition: background-color 0.2s, border 0.1s;
       }
       span:hover {
         color: white;

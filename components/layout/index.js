@@ -12,13 +12,18 @@ export default class extends Component {
   }
 
   render () {
-    const title = this.props.title ? ` | ${this.props.title}` : ' | Web Developer'
+    const title = this.props.title
+      ? ` | ${this.props.title}`
+      : ' | Web Developer'
 
     return (
       <div>
         <Head>
           <title>Pablo Varela{title}</title>
-          <meta name='description' content='Personal website of Pablo Varela. Web Developer.' />
+          <meta
+            name='description'
+            content='Personal website of Pablo Varela. Web Developer.'
+          />
           <link
             rel='shortcut icon'
             href='../static/images/favicon.ico'
@@ -34,7 +39,7 @@ export default class extends Component {
           />
         </Head>
         <Header />
-        <main>{ this.props.children }</main>
+        <main>{this.props.children}</main>
         <style global jsx>{`
           body {
             font-family: ${fonts.body};
@@ -68,7 +73,7 @@ export default class extends Component {
             max-width: 1200px;
             margin: auto;
           }
-       `}</style>
+        `}</style>
       </div>
     )
   }

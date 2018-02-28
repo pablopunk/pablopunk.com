@@ -10,8 +10,7 @@ Router.onRouteChangeStart = url => {
   progress.start()
 }
 
-Router.onRouteChangeComplete = Router.onRouteChangeError = () =>
-  progress.done()
+Router.onRouteChangeComplete = Router.onRouteChangeError = () => progress.done()
 
 export default () => (
   <div style={{ marginBottom: 20, fontFamily: fonts.mono }}>

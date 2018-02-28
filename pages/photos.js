@@ -4,7 +4,7 @@ import Layout from '../components/layout'
 import Back from '../components/back'
 import Fade from '../components/fade'
 
-const {pexels} = require('../images')
+const { pexels } = require('../images')
 
 const imageUrl = id => `/static/images/pexels/pexels-photo-${id}.jpg`
 const pexelsUrl = id =>
@@ -28,7 +28,7 @@ export default () => (
       </Fade>
       <br />
       <Fade delay={1}>
-        More in {' '}
+        More in{' '}
         <a href='https://pexels.com/u/pablopunk' alt='Pexels'>
           pexels.com/pablopunk
         </a>

@@ -16,9 +16,7 @@ const Projects = ({ popular = [] }) => (
         <h1>Popular Projects</h1>
         {popular.map(project => (
           <div className='repo' key={project.name}>
-            <a href={project.url}>
-              /{project.name}
-            </a>
+            <a href={project.url}>/{project.name}</a>
             <span className='stars'>{project.stars} ★</span>
           </div>
         ))}
