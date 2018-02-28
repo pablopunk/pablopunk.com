@@ -12,12 +12,13 @@ export default class extends Component {
   }
 
   render () {
-    const title = this.props.title ? ` | ${this.props.title}` : ''
+    const title = this.props.title ? ` | ${this.props.title}` : ' | Web Developer'
 
     return (
       <div>
         <Head>
           <title>Pablo Varela{title}</title>
+          <meta name='description' content='Personal website of Pablo Varela. Web Developer.' />
           <link
             rel='shortcut icon'
             href='../static/images/favicon.ico'
