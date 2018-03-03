@@ -1,7 +1,6 @@
 import FadeIn from 'react-fade-in'
 import Photos from 'react-photo-container'
 import Layout from '../components/layout'
-import Back from '../components/back'
 import Fade from '../components/fade'
 
 const { pexels } = require('../images')
@@ -21,13 +20,9 @@ const photos = pexels.map(p =>
 )
 
 export default () => (
-  <Layout title='Photos'>
+  <Layout title='Photos' navLinks={[ { title: 'Photos' } ]}>
     <div>
-      <Fade delay={0.7}>
-        <Back link='/' text='home' />
-      </Fade>
-      <br />
-      <Fade delay={1}>
+      <Fade>
         More in{' '}
         <a href='https://pexels.com/u/pablopunk' alt='Pexels'>
           pexels.com/pablopunk

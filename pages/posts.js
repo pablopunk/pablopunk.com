@@ -1,15 +1,14 @@
 import FadeIn from 'react-fade-in'
 import Link from 'next/link'
 import Layout from '../components/layout'
-import Back from '../components/back'
 
 const { posts } = require('../posts')
+const title = 'Blog'
 
 export default () => (
-  <Layout title='Blog'>
+  <Layout title={title} navLinks={[ { title } ]}>
     <section>
       <FadeIn>
-        <Back link='/' text='home' />
         {posts.map(p => (
           <article>
             <Link href={`/posts/${p.id}`}>

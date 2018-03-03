@@ -5,6 +5,11 @@ import Header from './header'
 import colors from '../styles/colors'
 import fonts from '../styles/fonts'
 
+const indexNavLink = {
+  title: 'Home',
+  href: '/'
+}
+
 export default class extends Component {
   componentDidMount () {
     ReactGA.initialize('UA-106008527-2')
@@ -12,9 +17,14 @@ export default class extends Component {
   }
 
   render () {
-    const title = this.props.title
-      ? ` | ${this.props.title}`
-      : ' | Web Developer'
+    let {navLinks, title} = this.props
+
+    title = this.props.title || 'Web Developer'
+    title = ` | ${title}`
+
+    if (navLinks) {
+      navLinks = [indexNavLink, ...navLinks]
+    }
 
     return (
       <div>
@@ -24,10 +34,7 @@ export default class extends Component {
             name='description'
             content="I'm a young programmer passinate about web development and remote work. I also love open source, and technologies like nodejs, javascript and building my own websites and tools."
           />
-          <meta
-            name='canonical'
-            href='https://pablo.life'
-          />
+          <meta name='canonical' href='https://pablo.life' />
           <meta
             name='keywords'
             href='web developer, programmer, remote, remote work, freelancer, senior, full stack'
@@ -45,8 +52,14 @@ export default class extends Component {
             rel='stylesheet'
             href='https://fonts.googleapis.com/css?family=Amatic+SC|Raleway'
           />
+          <link
+            href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+            rel='stylesheet'
+            integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN'
+            crossorigin='anonymous'
+          />
         </Head>
-        <Header />
+        <Header navLinks={navLinks} />
         <main>{this.props.children}</main>
         <style global jsx>{`
           body {

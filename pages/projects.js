@@ -2,15 +2,14 @@ import fetch from 'isomorphic-fetch'
 import FadeList from 'react-fade-in'
 import Layout from '../components/layout'
 import Center from '../components/layout/center'
-import Fade from '../components/fade'
-import Back from '../components/back'
 import colors from '../components/styles/colors'
 import fonts from '../components/styles/fonts'
 
 const maxPopular = 7
+const title = 'Projects'
 
 const Projects = ({ popular = [] }) => (
-  <Layout title='Projects'>
+  <Layout title={title} navLinks={[ { title } ]}>
     <Center height={70}>
       <FadeList>
         <h1>Popular Projects</h1>
@@ -25,10 +24,6 @@ const Projects = ({ popular = [] }) => (
         </div>
       </FadeList>
     </Center>
-    <Fade delay={1}>
-      <br />
-      <Back text='home' />
-    </Fade>
     <style jsx>{`
       h1 {
         color: ${colors.main}

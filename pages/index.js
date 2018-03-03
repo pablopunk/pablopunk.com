@@ -49,7 +49,7 @@ export default () => (
               </a>
             </li>
             <li>
-              <Link href='./projects' prefetch>
+              <Link href='./projects'>
                 <a>Projects</a>
               </Link>
             </li>
