@@ -5,7 +5,7 @@ export default ({ links = [] }) => (
   <div>
     <div className='links'>
       {links.map(({ title, href }) =>
-        <div>
+        <div key={`nav-${title}`}>
           { href &&
             <Link href={href}><a>{title}</a></Link>
           }
