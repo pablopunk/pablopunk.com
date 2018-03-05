@@ -62,6 +62,10 @@ export default class extends Component {
         <Header navLinks={navLinks} />
         <main>{this.props.children}</main>
         <style global jsx>{`
+          *::selection {
+            background-color: ${colors.selection};
+          }
+
           body {
             font-family: ${fonts.body};
             margin: 0;

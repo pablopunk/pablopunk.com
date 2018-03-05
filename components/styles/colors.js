@@ -1,4 +1,5 @@
 module.exports = {
   main: 'steelblue',
-  secondary: 'tomato'
+  secondary: 'tomato',
+  selection: 'lightpink'
 }
