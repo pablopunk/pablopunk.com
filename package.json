@@ -18,7 +18,7 @@
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "markdown-in-js": "^1.1.3",
-    "next": "^4.2.3",
+    "next": "^4.4.0-canary.3",
     "nprogress": "^0.2.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -31,7 +31,11 @@
     "standard": "^10.0.3"
   },
   "babel": {
-    "presets": ["next/babel"],
-    "plugins": ["markdown-in-js/babel"]
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+      "markdown-in-js/babel"
+    ]
   }
 }
