@@ -32,7 +32,7 @@ export default class extends Component {
           <title>Pablo Varela{title}</title>
           <meta
             name='description'
-            content="I'm a young programmer passinate about web development and remote work. I also love open source, and technologies like nodejs, javascript and building my own websites and tools."
+            content="I'm a young programmer passionate about web development and remote work. I love open source, javascript, and building my own websites and tools."
           />
           <meta name='canonical' href='https://pablo.life' />
           <meta
