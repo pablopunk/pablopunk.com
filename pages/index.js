@@ -16,7 +16,7 @@ export default () => (
         <Center height={70}>
           <FadeIn>
             <div className='image-wrapper'>
-              <img src='/static/images/me.png' />
+              <img src='/static/images/me.png' alt='Me' />
             </div>
             <h1>Pablo Varela</h1>
             <nav>
