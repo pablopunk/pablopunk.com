@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import progress from 'nprogress'
 import FadeIn from 'react-fade-in'
 import Router from 'next/router'
@@ -16,9 +15,6 @@ Router.onRouteChangeComplete = Router.onRouteChangeError = () => progress.done()
 
 export default ({ navLinks }) => (
   <div style={{ marginBottom: 20, fontFamily: fonts.mono }}>
-    <Head>
-      <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
-    </Head>
     <div className='top-bar'>
       <a target='_blank' href='https://github.com/pablopunk/pablo.life'>
         View src/

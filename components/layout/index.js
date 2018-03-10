@@ -60,7 +60,15 @@ export default class extends Component {
           />
         </Head>
         <Header navLinks={navLinks} />
+
         <main>{this.props.children}</main>
+
+        <noscript id='deferred-styles'>
+          <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
+        </noscript>
+
+        <script type='text/javascript' src='/static/async-css.js' />
+
         <style global jsx>{`
           *::selection {
             background-color: ${colors.selection};
