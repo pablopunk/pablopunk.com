@@ -5,14 +5,14 @@
       "subtitle": "Senior Web Developer",
       "date": "since 2018",
       "link": "https://www.sourcefabric.org/",
-      "image": "https://avatars3.githubusercontent.com/u/5527298?s=200&v=4"
+      "image": "/static/images/stories/sourcefabric.jpg"
     },
     {
       "title": "LadJS",
       "subtitle": "Core team member",
       "date": "since 2017",
       "link": "https://github.com/ladjs/lad",
-      "image": "https://avatars3.githubusercontent.com/u/30959108?s=200&v=4"
+      "image": "/static/images/stories/ladjs.png"
     },
     {
       "title": "Keepcoding",
@@ -20,7 +20,7 @@
       "date": "2017-2018",
       "link":
         "https://keepcoding.io/es/keepcoding-web-development-master-bootcamp/",
-      "image": "https://avatars0.githubusercontent.com/u/31599428?s=200&v=4"
+      "image": "/static/images/stories/kc.png"
     },
     {
       "title": "StangDS",
@@ -28,7 +28,7 @@
       "date": "2016-2017",
       "link": "http://stangds.com/",
       "image":
-        "https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAANQAAAAJDA5ODFhNGZmLWZhNDQtNGIxOS04ODlkLWRmZThiOTAzOTRjOQ.png"
+        "/static/images/stories/stang.png"
     },
     {
       "title": "USC",
@@ -36,7 +36,7 @@
       "date": "2011-2015",
       "link": "http://www.usc.es/etse/",
       "image":
-        "http://quehacerensantiago.com/sites/default/files/styles/medium/public/usc_44.gif?itok=QfM9l-t5"
+        "/static/images/stories/usc.jpg"
     }
   ]
 }
