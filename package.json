@@ -25,7 +25,7 @@
     "react-fade-in": "^0.1.4",
     "react-ga": "^2.2.0",
     "react-photo-container": "^0.1.1",
-    "react-simple-timeline": "^1.1.0"
+    "react-simple-timeline": "^1.1.2"
   },
   "devDependencies": {
     "standard": "^10.0.3"
