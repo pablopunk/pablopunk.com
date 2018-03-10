@@ -1,4 +1,3 @@
-import FadeIn from 'react-fade-in'
 import Photos from 'react-photo-container'
 import Layout from '../components/layout'
 import Fade from '../components/fade'
@@ -29,9 +28,7 @@ export default () => (
         </a>
       </Fade>
       <div>
-        <FadeIn>
-          <Photos photos={photos} />
-        </FadeIn>
+        <Photos photos={photos} />
       </div>
     </div>
     <style jsx>{`
