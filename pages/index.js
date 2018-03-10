@@ -12,56 +12,58 @@ const { stories } = require('../stories')
 export default () => (
   <Layout>
     <div>
-      <Center height={70}>
-        <FadeIn>
-          <div className='image-wrapper'>
-            <img src='/static/images/me.png' />
-          </div>
-          <div>
-            <div className='title'>Pablo Varela</div>
-          </div>
-          <ul className='link-list'>
-            <li>
-              <a target='_blank' href='https://twitter.com/pablopunk'>
-                Twitter
-              </a>
-            </li>
-            <li>
-              <Link href='./posts' prefetch>
-                <a>Blog</a>
-              </Link>
-            </li>
-            <li>
-              <a target='_blank' href='https://youtube.com/varelapol13'>
-                YouTube
-              </a>
-            </li>
-            <li>
-              <Link href='./photos' prefetch>
-                <a>Photos</a>
-              </Link>
-            </li>
-            <li>
-              <a
-                target='_blank'
-                href='https://open.spotify.com/user/pablovarela12'>
-                Music
-              </a>
-            </li>
-            <li>
-              <Link href='./projects'>
-                <a>Projects</a>
-              </Link>
-            </li>
-          </ul>
-        </FadeIn>
-      </Center>
-      <Center cropTop height={0} className='history'>
-        <Fade delay={1}>
-          <h1>My Story</h1>
-          <History className='history' fade stories={stories} />
-        </Fade>
-      </Center>
+      <section>
+        <Center height={70}>
+          <FadeIn>
+            <div className='image-wrapper'>
+              <img src='/static/images/me.png' />
+            </div>
+            <h1>Pablo Varela</h1>
+            <nav>
+              <li>
+                <a target='_blank' href='https://twitter.com/pablopunk'>
+                  Twitter
+                </a>
+              </li>
+              <li>
+                <Link href='./posts' prefetch>
+                  <a>Blog</a>
+                </Link>
+              </li>
+              <li>
+                <a target='_blank' href='https://youtube.com/varelapol13'>
+                  YouTube
+                </a>
+              </li>
+              <li>
+                <Link href='./photos' prefetch>
+                  <a>Photos</a>
+                </Link>
+              </li>
+              <li>
+                <a
+                  target='_blank'
+                  href='https://open.spotify.com/user/pablovarela12'>
+                  Music
+                </a>
+              </li>
+              <li>
+                <Link href='./projects'>
+                  <a>Projects</a>
+                </Link>
+              </li>
+            </nav>
+          </FadeIn>
+        </Center>
+      </section>
+      <section className='history'>
+        <Center cropTop height={0}>
+          <Fade delay={1}>
+            <h2>My Story</h2>
+            <History className='history' fade stories={stories} />
+          </Fade>
+        </Center>
+      </section>
     </div>
     <style jsx>{`
       .image-wrapper {
@@ -73,13 +75,14 @@ export default () => (
         width: 100%;
         height: 100%;
       }
-      .title {
+      h1 {
         color: ${colors.main};
         font-family: ${fonts.title};
         font-size: 3em;
         text-align: center;
+        font-weight: lighter;
       }
-      .title::after {
+      h1::after {
         content: '1993';
         color: #777;
         font-size: 13px;
@@ -92,18 +95,19 @@ export default () => (
         animation: fadeIn 0.4s ease-in forwards;
         animation-delay: 2s;
       }
-      .link-list {
+      nav {
         margin-top: 20px;
         display: flex;
         justify-content: center;
         transition: font-size 0.2s ease-in;
         text-align: center;
       }
-      .link-list li {
+      nav li {
         padding: 0.5em 1.5em;
         cursor: pointer;
+        list-style: none;
       }
-      h1 {
+      h2 {
         font-family: ${fonts.title};
         font-size: 1.6em;
         color: ${colors.main};
@@ -119,17 +123,18 @@ export default () => (
         }
       }
       @media (max-width: 768px) {
-        .link-list {
+        nav {
           flex-direction: column;
           justify-content: flex-start;
           font-size: 1.3em;
         }
         .history {
+          margin-top: 50px;
           font-size: 20px;
         }
       }
       @media screen and (orientation: landscape) {
-        .link-list {
+        nav {
           flex-direction: row;
           font-size: 1em;
           justify-content: center;
