@@ -6,10 +6,18 @@ Hybrid server/client rendered thanks to [React](https://facebook.github.io/react
 
 ## Install
 
-```
+> Production
+
+```sh
 npm install
 npm run build
 npm start
+```
+
+> Development
+
+```sh
+npm run dev
 ```
 
 ## Author
