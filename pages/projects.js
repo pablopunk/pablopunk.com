@@ -18,17 +18,24 @@ class Projects extends React.Component {
 
   componentDidMount () {
     fetch(`https://pablopunk-repos.now.sh/?max=${maxPopular}`)
-      .then(res =>
-        res.json()
-        .then(popular =>
-          this.setState({popular})
-        )
-      )
+      .then(async res => {
+        const json = await res.json()
+        const repos = [
+          ...json,
+          {
+            name: 'superdesk-client-core',
+            url: 'https://github.com/superdesk/superdesk-client-core',
+            stars: 14
+          }
+        ]
+        const reposByStar = repos.sort((a, b) => a.stars < b.stars)
+
+        this.setState({popular: reposByStar})
+      })
   }
 
   render () {
     const {popular} = this.state
-    console.log(popular)
 
     return (
       <Layout title={title} navLinks={[ { title } ]}>
