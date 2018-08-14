@@ -2,7 +2,7 @@ import Image from './image'
 import Title from './title'
 import Paragraph from './paragraph'
 
-module.exports = {
+export default {
   p: Paragraph,
   img: Image,
   h1: Title

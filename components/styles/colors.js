@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   main: 'steelblue',
   secondary: 'tomato',
   selection: 'lightpink'
