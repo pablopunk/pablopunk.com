@@ -1,4 +1,3 @@
-import React from 'react'
 import progress from 'nprogress'
 import FadeIn from 'react-fade-in'
 import Router from 'next/router'
