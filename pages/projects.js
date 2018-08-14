@@ -60,9 +60,9 @@ class Projects extends React.Component {
         </Center>
         <style jsx>{`
           h1 {
-            color: ${colors.main}
+            color: ${colors.main};
             font-family: ${fonts.title};
-            font-weight: lighter;
+            font-size: 2em;
             padding: .5em;
             text-align: center;
             width: 100%;

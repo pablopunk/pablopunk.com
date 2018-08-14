@@ -26,7 +26,8 @@
     "react-dom": "^16.0.0",
     "react-fade-in": "^0.1.5",
     "react-ga": "^2.2.0",
-    "react-photo-container": "^0.1.1",
+    "react-images": "^0.5.19",
+    "react-photo-gallery": "^6.1.6",
     "react-simple-timeline": "^1.1.4"
   },
   "devDependencies": {
