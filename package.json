@@ -29,6 +29,12 @@
     "react-simple-timeline": "^1.1.4"
   },
   "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
     "standard": "^10.0.3"
   },
   "babel": {
