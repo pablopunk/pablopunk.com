@@ -11,9 +11,6 @@
     "lint": "standard",
     "fix-gear-images": "find ./static/images/gear/ -iname '*.*' -exec mogrify -resize 200 {} +"
   },
-  "now": {
-    "alias": "pablo.life"
-  },
   "repository": "https://github.com/pablopunk/pablo.life",
   "author": "Pablo Varela",
   "license": "MIT",
