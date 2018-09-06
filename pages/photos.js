@@ -58,11 +58,11 @@ export default class extends React.Component {
 
   render () {
     return (
-      <Layout title="Photos" navLinks={[{title: 'Photos'}]}>
+      <Layout title='Photos' navLinks={[{title: 'Photos'}]}>
         <div>
           <Fade>
             More in{' '}
-            <a href="https://pexels.com/u/pablopunk" alt="Pexels">
+            <a href='https://pexels.com/u/pablopunk' alt='Pexels'>
               pexels.com/pablopunk
             </a>
           </Fade>

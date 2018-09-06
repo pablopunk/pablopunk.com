@@ -6,7 +6,7 @@ export default class KeybaseTxt extends React.Component {
   }
 
   render () {
-    return <div/>
+    return <div />
   }
 }
 
