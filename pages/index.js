@@ -117,7 +117,6 @@ export default () => (
         font-size: 1.6em;
         color: ${colors.main};
         text-align: center;
-        font-weight: lighter;
       }
       @keyframes fadeIn {
         0% {
