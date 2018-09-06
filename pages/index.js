@@ -48,6 +48,11 @@ export default () => (
                 </a>
               </li>
               <li>
+                <Link href='./gear' prefetch>
+                  <a>Gear</a>
+                </Link>
+              </li>
+              <li>
                 <Link href='./projects'>
                   <a>Projects</a>
                 </Link>
