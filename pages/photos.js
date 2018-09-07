@@ -6,7 +6,7 @@ import Fade from '../components/fade'
 
 const {pexels} = require('../images')
 
-const imageUrl = id => `/static/images/pexels/pexels-photo-${id}.jpg`
+const imageUrl = id => `/static/images/pexels/${id}.jpg`
 const pexelsUrl = id =>
   `https://static.pexels.com/photos/${id}/pexels-photo-${id}.jpeg`
 
