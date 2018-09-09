@@ -17,7 +17,7 @@ export default class extends Component {
   }
 
   render () {
-    let {navLinks, title} = this.props
+    let { navLinks, title } = this.props
 
     title = this.props.title || 'Web Developer'
     title = ` | ${title}`

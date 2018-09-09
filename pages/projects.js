@@ -30,12 +30,12 @@ class Projects extends React.Component {
         ]
         const reposByStar = repos.sort((a, b) => a.stars < b.stars)
 
-        this.setState({popular: reposByStar})
+        this.setState({ popular: reposByStar })
       })
   }
 
   render () {
-    const {popular} = this.state
+    const { popular } = this.state
 
     return (
       <Layout title={title} navLinks={[ { title } ]}>

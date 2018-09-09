@@ -3,31 +3,36 @@ import Gallery from 'react-photo-gallery'
 import Lightbox from 'react-images'
 import Layout from '../components/layout'
 import Fade from '../components/fade'
-
-const {pexels} = require('../images')
+import { get } from '../utils/api'
 
 const imageUrl = id => `/static/images/pexels/${id}.jpg`
 const pexelsUrl = id =>
   `https://static.pexels.com/photos/${id}/pexels-photo-${id}.jpeg`
 
-const thumbnails = pexels.map(p => ({
-  ...p,
-  src: imageUrl(p.id)
-}))
-
-const photos = pexels.map(p => ({
-  ...p,
-  src: pexelsUrl(p.id)
-}))
-
 export default class extends React.Component {
   constructor () {
     super()
-    this.state = { currentImage: 0 }
+    this.state = { currentImage: 0, photos: [], thumbnails: [] }
     this.closeLightbox = this.closeLightbox.bind(this)
     this.openLightbox = this.openLightbox.bind(this)
     this.gotoNext = this.gotoNext.bind(this)
     this.gotoPrevious = this.gotoPrevious.bind(this)
+  }
+
+  componentDidMount () {
+    get('pexels-photos').then(_photos => {
+      const thumbnails = _photos.map(p => ({
+        ...p,
+        src: imageUrl(p.id)
+      }))
+
+      const photos = _photos.map(p => ({
+        ...p,
+        src: pexelsUrl(p.id)
+      }))
+
+      this.setState({ photos, thumbnails })
+    })
   }
 
   openLightbox (event, obj) {
@@ -58,7 +63,7 @@ export default class extends React.Component {
 
   render () {
     return (
-      <Layout title='Photos' navLinks={[{title: 'Photos'}]}>
+      <Layout title='Photos' navLinks={[{ title: 'Photos' }]}>
         <div>
           <Fade>
             More in{' '}
@@ -67,8 +72,8 @@ export default class extends React.Component {
             </a>
           </Fade>
           <div>
-            <Gallery photos={thumbnails} onClick={this.openLightbox} />
-            <Lightbox images={photos}
+            <Gallery photos={this.state.thumbnails} onClick={this.openLightbox} />
+            <Lightbox images={this.state.photos}
               onClose={this.closeLightbox}
               onClickPrev={this.gotoPrevious}
               onClickNext={this.gotoNext}
