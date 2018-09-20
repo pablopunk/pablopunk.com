@@ -13,8 +13,8 @@ export default ({ name, id, description, link }) => (
       article {
         height: 150px;
         display: flex;
-        align-items: center;
-        padding: 1em 0;
+        align-items: space-between;
+        padding: 1em .5em;
         border-radius: 5px;
         transition: .3s;
       }
@@ -33,11 +33,12 @@ export default ({ name, id, description, link }) => (
         margin: 0 .4em;
       }
       img {
-        max-height: 150px;
+        max-height: 130px;
       }
       .item-image {
         display: flex;
         justify-content: center;
+        align-items: center;
       }
     `}</style>
   </a>
