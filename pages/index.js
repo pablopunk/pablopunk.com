@@ -67,7 +67,7 @@ export default class extends React.Component {
                     </Link>
                   </li>
                   <li>
-                    <Link href='./projects'>
+                    <Link href='./projects' prefetch>
                       <a>Projects</a>
                     </Link>
                   </li>

@@ -11,7 +11,7 @@ export default () => (
       <FadeIn>
         {posts.map(p => (
           <article>
-            <Link href={`/posts/${p.id}`}>
+            <Link href={`/posts/${p.id}`} prefetch>
               <a>
                 <h1>{p.title}</h1>
               </a>
