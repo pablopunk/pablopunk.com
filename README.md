@@ -6,7 +6,7 @@
 
 - Hybrid React rendering (server/client) thanks to [Next.js](https://github.com/zeit/next.js)
 - Typescript and React support (`.tsx`)
-- MDX support: Write javascript inside markdown
+- [MDX](https://github.com/mdx-js/mdx) support: Write javascript inside markdown
 
 ## Install
 
