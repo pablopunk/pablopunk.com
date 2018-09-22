@@ -8,8 +8,7 @@
     "start": "next start -p 3001",
     "deploy": "now",
     "test": "npm run lint",
-    "lint": "standard",
-    "fix-gear-images": "find ./static/images/gear/ -iname '*.*' -exec mogrify -resize 200 {} +"
+    "lint": "standard"
   },
   "repository": "https://github.com/pablopunk/pablo.life",
   "author": "Pablo Varela",

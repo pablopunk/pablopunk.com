@@ -20,6 +20,13 @@ npm start
 npm run dev
 ```
 
+* To fix images to a certain size I use:
+
+```bash
+# All images 200px wide
+find ./images/ -iname '*.*' -exec mogrify -resize 200 {} +
+```
+
 ## Author
 
 | ![me](https://www.gravatar.com/avatar/fa50aeff0ddd6e63273a068b04353d9d?s=100) |
