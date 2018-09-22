@@ -1,10 +1,11 @@
 import FadeIn from 'react-fade-in'
 import Layout from '../layout'
 
-export default ({ children, title }) => (
+export default (title) => ({ children }) =>
   <Layout
-    title={title}
-    navLinks={[{ title: 'Blog', href: '/posts' }, { title }]}>
+    title='Work from home as a web developer'
+    navLinks={[{ title: 'Blog', href: '/posts' }, { title }]}
+  >
     <FadeIn>
       <article>{children}</article>
     </FadeIn>
@@ -17,4 +18,3 @@ export default ({ children, title }) => (
       }
     `}</style>
   </Layout>
-)

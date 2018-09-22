@@ -9,7 +9,11 @@ import fonts from '../components/styles/fonts'
 const maxPopular = 7
 const title = 'Projects'
 
-class Projects extends React.Component {
+interface IState {
+  popular: Array<any>
+}
+
+class Projects extends React.Component<{}, IState> {
   constructor (props) {
     super(props)
 
@@ -28,7 +32,7 @@ class Projects extends React.Component {
             stars: 14
           }
         ]
-        const reposByStar = repos.sort((a, b) => a.stars < b.stars)
+        const reposByStar = repos.sort((a, b) => b.stars - a.stars)
 
         this.setState({ popular: reposByStar })
       })
