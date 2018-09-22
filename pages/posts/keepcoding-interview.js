@@ -7,7 +7,7 @@ const Content = () => md(mdElements)`
 
 # Work from home as a web developer
 
-![image](/static/images/posts/keepcoding-interview.jpg)
+![image](https://file-wxwghwevsf.now.sh)
 
 I was interviewed by **keepcoding.io** about how I
 got a remote job as a web developer.
