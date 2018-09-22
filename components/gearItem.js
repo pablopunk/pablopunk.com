@@ -1,9 +1,9 @@
 import colors from '../components/styles/colors'
 
-export default ({ name, id, description, link }) => (
+export default ({ name, description, link, image }) => (
   <a href={link} target='_blank'>
     <article>
-      <div className='item-image'><img src={`/static/images/gear/${id}.jpg`} /></div>
+      <div className='item-image'><img src={image} /></div>
       <div>
         <h3>{name}</h3>
         <p>{description}</p>
