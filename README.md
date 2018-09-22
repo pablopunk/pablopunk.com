@@ -2,7 +2,11 @@
 
 ![screenshot](https://github.com/pablopunk/art/raw/master/pablo.life/screenshot.png)
 
-Hybrid server/client rendered thanks to [React](https://facebook.github.io/react/) and [Next.js](https://github.com/zeit/next.js)
+## Features
+
+- Hybrid React rendering (server/client) thanks to [Next.js](https://github.com/zeit/next.js)
+- Typescript and React support (`.tsx`)
+- [MDX](https://github.com/mdx-js/mdx) support: Write javascript inside markdown
 
 ## Install
 

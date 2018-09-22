@@ -9,7 +9,9 @@ import colors from '../components/styles/colors'
 import fonts from '../components/styles/fonts'
 import { get } from '../utils/api'
 
-export default class extends React.Component {
+class Index extends React.Component<{}, {}> {
+  state: any
+
   constructor (props) {
     super(props)
 
@@ -167,3 +169,5 @@ export default class extends React.Component {
     )
   }
 }
+
+export default Index

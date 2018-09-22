@@ -1,9 +1,9 @@
-import Image from './image'
 import Title from './title'
+import Image from './image'
 import Paragraph from './paragraph'
 
 export default {
-  p: Paragraph,
+  h1: Title,
   img: Image,
-  h1: Title
+  p: Paragraph
 }
