@@ -2,7 +2,7 @@ import FadeIn from 'react-fade-in'
 import Link from 'next/link'
 import Layout from '../components/layout'
 
-const { posts } = require('../posts')
+import posts from '../posts.json'
 const title = 'Blog'
 
 export default () => (

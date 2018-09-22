@@ -9,10 +9,23 @@ const imageUrl = id => `/static/images/pexels/${id}.jpg`
 const pexelsUrl = id =>
   `https://static.pexels.com/photos/${id}/pexels-photo-${id}.jpeg`
 
-export default class extends React.Component {
-  constructor () {
-    super()
-    this.state = { currentImage: 0, photos: [], thumbnails: [] }
+interface IState {
+  currentImage: number,
+  photos: Array<any>,
+  thumbnails: Array<any>,
+  lightboxIsOpen: boolean
+}
+
+export default class extends React.Component<{}, IState> {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      currentImage: 0,
+      photos: [],
+      thumbnails: [],
+      lightboxIsOpen: false
+    }
     this.closeLightbox = this.closeLightbox.bind(this)
     this.openLightbox = this.openLightbox.bind(this)
     this.gotoNext = this.gotoNext.bind(this)
@@ -67,7 +80,7 @@ export default class extends React.Component {
         <div>
           <Fade>
             More in{' '}
-            <a href='https://pexels.com/u/pablopunk' alt='Pexels'>
+            <a href='https://pexels.com/u/pablopunk'>
               pexels.com/pablopunk
             </a>
           </Fade>

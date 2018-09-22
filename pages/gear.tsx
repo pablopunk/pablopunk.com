@@ -8,7 +8,11 @@ import colors from '../components/styles/colors'
 
 const title = 'Gear'
 
-export default class extends React.Component {
+interface IState {
+  items: Array<any>
+}
+
+export default class extends React.Component<any, IState> {
   constructor (props) {
     super(props)
 

@@ -1,9 +1,7 @@
-{
-  "posts": [
-    {
-      "id": "keepcoding-interview",
-      "title": "Work from home as a web developer",
-      "date": "Jan 23 2018"
-    }
-  ]
-}
+[
+  {
+    "id": "keepcoding-interview",
+    "title": "Work from home as a web developer",
+    "date": "Jan 23 2018"
+  }
+]
