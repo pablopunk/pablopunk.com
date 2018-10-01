@@ -50,7 +50,7 @@ export default class extends Component {
           />
           <link
             rel='stylesheet'
-            href='https://fonts.googleapis.com/css?family=Amatic+SC|Raleway'
+            href='https://fonts.googleapis.com/css?family=Amatic+SC|Comfortaa'
           />
           <link
             href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
