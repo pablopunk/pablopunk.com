@@ -1,90 +1,104 @@
 import React from 'react'
-import fetch from 'isomorphic-fetch'
-import { ThreeBounce as Spinner } from 'better-react-spinkit'
 import Layout from '../components/layout'
-import Center from '../components/layout/center'
 import colors from '../components/styles/colors'
 import fonts from '../components/styles/fonts'
+import { get } from '../utils/api'
 
-const maxPopular = 7
 const title = 'Projects'
 
-interface IState {
-  popular: Array<any>
+const repoName = (url: string): string => {
+  const parts = url.split('/')
+  const n = parts.length
+
+  return n ? parts[n - 1] : ''
 }
 
-class Projects extends React.Component<{}, IState> {
+interface Project {
+  url: string;
+  name?: string;
+}
+
+interface Category {
+  name: string;
+  repos: Array<Project>;
+}
+
+interface IState {
+  projects: Array<Category>;
+}
+
+export default class Projects extends React.Component<{}, IState> {
   constructor (props) {
     super(props)
 
-    this.state = { popular: [] }
+    this.state = { projects: [] }
   }
 
   componentDidMount () {
-    fetch(`https://pablopunk-repos.now.sh/?max=${maxPopular}`)
-      .then(async res => {
-        const json = await res.json()
-        const repos = [
-          ...json,
-          {
-            name: 'superdesk-client-core',
-            url: 'https://github.com/superdesk/superdesk-client-core',
-            stars: 14
-          }
-        ]
-        const reposByStar = repos.sort((a, b) => b.stars - a.stars)
+    get('projects').then((categories: Array<Category>) => {
+      const projectsWithoutFullUrl = categories.map(category => ({
+        ...category,
+        repos: category.repos.map(project => ({
+          ...project,
+          name: repoName(project.url),
+        }))
+      }))
 
-        this.setState({ popular: reposByStar })
-      })
+      this.setState({ projects: projectsWithoutFullUrl })
+    })
   }
 
   render () {
-    const { popular } = this.state
-
     return (
       <Layout title={title} navLinks={[ { title } ]}>
-        <Center height={70}>
-          <section>
-            <h1>Popular Projects</h1>
-            {popular.length === 0 &&
-              <Center>
-                <Spinner color={colors.secondary} />
-              </Center>
-            }
-            {popular.map(project => (
-              <div className='repo' key={project.name}>
-                <a href={project.url}>/{project.name}</a>
-                <span className='stars'>{project.stars} ★</span>
-              </div>
-            ))}
-            <div style={{ textAlign: 'center', margin: '1.2em' }}>
-              <a href='https://github.com/pablopunk'>more...</a>
-            </div>
-          </section>
-        </Center>
+        <h1>My Projects</h1>
+        <section>
+          {
+            this.state.projects.map(category => (
+              <article>
+                <h2>{ category.name }</h2>
+                <ul>
+                {
+                  category.repos.map(project => (
+                    <a target='_blank' href={project.url}><li>/{ project.name }</li></a>
+                  ))
+                }
+                </ul>
+              </article>
+            ))
+          }
+        </section>
+        <footer><a href="https://github.com/pablopunk">More...</a></footer>
         <style jsx>{`
-          h1 {
-            color: ${colors.main};
-            font-family: ${fonts.title};
-            font-size: 2em;
-            padding: .5em;
-            text-align: center;
-            width: 100%;
+          section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
           }
-          .repo {
+          article {
+            font-size: 1.3em;
             margin: 1em;
-            width: 100%;
-            font-size: 1.2em;
+            padding: .3em;
+            min-width: 300px;
           }
-          .stars {
-            float: right;
-            color: orange;
-            margin-right: 1em;
+          h1 {
+            text-align: center;
+            color: ${colors.main};
+            font-family: ${fonts.title}
+          }
+          h2 {
+            color: ${colors.main};
+            font-size: 1em;
+            border-bottom: 1px dashed ${colors.main};
+            padding-bottom: .2em;
+            margin-bottom: .5em;
+          }
+          footer {
+            text-align: center;
+            margin: 30px 0 100px 0;
           }
         `}</style>
       </Layout>
     )
   }
 }
-
-export default Projects
