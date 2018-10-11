@@ -71,6 +71,7 @@ export default class Projects extends React.Component<{}, IState> {
         <footer><a href="https://github.com/pablopunk">More...</a></footer>
         <style jsx>{`
           section {
+            margin-top: 7%;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -82,6 +83,7 @@ export default class Projects extends React.Component<{}, IState> {
             min-width: 300px;
           }
           h1 {
+            margin-top: 5%;
             text-align: center;
             color: ${colors.main};
             font-family: ${fonts.title}
