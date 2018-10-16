@@ -68,7 +68,7 @@ export default class Projects extends React.Component<{}, IState> {
             ))
           }
         </section>
-        <footer><a href="https://github.com/pablopunk">More...</a></footer>
+        <footer><a href="https://ghuser.io/pablopunk">More...</a></footer>
         <style jsx>{`
           section {
             margin-top: 7%;
