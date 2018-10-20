@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import colors from '../styles/colors.js'
+import colors from '../styles/colors'
 
 export default ({ links = [] }) => (
   <div>

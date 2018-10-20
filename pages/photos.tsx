@@ -3,6 +3,7 @@ import Gallery from 'react-photo-gallery'
 import Lightbox from 'react-images'
 import Layout from '../components/layout'
 import Fade from '../components/fade'
+import colors from '../components/styles/colors'
 import { get } from '../utils/api'
 
 const imageUrl = id => `/static/images/pexels/${id}.jpg`
@@ -99,6 +100,7 @@ export default class extends React.Component<{}, IState> {
           div {
             margin: 1em 2em;
             text-align: center;
+            color: ${colors.main};
           }
           .back {
             margin-bottom: 2em;

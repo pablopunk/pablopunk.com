@@ -10,7 +10,17 @@ const indexNavLink = {
   href: '/'
 }
 
-export default class extends Component {
+interface navLink {
+  title: string;
+  href?: string;
+}
+
+interface IProps {
+  navLinks?: Array<navLink>;
+  title?: string;
+}
+
+export default class extends Component<IProps> {
   componentDidMount () {
     ReactGA.initialize('UA-106008527-2')
     ReactGA.pageview(document.location.pathname)
@@ -34,10 +44,10 @@ export default class extends Component {
             name='description'
             content="I'm a young programmer passionate about web development and remote work. I love open source, javascript, and building my own websites and tools."
           />
-          <meta name='canonical' href='https://pablo.life' />
+          <meta name='canonical' content='https://pablo.life' />
           <meta
             name='keywords'
-            href='web developer, programmer, remote, remote work, freelancer, senior, full stack'
+            content='web developer, programmer, remote, remote work, freelancer, senior, full stack'
           />
           <link
             rel='shortcut icon'

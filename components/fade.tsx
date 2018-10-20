@@ -1,6 +1,20 @@
 import React from 'react'
 
-class Fade extends React.Component {
+interface IProps {
+  delay?: number;
+  duration?: number;
+}
+
+interface IState {
+  hidden: boolean;
+}
+
+
+class Fade extends React.Component<IProps, IState> {
+  static defaultProps = {
+    delay: 0,
+    duration: 0.5
+  }
   constructor (props) {
     super(props)
     this.state = { hidden: true }
@@ -25,9 +39,9 @@ class Fade extends React.Component {
     }
     return (
       <div>
-        <div>
-          {this.props.children}
-          <style jsx>{`
+      <div>
+      {this.props.children}
+      <style jsx>{`
             div {
               opacity: 0;
               animation: fadeIn ${this.props.duration}s ease-in forwards;
@@ -41,15 +55,10 @@ class Fade extends React.Component {
               }
             }
           `}</style>
-        </div>
+      </div>
       </div>
     )
   }
-}
-
-Fade.defaultProps = {
-  delay: 0,
-  duration: 0.5
 }
 
 export default Fade
