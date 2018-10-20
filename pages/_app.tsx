@@ -3,7 +3,12 @@ import { MDXProvider } from '@mdx-js/tag'
 
 import components from '../components/markdown'
 
-export default class extends React.Component {
+interface IProps {
+  Component: any;
+  pageProps: any;
+}
+
+export default class extends React.Component<IProps, {}> {
   static async getInitialProps ({ Component, router, ctx }) {
     let pageProps = {}
 
