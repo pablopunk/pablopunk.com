@@ -1,38 +1,26 @@
 {
   "name": "pablo.life",
   "version": "2.0.0",
-  "description": "personal website",
+  "description": "Personal website",
   "scripts": {
     "dev": "next",
-    "build": "next build",
-    "start": "next start -p 3001",
-    "deploy": "now",
-    "test": "npm run lint",
-    "lint": "standard"
+    "start": "next start",
+    "build": "next build && next export"
   },
-  "repository": "https://github.com/pablopunk/pablo.life",
-  "author": "Pablo Varela",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablopunk/pablo.life.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pablopunk/pablo.life/issues"
+  },
+  "homepage": "https://github.com/pablopunk/pablo.life#readme",
   "dependencies": {
-    "@mdx-js/mdx": "^0.15.3",
-    "@zeit/next-mdx": "^1.2.0",
-    "@zeit/next-typescript": "^1.1.1",
-    "better-react-spinkit": "^2.0.4",
-    "isomorphic-fetch": "^2.2.1",
-    "next": "^7.0.0",
-    "nprogress": "^0.2.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-fade-in": "^0.1.5",
-    "react-ga": "^2.2.0",
-    "react-images": "^0.5.19",
-    "react-photo-gallery": "^6.1.6",
-    "react-simple-timeline": "^1.1.4"
-  },
-  "devDependencies": {
-    "@types/react": "^16.4.14",
-    "fork-ts-checker-webpack-plugin": "^0.4.9",
-    "standard": "^12.0.1",
-    "typescript": "^3.0.3"
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
   }
 }
