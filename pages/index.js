@@ -4,7 +4,7 @@ import colors from '../components/styles/colors'
 export default () => (
   <div>
     <div className='container'>
-      <div className='row'>
+      <header className='row'>
         <div className='col-3'>
           <div id='profile-image-container'>
             <img src='https://file-81hbt41i4.now.sh' alt='Me' />
@@ -13,7 +13,7 @@ export default () => (
         <div className='col-4'>
           <h1>Pablo Varela</h1>
         </div>
-      </div>
+      </header>
       <div className='row'>
         <div className='col-2'>
           <ul>
@@ -53,8 +53,13 @@ export default () => (
     </div>
     <style jsx>{`
       .container {
-        margin-top: 20%;
-        margin-bottom: 10%;
+        margin-top: 20px;
+        margin-bottom: 10vh;
+      }
+      @media screen and (min-width: 900px) {
+        .container {
+          margin-top: 20vh;
+        }
       }
       section {
         padding: 1em;

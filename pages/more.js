@@ -19,7 +19,7 @@ function myAge () {
 
 export default () => (
   <div>
-    <div className='container' style={{ marginTop: '20%' }}>
+    <div className='container'>
       <p>
         <Link href='/' prefetch>
           <a>Go back...</a>
@@ -56,5 +56,12 @@ export default () => (
         </div>
       </div>
     </div>
+    <style jsx>{`
+    @media screen and (min-width: 900px) {
+      .container {
+        margin-top: 10vh;
+      }
+    }
+    `}</style>
   </div>
 )
