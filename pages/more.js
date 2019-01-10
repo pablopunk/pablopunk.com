@@ -49,9 +49,9 @@ export default () => (
         </div>
         <div className='col-5' style={{ textAlign: 'right' }}>
           <p>Oh, and <a target='_blank' href='https://www.youtube.com/watch?v=ysMFrMy_RKA'>I solve Rubik's cubes</a>.</p>
-          <p>And I <a target='_blank' href='https://www.instagram.com/stories/highlights/17914758004185871/'>built</a> <a target='_blank' href='https://www.instagram.com/stories/highlights/17945945326009359/'>an</a> <a target='_blank' href='https://www.instagram.com/stories/highlights/17848700605259664/'>electric</a> <a target='_blank' href='https://www.instagram.com/stories/highlights/17913183403190007/'>skateboard</a>.</p>
+          <p>And I <a target='_blank' href='https://www.instagram.com/stories/highlights/18013136287075737/'>built an electric skateboard.</a></p>
           <p>
-            And <a target='_blank' href='https://www.instagram.com/stories/highlights/17850070648250406/'>fell inmediately</a>. Sad.
+            And fell inmediately. Sad.
           </p>
         </div>
       </div>
