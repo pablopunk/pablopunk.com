@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next",
     "start": "next start",
-    "build": "next build && next export"
+    "build": "next build && next export -o dist",
+    "now-build": "npm run build"
   },
   "repository": {
     "type": "git",
