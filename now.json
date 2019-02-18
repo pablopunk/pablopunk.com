@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "name": "nextjs-static",
-  "builds": [
-  	{ "src": "package.json", "use": "@now/static-build" }
-  ],
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
   "alias": "pablo.life"
 }
