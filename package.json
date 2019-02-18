@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next",
     "start": "next start",
-    "build": "next build && next export -o dist",
-    "now-build": "npm run build"
+    "build": "next build"
   },
   "repository": {
     "type": "git",
@@ -20,7 +19,7 @@
   },
   "homepage": "https://github.com/pablopunk/pablo.life#readme",
   "dependencies": {
-    "next": "^7.0.2",
+    "next": "^8.0.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   }
