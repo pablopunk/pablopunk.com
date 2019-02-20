@@ -1,57 +1,64 @@
+import React from 'react'
 import Link from 'next/link'
-import colors from '../components/styles/colors'
+import themeColors from '../components/styles/colors'
+import SwitchThemeButton from '../components/switchThemeButton.js'
 
-export default () => (
-  <div>
-    <div className='container'>
-      <header className='row'>
-        <div className='col-3'>
-          <div id='profile-image-container'>
-            <img src='https://file-81hbt41i4.now.sh' alt='Me' />
+export default class extends React.Component {
+  render () {
+    const colors = themeColors(this.props.query.theme)
+
+    return (
+      <div>
+        <SwitchThemeButton {...this.props} />
+        <div className='container'>
+          <header className='row'>
+            <div className='col-3'>
+              <div id='profile-image-container'>
+                <img src='https://file-81hbt41i4.now.sh' alt='Me' />
+              </div>
+            </div>
+            <div className='col-4'>
+              <h1>Pablo Varela</h1>
+            </div>
+          </header>
+          <div className='row'>
+            <div className='col-2'>
+              <ul>
+                <li>
+                  <a target='_blank' href='https://twitter.com/pablopunk'>thoughts</a>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <a target='_blank' href='https://ghuser.io/pablopunk'>projects</a>
+                </li>
+              </ul>
+              <ul>
+                <li> <a target='_blank' href='https://www.instagram.com/stories/pablopunk/'>daily</a>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <a target='_blank' href='https://pexels.com/u/pablopunk'>pics</a>
+                </li>
+              </ul>
+            </div>
+            <div className='col-5'>
+              <p>Hi there!</p>
+              <p>I'm a web developer working remotely from <a target='_blank' href='https://goo.gl/maps/Z2uQtbEaDrR2'>Pontevedra, Spain.</a></p>
+              <p>I'm currently helping building the best open source tool for journalists: <a target='_blank' href='https://github.com/superdesk/superdesk'>Superdesk</a>!</p>
+              <p>I also contribute regularly to other projects and even my own, check them out on <a target='_blank' href='https://github.com/pablopunk'>GitHub.</a></p>
+            </div>
+          </div>
+          <div className='row'>
+            <p>
+              <Link href={{ pathname: '/more', query: this.props.query }} prefetch>
+                <a>More...</a>
+              </Link>
+            </p>
           </div>
         </div>
-        <div className='col-4'>
-          <h1>Pablo Varela</h1>
-        </div>
-      </header>
-      <div className='row'>
-        <div className='col-2'>
-          <ul>
-            <li>
-              <a target='_blank' href='https://twitter.com/pablopunk'>thoughts</a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a target='_blank' href='https://ghuser.io/pablopunk'>projects</a>
-            </li>
-          </ul>
-          <ul>
-            <li> <a target='_blank' href='https://www.instagram.com/stories/pablopunk/'>daily</a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a target='_blank' href='https://pexels.com/u/pablopunk'>pics</a>
-            </li>
-          </ul>
-        </div>
-        <div className='col-5'>
-          <p>Hi there!</p>
-          <p>I'm a web developer working remotely from <a target='_blank' href='https://goo.gl/maps/Z2uQtbEaDrR2'>Pontevedra, Spain.</a></p>
-          <p>I'm currently helping building the best open source tool for journalists: <a target='_blank' href='https://github.com/superdesk/superdesk'>Superdesk</a>!</p>
-          <p>I also contribute regularly to other projects and even my own, check them out on <a target='_blank' href='https://github.com/pablopunk'>GitHub.</a></p>
-        </div>
-      </div>
-      <div className='row'>
-        <p>
-          <Link href='/more' prefetch>
-            <a>More...</a>
-          </Link>
-        </p>
-      </div>
-    </div>
-    <style jsx>{`
+        <style jsx>{`
       .container {
         margin-top: 20px;
         margin-bottom: 10vh;
@@ -76,8 +83,8 @@ export default () => (
       #profile-image-container {
         width: 100px;
         height: 100px;
-        background-color: #d4d4d4;
-        border: 4px solid #667885;
+        background-color: #fafafa;
+        border: 4px solid ${colors.primary};
         border-radius: 50%;
         padding: 1em;
       }
@@ -99,5 +106,7 @@ export default () => (
         color: ${colors.link};
       }
     `}</style>
-  </div>
-)
+      </div>
+    )
+  }
+}
