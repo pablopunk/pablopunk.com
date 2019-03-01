@@ -1,122 +1,104 @@
-import React from 'react'
-import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import colors from '../components/styles/colors'
-import fonts from '../components/styles/fonts'
-
-export default class extends React.Component {
-  componentDidMount () {
-    fonts()
-  }
-  render () {
-    return (
-      <div>
-        <div className='container'>
-          <header className='row'>
-            <div className='col-3'>
-              <div id='profile-image-container'>
-                <img src='/static/images/me.png' alt='Me' />
-              </div>
-            </div>
-            <div className='col-4'>
-              <h1>Pablo Varela</h1>
-            </div>
-          </header>
-          <div className='row'>
-            <div className='col-2'>
-              <ul>
-                <li>
-                  <a target='_blank' href='https://twitter.com/pablopunk'>
-                    <FontAwesomeIcon size='xs' width='16px' icon='comment' /> thoughts
-                  </a>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <a target='_blank' href='https://ghuser.io/pablopunk'>
-                    <FontAwesomeIcon size='xs' width='16px' icon='microchip' /> projects
-                  </a>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <a target='_blank' href='https://www.instagram.com/stories/pablopunk/'>
-                    <FontAwesomeIcon size='xs' width='16px' icon='video' /> daily
-                  </a>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <a target='_blank' href='https://pexels.com/u/pablopunk'>
-                    <FontAwesomeIcon size='xs' width='16px' icon='camera' /> pics
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className='col-5'>
-              <p>Hi there!</p>
-              <p>I'm a web developer working remotely from <a target='_blank' href='https://goo.gl/maps/Z2uQtbEaDrR2'>Pontevedra, Spain.</a></p>
-              <p>I'm currently helping building the best open source tool for journalists: <a target='_blank' href='https://github.com/superdesk/superdesk'>Superdesk</a>!</p>
-              <p>I also contribute regularly to other projects and even my own, check them out on <a target='_blank' href='https://github.com/pablopunk'>GitHub.</a></p>
-            </div>
-          </div>
-          <div className='row'>
-            <p>
-              <Link href={{ pathname: '/more', query: this.props.query }} prefetch>
-                <a>More...</a>
-              </Link>
-            </p>
-          </div>
-        </div>
-        <style jsx>{`
-      .container {
-        margin-top: 20px;
-        margin-bottom: 10vh;
-      }
-      @media screen and (min-width: 900px) {
-        .container {
-          margin-top: 20vh;
-        }
-      }
-      section {
-        padding: 1em;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-      img {
-        width: 100px;
-        height: 100px;
-        transform: translate(3px, 4px);
-      }
-      #profile-image-container {
-        width: 100px;
-        height: 100px;
-        background-color: #fafafa;
-        border: 4px solid ${colors.primary};
-        border-radius: 50%;
-        padding: 1em;
-      }
-      h1 {
-        color: ${colors.bodyFont};
-        font-size: 4em;
-        font-family: 'Amatic SC';
-        font-weight: lighter;
-        margin: .3em;
-      }
-      li {
-        margin: 1em;
-        font-size: 1.4em;
-      }
-      li a {
-        color: ${colors.primary};
-      }
-      li a:hover {
-        color: ${colors.link};
-      }
+export default () => (
+  <div>
+    <main>
+      <section>
+        <article className='color1' />
+        <article className='color2'><h1>Pablo Varela</h1></article>
+        <article className='color3'>
+          <ul>
+            <li>
+              <a target='_blank' href='https://twitter.com/pablopunk'>thoughts</a>
+            </li>
+            <li>
+              <a target='_blank' href='https://ghuser.io/pablopunk'>projects</a>
+            </li>
+            <li> <a target='_blank' href='https://www.instagram.com/stories/pablopunk/'>daily</a>
+            </li>
+            <li>
+              <a target='_blank' href='https://pexels.com/u/pablopunk'>pics</a>
+            </li>
+          </ul>
+        </article>
+        <article className='color4 bio'>
+          <p>Hi there!</p>
+          <p>I'm a web developer working remotely from <a target='_blank' href='https://goo.gl/maps/Z2uQtbEaDrR2'>Pontevedra, Spain.</a></p>
+          <p>I'm currently helping building the best open source tool for journalists: <a target='_blank' href='https://github.com/superdesk/superdesk'>Superdesk</a>!</p>
+          <p>I also contribute regularly to other projects and even my own, check them out on <a target='_blank' href='https://github.com/pablopunk'>GitHub.</a></p>
+        </article>
+      </section>
+      <footer>
+        <br />
+        <a href='/more'>More...</a>
+      </footer>
+    </main>
+    <style jsx>{`
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vh;
+      background-color: #22313F;
+      font-family: Helvetica, Arial;
+    }
+    p a {
+      color: gold;
+    }
+    li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    footer a {
+      color: white;
+    }
+    h1 {
+      font-size: 3em;
+      font-family: Helvetica, monospace;
+    }
+    section {
+      display: grid;
+      grid-template-columns: 150px 60vw;
+    }
+    .color1 {
+      background-color: #2C3E50;
+      color: white;
+    }
+    .color2 {
+      background-color: #34495E;
+      color: white;
+    }
+    .color3 {
+      background-color: #3A539B;
+      color: white;
+    }
+    .color4 {
+      background-color: #2574A9;
+      color: white;
+    }
+    article {
+      margin: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 100%;
+    }
+    li {
+      font-size: 1.5em;
+    }
+    .bio {
+      display: block;
+      padding: 1em;
+    }
     `}</style>
-      </div>
-    )
-  }
-}
+  </div>
+)
