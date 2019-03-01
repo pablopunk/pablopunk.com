@@ -1,20 +1,21 @@
 import React from 'react'
 import Link from 'next/link'
-import themeColors from '../components/styles/colors'
-import SwitchThemeButton from '../components/switchThemeButton.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import colors from '../components/styles/colors'
+import fonts from '../components/styles/fonts'
 
 export default class extends React.Component {
+  componentDidMount () {
+    fonts()
+  }
   render () {
-    const colors = themeColors(this.props.query.theme)
-
     return (
       <div>
-        <SwitchThemeButton {...this.props} />
         <div className='container'>
           <header className='row'>
             <div className='col-3'>
               <div id='profile-image-container'>
-                <img src='https://file-81hbt41i4.now.sh' alt='Me' />
+                <img src='/static/images/me.png' alt='Me' />
               </div>
             </div>
             <div className='col-4'>
@@ -25,21 +26,30 @@ export default class extends React.Component {
             <div className='col-2'>
               <ul>
                 <li>
-                  <a target='_blank' href='https://twitter.com/pablopunk'>thoughts</a>
+                  <a target='_blank' href='https://twitter.com/pablopunk'>
+                    <FontAwesomeIcon size='xs' width='16px' icon='comment' /> thoughts
+                  </a>
                 </li>
               </ul>
               <ul>
                 <li>
-                  <a target='_blank' href='https://ghuser.io/pablopunk'>projects</a>
-                </li>
-              </ul>
-              <ul>
-                <li> <a target='_blank' href='https://www.instagram.com/stories/pablopunk/'>daily</a>
+                  <a target='_blank' href='https://ghuser.io/pablopunk'>
+                    <FontAwesomeIcon size='xs' width='16px' icon='microchip' /> projects
+                  </a>
                 </li>
               </ul>
               <ul>
                 <li>
-                  <a target='_blank' href='https://pexels.com/u/pablopunk'>pics</a>
+                  <a target='_blank' href='https://www.instagram.com/stories/pablopunk/'>
+                    <FontAwesomeIcon size='xs' width='16px' icon='video' /> daily
+                  </a>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <a target='_blank' href='https://pexels.com/u/pablopunk'>
+                    <FontAwesomeIcon size='xs' width='16px' icon='camera' /> pics
+                  </a>
                 </li>
               </ul>
             </div>
@@ -97,7 +107,7 @@ export default class extends React.Component {
       }
       li {
         margin: 1em;
-        font-size: 1.5em;
+        font-size: 1.4em;
       }
       li a {
         color: ${colors.primary};

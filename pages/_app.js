@@ -1,7 +1,13 @@
 import { parse } from 'url'
 import React from 'react'
 import App, { Container } from 'next/app'
-import themeColors from '../components/styles/colors'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import colors from '../components/styles/colors'
+
+// Create fontawesome library
+library.add(fas, fab)
 
 class Layout extends React.Component {
   render () {
@@ -15,24 +21,8 @@ class Layout extends React.Component {
 }
 
 export default class MyApp extends App {
-  static async getInitialProps ({ Component, ctx }) {
-    let pageProps = {}
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
-
-    if (ctx.req) {
-      pageProps.query = parse(ctx.req.url, true).query
-    } else {
-      pageProps.query = parse(window.location.search, true).query
-    }
-
-    return { pageProps }
-  }
   render () {
     const { Component, pageProps } = this.props
-    const colors = themeColors(pageProps.query.theme)
 
     return <Container>
       <Layout>
