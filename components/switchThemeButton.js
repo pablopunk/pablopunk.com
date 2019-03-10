@@ -27,14 +27,18 @@ export default class extends React.Component {
         padding: 1em;
       }
       span {
-        transition: opacity .3s, margin-left .2s;
         opacity: 0;
-        margin-left: -100px;
       }
-      button:hover span {
-        opacity: 1;
-        transition: opacity .3s, margin-left .2s;
-        margin-left: 0px;
+      @media (min-width: 900px) {
+        span {
+          transition: opacity .3s, margin-left .2s;
+          margin-left: -100px;
+        }
+        button:hover span {
+          opacity: 1;
+          transition: opacity .3s, margin-left .2s;
+          margin-left: 0px;
+        }
       }
       `}</style>
       </div>
