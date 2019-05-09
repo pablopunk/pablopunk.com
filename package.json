@@ -18,9 +18,24 @@
     "url": "https://github.com/pablopunk/pablo.life/issues"
   },
   "homepage": "https://github.com/pablopunk/pablo.life#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2
+  },
   "dependencies": {
     "next": "^8.0.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
+    "husky": "^2.2.0",
+    "prettier": "^1.17.0",
+    "pretty-quick": "^1.10.0"
   }
 }
