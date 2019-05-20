@@ -158,13 +158,13 @@ export default class extends React.Component {
           svg path:nth-child(12) {
             stroke-dasharray: 286px;
             stroke-dashoffset: 286px;
-            animation: path-animation 1.2s ease forwards 1.2s,
-              fill 1.2s ease forwards 2s;
+            animation: path-animation 1.2s ease forwards 1.7s,
+              fill 1.2s ease forwards 2.5s;
           }
 
           svg path {
-            animation: path-animation 1.2s ease forwards,
-              fill 1.2s ease forwards 2s;
+            animation: path-animation 1.2s ease forwards 0.5s,
+              fill 1.2s ease forwards 2.5s;
           }
 
           @keyframes path-animation {
