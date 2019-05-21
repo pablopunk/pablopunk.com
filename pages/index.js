@@ -127,8 +127,23 @@ export default class extends React.Component {
             padding: 1em;
           }
           #title {
-            color: ${colors.bodyFont};
-            margin: 1em;
+            margin-top: 1em;
+          }
+          #title::before {
+            content: '1993';
+            font-family: Verdana, Helvetica, sanserif;
+            font-size: 1rem;
+            margin-left: -3rem;
+            opacity: 0;
+            animation: 1s fade ease-in forwards 4s;
+          }
+          @keyframes fade {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
           }
           li {
             margin: 1em;
