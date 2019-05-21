@@ -4,18 +4,18 @@ import App, { Container } from 'next/app'
 import themeColors from '../components/styles/colors'
 
 class Layout extends React.Component {
-  render () {
+  render() {
     const { children } = this.props
-    return <div className='layout'>
-      <main>
-        { children }
-      </main>
-    </div>
+    return (
+      <div className="layout">
+        <main>{children}</main>
+      </div>
+    )
   }
 }
 
 export default class MyApp extends App {
-  static async getInitialProps ({ Component, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
 
     if (Component.getInitialProps) {
@@ -30,104 +30,111 @@ export default class MyApp extends App {
 
     return { pageProps }
   }
-  render () {
+  render() {
     const { Component, pageProps } = this.props
     const colors = themeColors(pageProps.query.theme)
 
-    return <Container>
-      <Layout>
-        <Component {...pageProps} />
-        <style global jsx>{`
-          body, html {
-            margin: 0;
-            padding: 0;
-            font-family: Lora;
-            background-color: ${colors.bodyBg};
-            color: ${colors.bodyFont};
-          }
-          a {
-            text-decoration: none;
-            color: ${colors.link};
-            font-family: 'Titillium Web';
-          }
-          a:hover {
-            color: ${colors.primary};
-          }
-          ul {
-            margin: 0;
-            padding: 0;
-          }
-          li {
-            list-style: none;
-          }
-          p {
-            font-size: 1.2em;
-          }
-          .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-          }
-          .row {
-            width: 90%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-          }
-          .col-1,
-          .col-2,
-          .col-3,
-          .col-4,
-          .col-5,
-          .col-6,
-          .col-7,
-          .col-8,
-          .col-9,
-          .col-10 {
-            display: inline-block;
-          }
-          @media screen and (min-width: 900px) {
-            .row {
-              flex-direction: row;
+    return (
+      <Container>
+        <Layout>
+          <Component {...pageProps} />
+          <style global jsx>{`
+            html {
+              font-size: 10px;
             }
-            .col-1 {
-              width: 10%;
+            body {
+              margin: 0;
+              padding: 0;
+              font-family: Times, serif;
+              background-color: ${colors.bodyBg};
+              color: ${colors.bodyFont};
+              font-size: 1.5rem;
             }
-            .col-2 {
-              width: 20%;
+            a {
+              text-decoration: none;
+              color: ${colors.link};
+              font-family: Verdana;
+              font-size: 0.9em;
             }
-            .col-3 {
-              width: 30%;
+            a:hover {
+              color: ${colors.primary};
             }
-            .col-4 {
-              width: 40%;
+            ul {
+              margin: 0;
+              padding: 0;
             }
-            .col-5 {
-              width: 50%;
+            li {
+              list-style: none;
             }
-            .col-6 {
-              width: 60%;
+            p {
+              font-size: 1.8rem;
             }
-            .col-7 {
-              width: 70%;
-            }
-            .col-8 {
-              width: 80%;
-            }
-            .col-9 {
-              width: 90%;
-            }
-            .col-10 {
+            .container {
               width: 100%;
+              max-width: 1200px;
+              margin: 0 auto;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
             }
-          }
-        `}</style>
-      </Layout>
-    </Container>
+            .row {
+              width: 90%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+            }
+            .col-1,
+            .col-2,
+            .col-3,
+            .col-4,
+            .col-5,
+            .col-6,
+            .col-7,
+            .col-8,
+            .col-9,
+            .col-10 {
+              display: inline-block;
+            }
+            @media screen and (min-width: 900px) {
+              .row {
+                flex-direction: row;
+              }
+              .col-1 {
+                width: 10%;
+              }
+              .col-2 {
+                width: 20%;
+              }
+              .col-3 {
+                width: 30%;
+              }
+              .col-4 {
+                width: 40%;
+              }
+              .col-5 {
+                width: 50%;
+              }
+              .col-6 {
+                width: 60%;
+              }
+              .col-7 {
+                width: 70%;
+              }
+              .col-8 {
+                width: 80%;
+              }
+              .col-9 {
+                width: 90%;
+              }
+              .col-10 {
+                width: 100%;
+              }
+            }
+          `}</style>
+        </Layout>
+      </Container>
+    )
   }
 }
