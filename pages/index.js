@@ -131,7 +131,7 @@ export default class extends React.Component {
           }
           #title::before {
             content: '1993';
-            font-family: Verdana, Helvetica, sanserif;
+            font-family: 'Avenir Next', Verdana, Helvetica, sanserif;
             font-size: 1rem;
             margin-left: -3rem;
             opacity: 0;

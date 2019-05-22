@@ -53,7 +53,7 @@ export default class MyApp extends App {
             a {
               text-decoration: none;
               color: ${colors.link};
-              font-family: Verdana;
+              font-family: 'Avenir Next', Verdana, Helvetica;
               font-size: 0.9em;
             }
             a:hover {
