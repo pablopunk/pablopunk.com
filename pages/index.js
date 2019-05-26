@@ -19,7 +19,7 @@ export default class extends React.Component {
               </div>
             </div>
             <div className="col-4" id="title">
-              <Title />
+              <Title theme={this.props.query.theme} />
             </div>
           </header>
           <div className="row">
