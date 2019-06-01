@@ -3,6 +3,7 @@ import Link from 'next/link'
 import themeColors from '../components/styles/colors'
 import SwitchThemeButton from '../components/switchThemeButton.js'
 import Title from '../components/title'
+import FundMe from '../components/fund-me'
 
 export default class extends React.Component {
   render() {
@@ -11,6 +12,7 @@ export default class extends React.Component {
     return (
       <div>
         <SwitchThemeButton {...this.props} />
+        <FundMe theme={this.props.query.theme} />
         <div className="container">
           <header className="row">
             <div className="col-3">
