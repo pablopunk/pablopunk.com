@@ -5,15 +5,18 @@ export default ({ theme = 'dark' }) => {
 
   return (
     <div>
-      <a href="/fund">$</a>
+      <a href="/fund">
+        <b>$</b>
+      </a>
       <style jsx>{`
         a {
           position: absolute;
           top: 0;
           right: 0;
           margin: 1rem;
+          font-family: monospace;
           color: ${bodyFont};
-          padding: 0.3em 0.7em;
+          padding: 0.4em 0.7em;
           border-radius: 50%;
           border: 1px solid ${bodyFont};
           transition: 0.3s;
