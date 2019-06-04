@@ -11,9 +11,6 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <title>
-            Pablo Varela | Remote web developer. Javascript, NodeJS, React, Vim.
-          </title>
           <meta
             name="description"
             content="I am a web developer currently working remotely from Pontevedra, Spain. I love web technologies, Javascript, React, NodeJS... I also love vim and bash."

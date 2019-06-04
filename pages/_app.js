@@ -1,6 +1,7 @@
 import { parse } from 'url'
 import React from 'react'
 import App, { Container } from 'next/app'
+import Head from 'next/head'
 import themeColors from '../components/styles/colors'
 
 class Layout extends React.Component {
@@ -36,6 +37,11 @@ export default class MyApp extends App {
 
     return (
       <Container>
+        <Head>
+          <title>
+            Pablo Varela | Remote web developer. Javascript, NodeJS, React, Vim.
+          </title>
+        </Head>
         <Layout>
           <Component {...pageProps} />
           <style global jsx>{`
