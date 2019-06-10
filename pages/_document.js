@@ -13,7 +13,11 @@ export default class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta
             name="description"
-            content="I am a web developer currently working remotely from Pontevedra, Spain. I love web technologies, Javascript, React, NodeJS... I also love vim and bash."
+            content="I am a web developer currently working remotely from Pontevedra, Spain. I love web technologies, Javascript, React, NodeJS... I also love vim and bash. I use all those technologies to build stuff I enjoy using. Websites, APIs, CLI tools..."
+          />
+          <meta
+            name="tags"
+            content="web,developer,freelance,react,javascript,js,node,github,remote,scrum,hire,contractor,pablo,varela,pablopunk,punk,independent,spain,usa,work,job,website,project,production,fast,api,portfolio"
           />
           <link rel="canonical" href="http://pablo.life/" />
           <link
