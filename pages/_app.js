@@ -45,16 +45,15 @@ export default class MyApp extends App {
         <Layout>
           <Component {...pageProps} />
           <style global jsx>{`
-            div {
-              position: relative;
-            }
             html {
               font-size: 10px;
             }
             body {
               margin: 0;
               padding: 0;
-              font-family: Times, serif;
+              font-family: -apple-system, BlinkMacSystemFont, 'Avenir Next',
+                'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+                'Droid Sans', 'Helvetica Neue', sans-serif;
               background-color: ${colors.bodyBg};
               color: ${colors.bodyFont};
               font-size: 1.5rem;
@@ -62,8 +61,6 @@ export default class MyApp extends App {
             a {
               text-decoration: none;
               color: ${colors.link};
-              font-family: 'Avenir Next', Verdana, Helvetica;
-              font-size: 0.9em;
             }
             a:hover {
               color: ${colors.primary};
