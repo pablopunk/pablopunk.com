@@ -23,7 +23,7 @@ export default class extends React.Component {
             <div className="col-3">
               <div className="video-container">
                 <video
-                  src="https://files-owv5exx6o.now.sh/memoji_square.mp4"
+                  src="/static/square-memoji.mp4"
                   onMouseOver={ev => this.playVideo(ev)}
                   onClick={ev => this.playVideo(ev)}
                 />
