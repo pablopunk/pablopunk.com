@@ -45,6 +45,9 @@ export default class MyApp extends App {
         <Layout>
           <Component {...pageProps} />
           <style global jsx>{`
+            div {
+              position: relative;
+            }
             html {
               font-size: 10px;
             }

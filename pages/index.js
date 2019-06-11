@@ -5,10 +5,20 @@ import SwitchThemeButton from '../components/switchThemeButton.js'
 import Title from '../components/title'
 import FundMe from '../components/fund-me'
 
+const clickMeId = 'click-me'
+
 export default class extends React.Component {
   playVideo(event) {
     if (event.target.paused) {
-      event.target.play()
+      event.target.play().catch(_err => {
+        // browsers like Safari won't allow playing media
+        // without user interacting with the page first
+        // so click will work but hover won't
+        document.getElementById(clickMeId).style.opacity = 1
+        setTimeout(() => {
+          document.getElementById(clickMeId).style.opacity = 0
+        }, 1000)
+      })
     }
   }
   render() {
@@ -21,6 +31,9 @@ export default class extends React.Component {
         <div className="container">
           <header className="row">
             <div className="col-3">
+              <div id={clickMeId}>
+                <small>Click me!</small>
+              </div>
               <div className="video-container">
                 <video
                   src="/static/square-memoji.mp4"
@@ -163,6 +176,16 @@ export default class extends React.Component {
           }
           li a:hover {
             color: ${colors.link};
+          }
+          #${clickMeId} {
+            z-index: 100;
+            position: absolute;
+            font-family: monospace;
+            color: ${colors.bodyBg};
+            background-color: ${colors.bodyFont};
+            padding: 0 4px;
+            opacity: 0;
+            transition: opacity 0.3s;
           }
         `}</style>
       </div>
