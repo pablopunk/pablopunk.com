@@ -6,6 +6,11 @@ import Title from '../components/title'
 import FundMe from '../components/fund-me'
 
 export default class extends React.Component {
+  playVideo(event) {
+    if (event.target.paused) {
+      event.target.play()
+    }
+  }
   render() {
     const colors = themeColors(this.props.query.theme)
 
@@ -16,8 +21,12 @@ export default class extends React.Component {
         <div className="container">
           <header className="row">
             <div className="col-3">
-              <div id="profile-image-container">
-                <img src="https://file-81hbt41i4.now.sh" alt="Me" />
+              <div className="video-container">
+                <video
+                  src="https://files-owv5exx6o.now.sh/memoji_square.mp4"
+                  onMouseOver={ev => this.playVideo(ev)}
+                  onClick={ev => this.playVideo(ev)}
+                />
               </div>
             </div>
             <div className="col-4" id="title">
@@ -115,18 +124,16 @@ export default class extends React.Component {
             justify-content: center;
             align-items: center;
           }
-          img {
-            width: 100px;
-            height: 100px;
-            transform: translate(3px, 4px);
-          }
-          #profile-image-container {
-            width: 100px;
-            height: 100px;
-            background-color: #fafafa;
-            border: 4px solid ${colors.primary};
+          video {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            padding: 1em;
+          }
+          .video-container {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid ${colors.primary};
           }
           #title {
             margin-top: 1em;
