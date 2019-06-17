@@ -19,7 +19,7 @@ export default class MyDocument extends Document {
             name="tags"
             content="web,developer,freelance,react,javascript,js,node,github,remote,scrum,hire,contractor,pablo,varela,pablopunk,punk,independent,spain,usa,work,job,website,project,production,fast,api,portfolio"
           />
-          <link rel="canonical" href="http://pablo.life/" />
+          <link rel="canonical" href="http://pablo.pink/" />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
