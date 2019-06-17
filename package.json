@@ -1,5 +1,5 @@
 {
-  "name": "pablo.life",
+  "name": "pablo.pink",
   "version": "2.0.0",
   "description": "Personal website",
   "scripts": {
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pablopunk/pablo.life.git"
+    "url": "git+https://github.com/pablopunk/pablo.pink.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pablopunk/pablo.life/issues"
+    "url": "https://github.com/pablopunk/pablo.pink/issues"
   },
-  "homepage": "https://github.com/pablopunk/pablo.life#readme",
+  "homepage": "https://github.com/pablopunk/pablo.pink#readme",
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
