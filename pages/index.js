@@ -147,13 +147,40 @@ export default class extends React.Component {
           }
           li {
             margin: 1em;
-            font-size: 1.5em;
+            font-size: 2em;
           }
           li a {
             color: ${colors.primary};
+            background: linear-gradient(
+              to left,
+              ${colors.link},
+              ${colors.primary}
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-fill-color: transparent;
+            -webkit-text-fill-color: transparent;
+            background-size: 400%, 100%;
+            animation: slideBg 0.4s ease forwards 1s;
+            padding: 2px;
           }
           li a:hover {
-            color: ${colors.link};
+            color: ${colors.bodyFont};
+            background: linear-gradient(
+              to left,
+              ${colors.primary},
+              ${colors.link}
+            );
+            -webkit-background-clip: none;
+            -webkit-text-fill-color: ${colors.bodyBg};
+          }
+          @keyframes slideBg {
+            0% {
+              background-size: 400% 100%;
+            }
+            100% {
+              background-size: 100% 100%;
+            }
           }
         `}</style>
       </div>
