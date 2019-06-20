@@ -1,8 +1,10 @@
+import sick from 'sick-colors'
+
 const colors = {
-  bodyBg: { dark: '#000000', light: 'white' },
-  bodyFont: { dark: '#dfe6e9', light: '#636e72' },
-  link: { dark: '#ff7674', light: '#ff7674' },
-  primary: { dark: '#00cec9', light: '#00cec9' }
+  bodyBg: { dark: '#000000', light: sick.light.background },
+  bodyFont: { dark: sick.foreground, light: sick.light.foreground },
+  link: { dark: sick.green, light: sick.light.blue },
+  primary: { dark: sick.magenta, light: sick.light.magenta }
 }
 
 export default function(theme = 'dark') {

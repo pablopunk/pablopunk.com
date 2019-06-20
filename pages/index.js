@@ -5,6 +5,13 @@ import SwitchThemeButton from '../components/switchThemeButton.js'
 import Title from '../components/title'
 import FundMe from '../components/fund-me'
 
+const LINKS = [
+  { label: 'tweets', url: 'https://twitter.com/pablopunk' },
+  { label: 'stories', url: 'https://instagram.com/stories/pablopunk/' },
+  { label: 'apps', url: 'https://ghuser.io/pablopunk' },
+  { label: 'pics', url: 'https://unsplash.com/@pablopunk' }
+]
+
 export default class extends React.Component {
   playVideo(event) {
     if (event.target.paused) {
@@ -40,36 +47,13 @@ export default class extends React.Component {
           <div className="row">
             <div className="col-2">
               <ul>
-                <li>
-                  <a target="_blank" href="https://twitter.com/pablopunk">
-                    thoughts
-                  </a>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <a target="_blank" href="https://ghuser.io/pablopunk">
-                    projects
-                  </a>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  {' '}
-                  <a
-                    target="_blank"
-                    href="https://www.instagram.com/stories/pablopunk/"
-                  >
-                    daily
-                  </a>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <a target="_blank" href="https://unsplash.com/@pablopunk">
-                    pics
-                  </a>
-                </li>
+                {LINKS.map(({ label, url }) => (
+                  <li key={url}>
+                    <a target="_blank" href={url}>
+                      {label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="col-5">
@@ -118,7 +102,10 @@ export default class extends React.Component {
           }
           @media screen and (min-width: 900px) {
             .container {
-              margin-top: 20vh;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 80vh;
             }
           }
           section {

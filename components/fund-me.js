@@ -16,14 +16,15 @@ export default ({ theme = 'dark' }) => {
           margin: 1rem;
           font-family: monospace;
           color: ${bodyFont};
-          padding: 0.4em 0.7em;
+          padding: 4px 9px;
           border-radius: 50%;
-          border: 1px solid ${bodyFont};
+          border: 2px solid ${bodyFont};
+          font-size: 16px;
           transition: 0.3s;
         }
         a:hover {
           background-color: ${link};
-          border: 1px solid transparent;
+          border-color: transparent;
           transition: 0.3s;
           color: ${bodyBg};
         }

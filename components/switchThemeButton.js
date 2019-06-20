@@ -1,6 +1,8 @@
 import React from 'react'
 import { toggleTheme } from './styles/colors'
 
+const iconSize = '15px'
+
 const ContrastIcon = ({ width = '10px', color = 'white' }) => (
   <svg
     fill={color}
@@ -36,7 +38,7 @@ export default class extends React.Component {
     return (
       <div>
         <button onClick={_ => toggleTheme(this.props.query.theme)}>
-          <ContrastIcon color={buttonColor} />
+          <ContrastIcon width={iconSize} color={buttonColor} />
           <span>
             Switch to{' '}
             {(this.props.query.theme || 'dark') !== 'dark' ? 'dark' : 'light'}{' '}
@@ -61,6 +63,7 @@ export default class extends React.Component {
           }
           span {
             margin-top: -1.1rem;
+            font-size: ${iconSize};
             opacity: 0;
           }
           @media (min-width: 900px) {

@@ -32,7 +32,8 @@
     "next": "^8.0.1",
     "nextjs-redirect": "^1.0.0",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "sick-colors": "^3.0.2"
   },
   "devDependencies": {
     "husky": "^2.2.0",
