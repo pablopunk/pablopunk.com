@@ -23,7 +23,7 @@ export default class extends React.Component {
 
     return (
       <div>
-        <SwitchThemeButton {...this.props} />
+        <SwitchThemeButton {...this.props} width="18px" />
         <FundMe theme={this.props.query.theme} />
         <div className="container">
           <header className="row">
