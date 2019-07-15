@@ -82,11 +82,11 @@ export default ({ theme = 'dark' }) => {
         svg path {
           stroke-dasharray: 300px;
           stroke-dashoffset: 300px;
-          animation: letters 1.8s ease-in forwards 0.5s;
+          animation: letters 1s ease-out forwards 0.5s;
         }
 
         svg path:nth-child(11) {
-          animation: letters 1.5s ease-in forwards 2.5s;
+          animation: letters 0.6s ease-in forwards 1.5s;
         }
 
         @keyframes letters {
