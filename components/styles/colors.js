@@ -1,7 +1,7 @@
 import sick from 'sick-colors'
 
 const colors = {
-  bodyBg: { dark: '#000000', light: sick.light.background },
+  bodyBg: { dark: sick.background, light: sick.light.background },
   bodyFont: { dark: sick.foreground, light: sick.light.foreground },
   link: { dark: sick.green, light: sick.light.blue },
   primary: { dark: sick.magenta, light: sick.light.magenta }
