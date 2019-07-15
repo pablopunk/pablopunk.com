@@ -32,6 +32,7 @@ export default class extends React.Component {
                 <video
                   src="/static/videos/square-memoji.mp4"
                   muted // don't delete this. Some browsers won't autoplay audio
+                  autoPlay
                   playsInline
                   controls={false}
                   poster="/static/images/square-memoji.png"
