@@ -1,5 +1,7 @@
+import colors from './styles/colors'
+
 export default ({ theme = 'dark' }) => {
-  const color = theme === 'dark' ? 'white' : 'black'
+  const { title: color } = colors(theme)
 
   return (
     <div>
