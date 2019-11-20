@@ -3,8 +3,8 @@ import sick from 'sick-colors'
 const colors = {
   bodyBg: { dark: sick.background, light: sick.light.background },
   bodyFont: { dark: sick.foreground, light: sick.light.foreground },
-  link: { dark: sick.green, light: sick.light.blue },
-  primary: { dark: sick.magenta, light: sick.light.magenta },
+  link: { dark: sick.green, light: sick.light.green },
+  primary: { dark: sick.magenta, light: sick.light.cyan },
   title: { dark: sick.white, light: sick.light.magenta }
 }
 
