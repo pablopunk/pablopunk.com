@@ -1,6 +1,6 @@
 import { parse } from 'url'
 import React from 'react'
-import App, { Container } from 'next/app'
+import App from 'next/app'
 import Head from 'next/head'
 import themeColors from '../components/styles/colors'
 
@@ -31,12 +31,13 @@ export default class MyApp extends App {
 
     return { pageProps }
   }
+
   render() {
     const { Component, pageProps } = this.props
     const colors = themeColors(pageProps.query.theme)
 
     return (
-      <Container>
+      <>
         <Head>
           <title>
             Pablo Varela | Remote web developer. Javascript, NodeJS, React, Vim.
@@ -140,7 +141,7 @@ export default class MyApp extends App {
             }
           `}</style>
         </Layout>
-      </Container>
+      </>
     )
   }
 }

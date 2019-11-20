@@ -18,6 +18,7 @@ export default class extends React.Component {
       event.target.play()
     }
   }
+
   render() {
     const colors = themeColors(this.props.query.theme)
 
@@ -30,12 +31,12 @@ export default class extends React.Component {
             <div className="col-3">
               <div className="video-container">
                 <video
-                  src="/static/videos/square-memoji.mp4"
+                  src="/videos/square-memoji.mp4"
                   muted // don't delete this. Some browsers won't autoplay audio
                   autoPlay
                   playsInline
                   controls={false}
-                  poster="/static/images/square-memoji.png"
+                  poster="/images/square-memoji.png"
                   onMouseOver={ev => this.playVideo(ev)}
                   onClick={ev => this.playVideo(ev)}
                 />
@@ -87,10 +88,7 @@ export default class extends React.Component {
           </div>
           <div className="row">
             <p>
-              <Link
-                href={{ pathname: '/more', query: this.props.query }}
-                prefetch
-              >
+              <Link href={{ pathname: '/more', query: this.props.query }}>
                 <a>More...</a>
               </Link>
             </p>
