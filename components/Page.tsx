@@ -145,8 +145,9 @@ const Wheel = () => {
           y2="8"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.2" stopColor={theme.fgContrast} />
-          <stop offset="0.6" stopColor={theme.fgContrast2} />
+          <stop offset="0.3" stopColor={theme.fgContrast} />
+          <stop offset="0.5" stopColor="white" />
+          <stop offset="0.7" stopColor={theme.fgContrast2} />
         </linearGradient>
       </defs>
     </svg>
