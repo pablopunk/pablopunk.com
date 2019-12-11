@@ -76,6 +76,7 @@ const PsycoBox = styled.div`
   @media (${smallMediaQuery}) {
     width: 100vw;
     height: 300px;
+    border-radius: 0;
   }
 `
 
