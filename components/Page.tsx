@@ -158,12 +158,12 @@ const ChangeThemeButton = ({ setTheme }) => {
   return (
     <TopLeftFloat>
       <CustomButton
-        onMouseEnter={() => setShowMessage(!showMessage)}
-        onMouseLeave={() => setShowMessage(!showMessage)}
+        onMouseEnter={() => setShowMessage(true)}
+        onMouseLeave={() => setShowMessage(false)}
         onClick={ev => {
           const nextTheme = getNextTheme()
           setTheme(nextTheme)
-          setShowMessage(showMessage) // rerender to get the new fg color in the message
+          setShowMessage(false)
           currentTheme = nextTheme
         }}
       >
