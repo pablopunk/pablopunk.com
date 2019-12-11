@@ -55,6 +55,8 @@ const GlobalStyle = createGlobalStyle`
   html,body {
     position: relative;
     z-index: 1;
+    width: 100vw;
+    overflow-x: hidden;
   }
   body {
     margin: 0;
@@ -97,7 +99,7 @@ const StyledMain = styled.main`
 `
 
 const TopLeftFloat = styled.div`
-  position: fixed;
+  position: relative;
   top: 10px;
   left: 10px;
 `
@@ -197,6 +199,13 @@ const StyledFooter = styled.footer`
 
 export default ({ children }) => {
   const [theme, setTheme] = React.useState(currentTheme)
+  const mainRef = React.useRef(null)
+  const scrollToMain = () => window.scrollTo(0, mainRef.current.offsetTop)
+
+  React.useEffect(() => {
+    scrollToMain()
+  })
+
   return (
     <ThemeProvider theme={themes[theme]}>
       <GlobalStyle />
@@ -205,7 +214,7 @@ export default ({ children }) => {
       <Inner>
         <Header />
         <Nav />
-        <StyledMain>{children}</StyledMain>
+        <StyledMain ref={mainRef}>{children}</StyledMain>
         <StyledBox />
         <StyledFooter>© Pablo Varela {new Date().getFullYear()}</StyledFooter>
       </Inner>

@@ -34,6 +34,7 @@ const borderKeyframes = keyframes`
 `
 
 const PsycoBox = styled.div`
+  margin: 0;
   width: 700px;
   height: 100px;
   position: relative;
@@ -73,6 +74,7 @@ const PsycoBox = styled.div`
     );
   }
   @media (${smallMediaQuery}) {
+    width: 100vw;
     height: 300px;
   }
 `

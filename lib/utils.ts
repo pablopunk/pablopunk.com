@@ -1,1 +1,1 @@
-export const smallMediaQuery = 'max-width: 500px'
+export const smallMediaQuery = 'max-width: 550px'
