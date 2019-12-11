@@ -4,7 +4,7 @@ import CenterFlex from './CenterFlex'
 import { smallMediaQuery } from '../lib/utils'
 
 const GiveMeSomeMargin = styled.div`
-  margin: 90px 0;
+  margin: 60px 0;
   @media(${smallMediaQuery}) {
     margin: 0;
   }
