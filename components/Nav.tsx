@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
+import CenterFlex from './CenterFlex'
 import styled, { keyframes } from 'styled-components'
+import { smallMediaQuery } from '../lib/utils'
 
 const links = [
   {
@@ -8,12 +10,12 @@ const links = [
     href: '/'
   },
   {
-    label: 'portfolio',
-    href: '/portfolio'
-  },
-  {
     label: 'about me',
     href: '/me'
+  },
+  {
+    label: 'work',
+    href: '/portfolio'
   },
   {
     label: 'contact',
@@ -29,14 +31,6 @@ const borderKeyframes = keyframes`
   50% {
     clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
   }
-`
-
-const CenterFlex = styled.div`
-  margin: 10vw 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 `
 
 const PsycoBox = styled.div`
@@ -78,6 +72,9 @@ const PsycoBox = styled.div`
       0 100%
     );
   }
+  @media (${smallMediaQuery}) {
+    height: 300px;
+  }
 `
 
 const StyledNav = styled.nav`
@@ -97,11 +94,12 @@ const StyledNav = styled.nav`
     text-transform: uppercase;
     font-family: Raleway, sans-serif;
     font-weight: bold;
+    color: ${props => props.theme.fgContrast2};
     &:after {
       content: '';
       position: absolute;
       width: 0;
-      background-color: ${props => props.theme.fgContrast};
+      background-color: ${props => props.theme.fgContrast2};
       height: 3px;
       margin-top: 3rem;
       transform: translateX(-50%);
@@ -109,20 +107,26 @@ const StyledNav = styled.nav`
       transition: width 0.4s;
       transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
     }
+    &:hover {
+      color: ${props => props.theme.fgContrast};
+    }
     &:hover:after,
     &:focus:after,
     &:active:after {
       width: 80%;
-      background-color: ${props => props.theme.fgContrast2};
-    }
-    &:focus:after {
       background-color: ${props => props.theme.fgContrast};
     }
+    &:focus:after {
+      background-color: ${props => props.theme.fgContrast2};
+    }
+  }
+  @media(${smallMediaQuery}) {
+    flex-direction: column;
   }
 `
 
 const Nav = () => (
-  <CenterFlex>
+  <CenterFlex style={{ margin: '50px 0' }}>
     <PsycoBox>
       <StyledNav>
         {links.map(link => (

@@ -1,9 +1,10 @@
 import React from 'react'
 import Nav from './Nav'
 import Meta from './Meta'
+import Header from './Header'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-let currentTheme = 0
+let currentTheme = 1
 
 const themes = [
   {
@@ -11,7 +12,7 @@ const themes = [
     bgDim: '#dfe6e9',
     bgContrast: '#bae8e8',
     fg: '#2d3436',
-    fgDim: '#636e72',
+    fgStrong: '#1B1464',
     fgContrast: '#6c5ce7',
     fgContrast2: '#00cec9'
   },
@@ -19,10 +20,10 @@ const themes = [
     bg: 'black',
     bgDim: '#636e72',
     bgContrast: '#464159',
-    fg: '#dfe6e9',
-    fgDim: '#b2bec3',
-    fgContrast: '#8bbabb',
-    fgContrast2: '#f67280'
+    fg: 'white',
+    fgStrong: '#ffeaa7',
+    fgContrast: '#f67280',
+    fgContrast2: '#8bbabb'
   }
 ]
 
@@ -73,6 +74,15 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-family: Zilla, serif;
   }
+  h1 {
+    color: ${props => props.theme.fgContrast2};
+  }
+  a:hover h1 {
+    color: ${props => props.theme.fgContrast};
+  }
+  strong {
+    color: ${props => props.theme.fgStrong};
+  }
 `
 
 const Inner = styled.div`
@@ -83,6 +93,7 @@ const Inner = styled.div`
 
 const StyledMain = styled.main`
   padding: 0 2rem;
+  margin: 100px 0 50px;
 `
 
 const TopLeftFloat = styled.div`
@@ -185,13 +196,14 @@ const StyledFooter = styled.footer`
 `
 
 export default ({ children }) => {
-  const [theme, setTheme] = React.useState(0)
+  const [theme, setTheme] = React.useState(currentTheme)
   return (
     <ThemeProvider theme={themes[theme]}>
       <GlobalStyle />
       <Meta />
       <ChangeThemeButton setTheme={setTheme} />
       <Inner>
+        <Header />
         <Nav />
         <StyledMain>{children}</StyledMain>
         <StyledBox />

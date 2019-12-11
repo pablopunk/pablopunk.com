@@ -6,7 +6,7 @@ declare module 'styled-components' {
     bgDim: string
     bgContrast: string
     fg: string
-    fgDim: string
+    fgStrong: string
     fgContrast: string
     fgContrast2: string
   }

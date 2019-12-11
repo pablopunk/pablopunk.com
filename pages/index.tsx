@@ -1,14 +1,22 @@
+import styled from 'styled-components';
+import CenterFlex from '../components/CenterFlex';
+import Link from 'next/link';
+
+const StyledImage = styled.img`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid ${props => props.theme.fgContrast2};
+`
 export default () => (
-  <div>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eleifend,
-      enim ut rhoncus rhoncus, neque libero ullamcorper lectus, sit amet
-      ultricies leo nisl at elit. Aenean in felis a erat convallis scelerisque.
-      Nam semper mattis magna, eu efficitur lectus interdum dignissim. Nam
-      ultricies dui a sodales iaculis. Phasellus dignissim, metus a hendrerit
-      tempor, arcu erat lobortis elit, eu vestibulum lectus purus in nisi. Fusce
-      vitae felis magna. Integer ac lacus tincidunt, bibendum orci viverra,
-      bibendum justo. Donec nec velit augue.
-    </p>
-  </div>
+  <CenterFlex>
+    <StyledImage src="/images/me.jpg" alt="Profile picture" style={{
+    }} />
+    <div>
+      <p>Hello there! My name is Pablo and I'm a remote web developer.</p>
+      <p>I build high quality websites with a focus on <strong>scalability</strong> and <strong>UI/UX</strong>.</p>
+      <p></p>
+      <p>If you're interested on my work, you can <Link href="/contact"><a>contact me</a></Link>.</p>
+    </div>
+  </CenterFlex>
 )

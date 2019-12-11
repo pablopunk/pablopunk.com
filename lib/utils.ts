@@ -1,0 +1,1 @@
+export const smallMediaQuery = 'max-width: 500px'
