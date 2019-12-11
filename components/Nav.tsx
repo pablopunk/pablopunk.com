@@ -78,12 +78,6 @@ const PsycoBox = styled.div`
       0 100%
     );
   }
-  &:hover:before {
-    background-color: ${props => props.theme.fgContrast};
-  }
-  &:hover:after {
-    background-color: ${props => props.theme.fgContrast2};
-  }
 `
 
 const StyledNav = styled.nav`
