@@ -1,23 +1,28 @@
 {
   "name": "pablo.pink",
-  "version": "2.0.0",
-  "description": "Personal website",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "next",
-    "start": "next start",
-    "build": "next build"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pablopunk/pablo.pink.git"
+  "dependencies": {
+    "next": "9.1.5",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "styled-components": "^4.4.1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pablopunk/pablo.pink/issues"
+  "devDependencies": {
+    "@types/node": "^12.12.17",
+    "@types/react": "^16.9.16",
+    "@types/styled-components": "^4.4.1",
+    "babel-plugin-styled-components": "^1.10.6",
+    "husky": "*",
+    "prettier": "*",
+    "pretty-quick": "*",
+    "typescript": "^3.7.3"
   },
-  "homepage": "https://github.com/pablopunk/pablo.pink#readme",
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
@@ -27,17 +32,5 @@
     "semi": false,
     "singleQuote": true,
     "tabWidth": 2
-  },
-  "dependencies": {
-    "next": "^9.1.4",
-    "nextjs-redirect": "^1.0.0",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "sick-colors": "^3.0.2"
-  },
-  "devDependencies": {
-    "husky": "^2.2.0",
-    "prettier": "^1.17.0",
-    "pretty-quick": "^1.10.0"
   }
 }
