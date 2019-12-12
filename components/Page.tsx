@@ -4,7 +4,7 @@ import Meta from './Meta'
 import Header from './Header'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-let currentTheme = 1
+let currentTheme = 0
 
 const themes = [
   {
@@ -198,13 +198,16 @@ const StyledFooter = styled.footer`
   font-size: 1.7rem;
 `
 
-export default ({ children }) => {
+export default ({ children, ssr }) => {
   const [theme, setTheme] = React.useState(currentTheme)
   const mainRef = React.useRef(null)
   const scrollToMain = () => window.scrollTo(0, mainRef.current.offsetTop)
 
   React.useEffect(() => {
-    scrollToMain()
+    if (!ssr) {
+      // only scroll to main tag on client navigation
+      scrollToMain()
+    }
   })
 
   return (

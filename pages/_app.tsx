@@ -1,7 +1,15 @@
 import Page from '../components/Page'
 
-export default ({ Component, pageProps }) => (
-  <Page>
-    <Component {...pageProps} />
-  </Page>
-)
+App.getInitialProps = async ({ req }) => {
+  return {
+    ssr: req != null
+  }
+}
+
+export default function App({ Component, pageProps, ssr }) {
+  return (
+    <Page ssr={ssr}>
+      <Component {...pageProps} />
+    </Page>
+  )
+}
