@@ -123,7 +123,7 @@ const StyledNav = styled.nav`
       background-color: ${props => props.theme.fgContrast2};
     }
   }
-  @media(${smallMediaQuery}) {
+  @media (${smallMediaQuery}) {
     flex-direction: column;
   }
 `

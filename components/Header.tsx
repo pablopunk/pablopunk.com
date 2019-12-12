@@ -5,7 +5,7 @@ import { smallMediaQuery } from '../lib/utils'
 
 const GiveMeSomeMargin = styled.div`
   margin: 60px 0;
-  @media(${smallMediaQuery}) {
+  @media (${smallMediaQuery}) {
     margin: 0;
   }
 `
@@ -14,7 +14,9 @@ export default () => (
   <CenterFlex>
     <GiveMeSomeMargin>
       <Link href="/">
-        <a><h1>Pablo Varela</h1></a>
+        <a>
+          <h1>Pablo Varela</h1>
+        </a>
       </Link>
     </GiveMeSomeMargin>
   </CenterFlex>

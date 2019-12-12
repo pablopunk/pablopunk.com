@@ -1,4 +1,4 @@
-import CenterFlex from "../components/CenterFlex";
+import CenterFlex from '../components/CenterFlex'
 
 export default () => (
   <CenterFlex>
