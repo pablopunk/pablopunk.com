@@ -6,7 +6,7 @@ const StyledImage = styled.img`
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 5px solid ${props => props.theme.fgContrast2};
+  border: 5px solid ${props => props.theme.color2};
 `
 export default () => (
   <CenterFlex>

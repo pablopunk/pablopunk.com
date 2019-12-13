@@ -10,20 +10,18 @@ const themes = [
   {
     bg: 'white',
     bgDim: '#dfe6e9',
-    bgContrast: '#bae8e8',
     fg: '#2d3436',
     fgStrong: '#1B1464',
-    fgContrast: '#6c5ce7',
-    fgContrast2: '#00cec9'
+    color1: '#6c5ce7',
+    color2: '#00cec9'
   },
   {
     bg: 'black',
     bgDim: '#636e72',
-    bgContrast: '#464159',
     fg: 'white',
-    fgStrong: '#ffeaa7',
-    fgContrast: '#f67280',
-    fgContrast2: '#8bbabb'
+    fgStrong: '#f6e58d',
+    color1: '#f67280',
+    color2: '#c7ecee'
   }
 ]
 
@@ -61,29 +59,42 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    line-height: 2rem;
     font-family: Raleway, sans-serif;
     background-color: ${props => props.theme.bg};
     color: ${props => props.theme.fg};
   }
   a {
     text-decoration: none;
-    color: ${props => props.theme.fgContrast};
+    color: ${props => props.theme.color1};
   }
   a:hover {
-    color: ${props => props.theme.fgContrast2};
+    color: ${props => props.theme.color2};
   }
   p {
     font-family: Zilla, serif;
   }
   h1 {
-    color: ${props => props.theme.fgContrast2};
+    color: ${props => props.theme.color2};
   }
   a:hover h1 {
-    color: ${props => props.theme.fgContrast};
+    color: ${props => props.theme.color1};
   }
   strong {
     color: ${props => props.theme.fgStrong};
+  }
+  section {
+    padding: 3rem 0;
+    &:after {
+        content: '';
+        border-bottom: 1px solid ${props => props.theme.bgDim};
+        position: absolute;
+        width: 100%;
+        left: 0;
+        padding-top: 3rem;
+    }
+    &:last-child:after {
+      border: none;
+    }
   }
 `
 
@@ -145,9 +156,9 @@ const Wheel = () => {
           y2="8"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.3" stopColor={theme.fgContrast} />
+          <stop offset="0.3" stopColor={theme.color1} />
           <stop offset="0.5" stopColor="white" />
-          <stop offset="0.7" stopColor={theme.fgContrast2} />
+          <stop offset="0.7" stopColor={theme.color2} />
         </linearGradient>
       </defs>
     </svg>
@@ -185,17 +196,12 @@ const ChangeThemeButton = ({ setTheme }) => {
   )
 }
 
-const StyledBox = styled.div`
-  position: relative;
-  width: 100%;
-  height: 10px;
-  background-color: ${props => props.theme.bgContrast};
-`
-
 const StyledFooter = styled.footer`
   text-align: center;
-  margin-top: 2rem;
+  margin: 2rem 0 3rem;
+  padding-top: 2rem;
   font-size: 1.7rem;
+  border-top: 3px solid ${props => props.theme.bgDim};
 `
 
 export default ({ children, ssr }) => {
@@ -219,7 +225,6 @@ export default ({ children, ssr }) => {
         <Header />
         <Nav />
         <StyledMain ref={mainRef}>{children}</StyledMain>
-        <StyledBox />
         <StyledFooter>© Pablo Varela {new Date().getFullYear()}</StyledFooter>
       </Inner>
     </ThemeProvider>

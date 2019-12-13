@@ -56,7 +56,7 @@ const PsycoBox = styled.div`
   }
   &:after {
     animation-delay: -5s;
-    background-color: ${props => props.theme.fgContrast};
+    background-color: ${props => props.theme.color1};
     clip-path: polygon(
       0 0,
       calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)),
@@ -65,7 +65,7 @@ const PsycoBox = styled.div`
     );
   }
   &:before {
-    background-color: ${props => props.theme.fgContrast2};
+    background-color: ${props => props.theme.color2};
     clip-path: polygon(
       calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)),
       100% 0,
@@ -97,12 +97,12 @@ const StyledNav = styled.nav`
     text-transform: uppercase;
     font-family: Raleway, sans-serif;
     font-weight: bold;
-    color: ${props => props.theme.fgContrast2};
+    color: ${props => props.theme.color2};
     &:after {
       content: '';
       position: absolute;
       width: 0;
-      background-color: ${props => props.theme.fgContrast2};
+      background-color: ${props => props.theme.color2};
       height: 3px;
       margin-top: 3rem;
       transform: translateX(-50%);
@@ -111,16 +111,16 @@ const StyledNav = styled.nav`
       transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
     }
     &:hover {
-      color: ${props => props.theme.fgContrast};
+      color: ${props => props.theme.color1};
     }
     &:hover:after,
     &:focus:after,
     &:active:after {
       width: 80%;
-      background-color: ${props => props.theme.fgContrast};
+      background-color: ${props => props.theme.color1};
     }
     &:focus:after {
-      background-color: ${props => props.theme.fgContrast2};
+      background-color: ${props => props.theme.color2};
     }
   }
   @media (${smallMediaQuery}) {
