@@ -56,6 +56,7 @@ export default () => (
         <a href="https://keepcoding.io/es/blog/trabaja-desarrollador-web-desde-casa/">
           interview here
         </a>
+        .
       </div>
     </StyledGrid>
   </CenterFlex>
