@@ -6,7 +6,7 @@ import CenterFlexColumns from './CenterFlexColumns'
 const GiveMeSomeMargin = styled.div`
   margin: 60px 0;
   @media (${smallMediaQuery}) {
-    margin: 0;
+    margin: 30px;
   }
 `
 
