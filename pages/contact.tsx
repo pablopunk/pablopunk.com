@@ -1,7 +1,11 @@
+import Head from 'next/head'
 import CenterFlex from '../components/CenterFlex'
 
 export default () => (
   <CenterFlex>
+    <Head>
+      <title>Pablo Varela | Contact me</title>
+    </Head>
     <div>
       <p>
         Send me an <a href="mailto:pablovarela182@gmail.com">email 📧</a>

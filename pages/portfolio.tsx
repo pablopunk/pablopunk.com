@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import CenterFlex from '../components/CenterFlex'
 import { ThemeContext } from 'styled-components'
 import ReactLogo from '../components/svg/react'
@@ -18,7 +19,7 @@ const links = {
   vimcolors: 'https://vimcolors.org'
 }
 
-function go(where) {
+function go(where: keyof typeof links) {
   window.open(links[where])
 }
 
@@ -63,6 +64,9 @@ export default () => {
 
   return (
     <CenterFlexColumns>
+      <Head>
+        <title>Pablo Varela | Porfolio of my work</title>
+      </Head>
       <section>
         <CenterFlex>
           <h2>Latest and greatest technologies</h2>
