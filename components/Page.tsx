@@ -178,8 +178,6 @@ const Tooltip = ({ children, right = false, message }) => {
     ? 'translateX(50vw)'
     : 'translateX(-50vw)'
 
-  console.log(transformation)
-
   return (
     <div
       onMouseEnter={_ => setShowMessage(true)}
