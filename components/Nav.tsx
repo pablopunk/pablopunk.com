@@ -9,12 +9,12 @@ const links = [
     href: '/'
   },
   {
-    label: 'about me',
-    href: '/me'
-  },
-  {
     label: 'work',
     href: '/portfolio'
+  },
+  {
+    label: 'about me',
+    href: '/me'
   },
   {
     label: 'contact',
