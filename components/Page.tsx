@@ -4,7 +4,7 @@ import Meta from './Meta'
 import Header from './Header'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-let currentTheme = 0
+let currentTheme = 1
 
 const themes = [
   {
@@ -17,7 +17,7 @@ const themes = [
   },
   {
     bg: 'black',
-    bgDim: '#636e72',
+    bgDim: 'rgba(255,255,255,0.1)',
     fg: 'white',
     fgStrong: '#f6e58d',
     color1: '#f67280',
@@ -109,17 +109,21 @@ const StyledMain = styled.main`
   margin: 100px 0 50px;
 `
 
-const TopLeftFloat = styled.div`
-  position: relative;
-  top: 10px;
-  left: 10px;
+const TopBar = styled.div`
+  position: fixed;
+  z-index: 1;
+  background-color: ${props => props.theme.bgDim};
+  width: 100%;
+  height: 40px;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
+
 const CustomButton = styled.button`
   border: none;
-  background-color: ${props => props.theme.bg};
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: transparent;
   &:focus {
     outline: none;
   }
@@ -165,36 +169,56 @@ const Wheel = () => {
   )
 }
 
-const ChangeThemeButton = ({ setTheme }) => {
+const Tooltip = ({ children, right = false, message }) => {
   const [showMessage, setShowMessage] = React.useState(false)
+
+  const transformation = showMessage
+    ? 'none'
+    : right
+    ? 'translateX(50vw)'
+    : 'translateX(-50vw)'
+
+  console.log(transformation)
+
   return (
-    <TopLeftFloat>
-      <CustomButton
-        onMouseEnter={() => setShowMessage(true)}
-        onMouseLeave={() => setShowMessage(false)}
-        onClick={ev => {
-          const nextTheme = getNextTheme()
-          setTheme(nextTheme)
-          setShowMessage(false)
-          currentTheme = nextTheme
+    <div
+      onMouseEnter={_ => setShowMessage(true)}
+      onMouseLeave={_ => setShowMessage(false)}
+      style={{ display: 'flex', alignItems: 'center' }}
+    >
+      {right ? null : children}
+      <div
+        style={{
+          display: 'inline-block',
+          margin: '0 1rem',
+          lineHeight: wheelSize + 'px',
+          fontSize: wheelSize + 'px',
+          color: themes[currentTheme].fg,
+          transform: transformation,
+          opacity: showMessage ? 1 : 0,
+          transition: 'transform 0.2s ease, opacity 0.9s ease'
         }}
       >
-        <Wheel />
-        {showMessage && (
-          <span
-            style={{
-              lineHeight: wheelSize + 'px',
-              fontSize: wheelSize + 'px',
-              color: themes[currentTheme].fg
-            }}
-          >
-            Change theme
-          </span>
-        )}
-      </CustomButton>
-    </TopLeftFloat>
+        {message}
+      </div>
+      {right ? children : null}
+    </div>
   )
 }
+
+const ChangeThemeButton = ({ setTheme }) => (
+  <CustomButton
+    onClick={_ev => {
+      const nextTheme = getNextTheme()
+      setTheme(nextTheme)
+      currentTheme = nextTheme
+    }}
+  >
+    <Tooltip message="Change theme">
+      <Wheel />
+    </Tooltip>
+  </CustomButton>
+)
 
 const StyledFooter = styled.footer`
   text-align: center;
@@ -203,6 +227,14 @@ const StyledFooter = styled.footer`
   font-size: 1.7rem;
   border-top: 3px solid ${props => props.theme.bgDim};
 `
+
+const DonateButton = () => (
+  <Tooltip message="Donate" right>
+    <div style={{ fontSize: '2rem', marginRight: '1rem' }}>
+      <a href="//paypal.me/pablopunk/5">💳</a>
+    </div>
+  </Tooltip>
+)
 
 export default ({ children, ssr }) => {
   const [theme, setTheme] = React.useState(currentTheme)
@@ -220,7 +252,10 @@ export default ({ children, ssr }) => {
     <ThemeProvider theme={themes[theme]}>
       <GlobalStyle />
       <Meta />
-      <ChangeThemeButton setTheme={setTheme} />
+      <TopBar>
+        <ChangeThemeButton setTheme={setTheme} />
+        <DonateButton />
+      </TopBar>
       <Inner>
         <Header />
         <Nav />
