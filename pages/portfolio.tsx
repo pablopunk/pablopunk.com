@@ -116,7 +116,7 @@ export default () => {
           <Card onClick={_ => go('superdesk')}>
             <img
               width="150"
-              src="/images/screenshots/superdesk.png"
+              src="/images/screenshots/superdesk.jp2"
               alt="Superdesk screenshot"
             />
             <strong>Superdesk</strong>
@@ -139,7 +139,7 @@ export default () => {
           <Card onClick={_ => go('ladjs')}>
             <img
               width="150"
-              src="/images/screenshots/lad.png"
+              src="/images/screenshots/lad.jp2"
               alt="Ladjs screenshot"
             />
             <strong>LadJS</strong>
@@ -161,7 +161,7 @@ export default () => {
           <Card onClick={_ => go('vimcolors')}>
             <img
               width="150"
-              src="/images/screenshots/vimcolors.png"
+              src="/images/screenshots/vimcolors.jp2"
               alt="Vimcolors screenshot"
             />
             <strong>Vimcolors.org</strong>
