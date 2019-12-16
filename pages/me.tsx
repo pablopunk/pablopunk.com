@@ -11,7 +11,7 @@ const StyledGrid = styled.div`
 `
 
 const Emoji = styled.div`
-  text-align: right;
+  text-align: center;
 `
 
 export default () => (
