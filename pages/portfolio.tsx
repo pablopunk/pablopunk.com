@@ -16,7 +16,8 @@ const links = {
   nodejs: 'https://nodejs.org',
   reactjs: 'https://reactjs.org',
   superdesk: 'https://superdesk.org',
-  vimcolors: 'https://vimcolors.org'
+  vimcolors: 'https://vimcolors.org',
+  ladjs: 'https://lad.sh'
 }
 
 function go(where: keyof typeof links) {
@@ -131,6 +132,28 @@ export default () => {
               It combines headless CMS functionality with powerful workflow
               features for an end-to-end news creation, production, curation and
               distribution platform.
+            </p>
+          </CenterFlexColumns>
+        </CenterFlex>
+        <CenterFlex>
+          <Card onClick={_ => go('ladjs')}>
+            <img
+              width="150"
+              src="/images/screenshots/lad.png"
+              alt="Ladjs screenshot"
+            />
+            <strong>LadJS</strong>
+          </Card>
+          <CenterFlexColumns>
+            <p>
+              I'm part of the core team that develops{' '}
+              <a href={links.ladjs}>LadJS</a>. A new NodeJS framework with all
+              the tools you need to build a full stack website.
+            </p>
+            <p>
+              Lad is full of features but it's extremely configurable. For
+              example it ships with Pug as the template engine but you can
+              easily plug in React, Vue, Angular, etc
             </p>
           </CenterFlexColumns>
         </CenterFlex>
