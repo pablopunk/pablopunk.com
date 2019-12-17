@@ -8,5 +8,6 @@ declare module 'styled-components' {
     fgStrong: string
     color1: string
     color2: string
+    blendMode: string
   }
 }

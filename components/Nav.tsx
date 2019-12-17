@@ -42,7 +42,7 @@ const PsycoBox = styled.div`
   border-radius: 5px;
   &:after,
   &:before {
-    mix-blend-mode: multiply;
+    mix-blend-mode: ${props => props.theme.blendMode};
     filter: none;
     z-index: -1;
     content: '';

@@ -4,24 +4,26 @@ import Meta from './Meta'
 import Header from './Header'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-let currentTheme = 1
+let currentTheme = 0
 
 const themes = [
   {
     bg: 'white',
     bgDim: '#dfe6e9',
     fg: '#2d3436',
-    fgStrong: '#1B1464',
+    fgStrong: 'black',
     color1: '#6c5ce7',
-    color2: '#00cec9'
+    color2: '#00cec9',
+    blendMode: 'multiply'
   },
   {
     bg: 'black',
-    bgDim: 'rgba(255,255,255,0.1)',
-    fg: 'white',
-    fgStrong: '#f6e58d',
+    bgDim: 'rgba(255,255,255,0.15)',
+    fg: '#dadada',
+    fgStrong: 'white',
     color1: '#f67280',
-    color2: '#c7ecee'
+    color2: '#81ecec',
+    blendMode: 'screen'
   }
 ]
 
@@ -52,9 +54,9 @@ const GlobalStyle = createGlobalStyle`
   }
   html,body {
     position: relative;
+    overflow-x: hidden;
     z-index: 1;
     width: 100vw;
-    overflow-x: hidden;
   }
   body {
     margin: 0;
@@ -73,7 +75,7 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-family: Zilla, serif;
   }
-  h1 {
+  h1,h2,h3,h4,h5,h6 {
     color: ${props => props.theme.color2};
   }
   a:hover h1 {
@@ -81,6 +83,7 @@ const GlobalStyle = createGlobalStyle`
   }
   strong {
     color: ${props => props.theme.fgStrong};
+    font-weight: bold;
   }
   section {
     padding: 3rem 0;
@@ -224,6 +227,7 @@ const StyledFooter = styled.footer`
   padding-top: 2rem;
   font-size: 1.7rem;
   border-top: 3px solid ${props => props.theme.bgDim};
+  color: ${props => props.theme.bgDim};
 `
 
 const DonateButton = () => (
