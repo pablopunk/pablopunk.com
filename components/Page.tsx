@@ -227,7 +227,8 @@ const StyledFooter = styled.footer`
   padding-top: 2rem;
   font-size: 1.7rem;
   border-top: 3px solid ${props => props.theme.bgDim};
-  color: ${props => props.theme.bgDim};
+  color: ${props => props.theme.fg};
+  opacity: 0.7;
 `
 
 const DonateButton = () => (
