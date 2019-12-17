@@ -17,10 +17,6 @@ export default styled.div`
     cursor: pointer;
   }
 
-  & > * {
-    margin: 5px 0;
-  }
-
   strong {
     color: ${props => props.theme.color1};
   }

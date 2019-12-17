@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import CenterFlex from '../components/CenterFlex'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import ReactLogo from '../components/svg/react'
 import NextLogo from '../components/svg/nextjs'
 import NodeLogo from '../components/svg/node'
@@ -9,6 +9,7 @@ import GraphQLLogo from '../components/svg/graphql'
 import Card from '../components/Card'
 import SimpleList from '../components/SimpleList'
 import CenterFlexColumns from '../components/CenterFlexColumns'
+import { smallMediaQuery } from '../lib/utils'
 
 const links = {
   graphql: 'https://graphql.org',
@@ -60,6 +61,25 @@ const repos: Array<{
   }
 ]
 
+const StyledGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+  @media (${smallMediaQuery}) {
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+  }
+  margin: 1rem;
+`
+
+const BorderTopOnSmallMedia = styled.div`
+  @media (${smallMediaQuery}) {
+    border-top: 2px solid ${props => props.theme.bgDim};
+    padding: 2rem 0 0;
+    margin: 2rem 0 0;
+  }
+`
+
 export default () => {
   const theme = React.useContext(ThemeContext)
 
@@ -72,7 +92,7 @@ export default () => {
         <CenterFlex>
           <h2>Latest and greatest technologies</h2>
         </CenterFlex>
-        <CenterFlex>
+        <StyledGrid>
           <Card onClick={_ => go('reactjs')}>
             <ReactLogo fill={theme.color1}></ReactLogo>
             <strong style={{ color: theme.color2 }}>ReactJS</strong>
@@ -89,7 +109,7 @@ export default () => {
             <GraphQLLogo fill={theme.color2}></GraphQLLogo>
             <strong style={{ color: theme.color1 }}>GraphQL</strong>
           </Card>
-        </CenterFlex>
+        </StyledGrid>
         <p>
           I use the latest technologies to build{' '}
           <strong>high quality scalable websites</strong>.
@@ -112,73 +132,79 @@ export default () => {
         <CenterFlex>
           <h3>Some examples of my work:</h3>
         </CenterFlex>
-        <CenterFlex>
-          <Card onClick={_ => go('superdesk')}>
-            <img
-              width="150"
-              src="/images/screenshots/superdesk.jp2"
-              alt="Superdesk screenshot"
-            />
-            <strong>Superdesk</strong>
-          </Card>
-          <CenterFlexColumns>
-            <p>
-              I'm part of the team at{' '}
-              <a href="https://sourcefabric.org">Sourcefabric</a> that develops
-              the best open source tools for journalism. Superdesk is a
-              state-of-the-art digital newsroom system.
-            </p>
-            <p>
-              It combines headless CMS functionality with powerful workflow
-              features for an end-to-end news creation, production, curation and
-              distribution platform.
-            </p>
-          </CenterFlexColumns>
-        </CenterFlex>
-        <CenterFlex>
-          <Card onClick={_ => go('ladjs')}>
-            <img
-              width="150"
-              src="/images/screenshots/lad.jp2"
-              alt="Ladjs screenshot"
-            />
-            <strong>LadJS</strong>
-          </Card>
-          <CenterFlexColumns>
-            <p>
-              I'm part of the core team that develops{' '}
-              <a href={links.ladjs}>LadJS</a>. A new NodeJS framework with all
-              the tools you need to build a full stack website.
-            </p>
-            <p>
-              Lad is full of features but it's extremely configurable. For
-              example it ships with Pug as the template engine but you can
-              easily plug in React, Vue, Angular, etc
-            </p>
-          </CenterFlexColumns>
-        </CenterFlex>
-        <CenterFlex>
-          <Card onClick={_ => go('vimcolors')}>
-            <img
-              width="150"
-              src="/images/screenshots/vimcolors.jp2"
-              alt="Vimcolors screenshot"
-            />
-            <strong>Vimcolors.org</strong>
-          </Card>
-          <CenterFlexColumns>
-            <p>
-              <a href="https://vimcolors.org">Vimcolors</a> is an online tool to
-              create custom color schemes for the text editor{' '}
-              <strong>vim</strong> with ease.
-            </p>
-            <p>
-              It takes the hard task of manually tweaking every single color for
-              all the possible fields of your text editor and converts it on a
-              simple and fun visual experience with a real-time preview.
-            </p>
-          </CenterFlexColumns>
-        </CenterFlex>
+        <BorderTopOnSmallMedia>
+          <CenterFlex>
+            <Card onClick={_ => go('superdesk')}>
+              <img
+                width="150"
+                src="/images/screenshots/superdesk.jp2"
+                alt="Superdesk screenshot"
+              />
+              <strong>Superdesk</strong>
+            </Card>
+            <CenterFlexColumns>
+              <p>
+                I'm part of the team at{' '}
+                <a href="https://sourcefabric.org">Sourcefabric</a> that
+                develops the best open source tools for journalism. Superdesk is
+                a state-of-the-art digital newsroom system.
+              </p>
+              <p>
+                It combines headless CMS functionality with powerful workflow
+                features for an end-to-end news creation, production, curation
+                and distribution platform.
+              </p>
+            </CenterFlexColumns>
+          </CenterFlex>
+        </BorderTopOnSmallMedia>
+        <BorderTopOnSmallMedia>
+          <CenterFlex>
+            <Card onClick={_ => go('ladjs')}>
+              <img
+                width="150"
+                src="/images/screenshots/lad.jp2"
+                alt="Ladjs screenshot"
+              />
+              <strong>LadJS</strong>
+            </Card>
+            <CenterFlexColumns>
+              <p>
+                I'm part of the core team that develops{' '}
+                <a href={links.ladjs}>LadJS</a>. A new NodeJS framework with all
+                the tools you need to build a full stack website.
+              </p>
+              <p>
+                Lad is full of features but it's extremely configurable. For
+                example it ships with Pug as the template engine but you can
+                easily plug in React, Vue, Angular, etc
+              </p>
+            </CenterFlexColumns>
+          </CenterFlex>
+        </BorderTopOnSmallMedia>
+        <BorderTopOnSmallMedia>
+          <CenterFlex>
+            <Card onClick={_ => go('vimcolors')}>
+              <img
+                width="150"
+                src="/images/screenshots/vimcolors.jp2"
+                alt="Vimcolors screenshot"
+              />
+              <strong>Vimcolors.org</strong>
+            </Card>
+            <CenterFlexColumns>
+              <p>
+                <a href="https://vimcolors.org">Vimcolors</a> is an online tool
+                to create custom color schemes for the text editor{' '}
+                <strong>vim</strong> with ease.
+              </p>
+              <p>
+                It takes the hard task of manually tweaking every single color
+                for all the possible fields of your text editor and converts it
+                on a simple and fun visual experience with a real-time preview.
+              </p>
+            </CenterFlexColumns>
+          </CenterFlex>
+        </BorderTopOnSmallMedia>
       </section>
       <section>
         <CenterFlexColumns>

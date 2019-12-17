@@ -74,6 +74,7 @@ const GlobalStyle = createGlobalStyle`
   }
   p {
     font-family: Zilla, serif;
+    margin: .7rem 0;
   }
   h1,h2,h3,h4,h5,h6 {
     color: ${props => props.theme.color2};
@@ -241,13 +242,13 @@ const DonateButton = () => (
 
 export default ({ children, ssr }) => {
   const [theme, setTheme] = React.useState(currentTheme)
-  const mainRef = React.useRef(null)
-  const scrollToMain = () => window.scrollTo(0, mainRef.current.offsetTop)
+  const scrollRef = React.useRef(null)
+  const scrollToRef = () => window.scrollTo(0, scrollRef.current.offsetTop)
 
   React.useEffect(() => {
     if (!ssr) {
       // only scroll to main tag on client navigation
-      scrollToMain()
+      /* scrollToRef() */
     }
   })
 
@@ -262,7 +263,9 @@ export default ({ children, ssr }) => {
       <Inner>
         <Header />
         <Nav />
-        <StyledMain ref={mainRef}>{children}</StyledMain>
+        <div ref={scrollRef}>
+          <StyledMain>{children}</StyledMain>
+        </div>
         <StyledFooter>© Pablo Varela {new Date().getFullYear()}</StyledFooter>
       </Inner>
     </ThemeProvider>
