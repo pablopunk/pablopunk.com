@@ -30,7 +30,7 @@ export default () => (
       </div>
       <Emoji>📍</Emoji>
       <div>
-        I live <strong>Pontevedra</strong>, a small town located in{' '}
+        I live in <strong>Pontevedra</strong>, a small town located in{' '}
         <strong>Galicia</strong>, a region of <strong>Spain</strong> (🇪🇸).
       </div>
       <Emoji>🎓</Emoji>

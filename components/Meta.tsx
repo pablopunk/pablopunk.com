@@ -23,5 +23,9 @@ export default () => (
       href="/favicon/favicon-16x16.png"
     />
     <link rel="manifest" href="/favicon/site.webmanifest" />
+    <meta
+      name="google-site-verification"
+      content="y-TnXGhfG_A0b-ttLIV076wjdtFdEMZw6d04iwfR2Xw"
+    />
   </Head>
 )
