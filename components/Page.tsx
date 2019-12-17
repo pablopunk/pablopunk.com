@@ -4,12 +4,12 @@ import Meta from './Meta'
 import Header from './Header'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-let currentTheme = 1
+let currentTheme = 0
 
 const themes = [
   {
     bg: 'white',
-    bgDim: '#dfe6e9',
+    bgDim: 'rgba(0,0,0,0.075)',
     fg: '#2d3436',
     fgStrong: 'black',
     color1: '#6c5ce7',
