@@ -23,7 +23,7 @@ const themes = [
     fgStrong: 'white',
     color1: '#f67280',
     color2: '#81ecec',
-    blendMode: 'screen'
+    blendMode: 'hue'
   }
 ]
 
