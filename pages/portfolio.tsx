@@ -69,7 +69,8 @@ const StyledGrid = styled.div`
     grid-template-columns: 1fr 1fr;
     justify-content: center;
   }
-  margin: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
 `
 
 const BorderTopOnSmallMedia = styled.div`

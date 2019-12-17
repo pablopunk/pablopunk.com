@@ -1,12 +1,16 @@
+import App from 'next/app'
 import Page from '../components/Page'
 
-App.getInitialProps = async ({ req }) => {
+MyApp.getInitialProps = async appContext => {
+  const appProps = await App.getInitialProps(appContext)
+
   return {
-    ssr: req != null
+    ssr: appContext.req != null,
+    ...appProps
   }
 }
 
-export default function App({ Component, pageProps, ssr }) {
+export default function MyApp({ Component, pageProps, ssr }) {
   return (
     <Page ssr={ssr}>
       <Component {...pageProps} />

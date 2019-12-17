@@ -235,7 +235,7 @@ const StyledFooter = styled.footer`
 const DonateButton = () => (
   <Tooltip message="Donate" right>
     <div style={{ fontSize: '2rem', marginRight: '1rem' }}>
-      <a href="//paypal.me/pablopunk/5">💳</a>
+      <a href="/donate">💳</a>
     </div>
   </Tooltip>
 )
