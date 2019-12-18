@@ -240,17 +240,16 @@ const DonateButton = () => (
   </Tooltip>
 )
 
-export default ({ children, ssr }) => {
+export default ({ children }) => {
   const [theme, setTheme] = React.useState(currentTheme)
   const scrollRef = React.useRef(null)
   const scrollToRef = () => window.scrollTo(0, scrollRef.current.offsetTop)
 
-  React.useEffect(() => {
-    if (!ssr) {
-      // only scroll to main tag on client navigation
-      /* scrollToRef() */
-    }
-  })
+  /* React.useEffect(() => { */
+  /*   if (!ssr) { */
+  /*     scrollToRef() */
+  /*   } */
+  /* }) */
 
   return (
     <ThemeProvider theme={themes[theme]}>
