@@ -7,7 +7,7 @@ export default () => (
     <meta charSet="utf-8" />
     <meta
       name="description"
-      content="Pablo Varela. Freelance Web Developer. Here's my window to the internet. Check some of my work, things about me, or just contact me if you want to work with me. You can also find me on popular social networks as @pablopunk."
+      content="Pablo Varela. Freelance Web Developer. Check out my work or contact me. You can also find me on popular social networks as @pablopunk."
     />
     <meta
       name="tags"
