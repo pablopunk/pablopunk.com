@@ -88,6 +88,10 @@ export default () => {
     <CenterFlexColumns>
       <Head>
         <title>Pablo Varela | Porfolio of my work</title>
+        <meta
+          name="description"
+          content="Some examples of my work and technologies I use daily, both for personal and professional projects and."
+        />
       </Head>
       <section>
         <CenterFlex>

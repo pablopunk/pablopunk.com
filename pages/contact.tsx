@@ -4,7 +4,11 @@ import CenterFlex from '../components/CenterFlex'
 export default () => (
   <CenterFlex>
     <Head>
-      <title>Pablo Varela | Contact me</title>
+      <title>Pablo Varela | Contact me if you want to work with me</title>
+      <meta
+        name="description"
+        content="Ways to contact me if you want to work with me or just follow me on social media."
+      />
     </Head>
     <div>
       <p>

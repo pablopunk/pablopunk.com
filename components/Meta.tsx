@@ -5,6 +5,16 @@ export default () => (
     <title>Pablo Varela | Freelance Web Developer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charSet="utf-8" />
+    <meta
+      name="description"
+      content="Pablo Varela. Freelance Web Developer. Here's my window to the internet. Check some of my work, things about me, or just contact me if you want to work with me. You can also find me on popular social networks as @pablopunk."
+    />
+    <meta
+      name="tags"
+      content="web,developer,freelance,pontevedra,galicia,españa,pablopunk,performance,hire,contratar,computer,science,pc,mac,vim,terminal,fast,modern,ui,flat,style,portfolio,work"
+    />
+    <meta http-equiv="content-language" content="en" />{' '}
+    {/* Change this with i18n */}
     <link
       rel="apple-touch-icon"
       sizes="180x180"

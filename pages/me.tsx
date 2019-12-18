@@ -17,7 +17,11 @@ const Emoji = styled.div`
 export default () => (
   <CenterFlex>
     <Head>
-      <title>Pablo Varela | About me</title>
+      <title>Pablo Varela | About me. Experience and Education</title>
+      <meta
+        name="description"
+        content="Some things about me. Where I worked, where I work, my education, etc."
+      />
     </Head>
     <StyledGrid>
       <Emoji>📅</Emoji>
