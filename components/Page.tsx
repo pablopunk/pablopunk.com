@@ -265,7 +265,10 @@ export default ({ children }) => {
         <div ref={scrollRef}>
           <StyledMain>{children}</StyledMain>
         </div>
-        <StyledFooter>© Pablo Varela {new Date().getFullYear()}</StyledFooter>
+        <StyledFooter>
+          © Pablo Varela {new Date().getFullYear()} |{' '}
+          <a href="https://github.com/pablopunk/pablo.pink/">See source</a>
+        </StyledFooter>
       </Inner>
     </ThemeProvider>
   )
