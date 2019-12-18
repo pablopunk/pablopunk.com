@@ -34,6 +34,7 @@ export default () => (
     />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="canonical" href="https://pablo.pink/" />
+    <link rel="sitemap" href="https://pablo.pink/sitemap.xml" />
     <meta
       name="google-site-verification"
       content="y-TnXGhfG_A0b-ttLIV076wjdtFdEMZw6d04iwfR2Xw"
