@@ -10,7 +10,12 @@ const StyledImage = styled.img`
 `
 export default () => (
   <CenterFlex>
-    <StyledImage src="/images/me.jpg" alt="Profile picture" style={{}} />
+    <StyledImage
+      src="/images/me.jpg"
+      alt="Profile picture"
+      title="Pablo Varela"
+      style={{}}
+    />
     <div>
       <p>👋 Hello there! My name is Pablo and I'm a remote web developer.</p>
       <p>
