@@ -13,7 +13,14 @@ export default () => (
       name="tags"
       content="web,developer,freelance,pontevedra,galicia,españa,pablopunk,performance,hire,contratar,computer,science,pc,mac,vim,terminal,fast,modern,ui,flat,style,portfolio,work"
     />
-    <meta http-equiv="content-language" content="en" />{' '}
+    <meta http-equiv="content-language" content="en" />
+    <meta
+      property="og:title"
+      content="Pablo Varela. Freelance Web Developer."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pablo.pink/" />
+    <meta property="og:image" content="https://pablo.pink/images/me.jpg" />
     {/* Change this with i18n */}
     <link
       rel="apple-touch-icon"
