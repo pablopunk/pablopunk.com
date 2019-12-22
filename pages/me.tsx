@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import CenterFlex from '../components/CenterFlex'
 import styled from 'styled-components'
 
@@ -16,13 +16,10 @@ const Emoji = styled.div`
 
 export default () => (
   <CenterFlex>
-    <Head>
-      <title>Pablo Varela | About me. Experience and Education</title>
-      <meta
-        name="description"
-        content="Some things about me. Where I worked, where I work, my education, etc."
-      />
-    </Head>
+    <NextSeo
+      title="Pablo Varela | About me. Experience and Education"
+      description="Some things about me. Where I worked, where I work, my education, etc."
+    />
     <StyledGrid>
       <Emoji>📅</Emoji>
       <div>

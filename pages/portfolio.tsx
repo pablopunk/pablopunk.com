@@ -1,5 +1,5 @@
 import React from 'react'
-import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import CenterFlex from '../components/CenterFlex'
 import styled, { ThemeContext } from 'styled-components'
 import ReactLogo from '../components/svg/react'
@@ -86,13 +86,10 @@ export default () => {
 
   return (
     <CenterFlexColumns>
-      <Head>
-        <title>Pablo Varela | Porfolio of my work</title>
-        <meta
-          name="description"
-          content="Some examples of my work and technologies I use daily, both for personal and professional projects and."
-        />
-      </Head>
+      <NextSeo
+        title="Pablo Varela | Porfolio of my work"
+        description="Some examples of my work and technologies I use daily, both for personal and professional projects and."
+      />
       <section>
         <CenterFlex>
           <h2>Latest and greatest technologies</h2>

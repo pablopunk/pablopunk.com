@@ -1,15 +1,12 @@
-import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import CenterFlex from '../components/CenterFlex'
 
 export default () => (
   <CenterFlex>
-    <Head>
-      <title>Pablo Varela | Contact me if you want to work with me</title>
-      <meta
-        name="description"
-        content="Ways to contact me if you want to work with me or just follow me on social media."
-      />
-    </Head>
+    <NextSeo
+      title="Pablo Varela | Contact me if you want to work with me"
+      description="Ways to contact me if you want to work with me or just follow me on social media."
+    />
     <div>
       <p>
         Send me an <a href="mailto:pablovarela182@gmail.com">email 📧</a>
