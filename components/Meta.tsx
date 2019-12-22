@@ -16,7 +16,7 @@ export default () => (
           'Pablo Varela. Freelance Web Developer. Check out my work or contact me. You can also find me on popular social networks as @pablopunk.',
         images: [
           {
-            url: siteUrl + '/images/me.jpg',
+            url: siteUrl + '/images/wide.jpg',
             width: 150,
             height: 150,
             alt: "Pablo Varela's profile picture"
