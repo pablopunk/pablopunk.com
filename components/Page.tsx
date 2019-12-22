@@ -4,7 +4,7 @@ import Meta from './Meta'
 import Header from './Header'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-let currentTheme = 1
+let currentTheme = 0
 
 const themes = [
   {
