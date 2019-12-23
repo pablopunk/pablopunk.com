@@ -3850,9 +3850,9 @@ next@9.1.5:
     whatwg-fetch "3.0.0"
 
 nextjs-redirect@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/nextjs-redirect/-/nextjs-redirect-1.0.2.tgz#9e1b3d6c24ab6914f0e34cfeb644b85230094831"
-  integrity sha512-z8KxMHh+2U3b46NpkUxSDDQJthQjATcP3AQDJsjgscQauOoFFQ3CJIWBhLdCair3F5QsXj8OPxTiYv3s+9duHw==
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/nextjs-redirect/-/nextjs-redirect-1.1.2.tgz#edd9fb388edcce1e521330e6d2c48e745d5ce205"
+  integrity sha512-3IbgHrCWyBZlnVbuedR2bY9FK9KUv/GsgQqg5/+Ed0PkbZkDC4HVY9JnnmuGmSNjRNCHa2kNqpjIKfDkCtZIWQ==
 
 nice-try@^1.0.4:
   version "1.0.5"
