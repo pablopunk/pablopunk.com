@@ -43,7 +43,7 @@ export default () => (
     <Head>
       <meta charSet="utf-8" />
       <meta
-        name="tags"
+        name="keywords"
         content="web,developer,freelance,pontevedra,galicia,españa,pablopunk,performance,hire,contratar,computer,science,pc,mac,vim,terminal,fast,modern,ui,flat,style,portfolio,work"
       />
       <meta http-equiv="content-language" content="en" />
