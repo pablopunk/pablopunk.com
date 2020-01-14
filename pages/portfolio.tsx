@@ -45,19 +45,19 @@ const repos: Array<{
   },
   {
     name: 'bashy',
-    stars: 37,
+    stars: 38,
     description: 'Extremely fast and simple git prompt for bash'
+  },
+  {
+    name: 'serve-bar',
+    stars: 6,
+    description: 'Drag & Drop to share files/folders in your local network'
   },
   {
     name: 'iga',
     stars: 5,
     description:
       'Zero config typescript/es6 server with the filesystem as a router'
-  },
-  {
-    name: 'serve-bar',
-    stars: 4,
-    description: 'Drag & Drop to share files/folders in your local network'
   }
 ]
 
