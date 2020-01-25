@@ -14,6 +14,14 @@ const Emoji = styled.div`
   text-align: center;
 `
 
+function howOldAmI() {
+  const now = new Date()
+  const iHadABirthDayThisYear = now.getMonth() >= 6 && now.getDate() >= 9
+  const yearsSinceIWasBorn = now.getFullYear() - 1993
+
+  return iHadABirthDayThisYear ? yearsSinceIWasBorn : yearsSinceIWasBorn - 1
+}
+
 export default () => (
   <CenterFlex>
     <NextSeo
@@ -23,11 +31,7 @@ export default () => (
     <StyledGrid>
       <Emoji>📅</Emoji>
       <div>
-        I'm{' '}
-        <strong title="(new Date).getFullYear() - 1993 // :)">
-          {new Date().getFullYear() - 1993}
-        </strong>{' '}
-        years old.
+        I'm <strong>{howOldAmI()}</strong> years old.
       </div>
       <Emoji>📍</Emoji>
       <div>
