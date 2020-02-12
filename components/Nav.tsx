@@ -2,6 +2,7 @@ import Link from 'next/link'
 import CenterFlex from './CenterFlex'
 import styled, { keyframes } from 'styled-components'
 import { smallMediaQuery } from '../lib/utils'
+import { themes } from './common/themes'
 
 const links = [
   {
@@ -31,18 +32,23 @@ const borderKeyframes = keyframes`
     clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
   }
 `
-
 const PsycoBox = styled.div`
   margin: 0;
   width: 700px;
   height: 100px;
   position: relative;
-  background-color: ${props => props.theme.bg};
+  background-color: ${themes.light.bg};
+  body.dark & {
+    background-color: ${themes.dark.bg};
+  }
   box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.6);
   border-radius: 5px;
   &:after,
   &:before {
-    mix-blend-mode: ${props => props.theme.blendMode};
+    mix-blend-mode: ${themes.light.blendMode};
+    body.dark & {
+      mix-blend-mode: ${themes.dark.blendMode};
+    }
     filter: none;
     z-index: -1;
     content: '';
@@ -55,7 +61,10 @@ const PsycoBox = styled.div`
   }
   &:after {
     animation-delay: -5s;
-    background-color: ${props => props.theme.color1};
+    background-color: ${themes.light.color1};
+    body.dark & {
+      background-color: ${themes.dark.color1};
+    }
     clip-path: polygon(
       0 0,
       calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)),
@@ -64,7 +73,10 @@ const PsycoBox = styled.div`
     );
   }
   &:before {
-    background-color: ${props => props.theme.color2};
+    background-color: ${themes.light.color2};
+    body.dark & {
+      background-color: ${themes.dark.color2};
+    }
     clip-path: polygon(
       calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)),
       100% 0,
@@ -96,12 +108,18 @@ const StyledNav = styled.nav`
     text-transform: uppercase;
     font-family: Raleway, sans-serif;
     font-weight: bold;
-    color: ${props => props.theme.color2};
+    color: ${themes.light.color2};
+    body.dark & {
+      color: ${themes.dark.color2};
+    }
     &:after {
       content: '';
       position: absolute;
       width: 0;
-      background-color: ${props => props.theme.color2};
+      background-color: ${themes.light.color2};
+      body.dark & {
+        background-color: ${themes.dark.color2};
+      }
       height: 3px;
       margin-top: 3rem;
       transform: translateX(-50%);
@@ -110,16 +128,25 @@ const StyledNav = styled.nav`
       transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
     }
     &:hover {
-      color: ${props => props.theme.color1};
+      color: ${themes.light.color1};
+      body.dark & {
+        color: ${themes.dark.color1};
+      }
     }
     &:hover:after,
     &:focus:after,
     &:active:after {
       width: 80%;
-      background-color: ${props => props.theme.color1};
+      background-color: ${themes.light.color1};
+      body.dark & {
+        background-color: ${themes.dark.color1};
+      }
     }
     &:focus:after {
-      background-color: ${props => props.theme.color2};
+      background-color: ${themes.light.color2};
+      body.dark & {
+        background-color: ${themes.dark.color2};
+      }
     }
   }
   @media (${smallMediaQuery}) {

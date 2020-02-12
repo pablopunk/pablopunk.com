@@ -1,12 +1,16 @@
 import styled from 'styled-components'
 import CenterFlex from '../components/CenterFlex'
 import Link from 'next/link'
+import { themes } from '../components/common/themes'
 
 const StyledImage = styled.img`
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 5px solid ${props => props.theme.color2};
+  border: 5px solid ${themes.light.color2};
+  body.dark & {
+    border: 5px solid ${themes.dark.color2};
+  }
 `
 export default () => (
   <CenterFlex>
@@ -14,7 +18,6 @@ export default () => (
       src="/images/me.jpg"
       alt="Profile picture"
       title="Pablo Varela"
-      style={{}}
     />
     <div>
       <p>👋 Hello there! My name is Pablo and I'm a remote web developer.</p>
@@ -22,7 +25,7 @@ export default () => (
         I build high quality websites with a focus on{' '}
         <strong>scalability</strong> and <strong>UI/UX</strong>.
       </p>
-      <p></p>
+      <p />
       <p>
         If you're interested on my work, you can{' '}
         <Link href="/contact">

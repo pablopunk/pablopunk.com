@@ -2,39 +2,9 @@ import React from 'react'
 import Nav from './Nav'
 import Meta from './Meta'
 import Header from './Header'
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
-
-let currentTheme = 0
-
-const themes = [
-  {
-    bg: 'white',
-    bgDim: 'rgba(0,0,0,0.075)',
-    fg: '#2d3436',
-    fgStrong: 'black',
-    color1: '#6c5ce7',
-    color2: '#00cec9',
-    blendMode: 'multiply'
-  },
-  {
-    bg: 'black',
-    bgDim: 'rgba(255,255,255,0.15)',
-    fg: '#dadada',
-    fgStrong: 'white',
-    color1: '#f67280',
-    color2: '#81ecec',
-    blendMode: 'screen'
-  }
-]
-
-const getNextTheme = () => {
-  let nextTheme = currentTheme + 1
-  if (nextTheme >= themes.length) {
-    nextTheme = 0
-  }
-
-  return nextTheme
-}
+import styled, { createGlobalStyle } from 'styled-components'
+import { themes } from './common/themes'
+import { StyledStop, StyledStopNegative } from './svg/Styled'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -62,35 +32,57 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: Raleway, sans-serif;
-    background-color: ${props => props.theme.bg};
-    color: ${props => props.theme.fg};
+    background-color: ${themes.light.bg};
+    color: ${themes.light.fg};
+    &.dark {
+      background-color: ${themes.dark.bg};
+      color: ${themes.dark.fg};
+    }
   }
   a {
     text-decoration: none;
-    color: ${props => props.theme.color1};
+    color: ${themes.light.color1};
+    body.dark & {
+      color: ${themes.dark.color1};
+    }
   }
   a:hover {
-    color: ${props => props.theme.color2};
+    color: ${themes.light.color2};
+    body.dark & {
+      color: ${themes.dark.color2};
+    }
   }
   p {
     font-family: Zilla, serif;
     margin: .7rem 0;
   }
   h1,h2,h3,h4,h5,h6 {
-    color: ${props => props.theme.color2};
+    color: ${themes.light.color2};
+    body.dark & {
+      color: ${themes.dark.color2};
+    }
   }
   a:hover h1 {
-    color: ${props => props.theme.color1};
+    color: ${themes.light.color1};
+    body.dark & {
+      color: ${themes.dark.color1};
+    }
   }
   strong {
-    color: ${props => props.theme.fgStrong};
     font-weight: bold;
+    color: ${themes.light.fgStrong};
+    body.dark & {
+      color: ${themes.dark.fgStrong};
+    }
   }
   section {
     padding: 3rem 0;
     &:after {
         content: '';
-        border-bottom: 1px solid ${props => props.theme.bgDim};
+        border-bottom: 1px solid ${themes.light.bgDim};
+        body.dark & {
+          border-bottom: 1px solid ${themes.dark.bgDim};
+        }
         position: absolute;
         width: 100%;
         left: 0;
@@ -116,7 +108,10 @@ const StyledMain = styled.main`
 const TopBar = styled.div`
   position: fixed;
   z-index: 1;
-  background-color: ${props => props.theme.bgDim};
+  background-color: ${themes.light.bgDim};
+  body.dark & {
+    background-color: ${themes.dark.bgDim};
+  }
   width: 100%;
   height: 40px;
   top: 0;
@@ -140,54 +135,63 @@ const CustomButton = styled.button`
 `
 const wheelSize = 16
 
-const Wheel = () => {
-  const [wheelTheme, setWheelTheme] = React.useState(currentTheme)
-  const theme = themes[wheelTheme]
+const Wheel = ({ mouseOver }) => (
+  <svg
+    width={wheelSize}
+    height={wheelSize}
+    viewBox={`0 0 ${wheelSize} ${wheelSize}`}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="8" cy="8" r="8" fill="url(#paint0_linear)" />
+    <defs>
+      <linearGradient
+        id="paint0_linear"
+        x1="16.25"
+        y1="8"
+        x2="-0.25"
+        y2="8"
+        gradientUnits="userSpaceOnUse"
+        className={mouseOver ? 'negative' : ''}
+      >
+        <StyledStop offset="0.3" />
+        <stop offset="0.5" stopColor="white" />
+        <StyledStopNegative offset="0.7" />
+      </linearGradient>
+    </defs>
+  </svg>
+)
 
-  return (
-    <svg
-      width={wheelSize}
-      height={wheelSize}
-      viewBox={`0 0 ${wheelSize} ${wheelSize}`}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      onMouseOver={() => setWheelTheme(getNextTheme())}
-      onMouseOut={() => setWheelTheme(currentTheme)}
-    >
-      <circle cx="8" cy="8" r="8" fill="url(#paint0_linear)" />
-      <defs>
-        <linearGradient
-          id="paint0_linear"
-          x1="16.25"
-          y1="8"
-          x2="-0.25"
-          y2="8"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0.3" stopColor={theme.color1} />
-          <stop offset="0.5" stopColor="white" />
-          <stop offset="0.7" stopColor={theme.color2} />
-        </linearGradient>
-      </defs>
-    </svg>
-  )
-}
+const StyledText = styled.span`
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
 
-const Tooltip = ({ children, right = false, message }) => {
-  const [showMessage, setShowMessage] = React.useState(false)
+  opacity: 0;
+  border: none;
+  &.show {
+    opacity: 1;
+    border: 1px solid ${themes.light.fg};
+  }
+  body.dark &.show {
+    border: 1px solid ${themes.dark.bgDim};
+  }
 
-  const transformation = showMessage
+  color: ${themes.light.bg};
+  background-color: ${themes.light.fg};
+  body.dark & {
+    color: ${themes.dark.bg};
+    background-color: ${themes.dark.fg};
+  }
+`
+const Tooltip = ({ children, right = false, message, show }) => {
+  const transformation = show
     ? 'none'
     : right
     ? 'translateX(50vw)'
     : 'translateX(-50vw)'
 
   return (
-    <div
-      onMouseEnter={_ => setShowMessage(true)}
-      onMouseLeave={_ => setShowMessage(false)}
-      style={{ display: 'flex', alignItems: 'center' }}
-    >
+    <div style={{ display: 'flex', alignItems: 'center' }}>
       {right ? null : children}
       <div
         style={{
@@ -195,55 +199,68 @@ const Tooltip = ({ children, right = false, message }) => {
           margin: '0 1rem',
           lineHeight: wheelSize + 'px',
           fontSize: wheelSize + 'px',
-          color: themes[currentTheme].fg,
           transform: transformation,
-          opacity: showMessage ? 1 : 0,
           transition: 'transform 0.2s ease, opacity 0.9s ease'
         }}
       >
-        {message}
+        <StyledText className={show ? 'show' : ''}>{message}</StyledText>
       </div>
       {right ? children : null}
     </div>
   )
 }
 
-const ChangeThemeButton = ({ setTheme }) => (
-  <CustomButton
-    onClick={_ev => {
-      const nextTheme = getNextTheme()
-      setTheme(nextTheme)
-      currentTheme = nextTheme
-    }}
-  >
-    <Tooltip message="Change theme">
-      <Wheel />
-    </Tooltip>
-  </CustomButton>
-)
+const ChangeThemeButton = () => {
+  const [mouseOver, setMouseOver] = React.useState(false)
 
+  return (
+    <CustomButton
+      onClick={_ev => {
+        // __toggleDarkMode
+        window['__' + 'toggleDarkMode']()
+      }}
+      onMouseOver={() => setMouseOver(true)}
+      onMouseOut={() => setMouseOver(false)}
+    >
+      <Tooltip message="Change theme" show={mouseOver}>
+        <Wheel mouseOver={mouseOver} />
+      </Tooltip>
+    </CustomButton>
+  )
+}
 const StyledFooter = styled.footer`
   text-align: center;
   margin: 2rem 0 3rem;
   padding-top: 2rem;
   font-size: 1.7rem;
-  border-top: 3px solid ${props => props.theme.bgDim};
-  color: ${props => props.theme.fg};
+  border-top: 3px solid ${themes.light.bgDim};
+  color: ${themes.light.fg};
+  body.dark & {
+    color: ${themes.dark.fg};
+  }
   opacity: 0.7;
 `
 
-const DonateButton = () => (
-  <Tooltip message="Donate" right>
-    <div style={{ fontSize: '2rem', marginRight: '1rem' }}>
-      <a href="/donate">💳</a>
-    </div>
-  </Tooltip>
-)
+const DonateButton = () => {
+  const [mouseOver, setMouseOver] = React.useState(false)
+
+  return (
+    <CustomButton
+      onMouseOver={() => setMouseOver(true)}
+      onMouseOut={() => setMouseOver(false)}
+    >
+      <Tooltip message="Donate" right show={mouseOver}>
+        <div style={{ fontSize: '2rem', marginRight: '1rem' }}>
+          <a href="/donate">💳</a>
+        </div>
+      </Tooltip>
+    </CustomButton>
+  )
+}
 
 export default ({ children }) => {
-  const [theme, setTheme] = React.useState(currentTheme)
   const scrollRef = React.useRef(null)
-  const scrollToRef = () => window.scrollTo(0, scrollRef.current.offsetTop)
+  // const scrollToRef = () => window.scrollTo(0, scrollRef.current.offsetTop)
 
   /* React.useEffect(() => { */
   /*   if (!ssr) { */
@@ -252,11 +269,11 @@ export default ({ children }) => {
   /* }) */
 
   return (
-    <ThemeProvider theme={themes[theme]}>
+    <>
       <GlobalStyle />
       <Meta />
       <TopBar>
-        <ChangeThemeButton setTheme={setTheme} />
+        <ChangeThemeButton />
         <DonateButton />
       </TopBar>
       <Inner>
@@ -270,6 +287,6 @@ export default ({ children }) => {
           <a href="https://github.com/pablopunk/pablo.pink/">See source</a>
         </StyledFooter>
       </Inner>
-    </ThemeProvider>
+    </>
   )
 }

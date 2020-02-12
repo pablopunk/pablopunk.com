@@ -1,11 +1,16 @@
 import styled from 'styled-components'
+import { themes } from './common/themes'
 
 export default styled.div`
   box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
   border-radius: 5px;
   padding: 10px 20px;
-  background-color: ${props => props.theme.bg};
+  background-color: ${themes.light.bg};
+
+  .body & {
+    background-color: ${themes.dark.bg};
+  }
 
   display: flex;
   flex-direction: column;
@@ -18,6 +23,9 @@ export default styled.div`
   }
 
   strong {
-    color: ${props => props.theme.color1};
+    color: ${themes.light.color1};
+    .negative & {
+      color: ${themes.dark.color2};
+    }
   }
 `
