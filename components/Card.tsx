@@ -8,7 +8,7 @@ export default styled.div`
   padding: 10px 20px;
   background-color: ${themes.light.bg};
 
-  .body & {
+  body.dark & {
     background-color: ${themes.dark.bg};
   }
 
@@ -24,8 +24,15 @@ export default styled.div`
 
   strong {
     color: ${themes.light.color1};
+    body.dark & {
+      color: ${themes.dark.color1};
+    }
+
     .negative & {
-      color: ${themes.dark.color2};
+      color: ${themes.light.color2};
+      body.dark & {
+        color: ${themes.dark.color2};
+      }
     }
   }
 `

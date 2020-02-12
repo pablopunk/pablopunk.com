@@ -3,9 +3,17 @@ import { themes } from '../common/themes'
 
 const styledFillCss = `
   fill: ${themes.light.color2};
+  body.dark & {
+    fill: ${themes.dark.color2};
+  }
+
   .negative & {
     fill: ${themes.light.color1};
+    body.dark & {
+      fill: ${themes.dark.color1};
+    }
   }
+
 `
 
 export const StyledRect = styled.rect`

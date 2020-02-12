@@ -46,7 +46,7 @@ export default () => (
         name="keywords"
         content="web,developer,freelance,pontevedra,galicia,españa,pablopunk,performance,hire,contratar,computer,science,pc,mac,vim,terminal,fast,modern,ui,flat,style,portfolio,work"
       />
-      <meta http-equiv="content-language" content="en" />
+      <meta httpEquiv="content-language" content="en" />
       {/* Change this with i18n */}
       <link
         rel="apple-touch-icon"
