@@ -10,6 +10,7 @@ import Card from '../components/Card'
 import SimpleList from '../components/SimpleList'
 import CenterFlexColumns from '../components/CenterFlexColumns'
 import { smallMediaQuery } from '../lib/utils'
+import { themes } from '../components/common/themes'
 
 const links = {
   graphql: 'https://graphql.org',
@@ -75,15 +76,16 @@ const StyledGrid = styled.div`
 
 const BorderTopOnSmallMedia = styled.div`
   @media (${smallMediaQuery}) {
-    border-top: 2px solid ${props => props.theme.bgDim};
+    border-top: 2px solid ${themes.light.bgDim};
+    body.dark &  {
+      border-top: 2px solid ${themes.dark.bgDim};
+    }
     padding: 2rem 0 0;
     margin: 2rem 0 0;
   }
 `
 
 export default () => {
-  const theme = React.useContext(ThemeContext)
-
   return (
     <CenterFlexColumns>
       <NextSeo
@@ -95,21 +97,25 @@ export default () => {
           <h2>Latest and greatest technologies</h2>
         </CenterFlex>
         <StyledGrid>
-          <Card onClick={_ => go('reactjs')}>
-            <ReactLogo fill={theme.color1}></ReactLogo>
-            <strong style={{ color: theme.color2 }}>ReactJS</strong>
-          </Card>
+          <div className="negative">
+            <Card onClick={_ => go('reactjs')}>
+              <ReactLogo />
+              <strong>ReactJS</strong>
+            </Card>
+          </div>
           <Card onClick={_ => go('nextjs')}>
-            <NextLogo fill={theme.color2}></NextLogo>
-            <strong style={{ color: theme.color1 }}>NextJS</strong>
+            <NextLogo />
+            <strong>NextJS</strong>
           </Card>
-          <Card onClick={_ => go('nodejs')}>
-            <NodeLogo fill={theme.color1}></NodeLogo>
-            <strong style={{ color: theme.color2 }}>NodeJS</strong>
-          </Card>
+          <div className="negative">
+            <Card onClick={_ => go('nodejs')}>
+              <NodeLogo />
+              <strong>NodeJS</strong>
+            </Card>
+          </div>
           <Card onClick={_ => go('graphql')}>
-            <GraphQLLogo fill={theme.color2}></GraphQLLogo>
-            <strong style={{ color: theme.color1 }}>GraphQL</strong>
+            <GraphQLLogo />
+            <strong>GraphQL</strong>
           </Card>
         </StyledGrid>
         <p>

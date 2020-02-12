@@ -1,13 +1,14 @@
-export default ({ width = 100, height = 100, fill = 'black' } = {}) => (
+import { StyledG } from './Styled'
+
+export default ({ width = 100, height = 100 } = {}) => (
   <svg width={width} height={height} viewBox="0 0 207 124" version="1.1">
     <title>next-black</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-      <g
+      <StyledG
         id="Black-Next.js"
         transform="translate(-247.000000, -138.000000)"
-        fill={fill}
         fillRule="nonzero"
       >
         <g id="next-black" transform="translate(247.000000, 138.000000)">
@@ -26,7 +27,7 @@ export default ({ width = 100, height = 100, fill = 'black' } = {}) => (
             id=".JS"
           ></path>
         </g>
-      </g>
+      </StyledG>
     </g>
   </svg>
 )
