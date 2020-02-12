@@ -248,6 +248,7 @@ const DonateButton = () => {
     <CustomButton
       onMouseOver={() => setMouseOver(true)}
       onMouseOut={() => setMouseOver(false)}
+      onClick={() => window.open('/donate')}
     >
       <Tooltip message="Donate" right show={mouseOver}>
         <div style={{ fontSize: '2rem', marginRight: '1rem' }}>
