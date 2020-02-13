@@ -9,7 +9,7 @@ const themes = {
     blendMode: 'multiply'
   },
   dark: {
-    bg: 'black',
+    bg: '#010314',
     bgDim: 'rgba(255,255,255,0.15)',
     fg: '#dadada',
     fgStrong: 'white',
