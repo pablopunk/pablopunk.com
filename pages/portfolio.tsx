@@ -9,6 +9,7 @@ import GraphQLLogo from '../components/svg/graphql'
 import Card from '../components/Card'
 import SimpleList from '../components/SimpleList'
 import CenterFlexColumns from '../components/CenterFlexColumns'
+import Repos from '../components/Repos'
 import { smallMediaQuery } from '../lib/utils'
 import { themes } from '../components/common/themes'
 
@@ -25,42 +26,6 @@ const links = {
 function go(where: keyof typeof links) {
   window.open(links[where])
 }
-
-const repos: Array<{
-  name: string
-  user?: string
-  stars: string | number
-  description: string
-}> = [
-  {
-    name: 'lad',
-    user: 'ladjs',
-    stars: '1.7k',
-    description: 'Lad scaffolds a Koa webapp and API framework for Node.js'
-  },
-  {
-    name: 'chronocube',
-    stars: 57,
-    description:
-      "Simple desktop/web app to track and manage your Rubik's cube solve times."
-  },
-  {
-    name: 'bashy',
-    stars: 38,
-    description: 'Extremely fast and simple git prompt for bash'
-  },
-  {
-    name: 'serve-bar',
-    stars: 6,
-    description: 'Drag & Drop to share files/folders in your local network'
-  },
-  {
-    name: 'iga',
-    stars: 5,
-    description:
-      'Zero config typescript/es6 server with the filesystem as a router'
-  }
-]
 
 const StyledGrid = styled.div`
   display: grid;
@@ -221,21 +186,7 @@ export default () => {
             On <a href="https://github.com/pablopunk">my github</a> you can find
             more projects like:
           </p>
-          <SimpleList>
-            {repos.map(repo => (
-              <li key={repo.name}>
-                <a
-                  href={`https://github.com/${repo.user || 'pablopunk'}/${
-                    repo.name
-                  }`}
-                >
-                  /{repo.name}
-                </a>{' '}
-                ⭐{repo.stars}
-                <p>{repo.description}</p>
-              </li>
-            ))}
-          </SimpleList>
+          <Repos />
         </CenterFlexColumns>
       </section>
     </CenterFlexColumns>

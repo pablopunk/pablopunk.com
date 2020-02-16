@@ -13,7 +13,9 @@
     "nextjs-redirect": "^1.0.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "swr": "^0.1.17",
+    "unfetch": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.17",
