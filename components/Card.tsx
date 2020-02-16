@@ -23,6 +23,7 @@ export default styled.div`
   }
 
   strong {
+    margin-top: 1rem;
     color: ${themes.light.color1};
     body.dark & {
       color: ${themes.dark.color1};
