@@ -1,4 +1,4 @@
-import React from 'react'
+import useSWR from 'swr'
 import SimpleList from './SimpleList'
 import fetch from 'unfetch'
 
@@ -15,61 +15,33 @@ const ADDITIONAL_REPOS = [
 
 const fetcher = url => fetch(url).then(_ => _.json())
 
-interface IState {
-  repos?: Array<any>
-  error?: Error
-}
+export default () => {
+  const { data, error } = useSWR(API, fetcher)
 
-export default class Repos extends React.Component<{}, IState> {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      repos: null
-    }
+  if (error) {
+    return <strong style={{ color: 'orangered' }}>Error fetching repos</strong>
   }
 
-  componentDidMount() {
-    fetcher(API)
-      .then(repos => {
-        this.setState({ repos })
-      })
-      .catch(error => {
-        this.setState({ error })
-        throw error
-      })
+  if (!data) {
+    return <strong>Fetching repos...</strong>
   }
 
-  render() {
-    const { repos, error } = this.state
+  const repos = [...ADDITIONAL_REPOS, ...data]
+    .sort((a, b) => b.stargazers_count - a.stargazers_count)
+    .map(repo => ({
+      ...repo,
+      description: repo.description?.replace('[UNMANTAINED]. ', '') || ''
+    }))
+    .slice(0, 13)
 
-    if (error) {
-      return (
-        <strong style={{ color: 'orangered' }}>Error fetching repos</strong>
-      )
-    }
-
-    if (!repos) {
-      return <strong>Fetching repos...</strong>
-    }
-
-    const myRepos = [...ADDITIONAL_REPOS, ...repos]
-      .sort((a, b) => b.stargazers_count - a.stargazers_count)
-      .map(repo => ({
-        ...repo,
-        description: repo.description?.replace('[UNMANTAINED]. ', '') || ''
-      }))
-      .slice(0, 13)
-
-    return (
-      <SimpleList>
-        {myRepos.map(repo => (
-          <li key={repo.name}>
-            <a href={repo.html_url}>/{repo.name}</a> ⭐{repo.stargazers_count}
-            <p>{repo.description}</p>
-          </li>
-        ))}
-      </SimpleList>
-    )
-  }
+  return (
+    <SimpleList>
+      {repos.map(repo => (
+        <li key={repo.name}>
+          <a href={repo.html_url}>/{repo.name}</a> ⭐{repo.stargazers_count}
+          <p>{repo.description}</p>
+        </li>
+      ))}
+    </SimpleList>
+  )
 }
