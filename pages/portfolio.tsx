@@ -10,7 +10,7 @@ import Card from '../components/Card'
 import SimpleList from '../components/SimpleList'
 import CenterFlexColumns from '../components/CenterFlexColumns'
 import Repos from '../components/Repos'
-import { smallMediaQuery } from '../lib/utils'
+import { smallMediaQuery } from '../components/common/media-queries'
 import { themes } from '../components/common/themes'
 
 const links = {
