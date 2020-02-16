@@ -1,9 +1,8 @@
-import useSWR from 'swr'
-import fetch from 'unfetch'
+import React from 'react'
 import SimpleList from './SimpleList'
+import fetch from 'unfetch'
 
-const GITHUB_TOKEN = process.env.REPOS_GITHUB_TOKEN
-const API = 'https://api.github.com'
+const API = 'https://repos.pablo.pink/api'
 
 const ADDITIONAL_REPOS = [
   {
@@ -14,40 +13,63 @@ const ADDITIONAL_REPOS = [
   }
 ]
 
-const fetcher = url =>
-  fetch(API + url, {
-    headers: { Authorization: `token ${GITHUB_TOKEN}` }
-  }).then(r => r.json())
+const fetcher = url => fetch(url).then(_ => _.json())
 
-export default () => {
-  let { data, error } = useSWR('/users/pablopunk/repos?sort=updated', fetcher)
+interface IState {
+  repos?: Array<any>
+  error?: Error
+}
 
-  if (!data) {
-    return <strong>Fetching repos...</strong>
+export default class Repos extends React.Component<{}, IState> {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      repos: null
+    }
   }
 
-  if (error) {
-    return <strong style={{ color: 'orangered' }}>Error fetching repos</strong>
+  componentDidMount() {
+    fetcher(API)
+      .then(repos => {
+        this.setState({ repos })
+      })
+      .catch(error => {
+        this.setState({ error })
+        throw error
+      })
   }
 
-  data = [...ADDITIONAL_REPOS, ...data]
+  render() {
+    const { repos, error } = this.state
 
-  const repos = (data as Array<any>)
-    .sort((a, b) => b.stargazers_count - a.stargazers_count)
-    .map(repo => ({
-      ...repo,
-      description: repo.description?.replace('[UNMANTAINED]. ', '') || ''
-    }))
-    .slice(0, 13)
+    if (error) {
+      return (
+        <strong style={{ color: 'orangered' }}>Error fetching repos</strong>
+      )
+    }
 
-  return (
-    <SimpleList>
-      {repos.map(repo => (
-        <li key={repo.name}>
-          <a href={repo.html_url}>/{repo.name}</a> ⭐{repo.stargazers_count}
-          <p>{repo.description}</p>
-        </li>
-      ))}
-    </SimpleList>
-  )
+    if (!repos) {
+      return <strong>Fetching repos...</strong>
+    }
+
+    const myRepos = [...ADDITIONAL_REPOS, ...repos]
+      .sort((a, b) => b.stargazers_count - a.stargazers_count)
+      .map(repo => ({
+        ...repo,
+        description: repo.description?.replace('[UNMANTAINED]. ', '') || ''
+      }))
+      .slice(0, 13)
+
+    return (
+      <SimpleList>
+        {myRepos.map(repo => (
+          <li key={repo.name}>
+            <a href={repo.html_url}>/{repo.name}</a> ⭐{repo.stargazers_count}
+            <p>{repo.description}</p>
+          </li>
+        ))}
+      </SimpleList>
+    )
+  }
 }
