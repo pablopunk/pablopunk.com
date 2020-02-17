@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "human-number": "^1.0.5",
     "next": "9.1.5",
     "next-seo": "^3.2.0",
     "nextjs-redirect": "^1.0.2",
