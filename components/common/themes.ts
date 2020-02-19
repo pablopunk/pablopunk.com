@@ -1,4 +1,4 @@
-const themes = {
+export const themes = {
   light: {
     bg: 'white',
     bgDim: 'rgba(0,0,0,0.075)',
@@ -19,4 +19,30 @@ const themes = {
   }
 }
 
-export { themes }
+const transition = '1s'
+
+export const themeCss = ({ fg = null, bg = null }) => {
+  return `
+    ${fg &&
+      `
+      color: ${fg};
+      transition: color ${transition};
+    `}
+    ${bg &&
+      `
+      background-color: ${bg};
+      transition: background-color ${transition};
+    `}
+  `
+}
+
+export const basicColors = (theme: 'light' | 'dark') =>
+  themeCss({
+    fg: themes[theme].fg,
+    bg: themes[theme].bg
+  })
+
+export const themeFill = (color: string) => `
+  fill: ${color};
+  transition: fill ${transition};
+`
