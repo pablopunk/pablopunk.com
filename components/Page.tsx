@@ -3,8 +3,9 @@ import Nav from './Nav'
 import Meta from './Meta'
 import Header from './Header'
 import styled, { createGlobalStyle } from 'styled-components'
-import { themes } from './common/themes'
+import { themes, basicColors } from './common/themes'
 import { StyledStop, StyledStopNegative } from './svg/Styled'
+import { themeCss } from './common/themes'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -32,18 +33,16 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: Raleway, sans-serif;
-    background-color: ${themes.light.bg};
-    color: ${themes.light.fg};
+    ${basicColors('light')}
     &.dark {
-      background-color: ${themes.dark.bg};
-      color: ${themes.dark.fg};
+      ${basicColors('dark')}
     }
   }
   a {
     text-decoration: none;
-    color: ${themes.light.color1};
+    ${themeCss({ fg: themes.light.fg })}
     body.dark & {
-      color: ${themes.dark.color1};
+      ${themeCss({ fg: themes.dark.fg })}
     }
   }
   a:hover {
@@ -55,11 +54,21 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-family: Zilla, serif;
     margin: .7rem 0;
+    ${themeCss({ fg: themes.light.fg })}
+    body.dark & {
+      ${themeCss({ fg: themes.dark.fg })}
+    }
+  }
+  li {
+    ${themeCss({ fg: themes.light.fg })}
+    body.dark & {
+      ${themeCss({ fg: themes.dark.fg })}
+    }
   }
   h1,h2,h3,h4,h5,h6 {
-    color: ${themes.light.color2};
+    ${themeCss({ fg: themes.light.color2 })}
     body.dark & {
-      color: ${themes.dark.color2};
+      ${themeCss({ fg: themes.dark.color2 })}
     }
   }
   a:hover h1 {
@@ -70,9 +79,9 @@ const GlobalStyle = createGlobalStyle`
   }
   strong {
     font-weight: bold;
-    color: ${themes.light.fgStrong};
+    ${themeCss({ fg: themes.light.fgStrong })}
     body.dark & {
-      color: ${themes.dark.fgStrong};
+      ${themeCss({ fg: themes.dark.fgStrong })}
     }
   }
   section {
@@ -234,9 +243,9 @@ const StyledFooter = styled.footer`
   padding-top: 2rem;
   font-size: 1.7rem;
   border-top: 3px solid ${themes.light.bgDim};
-  color: ${themes.light.fg};
+  ${basicColors('light')}
   body.dark & {
-    color: ${themes.dark.fg};
+    ${basicColors('dark')}
   }
   opacity: 0.7;
 `

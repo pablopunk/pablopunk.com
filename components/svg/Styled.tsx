@@ -1,16 +1,16 @@
 import styled from 'styled-components'
-import { themes } from '../common/themes'
+import { themes, themeFill } from '../common/themes'
 
 const styledFillCss = `
-  fill: ${themes.light.color2};
+  ${themeFill(themes.light.color2)}
   body.dark & {
-    fill: ${themes.dark.color2};
+    ${themeFill(themes.dark.color2)}
   }
 
   .negative & {
-    fill: ${themes.light.color1};
+    ${themeFill(themes.light.color1)}
     body.dark & {
-      fill: ${themes.dark.color1};
+      ${themeFill(themes.dark.color1)}
     }
   }
 

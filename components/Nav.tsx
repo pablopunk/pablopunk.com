@@ -2,7 +2,7 @@ import Link from 'next/link'
 import CenterFlex from './CenterFlex'
 import styled, { keyframes } from 'styled-components'
 import { smallMediaQuery } from './common/media-queries'
-import { themes } from './common/themes'
+import { themes, basicColors, themeCss } from './common/themes'
 
 const links = [
   {
@@ -37,9 +37,9 @@ const PsycoBox = styled.div`
   width: 700px;
   height: 100px;
   position: relative;
-  background-color: ${themes.light.bg};
+  ${basicColors('light')}
   body.dark & {
-    background-color: ${themes.dark.bg};
+    ${basicColors('dark')}
   }
   box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.6);
   border-radius: 5px;
@@ -61,9 +61,9 @@ const PsycoBox = styled.div`
   }
   &:after {
     animation-delay: -5s;
-    background-color: ${themes.light.color1};
+    ${themeCss({ bg: themes.light.color1 })}
     body.dark & {
-      background-color: ${themes.dark.color1};
+      ${themeCss({ bg: themes.dark.color1 })}
     }
     clip-path: polygon(
       0 0,
@@ -73,9 +73,9 @@ const PsycoBox = styled.div`
     );
   }
   &:before {
-    background-color: ${themes.light.color2};
+    ${themeCss({ bg: themes.light.color2 })}
     body.dark & {
-      background-color: ${themes.dark.color2};
+      ${themeCss({ bg: themes.dark.color2 })}
     }
     clip-path: polygon(
       calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)),
@@ -108,9 +108,9 @@ const StyledNav = styled.nav`
     text-transform: uppercase;
     font-family: Raleway, sans-serif;
     font-weight: bold;
-    color: ${themes.light.color2};
+    ${themeCss({ fg: themes.light.color2 })}
     body.dark & {
-      color: ${themes.dark.color2};
+      ${themeCss({ fg: themes.dark.color2 })}
     }
     &:after {
       content: '';

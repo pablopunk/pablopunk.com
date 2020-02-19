@@ -1,15 +1,15 @@
 import styled from 'styled-components'
-import { themes } from './common/themes'
+import { themes, basicColors, themeCss } from './common/themes'
 
 export default styled.div`
   box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
   border-radius: 5px;
   padding: 10px 20px;
-  background-color: ${themes.light.bg};
 
+  ${basicColors('light')}
   body.dark & {
-    background-color: ${themes.dark.bg};
+    ${basicColors('dark')}
   }
 
   display: flex;
@@ -24,9 +24,10 @@ export default styled.div`
 
   strong {
     margin-top: 1rem;
-    color: ${themes.light.color1};
+
+    ${themeCss({ fg: themes.light.color1 })}
     body.dark & {
-      color: ${themes.dark.color1};
+      ${themeCss({ fg: themes.dark.color1 })}
     }
 
     .negative & {
