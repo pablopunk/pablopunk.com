@@ -19,21 +19,32 @@ export const themes = {
   }
 }
 
-const transition = '1s'
+export const transition = '2.5s'
 
 export const themeCss = ({ fg = null, bg = null }) => {
-  return `
-    ${fg &&
-      `
+  const css = `
+    ${
+      fg == null
+        ? ''
+        : `
       color: ${fg};
-      transition: color ${transition};
-    `}
-    ${bg &&
-      `
+    `
+    }
+    ${
+      bg == null
+        ? ''
+        : `
       background-color: ${bg};
-      transition: background-color ${transition};
-    `}
+    `
+    }
   `
+
+  return (
+    css +
+    `
+    transition: color ${transition}, background-color ${transition};
+    `
+  )
 }
 
 export const basicColors = (theme: 'light' | 'dark') =>

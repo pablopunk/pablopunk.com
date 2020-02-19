@@ -54,6 +54,16 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-family: Zilla, serif;
     margin: .7rem 0;
+    ${themeCss({ fg: themes.light.fg })}
+    body.dark & {
+      ${themeCss({ fg: themes.dark.fg })}
+    }
+  }
+  li {
+    ${themeCss({ fg: themes.light.fg })}
+    body.dark & {
+      ${themeCss({ fg: themes.dark.fg })}
+    }
   }
   h1,h2,h3,h4,h5,h6 {
     ${themeCss({ fg: themes.light.color2 })}

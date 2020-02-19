@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { themes } from './common/themes'
+import { themes, transition } from './common/themes'
 
 export default styled.ul`
   list-style: none;
@@ -7,6 +7,7 @@ export default styled.ul`
   padding: 0;
   li {
     padding: 1rem;
+    transition: border-left ${transition}, color ${transition};
     border-left: 2px solid ${themes.light.color2};
     body.dark & {
       border-left: 2px solid ${themes.dark.color2};
