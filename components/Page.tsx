@@ -40,9 +40,9 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    ${themeCss({ fg: themes.light.fg })}
+    ${themeCss({ fg: themes.light.color1 })}
     body.dark & {
-      ${themeCss({ fg: themes.dark.fg })}
+      ${themeCss({ fg: themes.dark.color1 })}
     }
   }
   a:hover {
