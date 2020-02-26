@@ -38,6 +38,18 @@ const GlobalStyle = createGlobalStyle`
       ${basicColors('dark')}
     }
   }
+  body.dark .show-dark {
+    display: block;
+  }
+  body.dark .show-light {
+    display: none;
+  }
+  body:not(.dark) .show-light {
+    display: block;
+  }
+  body:not(.dark) .show-dark {
+    display: none;
+  }
   a {
     text-decoration: none;
     ${themeCss({ fg: themes.light.color1 })}
@@ -221,6 +233,8 @@ const Tooltip = ({ children, right = false, message, show }) => {
 
 const ChangeThemeButton = () => {
   const [mouseOver, setMouseOver] = React.useState(false)
+  const moon = mouseOver ? 'show-light' : 'show-dark'
+  const sun = mouseOver ? 'show-dark' : 'show-light'
 
   return (
     <CustomButton
@@ -232,7 +246,8 @@ const ChangeThemeButton = () => {
       onMouseOut={() => setMouseOver(false)}
     >
       <Tooltip message="Change theme" show={mouseOver}>
-        <Wheel mouseOver={mouseOver} />
+        <a className={moon}>🌙</a>
+        <a className={sun}>🌞</a>
       </Tooltip>
     </CustomButton>
   )
