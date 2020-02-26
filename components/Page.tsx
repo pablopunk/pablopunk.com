@@ -154,34 +154,6 @@ const CustomButton = styled.button`
     margin: 3px;
   }
 `
-const wheelSize = 16
-
-const Wheel = ({ mouseOver }) => (
-  <svg
-    width={wheelSize}
-    height={wheelSize}
-    viewBox={`0 0 ${wheelSize} ${wheelSize}`}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="8" cy="8" r="8" fill="url(#paint0_linear)" />
-    <defs>
-      <linearGradient
-        id="paint0_linear"
-        x1="16.25"
-        y1="8"
-        x2="-0.25"
-        y2="8"
-        gradientUnits="userSpaceOnUse"
-        className={mouseOver ? 'negative' : ''}
-      >
-        <StyledStop offset="0.3" />
-        <stop offset="0.5" stopColor="white" />
-        <StyledStopNegative offset="0.7" />
-      </linearGradient>
-    </defs>
-  </svg>
-)
 
 const StyledText = styled.span`
   padding: 0.3rem 1rem;
@@ -218,8 +190,8 @@ const Tooltip = ({ children, right = false, message, show }) => {
         style={{
           display: 'inline-block',
           margin: '0 1rem',
-          lineHeight: wheelSize + 'px',
-          fontSize: wheelSize + 'px',
+          lineHeight: '16px',
+          fontSize: '16px',
           transform: transformation,
           transition: 'transform 0.2s ease, opacity 0.9s ease'
         }}
