@@ -24,7 +24,7 @@ export default () => {
     return <strong style={{ color: 'orangered' }}>Error fetching repos</strong>
   }
 
-  if (!data || true) {
+  if (!data) {
     return <Loading />
   }
 
