@@ -1,2 +1,2 @@
 import redirect from 'nextjs-redirect'
-export default redirect('https://paypal.me/pablopunk/5')
+export default redirect('https://paypal.me/pablopunk/5', 302)

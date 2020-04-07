@@ -3336,10 +3336,10 @@ next@^9.3.4:
     webpack "4.42.0"
     webpack-sources "1.4.3"
 
-nextjs-redirect@^1.0.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/nextjs-redirect/-/nextjs-redirect-1.1.2.tgz#edd9fb388edcce1e521330e6d2c48e745d5ce205"
-  integrity sha512-3IbgHrCWyBZlnVbuedR2bY9FK9KUv/GsgQqg5/+Ed0PkbZkDC4HVY9JnnmuGmSNjRNCHa2kNqpjIKfDkCtZIWQ==
+nextjs-redirect@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/nextjs-redirect/-/nextjs-redirect-2.0.1.tgz#622340c14c058ae5a43cc088285458c2c737873d"
+  integrity sha512-j6ePELd4KsnJBmQ0Sa+UYLceYM27G8TOF4G6B5M6B+qoxuRTIj47eZJXJNz+rGYsypQMQxvybobO6uB5jFZR0g==
 
 node-fetch@2.6.0:
   version "2.6.0"
