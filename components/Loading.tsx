@@ -1,37 +1,76 @@
 import React from 'react'
-import { StyledCircle } from './svg/Styled'
+import styled from 'styled-components'
+import { themes } from './common/themes'
 
-const minRadius = 10
-const maxRadius = 20
-const size = maxRadius * 2
-const step = 0.15
+const StyledLoading = styled.div`
+  .circle {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .circle div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: ${themes.light.color1};
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
 
-export default () => {
-  const [radius, setRadius] = React.useState(minRadius + 1)
-  const [growing, setGrowing] = React.useState(true)
+    body.dark & {
+      background-color: ${themes.dark.color1};
+    }
+  }
+  .circle div:nth-child(1) {
+    left: 8px;
+    animation: circle1 0.6s infinite;
+  }
+  .circle div:nth-child(2) {
+    left: 8px;
+    animation: circle2 0.6s infinite;
+  }
+  .circle div:nth-child(3) {
+    left: 32px;
+    animation: circle2 0.6s infinite;
+  }
+  .circle div:nth-child(4) {
+    left: 56px;
+    animation: circle3 0.6s infinite;
+  }
+  @keyframes circle1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes circle3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes circle2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+`
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      if (radius <= minRadius) {
-        setRadius(radius + step)
-        setGrowing(true)
-      } else if (radius >= maxRadius) {
-        setRadius(radius - step)
-        setGrowing(false)
-      } else if (growing) {
-        setRadius(radius + step)
-      } else if (!growing) {
-        setRadius(radius - step)
-      }
-    }, 10)
-  })
-
-  return (
-    <svg height={size} width={size}>
-      <StyledCircle cx={maxRadius} cy={maxRadius} r={radius} />
-      <g className="negative">
-        <StyledCircle cx={maxRadius} cy={maxRadius} r={minRadius - 1} />
-      </g>
-    </svg>
-  )
-}
+export default () => (
+  <StyledLoading>
+    <div className="circle">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </StyledLoading>
+)
