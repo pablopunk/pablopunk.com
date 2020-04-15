@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo'
-import CenterFlex from '../components/CenterFlex'
+import CenterFlex from '../components/layout/CenterFlex'
 
 export default () => (
   <CenterFlex>

@@ -1,17 +1,17 @@
 import React from 'react'
 import { NextSeo } from 'next-seo'
-import CenterFlex from '../components/CenterFlex'
+import CenterFlex from '../components/layout/CenterFlex'
 import styled, { ThemeContext } from 'styled-components'
 import ReactLogo from '../components/svg/react'
 import NextLogo from '../components/svg/nextjs'
 import NodeLogo from '../components/svg/node'
 import GraphQLLogo from '../components/svg/graphql'
 import Card from '../components/Card'
-import SimpleList from '../components/SimpleList'
-import CenterFlexColumns from '../components/CenterFlexColumns'
-import Repos from '../components/Repos'
-import { smallMediaQuery } from '../components/common/media-queries'
-import { themes } from '../components/common/themes'
+import SimpleList from '../components/layout/SimpleList'
+import CenterFlexColumns from '../components/layout/CenterFlexColumns'
+import Repos from '../components/data/Repos'
+import { smallMediaQuery } from '../components/utils/media-queries'
+import { themes } from '../components/utils/themes'
 
 const links = {
   graphql: 'https://graphql.org',
@@ -20,7 +20,7 @@ const links = {
   reactjs: 'https://reactjs.org',
   superdesk: 'https://superdesk.org',
   vimcolors: 'https://vimcolors.org',
-  ladjs: 'https://lad.sh'
+  ladjs: 'https://lad.sh',
 }
 
 function go(where: keyof typeof links) {
@@ -63,22 +63,22 @@ export default () => {
         </CenterFlex>
         <StyledGrid>
           <div className="negative">
-            <Card onClick={_ => go('reactjs')}>
+            <Card onClick={(_) => go('reactjs')}>
               <ReactLogo />
               <strong>ReactJS</strong>
             </Card>
           </div>
-          <Card onClick={_ => go('nextjs')}>
+          <Card onClick={(_) => go('nextjs')}>
             <NextLogo />
             <strong>NextJS</strong>
           </Card>
           <div className="negative">
-            <Card onClick={_ => go('nodejs')}>
+            <Card onClick={(_) => go('nodejs')}>
               <NodeLogo />
               <strong>NodeJS</strong>
             </Card>
           </div>
-          <Card onClick={_ => go('graphql')}>
+          <Card onClick={(_) => go('graphql')}>
             <GraphQLLogo />
             <strong>GraphQL</strong>
           </Card>
@@ -107,7 +107,7 @@ export default () => {
         </CenterFlex>
         <BorderTopOnSmallMedia>
           <CenterFlex>
-            <Card onClick={_ => go('superdesk')}>
+            <Card onClick={(_) => go('superdesk')}>
               <img
                 width="150"
                 src="/images/screenshots/superdesk.jp2"
@@ -132,7 +132,7 @@ export default () => {
         </BorderTopOnSmallMedia>
         <BorderTopOnSmallMedia>
           <CenterFlex>
-            <Card onClick={_ => go('ladjs')}>
+            <Card onClick={(_) => go('ladjs')}>
               <img
                 width="150"
                 src="/images/screenshots/lad.jp2"
@@ -156,7 +156,7 @@ export default () => {
         </BorderTopOnSmallMedia>
         <BorderTopOnSmallMedia>
           <CenterFlex>
-            <Card onClick={_ => go('vimcolors')}>
+            <Card onClick={(_) => go('vimcolors')}>
               <img
                 width="150"
                 src="/images/screenshots/vimcolors.jp2"

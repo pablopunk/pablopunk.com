@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { themes } from './common/themes'
+import { themes } from './utils/themes'
 
 const StyledLoading = styled.div`
   .circle {

@@ -1,8 +1,8 @@
 import useSWR from 'swr'
 import fetch from 'unfetch'
-import SimpleList from './SimpleList'
+import SimpleList from '../layout/SimpleList'
 import humanNumber from 'human-number'
-import Loading from './Loading'
+import Loading from '../Loading'
 
 const API = 'https://repos.pablo.pink/api'
 

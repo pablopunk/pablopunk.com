@@ -1,11 +1,11 @@
 import React from 'react'
 import Nav from './Nav'
-import Meta from './Meta'
+import Meta from '../Meta'
 import Header from './Header'
 import styled, { createGlobalStyle } from 'styled-components'
-import { themes, basicColors } from './common/themes'
-import { StyledStop, StyledStopNegative } from './svg/Styled'
-import { themeCss } from './common/themes'
+import { themes, basicColors } from '../utils/themes'
+import { StyledStop, StyledStopNegative } from '../svg/Styled'
+import { themeCss } from '../utils/themes'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -193,7 +193,7 @@ const Tooltip = ({ children, right = false, message, show }) => {
           lineHeight: '16px',
           fontSize: '16px',
           transform: transformation,
-          transition: 'transform 0.2s ease, opacity 0.9s ease'
+          transition: 'transform 0.2s ease, opacity 0.9s ease',
         }}
       >
         <StyledText className={show ? 'show' : ''}>{message}</StyledText>
@@ -210,7 +210,7 @@ const ChangeThemeButton = () => {
 
   return (
     <CustomButton
-      onClick={_ev => {
+      onClick={(_ev) => {
         // __toggleDarkMode
         window['__' + 'toggleDarkMode']()
       }}

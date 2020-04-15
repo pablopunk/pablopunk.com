@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo'
-import CenterFlex from '../components/CenterFlex'
+import CenterFlex from '../components/layout/CenterFlex'
 import styled from 'styled-components'
 
 const StyledGrid = styled.div`

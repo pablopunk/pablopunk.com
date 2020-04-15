@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { smallMediaQuery } from './common/media-queries'
+import { smallMediaQuery } from '../utils/media-queries'
 import CenterFlexColumns from './CenterFlexColumns'
 
 const GiveMeSomeMargin = styled.div`

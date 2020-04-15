@@ -1,26 +1,26 @@
 import Link from 'next/link'
 import CenterFlex from './CenterFlex'
 import styled, { keyframes } from 'styled-components'
-import { smallMediaQuery } from './common/media-queries'
-import { themes, basicColors, themeCss } from './common/themes'
+import { smallMediaQuery } from '../utils/media-queries'
+import { themes, basicColors, themeCss } from '../utils/themes'
 
 const links = [
   {
     label: 'home',
-    href: '/'
+    href: '/',
   },
   {
     label: 'work',
-    href: '/portfolio'
+    href: '/portfolio',
   },
   {
     label: 'about me',
-    href: '/me'
+    href: '/me',
   },
   {
     label: 'contact',
-    href: '/contact'
-  }
+    href: '/contact',
+  },
 ]
 
 // from https://codepen.io/inyoung1/pen/gZVdeX
@@ -158,7 +158,7 @@ const Nav = () => (
   <CenterFlex style={{ margin: '50px 0' }}>
     <PsycoBox>
       <StyledNav>
-        {links.map(link => (
+        {links.map((link) => (
           <div key={link.href} style={{ position: 'relative' }}>
             <Link href={link.href}>
               <a>{link.label}</a>

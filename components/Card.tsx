@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { themes, basicColors, themeCss } from './common/themes'
+import { themes, basicColors, themeCss } from './utils/themes'
 
 export default styled.div`
   box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.1);

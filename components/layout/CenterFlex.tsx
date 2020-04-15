@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { smallMediaQuery } from './common/media-queries'
+import { smallMediaQuery } from '../utils/media-queries'
 
 export default styled.div`
   position: relative;

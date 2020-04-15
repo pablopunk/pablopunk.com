@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { themes, themeFill } from '../common/themes'
+import { themes, themeFill } from '../utils/themes'
 
 const styledFillCss = `
   ${themeFill(themes.light.color2)}

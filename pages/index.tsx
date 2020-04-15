@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import CenterFlex from '../components/CenterFlex'
+import CenterFlex from '../components/layout/CenterFlex'
 import Link from 'next/link'
-import { themes } from '../components/common/themes'
+import { themes } from '../components/utils/themes'
 
 const StyledImage = styled.img`
   width: 150px;

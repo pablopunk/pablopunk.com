@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { themes, transition } from './common/themes'
+import { themes, transition } from '../utils/themes'
 
 export default styled.ul`
   list-style: none;
