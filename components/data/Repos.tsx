@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import fetch from 'unfetch'
+import fetch from 'isomorphic-unfetch'
 import SimpleList from '../layout/SimpleList'
 import humanNumber from 'human-number'
 import Loading from '../Loading'

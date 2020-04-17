@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import CenterFlex from '../components/layout/CenterFlex'
 import Link from 'next/link'
 import { themes } from '../components/utils/themes'
+import { serverSideProps } from '../components/data/withCMS'
 
 const StyledImage = styled.img`
   width: 150px;
@@ -12,27 +13,18 @@ const StyledImage = styled.img`
     border: 5px solid ${themes.dark.color2};
   }
 `
-export default () => (
+export default ({ abstract, profilePicture }) => (
   <CenterFlex>
     <StyledImage
-      src="/images/me.jpg"
-      alt="Profile picture"
-      title="Pablo Varela"
+      src={profilePicture.url}
+      alt={profilePicture.alt}
+      title={profilePicture.alt}
     />
-    <div>
-      <p>👋 Hello there! My name is Pablo and I'm a remote web developer.</p>
-      <p>
-        I build high quality websites with a focus on{' '}
-        <strong>scalability</strong> and <strong>UI/UX</strong>.
-      </p>
-      <p />
-      <p>
-        If you're interested on my work, you can{' '}
-        <Link href="/contact">
-          <a>contact me</a>
-        </Link>
-        .
-      </p>
-    </div>
+    <div
+      style={{ maxWidth: '500px' }}
+      dangerouslySetInnerHTML={{ __html: abstract }}
+    ></div>
   </CenterFlex>
 )
+
+export const getServerSideProps = async (ctx) => serverSideProps(ctx, 'home')
