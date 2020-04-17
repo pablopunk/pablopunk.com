@@ -47,6 +47,7 @@ export async function fetchData(
         { locale },
         preview
       )
+
     case 'portfolio':
       return fetchAPI(
         `
@@ -69,6 +70,23 @@ export async function fetchData(
           }
         }
         `,
+        { locale },
+        preview
+      )
+
+    case 'about':
+      return fetchAPI(
+        `
+        query AboutQuery($locale: SiteLocale) {
+          about(locale: $locale) {
+            id
+            content {
+              column1(markdown: true)
+              column2(markdown: true)
+            }
+          }
+        }
+      `,
         { locale },
         preview
       )
