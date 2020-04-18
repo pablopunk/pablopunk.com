@@ -9,14 +9,16 @@
   },
   "dependencies": {
     "human-number": "^1.0.5",
+    "isomorphic-unfetch": "^3.0.0",
     "next": "^9.3.4",
     "next-seo": "^4.4.0",
     "nextjs-redirect": "^2.0.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
+    "remark": "^12.0.0",
+    "remark-html": "^11.0.1",
     "styled-components": "^4.4.1",
-    "swr": "^0.1.17",
-    "unfetch": "^4.1.0"
+    "swr": "^0.1.17"
   },
   "devDependencies": {
     "@types/node": "^12.12.17",

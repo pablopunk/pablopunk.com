@@ -1,5 +1,4 @@
 import React from 'react'
-import { NextSeo } from 'next-seo'
 import CenterFlex from '../components/layout/CenterFlex'
 import styled, { ThemeContext } from 'styled-components'
 import ReactLogo from '../components/svg/react'
@@ -12,20 +11,8 @@ import CenterFlexColumns from '../components/layout/CenterFlexColumns'
 import Repos from '../components/data/Repos'
 import { smallMediaQuery } from '../components/utils/media-queries'
 import { themes } from '../components/utils/themes'
-
-const links = {
-  graphql: 'https://graphql.org',
-  nextjs: 'https://nextjs.org',
-  nodejs: 'https://nodejs.org',
-  reactjs: 'https://reactjs.org',
-  superdesk: 'https://superdesk.org',
-  vimcolors: 'https://vimcolors.org',
-  ladjs: 'https://lad.sh',
-}
-
-function go(where: keyof typeof links) {
-  window.open(links[where])
-}
+import { serverSideProps } from '../components/data/withCMS'
+import Page, { IPageProps } from '../components/layout/Page'
 
 const StyledGrid = styled.div`
   display: grid;
@@ -50,145 +37,98 @@ const BorderTopOnSmallMedia = styled.div`
   }
 `
 
-export default () => {
+function go(link: string) {
+  window.open(`https://${link}`)
+}
+
+interface IProps extends IPageProps {
+  introHeader
+  abstract
+  exampleProjectsHeader
+  githubReposIntroduction
+  exampleProjects
+}
+
+export default ({
+  introHeader,
+  abstract,
+  exampleProjectsHeader,
+  githubReposIntroduction,
+  exampleProjects,
+  ...props
+}: IProps) => {
   return (
-    <CenterFlexColumns>
-      <NextSeo
-        title="Pablo Varela | Porfolio of my work"
-        description="Some examples of my work and technologies I use daily, both for personal and professional projects and."
-      />
-      <section>
-        <CenterFlex>
-          <h2>Latest and greatest technologies</h2>
-        </CenterFlex>
-        <StyledGrid>
-          <div className="negative">
-            <Card onClick={(_) => go('reactjs')}>
-              <ReactLogo />
-              <strong>ReactJS</strong>
-            </Card>
-          </div>
-          <Card onClick={(_) => go('nextjs')}>
-            <NextLogo />
-            <strong>NextJS</strong>
-          </Card>
-          <div className="negative">
-            <Card onClick={(_) => go('nodejs')}>
-              <NodeLogo />
-              <strong>NodeJS</strong>
-            </Card>
-          </div>
-          <Card onClick={(_) => go('graphql')}>
-            <GraphQLLogo />
-            <strong>GraphQL</strong>
-          </Card>
-        </StyledGrid>
-        <p>
-          I use the latest technologies to build{' '}
-          <strong>high quality scalable websites</strong>.
-        </p>
-        <SimpleList>
-          <li>
-            <strong>⚡ Built for performance</strong>: Instant response time and
-            cached data.
-          </li>
-          <li>
-            <strong>💄 Stylish</strong>: Custom and stylish UI with great UX.
-          </li>
-          <li>
-            <strong>☔ Reliable</strong>: Zero downtime and backups thanks to
-            cloud providers.
-          </li>
-        </SimpleList>
-      </section>
-      <section>
-        <CenterFlex>
-          <h3>Some examples of my work:</h3>
-        </CenterFlex>
-        <BorderTopOnSmallMedia>
+    <Page {...props}>
+      <CenterFlexColumns>
+        <section>
           <CenterFlex>
-            <Card onClick={(_) => go('superdesk')}>
-              <img
-                width="150"
-                src="/images/screenshots/superdesk.jp2"
-                alt="Superdesk screenshot"
-              />
-              <strong>Superdesk</strong>
-            </Card>
-            <CenterFlexColumns>
-              <p>
-                I'm part of the team at{' '}
-                <a href="https://sourcefabric.org">Sourcefabric</a> that
-                develops the best open source tools for journalism. Superdesk is
-                a state-of-the-art digital newsroom system.
-              </p>
-              <p>
-                It combines headless CMS functionality with powerful workflow
-                features for an end-to-end news creation, production, curation
-                and distribution platform.
-              </p>
-            </CenterFlexColumns>
+            <h2>{introHeader}</h2>
           </CenterFlex>
-        </BorderTopOnSmallMedia>
-        <BorderTopOnSmallMedia>
+          <StyledGrid>
+            <div className="negative">
+              <Card onClick={(_) => go('reactjs.org')}>
+                <ReactLogo />
+                <strong>ReactJS</strong>
+              </Card>
+            </div>
+            <Card onClick={(_) => go('nextjs.org')}>
+              <NextLogo />
+              <strong>NextJS</strong>
+            </Card>
+            <div className="negative">
+              <Card onClick={(_) => go('nodejs.org')}>
+                <NodeLogo />
+                <strong>NodeJS</strong>
+              </Card>
+            </div>
+            <Card onClick={(_) => go('graphql.org')}>
+              <GraphQLLogo />
+              <strong>GraphQL</strong>
+            </Card>
+          </StyledGrid>
+          <SimpleList>
+            <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
+          </SimpleList>
+        </section>
+        <section>
           <CenterFlex>
-            <Card onClick={(_) => go('ladjs')}>
-              <img
-                width="150"
-                src="/images/screenshots/lad.jp2"
-                alt="Ladjs screenshot"
-              />
-              <strong>LadJS</strong>
-            </Card>
-            <CenterFlexColumns>
-              <p>
-                I'm part of the core team that develops{' '}
-                <a href={links.ladjs}>LadJS</a>. A new NodeJS framework with all
-                the tools you need to build a full stack website.
-              </p>
-              <p>
-                Lad is full of features but it's extremely configurable. For
-                example it ships with Pug as the template engine but you can
-                easily plug in React, Vue, Angular, etc
-              </p>
-            </CenterFlexColumns>
+            <h3>{exampleProjectsHeader}</h3>
           </CenterFlex>
-        </BorderTopOnSmallMedia>
-        <BorderTopOnSmallMedia>
-          <CenterFlex>
-            <Card onClick={(_) => go('vimcolors')}>
-              <img
-                width="150"
-                src="/images/screenshots/vimcolors.jp2"
-                alt="Vimcolors screenshot"
-              />
-              <strong>Vimcolors.org</strong>
-            </Card>
-            <CenterFlexColumns>
-              <p>
-                <a href="https://vimcolors.org">Vimcolors</a> is an online tool
-                to create custom color schemes for the text editor{' '}
-                <strong>vim</strong> with ease.
-              </p>
-              <p>
-                It takes the hard task of manually tweaking every single color
-                for all the possible fields of your text editor and converts it
-                on a simple and fun visual experience with a real-time preview.
-              </p>
-            </CenterFlexColumns>
-          </CenterFlex>
-        </BorderTopOnSmallMedia>
-      </section>
-      <section>
-        <CenterFlexColumns>
-          <h4>More at my GitHub</h4>
-          <p>
-            On <a href="https://github.com/pablopunk">my github</a> you can find
-            more projects like:
-          </p>
-          <Repos />
-        </CenterFlexColumns>
-      </section>
-    </CenterFlexColumns>
+          {exampleProjects
+            .sort((a, b) => a._createdAt.localeCompare(b._createdAt))
+            .map((project) => (
+              <BorderTopOnSmallMedia key={project.name}>
+                <CenterFlex>
+                  <Card onClick={(_) => window.open(project.link)}>
+                    <img
+                      width="150"
+                      src={project.picture.url}
+                      alt={project.picture.alt}
+                    />
+                    <strong>{project.name}</strong>
+                  </Card>
+                  <CenterFlexColumns>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: project.description }}
+                    ></div>
+                  </CenterFlexColumns>
+                </CenterFlex>
+              </BorderTopOnSmallMedia>
+            ))}
+        </section>
+        <section>
+          <CenterFlexColumns>
+            <div
+              style={{ textAlign: 'center' }}
+              dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
+            ></div>
+            <Repos />
+          </CenterFlexColumns>
+        </section>
+      </CenterFlexColumns>
+    </Page>
   )
 }
+
+export const getServerSideProps = async (ctx) =>
+  serverSideProps(ctx, 'portfolio')

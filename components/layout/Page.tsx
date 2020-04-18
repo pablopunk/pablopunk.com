@@ -65,7 +65,8 @@ const GlobalStyle = createGlobalStyle`
   }
   p {
     font-family: Zilla, serif;
-    margin: .7rem 0;
+    font-size: 2.2rem;
+    margin: 1rem 0;
     ${themeCss({ fg: themes.light.fg })}
     body.dark & {
       ${themeCss({ fg: themes.dark.fg })}
@@ -203,7 +204,7 @@ const Tooltip = ({ children, right = false, message, show }) => {
   )
 }
 
-const ChangeThemeButton = () => {
+const ChangeThemeButton = ({ title }) => {
   const [mouseOver, setMouseOver] = React.useState(false)
   const moon = mouseOver ? 'show-light' : 'show-dark'
   const sun = mouseOver ? 'show-dark' : 'show-light'
@@ -217,7 +218,7 @@ const ChangeThemeButton = () => {
       onMouseOver={() => setMouseOver(true)}
       onMouseOut={() => setMouseOver(false)}
     >
-      <Tooltip message="Change theme" show={mouseOver}>
+      <Tooltip message={title} show={mouseOver}>
         <a className={moon}>🌙</a>
         <a className={sun}>🌞</a>
       </Tooltip>
@@ -225,19 +226,21 @@ const ChangeThemeButton = () => {
   )
 }
 const StyledFooter = styled.footer`
-  text-align: center;
-  margin: 2rem 0 3rem;
-  padding-top: 2rem;
-  font-size: 1.7rem;
-  border-top: 3px solid ${themes.light.bgDim};
-  ${basicColors('light')}
-  body.dark & {
-    ${basicColors('dark')}
+  p {
+    text-align: center;
+    margin: 2rem 0 3rem;
+    padding-top: 2rem;
+    font-size: 1.7rem;
+    border-top: 3px solid ${themes.light.bgDim};
+    ${basicColors('light')}
+    body.dark & {
+      ${basicColors('dark')}
+    }
+    opacity: 0.7;
   }
-  opacity: 0.7;
 `
 
-const DonateButton = () => {
+const DonateButton = ({ title }) => {
   const [mouseOver, setMouseOver] = React.useState(false)
 
   return (
@@ -246,7 +249,7 @@ const DonateButton = () => {
       onMouseOut={() => setMouseOver(false)}
       onClick={() => window.open('/donate')}
     >
-      <Tooltip message="Donate" right show={mouseOver}>
+      <Tooltip message={title} right show={mouseOver}>
         <div style={{ fontSize: '2rem', marginRight: '1rem' }}>
           <a href="/donate">💳</a>
         </div>
@@ -255,35 +258,37 @@ const DonateButton = () => {
   )
 }
 
-export default ({ children }) => {
-  const scrollRef = React.useRef(null)
-  // const scrollToRef = () => window.scrollTo(0, scrollRef.current.offsetTop)
-
-  /* React.useEffect(() => { */
-  /*   if (!ssr) { */
-  /*     scrollToRef() */
-  /*   } */
-  /* }) */
-
-  return (
-    <>
-      <GlobalStyle />
-      <Meta />
-      <TopBar>
-        <ChangeThemeButton />
-        <DonateButton />
-      </TopBar>
-      <Inner>
-        <Header />
-        <Nav />
-        <div ref={scrollRef}>
-          <StyledMain>{children}</StyledMain>
-        </div>
-        <StyledFooter>
-          © Pablo Varela {new Date().getFullYear()} |{' '}
-          <a href="https://github.com/pablopunk/pablo.pink/">See source</a>
-        </StyledFooter>
-      </Inner>
-    </>
-  )
+export interface IPageProps {
+  children
+  locale
+  header
+  nav
+  footer
+  metaTags
 }
+
+export default ({
+  children,
+  locale = 'en',
+  header,
+  nav = { bar: [] },
+  footer = {},
+  metaTags,
+}: IPageProps) => (
+  <>
+    <GlobalStyle />
+    <Meta {...metaTags} locale={locale} />
+    <TopBar>
+      <ChangeThemeButton {...nav.bar[0]} />
+      <DonateButton {...nav.bar[1]} />
+    </TopBar>
+    <Inner>
+      <Header {...header} />
+      <Nav {...nav} />
+      <StyledMain>{children}</StyledMain>
+      <StyledFooter>
+        <div dangerouslySetInnerHTML={{ __html: footer.copyright }}></div>
+      </StyledFooter>
+    </Inner>
+  </>
+)

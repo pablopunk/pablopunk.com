@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 import { themes, transition } from '../utils/themes'
 
-export default styled.ul`
-  list-style: none;
-  margin: 1rem;
-  padding: 0;
+export default styled.div`
   li {
+    list-style: none;
     padding: 1rem;
     transition: border-left ${transition}, color ${transition};
     border-left: 2px solid ${themes.light.color2};
