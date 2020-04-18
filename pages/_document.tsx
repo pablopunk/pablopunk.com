@@ -25,7 +25,8 @@ export default class extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhaceApp: App => props => sheet.collectStyles(<App {...props} />)
+          enhaceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
         })
 
       const initialProps = await Document.getInitialProps(ctx)
@@ -37,10 +38,8 @@ export default class extends Document {
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>
-        )
+        ),
       }
-    } catch (err) {
-      console.error(err)
     } finally {
       sheet.seal()
     }

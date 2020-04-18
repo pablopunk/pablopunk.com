@@ -135,7 +135,7 @@ const StyledNav = styled.nav`
   }
 `
 
-const Nav = ({ main }) => (
+const Nav = ({ main = [] }) => (
   <CenterFlex style={{ margin: '50px 0' }}>
     <PsycoBox>
       <StyledNav>

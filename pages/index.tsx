@@ -20,7 +20,7 @@ interface IProps extends IPageProps {
   profilePicture
 }
 
-export default ({ abstract, profilePicture, ...props }: IProps) => (
+export default ({ abstract = '', profilePicture = {}, ...props }: IProps) => (
   <Page {...props}>
     <br />
     <CenterFlex>

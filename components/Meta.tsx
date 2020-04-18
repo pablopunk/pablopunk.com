@@ -3,7 +3,7 @@ import { NextSeo, SocialProfileJsonLd } from 'next-seo'
 
 const siteUrl = 'https://pablo.pink'
 
-export default ({ title, description }) => (
+export default ({ title, description, locale }) => (
   <>
     <NextSeo
       title={title}
@@ -45,8 +45,7 @@ export default ({ title, description }) => (
         name="keywords"
         content="web,developer,freelance,pontevedra,galicia,españa,pablopunk,performance,hire,contratar,computer,science,pc,mac,vim,terminal,fast,modern,ui,flat,style,portfolio,work"
       />
-      <meta httpEquiv="content-language" content="en" />
-      {/* Change this with i18n */}
+      <meta httpEquiv="content-language" content={locale} />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
