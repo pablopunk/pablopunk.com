@@ -1,4 +1,3 @@
-import { NextSeo } from 'next-seo'
 import CenterFlex from '../components/layout/CenterFlex'
 import styled from 'styled-components'
 import { serverSideProps } from '../components/data/withCMS'
@@ -32,10 +31,6 @@ interface IProps extends IPageProps {
 export default ({ content, ...props }: IProps) => (
   <Page {...props}>
     <CenterFlex>
-      <NextSeo
-        title="Pablo Varela | About me. Experience and Education"
-        description="Some things about me. Where I worked, where I work, my education, etc."
-      />
       <StyledGrid>
         {flat(content).map((item) => (
           <div key={item} dangerouslySetInnerHTML={{ __html: item }} />

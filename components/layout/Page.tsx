@@ -259,16 +259,17 @@ const DonateButton = ({ title }) => {
 }
 
 export interface IPageProps {
-  children: any
-  header: any
-  nav: any
-  footer: any
+  children
+  header
+  nav
+  footer
+  metaTags
 }
 
-export default ({ children, header, nav, footer }: IPageProps) => (
+export default ({ children, header, nav, footer, metaTags }: IPageProps) => (
   <>
     <GlobalStyle />
-    <Meta />
+    <Meta {...metaTags} />
     <TopBar>
       <ChangeThemeButton {...nav.bar[0]} />
       <DonateButton {...nav.bar[1]} />

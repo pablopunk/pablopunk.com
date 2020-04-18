@@ -49,6 +49,10 @@ const commonQueries = `
   footer {
     copyright(markdown: true)
   }
+  metaTags {
+    title
+    description
+  }
 `
 
 export async function fetchData(
