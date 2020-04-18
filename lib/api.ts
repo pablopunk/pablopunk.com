@@ -26,6 +26,31 @@ async function fetchAPI(query, variables = {}, preview = false) {
   return json.data
 }
 
+const commonQueries = `
+  nav {
+    main {
+      id
+      link
+      text
+    }
+    bar {
+      ... on LeftRecord {
+        title
+      }
+      ... on RightRecord {
+        title
+      }
+    }
+  }
+  header {
+    title
+    subtitle
+  }
+  footer {
+    copyright(markdown: true)
+  }
+`
+
 export async function fetchData(
   resource: string,
   { locale = 'en', preview = false } = {}
@@ -35,12 +60,13 @@ export async function fetchData(
       return fetchAPI(
         `
         query HomeQuery($locale: SiteLocale) {
-          home {
+          home(locale: $locale) {
             profilePicture {
               url
-              alt(locale: $locale)
+              alt
             }
-            abstract(locale: $locale, markdown: true)
+            abstract(markdown: true)
+            ${commonQueries}
           }
         }
         `,
@@ -52,11 +78,11 @@ export async function fetchData(
       return fetchAPI(
         `
         query PortfolioQuery($locale: SiteLocale) {
-          portfolio {
-            header(locale: $locale)
-            abstract(locale: $locale, markdown: true)
-            exampleProjectsHeader(locale: $locale)
-            githubReposIntroduction(locale: $locale, markdown: true)
+          portfolio(locale: $locale) {
+            introHeader
+            abstract(markdown: true)
+            exampleProjectsHeader
+            githubReposIntroduction(markdown: true)
             exampleProjects {
               _createdAt
               picture {
@@ -67,6 +93,7 @@ export async function fetchData(
               description(markdown: true)
               link
             }
+            ${commonQueries}
           }
         }
         `,
@@ -79,11 +106,11 @@ export async function fetchData(
         `
         query AboutQuery($locale: SiteLocale) {
           about(locale: $locale) {
-            id
             content {
               column1(markdown: true)
               column2(markdown: true)
             }
+            ${commonQueries}
           }
         }
       `,
@@ -97,6 +124,7 @@ export async function fetchData(
         query ContactQuery($locale: SiteLocale) {
           contact(locale: $locale) {
             content(markdown: true)
+            ${commonQueries}
           }
         }
       `,

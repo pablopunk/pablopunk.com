@@ -10,15 +10,15 @@ const GiveMeSomeMargin = styled.div`
   }
 `
 
-export default () => (
+export default ({ title, subtitle }) => (
   <GiveMeSomeMargin>
     <CenterFlexColumns>
       <Link href="/">
         <a>
-          <h1>Pablo Varela</h1>
+          <h1>{title}</h1>
         </a>
       </Link>
-      <span>Web developer</span>
+      <span>{subtitle}</span>
     </CenterFlexColumns>
   </GiveMeSomeMargin>
 )

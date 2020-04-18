@@ -13,6 +13,7 @@ import Repos from '../components/data/Repos'
 import { smallMediaQuery } from '../components/utils/media-queries'
 import { themes } from '../components/utils/themes'
 import { serverSideProps } from '../components/data/withCMS'
+import Page, { IPageProps } from '../components/layout/Page'
 
 const StyledGrid = styled.div`
   display: grid;
@@ -41,83 +42,96 @@ function go(link: string) {
   window.open(`https://${link}`)
 }
 
+interface IProps extends IPageProps {
+  introHeader
+  abstract
+  exampleProjectsHeader
+  githubReposIntroduction
+  exampleProjects
+}
+
 export default ({
-  header,
+  introHeader,
   abstract,
   exampleProjectsHeader,
   githubReposIntroduction,
   exampleProjects,
-}) => {
+  ...props
+}: IProps) => {
   return (
-    <CenterFlexColumns>
-      <NextSeo
-        title="Pablo Varela | Porfolio of my work"
-        description="Some examples of my work and technologies I use daily, both for personal and professional projects and."
-      />
-      <section>
-        <CenterFlex>
-          <h2>{header}</h2>
-        </CenterFlex>
-        <StyledGrid>
-          <div className="negative">
-            <Card onClick={(_) => go('reactjs.org')}>
-              <ReactLogo />
-              <strong>ReactJS</strong>
+    <Page {...props}>
+      <CenterFlexColumns>
+        <NextSeo
+          title="Pablo Varela | Porfolio of my work"
+          description="Some examples of my work and technologies I use daily, both for personal and professional projects and."
+        />
+        <section>
+          <CenterFlex>
+            <h2>{introHeader}</h2>
+          </CenterFlex>
+          <StyledGrid>
+            <div className="negative">
+              <Card onClick={(_) => go('reactjs.org')}>
+                <ReactLogo />
+                <strong>ReactJS</strong>
+              </Card>
+            </div>
+            <Card onClick={(_) => go('nextjs.org')}>
+              <NextLogo />
+              <strong>NextJS</strong>
             </Card>
-          </div>
-          <Card onClick={(_) => go('nextjs.org')}>
-            <NextLogo />
-            <strong>NextJS</strong>
-          </Card>
-          <div className="negative">
-            <Card onClick={(_) => go('nodejs.org')}>
-              <NodeLogo />
-              <strong>NodeJS</strong>
+            <div className="negative">
+              <Card onClick={(_) => go('nodejs.org')}>
+                <NodeLogo />
+                <strong>NodeJS</strong>
+              </Card>
+            </div>
+            <Card onClick={(_) => go('graphql.org')}>
+              <GraphQLLogo />
+              <strong>GraphQL</strong>
             </Card>
-          </div>
-          <Card onClick={(_) => go('graphql.org')}>
-            <GraphQLLogo />
-            <strong>GraphQL</strong>
-          </Card>
-        </StyledGrid>
-        <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
-      </section>
-      <section>
-        <CenterFlex>
-          <h3>{exampleProjectsHeader}</h3>
-        </CenterFlex>
-        {exampleProjects
-          .sort((a, b) => a._createdAt > b._createdAt)
-          .map((project) => (
-            <BorderTopOnSmallMedia key={project.name}>
-              <CenterFlex>
-                <Card onClick={(_) => window.open(project.link)}>
-                  <img
-                    width="150"
-                    src={project.picture.url}
-                    alt={project.picture.alt}
-                  />
-                  <strong>{project.name}</strong>
-                </Card>
-                <CenterFlexColumns>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: project.description }}
-                  ></div>
-                </CenterFlexColumns>
-              </CenterFlex>
-            </BorderTopOnSmallMedia>
-          ))}
-      </section>
-      <section>
-        <CenterFlexColumns>
-          <div
-            style={{ textAlign: 'center' }}
-            dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
-          ></div>
-          <Repos />
-        </CenterFlexColumns>
-      </section>
-    </CenterFlexColumns>
+          </StyledGrid>
+          <SimpleList>
+            <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
+          </SimpleList>
+        </section>
+        <section>
+          <CenterFlex>
+            <h3>{exampleProjectsHeader}</h3>
+          </CenterFlex>
+          {exampleProjects
+            .sort((a, b) => a._createdAt.localeCompare(b._createdAt))
+            .map((project) => (
+              <BorderTopOnSmallMedia key={project.name}>
+                <CenterFlex>
+                  <Card onClick={(_) => window.open(project.link)}>
+                    <img
+                      width="150"
+                      src={project.picture.url}
+                      alt={project.picture.alt}
+                    />
+                    <strong>{project.name}</strong>
+                  </Card>
+                  <CenterFlexColumns>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: project.description }}
+                    ></div>
+                  </CenterFlexColumns>
+                </CenterFlex>
+              </BorderTopOnSmallMedia>
+            ))}
+        </section>
+        <section>
+          <CenterFlexColumns>
+            <div
+              style={{ textAlign: 'center' }}
+              dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
+            ></div>
+            <Repos />
+          </CenterFlexColumns>
+        </section>
+      </CenterFlexColumns>
+    </Page>
   )
 }
 

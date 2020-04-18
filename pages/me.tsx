@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo'
 import CenterFlex from '../components/layout/CenterFlex'
 import styled from 'styled-components'
 import { serverSideProps } from '../components/data/withCMS'
+import Page, { IPageProps } from '../components/layout/Page'
 
 const StyledGrid = styled.div`
   max-width: 600px;
@@ -24,18 +25,24 @@ function flat(rows) {
   return output
 }
 
-export default ({ content }) => (
-  <CenterFlex>
-    <NextSeo
-      title="Pablo Varela | About me. Experience and Education"
-      description="Some things about me. Where I worked, where I work, my education, etc."
-    />
-    <StyledGrid>
-      {flat(content).map((item) => (
-        <div key={item} dangerouslySetInnerHTML={{ __html: item }} />
-      ))}
-    </StyledGrid>
-  </CenterFlex>
+interface IProps extends IPageProps {
+  content
+}
+
+export default ({ content, ...props }: IProps) => (
+  <Page {...props}>
+    <CenterFlex>
+      <NextSeo
+        title="Pablo Varela | About me. Experience and Education"
+        description="Some things about me. Where I worked, where I work, my education, etc."
+      />
+      <StyledGrid>
+        {flat(content).map((item) => (
+          <div key={item} dangerouslySetInnerHTML={{ __html: item }} />
+        ))}
+      </StyledGrid>
+    </CenterFlex>
+  </Page>
 )
 
 export const getServerSideProps = async (ctx) => serverSideProps(ctx, 'about')

@@ -4,25 +4,6 @@ import styled, { keyframes } from 'styled-components'
 import { smallMediaQuery } from '../utils/media-queries'
 import { themes, basicColors, themeCss } from '../utils/themes'
 
-const links = [
-  {
-    label: 'home',
-    href: '/',
-  },
-  {
-    label: 'work',
-    href: '/portfolio',
-  },
-  {
-    label: 'about me',
-    href: '/me',
-  },
-  {
-    label: 'contact',
-    href: '/contact',
-  },
-]
-
 // from https://codepen.io/inyoung1/pen/gZVdeX
 const borderKeyframes = keyframes`
   0%, 100% {
@@ -154,14 +135,14 @@ const StyledNav = styled.nav`
   }
 `
 
-const Nav = () => (
+const Nav = ({ main }) => (
   <CenterFlex style={{ margin: '50px 0' }}>
     <PsycoBox>
       <StyledNav>
-        {links.map((link) => (
-          <div key={link.href} style={{ position: 'relative' }}>
-            <Link href={link.href}>
-              <a>{link.label}</a>
+        {main.map((link) => (
+          <div key={link.id} style={{ position: 'relative' }}>
+            <Link href={link.link}>
+              <a>{link.text}</a>
             </Link>
           </div>
         ))}
