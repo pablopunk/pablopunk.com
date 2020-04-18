@@ -90,5 +90,18 @@ export async function fetchData(
         { locale },
         preview
       )
+
+    case 'contact':
+      return fetchAPI(
+        `
+        query ContactQuery($locale: SiteLocale) {
+          contact(locale: $locale) {
+            content(markdown: true)
+          }
+        }
+      `,
+        { locale },
+        preview
+      )
   }
 }
