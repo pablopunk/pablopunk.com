@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import CenterFlex from '../components/layout/CenterFlex'
 import Link from 'next/link'
@@ -18,23 +19,47 @@ const StyledImage = styled.img`
 interface IProps extends IPageProps {
   abstract
   profilePicture
+  profilePictureHover
 }
 
-export default ({ abstract = '', profilePicture = {}, ...props }: IProps) => (
-  <Page {...props}>
-    <br />
-    <CenterFlex>
-      <StyledImage
-        src={profilePicture.url}
-        alt={profilePicture.alt}
-        title={profilePicture.alt}
-      />
-      <div
-        style={{ maxWidth: '500px' }}
-        dangerouslySetInnerHTML={{ __html: abstract }}
-      ></div>
-    </CenterFlex>
-  </Page>
-)
+export default ({
+  abstract = '',
+  profilePicture = {},
+  profilePictureHover = {},
+  ...props
+}: IProps) => {
+  const [mouseoverImage, setMouseoverImage] = React.useState(false)
+  return (
+    <Page {...props}>
+      <br />
+      <CenterFlex>
+        <div style={{ display: mouseoverImage ? 'none' : 'block' }}>
+          <StyledImage
+            src={profilePicture.url}
+            alt={profilePicture.alt}
+            title={profilePicture.alt}
+            onMouseEnter={(ev) => {
+              setMouseoverImage(true)
+            }}
+          />
+        </div>
+        <div style={{ display: mouseoverImage ? 'block' : 'none' }}>
+          <StyledImage
+            src={profilePictureHover.url}
+            alt={profilePictureHover.alt}
+            title={profilePictureHover.alt}
+            onMouseLeave={(ev) => {
+              setMouseoverImage(false)
+            }}
+          />
+        </div>
+        <div
+          style={{ maxWidth: '500px' }}
+          dangerouslySetInnerHTML={{ __html: abstract }}
+        ></div>
+      </CenterFlex>
+    </Page>
+  )
+}
 
 export const getServerSideProps = async (ctx) => serverSideProps(ctx, 'home')

@@ -69,6 +69,10 @@ export async function fetchData(
               url
               alt
             }
+            profilePictureHover {
+              url
+              alt
+            }
             abstract(markdown: true)
             ${commonQueries}
           }
