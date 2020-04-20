@@ -215,7 +215,10 @@ const ChangeThemeButton = ({ title }) => {
         // __toggleDarkMode
         window['__' + 'toggleDarkMode']()
       }}
-      onMouseOver={() => setMouseOver(true)}
+      onMouseOver={() => {
+        setMouseOver(true)
+        setTimeout(() => setMouseOver(false), 2000)
+      }}
       onMouseOut={() => setMouseOver(false)}
     >
       <Tooltip message={title} show={mouseOver}>

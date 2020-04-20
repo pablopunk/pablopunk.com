@@ -6,7 +6,11 @@ import { themes } from '../components/utils/themes'
 import { serverSideProps } from '../components/data/withCMS'
 import Page, { IPageProps } from '../components/layout/Page'
 
-const StyledImage = styled.img`
+const CustomImageHover = styled.div<{
+  src: string
+  srcHover: string
+}>`
+  display: block;
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -14,6 +18,14 @@ const StyledImage = styled.img`
   body.dark & {
     border: 5px solid ${themes.dark.color2};
   }
+
+  background-size: cover;
+  background-image: url(${(props) => props.src});
+  &:hover {
+    background-image: url(${(props) => props.srcHover});
+  }
+
+  transition: background-image 0.5s;
 `
 
 interface IProps extends IPageProps {
@@ -27,39 +39,21 @@ export default ({
   profilePicture = {},
   profilePictureHover = {},
   ...props
-}: IProps) => {
-  const [mouseoverImage, setMouseoverImage] = React.useState(false)
-  return (
-    <Page {...props}>
-      <br />
-      <CenterFlex>
-        <div style={{ display: mouseoverImage ? 'none' : 'block' }}>
-          <StyledImage
-            src={profilePicture.url}
-            alt={profilePicture.alt}
-            title={profilePicture.alt}
-            onMouseEnter={(ev) => {
-              setMouseoverImage(true)
-            }}
-          />
-        </div>
-        <div style={{ display: mouseoverImage ? 'block' : 'none' }}>
-          <StyledImage
-            src={profilePictureHover.url}
-            alt={profilePictureHover.alt}
-            title={profilePictureHover.alt}
-            onMouseLeave={(ev) => {
-              setMouseoverImage(false)
-            }}
-          />
-        </div>
-        <div
-          style={{ maxWidth: '500px' }}
-          dangerouslySetInnerHTML={{ __html: abstract }}
-        ></div>
-      </CenterFlex>
-    </Page>
-  )
-}
+}: IProps) => (
+  <Page {...props}>
+    <br />
+    <CenterFlex>
+      <CustomImageHover
+        src={profilePicture.url}
+        srcHover={profilePictureHover.url}
+        title={profilePicture.alt}
+      />
+      <div
+        style={{ maxWidth: '500px' }}
+        dangerouslySetInnerHTML={{ __html: abstract }}
+      />
+    </CenterFlex>
+  </Page>
+)
 
 export const getServerSideProps = async (ctx) => serverSideProps(ctx, 'home')
