@@ -1,0 +1,61 @@
+import React from 'react'
+import styled from 'styled-components'
+import CenterFlex from '../../components/layout/CenterFlex'
+import Link from 'next/link'
+import { themes } from '../../components/utils/themes'
+import Page, { IPageProps } from '../../components/layout/Page'
+import { staticProps, staticPaths } from '../../components/data/withCMS'
+import { fetchData } from '../../lib/api'
+
+const CustomImageHover = styled.div<{
+  src: string
+  srcHover: string
+}>`
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid ${themes.light.color2};
+  body.dark & {
+    border: 5px solid ${themes.dark.color2};
+  }
+
+  background-size: cover;
+  background-image: url(${(props) => props.src});
+  &:hover {
+    background-image: url(${(props) => props.srcHover});
+  }
+
+  transition: background-image 0.5s;
+`
+
+interface IProps extends IPageProps {
+  abstract
+  profilePicture
+  profilePictureHover
+}
+
+export default ({
+  abstract = '',
+  profilePicture = {},
+  profilePictureHover = {},
+  ...props
+}: IProps) => (
+  <Page {...props}>
+    <br />
+    <CenterFlex>
+      <CustomImageHover
+        src={profilePicture.url}
+        srcHover={profilePictureHover.url}
+        title={profilePicture.alt}
+      />
+      <div
+        style={{ maxWidth: '500px' }}
+        dangerouslySetInnerHTML={{ __html: abstract }}
+      />
+    </CenterFlex>
+  </Page>
+)
+
+export const getStaticProps = (ctx) => staticProps('home', ctx)
+export const getStaticPaths = staticPaths

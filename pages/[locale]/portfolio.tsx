@@ -1,18 +1,18 @@
 import React from 'react'
-import CenterFlex from '../components/layout/CenterFlex'
+import CenterFlex from '../../components/layout/CenterFlex'
 import styled, { ThemeContext } from 'styled-components'
-import ReactLogo from '../components/svg/react'
-import NextLogo from '../components/svg/nextjs'
-import NodeLogo from '../components/svg/node'
-import GraphQLLogo from '../components/svg/graphql'
-import Card from '../components/Card'
-import SimpleList from '../components/layout/SimpleList'
-import CenterFlexColumns from '../components/layout/CenterFlexColumns'
-import Repos from '../components/data/Repos'
-import { smallMediaQuery } from '../components/utils/media-queries'
-import { themes } from '../components/utils/themes'
-import { serverSideProps } from '../components/data/withCMS'
-import Page, { IPageProps } from '../components/layout/Page'
+import ReactLogo from '../../components/svg/react'
+import NextLogo from '../../components/svg/nextjs'
+import NodeLogo from '../../components/svg/node'
+import GraphQLLogo from '../../components/svg/graphql'
+import Card from '../../components/Card'
+import SimpleList from '../../components/layout/SimpleList'
+import CenterFlexColumns from '../../components/layout/CenterFlexColumns'
+import Repos from '../../components/data/Repos'
+import { smallMediaQuery } from '../../components/utils/media-queries'
+import { themes } from '../../components/utils/themes'
+import Page, { IPageProps } from '../../components/layout/Page'
+import { staticProps, staticPaths } from '../../components/data/withCMS'
 
 const StyledGrid = styled.div`
   display: grid;
@@ -130,5 +130,5 @@ export default ({
   )
 }
 
-export const getServerSideProps = async (ctx) =>
-  serverSideProps(ctx, 'portfolio')
+export const getStaticProps = (ctx) => staticProps('portfolio', ctx)
+export const getStaticPaths = staticPaths

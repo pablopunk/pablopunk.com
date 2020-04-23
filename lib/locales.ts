@@ -1,9 +1,17 @@
 import { IncomingMessage } from 'http'
 
-export default function localeFromRequest(req: IncomingMessage) {
-  if (req.headers['accept-language']?.startsWith('es')) {
+export function localeFromString(str: string) {
+  if (str.startsWith('es')) {
     return 'es'
   }
 
   return 'en'
+}
+
+export function localeFromRequest(req: IncomingMessage) {
+  return localeFromString(req.headers['accept-language'])
+}
+
+export function localeFromBrowser() {
+  return localeFromString(window?.navigator?.language || 'en')
 }

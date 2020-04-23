@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch'
 const API_URL = 'https://graphql.datocms.com'
 const API_TOKEN = process.env.DATOCMS_API_TOKEN
 
-async function fetchAPI(query, variables = {}, preview = false) {
+async function fetchAPI(query, variables = {}, preview) {
   const res = await fetch(API_URL + (preview ? '/preview' : ''), {
     method: 'POST',
     headers: {

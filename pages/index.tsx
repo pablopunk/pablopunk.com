@@ -1,59 +1,24 @@
 import React from 'react'
-import styled from 'styled-components'
-import CenterFlex from '../components/layout/CenterFlex'
-import Link from 'next/link'
-import { themes } from '../components/utils/themes'
-import { serverSideProps } from '../components/data/withCMS'
-import Page, { IPageProps } from '../components/layout/Page'
+import Router from 'next/router'
+import { localeFromRequest, localeFromBrowser } from '../lib/locales'
 
-const CustomImageHover = styled.div<{
-  src: string
-  srcHover: string
-}>`
-  display: block;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 5px solid ${themes.light.color2};
-  body.dark & {
-    border: 5px solid ${themes.dark.color2};
+export default () => <div />
+
+export async function getServerSideProps({ req, res }) {
+  if (res) {
+    const locale = localeFromRequest(req)
+    const redirectUrl = '/' + locale
+
+    res.writeHead(302, { Location: redirectUrl })
+    res.end()
+  } else {
+    const locale = localeFromBrowser()
+    const redirectUrl = '/' + locale
+
+    Router.push(redirectUrl)
   }
 
-  background-size: cover;
-  background-image: url(${(props) => props.src});
-  &:hover {
-    background-image: url(${(props) => props.srcHover});
+  return {
+    props: {},
   }
-
-  transition: background-image 0.5s;
-`
-
-interface IProps extends IPageProps {
-  abstract
-  profilePicture
-  profilePictureHover
 }
-
-export default ({
-  abstract = '',
-  profilePicture = {},
-  profilePictureHover = {},
-  ...props
-}: IProps) => (
-  <Page {...props}>
-    <br />
-    <CenterFlex>
-      <CustomImageHover
-        src={profilePicture.url}
-        srcHover={profilePictureHover.url}
-        title={profilePicture.alt}
-      />
-      <div
-        style={{ maxWidth: '500px' }}
-        dangerouslySetInnerHTML={{ __html: abstract }}
-      />
-    </CenterFlex>
-  </Page>
-)
-
-export const getServerSideProps = async (ctx) => serverSideProps(ctx, 'home')

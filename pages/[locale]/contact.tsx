@@ -1,0 +1,18 @@
+import CenterFlex from '../../components/layout/CenterFlex'
+import Page, { IPageProps } from '../../components/layout/Page'
+import { staticProps, staticPaths } from '../../components/data/withCMS'
+
+interface IProps extends IPageProps {
+  content
+}
+
+export default ({ content, ...props }: IProps) => (
+  <Page {...props}>
+    <CenterFlex>
+      <div dangerouslySetInnerHTML={{ __html: content }} />
+    </CenterFlex>
+  </Page>
+)
+
+export const getStaticProps = (ctx) => staticProps('contact', ctx)
+export const getStaticPaths = staticPaths
