@@ -44,7 +44,7 @@ export default ({
 }: IProps) => (
   <Page {...props}>
     <br />
-    <CenterFlex height="60vh" marginTop="20px">
+    <CenterFlex>
       <CustomImageHover
         src={profilePicture.url}
         srcHover={profilePictureHover.url}

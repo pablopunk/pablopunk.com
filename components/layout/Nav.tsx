@@ -1,19 +1,19 @@
 import Link from 'next/link'
-import CenterFlex from './CenterFlex'
 import styled, { keyframes } from 'styled-components'
 import { smallMediaQuery } from '../utils/media-queries'
 import { themes, basicColors, themeCss } from '../utils/themes'
 
 const StyledNav = styled.nav`
-  position: relative;
+  position: absolute;
+  top: 0;
+  z-index: 200;
   width: 100%;
-  height: 100%;
+  height: 2.25rem;
+  margin: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  div {
-  }
+  justify-content: flex-start;
   a {
     padding: 1rem;
     font-size: 2.25rem;
@@ -39,17 +39,15 @@ const StyledNav = styled.nav`
 `
 
 const Nav = ({ main = [], locale }) => (
-  <CenterFlex>
-    <StyledNav>
-      {main.map((link) => (
-        <div key={link.id} style={{ position: 'relative' }}>
-          <Link href={'/[locale]/' + link.link} as={`/${locale}/${link.link}`}>
-            <a>{link.text}</a>
-          </Link>
-        </div>
-      ))}
-    </StyledNav>
-  </CenterFlex>
+  <StyledNav>
+    {main.map((link) => (
+      <div key={link.id} style={{ position: 'relative' }}>
+        <Link href={'/[locale]/' + link.link} as={`/${locale}/${link.link}`}>
+          <a>{link.text}</a>
+        </Link>
+      </div>
+    ))}
+  </StyledNav>
 )
 
 export default Nav

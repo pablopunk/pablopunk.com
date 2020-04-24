@@ -30,7 +30,7 @@ interface IProps extends IPageProps {
 
 export default ({ content, ...props }: IProps) => (
   <Page {...props}>
-    <CenterFlex marginTop="50px">
+    <CenterFlex>
       <StyledGrid>
         {flat(content).map((item) => (
           <div key={item} dangerouslySetInnerHTML={{ __html: item }} />

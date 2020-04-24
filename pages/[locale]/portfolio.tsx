@@ -37,6 +37,14 @@ const BorderTopOnSmallMedia = styled.div`
   }
 `
 
+const FlexRows = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media (${smallMediaQuery}) {
+    flex-direction: column;
+  }
+`
+
 function go(link: string) {
   window.open(`https://${link}`)
 }
@@ -61,9 +69,7 @@ export default ({
     <Page {...props}>
       <CenterFlexColumns>
         <section>
-          <CenterFlex>
-            <h2>{introHeader}</h2>
-          </CenterFlex>
+          <h2 style={{ textAlign: 'center' }}>{introHeader}</h2>
           <StyledGrid>
             <div className="negative">
               <Card onClick={(_) => go('reactjs.org')}>
@@ -91,12 +97,10 @@ export default ({
           </SimpleList>
         </section>
         <section>
-          <CenterFlex>
-            <h3>{exampleProjectsHeader}</h3>
-          </CenterFlex>
+          <h3 style={{ textAlign: 'center' }}>{exampleProjectsHeader}</h3>
           {allExampleProjects.map((project) => (
             <BorderTopOnSmallMedia key={project.name}>
-              <CenterFlex>
+              <FlexRows>
                 <Card onClick={(_) => window.open(project.link)}>
                   <img
                     width="150"
@@ -108,9 +112,9 @@ export default ({
                 <CenterFlexColumns>
                   <div
                     dangerouslySetInnerHTML={{ __html: project.description }}
-                  ></div>
+                  />
                 </CenterFlexColumns>
-              </CenterFlex>
+              </FlexRows>
             </BorderTopOnSmallMedia>
           ))}
         </section>

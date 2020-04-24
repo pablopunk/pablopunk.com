@@ -255,8 +255,8 @@ export default ({
   <>
     <GlobalStyle />
     <Meta {...metaTags} locale={locale} />
+    <Nav {...nav} locale={locale} />
     <Inner>
-      <Nav {...nav} locale={locale} />
       <StyledMain>{children}</StyledMain>
       <StyledFooter>
         <div dangerouslySetInnerHTML={{ __html: footer.copyright }}></div>

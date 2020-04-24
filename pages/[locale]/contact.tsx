@@ -8,7 +8,7 @@ interface IProps extends IPageProps {
 
 export default ({ content, ...props }: IProps) => (
   <Page {...props}>
-    <CenterFlex height="60vh">
+    <CenterFlex>
       <div dangerouslySetInnerHTML={{ __html: content }} />
     </CenterFlex>
     <style jsx>{`

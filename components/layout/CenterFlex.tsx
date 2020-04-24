@@ -1,24 +1,21 @@
 import styled from 'styled-components'
 import { smallMediaQuery } from '../utils/media-queries'
 
-const Component = styled.div<{
-  height?: string
-  marginTop?: string
-}>`
+const Component = styled.div`
   position: relative;
   display: flex;
-  height: ${({ height }) => height};
-  margin-top: ${({ marginTop }) => marginTop};
   flex-direction: row;
   justify-content: center;
   align-items: center;
   & > * {
     margin: 1rem;
   }
+  height: 100vh;
   @media (${smallMediaQuery}) {
     flex-direction: column;
+    height: 100%;
+    margin-top: 100px;
   }
 `
-Component.defaultProps = { height: 'inherit', marginTop: 'inherit' }
 
 export default Component
