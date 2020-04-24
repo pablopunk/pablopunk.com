@@ -92,7 +92,7 @@ export async function fetchData(
           githubReposIntroduction(markdown: true)
           ${commonPageQueries}
         }
-        allExampleProjects(orderBy: _createdAt_ASC ) {
+        allExampleProjects(orderBy: _createdAt_ASC, locale: $locale) {
           link
           name
           description(markdown: true)
