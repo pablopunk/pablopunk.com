@@ -135,13 +135,16 @@ const StyledNav = styled.nav`
   }
 `
 
-const Nav = ({ main = [] }) => (
+const Nav = ({ main = [], locale }) => (
   <CenterFlex style={{ margin: '50px 0' }}>
     <PsycoBox>
       <StyledNav>
         {main.map((link) => (
           <div key={link.id} style={{ position: 'relative' }}>
-            <Link href={link.link}>
+            <Link
+              href={'/[locale]/' + link.link}
+              as={`/${locale}/${link.link}`}
+            >
               <a>{link.text}</a>
             </Link>
           </div>

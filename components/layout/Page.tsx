@@ -285,7 +285,7 @@ export default ({
     </TopBar>
     <Inner>
       <Header {...header} />
-      <Nav {...nav} />
+      <Nav {...nav} locale={locale} />
       <StyledMain>{children}</StyledMain>
       <StyledFooter>
         <div dangerouslySetInnerHTML={{ __html: footer.copyright }}></div>
