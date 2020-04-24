@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import CenterFlex from '../../components/layout/CenterFlex'
-import Link from 'next/link'
 import { themes } from '../../components/utils/themes'
 import Page, { IPageProps } from '../../components/layout/Page'
 import { staticProps, staticPaths } from '../../components/data/withCMS'
