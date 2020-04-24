@@ -11,7 +11,12 @@ async function fetchAPI(query, variables = {}, preview) {
       Authorization: `Bearer ${API_TOKEN}`,
     },
     body: JSON.stringify({
-      query,
+      query: `
+        query MyQuery($locale: SiteLocale) {
+          ${query}
+          ${globalQueries}
+        }
+      `,
       variables,
     }),
   })
@@ -26,13 +31,8 @@ async function fetchAPI(query, variables = {}, preview) {
   return json.data
 }
 
-const commonQueries = `
-  nav {
-    main {
-      id
-      link
-      text
-    }
+const globalQueries = `
+  nav(locale: $locale) {
     bar {
       ... on LeftRecord {
         title
@@ -41,14 +41,22 @@ const commonQueries = `
         title
       }
     }
+    main {
+      id
+      link
+      text
+    }
   }
-  header {
+  footer(locale: $locale) {
+    copyright(markdown: true)
+  }
+  header(locale: $locale) {
     title
     subtitle
   }
-  footer {
-    copyright(markdown: true)
-  }
+`
+
+const commonPageQueries = `
   metaTags {
     title
     description
@@ -63,19 +71,17 @@ export async function fetchData(
     case 'home':
       return fetchAPI(
         `
-        query HomeQuery($locale: SiteLocale) {
-          home(locale: $locale) {
-            profilePicture {
-              url
-              alt
-            }
-            profilePictureHover {
-              url
-              alt
-            }
-            abstract(markdown: true)
-            ${commonQueries}
+        home(locale: $locale) {
+          profilePicture {
+            url
+            alt
           }
+          profilePictureHover {
+            url
+            alt
+          }
+          abstract(markdown: true)
+          ${commonPageQueries}
         }
         `,
         { locale },
@@ -85,22 +91,20 @@ export async function fetchData(
     case 'portfolio':
       return fetchAPI(
         `
-        query PortfolioQuery($locale: SiteLocale) {
-          portfolio(locale: $locale) {
-            introHeader
-            abstract(markdown: true)
-            exampleProjectsHeader
-            githubReposIntroduction(markdown: true)
-            ${commonQueries}
-          }
-          allExampleProjects(orderBy: _createdAt_ASC ) {
-            link
-            name
-            description(markdown: true)
-            picture {
-              alt
-              url
-            }
+        portfolio(locale: $locale) {
+          introHeader
+          abstract(markdown: true)
+          exampleProjectsHeader
+          githubReposIntroduction(markdown: true)
+          ${commonPageQueries}
+        }
+        allExampleProjects(orderBy: _createdAt_ASC ) {
+          link
+          name
+          description(markdown: true)
+          picture {
+            alt
+            url
           }
         }
         `,
@@ -111,14 +115,12 @@ export async function fetchData(
     case 'about':
       return fetchAPI(
         `
-        query AboutQuery($locale: SiteLocale) {
-          about(locale: $locale) {
-            content {
-              column1(markdown: true)
-              column2(markdown: true)
-            }
-            ${commonQueries}
+        about(locale: $locale) {
+          content {
+            column1(markdown: true)
+            column2(markdown: true)
           }
+          ${commonPageQueries}
         }
       `,
         { locale },
@@ -128,11 +130,9 @@ export async function fetchData(
     case 'contact':
       return fetchAPI(
         `
-        query ContactQuery($locale: SiteLocale) {
-          contact(locale: $locale) {
-            content(markdown: true)
-            ${commonQueries}
-          }
+        contact(locale: $locale) {
+          content(markdown: true)
+          ${commonPageQueries}
         }
       `,
         { locale },
