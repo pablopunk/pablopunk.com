@@ -11,6 +11,8 @@ const CustomImageHover = styled.div<{
   srcHover: string
 }>`
   display: block;
+  min-width: 150px;
+  min-height: 150px;
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -42,7 +44,7 @@ export default ({
 }: IProps) => (
   <Page {...props}>
     <br />
-    <CenterFlex>
+    <CenterFlex height="60vh" marginTop="20px">
       <CustomImageHover
         src={profilePicture.url}
         srcHover={profilePictureHover.url}

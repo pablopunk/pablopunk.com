@@ -33,19 +33,13 @@ async function fetchAPI(query, variables = {}, preview) {
 
 const globalQueries = `
   nav(locale: $locale) {
-    bar {
-      ... on LeftRecord {
-        title
-      }
-      ... on RightRecord {
-        title
-      }
-    }
     main {
       id
       link
       text
     }
+    changeThemeText
+    donateText
   }
   footer(locale: $locale) {
     copyright(markdown: true)

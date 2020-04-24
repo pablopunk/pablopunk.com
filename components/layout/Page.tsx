@@ -1,7 +1,6 @@
 import React from 'react'
 import Nav from './Nav'
 import Meta from '../Meta'
-import Header from './Header'
 import styled, { createGlobalStyle } from 'styled-components'
 import { themes, basicColors } from '../utils/themes'
 import { StyledStop, StyledStopNegative } from '../svg/Styled'
@@ -24,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    font-family: SFMono-Regular, Menlo, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     ${basicColors('light')}
     &.dark {
       ${basicColors('dark')}
@@ -109,27 +108,12 @@ const GlobalStyle = createGlobalStyle`
 const Inner = styled.div`
   max-width: 1000px;
   margin: 0 auto;
-  font-size: 2rem;
+  font-size: 1.8rem;
 `
 
 const StyledMain = styled.main`
   padding: 0 2rem;
-  margin: 100px 0 50px;
-`
-
-const TopBar = styled.div`
-  position: fixed;
-  z-index: 1;
-  background-color: ${themes.light.bgDim};
-  body.dark & {
-    background-color: ${themes.dark.bgDim};
-  }
-  width: 100%;
-  height: 40px;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-bottom: 50px;
 `
 
 const CustomButton = styled.button`
@@ -218,18 +202,20 @@ const ChangeThemeButton = ({ title }) => {
     </CustomButton>
   )
 }
+
 const StyledFooter = styled.footer`
-  p {
-    text-align: center;
-    margin: 2rem 0 3rem;
-    padding-top: 2rem;
-    font-size: 1.7rem;
-    border-top: 3px solid ${themes.light.bgDim};
-    ${basicColors('light')}
-    body.dark & {
-      ${basicColors('dark')}
-    }
-    opacity: 0.7;
+  text-align: center;
+  margin: 2rem 0 3rem;
+  padding-top: 2rem;
+  font-size: 1.7rem;
+  border-top: 3px solid ${themes.light.bgDim};
+  opacity: 0.7;
+  ${basicColors('light')}
+  body.dark & {
+    ${basicColors('dark')}
+  }
+  a:hover {
+    cursor: pointer;
   }
 `
 
@@ -254,8 +240,7 @@ const DonateButton = ({ title }) => {
 export interface IPageProps {
   children
   locale
-  header
-  nav
+  nav: { changeThemeText: string; donateText: string }
   footer
   metaTags
 }
@@ -263,24 +248,36 @@ export interface IPageProps {
 export default ({
   children,
   locale = 'en',
-  header,
-  nav = { bar: [] },
+  nav,
   footer = {},
   metaTags,
 }: IPageProps) => (
   <>
     <GlobalStyle />
     <Meta {...metaTags} locale={locale} />
-    <TopBar>
-      <ChangeThemeButton {...nav.bar[0]} />
-      <DonateButton {...nav.bar[1]} />
-    </TopBar>
     <Inner>
-      <Header {...header} />
       <Nav {...nav} locale={locale} />
       <StyledMain>{children}</StyledMain>
       <StyledFooter>
         <div dangerouslySetInnerHTML={{ __html: footer.copyright }}></div>
+        <p>
+          <a
+            onClick={() => {
+              window['__' + 'toggleDarkMode']()
+            }}
+          >
+            {nav.changeThemeText}
+          </a>
+        </p>
+        <p>
+          <a
+            onClick={() => {
+              window.open('/donate')
+            }}
+          >
+            {nav.donateText}
+          </a>
+        </p>
       </StyledFooter>
     </Inner>
   </>

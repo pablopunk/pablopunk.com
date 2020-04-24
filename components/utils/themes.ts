@@ -19,7 +19,7 @@ export const themes = {
   },
 }
 
-export const transition = '2.5s'
+export const transition = '0.4s'
 
 export const themeCss = ({ fg = null, bg = null }) => {
   const css = `
