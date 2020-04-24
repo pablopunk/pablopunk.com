@@ -7,6 +7,8 @@ export const themes = {
     color1: '#6c5ce7',
     color2: '#00cec9',
     blendMode: 'multiply',
+    boxShadow: '#d9d9d9',
+    boxShadowHover: '#efefef',
   },
   dark: {
     bg: '#010314',
@@ -16,6 +18,8 @@ export const themes = {
     color1: '#f67280',
     color2: '#81ecec',
     blendMode: 'screen',
+    boxShadow: '#010314',
+    boxShadowHover: '#010314',
   },
 }
 

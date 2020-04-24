@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { themes, basicColors } from '../utils/themes'
 import { StyledStop, StyledStopNegative } from '../svg/Styled'
 import { themeCss } from '../utils/themes'
+import { smallMediaQuery } from '../utils/media-queries'
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -109,6 +110,9 @@ const Inner = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   font-size: 1.8rem;
+  @media (${smallMediaQuery}) {
+    font-size: 2.1rem;
+  }
 `
 
 const StyledMain = styled.main`

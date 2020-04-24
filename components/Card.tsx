@@ -1,15 +1,22 @@
 import styled from 'styled-components'
 import { themes, basicColors, themeCss } from './utils/themes'
+import { smallMediaQuery } from './utils/media-queries'
 
 export default styled.div`
-  box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s;
   border-radius: 5px;
   padding: 10px 20px;
+
+  box-shadow: 20px 20px 60px ${themes.light.boxShadow}, -20px -20px 60px ${
+  themes.light.bg
+};
 
   ${basicColors('light')}
   body.dark & {
     ${basicColors('dark')}
+
+    box-shadow: 20px 20px 60px ${themes.dark.boxShadow}, -20px -20px 60px ${
+  themes.dark.bg
+};
   }
 
   display: flex;
@@ -18,8 +25,15 @@ export default styled.div`
   justify-content: center;
 
   &:hover {
-    box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 20px 20px 60px #efefef, -20px -20px 60px #ffffff;
     cursor: pointer;
+  }
+
+  @media(${smallMediaQuery}) {
+    box-shadow: none;
+    &:hover {
+      box-shadow: none;
+    }
   }
 
   strong {

@@ -32,6 +32,7 @@ const StyledNav = styled.nav`
     }
   }
   @media (${smallMediaQuery}) {
+    justify-content: center;
     a {
       font-size: 1.5rem;
     }

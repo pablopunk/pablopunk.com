@@ -43,12 +43,22 @@ const FlexRows = styled.div`
   * {
     margin: 0.8rem 0.4rem;
   }
-  @media (${smallMediaQuery}) {
-    flex-direction: column;
-  }
   p {
     font-size: 2.1rem;
     text-align: justify;
+  }
+  @media (${smallMediaQuery}) {
+    flex-direction: column;
+    p {
+      text-align: left;
+    }
+  }
+`
+
+const ProjectImg = styled.img`
+  width: 150px;
+  @media (${smallMediaQuery}) {
+    width: 100%;
   }
 `
 
@@ -109,8 +119,7 @@ export default ({
             <BorderTopOnSmallMedia key={project.name}>
               <FlexRows>
                 <Card onClick={(_) => window.open(project.link)}>
-                  <img
-                    width="150"
+                  <ProjectImg
                     src={project.picture.url}
                     alt={project.picture.alt}
                   />
