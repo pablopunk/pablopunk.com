@@ -49,7 +49,7 @@ export default ({
         title={profilePicture.alt}
       />
       <div
-        style={{ maxWidth: '500px' }}
+        style={{ maxWidth: '600px' }}
         dangerouslySetInnerHTML={{ __html: abstract }}
       />
     </CenterFlex>

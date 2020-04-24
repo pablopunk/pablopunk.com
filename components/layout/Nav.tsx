@@ -87,7 +87,6 @@ const StyledNav = styled.nav`
     padding: 1rem;
     font-size: 2rem;
     text-transform: uppercase;
-    font-family: Raleway, sans-serif;
     font-weight: bold;
     ${themeCss({ fg: themes.light.color2 })}
     body.dark & {

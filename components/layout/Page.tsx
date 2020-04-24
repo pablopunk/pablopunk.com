@@ -8,14 +8,6 @@ import { StyledStop, StyledStopNegative } from '../svg/Styled'
 import { themeCss } from '../utils/themes'
 
 const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: Raleway;
-    src: url('/fonts/Raleway/Raleway-Regular.ttf');
-  }
-  @font-face {
-    font-family: Zilla;
-    src: url('/fonts/Zilla_Slab/ZillaSlab-Regular.ttf');
-  }
   html {
     box-sizing: border-box;
     font-size: 10px;
@@ -32,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    font-family: Raleway, sans-serif;
+    font-family: SFMono-Regular, Menlo, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
     ${basicColors('light')}
     &.dark {
       ${basicColors('dark')}
@@ -64,8 +56,6 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   p {
-    font-family: Zilla, serif;
-    font-size: 2.2rem;
     margin: 1rem 0;
     ${themeCss({ fg: themes.light.fg })}
     body.dark & {
@@ -195,6 +185,8 @@ const Tooltip = ({ children, right = false, message, show }) => {
           fontSize: '16px',
           transform: transformation,
           transition: 'transform 0.2s ease, opacity 0.9s ease',
+          fontFamily:
+            "SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace",
         }}
       >
         <StyledText className={show ? 'show' : ''}>{message}</StyledText>
