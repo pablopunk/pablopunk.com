@@ -40,8 +40,15 @@ const BorderTopOnSmallMedia = styled.div`
 const FlexRows = styled.div`
   display: flex;
   flex-direction: row;
+  * {
+    margin: 0.8rem 0.4rem;
+  }
   @media (${smallMediaQuery}) {
     flex-direction: column;
+  }
+  p {
+    font-size: 2.1rem;
+    text-align: justify;
   }
 `
 
