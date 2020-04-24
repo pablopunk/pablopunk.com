@@ -91,17 +91,16 @@ export async function fetchData(
             abstract(markdown: true)
             exampleProjectsHeader
             githubReposIntroduction(markdown: true)
-            exampleProjects {
-              _createdAt
-              picture {
-                alt(locale: $locale)
-                url
-              }
-              name
-              description(markdown: true)
-              link
-            }
             ${commonQueries}
+          }
+          allExampleProjects(orderBy: _createdAt_ASC ) {
+            link
+            name
+            description(markdown: true)
+            picture {
+              alt
+              url
+            }
           }
         }
         `,

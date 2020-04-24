@@ -10,6 +10,7 @@ export const staticProps = async (pageName, { params, preview = false }) => {
 
   return {
     props: {
+      ...data,
       ...data[pageName],
       locale: params.locale,
       preview,

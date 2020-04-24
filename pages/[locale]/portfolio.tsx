@@ -46,7 +46,7 @@ interface IProps extends IPageProps {
   abstract
   exampleProjectsHeader
   githubReposIntroduction
-  exampleProjects
+  allExampleProjects
 }
 
 export default ({
@@ -54,7 +54,7 @@ export default ({
   abstract,
   exampleProjectsHeader,
   githubReposIntroduction,
-  exampleProjects,
+  allExampleProjects,
   ...props
 }: IProps) => {
   return (
@@ -94,27 +94,25 @@ export default ({
           <CenterFlex>
             <h3>{exampleProjectsHeader}</h3>
           </CenterFlex>
-          {exampleProjects
-            .sort((a, b) => a._createdAt.localeCompare(b._createdAt))
-            .map((project) => (
-              <BorderTopOnSmallMedia key={project.name}>
-                <CenterFlex>
-                  <Card onClick={(_) => window.open(project.link)}>
-                    <img
-                      width="150"
-                      src={project.picture.url}
-                      alt={project.picture.alt}
-                    />
-                    <strong>{project.name}</strong>
-                  </Card>
-                  <CenterFlexColumns>
-                    <div
-                      dangerouslySetInnerHTML={{ __html: project.description }}
-                    ></div>
-                  </CenterFlexColumns>
-                </CenterFlex>
-              </BorderTopOnSmallMedia>
-            ))}
+          {allExampleProjects.map((project) => (
+            <BorderTopOnSmallMedia key={project.name}>
+              <CenterFlex>
+                <Card onClick={(_) => window.open(project.link)}>
+                  <img
+                    width="150"
+                    src={project.picture.url}
+                    alt={project.picture.alt}
+                  />
+                  <strong>{project.name}</strong>
+                </Card>
+                <CenterFlexColumns>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: project.description }}
+                  ></div>
+                </CenterFlexColumns>
+              </CenterFlex>
+            </BorderTopOnSmallMedia>
+          ))}
         </section>
         <section>
           <CenterFlexColumns>
