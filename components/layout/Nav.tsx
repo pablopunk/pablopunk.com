@@ -67,8 +67,10 @@ const RightButtons = styled.div`
     margin: 0 1rem;
     cursor: pointer;
   }
-  a:hover {
-    opacity: 0.7;
+  @media (hover: hover) {
+    a:hover {
+      opacity: 0.7;
+    }
   }
 `
 
