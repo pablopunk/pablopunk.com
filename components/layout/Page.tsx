@@ -127,7 +127,6 @@ const Inner = styled.div`
 
 const StyledMain = styled.main`
   padding: 0 2rem;
-  margin-bottom: 50px;
 `
 
 const CustomButton = styled.button`
@@ -217,17 +216,14 @@ const ChangeThemeButton = ({ title }) => {
   )
 }
 
+export const footerHeight = 5
+
 const StyledFooter = styled.footer`
   text-align: center;
-  margin: 2rem 0 3rem;
-  padding-top: 2rem;
+  height: ${footerHeight}vh;
   font-size: 1.7rem;
   border-top: 3px solid ${themes.light.bgDim};
   opacity: 0.7;
-  ${basicColors('light')}
-  body.dark & {
-    ${basicColors('dark')}
-  }
   a:hover {
     cursor: pointer;
   }

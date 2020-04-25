@@ -6,17 +6,11 @@ export default styled.div`
   border-radius: 5px;
   padding: 10px 20px;
 
-  box-shadow: 20px 20px 60px ${themes.light.boxShadow}, -20px -20px 60px ${
-  themes.light.bg
-};
+  box-shadow: 20px 20px 60px ${themes.light.boxShadow},
+    -20px -20px 60px ${themes.light.bg};
 
-  ${basicColors('light')}
   body.dark & {
-    ${basicColors('dark')}
-
-    box-shadow: 20px 20px 60px ${themes.dark.boxShadow}, -20px -20px 60px ${
-  themes.dark.bg
-};
+    box-shadow: none;
   }
 
   display: flex;
@@ -29,7 +23,7 @@ export default styled.div`
     cursor: pointer;
   }
 
-  @media(${smallMediaQuery}) {
+  @media (${smallMediaQuery}) {
     box-shadow: none;
     &:hover {
       box-shadow: none;

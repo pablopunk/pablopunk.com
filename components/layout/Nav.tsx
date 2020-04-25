@@ -47,13 +47,12 @@ const StyledNav = styled.nav`
 
 const StyledBar = styled.div`
   position: absolute;
-  top: 0;
+  top: 1rem;
   left: 0;
   z-index: 200;
   height: 2.3rem;
   width: 100vw;
   padding: 1rem;
-  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

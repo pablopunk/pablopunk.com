@@ -43,7 +43,6 @@ export default ({
   ...props
 }: IProps) => (
   <Page {...props} path="">
-    <br />
     <CenterFlex>
       <CustomImageHover
         src={profilePicture.url}

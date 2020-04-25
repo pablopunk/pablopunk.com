@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { smallMediaQuery } from '../utils/media-queries'
+import { footerHeight } from './Page'
 
 const Component = styled.div`
   position: relative;
@@ -10,7 +11,7 @@ const Component = styled.div`
   & > * {
     margin: 1rem;
   }
-  height: 100vh;
+  height: ${100 - footerHeight}vh;
   @media (${smallMediaQuery}) {
     flex-direction: column;
     height: 100%;
