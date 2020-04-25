@@ -7,6 +7,15 @@ import { StyledStop, StyledStopNegative } from '../svg/Styled'
 import { themeCss } from '../utils/themes'
 import { smallMediaQuery } from '../utils/media-queries'
 
+const dottedBody = `
+  background-position: 0 0, 25px 25px;
+  background-size: 50px 50px;
+  background-image: radial-gradient(${themes.light.fg}33 1px, transparent 1px), radial-gradient(${themes.light.fg}44 1px, transparent 1px);
+  &.dark {
+    background-image: radial-gradient(${themes.dark.fg}33 1px, transparent 1px), radial-gradient(${themes.dark.fg}44 1px, transparent 1px);
+  }
+`
+
 const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
@@ -29,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
     &.dark {
       ${basicColors('dark')}
     }
+    ${dottedBody}
   }
   body.dark .show-dark {
     display: block;
