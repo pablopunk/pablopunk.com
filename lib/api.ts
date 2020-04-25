@@ -38,7 +38,8 @@ const globalQueries = `
       link
       text
     }
-    changeThemeText
+    changeThemeButtonLight
+    changeThemeButtonDark
     donateText
   }
   footer(locale: $locale) {

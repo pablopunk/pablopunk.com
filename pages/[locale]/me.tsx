@@ -29,7 +29,7 @@ interface IProps extends IPageProps {
 }
 
 export default ({ content, ...props }: IProps) => (
-  <Page {...props}>
+  <Page {...props} path="me">
     <CenterFlex>
       <StyledGrid>
         {flat(content).map((item) => (

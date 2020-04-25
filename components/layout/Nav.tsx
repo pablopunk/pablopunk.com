@@ -1,15 +1,10 @@
 import Link from 'next/link'
+import Router from 'next/router'
 import styled, { keyframes } from 'styled-components'
 import { smallMediaQuery } from '../utils/media-queries'
 import { themes, basicColors, themeCss } from '../utils/themes'
 
 const StyledNav = styled.nav`
-  position: absolute;
-  top: 0;
-  z-index: 200;
-  width: 100%;
-  height: 2.25rem;
-  margin: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -24,31 +19,96 @@ const StyledNav = styled.nav`
     body.dark & {
       ${themeCss({ fg: themes.dark.color2 })}
     }
-    &:hover {
+  }
+  @media (hover: hover) {
+    a:hover {
       color: ${themes.light.color1};
       body.dark & {
         color: ${themes.dark.color1};
       }
     }
   }
+  a.current {
+    ${themeCss({ fg: themes.light.color1 })}
+    body.dark & {
+      ${themeCss({ fg: themes.dark.color1 })}
+    }
+  }
   @media (${smallMediaQuery}) {
     justify-content: center;
     a {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
+    }
+    a.current {
+      display: none;
     }
   }
 `
 
-const Nav = ({ main = [], locale }) => (
-  <StyledNav>
-    {main.map((link) => (
-      <div key={link.id} style={{ position: 'relative' }}>
-        <Link href={'/[locale]/' + link.link} as={`/${locale}/${link.link}`}>
-          <a>{link.text}</a>
-        </Link>
-      </div>
-    ))}
-  </StyledNav>
+const StyledBar = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  height: 2.3rem;
+  width: 100vw;
+  padding: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const RightButtons = styled.div`
+  display: flex;
+  margin-right: 2rem;
+  a {
+    font-size: 2rem;
+    margin: 0 1rem;
+    cursor: pointer;
+  }
+  a:hover {
+    opacity: 0.7;
+  }
+`
+
+const Nav = ({
+  main = [],
+  changeThemeButtonDark,
+  changeThemeButtonLight,
+  donateText,
+  locale,
+  path,
+}) => (
+  <StyledBar>
+    <StyledNav>
+      {main.map((link) => {
+        let current = link.link === path
+
+        return (
+          <div key={link.id} style={{ position: 'relative' }}>
+            <Link
+              href={'/[locale]/' + link.link}
+              as={`/${locale}/${link.link}`}
+            >
+              <a className={current ? 'current' : ''}>{link.text}</a>
+            </Link>
+          </div>
+        )
+      })}
+    </StyledNav>
+    <RightButtons>
+      <a
+        onClick={() => {
+          window['__' + 'toggleDarkMode']()
+        }}
+      >
+        <span className="show-dark">{changeThemeButtonDark}</span>
+        <span className="show-light">{changeThemeButtonLight}</span>
+      </a>
+      <a href="/donate">{donateText}</a>
+    </RightButtons>
+  </StyledBar>
 )
 
 export default Nav

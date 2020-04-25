@@ -244,9 +244,14 @@ const DonateButton = ({ title }) => {
 export interface IPageProps {
   children
   locale
-  nav: { changeThemeText: string; donateText: string }
+  nav: {
+    changeThemeButtonDark: string
+    changeThemeButtonLight: string
+    donateText: string
+  }
   footer
   metaTags
+  path: string
 }
 
 export default ({
@@ -255,33 +260,16 @@ export default ({
   nav,
   footer = {},
   metaTags,
+  path,
 }: IPageProps) => (
   <>
     <GlobalStyle />
     <Meta {...metaTags} locale={locale} />
-    <Nav {...nav} locale={locale} />
+    <Nav {...nav} locale={locale} path={path} />
     <Inner>
       <StyledMain>{children}</StyledMain>
       <StyledFooter>
         <div dangerouslySetInnerHTML={{ __html: footer.copyright }}></div>
-        <p>
-          <a
-            onClick={() => {
-              window['__' + 'toggleDarkMode']()
-            }}
-          >
-            {nav.changeThemeText}
-          </a>
-        </p>
-        <p>
-          <a
-            onClick={() => {
-              window.open('/donate')
-            }}
-          >
-            {nav.donateText}
-          </a>
-        </p>
       </StyledFooter>
     </Inner>
   </>

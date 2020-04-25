@@ -26,17 +26,6 @@ const StyledGrid = styled.div`
   margin-bottom: 4rem;
 `
 
-const BorderTopOnSmallMedia = styled.div`
-  @media (${smallMediaQuery}) {
-    border-top: 2px solid ${themes.light.bgDim};
-    body.dark &  {
-      border-top: 2px solid ${themes.dark.bgDim};
-    }
-    padding: 2rem 0 0;
-    margin: 2rem 0 0;
-  }
-`
-
 const FlexRows = styled.div`
   display: flex;
   flex-direction: row;
@@ -83,7 +72,7 @@ export default ({
   ...props
 }: IProps) => {
   return (
-    <Page {...props}>
+    <Page {...props} path="portfolio">
       <CenterFlexColumns>
         <section>
           <h2 style={{ textAlign: 'center' }}>{introHeader}</h2>
@@ -116,7 +105,7 @@ export default ({
         <section>
           <h3 style={{ textAlign: 'center' }}>{exampleProjectsHeader}</h3>
           {allExampleProjects.map((project) => (
-            <BorderTopOnSmallMedia key={project.name}>
+            <div key={project.name}>
               <FlexRows>
                 <Card onClick={(_) => window.open(project.link)}>
                   <ProjectImg
@@ -131,7 +120,7 @@ export default ({
                   />
                 </CenterFlexColumns>
               </FlexRows>
-            </BorderTopOnSmallMedia>
+            </div>
           ))}
         </section>
         <section>

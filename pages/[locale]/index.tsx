@@ -42,7 +42,7 @@ export default ({
   profilePictureHover = {},
   ...props
 }: IProps) => (
-  <Page {...props}>
+  <Page {...props} path="">
     <br />
     <CenterFlex>
       <CustomImageHover
