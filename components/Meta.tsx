@@ -70,11 +70,11 @@ export default ({ title, description, locale }) => (
         name="google-site-verification"
         content="y-TnXGhfG_A0b-ttLIV076wjdtFdEMZw6d04iwfR2Xw"
       />
-      <script>
-        var clicky_site_ids = clicky_site_ids || [];
-        clicky_site_ids.push(101227152);
-      </script>
-      <script async src="//static.getclicky.com/js"></script>
+      <script
+        data-goatcounter="https://pablopink.goatcounter.com/count"
+        async
+        src="//gc.zgo.at/count.js"
+      ></script>
     </Head>
   </>
 )
