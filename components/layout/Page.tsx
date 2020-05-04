@@ -118,6 +118,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Inner = styled.div`
   max-width: 1000px;
+  margin: 0 auto;
   font-size: 1.8rem;
   @media (${smallMediaQuery}) {
     font-size: 2.1rem;
