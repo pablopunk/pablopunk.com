@@ -9,7 +9,5 @@ declare module 'styled-components' {
     color1: string
     color2: string
     blendMode: string
-    boxShadow: string
-    boxShadowHover: string
   }
 }

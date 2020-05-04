@@ -118,7 +118,6 @@ const GlobalStyle = createGlobalStyle`
 
 const Inner = styled.div`
   max-width: 1000px;
-  margin: 0 auto;
   font-size: 1.8rem;
   @media (${smallMediaQuery}) {
     font-size: 2.1rem;
@@ -216,16 +215,31 @@ const ChangeThemeButton = ({ title }) => {
   )
 }
 
-export const footerHeight = 5
+export const footerHeight = 7
 
 const StyledFooter = styled.footer`
-  text-align: center;
   height: ${footerHeight}vh;
   font-size: 1.7rem;
-  border-top: 3px solid ${themes.light.bgDim};
   opacity: 0.7;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   a:hover {
     cursor: pointer;
+  }
+  p {
+    margin: 0;
+  }
+
+  div {
+    border-top: 3px solid ${themes.light.bgDim};
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `
 
