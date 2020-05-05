@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import TextLoop from 'react-text-loop'
 import CenterFlex from '../../components/layout/CenterFlex'
 import { themes } from '../../components/utils/themes'
 import Page, { IPageProps } from '../../components/layout/Page'
@@ -30,6 +31,17 @@ const CustomImageHover = styled.div<{
   transition: background-image 0.5s;
 `
 
+const H1 = styled.h1`
+  text-align: left;
+  width: 27rem;
+  padding-left: 3rem;
+  margin: 0;
+`
+
+const initialLoop = 1000
+const timeToShowLoop = 7000
+const timeToIdleLoop = 4000
+
 interface IProps extends IPageProps {
   abstract
   profilePicture
@@ -41,21 +53,47 @@ export default ({
   profilePicture = {},
   profilePictureHover = {},
   ...props
-}: IProps) => (
-  <Page {...props} path="">
-    <CenterFlex>
-      <CustomImageHover
-        src={profilePicture.url}
-        srcHover={profilePictureHover.url}
-        title={profilePicture.alt}
-      />
-      <div
-        style={{ maxWidth: '600px' }}
-        dangerouslySetInnerHTML={{ __html: abstract }}
-      />
-    </CenterFlex>
-  </Page>
-)
+}: IProps) => {
+  const [freq, setFreq] = React.useState(initialLoop)
+
+  React.useEffect(() => {
+    if (freq === 0) {
+      setTimeout(() => {
+        setFreq(initialLoop)
+      }, timeToIdleLoop)
+    } else {
+      setTimeout(() => {
+        setFreq(0)
+      }, timeToShowLoop)
+    }
+  })
+
+  return (
+    <Page {...props} path="">
+      <CenterFlex column marginTop="10vh">
+        <H1>
+          pablo
+          <TextLoop interval={freq}>
+            <span>.pink</span>
+            <span>varela</span>
+            <span>punk</span>
+          </TextLoop>
+        </H1>
+        <CenterFlex free marginTop="20px">
+          <CustomImageHover
+            src={profilePicture.url}
+            srcHover={profilePictureHover.url}
+            title={profilePicture.alt}
+          />
+          <div
+            style={{ maxWidth: '600px' }}
+            dangerouslySetInnerHTML={{ __html: abstract }}
+          />
+        </CenterFlex>
+      </CenterFlex>
+    </Page>
+  )
+}
 
 export const getStaticProps = (ctx) => staticProps('home', ctx)
 export const getStaticPaths = staticPaths
