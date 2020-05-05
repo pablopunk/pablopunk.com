@@ -31,12 +31,7 @@ const CustomImageHover = styled.div<{
   transition: background-image 0.5s;
 `
 
-const H1 = styled.h1`
-  text-align: left;
-  width: 27rem;
-  padding-left: 3rem;
-  margin: 0;
-`
+const H1 = styled.h1``
 
 const initialLoop = 1000
 const timeToShowLoop = 7000
@@ -72,7 +67,7 @@ export default ({
     <Page {...props} path="">
       <CenterFlex column marginTop="10vh">
         <H1>
-          pablo
+          <span>pablo</span>
           <TextLoop interval={freq}>
             <span>.pink</span>
             <span>varela</span>
