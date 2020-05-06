@@ -103,15 +103,12 @@ const Nav = ({
         onClick={() => {
           window['__' + 'toggleDarkMode']()
         }}
+        title="Toggle light/dark colors"
       >
-        <span className="show-dark" alt="Use light colors">
-          {changeThemeButtonDark}
-        </span>
-        <span className="show-light" alt="Use dark colors">
-          {changeThemeButtonLight}
-        </span>
+        <span className="show-dark">{changeThemeButtonDark}</span>
+        <span className="show-light">{changeThemeButtonLight}</span>
       </a>
-      <a href="/donate" alt="Donate">
+      <a href="/donate" title="Donate">
         {donateText}
       </a>
     </RightButtons>
