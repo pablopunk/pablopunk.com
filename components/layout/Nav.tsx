@@ -104,10 +104,16 @@ const Nav = ({
           window['__' + 'toggleDarkMode']()
         }}
       >
-        <span className="show-dark">{changeThemeButtonDark}</span>
-        <span className="show-light">{changeThemeButtonLight}</span>
+        <span className="show-dark" alt="Use light colors">
+          {changeThemeButtonDark}
+        </span>
+        <span className="show-light" alt="Use dark colors">
+          {changeThemeButtonLight}
+        </span>
       </a>
-      <a href="/donate">{donateText}</a>
+      <a href="/donate" alt="Donate">
+        {donateText}
+      </a>
     </RightButtons>
   </StyledBar>
 )
