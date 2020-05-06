@@ -6,6 +6,7 @@ interface IProps {
   column?: boolean
   free?: boolean
   marginTop?: string
+  alwaysFill?: boolean
 }
 
 const Component = styled.div<IProps>`
@@ -18,11 +19,16 @@ const Component = styled.div<IProps>`
     margin: 1rem;
   }
   ${(props) => (props.free ? '' : `height: ${100 - footerHeight}vh;`)}
-  @media (${smallMediaQuery}) {
-    flex-direction: column;
-    height: 100%;
-    margin-top: ${(props) => props.marginTop ?? '100px'};
-  }
+  ${(props) =>
+    props.alwaysFill
+      ? ''
+      : `
+      @media (${smallMediaQuery}) {
+        flex-direction: column;
+        ${(props) => (props.alwaysFill ? '' : 'height: 100%;')}
+        margin-top: ${(props) => props.marginTop ?? '100px'};
+      }
+    `}
 `
 
 export default Component

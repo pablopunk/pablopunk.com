@@ -60,10 +60,10 @@ const StyledBar = styled.div`
 
 const RightButtons = styled.div`
   display: flex;
-  margin-right: 2rem;
+  margin-right: 1rem;
   a {
-    font-size: 2rem;
-    margin: 0 1rem;
+    font-size: 3rem;
+    margin-left: 1rem;
     cursor: pointer;
   }
   @media (hover: hover) {
