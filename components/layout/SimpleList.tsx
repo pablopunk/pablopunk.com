@@ -14,10 +14,13 @@ export default styled.div`
     p {
       margin: 1rem 0;
     }
+    a {
+      margin-left: 1rem;
+    }
     &:before {
       content: '-';
       position: absolute;
-      margin-left: -2rem;
+      margin-left: -1rem;
       color: ${themes.light.color2};
       body.dark & {
         color: ${themes.dark.color2};
