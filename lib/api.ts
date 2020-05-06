@@ -111,10 +111,7 @@ export async function fetchData(
       return fetchAPI(
         `
         about(locale: $locale) {
-          content {
-            column1(markdown: true)
-            column2(markdown: true)
-          }
+          content(markdown: true)
           ${commonPageQueries}
         }
       `,
