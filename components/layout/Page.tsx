@@ -221,7 +221,7 @@ export const footerHeight = 7
 const StyledFooter = styled.footer`
   height: ${footerHeight}vh;
   font-size: 1.7rem;
-  opacity: 0.7;
+  opacity: 0.5;
   width: 100%;
   display: flex;
   align-items: center;
@@ -240,7 +240,7 @@ const StyledFooter = styled.footer`
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
   }
 `
 
@@ -270,7 +270,7 @@ export interface IPageProps {
     changeThemeButtonLight: string
     donateText: string
   }
-  footer
+  footer: { copyright: string }
   metaTags
   path: string
 }
@@ -279,7 +279,7 @@ export default ({
   children,
   locale = 'en',
   nav,
-  footer = {},
+  footer,
   metaTags,
   path,
 }: IPageProps) => (
