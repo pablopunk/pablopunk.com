@@ -129,7 +129,7 @@ export default ({
               style={{ textAlign: 'center' }}
               dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
             ></div>
-            <Repos />
+            <Repos locale={props.locale} />
           </CenterFlexColumns>
         </section>
       </CenterFlexColumns>

@@ -3,6 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import SimpleList from '../layout/SimpleList'
 import humanNumber from 'human-number'
 import Loading from '../Loading'
+import { t } from '../../lib/locales'
 
 const API = 'https://repos.pablo.pink/api'
 
@@ -13,11 +14,17 @@ const ADDITIONAL_REPOS = [
     stargazers_count: '1700',
     description: 'Lad scaffolds a Koa webapp and API framework for Node.js',
   },
+  {
+    name: 'forwardemail.net',
+    html_url: 'https://github.com/forwardemail/free-email-forwarding',
+    stargazers_count: '1500',
+    description: 'The best free email forwarding for custom domains',
+  },
 ]
 
 const fetcher = (url) => fetch(url).then((_) => _.json())
 
-export default () => {
+export default ({ locale }) => {
   const { data, error } = useSWR(API, fetcher)
 
   if (error) {
@@ -34,6 +41,10 @@ export default () => {
     .map((repo) => ({
       ...repo,
       description: repo.description?.replace('[UNMANTAINED]. ', '') || '',
+    }))
+    .map((repo) => ({
+      ...repo,
+      description: t(repo.description ?? '', locale),
     }))
     .map((repo) => ({
       ...repo,

@@ -1,0 +1,38 @@
+{
+  "Lad scaffolds a Koa webapp and API framework for Node.js": {
+    "es": "Lad construye una webapp Koa y una API para Node.js"
+  },
+  "The best free email forwarding for custom domains": {
+    "es": "La mejor redirección de email gratuita para dominios personalizados"
+  },
+  "Simple app to time your Rubik's Cube solves": {
+    "es": "Sencilla app para cronometrar y gestionar tus tiempos resolviendo el cubo de Rubik"
+  },
+  "Simple app to check your laptop's battery health.": {
+    "es": "Sencilla app para comprobar la salud de la batería de tu portátil"
+  },
+  "The simplest but configurable online clock": {
+    "es": "El reloj más simple pero más configurable"
+  },
+  "Extremely fast and simple git prompt for bash": {
+    "es": "Un prompt con git para bash extremadamente rápido"
+  },
+  "HOC to redirect to any URL in NextJS both in client and server": {
+    "es": "HOC para redireccionar a cualquier URL en NextJS tanto en el cliente como en el servidor"
+  },
+  "Quickly show all your terminal colors": {
+    "es": "Muestra rápidamente todos los colores de tu terminal"
+  },
+  "The minimal module generator that generated itself": {
+    "es": "El generador de módulos npm minimalista que se generó a sí mismo"
+  },
+  "Blazing fast personal website with JAM Stack": {
+    "es": "Comparte archivos en tu red con solo arrastrarlos al icono"
+  },
+  "Parse soccer games data from https://livesoccertv.com": {
+    "es": "Parsea datos de partidos de fútbol de https://livesoccertv.com"
+  },
+  "Create your own vim color schemes. Easy AF.": {
+    "es": "Crea tus propios colors para vim muy fácilmente"
+  }
+}
