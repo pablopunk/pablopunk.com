@@ -46,8 +46,10 @@ export default class extends Document {
   }
 
   render() {
+    const lang = this.props.__NEXT_DATA__?.props?.pageProps?.locale || 'en'
+
     return (
-      <Html>
+      <Html lang={lang}>
         <Head />
         <body>
           <script dangerouslySetInnerHTML={{ __html: darkModeCode }} />
