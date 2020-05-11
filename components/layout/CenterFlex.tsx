@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { smallMediaQuery } from '../utils/media-queries'
-import { footerHeight } from './Page'
+import { smallMediaQuery } from 'components/utils/media-queries'
+import { footerHeight } from 'components/layout/Page'
 
 interface IProps {
   column?: boolean

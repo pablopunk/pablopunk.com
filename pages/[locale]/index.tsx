@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import TextLoop from 'react-text-loop'
-import CenterFlex from '../../components/layout/CenterFlex'
-import { themes } from '../../components/utils/themes'
-import Page, { IPageProps } from '../../components/layout/Page'
-import { staticProps, staticPaths } from '../../components/data/withCMS'
-import { fetchData } from '../../lib/api'
+import CenterFlex from 'components/layout/CenterFlex'
+import { themes } from 'components/utils/themes'
+import Page, { IPageProps } from 'components/layout/Page'
+import { staticProps, staticPaths } from 'components/data/withCMS'
+import { fetchData } from 'lib/api'
 
 const CustomImageHover = styled.div<{
   src: string

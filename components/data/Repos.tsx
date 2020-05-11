@@ -1,9 +1,9 @@
 import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch'
-import SimpleList from '../layout/SimpleList'
+import SimpleList from 'components/layout/SimpleList'
 import humanNumber from 'human-number'
-import Loading from '../Loading'
-import { t } from '../../lib/locales'
+import Loading from 'components/Loading'
+import { t } from 'lib/locales'
 
 const API = 'https://repos.pablo.pink/api'
 

@@ -1,11 +1,11 @@
 import React from 'react'
-import Nav from './Nav'
-import Meta from '../Meta'
+import Nav from 'components/layout/Nav'
+import Meta from 'components/Meta'
 import styled, { createGlobalStyle } from 'styled-components'
-import { themes, basicColors } from '../utils/themes'
-import { StyledStop, StyledStopNegative } from '../svg/Styled'
-import { themeCss } from '../utils/themes'
-import { smallMediaQuery } from '../utils/media-queries'
+import { themes, basicColors } from 'components/utils/themes'
+import { StyledStop, StyledStopNegative } from 'components/svg/Styled'
+import { themeCss } from 'components/utils/themes'
+import { smallMediaQuery } from 'components/utils/media-queries'
 
 const dottedBody = `
   background-position: 0 0, 25px 25px;

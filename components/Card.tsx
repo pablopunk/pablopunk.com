@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { themes, basicColors, themeCss } from './utils/themes'
-import { smallMediaQuery } from './utils/media-queries'
+import { themes, basicColors, themeCss } from 'components/utils/themes'
+import { smallMediaQuery } from 'components/utils/media-queries'
 
 export default styled.div`
   border-radius: 5px;

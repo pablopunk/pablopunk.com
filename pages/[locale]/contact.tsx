@@ -1,6 +1,6 @@
-import CenterFlex from '../../components/layout/CenterFlex'
-import Page, { IPageProps } from '../../components/layout/Page'
-import { staticProps, staticPaths } from '../../components/data/withCMS'
+import CenterFlex from 'components/layout/CenterFlex'
+import Page, { IPageProps } from 'components/layout/Page'
+import { staticProps, staticPaths } from 'components/data/withCMS'
 
 interface IProps extends IPageProps {
   content

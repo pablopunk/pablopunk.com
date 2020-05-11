@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { themes, transition } from '../utils/themes'
+import { themes, transition } from 'components/utils/themes'
 
 export default styled.div`
   li {

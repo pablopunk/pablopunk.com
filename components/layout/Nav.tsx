@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Router from 'next/router'
 import styled, { keyframes } from 'styled-components'
-import { smallMediaQuery } from '../utils/media-queries'
-import { themes, basicColors, themeCss } from '../utils/themes'
+import { smallMediaQuery } from 'components/utils/media-queries'
+import { themes, basicColors, themeCss } from 'components/utils/themes'
 
 const StyledNav = styled.nav`
   display: flex;

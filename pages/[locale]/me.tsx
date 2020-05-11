@@ -1,7 +1,7 @@
-import CenterFlex from '../../components/layout/CenterFlex'
+import CenterFlex from 'components/layout/CenterFlex'
 import styled from 'styled-components'
-import Page, { IPageProps } from '../../components/layout/Page'
-import { staticProps, staticPaths } from '../../components/data/withCMS'
+import Page, { IPageProps } from 'components/layout/Page'
+import { staticProps, staticPaths } from 'components/data/withCMS'
 
 const StyledGrid = styled.div`
   div {
