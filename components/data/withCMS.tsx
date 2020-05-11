@@ -1,8 +1,10 @@
 import React from 'react'
-import { GetServerSideProps } from 'next'
 import { fetchData } from '../../lib/api'
 
-export const staticProps = async (pageName, { params, preview = false }) => {
+export const staticProps = async (
+  pageName: string,
+  { params, preview = false }
+) => {
   const data = await fetchData(pageName, {
     locale: params.locale,
     preview,

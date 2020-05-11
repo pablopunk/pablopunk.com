@@ -1,6 +1,5 @@
 import React from 'react'
-import CenterFlex from '../../components/layout/CenterFlex'
-import styled, { ThemeContext } from 'styled-components'
+import styled from 'styled-components'
 import ReactLogo from '../../components/svg/react'
 import NextLogo from '../../components/svg/nextjs'
 import NodeLogo from '../../components/svg/node'
