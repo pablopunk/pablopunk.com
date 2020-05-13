@@ -10,7 +10,7 @@ const StyledNav = styled.nav`
   align-items: center;
   justify-content: flex-start;
   a {
-    padding: 0.5rem;
+    padding: 1rem;
     font-size: 2.25rem;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     text-transform: uppercase;
