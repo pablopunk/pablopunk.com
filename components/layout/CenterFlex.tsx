@@ -7,6 +7,7 @@ interface IProps {
   free?: boolean
   marginTop?: string
   alwaysFill?: boolean
+  onlyBig?: boolean
 }
 
 const Component = styled.div<IProps>`
@@ -25,10 +26,18 @@ const Component = styled.div<IProps>`
       : `
       @media (${smallMediaQuery}) {
         flex-direction: column;
-        ${(props) => (props.alwaysFill ? '' : 'height: 100%;')}
-        margin-top: ${(props) => props.marginTop ?? '100px'};
+        ${props.alwaysFill ? '' : 'height: 100%;'}
+        margin-top: ${props.marginTop ?? '100px'};
       }
     `}
+    ${(props) =>
+      props.onlyBig
+        ? `
+      @media(${smallMediaQuery}) {
+        display: block
+      }
+      `
+        : ''}
 `
 
 export default Component

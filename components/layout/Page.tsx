@@ -242,6 +242,10 @@ const StyledFooter = styled.footer`
     align-items: center;
     justify-content: space-between;
   }
+
+  @media (${smallMediaQuery}) {
+    display: none;
+  }
 `
 
 const DonateButton = ({ title }) => {

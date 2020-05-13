@@ -10,7 +10,7 @@ const StyledNav = styled.nav`
   align-items: center;
   justify-content: flex-start;
   a {
-    padding: 1rem;
+    padding: 0.5rem;
     font-size: 2.25rem;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     text-transform: uppercase;
@@ -37,7 +37,7 @@ const StyledNav = styled.nav`
   @media (${smallMediaQuery}) {
     justify-content: center;
     a {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
     a.current {
       display: none;
@@ -52,7 +52,7 @@ const StyledBar = styled.div`
   z-index: 200;
   height: 2.3rem;
   width: 100vw;
-  padding: 1rem;
+  padding: 1rem 0.4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,7 +62,7 @@ const RightButtons = styled.div`
   display: flex;
   margin-right: 1rem;
   a {
-    font-size: 3rem;
+    font-size: 2.4rem;
     margin-left: 1rem;
     cursor: pointer;
   }

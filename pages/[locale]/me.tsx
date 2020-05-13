@@ -34,7 +34,7 @@ export default ({ content, ...props }: IProps) => {
 
   return (
     <Page {...props} path="me">
-      <CenterFlex>
+      <CenterFlex onlyBig marginTop="8vh">
         <StyledGrid>
           <div dangerouslySetInnerHTML={{ __html: content }} />
         </StyledGrid>
