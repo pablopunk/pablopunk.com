@@ -1,7 +1,7 @@
-import CenterFlex from 'components/layout/CenterFlex'
 import styled from 'styled-components'
-import Page, { IPageProps } from 'components/layout/Page'
+import Page, { IPageProps, footerHeight } from 'components/layout/Page'
 import { staticProps, staticPaths } from 'components/data/withCMS'
+import { smallMediaQuery } from 'components/utils/media-queries'
 
 const StyledGrid = styled.div`
   div {
@@ -25,6 +25,18 @@ function howOldAmI() {
   return iHadABirthDayThisYear ? yearsSinceIWasBorn : yearsSinceIWasBorn - 1
 }
 
+const StyledContent = styled.div`
+  height: ${100 - footerHeight}vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (${smallMediaQuery}) {
+    height: 100%;
+    margin-top: 50px;
+  }
+`
+
 interface IProps extends IPageProps {
   content
 }
@@ -34,11 +46,11 @@ export default ({ content, ...props }: IProps) => {
 
   return (
     <Page {...props} path="me">
-      <CenterFlex onlyBig marginTop="8vh">
+      <StyledContent>
         <StyledGrid>
           <div dangerouslySetInnerHTML={{ __html: content }} />
         </StyledGrid>
-      </CenterFlex>
+      </StyledContent>
     </Page>
   )
 }

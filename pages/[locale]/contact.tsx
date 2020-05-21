@@ -1,4 +1,4 @@
-import CenterFlex from 'components/layout/CenterFlex'
+import FixedCenter from 'components/layout/FixedCenter'
 import Page, { IPageProps } from 'components/layout/Page'
 import { staticProps, staticPaths } from 'components/data/withCMS'
 
@@ -8,9 +8,9 @@ interface IProps extends IPageProps {
 
 export default ({ content, ...props }: IProps) => (
   <Page {...props} path="contact">
-    <CenterFlex alwaysFill>
+    <FixedCenter>
       <div dangerouslySetInnerHTML={{ __html: content }} />
-    </CenterFlex>
+    </FixedCenter>
     <style jsx>{`
       div {
         text-align: center;

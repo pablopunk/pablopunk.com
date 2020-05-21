@@ -235,7 +235,6 @@ const StyledFooter = styled.footer`
   }
 
   div {
-    border-top: 3px solid ${themes.light.bgDim};
     width: 80%;
     height: 100%;
     display: flex;

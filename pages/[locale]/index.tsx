@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import TextLoop from 'react-text-loop'
 import { themes } from 'components/utils/themes'
-import CenterFlex from 'components/layout/CenterFlex'
 import Page, { IPageProps } from 'components/layout/Page'
 import { staticProps, staticPaths } from 'components/data/withCMS'
+import { smallMediaQuery } from 'components/utils/media-queries'
+import FixedCenter from 'components/layout/FixedCenter'
 
 const CustomImageHover = styled.div<{
   src: string
@@ -28,6 +29,19 @@ const CustomImageHover = styled.div<{
   }
 
   transition: background-image 0.5s;
+`
+
+const StyledContent = styled.div`
+  display: flex;
+  p {
+    margin: 1rem 2rem;
+  }
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  @media (${smallMediaQuery}) {
+    flex-direction: column;
+  }
 `
 
 const H1 = styled.h1`
@@ -70,7 +84,7 @@ export default ({
 
   return (
     <Page {...props} path="">
-      <CenterFlex column marginTop="10vh">
+      <FixedCenter>
         <H1>
           <span>pablo</span>
           <TextLoop interval={freq} delay={1000}>
@@ -79,7 +93,7 @@ export default ({
             <span>punk</span>
           </TextLoop>
         </H1>
-        <CenterFlex free marginTop="20px">
+        <StyledContent>
           <CustomImageHover
             src={profilePicture.url}
             srcHover={profilePictureHover.url}
@@ -89,8 +103,8 @@ export default ({
             style={{ maxWidth: '600px' }}
             dangerouslySetInnerHTML={{ __html: abstract }}
           />
-        </CenterFlex>
-      </CenterFlex>
+        </StyledContent>
+      </FixedCenter>
     </Page>
   )
 }
