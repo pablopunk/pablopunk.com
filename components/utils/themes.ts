@@ -1,7 +1,7 @@
 export const themes = {
   light: {
     bg: 'white',
-    bgDim: 'rgba(0,0,0,0.075)',
+    bgDim: '#f8f8f8',
     fg: '#2d3436',
     fgStrong: 'black',
     color1: '#6c5ce7',
@@ -9,8 +9,8 @@ export const themes = {
     blendMode: 'multiply',
   },
   dark: {
-    bg: '#010314',
-    bgDim: 'rgba(255,255,255,0.15)',
+    bg: 'black',
+    bgDim: '#050505',
     fg: '#dadada',
     fgStrong: 'white',
     color1: '#f67280',

@@ -11,6 +11,42 @@ import ReactLogo from 'components/svg/react'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import React from 'react'
 import styled from 'styled-components'
+import { themes } from 'components/utils/themes'
+
+const ExampleProject = styled.div`
+  display: flex;
+  align-items: center;
+
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  background-color: ${themes.light.bgDim};
+
+  body.dark & {
+    background-color: ${themes.dark.bgDim};
+  }
+
+  figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    strong {
+      color: ${themes.light.color2};
+
+      body.dark & {
+        color: ${themes.dark.color2};
+      }
+    }
+
+    img {
+      border-radius: 4px;
+    }
+  }
+
+  @media (${smallMediaQuery}) {
+    flex-direction: column;
+  }
+`
 
 const StyledGrid = styled.div`
   display: grid;
@@ -105,18 +141,20 @@ export default ({
           {allExampleProjects.map((project) => (
             <div key={project.name}>
               <FlexRows>
-                <Card onClick={(_) => window.open(project.link)}>
-                  <ProjectImg
-                    src={project.picture.url}
-                    alt={project.picture.alt}
-                  />
-                  <strong>{project.name}</strong>
-                </Card>
-                <CenterFlexColumns>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: project.description }}
-                  />
-                </CenterFlexColumns>
+                <ExampleProject onClick={(_) => window.open(project.link)}>
+                  <figure>
+                    <ProjectImg
+                      src={project.picture.url}
+                      alt={project.picture.alt}
+                    />
+                    <strong>{project.name}</strong>
+                  </figure>
+                  <CenterFlexColumns>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: project.description }}
+                    />
+                  </CenterFlexColumns>
+                </ExampleProject>
               </FlexRows>
             </div>
           ))}
