@@ -12,17 +12,23 @@ export default styled.div`
   justify-content: center;
   cursor: pointer;
   transition: border 0.4s;
+  box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
 
   border: 1px solid ${themes.light.bgDim};
   &:hover {
     border: 1px solid ${themes.light.color1};
   }
 
+  ${themeCss({
+    bg: themes.light.bg,
+    border: `1px solid ${themes.light.bgDim}`,
+  })}
+
   body.dark & {
-    border: 1px solid ${themes.dark.bgDim};
-    &:hover {
-      border: 1px solid ${themes.dark.color1};
-    }
+    ${themeCss({
+      bg: themes.dark.bg,
+      border: `1px solid ${themes.dark.bgDim}`,
+    })}
   }
 
   strong {

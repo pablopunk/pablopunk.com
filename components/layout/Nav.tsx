@@ -10,7 +10,7 @@ const StyledNav = styled.nav`
   align-items: center;
   justify-content: flex-start;
   a {
-    padding: 1rem;
+    padding: var(--space-2);
     font-size: 2.25rem;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     text-transform: uppercase;
@@ -52,7 +52,7 @@ const StyledBar = styled.div`
   z-index: 200;
   height: 2.3rem;
   width: 100vw;
-  padding: 1rem 0.4rem;
+  padding: var(--space-2) var(--space-1);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,10 +60,10 @@ const StyledBar = styled.div`
 
 const RightButtons = styled.div`
   display: flex;
-  margin-right: 1rem;
+  margin-right: var(--space-2);
   a {
     font-size: 2.4rem;
-    margin-left: 1rem;
+    margin-left: var(--space-2);
     cursor: pointer;
   }
   @media (hover: hover) {

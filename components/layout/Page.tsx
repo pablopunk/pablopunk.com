@@ -2,14 +2,14 @@ import React from 'react'
 import Nav from 'components/layout/Nav'
 import Meta from 'components/Meta'
 import styled, { createGlobalStyle } from 'styled-components'
-import { themes, basicColors } from 'components/utils/themes'
+import { themes, basicColors, transition } from 'components/utils/themes'
 import { StyledStop, StyledStopNegative } from 'components/svg/Styled'
 import { themeCss } from 'components/utils/themes'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
 const dottedBody = `
-  background-position: 0 0, 25px 25px;
-  background-size: 50px 50px;
+  background-position: 0 0, var(--space-3) var(--space-3);
+  background-size: var(--space-6) var(--space-6);
   background-image: radial-gradient(${themes.light.fg}33 1px, transparent 1px), radial-gradient(${themes.light.fg}44 1px, transparent 1px);
   &.dark {
     background-image: radial-gradient(${themes.dark.fg}33 1px, transparent 1px), radial-gradient(${themes.dark.fg}44 1px, transparent 1px);
@@ -17,9 +17,18 @@ const dottedBody = `
 `
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    font-size: 10px;
+
+    --space-1: 0.5rem; /* 5px  */
+    --space-2: 1rem;   /* 10px */
+    --space-3: 1.5rem; /* 15px */
+    --space-4: 2rem;   /* 20px */
+    --space-5: 2.5rem; /* 25px */
+    --space-6: 3rem;   /* 30px */
+  }
   html {
     box-sizing: border-box;
-    font-size: 10px;
   }
   *, *:before, *:after {
     box-sizing: inherit;
@@ -66,7 +75,6 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   p {
-    margin: 1rem 0;
     ${themeCss({ fg: themes.light.fg })}
     body.dark & {
       ${themeCss({ fg: themes.dark.fg })}
@@ -79,9 +87,9 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   h1,h2,h3,h4,h5,h6 {
-    ${themeCss({ fg: themes.light.color2 })}
+    ${themeCss({ fg: themes.light.color2, bg: themes.light.bg })}
     body.dark & {
-      ${themeCss({ fg: themes.dark.color2 })}
+      ${themeCss({ fg: themes.dark.color2, bg: themes.dark.bg })}
     }
   }
   a:hover h1 {
@@ -98,7 +106,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   section {
-    padding: 3rem 0;
+    padding: var(--space-5) 0;
     &:after {
         content: '';
         border-bottom: 1px solid ${themes.light.bgDim};
@@ -108,7 +116,8 @@ const GlobalStyle = createGlobalStyle`
         position: absolute;
         width: 100%;
         left: 0;
-        padding-top: 3rem;
+        padding-top: var(--space-5);
+        transition: ${transition};
     }
     &:last-child:after {
       border: none;
@@ -127,20 +136,6 @@ const Inner = styled.div`
 
 const StyledMain = styled.main`
   padding: 0 2rem;
-`
-
-const CustomButton = styled.button`
-  border: none;
-  background-color: transparent;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    cursor: pointer;
-  }
-  * {
-    margin: 3px;
-  }
 `
 
 const StyledText = styled.span`
@@ -164,57 +159,6 @@ const StyledText = styled.span`
     background-color: ${themes.dark.fg};
   }
 `
-const Tooltip = ({ children, right = false, message, show }) => {
-  const transformation = show
-    ? 'none'
-    : right
-    ? 'translateX(50vw)'
-    : 'translateX(-50vw)'
-
-  return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      {right ? null : children}
-      <div
-        style={{
-          display: 'inline-block',
-          margin: '0 1rem',
-          lineHeight: '16px',
-          fontSize: '16px',
-          transform: transformation,
-          transition: 'transform 0.2s ease, opacity 0.9s ease',
-          fontFamily:
-            "SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace",
-        }}
-      >
-        <StyledText className={show ? 'show' : ''}>{message}</StyledText>
-      </div>
-      {right ? children : null}
-    </div>
-  )
-}
-
-const ChangeThemeButton = ({ title }) => {
-  const [mouseOver, setMouseOver] = React.useState(false)
-  const moon = mouseOver ? 'show-light' : 'show-dark'
-  const sun = mouseOver ? 'show-dark' : 'show-light'
-
-  return (
-    <CustomButton
-      onClick={(_ev) => {
-        // __toggleDarkMode
-        window['__' + 'toggleDarkMode']()
-        setMouseOver(false)
-      }}
-      onMouseOver={() => setMouseOver(true)}
-      onMouseOut={() => setMouseOver(false)}
-    >
-      <Tooltip message={title} show={mouseOver}>
-        <a className={moon}>🌙</a>
-        <a className={sun}>🌞</a>
-      </Tooltip>
-    </CustomButton>
-  )
-}
 
 export const footerHeight = 7
 
@@ -246,24 +190,6 @@ const StyledFooter = styled.footer`
     display: none;
   }
 `
-
-const DonateButton = ({ title }) => {
-  const [mouseOver, setMouseOver] = React.useState(false)
-
-  return (
-    <CustomButton
-      onMouseOver={() => setMouseOver(true)}
-      onMouseOut={() => setMouseOver(false)}
-      onClick={() => window.open('/donate')}
-    >
-      <Tooltip message={title} right show={mouseOver}>
-        <div style={{ fontSize: '2rem', marginRight: '1rem' }}>
-          <a href="/donate">💳</a>
-        </div>
-      </Tooltip>
-    </CustomButton>
-  )
-}
 
 export interface IPageProps {
   children

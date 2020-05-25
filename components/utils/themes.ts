@@ -1,7 +1,7 @@
 export const themes = {
   light: {
     bg: 'white',
-    bgDim: '#f8f8f8',
+    bgDim: '#f4f4f4',
     fg: '#2d3436',
     fgStrong: 'black',
     color1: '#6c5ce7',
@@ -10,7 +10,7 @@ export const themes = {
   },
   dark: {
     bg: 'black',
-    bgDim: '#050505',
+    bgDim: '#343434',
     fg: '#dadada',
     fgStrong: 'white',
     color1: '#f67280',
@@ -21,7 +21,7 @@ export const themes = {
 
 export const transition = '0.4s'
 
-export const themeCss = ({ fg = null, bg = null }) => {
+export const themeCss = ({ fg = null, bg = null, border = null }) => {
   const css = `
     ${
       fg == null
@@ -37,12 +37,19 @@ export const themeCss = ({ fg = null, bg = null }) => {
       background-color: ${bg};
     `
     }
+    ${
+      border == null
+        ? ''
+        : `
+      border: ${border};
+    `
+    }
   `
 
   return (
     css +
     `
-    transition: color ${transition}, background-color ${transition};
+    transition: color ${transition}, background-color ${transition}, border ${transition};
     `
   )
 }
