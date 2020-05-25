@@ -29,6 +29,7 @@ const ExampleProject = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
 
     strong {
       color: ${themes.light.color2};
@@ -141,8 +142,8 @@ export default ({
           {allExampleProjects.map((project) => (
             <div key={project.name}>
               <FlexRows>
-                <ExampleProject onClick={(_) => window.open(project.link)}>
-                  <figure>
+                <ExampleProject>
+                  <figure onClick={(_) => window.open(project.link)}>
                     <ProjectImg
                       src={project.picture.url}
                       alt={project.picture.alt}
