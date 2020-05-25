@@ -8,8 +8,8 @@ import { themeCss } from 'components/utils/themes'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
 const dottedBody = `
-  background-position: 0 0, var(--space-3) var(--space-3);
-  background-size: var(--space-6) var(--space-6);
+  background-position: 0 0, var(--space-5) var(--space-5);
+  background-size: calc(var(--space-5) * 2) calc(var(--space-5) * 2);
   background-image: radial-gradient(${themes.light.fg}33 1px, transparent 1px), radial-gradient(${themes.light.fg}44 1px, transparent 1px);
   &.dark {
     background-image: radial-gradient(${themes.dark.fg}33 1px, transparent 1px), radial-gradient(${themes.dark.fg}44 1px, transparent 1px);
@@ -87,9 +87,9 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   h1,h2,h3,h4,h5,h6 {
-    ${themeCss({ fg: themes.light.color2, bg: themes.light.bg })}
+    ${themeCss({ fg: themes.light.color2 })}
     body.dark & {
-      ${themeCss({ fg: themes.dark.color2, bg: themes.dark.bg })}
+      ${themeCss({ fg: themes.dark.color2 })}
     }
   }
   a:hover h1 {
