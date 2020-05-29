@@ -2,6 +2,9 @@ import styled from 'styled-components'
 import { themes, transition, themeCss } from 'components/utils/themes'
 
 export default styled.div`
+  ul {
+    padding: 0;
+  }
   li {
     list-style: none;
     padding: var(--space-2);
