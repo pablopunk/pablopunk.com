@@ -41,7 +41,7 @@ const StyledContent = styled.div`
   justify-content: center;
   @media (${smallMediaQuery}) {
     flex-direction: column;
-    & > * {
+    & > article {
       margin: 2rem 2rem 0;
     }
   }
@@ -102,7 +102,7 @@ export default ({
             srcHover={profilePictureHover.url}
             title={profilePicture.alt}
           />
-          <div
+          <article
             style={{ maxWidth: '600px' }}
             dangerouslySetInnerHTML={{ __html: abstract }}
           />
