@@ -37,7 +37,7 @@ const StyledNav = styled.nav`
   @media (${smallMediaQuery}) {
     justify-content: center;
     a {
-      font-size: 1.2rem;
+      font-size: 1.6rem;
     }
     a.current {
       display: none;
