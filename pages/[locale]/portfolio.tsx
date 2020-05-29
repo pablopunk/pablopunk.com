@@ -19,6 +19,7 @@ const ExampleProject = styled.div`
 
   padding: 1rem 2rem;
   border-radius: 5px;
+  box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
   border: 1px solid ${themes.light.bgDim};
 
   body.dark & {

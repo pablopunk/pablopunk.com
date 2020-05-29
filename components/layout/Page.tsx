@@ -130,7 +130,7 @@ const Inner = styled.div`
   margin: 0 auto;
   font-size: 1.8rem;
   @media (${smallMediaQuery}) {
-    font-size: 2.1rem;
+    font-size: 2.3rem;
   }
 `
 

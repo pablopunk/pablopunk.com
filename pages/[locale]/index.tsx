@@ -41,6 +41,9 @@ const StyledContent = styled.div`
   justify-content: center;
   @media (${smallMediaQuery}) {
     flex-direction: column;
+    & > * {
+      margin: 2rem;
+    }
   }
 `
 
