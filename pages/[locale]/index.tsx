@@ -42,7 +42,7 @@ const StyledContent = styled.div`
   @media (${smallMediaQuery}) {
     flex-direction: column;
     & > * {
-      margin: 2rem;
+      margin: 2rem 2rem 0;
     }
   }
 `
