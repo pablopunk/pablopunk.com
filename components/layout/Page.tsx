@@ -107,21 +107,6 @@ const GlobalStyle = createGlobalStyle`
   }
   section {
     padding: var(--space-5) 0;
-    &:after {
-        content: '';
-        border-bottom: 1px solid ${themes.light.bgDim};
-        body.dark & {
-          border-bottom: 1px solid ${themes.dark.bgDim};
-        }
-        position: absolute;
-        width: 100%;
-        left: 0;
-        padding-top: var(--space-5);
-        transition: ${transition};
-    }
-    &:last-child:after {
-      border: none;
-    }
   }
 `
 
