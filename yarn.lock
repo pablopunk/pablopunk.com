@@ -4187,10 +4187,10 @@ nextjs-redirect-locale@^1.0.2:
   resolved "https://registry.yarnpkg.com/nextjs-redirect-locale/-/nextjs-redirect-locale-1.0.3.tgz#2fb570299c1a06a1012564526278a58dc02d7ffd"
   integrity sha512-zAabPSxQb/dhbtsoSfDDaWDyrXqDFFEMonu+c3ihu8kamw7yhW6S1nn142zPY+3Od2c4NMcVGVn2aQaXTW+XUw==
 
-nextjs-redirect@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/nextjs-redirect/-/nextjs-redirect-3.0.1.tgz#bc21abb647f0657fd12fb59bc03d3c62f5e99476"
-  integrity sha512-PwLs6Pd2WgYr960lrJWc0H8yHtM/cYvK0DYV3K0pwPfYLAbbZ0BvWGDs1kzuRz3W7AGB9MDEYWRxY5Nzer2BQw==
+nextjs-redirect@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/nextjs-redirect/-/nextjs-redirect-3.0.2.tgz#f70ad9b77ab471b30448dfe88223a73cefcaaefd"
+  integrity sha512-aCLS+9+pSm7L5HNE1vyMj50y/ToP6FYeSWkpVlC2TR2O/z875OwXlMX2XT/OJSfw7XsZ+GsV8G9mpsUTHMJsiA==
 
 node-fetch@2.6.0, node-fetch@^2.2.0:
   version "2.6.0"
