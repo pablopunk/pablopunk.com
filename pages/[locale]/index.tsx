@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import TextLoop from 'react-text-loop'
 import { themes } from 'components/utils/themes'
-import Page, { IPageProps } from 'components/layout/Page'
+import Layout, { IPageProps } from 'components/layout'
 import { staticProps, staticPaths } from 'components/data/withCMS'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import FixedCenter from 'components/layout/FixedCenter'
@@ -65,7 +65,7 @@ interface IProps extends IPageProps {
   profilePictureHover
 }
 
-export default ({
+const Page = ({
   abstract = '',
   profilePicture = {},
   profilePictureHover = {},
@@ -86,7 +86,7 @@ export default ({
   })
 
   return (
-    <Page {...props} path="">
+    <Layout {...props} path="">
       <FixedCenter>
         <H1>
           <span>pablo</span>
@@ -108,9 +108,10 @@ export default ({
           />
         </StyledContent>
       </FixedCenter>
-    </Page>
+    </Layout>
   )
 }
 
 export const getStaticProps = (ctx) => staticProps('home', ctx)
 export const getStaticPaths = staticPaths
+export default Page

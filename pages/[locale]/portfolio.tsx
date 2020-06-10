@@ -2,7 +2,7 @@ import Card from 'components/Card'
 import Repos from 'components/data/Repos'
 import { staticPaths, staticProps } from 'components/data/withCMS'
 import CenterFlexColumns from 'components/layout/CenterFlexColumns'
-import Page, { IPageProps } from 'components/layout/Page'
+import Layout, { IPageProps } from 'components/layout'
 import SimpleList from 'components/layout/SimpleList'
 import GraphQLLogo from 'components/svg/graphql'
 import NextLogo from 'components/svg/nextjs'
@@ -111,7 +111,7 @@ interface IProps extends IPageProps {
   allExampleProjects
 }
 
-export default ({
+const Page = ({
   introHeader,
   abstract,
   exampleProjectsHeader,
@@ -120,7 +120,7 @@ export default ({
   ...props
 }: IProps) => {
   return (
-    <Page {...props} path="portfolio">
+    <Layout {...props} path="portfolio">
       <CenterFlexColumns>
         <section>
           <h2 style={{ textAlign: 'center' }}>{introHeader}</h2>
@@ -183,9 +183,10 @@ export default ({
           </CenterFlexColumns>
         </section>
       </CenterFlexColumns>
-    </Page>
+    </Layout>
   )
 }
 
 export const getStaticProps = (ctx) => staticProps('portfolio', ctx)
 export const getStaticPaths = staticPaths
+export default Page

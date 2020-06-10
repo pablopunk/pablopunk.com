@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Page, { IPageProps, footerHeight } from 'components/layout/Page'
+import Layout, { IPageProps, footerHeight } from 'components/layout'
 import { staticProps, staticPaths } from 'components/data/withCMS'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
@@ -41,19 +41,20 @@ interface IProps extends IPageProps {
   content
 }
 
-export default ({ content, ...props }: IProps) => {
+const Page = ({ content, ...props }: IProps) => {
   content = content.replace('%years%', howOldAmI())
 
   return (
-    <Page {...props} path="me">
+    <Layout {...props} path="me">
       <StyledContent>
         <StyledGrid>
           <div dangerouslySetInnerHTML={{ __html: content }} />
         </StyledGrid>
       </StyledContent>
-    </Page>
+    </Layout>
   )
 }
 
 export const getStaticProps = (ctx) => staticProps('about', ctx)
 export const getStaticPaths = staticPaths
+export default Page
