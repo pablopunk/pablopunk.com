@@ -1,5 +1,10 @@
 import styled from 'styled-components'
-import { themes, basicColors, themeCss } from 'components/utils/themes'
+import {
+  themes,
+  basicColors,
+  themeCss,
+  transition,
+} from 'components/utils/themes'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
 export default styled.div`
@@ -11,7 +16,7 @@ export default styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: border 0.4s;
+  transition: border ${transition}, background ${transition};
   box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
 
   border: 1px solid ${themes.light.bgDim};
