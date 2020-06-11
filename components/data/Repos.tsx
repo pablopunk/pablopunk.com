@@ -55,11 +55,24 @@ export default ({ locale }) => {
     <SimpleList>
       {repos.map((repo) => (
         <li key={repo.name}>
-          <a href={repo.html_url}>/{repo.name}</a> ⭐
-          {repo.stargazers_count_nice}
+          <span className="first-line">
+            <a href={repo.html_url}>/{repo.name}</a>
+            <span>{repo.stargazers_count_nice}</span>
+            <span>⭐️</span>
+          </span>
           <p>{repo.description}</p>
         </li>
       ))}
+      <style jsx>{`
+        .first-line {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+        .first-line > * {
+          margin-right: 1rem;
+        }
+      `}</style>
     </SimpleList>
   )
 }

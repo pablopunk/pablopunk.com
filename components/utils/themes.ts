@@ -9,8 +9,8 @@ export const themes = {
     blendMode: 'multiply',
   },
   dark: {
-    bg: 'black',
-    bgDim: '#343434',
+    bg: '#2c2c54',
+    bgDim: '#40407a',
     fg: '#dadada',
     fgStrong: 'white',
     color1: '#f67280',
