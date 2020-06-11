@@ -104,11 +104,12 @@ function go(link: string) {
 }
 
 interface IProps {
-  introHeader
-  abstract
-  exampleProjectsHeader
-  githubReposIntroduction
-  allExampleProjects
+  introHeader: string
+  abstract: string
+  exampleProjectsHeader: string
+  githubReposIntroduction: string
+  allExampleProjects: Array<any>
+  locale: string
 }
 
 const Page = ({
