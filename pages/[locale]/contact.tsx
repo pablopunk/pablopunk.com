@@ -2,7 +2,7 @@ import FixedCenter from 'components/layout/FixedCenter'
 import withLayout from 'components/layout/withLayout'
 import { staticProps, staticPaths } from 'components/data/withCMS'
 
-interface IProps extends IPageProps {
+interface IProps {
   content
 }
 

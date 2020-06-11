@@ -103,7 +103,7 @@ function go(link: string) {
   window.open(`https://${link}`)
 }
 
-interface IProps extends IPageProps {
+interface IProps {
   introHeader
   abstract
   exampleProjectsHeader

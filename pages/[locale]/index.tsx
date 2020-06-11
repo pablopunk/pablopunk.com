@@ -59,7 +59,7 @@ const initialLoop = 1000
 const timeToShowLoop = 7000
 const timeToIdleLoop = 4000
 
-interface IProps extends IPageProps {
+interface IProps {
   abstract
   profilePicture
   profilePictureHover

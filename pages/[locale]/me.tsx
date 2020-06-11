@@ -37,11 +37,11 @@ const StyledContent = styled.div`
   }
 `
 
-interface IProps extends IPageProps {
+interface IProps {
   content
 }
 
-const Page = ({ content, ...props }: IProps) => {
+const Page = ({ content }: IProps) => {
   content = content.replace('%years%', howOldAmI())
 
   return (
