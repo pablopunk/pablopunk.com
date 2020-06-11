@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import TextLoop from 'react-text-loop'
 import { themes } from 'components/utils/themes'
-import Layout, { IPageProps } from 'components/layout'
+import withLayout from 'components/layout/withLayout'
 import { staticProps, staticPaths } from 'components/data/withCMS'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import FixedCenter from 'components/layout/FixedCenter'
@@ -86,32 +86,30 @@ const Page = ({
   })
 
   return (
-    <Layout {...props} path="">
-      <FixedCenter>
-        <H1>
-          <span>pablo</span>
-          <TextLoop interval={freq} delay={1000}>
-            <span>.pink</span>
-            <span>varela</span>
-            <span>punk</span>
-          </TextLoop>
-        </H1>
-        <StyledContent>
-          <CustomImageHover
-            src={profilePicture.url}
-            srcHover={profilePictureHover.url}
-            title={profilePicture.alt}
-          />
-          <article
-            style={{ maxWidth: '600px' }}
-            dangerouslySetInnerHTML={{ __html: abstract }}
-          />
-        </StyledContent>
-      </FixedCenter>
-    </Layout>
+    <FixedCenter>
+      <H1>
+        <span>pablo</span>
+        <TextLoop interval={freq} delay={1000}>
+          <span>.pink</span>
+          <span>varela</span>
+          <span>punk</span>
+        </TextLoop>
+      </H1>
+      <StyledContent>
+        <CustomImageHover
+          src={profilePicture.url}
+          srcHover={profilePictureHover.url}
+          title={profilePicture.alt}
+        />
+        <article
+          style={{ maxWidth: '600px' }}
+          dangerouslySetInnerHTML={{ __html: abstract }}
+        />
+      </StyledContent>
+    </FixedCenter>
   )
 }
 
 export const getStaticProps = (ctx) => staticProps('home', ctx)
 export const getStaticPaths = staticPaths
-export default Page
+export default withLayout(Page, '')

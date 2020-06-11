@@ -176,7 +176,7 @@ const StyledFooter = styled.footer`
   }
 `
 
-export interface IPageProps {
+interface IPageProps {
   children
   locale
   nav: {
@@ -186,23 +186,24 @@ export interface IPageProps {
   }
   footer: { copyright: string }
   metaTags
-  path: string
 }
 
-export default ({
+export default (PageComponent, path: string) => ({
   children,
   locale = 'en',
   nav,
   footer,
   metaTags,
-  path,
+  ...props
 }: IPageProps) => (
   <>
     <GlobalStyle />
     <Meta {...metaTags} locale={locale} />
     <Nav {...nav} locale={locale} path={path} />
     <Inner>
-      <StyledMain>{children}</StyledMain>
+      <StyledMain>
+        <PageComponent {...props} locale={locale} />
+      </StyledMain>
       <StyledFooter>
         <div dangerouslySetInnerHTML={{ __html: footer.copyright }}></div>
       </StyledFooter>

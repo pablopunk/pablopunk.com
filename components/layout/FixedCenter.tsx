@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { footerHeight } from 'components/layout'
+import { footerHeight } from 'components/layout/withLayout'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
 export default styled.div`

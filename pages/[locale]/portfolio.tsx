@@ -2,7 +2,7 @@ import Card from 'components/Card'
 import Repos from 'components/data/Repos'
 import { staticPaths, staticProps } from 'components/data/withCMS'
 import CenterFlexColumns from 'components/layout/CenterFlexColumns'
-import Layout, { IPageProps } from 'components/layout'
+import withLayout from 'components/layout/withLayout'
 import SimpleList from 'components/layout/SimpleList'
 import GraphQLLogo from 'components/svg/graphql'
 import NextLogo from 'components/svg/nextjs'
@@ -117,76 +117,74 @@ const Page = ({
   exampleProjectsHeader,
   githubReposIntroduction,
   allExampleProjects,
-  ...props
+  locale,
 }: IProps) => {
   return (
-    <Layout {...props} path="portfolio">
-      <CenterFlexColumns>
-        <section>
-          <h2 style={{ textAlign: 'center' }}>{introHeader}</h2>
-          <StyledGrid>
-            <div className="negative">
-              <Card onClick={(_) => go('reactjs.org')}>
-                <ReactLogo />
-                <strong>ReactJS</strong>
-              </Card>
-            </div>
-            <Card onClick={(_) => go('nextjs.org')}>
-              <NextLogo />
-              <strong>NextJS</strong>
+    <CenterFlexColumns>
+      <section>
+        <h2 style={{ textAlign: 'center' }}>{introHeader}</h2>
+        <StyledGrid>
+          <div className="negative">
+            <Card onClick={(_) => go('reactjs.org')}>
+              <ReactLogo />
+              <strong>ReactJS</strong>
             </Card>
-            <div className="negative">
-              <Card onClick={(_) => go('nodejs.org')}>
-                <NodeLogo />
-                <strong>NodeJS</strong>
-              </Card>
-            </div>
-            <Card onClick={(_) => go('graphql.org')}>
-              <GraphQLLogo />
-              <strong>GraphQL</strong>
+          </div>
+          <Card onClick={(_) => go('nextjs.org')}>
+            <NextLogo />
+            <strong>NextJS</strong>
+          </Card>
+          <div className="negative">
+            <Card onClick={(_) => go('nodejs.org')}>
+              <NodeLogo />
+              <strong>NodeJS</strong>
             </Card>
-          </StyledGrid>
-          <SimpleList>
-            <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
-          </SimpleList>
-        </section>
-        <section>
-          <h3 style={{ textAlign: 'center' }}>{exampleProjectsHeader}</h3>
-          {allExampleProjects.map((project) => (
-            <div key={project.name}>
-              <FlexRows>
-                <ExampleProject>
-                  <figure onClick={(_) => window.open(project.link)}>
-                    <ProjectImg
-                      src={project.picture.url}
-                      alt={project.picture.alt}
-                    />
-                    <strong>{project.name}</strong>
-                  </figure>
-                  <CenterFlexColumns>
-                    <div
-                      dangerouslySetInnerHTML={{ __html: project.description }}
-                    />
-                  </CenterFlexColumns>
-                </ExampleProject>
-              </FlexRows>
-            </div>
-          ))}
-        </section>
-        <section>
-          <CenterFlexColumns>
-            <div
-              style={{ textAlign: 'center' }}
-              dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
-            ></div>
-            <Repos locale={props.locale} />
-          </CenterFlexColumns>
-        </section>
-      </CenterFlexColumns>
-    </Layout>
+          </div>
+          <Card onClick={(_) => go('graphql.org')}>
+            <GraphQLLogo />
+            <strong>GraphQL</strong>
+          </Card>
+        </StyledGrid>
+        <SimpleList>
+          <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
+        </SimpleList>
+      </section>
+      <section>
+        <h3 style={{ textAlign: 'center' }}>{exampleProjectsHeader}</h3>
+        {allExampleProjects.map((project) => (
+          <div key={project.name}>
+            <FlexRows>
+              <ExampleProject>
+                <figure onClick={(_) => window.open(project.link)}>
+                  <ProjectImg
+                    src={project.picture.url}
+                    alt={project.picture.alt}
+                  />
+                  <strong>{project.name}</strong>
+                </figure>
+                <CenterFlexColumns>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: project.description }}
+                  />
+                </CenterFlexColumns>
+              </ExampleProject>
+            </FlexRows>
+          </div>
+        ))}
+      </section>
+      <section>
+        <CenterFlexColumns>
+          <div
+            style={{ textAlign: 'center' }}
+            dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
+          ></div>
+          <Repos locale={locale} />
+        </CenterFlexColumns>
+      </section>
+    </CenterFlexColumns>
   )
 }
 
 export const getStaticProps = (ctx) => staticProps('portfolio', ctx)
 export const getStaticPaths = staticPaths
-export default Page
+export default withLayout(Page, 'portfolio')
