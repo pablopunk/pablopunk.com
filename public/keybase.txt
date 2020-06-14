@@ -1,6 +1,4 @@
-import React from 'react'
-
-const proof = `==================================================================
+==================================================================
 https://keybase.io/pablopunk
 --------------------------------------------------------------------
 
@@ -75,16 +73,3 @@ appending to this document.
 View my publicly-auditable identity here: https://keybase.io/pablopunk
 
 ==================================================================
-`
-
-export default class extends React.Component {
-  static getInitialProps({ res }) {
-    if (res) {
-      res.setHeader('Content-Type', 'text/plain')
-      res.write(proof)
-      res.end()
-    }
-
-    return {}
-  }
-}
