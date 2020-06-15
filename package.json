@@ -18,8 +18,6 @@
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-text-loop": "^2.3.0",
-    "remark": "^12.0.0",
-    "remark-html": "^11.0.1",
     "styled-components": "4.4.1",
     "swr": "^0.1.17"
   },
