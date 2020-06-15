@@ -33,16 +33,32 @@ const CustomImageHover = styled.div<{
 
 const StyledContent = styled.div`
   display: flex;
-  p {
-    margin: 1rem 2rem;
-  }
   width: 100%;
   align-items: center;
   justify-content: center;
-  @media (${smallMediaQuery}) {
+  text-align: center;
+  article {
+    margin: 2rem 2rem 0;
+    display: flex;
     flex-direction: column;
-    & > article {
-      margin: 2rem 2rem 0;
+    align-items: center;
+    justify-content: space-around;
+    ul {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+    li {
+      list-style: none;
+      font-family: 'SF Mono', Menlo, monospace;
+    }
+  }
+  @media (${smallMediaQuery}) {
+    &,
+    ul {
+      flex-direction: column;
     }
   }
 `
