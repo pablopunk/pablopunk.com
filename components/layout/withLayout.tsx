@@ -117,10 +117,14 @@ const Inner = styled.div`
   @media (${smallMediaQuery}) {
     font-size: 2.3rem;
   }
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 `
 
 const StyledMain = styled.main`
   padding: 0 2rem;
+  flex: 1 0 auto;
 `
 
 const StyledText = styled.span`
@@ -148,6 +152,8 @@ const StyledText = styled.span`
 export const footerHeight = 7
 
 const StyledFooter = styled.footer`
+  flex-shrink: 0;
+
   height: ${footerHeight}vh;
   font-size: 1.7rem;
   opacity: 0.5;
