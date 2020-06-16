@@ -7,7 +7,6 @@ export const staticProps = async (
 ) => {
   const data = await fetchData(pageName, {
     locale: params.locale,
-    slug: params.slug,
     preview,
   })
 
