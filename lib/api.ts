@@ -11,7 +11,9 @@ async function fetchAPI(query, variables = {}, preview) {
       Authorization: `Bearer ${API_TOKEN}`,
     },
     body: JSON.stringify({
-      query: `
+      query: query.replace('\n', '').trim().startsWith('query')
+        ? query
+        : `
         query MyQuery($locale: SiteLocale) {
           ${query}
           ${globalQueries}
@@ -60,7 +62,7 @@ const commonPageQueries = `
 
 export async function fetchData(
   resource: string,
-  { locale = 'en', preview = false } = {}
+  { locale = 'en', preview = false, slug = null } = {}
 ) {
   switch (resource) {
     case 'home':
@@ -130,5 +132,59 @@ export async function fetchData(
         { locale },
         preview
       )
+
+    case 'blog':
+      return fetchAPI(
+        `
+        allPosts(locale: $locale) {
+          title
+          slug
+          ${commonPageQueries}
+        }
+      `,
+        { locale },
+        preview
+      )
   }
+}
+
+export async function getAllPostsWithSlug(locale, preview = false) {
+  const data = await fetchAPI(
+    `
+    query allPostsWithSlug($locale: SiteLocale) {
+      allPosts(locale: $locale) {
+        slug
+      }
+    }
+`,
+    { locale },
+    preview
+  )
+
+  return data.allPosts
+}
+
+export async function getPostBySlug(slug, locale, preview = false) {
+  const data = await fetchAPI(
+    `
+    query getPostBySlug($locale: SiteLocale, $slug: String) {
+      post(locale: $locale, filter: {slug: {eq: $slug}}) {
+        slug
+        title
+        date
+        image {
+          url
+          alt
+        }
+        body(markdown: true)
+        ${commonPageQueries}
+      }
+      ${globalQueries}
+    }
+  `,
+    { locale, slug },
+    preview
+  )
+
+  return data
 }

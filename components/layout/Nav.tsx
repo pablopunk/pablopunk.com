@@ -10,7 +10,7 @@ const StyledNav = styled.nav`
   align-items: center;
   justify-content: flex-start;
   a {
-    padding: var(--space-2);
+    padding: var(--space-1);
     font-size: 2.25rem;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     text-transform: uppercase;
@@ -52,7 +52,7 @@ const StyledBar = styled.div`
   z-index: 200;
   height: 2.3rem;
   width: 100vw;
-  padding: var(--space-2) var(--space-1);
+  padding: var(--space-1) 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

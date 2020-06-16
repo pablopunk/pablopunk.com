@@ -7,7 +7,7 @@ export default styled.div`
   }
   li {
     list-style: none;
-    padding: var(--space-2);
+    padding: var(--space-1);
     border-radius: var(--space-1);
     ${themeCss({
       bg: themes.light.bg,
@@ -28,6 +28,6 @@ export default styled.div`
     a {
       margin-left: 1rem;
     }
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-1);
   }
 `

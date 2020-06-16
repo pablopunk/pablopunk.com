@@ -9,7 +9,7 @@ const StyledGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr 15fr;
     align-items: flex-start;
-    grid-gap: var(--space-4);
+    grid-gap: var(--space-3);
 
     p {
       margin: 0;
