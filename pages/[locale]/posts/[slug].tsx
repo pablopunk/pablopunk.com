@@ -31,6 +31,10 @@ const StyledArticle = styled.article`
     border-radius: var(--space-2);
   }
 
+  img {
+    box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
+  }
+
   figcaption {
     text-align: center;
     font-style: italic;
@@ -40,6 +44,8 @@ const StyledArticle = styled.article`
     font-family: 'SF Mono', Menlo, monospace;
     background-color: var(--color-bgDim);
     padding: var(--space-1) var(--space-2);
+    border-radius: var(--space-1);
+    box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
   }
 
   code {
