@@ -48,6 +48,9 @@ const GlobalStyle = createGlobalStyle`
       ${basicColors('dark')}
     }
     ${dottedBody}
+
+    --nav-height: 40px;
+    --footer-height: 7vh;
   }
   body.dark .show-dark {
     display: block;
@@ -120,6 +123,7 @@ const Inner = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: calc(100vh - var(--nav-height));
 `
 
 const StyledMain = styled.main`
@@ -149,12 +153,10 @@ const StyledText = styled.span`
   }
 `
 
-export const footerHeight = 7
-
 const StyledFooter = styled.footer`
   flex-shrink: 0;
 
-  height: ${footerHeight}vh;
+  height: var(--footer-height);
   font-size: 1.7rem;
   opacity: 0.5;
   width: 100%;

@@ -4,6 +4,8 @@ import { getAllPostsWithSlug, getPostBySlug } from 'lib/api'
 import withLayout from 'components/layout/withLayout'
 import { basicColors } from 'components/utils/themes'
 import styled from 'styled-components'
+import Link from 'next/link'
+import { t } from 'lib/locales'
 
 const StyledArticle = styled.article`
   margin-top: var(--space-6);
@@ -27,14 +29,22 @@ const StyledArticle = styled.article`
   }
 `
 
-const Page = ({ post }) => {
+const Page = ({ post, locale }) => {
   return (
     <>
+      <Link as={`/${locale}/blog`} href="/[locale]/blog">
+        <a>
+          <span style={{ marginRight: '1rem' }}>⬅️</span>
+          <span>{t('Go back', locale)}</span>
+        </a>
+      </Link>
       <StyledArticle>
         <h1>{post.title}</h1>
-        <figure>
-          <img src={post.image.url} alt={post.image.alt} />
-        </figure>
+        {post.image?.url && (
+          <figure>
+            <img src={post.image.url} alt={post.image.alt} />
+          </figure>
+        )}
         <div dangerouslySetInnerHTML={{ __html: post.body }} />
       </StyledArticle>
     </>
@@ -48,6 +58,7 @@ export const getStaticProps = async ({ params, preview = false }) => {
     props: {
       ...data,
       post: data.post,
+      locale: params.locale,
     },
   }
 }

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { footerHeight } from 'components/layout/withLayout'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
 export default styled.div`
@@ -7,5 +6,5 @@ export default styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: ${100 - footerHeight}vh;
+  height: calc(100vh - var(--footer-height) - var(--nav-height));
 `
