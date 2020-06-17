@@ -6,29 +6,45 @@ import { t } from 'lib/locales'
 import SimpleList from 'components/layout/SimpleList'
 import Link from 'next/link'
 
+type Post = { title: string; slug: string; date: string }
+
 interface IProps {
-  allPosts: Array<{ title: string; slug: string }>
+  posts: Array<Post>
+  title: string
+  emptyMessage: string
   locale: string
 }
 
-const Page = ({ allPosts, locale }: IProps) => {
+const year = (post: Post) => post.date.slice(0, 4)
+
+const Page = ({ posts, emptyMessage, title, locale }: IProps) => {
+  const years = Object.keys(
+    posts.reduce((acc, curr) => ({ ...acc, [year(curr)]: true }), {})
+  )
+
   return (
     <CenterFlexColumns>
       <section>
-        <h1>{t('All Posts', locale)}</h1>
-        {allPosts.length === 0 && <p>{t('No posts yet.', locale)}</p>}
-        <SimpleList>
-          {allPosts.map((post) => (
-            <li key={post.slug}>
-              <Link
-                as={`/${locale}/posts/${post.slug}`}
-                href="/[locale]/posts/[slug]"
-              >
-                <a>{post.title}</a>
-              </Link>
-            </li>
-          ))}
-        </SimpleList>
+        <h1>{title}</h1>
+        {posts.length === 0 && <p>{emptyMessage}</p>}
+        {years.map((y) => (
+          <div key={y}>
+            <h2 style={{ textDecoration: 'underline' }}>{y}</h2>
+            {posts.map((post) => (
+              <SimpleList>
+                <li key={post.slug}>
+                  <span>📝</span>
+                  <Link
+                    as={`/${locale}/posts/${post.slug}`}
+                    href="/[locale]/posts/[slug]"
+                  >
+                    <a>{post.title}</a>
+                  </Link>
+                </li>
+              </SimpleList>
+            ))}
+          </div>
+        ))}
       </section>
     </CenterFlexColumns>
   )

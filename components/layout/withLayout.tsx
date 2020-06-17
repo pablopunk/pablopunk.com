@@ -51,6 +51,23 @@ const GlobalStyle = createGlobalStyle`
 
     --nav-height: 40px;
     --footer-height: 7vh;
+
+   --color-bg: white;
+   --color-bgDim: #f4f4f4;
+   --color-fg: #2d3436;
+   --color-fgStrong: black;
+   --color-accent: #6c5ce7;
+   --color-accent2: #00cec9;
+   --color-blendMode: multiply;
+  }
+  body.dark {
+   --color-bg: #2c2c54;
+   --color-bgDim: #40407a;
+   --color-fg: #dadada;
+   --color-fgStrong: white;
+   --color-accent: #f67280;
+   --color-accent2: #81ecec;
+   --color-blendMode: screen;
   }
   body.dark .show-dark {
     display: block;

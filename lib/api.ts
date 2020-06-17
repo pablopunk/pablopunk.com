@@ -30,6 +30,8 @@ async function fetchAPI(query, variables = {}, preview) {
     throw new Error('API fetch failed')
   }
 
+  console.log(json.data)
+
   return json.data
 }
 
@@ -124,9 +126,14 @@ export async function fetchData(
     case 'blog':
       return fetchAPI(
         `
-        allPosts(locale: $locale) {
+        blog(locale: $locale) {
           title
-          slug
+          emptyMessage
+          posts {
+            title
+            slug
+            date
+          }
           ${commonPageQueries}
         }
       `,
@@ -163,6 +170,7 @@ export async function getPostBySlug(slug, locale, preview = false) {
         image {
           url
           alt
+          title
         }
         body(markdown: true)
         ${commonPageQueries}

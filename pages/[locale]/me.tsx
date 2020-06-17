@@ -26,7 +26,7 @@ function howOldAmI() {
 }
 
 const StyledContent = styled.div`
-  height: calc(100vh - var(--footer-height) - var(--nav-height))
+  height: calc(100vh - var(--footer-height) - var(--nav-height));
   display: flex;
   align-items: center;
   justify-content: center;
