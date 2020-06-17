@@ -8,8 +8,8 @@ import { themeCss } from 'components/utils/themes'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
 const dottedBody = `
-  background-position: 0 0, var(--space-5) var(--space-5);
-  background-size: calc(var(--space-5) * 2) calc(var(--space-5) * 2);
+  background-position: 0 0, var(--space-3) var(--space-3);
+  background-size: calc(var(--space-3) * 2) calc(var(--space-3) * 2);
   background-image: radial-gradient(${themes.light.fg}33 1px, transparent 1px), radial-gradient(${themes.light.fg}44 1px, transparent 1px);
   &.dark {
     background-image: radial-gradient(${themes.dark.fg}33 1px, transparent 1px), radial-gradient(${themes.dark.fg}44 1px, transparent 1px);
@@ -20,12 +20,12 @@ const GlobalStyle = createGlobalStyle`
   :root {
     font-size: 10px;
 
-    --space-1: 0.5rem; /* 5px  */
-    --space-2: 1rem;   /* 10px */
-    --space-3: 1.5rem; /* 15px */
-    --space-4: 2rem;   /* 20px */
-    --space-5: 2.5rem; /* 25px */
-    --space-6: 3rem;   /* 30px */
+    --space-1: 0.75rem;
+    --space-2: 1.25rem;
+    --space-3: 2.5rem;
+    --space-4: 3.5rem;
+    --space-5: 4.5rem;
+    --space-6: 6rem;
   }
   html {
     box-sizing: border-box;
@@ -48,6 +48,26 @@ const GlobalStyle = createGlobalStyle`
       ${basicColors('dark')}
     }
     ${dottedBody}
+
+    --nav-height: 40px;
+    --footer-height: 7vh;
+
+   --color-bg: white;
+   --color-bgDim: #f4f4f4;
+   --color-fg: #2d3436;
+   --color-fgStrong: black;
+   --color-accent: #6c5ce7;
+   --color-accent2: #00cec9;
+   --color-blendMode: multiply;
+  }
+  body.dark {
+   --color-bg: #2c2c54;
+   --color-bgDim: #40407a;
+   --color-fg: #dadada;
+   --color-fgStrong: white;
+   --color-accent: #f67280;
+   --color-accent2: #81ecec;
+   --color-blendMode: screen;
   }
   body.dark .show-dark {
     display: block;
@@ -106,7 +126,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   section {
-    padding: var(--space-5) 0;
+    padding: var(--space-3) 0;
   }
 `
 
@@ -120,6 +140,7 @@ const Inner = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: calc(100vh - var(--nav-height));
 `
 
 const StyledMain = styled.main`
@@ -149,12 +170,10 @@ const StyledText = styled.span`
   }
 `
 
-export const footerHeight = 7
-
 const StyledFooter = styled.footer`
   flex-shrink: 0;
 
-  height: ${footerHeight}vh;
+  height: var(--footer-height);
   font-size: 1.7rem;
   opacity: 0.5;
   width: 100%;
@@ -194,7 +213,7 @@ interface IPageProps {
   metaTags
 }
 
-export default (PageComponent, path: string) => ({
+export default (PageComponent, path?: string) => ({
   children,
   locale = 'en',
   nav,

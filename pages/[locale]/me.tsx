@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import withLayout, { footerHeight } from 'components/layout/withLayout'
+import withLayout from 'components/layout/withLayout'
 import { staticProps, staticPaths } from 'components/data/withCMS'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
@@ -9,7 +9,7 @@ const StyledGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr 15fr;
     align-items: flex-start;
-    grid-gap: var(--space-4);
+    grid-gap: var(--space-3);
 
     p {
       margin: 0;
@@ -26,7 +26,7 @@ function howOldAmI() {
 }
 
 const StyledContent = styled.div`
-  height: ${100 - footerHeight}vh;
+  height: calc(100vh - var(--footer-height) - var(--nav-height));
   display: flex;
   align-items: center;
   justify-content: center;

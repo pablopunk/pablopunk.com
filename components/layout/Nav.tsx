@@ -10,7 +10,7 @@ const StyledNav = styled.nav`
   align-items: center;
   justify-content: flex-start;
   a {
-    padding: var(--space-2);
+    padding: 0 var(--space-1);
     font-size: 2.25rem;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     text-transform: uppercase;
@@ -46,13 +46,11 @@ const StyledNav = styled.nav`
 `
 
 const StyledBar = styled.div`
-  position: absolute;
-  top: 1rem;
+  position: relative;
   left: 0;
   z-index: 200;
-  height: 2.3rem;
+  height: var(--nav-height);
   width: 100vw;
-  padding: var(--space-2) var(--space-1);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -87,7 +85,7 @@ const Nav = ({
         let current = link.link === path
 
         return (
-          <div key={link.id} style={{ position: 'relative' }}>
+          <div key={link.id}>
             <Link
               href={'/[locale]/' + link.link}
               as={`/${locale}/${link.link}`}

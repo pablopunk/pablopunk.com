@@ -48,10 +48,13 @@ const StyledContent = styled.div`
       margin: 0;
       display: flex;
       justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
       width: 100%;
     }
     li {
       list-style: none;
+      margin-right: var(--space-2);
       font-family: 'SF Mono', Menlo, monospace;
     }
   }
