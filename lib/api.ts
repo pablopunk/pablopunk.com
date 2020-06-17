@@ -121,18 +121,6 @@ export async function fetchData(
         preview
       )
 
-    case 'contact':
-      return fetchAPI(
-        `
-        contact(locale: $locale) {
-          content(markdown: true)
-          ${commonPageQueries}
-        }
-      `,
-        { locale },
-        preview
-      )
-
     case 'blog':
       return fetchAPI(
         `

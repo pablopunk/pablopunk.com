@@ -7,10 +7,23 @@ import styled from 'styled-components'
 
 const StyledArticle = styled.article`
   margin-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   ${basicColors('light')}
 
-  body.dark {
+  body.dark & {
     ${basicColors('dark')}
+  }
+
+  p {
+    max-width: 600px;
+  }
+
+  figure,
+  img {
+    width: 100%;
   }
 `
 
@@ -19,6 +32,9 @@ const Page = ({ post }) => {
     <>
       <StyledArticle>
         <h1>{post.title}</h1>
+        <figure>
+          <img src={post.image.url} alt={post.image.alt} />
+        </figure>
         <div dangerouslySetInnerHTML={{ __html: post.body }} />
       </StyledArticle>
     </>

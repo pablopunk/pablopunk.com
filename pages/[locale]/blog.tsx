@@ -16,6 +16,7 @@ const Page = ({ allPosts, locale }: IProps) => {
     <CenterFlexColumns>
       <section>
         <h1>{t('All Posts', locale)}</h1>
+        {allPosts.length === 0 && <p>{t('No posts yet.', locale)}</p>}
         <SimpleList>
           {allPosts.map((post) => (
             <li key={post.slug}>
