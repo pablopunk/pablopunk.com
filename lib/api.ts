@@ -30,8 +30,6 @@ async function fetchAPI(query, variables = {}, preview) {
     throw new Error('API fetch failed')
   }
 
-  console.log(json.data)
-
   return json.data
 }
 
