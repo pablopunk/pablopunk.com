@@ -10,7 +10,6 @@ import { NextSeo } from 'next-seo'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
 const StyledArticle = styled.article`
-  margin-top: var(--space-6);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,11 +37,6 @@ const StyledArticle = styled.article`
 
   img {
     box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
-  }
-
-  figcaption {
-    text-align: center;
-    font-style: italic;
   }
 
   pre {
@@ -98,20 +92,19 @@ const Page = ({ post, locale, ...rest }) => {
         </a>
       </Link>
       <StyledArticle>
-        <small>
-          <time>{formatDate(post.date)}</time>
-        </small>
-        <h1>{post.title}</h1>
         {post.image?.url && (
           <figure>
-            <img src={post.image.url} alt={post.image.alt} />
-            {post.image?.title && (
-              <figcaption>
-                <small>{post.image.title}</small>
-              </figcaption>
-            )}
+            <img
+              src={post.image.url}
+              alt={post.image.alt}
+              title={post.image.title}
+            />
           </figure>
         )}
+        <small>
+          Pablo Varela - <time>{formatDate(post.date)}</time>
+        </small>
+        <h1>{post.title}</h1>
         <div className="body" dangerouslySetInnerHTML={{ __html: post.body }} />
       </StyledArticle>
     </>
