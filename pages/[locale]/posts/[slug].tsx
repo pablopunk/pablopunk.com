@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { t } from 'lib/locales'
 import { NextSeo } from 'next-seo'
+import { smallMediaQuery } from 'components/utils/media-queries'
 
 const StyledArticle = styled.article`
   margin-top: var(--space-6);
@@ -21,8 +22,12 @@ const StyledArticle = styled.article`
   }
 
   p {
-    max-width: 600px;
     text-align: justify;
+  }
+
+  .body {
+    width: 100%;
+    max-width: 600px;
   }
 
   figure,
@@ -46,6 +51,7 @@ const StyledArticle = styled.article`
     padding: var(--space-1) var(--space-2);
     border-radius: var(--space-1);
     box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
+    overflow-x: scroll;
   }
 
   code {
@@ -106,7 +112,7 @@ const Page = ({ post, locale, ...rest }) => {
             )}
           </figure>
         )}
-        <div dangerouslySetInnerHTML={{ __html: post.body }} />
+        <div className="body" dangerouslySetInnerHTML={{ __html: post.body }} />
       </StyledArticle>
     </>
   )
