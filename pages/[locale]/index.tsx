@@ -64,6 +64,12 @@ const StyledContent = styled.div`
     ul {
       flex-direction: column;
     }
+    li {
+      margin-bottom: var(--space-1);
+    }
+    article {
+      margin: 0;
+    }
   }
 `
 
@@ -75,9 +81,10 @@ const H1 = styled.h1`
   overflow: hidden;
 `
 
-const initialLoop = 1000
-const timeToShowLoop = 7000
-const timeToIdleLoop = 4000
+const initialLoopDelay = 0
+const initialLoop = 800
+const timeToShowLoop = 5000
+const timeToIdleLoop = 3000
 
 interface IProps {
   abstract
@@ -109,7 +116,7 @@ const Page = ({
     <FixedCenter>
       <H1>
         <span>pablo</span>
-        <TextLoop interval={freq} delay={1000}>
+        <TextLoop interval={freq} delay={initialLoopDelay}>
           <span>.pink</span>
           <span>varela</span>
           <span>punk</span>
