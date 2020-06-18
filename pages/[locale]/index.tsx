@@ -51,11 +51,12 @@ const StyledContent = styled.div`
       align-items: center;
       flex-wrap: wrap;
       width: 100%;
+      max-width: 400px;
     }
     li {
       list-style: none;
       margin-right: var(--space-2);
-      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 2.25rem;
     }
   }
   @media (${smallMediaQuery}) {
