@@ -2,18 +2,13 @@ import React from 'react'
 import Nav from 'components/layout/Nav'
 import Meta from 'components/Meta'
 import styled, { createGlobalStyle } from 'styled-components'
-import { themes, basicColors, transition } from 'components/utils/themes'
 import { StyledStop, StyledStopNegative } from 'components/svg/Styled'
-import { themeCss } from 'components/utils/themes'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
 const dottedBody = `
   background-position: 0 0, var(--space-3) var(--space-3);
   background-size: calc(var(--space-3) * 2) calc(var(--space-3) * 2);
-  background-image: radial-gradient(${themes.light.fg}33 1px, transparent 1px), radial-gradient(${themes.light.fg}44 1px, transparent 1px);
-  &.dark {
-    background-image: radial-gradient(${themes.dark.fg}33 1px, transparent 1px), radial-gradient(${themes.dark.fg}44 1px, transparent 1px);
-  }
+  background-image: radial-gradient(var(--color-bg-dots1) 1px, transparent 1px), radial-gradient(var(--color-bg-dots2) 1px, transparent 1px);
 `
 
 const GlobalStyle = createGlobalStyle`
@@ -43,22 +38,27 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    ${basicColors('light')}
-    &.dark {
-      ${basicColors('dark')}
-    }
-    ${dottedBody}
 
     --nav-height: 40px;
     --footer-height: 7vh;
 
-   --color-bg: white;
-   --color-bgDim: #f4f4f4;
-   --color-fg: #2d3436;
-   --color-fgStrong: black;
-   --color-accent: #6c5ce7;
-   --color-accent2: #00cec9;
-   --color-blendMode: multiply;
+    --color-bg: white;
+    --color-bgDim: #f4f4f4;
+    --color-fg: #2d3436;
+    --color-fgStrong: black;
+    --color-accent: #6c5ce7;
+    --color-accent2: #00cec9;
+    --color-bg-dots1: #2d343633;
+    --color-bg-dots2: #2d343644;
+    --color-blendMode: multiply;
+
+    --transition-time: 0.3s;
+
+    color: var(--color-fg);
+    background-color: var(--color-bg);
+    ${dottedBody}
+
+    transition: background-color var(--transition-time), color var(--transition-time);
   }
   body.dark {
    --color-bg: #2c2c54;
@@ -67,6 +67,8 @@ const GlobalStyle = createGlobalStyle`
    --color-fgStrong: white;
    --color-accent: #f67280;
    --color-accent2: #81ecec;
+   --color-bg-dots1: #dadada33;
+   --color-bg-dots2: #dadada44;
    --color-blendMode: screen;
   }
   body.dark .show-dark {
@@ -83,47 +85,23 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    ${themeCss({ fg: themes.light.color1 })}
-    body.dark & {
-      ${themeCss({ fg: themes.dark.color1 })}
-    }
+    color: var(--color-accent);
   }
   a:hover {
-    color: ${themes.light.color2};
-    body.dark & {
-      color: ${themes.dark.color2};
-    }
-  }
-  p {
-    ${themeCss({ fg: themes.light.fg })}
-    body.dark & {
-      ${themeCss({ fg: themes.dark.fg })}
-    }
+    color: var(--color-accent2);
   }
   li {
-    ${themeCss({ fg: themes.light.fg })}
-    body.dark & {
-      ${themeCss({ fg: themes.dark.fg })}
-    }
+    color: var(--color-fg);
   }
   h1,h2,h3,h4,h5,h6 {
-    ${themeCss({ fg: themes.light.color2 })}
-    body.dark & {
-      ${themeCss({ fg: themes.dark.color2 })}
-    }
+    color: var(--color-accent2);
   }
   a:hover h1 {
-    color: ${themes.light.color1};
-    body.dark & {
-      color: ${themes.dark.color1};
-    }
+    color: var(--color-accent);
   }
   strong {
     font-weight: bold;
-    ${themeCss({ fg: themes.light.fgStrong })}
-    body.dark & {
-      ${themeCss({ fg: themes.dark.fgStrong })}
-    }
+    color: --color-fgStrong;
   }
   section {
     padding: var(--space-3) 0;
@@ -146,28 +124,6 @@ const Inner = styled.div`
 const StyledMain = styled.main`
   padding: 0 2rem;
   flex: 1 0 auto;
-`
-
-const StyledText = styled.span`
-  padding: 0.3rem 1rem;
-  border-radius: 5px;
-
-  opacity: 0;
-  border: none;
-  &.show {
-    opacity: 1;
-    border: 1px solid ${themes.light.fg};
-  }
-  body.dark &.show {
-    border: 1px solid ${themes.dark.bgDim};
-  }
-
-  color: ${themes.light.bg};
-  background-color: ${themes.light.fg};
-  body.dark & {
-    color: ${themes.dark.bg};
-    background-color: ${themes.dark.fg};
-  }
 `
 
 const StyledFooter = styled.footer`

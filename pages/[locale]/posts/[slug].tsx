@@ -2,7 +2,6 @@ import React from 'react'
 import { staticPaths } from 'components/data/withCMS'
 import { getAllPostsWithSlug, getPostBySlug } from 'lib/api'
 import withLayout from 'components/layout/withLayout'
-import { basicColors } from 'components/utils/themes'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { t } from 'lib/locales'
@@ -14,11 +13,7 @@ const StyledArticle = styled.article`
   flex-direction: column;
   align-items: center;
 
-  ${basicColors('light')}
-
-  body.dark & {
-    ${basicColors('dark')}
-  }
+  background-color: var(--color-bg);
 
   p {
     text-align: justify;

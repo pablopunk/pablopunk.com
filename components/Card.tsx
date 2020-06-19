@@ -1,10 +1,4 @@
 import styled from 'styled-components'
-import {
-  themes,
-  basicColors,
-  themeCss,
-  transition,
-} from 'components/utils/themes'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
 export default styled.div`
@@ -16,39 +10,24 @@ export default styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: border ${transition}, background ${transition};
+  transition: border var(--transition-time), background var(--transition-time),
+    color var(--transition-time);
   box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
 
-  border: 1px solid ${themes.light.bgDim};
+  border: 1px solid var(--color-bgDim);
   &:hover {
-    border: 1px solid ${themes.light.color1};
+    border: 1px solid var(--color-accent);
   }
 
-  ${themeCss({
-    bg: themes.light.bg,
-    border: `1px solid ${themes.light.bgDim}`,
-  })}
-
-  body.dark & {
-    ${themeCss({
-      bg: themes.dark.bg,
-      border: `1px solid ${themes.dark.bgDim}`,
-    })}
-  }
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-bgDim);
 
   strong {
     margin-top: 1rem;
-
-    ${themeCss({ fg: themes.light.color1 })}
-    body.dark & {
-      ${themeCss({ fg: themes.dark.color1 })}
-    }
+    color: var(--color-accent);
 
     .negative & {
-      color: ${themes.light.color2};
-      body.dark & {
-        color: ${themes.dark.color2};
-      }
+      color: var(--color-accent2);
     }
   }
 `

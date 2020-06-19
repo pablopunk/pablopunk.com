@@ -1,17 +1,11 @@
 import styled from 'styled-components'
-import { themes, themeFill } from 'components/utils/themes'
 
 const styledFillCss = `
-  ${themeFill(themes.light.color2)}
-  body.dark & {
-    ${themeFill(themes.dark.color2)}
-  }
+  fill: var(--color-accent2);
+  transition: fill var(--transition-time);
 
   .negative & {
-    ${themeFill(themes.light.color1)}
-    body.dark & {
-      ${themeFill(themes.dark.color1)}
-    }
+    fill: var(--color-accent);
   }
 
 `
@@ -29,14 +23,14 @@ export const StyledG = styled.g`
   ${styledFillCss}
 `
 export const StyledStop = styled.stop`
-  stop-color: ${themes.light.color1};
+  stop-color: var(--color-accent);
   .negative & {
-    stop-color: ${themes.light.color2};
+    stop-color: var(--color-accent2);
   }
 `
 export const StyledStopNegative = styled.stop`
-  stop-color: ${themes.dark.color2};
+  stop-color: var(--color-accent2);
   .negative & {
-    stop-color: ${themes.dark.color1};
+    stop-color: var(--color-accent);
   }
 `

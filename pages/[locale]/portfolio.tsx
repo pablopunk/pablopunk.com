@@ -11,7 +11,6 @@ import ReactLogo from 'components/svg/react'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import React from 'react'
 import styled from 'styled-components'
-import { themes, themeCss } from 'components/utils/themes'
 
 const ExampleProject = styled.div`
   display: flex;
@@ -20,23 +19,12 @@ const ExampleProject = styled.div`
   padding: 1rem 2rem;
   border-radius: 5px;
   box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
-  border: 1px solid ${themes.light.bgDim};
+  border: 1px solid var(--color-bgDim);
 
-  body.dark & {
-    border: 1px solid ${themes.dark.bgDim};
-  }
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-bgDim);
 
-  ${themeCss({
-    bg: themes.light.bg,
-    border: `1px solid ${themes.light.bgDim}`,
-  })}
-
-  body.dark & {
-    ${themeCss({
-      bg: themes.dark.bg,
-      border: `1px solid ${themes.dark.bgDim}`,
-    })}
-  }
+  transition: border var(--transition-time), background var(--transition-time);
 
   figure {
     display: flex;
@@ -45,11 +33,7 @@ const ExampleProject = styled.div`
     cursor: pointer;
 
     strong {
-      color: ${themes.light.color2};
-
-      body.dark & {
-        color: ${themes.dark.color2};
-      }
+      color: var(--color-color2);
     }
 
     img {

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import TextLoop from 'react-text-loop'
-import { themes } from 'components/utils/themes'
 import withLayout from 'components/layout/withLayout'
 import { staticProps, staticPaths } from 'components/data/withCMS'
 import { smallMediaQuery } from 'components/utils/media-queries'
@@ -17,10 +16,7 @@ const CustomImageHover = styled.div<{
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 5px solid ${themes.light.color2};
-  body.dark & {
-    border: 5px solid ${themes.dark.color2};
-  }
+  border: 5px solid var(--color-accent2);
 
   background-size: cover;
   background-image: url(${(props) => props.src});

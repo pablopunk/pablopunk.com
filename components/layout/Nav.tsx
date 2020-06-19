@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Router from 'next/router'
 import styled, { keyframes } from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
-import { themes, basicColors, themeCss } from 'components/utils/themes'
 
 const StyledNav = styled.nav`
   display: flex;
@@ -15,24 +14,15 @@ const StyledNav = styled.nav`
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     text-transform: uppercase;
     font-weight: bold;
-    ${themeCss({ fg: themes.light.color2 })}
-    body.dark & {
-      ${themeCss({ fg: themes.dark.color2 })}
-    }
+    color: var(--color-accent2);
   }
   @media (hover: hover) {
     a:hover {
-      color: ${themes.light.color1};
-      body.dark & {
-        color: ${themes.dark.color1};
-      }
+      color: var(--color-accent);
     }
   }
   a.current {
-    ${themeCss({ fg: themes.light.color1 })}
-    body.dark & {
-      ${themeCss({ fg: themes.dark.color1 })}
-    }
+    color: var(--color-accent);
   }
   @media (${smallMediaQuery}) {
     justify-content: center;

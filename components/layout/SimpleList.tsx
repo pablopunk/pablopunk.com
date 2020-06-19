@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { themes, transition, themeCss } from 'components/utils/themes'
 
 export default styled.div`
   ul {
@@ -9,17 +8,8 @@ export default styled.div`
     list-style: none;
     padding: var(--space-1);
     border-radius: var(--space-1);
-    ${themeCss({
-      bg: themes.light.bg,
-      border: `1px solid ${themes.light.bgDim}`,
-    })}
-
-    body.dark & {
-      ${themeCss({
-        bg: themes.dark.bg,
-        border: `1px solid ${themes.dark.bgDim}`,
-      })}
-    }
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-bgDim);
 
     box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
     p {
@@ -28,6 +18,9 @@ export default styled.div`
     a {
       margin-left: 1rem;
     }
+
     margin-bottom: var(--space-1);
+    transition: background-color var(--transition-time),
+      color var(--transition-time), border var(--transition-time);
   }
 `

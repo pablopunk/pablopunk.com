@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { themes } from 'components/utils/themes'
 import { StyledPath } from './Styled'
 
 export default ({ width = 100, height = 100 } = {}) => (

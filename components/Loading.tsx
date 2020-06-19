@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { themes } from './utils/themes'
 
 const StyledLoading = styled.div`
   .circle {
@@ -15,12 +14,8 @@ const StyledLoading = styled.div`
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background-color: ${themes.light.color1};
+    background-color: var(--color-accent);
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
-
-    body.dark & {
-      background-color: ${themes.dark.color1};
-    }
   }
   .circle div:nth-child(1) {
     left: 8px;
