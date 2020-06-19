@@ -55,6 +55,11 @@ export default class extends Document {
           <script dangerouslySetInnerHTML={{ __html: darkModeCode }} />
           <Main />
           <NextScript />
+          <script
+            data-goatcounter="https://pablopink.goatcounter.com/count"
+            async
+            src="//gc.zgo.at/count.js"
+          ></script>
         </body>
       </Html>
     )
