@@ -50,6 +50,8 @@ const StyledArticle = styled.article`
 
   code {
     color: var(--color-accent);
+    font-family: Menlo, monospace;
+    font-size: 85%;
   }
 
   strong {
