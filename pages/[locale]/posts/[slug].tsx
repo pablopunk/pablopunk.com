@@ -7,6 +7,8 @@ import Link from 'next/link'
 import { t } from 'lib/locales'
 import { NextSeo } from 'next-seo'
 import { smallMediaQuery } from 'components/utils/media-queries'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import PlaceholderImage from 'components/PlaceholderImage'
 
 const StyledArticle = styled.article`
   display: flex;
@@ -60,6 +62,16 @@ const StyledArticle = styled.article`
   small {
     opacity: 0.8;
   }
+
+  h1 {
+    text-align: center;
+  }
+`
+
+const FakeImage = styled.div`
+  width: 100%;
+  height: 300px;
+  background-color: var(--color-bgDim);
 `
 
 const formatDate = (d) => new Date(d).toLocaleDateString()
@@ -75,8 +87,8 @@ const Page = ({ post, locale, ...rest }) => {
           description: post.description,
           images: [
             {
-              url: post.image.url,
-              alt: post.image.alt,
+              url: post.image.responsiveImage.src,
+              alt: post.image.responsiveImage.alt,
             },
           ],
           site_name: 'pablo.pink',
@@ -89,12 +101,19 @@ const Page = ({ post, locale, ...rest }) => {
         </a>
       </Link>
       <StyledArticle>
-        {post.image?.url && (
+        {post.image?.responsiveImage?.src && (
           <figure>
-            <img
-              src={post.image.url}
-              alt={post.image.alt}
-              title={post.image.title}
+            <LazyLoadImage
+              src={post.image.responsiveImage.src}
+              alt={post.image.responsiveImage.alt}
+              title={post.image.responsiveImage.title}
+              placeholder={
+                <PlaceholderImage
+                  height="300px"
+                  width="100%"
+                  bg={post.image.responsiveImage.bgColor}
+                />
+              }
             />
           </figure>
         )}

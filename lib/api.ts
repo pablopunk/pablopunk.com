@@ -70,11 +70,11 @@ export async function fetchData(
         `
         home(locale: $locale) {
           profilePicture {
-            url
+            url: url(imgixParams: {fm: jpg, q:50})
             alt
           }
           profilePictureHover {
-            url
+            url: url(imgixParams: {fm: jpg, q:40})
             alt
           }
           abstract(markdown: true)
@@ -100,8 +100,16 @@ export async function fetchData(
           name
           description(markdown: true)
           picture {
-            alt
-            url
+            responsiveImage(imgixParams: {fm: jpg, q:60}) {
+              alt
+              src
+              srcSet
+              sizes
+              width
+              height
+              aspectRatio
+              bgColor
+            }
           }
         }
         `,
@@ -166,9 +174,17 @@ export async function getPostBySlug(slug, locale, preview = false) {
         title
         date
         image {
-          url
-          alt
-          title
+          responsiveImage(imgixParams: {fm: jpg, q:60}) {
+            alt
+            src
+            srcSet
+            sizes
+            width
+            height
+            aspectRatio
+            bgColor
+            title
+          }
         }
         body(markdown: true)
         ${commonPageQueries}

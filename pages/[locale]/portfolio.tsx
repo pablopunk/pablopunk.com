@@ -11,6 +11,8 @@ import ReactLogo from 'components/svg/react'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import React from 'react'
 import styled from 'styled-components'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import PlaceholderImage from 'components/PlaceholderImage'
 
 const ExampleProject = styled.div`
   display: flex;
@@ -27,17 +29,24 @@ const ExampleProject = styled.div`
   transition: border var(--transition-time), background var(--transition-time);
 
   figure {
+    position: relative;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
 
     strong {
-      color: var(--color-color2);
+      color: var(--color-accent2);
     }
 
     img {
       border-radius: 4px;
+      width: 150px;
+      @media (${smallMediaQuery}) {
+        width: 100%;
+      }
     }
   }
 
@@ -73,13 +82,6 @@ const FlexRows = styled.div`
     p {
       text-align: left;
     }
-  }
-`
-
-const ProjectImg = styled.img`
-  width: 150px;
-  @media (${smallMediaQuery}) {
-    width: 100%;
   }
 `
 
@@ -141,9 +143,19 @@ const Page = ({
             <FlexRows>
               <ExampleProject>
                 <figure onClick={(_) => window.open(project.link)}>
-                  <ProjectImg
-                    src={project.picture.url}
-                    alt={project.picture.alt}
+                  <LazyLoadImage
+                    src={project.picture.responsiveImage.src}
+                    alt={project.picture.responsiveImage.alt}
+                    placeholder={
+                      <PlaceholderImage
+                        width="150px"
+                        height={
+                          150 / project.picture.responsiveImage.aspectRatio +
+                          'px'
+                        }
+                        bg={project.picture.responsiveImage.bgColor}
+                      />
+                    }
                   />
                   <strong>{project.name}</strong>
                 </figure>
