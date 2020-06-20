@@ -144,18 +144,9 @@ const Page = ({
               <ExampleProject>
                 <figure onClick={(_) => window.open(project.link)}>
                   <LazyLoadImage
-                    src={project.picture.responsiveImage.src}
-                    alt={project.picture.responsiveImage.alt}
-                    placeholder={
-                      <PlaceholderImage
-                        width="150px"
-                        height={
-                          150 / project.picture.responsiveImage.aspectRatio +
-                          'px'
-                        }
-                        bg={project.picture.responsiveImage.bgColor}
-                      />
-                    }
+                    src={project.picture.url}
+                    alt={project.picture.alt}
+                    placeholder={<img src={project.picture.blurUpThumb} />}
                   />
                   <strong>{project.name}</strong>
                 </figure>

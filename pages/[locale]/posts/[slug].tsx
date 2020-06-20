@@ -87,8 +87,8 @@ const Page = ({ post, locale, ...rest }) => {
           description: post.description,
           images: [
             {
-              url: post.image.responsiveImage.src,
-              alt: post.image.responsiveImage.alt,
+              url: post.image.url,
+              alt: post.image.alt,
             },
           ],
           site_name: 'pablo.pink',
@@ -101,19 +101,13 @@ const Page = ({ post, locale, ...rest }) => {
         </a>
       </Link>
       <StyledArticle>
-        {post.image?.responsiveImage?.src && (
+        {post.image?.url && (
           <figure>
             <LazyLoadImage
-              src={post.image.responsiveImage.src}
-              alt={post.image.responsiveImage.alt}
-              title={post.image.responsiveImage.title}
-              placeholder={
-                <PlaceholderImage
-                  height="300px"
-                  width="100%"
-                  bg={post.image.responsiveImage.bgColor}
-                />
-              }
+              src={post.image.url}
+              alt={post.image.alt}
+              title={post.image.title}
+              placeholder={<img src={post.image.blurUpThumb} />}
             />
           </figure>
         )}

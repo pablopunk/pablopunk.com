@@ -100,16 +100,10 @@ export async function fetchData(
           name
           description(markdown: true)
           picture {
-            responsiveImage(imgixParams: {fm: jpg, q:60}) {
-              alt
-              src
-              srcSet
-              sizes
-              width
-              height
-              aspectRatio
-              bgColor
-            }
+            url(imgixParams: {fm: jpg, q:60})
+            alt
+            title
+            blurUpThumb(imgixParams: {fm: jpg, q:60})
           }
         }
         `,
@@ -174,17 +168,10 @@ export async function getPostBySlug(slug, locale, preview = false) {
         title
         date
         image {
-          responsiveImage(imgixParams: {fm: jpg, q:60}) {
-            alt
-            src
-            srcSet
-            sizes
-            width
-            height
-            aspectRatio
-            bgColor
-            title
-          }
+          url(imgixParams: {fm: jpg, q:60})
+          alt
+          title
+          blurUpThumb(imgixParams: {fm: jpg, q:60})
         }
         body(markdown: true)
         ${commonPageQueries}
