@@ -12,7 +12,6 @@ import { smallMediaQuery } from 'components/utils/media-queries'
 import React from 'react'
 import styled from 'styled-components'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import PlaceholderImage from 'components/PlaceholderImage'
 
 const ExampleProject = styled.div`
   display: flex;

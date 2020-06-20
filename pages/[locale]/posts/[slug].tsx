@@ -8,7 +8,6 @@ import { t } from 'lib/locales'
 import { NextSeo } from 'next-seo'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import PlaceholderImage from 'components/PlaceholderImage'
 
 const StyledArticle = styled.article`
   display: flex;
