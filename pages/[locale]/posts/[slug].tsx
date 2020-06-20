@@ -106,7 +106,9 @@ const Page = ({ post, locale, ...rest }) => {
               src={post.image.url}
               alt={post.image.alt}
               title={post.image.title}
-              placeholder={<img src={post.image.blurUpThumb} />}
+              placeholder={
+                <img src={post.image.blurUpThumb} alt={post.image.alt} />
+              }
             />
           </figure>
         )}

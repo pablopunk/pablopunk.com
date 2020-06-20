@@ -132,7 +132,9 @@ const Page = ({
           </Card>
         </StyledGrid>
         <SimpleList>
-          <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
+          <ul>
+            <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
+          </ul>
         </SimpleList>
       </section>
       <section>
@@ -145,7 +147,12 @@ const Page = ({
                   <LazyLoadImage
                     src={project.picture.url}
                     alt={project.picture.alt}
-                    placeholder={<img src={project.picture.blurUpThumb} />}
+                    placeholder={
+                      <img
+                        src={project.picture.blurUpThumb}
+                        alt={project.picture.alt}
+                      />
+                    }
                   />
                   <strong>{project.name}</strong>
                 </figure>

@@ -61,14 +61,14 @@ const GlobalStyle = createGlobalStyle`
     transition: background-color var(--transition-time), color var(--transition-time);
   }
   body.dark {
-   --color-bg: #2c2c54;
-   --color-bgDim: #40407a;
+   --color-bg: #060d1f;
+   --color-bgDim: #141e3b;
    --color-fg: #dadada;
    --color-fgStrong: white;
-   --color-accent: #f67280;
-   --color-accent2: #81ecec;
-   --color-bg-dots1: #dadada33;
-   --color-bg-dots2: #dadada44;
+   --color-accent: #ea8685;
+   --color-accent2: #63cdda;
+   --color-bg-dots1: #f8a5c233;
+   --color-bg-dots2: #f78fb344;
    --color-blendMode: screen;
   }
   body.dark .show-dark {
