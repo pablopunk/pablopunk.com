@@ -18,6 +18,16 @@ const darkModeCode = `(function() {
   }
 })();`
 
+const goatCounterSPA = `
+  window.goatcounter = {no_onload: true};
+
+  window.addEventListener('hashchange', function(e) {
+    window.goatcounter.count({
+      path: location.pathname + location.search + location.hash,
+    });
+  });
+`
+
 export default class extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet()
@@ -55,6 +65,7 @@ export default class extends Document {
           <script dangerouslySetInnerHTML={{ __html: darkModeCode }} />
           <Main />
           <NextScript />
+          <script dangerouslySetInnerHTML={{ __html: goatCounterSPA }} />
           <script
             data-goatcounter="https://pablopink.goatcounter.com/count"
             async
