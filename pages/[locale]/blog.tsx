@@ -30,8 +30,8 @@ const Page = ({ posts, emptyMessage, title, locale }: IProps) => {
         {years.map((y) => (
           <div key={y}>
             <h2 style={{ textDecoration: 'underline' }}>{y}</h2>
-            {posts.map((post) => (
-              <SimpleList>
+            <SimpleList>
+              {posts.map((post) => (
                 <li key={post.slug}>
                   <span>📝</span>
                   <Link
@@ -41,8 +41,8 @@ const Page = ({ posts, emptyMessage, title, locale }: IProps) => {
                     <a>{post.title}</a>
                   </Link>
                 </li>
-              </SimpleList>
-            ))}
+              ))}
+            </SimpleList>
           </div>
         ))}
       </section>
