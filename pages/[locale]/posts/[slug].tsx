@@ -49,7 +49,7 @@ const StyledArticle = styled.article`
     transition: var(--transition-time);
   }
 
-  figure h1:hover {
+  figure:hover h1 {
     backdrop-filter: none;
   }
 
