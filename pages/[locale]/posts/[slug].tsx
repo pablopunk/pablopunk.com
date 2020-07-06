@@ -29,10 +29,32 @@ const StyledArticle = styled.article`
   img {
     width: 100%;
     border-radius: var(--space-2);
+    position: relative;
   }
 
   img {
     box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  figure h1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg-blur);
+    backdrop-filter: blur(8px);
+    padding: var(--space-3) var(--space-2);
+    margin: 0;
+    border-radius: 0 0 var(--space-1) var(--space-1);
+    transition: var(--transition-time);
+  }
+
+  figure h1:hover {
+    backdrop-filter: none;
+  }
+
+  h1 {
+    text-align: center;
   }
 
   pre {
@@ -61,10 +83,6 @@ const StyledArticle = styled.article`
   small {
     opacity: 0.8;
   }
-
-  h1 {
-    text-align: center;
-  }
 `
 
 const FakeImage = styled.div`
@@ -73,7 +91,7 @@ const FakeImage = styled.div`
   background-color: var(--color-bgDim);
 `
 
-const formatDate = (d) => new Date(d).toLocaleDateString()
+const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, '/')
 
 const Page = ({ post, locale, ...rest }) => {
   return (
@@ -100,7 +118,7 @@ const Page = ({ post, locale, ...rest }) => {
         </a>
       </Link>
       <StyledArticle>
-        {post.image?.url && (
+        {post.image?.url ? (
           <figure>
             <LazyLoadImage
               src={post.image.url}
@@ -110,12 +128,14 @@ const Page = ({ post, locale, ...rest }) => {
                 <img src={post.image.blurUpThumb} alt={post.image.alt} />
               }
             />
+            <h1>{post.title}</h1>
           </figure>
+        ) : (
+          <h1>{post.title}</h1>
         )}
         <small>
           Pablo Varela - <time>{formatDate(post.date)}</time>
         </small>
-        <h1>{post.title}</h1>
         <div className="body" dangerouslySetInnerHTML={{ __html: post.body }} />
       </StyledArticle>
     </>

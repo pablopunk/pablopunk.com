@@ -50,6 +50,7 @@ const GlobalStyle = createGlobalStyle`
     --color-accent2: #00cec9;
     --color-bg-dots1: #2d343633;
     --color-bg-dots2: #2d343644;
+    --color-bg-blur: #2d343444;
     --color-blendMode: multiply;
 
     --transition-time: 0.3s;
@@ -69,6 +70,7 @@ const GlobalStyle = createGlobalStyle`
    --color-accent2: #63cdda;
    --color-bg-dots1: #f8a5c233;
    --color-bg-dots2: #f78fb344;
+   --color-bg-blur: #2d343477;
    --color-blendMode: screen;
   }
   body.dark .show-dark {
