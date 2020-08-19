@@ -12,13 +12,16 @@ const StyledContent = styled.section`
     padding: 0;
     li {
       margin-bottom: var(--space-1);
+      text-align: center;
     }
   }
   h1 {
     margin-top: 0;
+    text-align: center;
   }
   p {
     max-width: 300px;
+    text-align: center;
   }
 `
 
