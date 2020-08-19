@@ -5,12 +5,6 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { StyledStop, StyledStopNegative } from 'components/svg/Styled'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
-const dottedBody = `
-  background-position: 0 0, var(--space-3) var(--space-3);
-  background-size: calc(var(--space-3) * 2) calc(var(--space-3) * 2);
-  background-image: radial-gradient(var(--color-bg-dots1) 1px, transparent 1px), radial-gradient(var(--color-bg-dots2) 1px, transparent 1px);
-`
-
 const GlobalStyle = createGlobalStyle`
   :root {
     font-size: 10px;
@@ -44,12 +38,10 @@ const GlobalStyle = createGlobalStyle`
 
     --color-bg: white;
     --color-bgDim: #f4f4f4;
-    --color-fg: #2d3436;
+    --color-fg: #454545;
     --color-fgStrong: black;
-    --color-accent: #6c5ce7;
-    --color-accent2: #00cec9;
-    --color-bg-dots1: #2d343633;
-    --color-bg-dots2: #2d343644;
+    --color-accent: #6961a4;
+    --color-accent2: #5d908e;
     --color-bg-blur: #2d343444;
     --color-blendMode: multiply;
 
@@ -57,19 +49,16 @@ const GlobalStyle = createGlobalStyle`
 
     color: var(--color-fg);
     background-color: var(--color-bg);
-    ${dottedBody}
 
     transition: background-color var(--transition-time), color var(--transition-time);
   }
   body.dark {
-   --color-bg: #060d1f;
+   --color-bg: black;
    --color-bgDim: #141e3b;
-   --color-fg: #dadada;
+   --color-fg: #bebebe;
    --color-fgStrong: white;
-   --color-accent: #ea8685;
-   --color-accent2: #63cdda;
-   --color-bg-dots1: #f8a5c233;
-   --color-bg-dots2: #f78fb344;
+   --color-accent: #94b7ad;
+   --color-accent2: #fdadad;
    --color-bg-blur: #2d343477;
    --color-blendMode: screen;
   }
@@ -171,25 +160,29 @@ interface IPageProps {
   metaTags
 }
 
-export default (PageComponent, path?: string) => ({
-  children,
-  locale = 'en',
-  nav,
-  footer,
-  metaTags,
-  ...props
-}: IPageProps) => (
-  <>
-    <GlobalStyle />
-    <Meta {...metaTags} locale={locale} />
-    <Nav {...nav} locale={locale} path={path} />
-    <Inner>
-      <StyledMain>
-        <PageComponent {...props} locale={locale} />
-      </StyledMain>
-      <StyledFooter>
-        <div dangerouslySetInnerHTML={{ __html: footer.copyright }}></div>
-      </StyledFooter>
-    </Inner>
-  </>
-)
+export default function withLayout(PageComponent, path?: string) {
+  return function Layout({
+    children,
+    locale = 'en',
+    nav,
+    footer,
+    metaTags,
+    ...props
+  }: IPageProps) {
+    return (
+      <>
+        <GlobalStyle />
+        <Meta {...metaTags} locale={locale} />
+        <Nav {...nav} locale={locale} path={path} />
+        <Inner>
+          <StyledMain>
+            <PageComponent {...props} locale={locale} />
+          </StyledMain>
+          <StyledFooter>
+            <div dangerouslySetInnerHTML={{ __html: footer.copyright }}></div>
+          </StyledFooter>
+        </Inner>
+      </>
+    )
+  }
+}

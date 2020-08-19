@@ -3,8 +3,11 @@ import Router from 'next/router'
 
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
-    const handleRouteChange = (url) =>
-      window['goatcounter'].count({ path: url })
+    const handleRouteChange = (url) => {
+      if (typeof window?.['goatcounter'] !== 'undefined') {
+        window['goatcounter'].count({ path: url })
+      }
+    }
 
     Router.events.on('routeChangeComplete', handleRouteChange)
 

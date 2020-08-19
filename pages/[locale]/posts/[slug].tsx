@@ -36,23 +36,6 @@ const StyledArticle = styled.article`
     box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
   }
 
-  figure h1 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--color-bg-blur);
-    backdrop-filter: blur(8px);
-    padding: var(--space-3) var(--space-2);
-    margin: 0;
-    border-radius: 0 0 var(--space-1) var(--space-1);
-    transition: var(--transition-time);
-  }
-
-  figure:hover h1 {
-    backdrop-filter: none;
-  }
-
   h1 {
     text-align: center;
   }

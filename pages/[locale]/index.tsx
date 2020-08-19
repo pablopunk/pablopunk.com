@@ -6,75 +6,20 @@ import { staticProps, staticPaths } from 'components/data/withCMS'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import FixedCenter from 'components/layout/FixedCenter'
 
-const CustomImageHover = styled.div<{
-  src: string
-  srcHover: string
-}>`
-  display: block;
-  min-width: 150px;
-  min-height: 150px;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 5px solid var(--color-accent2);
-
-  background-size: cover;
-  background-image: url(${(props) => props.src});
-  &:hover {
-    background-image: url(${(props) => props.srcHover});
-  }
-
-  transition: background-image 0.5s;
-`
-
-const StyledContent = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  article {
-    margin: 2rem 2rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    ul {
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 400px;
-    }
-    li {
-      list-style: none;
-      margin-right: var(--space-2);
-      font-size: 2.25rem;
-    }
-  }
-  @media (${smallMediaQuery}) {
-    &,
-    ul {
-      flex-direction: column;
-    }
+const StyledContent = styled.section`
+  ul {
+    list-style: none;
+    padding: 0;
     li {
       margin-bottom: var(--space-1);
     }
-    article {
-      margin: 0;
-    }
   }
-`
-
-const H1 = styled.h1`
-  font-size: 4rem;
-  width: 100%;
-  text-align: center;
-  height: 5.25rem;
-  overflow: hidden;
+  h1 {
+    margin-top: 0;
+  }
+  p {
+    max-width: 300px;
+  }
 `
 
 const initialLoopDelay = 0
@@ -110,24 +55,16 @@ const Page = ({
 
   return (
     <FixedCenter>
-      <H1>
-        <span>pablo</span>
-        <TextLoop interval={freq} delay={initialLoopDelay}>
-          <span>.pink</span>
-          <span>varela</span>
-          <span>punk</span>
-        </TextLoop>
-      </H1>
       <StyledContent>
-        <CustomImageHover
-          src={profilePicture.url}
-          srcHover={profilePictureHover.url}
-          title={profilePicture.alt}
-        />
-        <article
-          style={{ maxWidth: '600px' }}
-          dangerouslySetInnerHTML={{ __html: abstract }}
-        />
+        <h1>
+          <span>pablo</span>
+          <TextLoop interval={freq} delay={initialLoopDelay}>
+            <span>.pink</span>
+            <span>varela</span>
+            <span>punk</span>
+          </TextLoop>
+        </h1>
+        <article dangerouslySetInnerHTML={{ __html: abstract }} />
       </StyledContent>
     </FixedCenter>
   )

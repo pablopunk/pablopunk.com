@@ -54,12 +54,23 @@ const ExampleProject = styled.div`
   }
 `
 
-const StyledGrid = styled.div`
+const StyledGrid4 = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
   @media (${smallMediaQuery}) {
     grid-template-columns: 1fr 1fr;
+    justify-content: center;
+  }
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+`
+const StyledGrid2 = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  @media (${smallMediaQuery}) {
+    grid-template-columns: 1fr;
     justify-content: center;
   }
   margin-top: 2rem;
@@ -109,7 +120,7 @@ const Page = ({
     <CenterFlexColumns>
       <section>
         <h2 style={{ textAlign: 'center' }}>{introHeader}</h2>
-        <StyledGrid>
+        <StyledGrid4>
           <div className="negative">
             <Card onClick={(_) => go('reactjs.org')}>
               <ReactLogo />
@@ -130,7 +141,7 @@ const Page = ({
             <GraphQLLogo />
             <strong>GraphQL</strong>
           </Card>
-        </StyledGrid>
+        </StyledGrid4>
         <SimpleList>
           <ul>
             <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
