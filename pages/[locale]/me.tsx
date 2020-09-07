@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import withLayout from 'components/layout/withLayout'
-import { staticProps, staticPaths } from 'components/data/withCMS'
-import { smallMediaQuery } from 'components/utils/media-queries'
+import styled from "styled-components";
+import withLayout from "components/skeleton/withLayout";
+import { staticProps, staticPaths } from "components/data-fetch/withCMS";
+import { smallMediaQuery } from "components/utils/media-queries";
 
 const StyledGrid = styled.div`
   div {
@@ -15,14 +15,14 @@ const StyledGrid = styled.div`
       margin: 0;
     }
   }
-`
+`;
 
 function howOldAmI() {
-  const now = new Date()
-  const iHadABirthDayThisYear = now.getMonth() >= 6 && now.getDate() >= 9
-  const yearsSinceIWasBorn = now.getFullYear() - 1993
+  const now = new Date();
+  const iHadABirthDayThisYear = now.getMonth() >= 6 && now.getDate() >= 9;
+  const yearsSinceIWasBorn = now.getFullYear() - 1993;
 
-  return iHadABirthDayThisYear ? yearsSinceIWasBorn : yearsSinceIWasBorn - 1
+  return iHadABirthDayThisYear ? yearsSinceIWasBorn : yearsSinceIWasBorn - 1;
 }
 
 const StyledContent = styled.div`
@@ -35,14 +35,14 @@ const StyledContent = styled.div`
     height: 100%;
     margin-top: 50px;
   }
-`
+`;
 
 interface IProps {
-  content
+  content;
 }
 
 const Page = ({ content }: IProps) => {
-  content = content.replace('%years%', howOldAmI())
+  content = content.replace("%years%", howOldAmI());
 
   return (
     <StyledContent>
@@ -50,9 +50,9 @@ const Page = ({ content }: IProps) => {
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </StyledGrid>
     </StyledContent>
-  )
-}
+  );
+};
 
-export const getStaticProps = (ctx) => staticProps('about', ctx)
-export const getStaticPaths = staticPaths
-export default withLayout(Page, 'me')
+export const getStaticProps = (ctx) => staticProps("about", ctx);
+export const getStaticPaths = staticPaths;
+export default withLayout(Page, "me");

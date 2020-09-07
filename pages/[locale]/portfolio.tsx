@@ -1,17 +1,17 @@
-import Card from 'components/Card'
-import Repos from 'components/data/Repos'
-import { staticPaths, staticProps } from 'components/data/withCMS'
-import CenterFlexColumns from 'components/layout/CenterFlexColumns'
-import withLayout from 'components/layout/withLayout'
-import SimpleList from 'components/layout/SimpleList'
-import GraphQLLogo from 'components/svg/graphql'
-import NextLogo from 'components/svg/nextjs'
-import NodeLogo from 'components/svg/node'
-import ReactLogo from 'components/svg/react'
-import { smallMediaQuery } from 'components/utils/media-queries'
-import React from 'react'
-import styled from 'styled-components'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+import Card from "components/containers/Card";
+import Repos from "components/data-fetch/Repos";
+import { staticPaths, staticProps } from "components/data-fetch/withCMS";
+import CenterFlexColumns from "components/containers/CenterFlexColumns";
+import withLayout from "components/skeleton/withLayout";
+import SimpleList from "components/containers/SimpleList";
+import GraphQLLogo from "components/svg/graphql";
+import NextLogo from "components/svg/nextjs";
+import NodeLogo from "components/svg/node";
+import ReactLogo from "components/svg/react";
+import { smallMediaQuery } from "components/utils/media-queries";
+import React from "react";
+import styled from "styled-components";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ExampleProject = styled.div`
   display: flex;
@@ -52,7 +52,7 @@ const ExampleProject = styled.div`
   @media (${smallMediaQuery}) {
     flex-direction: column;
   }
-`
+`;
 
 const StyledGrid4 = styled.div`
   display: grid;
@@ -64,7 +64,7 @@ const StyledGrid4 = styled.div`
   }
   margin-top: 2rem;
   margin-bottom: 4rem;
-`
+`;
 const StyledGrid2 = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -75,7 +75,7 @@ const StyledGrid2 = styled.div`
   }
   margin-top: 2rem;
   margin-bottom: 4rem;
-`
+`;
 
 const FlexRows = styled.div`
   display: flex;
@@ -93,19 +93,19 @@ const FlexRows = styled.div`
       text-align: left;
     }
   }
-`
+`;
 
 function go(link: string) {
-  window.open(`https://${link}`)
+  window.open(`https://${link}`);
 }
 
 interface IProps {
-  introHeader: string
-  abstract: string
-  exampleProjectsHeader: string
-  githubReposIntroduction: string
-  allExampleProjects: Array<any>
-  locale: string
+  introHeader: string;
+  abstract: string;
+  exampleProjectsHeader: string;
+  githubReposIntroduction: string;
+  allExampleProjects: Array<any>;
+  locale: string;
 }
 
 const Page = ({
@@ -114,30 +114,30 @@ const Page = ({
   exampleProjectsHeader,
   githubReposIntroduction,
   allExampleProjects,
-  locale,
+  locale
 }: IProps) => {
   return (
     <CenterFlexColumns>
       <section>
-        <h2 style={{ textAlign: 'center' }}>{introHeader}</h2>
+        <h2 style={{ textAlign: "center" }}>{introHeader}</h2>
         <StyledGrid4>
           <div className="negative">
-            <Card onClick={(_) => go('reactjs.org')}>
+            <Card onClick={(_) => go("reactjs.org")}>
               <ReactLogo />
               <strong>ReactJS</strong>
             </Card>
           </div>
-          <Card onClick={(_) => go('nextjs.org')}>
+          <Card onClick={(_) => go("nextjs.org")}>
             <NextLogo />
             <strong>NextJS</strong>
           </Card>
           <div className="negative">
-            <Card onClick={(_) => go('nodejs.org')}>
+            <Card onClick={(_) => go("nodejs.org")}>
               <NodeLogo />
               <strong>NodeJS</strong>
             </Card>
           </div>
-          <Card onClick={(_) => go('graphql.org')}>
+          <Card onClick={(_) => go("graphql.org")}>
             <GraphQLLogo />
             <strong>GraphQL</strong>
           </Card>
@@ -149,7 +149,7 @@ const Page = ({
         </SimpleList>
       </section>
       <section>
-        <h3 style={{ textAlign: 'center' }}>{exampleProjectsHeader}</h3>
+        <h3 style={{ textAlign: "center" }}>{exampleProjectsHeader}</h3>
         {allExampleProjects.map((project) => (
           <div key={project.name}>
             <FlexRows>
@@ -180,16 +180,16 @@ const Page = ({
       <section>
         <CenterFlexColumns>
           <div
-            style={{ textAlign: 'center' }}
+            style={{ textAlign: "center" }}
             dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
           ></div>
           <Repos locale={locale} />
         </CenterFlexColumns>
       </section>
     </CenterFlexColumns>
-  )
-}
+  );
+};
 
-export const getStaticProps = (ctx) => staticProps('portfolio', ctx)
-export const getStaticPaths = staticPaths
-export default withLayout(Page, 'portfolio')
+export const getStaticProps = (ctx) => staticProps("portfolio", ctx);
+export const getStaticPaths = staticPaths;
+export default withLayout(Page, "portfolio");

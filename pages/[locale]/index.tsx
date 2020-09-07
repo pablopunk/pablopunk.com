@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import TextLoop from "react-text-loop";
-import withLayout from "components/layout/withLayout";
-import { staticProps, staticPaths } from "components/data/withCMS";
-import FixedCenter from "components/layout/FixedCenter";
+import withLayout from "components/skeleton/withLayout";
+import { staticProps, staticPaths } from "components/data-fetch/withCMS";
+import FixedCenter from "components/containers/FixedCenter";
 
 const StyledContent = styled.section`
   ul {

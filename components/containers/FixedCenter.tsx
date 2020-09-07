@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { smallMediaQuery } from 'components/utils/media-queries'
+import styled from "styled-components";
+import { smallMediaQuery } from "components/utils/media-queries";
 
 export default styled.div`
   display: flex;
@@ -10,4 +10,4 @@ export default styled.div`
   @media (${smallMediaQuery}) {
     height: calc(100vh - var(--nav-height));
   }
-`
+`;

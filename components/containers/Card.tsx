@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { smallMediaQuery } from 'components/utils/media-queries'
+import styled from "styled-components";
 
 export default styled.div`
   border-radius: 5px;
@@ -30,4 +29,4 @@ export default styled.div`
       color: var(--color-accent2);
     }
   }
-`
+`;

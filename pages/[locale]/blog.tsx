@@ -1,26 +1,25 @@
-import React from 'react'
-import { staticProps, staticPaths } from 'components/data/withCMS'
-import withLayout from 'components/layout/withLayout'
-import CenterFlexColumns from 'components/layout/CenterFlexColumns'
-import { t } from 'lib/locales'
-import SimpleList from 'components/layout/SimpleList'
-import Link from 'next/link'
+import React from "react";
+import { staticProps, staticPaths } from "components/data-fetch/withCMS";
+import withLayout from "components/skeleton/withLayout";
+import CenterFlexColumns from "components/containers/CenterFlexColumns";
+import SimpleList from "components/containers/SimpleList";
+import Link from "next/link";
 
-type Post = { title: string; slug: string; date: string }
+type Post = { title: string; slug: string; date: string };
 
 interface IProps {
-  posts: Array<Post>
-  title: string
-  emptyMessage: string
-  locale: string
+  posts: Array<Post>;
+  title: string;
+  emptyMessage: string;
+  locale: string;
 }
 
-const year = (post: Post) => post.date.slice(0, 4)
+const year = (post: Post) => post.date.slice(0, 4);
 
 const Page = ({ posts, emptyMessage, title, locale }: IProps) => {
   const years = Object.keys(
     posts.reduce((acc, curr) => ({ ...acc, [year(curr)]: true }), {})
-  )
+  );
 
   return (
     <CenterFlexColumns>
@@ -29,11 +28,13 @@ const Page = ({ posts, emptyMessage, title, locale }: IProps) => {
         {posts.length === 0 && <p>{emptyMessage}</p>}
         {years.map((y) => (
           <div key={y}>
-            <h2 style={{ textDecoration: 'underline' }}>{y}</h2>
+            <h2 style={{ textDecoration: "underline" }}>{y}</h2>
             <SimpleList>
               {posts.map((post) => (
                 <li key={post.slug}>
-                  <span>📝</span>
+                  <span role="img" aria-label="blog post">
+                    📝
+                  </span>
                   <Link
                     as={`/${locale}/posts/${post.slug}`}
                     href="/[locale]/posts/[slug]"
@@ -47,9 +48,9 @@ const Page = ({ posts, emptyMessage, title, locale }: IProps) => {
         ))}
       </section>
     </CenterFlexColumns>
-  )
-}
+  );
+};
 
-export const getStaticProps = (ctx) => staticProps('blog', ctx)
-export const getStaticPaths = staticPaths
-export default withLayout(Page, 'blog')
+export const getStaticProps = (ctx) => staticProps("blog", ctx);
+export const getStaticPaths = staticPaths;
+export default withLayout(Page, "blog");

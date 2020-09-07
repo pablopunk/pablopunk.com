@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export default styled.div`
   ul {
@@ -23,4 +23,4 @@ export default styled.div`
     transition: background-color var(--transition-time),
       color var(--transition-time), border var(--transition-time);
   }
-`
+`;

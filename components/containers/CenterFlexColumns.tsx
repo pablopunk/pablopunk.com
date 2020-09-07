@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export default styled.div`
   position: relative;
@@ -6,4 +6,4 @@ export default styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
