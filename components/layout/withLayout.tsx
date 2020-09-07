@@ -1,9 +1,8 @@
-import React from 'react'
-import Nav from 'components/layout/Nav'
-import Meta from 'components/Meta'
-import styled, { createGlobalStyle } from 'styled-components'
-import { StyledStop, StyledStopNegative } from 'components/svg/Styled'
-import { smallMediaQuery } from 'components/utils/media-queries'
+import React from "react";
+import Nav from "components/layout/Nav";
+import Meta from "components/Meta";
+import styled, { createGlobalStyle } from "styled-components";
+import { smallMediaQuery } from "components/utils/media-queries";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -40,8 +39,8 @@ const GlobalStyle = createGlobalStyle`
     --color-bgDim: #f4f4f4;
     --color-fg: #454545;
     --color-fgStrong: black;
-    --color-accent: #6961a4;
-    --color-accent2: #5d908e;
+    --color-accent: #05899E;
+    --color-accent2: #5A84AE;
     --color-bg-blur: #2d343444;
     --color-blendMode: multiply;
 
@@ -53,12 +52,12 @@ const GlobalStyle = createGlobalStyle`
     transition: background-color var(--transition-time), color var(--transition-time);
   }
   body.dark {
-   --color-bg: black;
+   --color-bg: #06191D;
    --color-bgDim: #141e3b;
    --color-fg: #bebebe;
    --color-fgStrong: white;
-   --color-accent: #94b7ad;
-   --color-accent2: #fdadad;
+   --color-accent: #A2FADE;
+   --color-accent2: #BEE5FD;
    --color-bg-blur: #2d343477;
    --color-blendMode: screen;
   }
@@ -97,7 +96,7 @@ const GlobalStyle = createGlobalStyle`
   section {
     padding: var(--space-3) 0;
   }
-`
+`;
 
 const Inner = styled.div`
   max-width: 1000px;
@@ -110,12 +109,12 @@ const Inner = styled.div`
   flex-direction: column;
   height: 100vh;
   height: calc(100vh - var(--nav-height));
-`
+`;
 
 const StyledMain = styled.main`
   padding: 0 2rem;
   flex: 1 0 auto;
-`
+`;
 
 const StyledFooter = styled.footer`
   flex-shrink: 0;
@@ -146,24 +145,24 @@ const StyledFooter = styled.footer`
   @media (${smallMediaQuery}) {
     display: none;
   }
-`
+`;
 
 interface IPageProps {
-  children
-  locale
+  children;
+  locale;
   nav: {
-    changeThemeButtonDark: string
-    changeThemeButtonLight: string
-    donateText: string
-  }
-  footer: { copyright: string }
-  metaTags
+    changeThemeButtonDark: string;
+    changeThemeButtonLight: string;
+    donateText: string;
+  };
+  footer: { copyright: string };
+  metaTags;
 }
 
 export default function withLayout(PageComponent, path?: string) {
   return function Layout({
     children,
-    locale = 'en',
+    locale = "en",
     nav,
     footer,
     metaTags,
@@ -183,6 +182,6 @@ export default function withLayout(PageComponent, path?: string) {
           </StyledFooter>
         </Inner>
       </>
-    )
-  }
+    );
+  };
 }

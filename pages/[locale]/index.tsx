@@ -1,10 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import TextLoop from 'react-text-loop'
-import withLayout from 'components/layout/withLayout'
-import { staticProps, staticPaths } from 'components/data/withCMS'
-import { smallMediaQuery } from 'components/utils/media-queries'
-import FixedCenter from 'components/layout/FixedCenter'
+import React from "react";
+import styled from "styled-components";
+import TextLoop from "react-text-loop";
+import withLayout from "components/layout/withLayout";
+import { staticProps, staticPaths } from "components/data/withCMS";
+import FixedCenter from "components/layout/FixedCenter";
 
 const StyledContent = styled.section`
   ul {
@@ -23,38 +22,38 @@ const StyledContent = styled.section`
     max-width: 300px;
     text-align: center;
   }
-`
+`;
 
-const initialLoopDelay = 0
-const initialLoop = 800
-const timeToShowLoop = 5000
-const timeToIdleLoop = 3000
+const initialLoopDelay = 0;
+const initialLoop = 800;
+const timeToShowLoop = 5000;
+const timeToIdleLoop = 3000;
 
 interface IProps {
-  abstract
-  profilePicture
-  profilePictureHover
+  abstract;
+  profilePicture;
+  profilePictureHover;
 }
 
 const Page = ({
-  abstract = '',
+  abstract = "",
   profilePicture = {},
   profilePictureHover = {},
   ...props
 }: IProps) => {
-  const [freq, setFreq] = React.useState(initialLoop)
+  const [freq, setFreq] = React.useState(initialLoop);
 
   React.useEffect(() => {
     if (freq === 0) {
       setTimeout(() => {
-        setFreq(initialLoop)
-      }, timeToIdleLoop)
+        setFreq(initialLoop);
+      }, timeToIdleLoop);
     } else {
       setTimeout(() => {
-        setFreq(0)
-      }, timeToShowLoop)
+        setFreq(0);
+      }, timeToShowLoop);
     }
-  })
+  });
 
   return (
     <FixedCenter>
@@ -70,9 +69,9 @@ const Page = ({
         <article dangerouslySetInnerHTML={{ __html: abstract }} />
       </StyledContent>
     </FixedCenter>
-  )
-}
+  );
+};
 
-export const getStaticProps = (ctx) => staticProps('home', ctx)
-export const getStaticPaths = staticPaths
-export default withLayout(Page, '')
+export const getStaticProps = (ctx) => staticProps("home", ctx);
+export const getStaticPaths = staticPaths;
+export default withLayout(Page, "");
