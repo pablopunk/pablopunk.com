@@ -1,4 +1,4 @@
-# pablo.pink
+# pablo.im
 
 > Personal website
 

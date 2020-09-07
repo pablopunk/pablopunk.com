@@ -1,7 +1,7 @@
-import Head from "next/head";
-import { NextSeo, SocialProfileJsonLd } from "next-seo";
+import Head from 'next/head'
+import { NextSeo, SocialProfileJsonLd } from 'next-seo'
 
-const siteUrl = "https://pablo.pink";
+const siteUrl = 'https://pablo.im'
 
 export default function Meta({ title, description, locale }) {
   return (
@@ -16,18 +16,18 @@ export default function Meta({ title, description, locale }) {
           description,
           images: [
             {
-              url: siteUrl + "/images/wide.jpg",
+              url: siteUrl + '/images/wide.jpg',
               width: 150,
               height: 150,
-              alt: "Pablo Varela's profile picture"
-            }
+              alt: "Pablo Varela's profile picture",
+            },
           ],
-          site_name: "pablo.pink"
+          site_name: 'pablo.im',
         }}
         twitter={{
-          handle: "@pablopunk",
-          site: "@pablopunk",
-          cardType: "summary_large_image"
+          handle: '@pablopunk',
+          site: '@pablopunk',
+          cardType: 'summary_large_image',
         }}
       />
       <SocialProfileJsonLd
@@ -35,9 +35,9 @@ export default function Meta({ title, description, locale }) {
         name="Pablo Varela"
         url={siteUrl}
         sameAs={[
-          "https://twitter.com/pablopunk",
-          "https://linkedin.com/in/pablopunk",
-          "https://instagram.com/in/pablopunk"
+          'https://twitter.com/pablopunk',
+          'https://linkedin.com/in/pablopunk',
+          'https://instagram.com/in/pablopunk',
         ]}
       />
       <Head>
@@ -66,12 +66,12 @@ export default function Meta({ title, description, locale }) {
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link rel="canonical" href={siteUrl} />
-        <link rel="sitemap" href={siteUrl + "/sitemap.xml"} />
+        <link rel="sitemap" href={siteUrl + '/sitemap.xml'} />
         <meta
           name="google-site-verification"
           content="y-TnXGhfG_A0b-ttLIV076wjdtFdEMZw6d04iwfR2Xw"
         />
       </Head>
     </>
-  );
+  )
 }

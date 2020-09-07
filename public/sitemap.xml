@@ -5,22 +5,22 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://pablo.pink/</loc>
+    <loc>https://pablo.im/</loc>
     <lastmod>2019-12-17T23:59:30+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://pablo.pink/portfolio</loc>
+    <loc>https://pablo.im/portfolio</loc>
     <lastmod>2019-12-17T23:59:30+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://pablo.pink/me</loc>
+    <loc>https://pablo.im/me</loc>
     <lastmod>2019-12-17T23:59:30+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://pablo.pink/blog</loc>
+    <loc>https://pablo.im/blog</loc>
     <lastmod>2019-12-17T23:59:30+00:00</lastmod>
     <priority>0.90</priority>
   </url>
