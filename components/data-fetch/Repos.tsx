@@ -1,3 +1,4 @@
+import React from "react";
 import useSWR from "swr";
 import fetch from "isomorphic-unfetch";
 import humanNumber from "human-number";
@@ -42,7 +43,7 @@ const StyledGrid2 = styled.div`
   }
 `;
 
-export default function Repos({ locale }) {
+function Repos({ locale }) {
   const { data, error } = useSWR(API, fetcher);
 
   if (error) {
@@ -77,7 +78,7 @@ export default function Repos({ locale }) {
             <a href={repo.html_url}>/{repo.name}</a>
             <span>{repo.stargazers_count_nice}</span>
             <span role="img" aria-label="star">
-              ⭐️
+              ⭐
             </span>
           </span>
           <p>{repo.description}</p>
@@ -96,3 +97,5 @@ export default function Repos({ locale }) {
     </StyledGrid2>
   );
 }
+
+export default React.memo(Repos);

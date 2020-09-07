@@ -1,7 +1,6 @@
-import Link from 'next/link'
-import Router from 'next/router'
-import styled, { keyframes } from 'styled-components'
-import { smallMediaQuery } from 'components/utils/media-queries'
+import Link from "next/link";
+import styled from "styled-components";
+import { smallMediaQuery } from "components/utils/media-queries";
 
 const StyledNav = styled.nav`
   display: flex;
@@ -33,7 +32,7 @@ const StyledNav = styled.nav`
       display: none;
     }
   }
-`
+`;
 
 const StyledBar = styled.div`
   position: relative;
@@ -44,7 +43,7 @@ const StyledBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 const RightButtons = styled.div`
   display: flex;
@@ -59,7 +58,7 @@ const RightButtons = styled.div`
       opacity: 0.7;
     }
   }
-`
+`;
 
 const Nav = ({
   main = [],
@@ -67,29 +66,29 @@ const Nav = ({
   changeThemeButtonLight,
   donateText,
   locale,
-  path,
+  path
 }) => (
   <StyledBar>
     <StyledNav>
       {main.map((link) => {
-        let current = link.link === path
+        let current = link.link === path;
 
         return (
           <div key={link.id}>
             <Link
-              href={'/[locale]/' + link.link}
+              href={"/[locale]/" + link.link}
               as={`/${locale}/${link.link}`}
             >
-              <a className={current ? 'current' : ''}>{link.text}</a>
+              <a className={current ? "current" : ""}>{link.text}</a>
             </Link>
           </div>
-        )
+        );
       })}
     </StyledNav>
     <RightButtons>
       <a
         onClick={() => {
-          window['__' + 'toggleDarkMode']()
+          window["__toggleDarkMode"]();
         }}
         title="Toggle light/dark colors"
       >
@@ -101,6 +100,6 @@ const Nav = ({
       </a>
     </RightButtons>
   </StyledBar>
-)
+);
 
-export default Nav
+export default Nav;

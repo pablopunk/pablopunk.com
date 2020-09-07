@@ -1,6 +1,6 @@
 import React from "react";
-import Nav from "components/layout/Nav";
-import Meta from "components/Meta";
+import Nav from "components/skeleton/Nav";
+import Meta from "components/skeleton/Meta";
 import styled, { createGlobalStyle } from "styled-components";
 import { smallMediaQuery } from "components/utils/media-queries";
 
