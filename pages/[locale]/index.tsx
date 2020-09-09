@@ -11,10 +11,6 @@ import { AiOutlineCode, AiOutlineMail, AiOutlineLinkedin } from 'react-icons/ai'
 import { RiLandscapeLine } from 'react-icons/ri'
 import { FiTwitter, FiCamera } from 'react-icons/fi'
 
-function go(link: string) {
-  window.open(`https://${link}`)
-}
-
 const StyledContent = styled.section`
   ul {
     list-style: none;
@@ -129,7 +125,7 @@ const Page = ({
           <ul>
             {links.map((l) => (
               <li key={l.id}>
-                <Card onClick={() => go(l.url)}>
+                <Card onClick={() => window.open(l.url)}>
                   {l.icon}
                   <strong>{l.label}</strong>
                 </Card>
