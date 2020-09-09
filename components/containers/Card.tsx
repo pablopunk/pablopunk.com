@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default styled.div`
+export const CardCss = `
   border-radius: 5px;
   padding: 10px 20px;
 
@@ -29,4 +29,8 @@ export default styled.div`
       color: var(--color-accent2);
     }
   }
+`;
+
+export default styled.div`
+  ${CardCss}
 `;

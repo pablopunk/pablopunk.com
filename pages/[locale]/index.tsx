@@ -1,17 +1,25 @@
-import React from 'react'
-import styled from 'styled-components'
-import TextLoop from 'react-text-loop'
-import withLayout from 'components/skeleton/withLayout'
-import { staticProps, staticPaths } from 'components/data-fetch/withCMS'
-import FixedCenter from 'components/containers/FixedCenter'
+import React from "react";
+import styled from "styled-components";
+import TextLoop from "react-text-loop";
+import withLayout from "components/skeleton/withLayout";
+import { staticProps, staticPaths } from "components/data-fetch/withCMS";
+import FixedCenter from "components/containers/FixedCenter";
+import { CardCss } from "components/containers/Card";
+import { smallMediaQuery } from "components/utils/media-queries";
 
 const StyledContent = styled.section`
   ul {
     list-style: none;
     padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    @media (${smallMediaQuery}) {
+      grid-template-columns: 1fr;
+    }
     li {
-      margin-bottom: var(--space-1);
-      text-align: center;
+      ${CardCss};
+      margin: var(--space-1);
     }
   }
   h1 {
@@ -19,41 +27,40 @@ const StyledContent = styled.section`
     text-align: center;
   }
   p {
-    max-width: 300px;
     text-align: center;
   }
-`
+`;
 
-const initialLoopDelay = 0
-const initialLoop = 800
-const timeToShowLoop = 5000
-const timeToIdleLoop = 3000
+const initialLoopDelay = 0;
+const initialLoop = 800;
+const timeToShowLoop = 5000;
+const timeToIdleLoop = 3000;
 
 interface IProps {
-  abstract
-  profilePicture
-  profilePictureHover
+  abstract;
+  profilePicture;
+  profilePictureHover;
 }
 
 const Page = ({
-  abstract = '',
+  abstract = "",
   profilePicture = {},
   profilePictureHover = {},
   ...props
 }: IProps) => {
-  const [freq, setFreq] = React.useState(initialLoop)
+  const [freq, setFreq] = React.useState(initialLoop);
 
   React.useEffect(() => {
     if (freq === 0) {
       setTimeout(() => {
-        setFreq(initialLoop)
-      }, timeToIdleLoop)
+        setFreq(initialLoop);
+      }, timeToIdleLoop);
     } else {
       setTimeout(() => {
-        setFreq(0)
-      }, timeToShowLoop)
+        setFreq(0);
+      }, timeToShowLoop);
     }
-  })
+  });
 
   return (
     <FixedCenter>
@@ -69,9 +76,9 @@ const Page = ({
         <article dangerouslySetInnerHTML={{ __html: abstract }} />
       </StyledContent>
     </FixedCenter>
-  )
-}
+  );
+};
 
-export const getStaticProps = (ctx) => staticProps('home', ctx)
-export const getStaticPaths = staticPaths
-export default withLayout(Page, '')
+export const getStaticProps = (ctx) => staticProps("home", ctx);
+export const getStaticPaths = staticPaths;
+export default withLayout(Page, "");
