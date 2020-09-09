@@ -1,8 +1,8 @@
-import React from "react";
-import Nav from "components/skeleton/Nav";
-import Meta from "components/skeleton/Meta";
-import styled, { createGlobalStyle } from "styled-components";
-import { smallMediaQuery } from "components/utils/media-queries";
+import React from 'react'
+import Nav from 'components/skeleton/Nav'
+import Meta from 'components/skeleton/Meta'
+import styled, { createGlobalStyle } from 'styled-components'
+import { smallMediaQuery } from 'components/utils/media-queries'
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -96,7 +96,10 @@ const GlobalStyle = createGlobalStyle`
   section {
     padding: var(--space-3) 0;
   }
-`;
+  svg {
+    vertical-align: middle;
+  }
+`
 
 const Inner = styled.div`
   max-width: 1000px;
@@ -109,12 +112,12 @@ const Inner = styled.div`
   flex-direction: column;
   height: 100vh;
   height: calc(100vh - var(--nav-height));
-`;
+`
 
 const StyledMain = styled.main`
   padding: 0 2rem;
   flex: 1 0 auto;
-`;
+`
 
 const StyledFooter = styled.footer`
   flex-shrink: 0;
@@ -145,24 +148,24 @@ const StyledFooter = styled.footer`
   @media (${smallMediaQuery}) {
     display: none;
   }
-`;
+`
 
 interface IPageProps {
-  children;
-  locale;
+  children
+  locale
   nav: {
-    changeThemeButtonDark: string;
-    changeThemeButtonLight: string;
-    donateText: string;
-  };
-  footer: { copyright: string };
-  metaTags;
+    changeThemeButtonDark: string
+    changeThemeButtonLight: string
+    donateText: string
+  }
+  footer: { copyright: string }
+  metaTags
 }
 
 export default function withLayout(PageComponent, path?: string) {
   return function Layout({
     children,
-    locale = "en",
+    locale = 'en',
     nav,
     footer,
     metaTags,
@@ -182,6 +185,6 @@ export default function withLayout(PageComponent, path?: string) {
           </StyledFooter>
         </Inner>
       </>
-    );
-  };
+    )
+  }
 }

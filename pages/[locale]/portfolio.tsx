@@ -1,17 +1,18 @@
 import Card from "components/containers/Card";
-import Repos from "components/data-fetch/Repos";
 import { staticPaths, staticProps } from "components/data-fetch/withCMS";
 import CenterFlexColumns from "components/containers/CenterFlexColumns";
 import withLayout from "components/skeleton/withLayout";
 import SimpleList from "components/containers/SimpleList";
-import GraphQLLogo from "components/svg/graphql";
-import NextLogo from "components/svg/nextjs";
-import NodeLogo from "components/svg/node";
-import ReactLogo from "components/svg/react";
 import { smallMediaQuery } from "components/utils/media-queries";
 import React from "react";
 import styled from "styled-components";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Grid4 from "components/containers/Grid4";
+import ReactLogo from "components/pure/svg/react";
+import NextLogo from "components/pure/svg/nextjs";
+import GraphQLLogo from "components/pure/svg/graphql";
+import NodeLogo from "components/pure/svg/node";
+import Repos from "components/data-fetch/Repos";
 
 const ExampleProject = styled.div`
   display: flex;
@@ -52,29 +53,6 @@ const ExampleProject = styled.div`
   @media (${smallMediaQuery}) {
     flex-direction: column;
   }
-`;
-
-const StyledGrid4 = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
-  @media (${smallMediaQuery}) {
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-  }
-  margin-top: 2rem;
-  margin-bottom: 4rem;
-`;
-const StyledGrid2 = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  @media (${smallMediaQuery}) {
-    grid-template-columns: 1fr;
-    justify-content: center;
-  }
-  margin-top: 2rem;
-  margin-bottom: 4rem;
 `;
 
 const FlexRows = styled.div`
@@ -120,7 +98,7 @@ const Page = ({
     <CenterFlexColumns>
       <section>
         <h2 style={{ textAlign: "center" }}>{introHeader}</h2>
-        <StyledGrid4>
+        <Grid4>
           <div className="negative">
             <Card onClick={(_) => go("reactjs.org")}>
               <ReactLogo />
@@ -141,7 +119,7 @@ const Page = ({
             <GraphQLLogo />
             <strong>GraphQL</strong>
           </Card>
-        </StyledGrid4>
+        </Grid4>
         <SimpleList>
           <ul>
             <div dangerouslySetInnerHTML={{ __html: abstract }}></div>

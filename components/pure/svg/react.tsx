@@ -1,4 +1,4 @@
-import { StyledPath, StyledCircle } from "./Styled";
+import { StyledPath, StyledCircle } from "components/utils/styled-svg";
 
 export default function ReactJS({ width = 100, height = 100 } = {}) {
   return (

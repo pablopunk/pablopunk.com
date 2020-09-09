@@ -43,5 +43,17 @@
   },
   "Go back": {
     "es": "Atrás"
+  },
+  "Hi there! My name is Pablo and I'm a remote web developer": {
+    "es": "Hola! Me llamo Pablo y soy desarrollador web."
+  },
+  "Code": {
+    "es": "Código"
+  },
+  "Drawings": {
+    "es": "Dibujos"
+  },
+  "Photos": {
+    "es": "Fotos"
   }
 }

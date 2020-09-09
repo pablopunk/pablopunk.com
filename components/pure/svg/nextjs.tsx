@@ -1,4 +1,4 @@
-import { StyledG } from "./Styled";
+import { StyledG } from "components/utils/styled-svg";
 
 export default function NextJS({ width = 100, height = 100 } = {}) {
   return (

@@ -2,14 +2,21 @@ import React from 'react'
 import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch'
 import humanNumber from 'human-number'
-import Loading from 'components/Loading'
+import Loading from 'components/pure/Loading'
 import { t } from 'lib/locales'
 import styled from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
+import { AiFillStar } from 'react-icons/ai'
 
 const API = 'https://repos.pablo.im/api'
 
 const ADDITIONAL_REPOS = [
+  {
+    name: 'codesandbox',
+    html_url: 'https://github.com/codesandbox/codesandbox-client',
+    stargazers_count: '9900',
+    description: 'An online IDE for rapid web development',
+  },
   {
     name: 'lad',
     html_url: 'https://github.com/ladjs/lad',
@@ -77,8 +84,8 @@ function Repos({ locale }) {
           <span className="first-line">
             <a href={repo.html_url}>/{repo.name}</a>
             <span>{repo.stargazers_count_nice}</span>
-            <span role="img" aria-label="star">
-              ⭐
+            <span>
+              <AiFillStar color="gold" />
             </span>
           </span>
           <p>{repo.description}</p>

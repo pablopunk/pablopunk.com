@@ -1,4 +1,4 @@
-import { StyledPath } from "./Styled";
+import { StyledPath } from "components/utils/styled-svg";
 
 export default function Node({ width = 100, height = 100 } = {}) {
   return (
