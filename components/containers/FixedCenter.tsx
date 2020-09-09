@@ -8,6 +8,6 @@ export default styled.div`
   justify-content: center;
   height: calc(100vh - var(--footer-height) - var(--nav-height));
   @media (${smallMediaQuery}) {
-    height: calc(100vh - var(--nav-height));
+    height: inherit;
   }
 `;
