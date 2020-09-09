@@ -15,7 +15,7 @@ const StyledContent = styled.section`
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     @media (${smallMediaQuery}) {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 50% 50%;
     }
     li {
       ${CardCss};
