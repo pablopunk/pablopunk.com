@@ -1,4 +1,4 @@
-import { StyledPath, StyledRect } from "./Styled";
+import { StyledPath, StyledRect } from "components/utils/styled-svg";
 
 export default function GraphQL({ width = 100, height = 100 } = {}) {
   return (
