@@ -76,6 +76,7 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     color: var(--color-accent);
+    vertical-align: middle;
   }
   a:hover {
     color: var(--color-accent2);
@@ -95,6 +96,9 @@ const GlobalStyle = createGlobalStyle`
   }
   section {
     padding: var(--space-3) 0;
+  }
+  svg {
+    vertical-align: middle;
   }
 `;
 

@@ -4,6 +4,7 @@ import withLayout from "components/skeleton/withLayout";
 import CenterFlexColumns from "components/containers/CenterFlexColumns";
 import SimpleList from "components/containers/SimpleList";
 import Link from "next/link";
+import { BsFilePost } from "react-icons/bs";
 
 type Post = { title: string; slug: string; date: string };
 
@@ -32,14 +33,14 @@ const Page = ({ posts, emptyMessage, title, locale }: IProps) => {
             <SimpleList>
               {posts.map((post) => (
                 <li key={post.slug}>
-                  <span role="img" aria-label="blog post">
-                    📝
-                  </span>
+                  <BsFilePost />
                   <Link
                     as={`/${locale}/posts/${post.slug}`}
                     href="/[locale]/posts/[slug]"
                   >
-                    <a>{post.title}</a>
+                    <a>
+                      <span>{post.title}</span>
+                    </a>
                   </Link>
                 </li>
               ))}
