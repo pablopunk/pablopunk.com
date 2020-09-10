@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import { RiMoonClearLine, RiSunLine } from 'react-icons/ri'
-import { GiReceiveMoney } from 'react-icons/gi'
+import { FaCreditCard } from 'react-icons/fa'
 
 const StyledNav = styled.nav`
   display: flex;
@@ -12,7 +12,8 @@ const StyledNav = styled.nav`
   a {
     padding: 0 var(--space-1);
     font-size: 2.25rem;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: var(--font-fancy), -apple-system, BlinkMacSystemFont,
+      sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     color: var(--color-accent2);
@@ -49,7 +50,7 @@ const StyledBar = styled.div`
 
 const RightButtons = styled.div`
   display: flex;
-  margin-right: var(--space-2);
+  margin-right: var(--space-4);
   a {
     font-size: 2.4rem;
     margin-left: var(--space-2);
@@ -102,7 +103,7 @@ const Nav = ({
         </span>
       </a>
       <a href="/donate" title="Donate">
-        <GiReceiveMoney />
+        <FaCreditCard />
       </a>
     </RightButtons>
   </StyledBar>

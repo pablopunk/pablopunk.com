@@ -23,11 +23,13 @@ const StyledContent = styled.section`
     }
     li {
       margin: var(--space-1);
+      font-family: var(--font-accent);
     }
   }
   h1 {
     margin-top: 0;
     text-align: center;
+    font-family: var(--font-fancy);
   }
   p {
     text-align: center;
