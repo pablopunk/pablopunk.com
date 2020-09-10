@@ -21,6 +21,14 @@ export default styled.div`
   background-color: var(--color-bg);
   border: 1px solid var(--color-bgDim);
 
+  svg {
+    color: var(--color-accent2);
+
+    .negative & {
+      color: var(--color-accent);
+    }
+  }
+
   strong {
     margin-top: 1rem;
     color: var(--color-accent);

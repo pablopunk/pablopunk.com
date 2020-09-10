@@ -1,18 +1,16 @@
-import Card from "components/containers/Card";
-import { staticPaths, staticProps } from "components/data-fetch/withCMS";
-import CenterFlexColumns from "components/containers/CenterFlexColumns";
-import withLayout from "components/skeleton/withLayout";
-import SimpleList from "components/containers/SimpleList";
-import { smallMediaQuery } from "components/utils/media-queries";
-import React from "react";
-import styled from "styled-components";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import Grid4 from "components/containers/Grid4";
-import ReactLogo from "components/pure/svg/react";
-import NextLogo from "components/pure/svg/nextjs";
-import GraphQLLogo from "components/pure/svg/graphql";
-import NodeLogo from "components/pure/svg/node";
-import Repos from "components/data-fetch/Repos";
+import Card from 'components/containers/Card'
+import { staticPaths, staticProps } from 'components/data-fetch/withCMS'
+import CenterFlexColumns from 'components/containers/CenterFlexColumns'
+import withLayout from 'components/skeleton/withLayout'
+import SimpleList from 'components/containers/SimpleList'
+import { smallMediaQuery } from 'components/utils/media-queries'
+import React from 'react'
+import styled from 'styled-components'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import Grid4 from 'components/containers/Grid4'
+import Repos from 'components/data-fetch/Repos'
+import { FaReact, FaNodeJs } from 'react-icons/fa'
+import { SiNextDotJs, SiGraphql } from 'react-icons/si'
 
 const ExampleProject = styled.div`
   display: flex;
@@ -53,7 +51,7 @@ const ExampleProject = styled.div`
   @media (${smallMediaQuery}) {
     flex-direction: column;
   }
-`;
+`
 
 const FlexRows = styled.div`
   display: flex;
@@ -71,19 +69,19 @@ const FlexRows = styled.div`
       text-align: left;
     }
   }
-`;
+`
 
 function go(link: string) {
-  window.open(`https://${link}`);
+  window.open(`https://${link}`)
 }
 
 interface IProps {
-  introHeader: string;
-  abstract: string;
-  exampleProjectsHeader: string;
-  githubReposIntroduction: string;
-  allExampleProjects: Array<any>;
-  locale: string;
+  introHeader: string
+  abstract: string
+  exampleProjectsHeader: string
+  githubReposIntroduction: string
+  allExampleProjects: Array<any>
+  locale: string
 }
 
 const Page = ({
@@ -92,31 +90,32 @@ const Page = ({
   exampleProjectsHeader,
   githubReposIntroduction,
   allExampleProjects,
-  locale
+  locale,
 }: IProps) => {
+  const iconSize = '100'
   return (
     <CenterFlexColumns>
       <section>
-        <h2 style={{ textAlign: "center" }}>{introHeader}</h2>
+        <h2 style={{ textAlign: 'center' }}>{introHeader}</h2>
         <Grid4>
           <div className="negative">
-            <Card onClick={(_) => go("reactjs.org")}>
-              <ReactLogo />
+            <Card onClick={(_) => go('reactjs.org')}>
+              <FaReact size={iconSize} />
               <strong>ReactJS</strong>
             </Card>
           </div>
-          <Card onClick={(_) => go("nextjs.org")}>
-            <NextLogo />
+          <Card onClick={(_) => go('nextjs.org')}>
+            <SiNextDotJs size={iconSize} />
             <strong>NextJS</strong>
           </Card>
           <div className="negative">
-            <Card onClick={(_) => go("nodejs.org")}>
-              <NodeLogo />
+            <Card onClick={(_) => go('nodejs.org')}>
+              <FaNodeJs size={iconSize} />
               <strong>NodeJS</strong>
             </Card>
           </div>
-          <Card onClick={(_) => go("graphql.org")}>
-            <GraphQLLogo />
+          <Card onClick={(_) => go('graphql.org')}>
+            <SiGraphql size={iconSize} />
             <strong>GraphQL</strong>
           </Card>
         </Grid4>
@@ -127,7 +126,7 @@ const Page = ({
         </SimpleList>
       </section>
       <section>
-        <h3 style={{ textAlign: "center" }}>{exampleProjectsHeader}</h3>
+        <h3 style={{ textAlign: 'center' }}>{exampleProjectsHeader}</h3>
         {allExampleProjects.map((project) => (
           <div key={project.name}>
             <FlexRows>
@@ -158,16 +157,16 @@ const Page = ({
       <section>
         <CenterFlexColumns>
           <div
-            style={{ textAlign: "center" }}
+            style={{ textAlign: 'center' }}
             dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
           ></div>
           <Repos locale={locale} />
         </CenterFlexColumns>
       </section>
     </CenterFlexColumns>
-  );
-};
+  )
+}
 
-export const getStaticProps = (ctx) => staticProps("portfolio", ctx);
-export const getStaticPaths = staticPaths;
-export default withLayout(Page, "portfolio");
+export const getStaticProps = (ctx) => staticProps('portfolio', ctx)
+export const getStaticPaths = staticPaths
+export default withLayout(Page, 'portfolio')
