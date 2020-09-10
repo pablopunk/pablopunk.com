@@ -5,6 +5,14 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Caviar';
+    src: url('/fonts/CaviarDreams.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Light.ttf') format('truetype');
+  }
   :root {
     font-size: 10px;
 
@@ -14,6 +22,8 @@ const GlobalStyle = createGlobalStyle`
     --space-4: 3.5rem;
     --space-5: 4.5rem;
     --space-6: 6rem;
+
+    --font-fancy: Caviar;
   }
   html {
     box-sizing: border-box;
@@ -30,7 +40,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: -apple-system, Roboto, BlinkMacSystemFont, sans-serif;
 
     --nav-height: 40px;
     --footer-height: 7vh;
@@ -85,6 +95,7 @@ const GlobalStyle = createGlobalStyle`
   }
   h1,h2,h3,h4,h5,h6 {
     color: var(--color-accent2);
+    font-family: var(--font-fancy);
   }
   a:hover h1 {
     color: var(--color-accent);
