@@ -40,9 +40,10 @@ const globalQueries = `
       link
       text
     }
-    changeThemeButtonLight
-    changeThemeButtonDark
-    donateText
+  }
+  allDonateLinks(locale: $locale) {
+    label
+    link
   }
   footer(locale: $locale) {
     copyright(markdown: true)

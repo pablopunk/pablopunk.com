@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import Router from 'next/router'
+import 'rodal/lib/rodal.css'
 
 const App = ({ Component, pageProps }) => {
   useEffect(() => {

@@ -164,11 +164,8 @@ const StyledFooter = styled.footer`
 interface IPageProps {
   children
   locale
-  nav: {
-    changeThemeButtonDark: string
-    changeThemeButtonLight: string
-    donateText: string
-  }
+  nav: { main: Array<{ text: string; link: string }> }
+  allDonateLinks: Array<{ link: string; label: string }>
   footer: { copyright: string }
   metaTags
 }
@@ -178,6 +175,7 @@ export default function withLayout(PageComponent, path?: string) {
     children,
     locale = 'en',
     nav,
+    allDonateLinks,
     footer,
     metaTags,
     ...props
@@ -186,7 +184,12 @@ export default function withLayout(PageComponent, path?: string) {
       <>
         <GlobalStyle />
         <Meta {...metaTags} locale={locale} />
-        <Nav {...nav} locale={locale} path={path} />
+        <Nav
+          {...nav}
+          allDonateLinks={allDonateLinks}
+          locale={locale}
+          path={path}
+        />
         <Inner>
           <StyledMain>
             <PageComponent {...props} locale={locale} />

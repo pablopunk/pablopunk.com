@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export default styled.div`
   ul {
@@ -16,11 +16,11 @@ export default styled.div`
       margin: 1rem 0;
     }
     a {
-      margin-left: 1rem;
+      margin: 0 1rem;
     }
 
     margin-bottom: var(--space-1);
     transition: background-color var(--transition-time),
       color var(--transition-time), border var(--transition-time);
   }
-`;
+`

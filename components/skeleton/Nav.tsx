@@ -1,8 +1,19 @@
+import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import { RiMoonClearLine, RiSunLine } from 'react-icons/ri'
 import { FaCreditCard } from 'react-icons/fa'
+import Rodal from 'rodal'
+import { t } from 'lib/locales'
+import SimpleList from 'components/containers/SimpleList'
+
+const modalStyles = {
+  backgroundColor: 'var(--color-bg)',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}
 
 const StyledNav = styled.nav`
   display: flex;
@@ -65,48 +76,62 @@ const RightButtons = styled.div`
 
 const Nav = ({
   main = [],
-  changeThemeButtonDark,
-  changeThemeButtonLight,
-  donateText,
+  allDonateLinks,
   locale,
   path,
-}) => (
-  <StyledBar>
-    <StyledNav>
-      {main.map((link) => {
-        let current = link.link === path
+  initModal = false,
+}) => {
+  const [modalVisible, modalVisibleSet] = React.useState(initModal)
 
-        return (
-          <div key={link.id}>
-            <Link
-              href={'/[locale]/' + link.link}
-              as={`/${locale}/${link.link}`}
-            >
-              <a className={current ? 'current' : ''}>{link.text}</a>
-            </Link>
-          </div>
-        )
-      })}
-    </StyledNav>
-    <RightButtons>
-      <a
-        onClick={() => {
-          window['__toggleDarkMode']()
-        }}
-        title="Toggle light/dark colors"
-      >
-        <span className="show-dark">
-          <RiMoonClearLine />
-        </span>
-        <span className="show-light">
-          <RiSunLine />
-        </span>
-      </a>
-      <a href="/donate" title="Donate">
-        <FaCreditCard />
-      </a>
-    </RightButtons>
-  </StyledBar>
-)
+  return (
+    <StyledBar>
+      <StyledNav>
+        {main.map((link) => {
+          let current = link.link === path
+
+          return (
+            <div key={link.id}>
+              <Link
+                href={'/[locale]/' + link.link}
+                as={`/${locale}/${link.link}`}
+              >
+                <a className={current ? 'current' : ''}>{link.text}</a>
+              </Link>
+            </div>
+          )
+        })}
+      </StyledNav>
+      <RightButtons>
+        <a
+          onClick={() => window['__toggleDarkMode']()}
+          title="Toggle light/dark colors"
+        >
+          <span className="show-dark">
+            <RiMoonClearLine />
+          </span>
+          <span className="show-light">
+            <RiSunLine />
+          </span>
+        </a>
+        <a onClick={() => modalVisibleSet(true)} title="Donate">
+          <FaCreditCard />
+        </a>
+        <Rodal
+          visible={modalVisible}
+          onClose={() => modalVisibleSet(false)}
+          customStyles={modalStyles}
+        >
+          <SimpleList>
+            {allDonateLinks.map((l) => (
+              <li key={l.link}>
+                <a href={l.link}>{l.label}</a>
+              </li>
+            ))}
+          </SimpleList>
+        </Rodal>
+      </RightButtons>
+    </StyledBar>
+  )
+}
 
 export default Nav
