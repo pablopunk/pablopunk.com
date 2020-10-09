@@ -66,15 +66,6 @@ export async function fetchData(
       return fetchAPI(
         `
         home(locale: $locale) {
-          profilePicture {
-            url: url(imgixParams: {fm: jpg, q:60})
-            alt
-          }
-          profilePictureHover {
-            url: url(imgixParams: {fm: jpg, q:70})
-            alt
-          }
-          abstract(markdown: true)
           ${commonPageQueries}
         }
         `,

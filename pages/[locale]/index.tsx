@@ -42,17 +42,10 @@ const timeToShowLoop = 5000
 const timeToIdleLoop = 3000
 
 interface IProps {
-  profilePicture
-  profilePictureHover
   locale
 }
 
-const Page = ({
-  profilePicture = {},
-  profilePictureHover = {},
-  locale,
-  ...props
-}: IProps) => {
+const Page = ({ locale, ...props }: IProps) => {
   const [freq, setFreq] = React.useState(initialLoop)
 
   const links = [
