@@ -1,15 +1,15 @@
-import React from "react";
-import { staticPaths } from "components/data-fetch/withCMS";
-import { getAllPostsWithSlug, getPostBySlug } from "lib/api";
-import withLayout from "components/skeleton/withLayout";
-import Link from "next/link";
-import { t } from "lib/locales";
-import { NextSeo } from "next-seo";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import Article from "components/pure/Article";
-import { IoMdArrowRoundBack } from "react-icons/io";
+import React from 'react'
+import { staticPaths } from 'components/data-fetch/withCMS'
+import { getAllPostsWithSlug, getPostBySlug } from 'lib/api'
+import withLayout from 'components/skeleton/withLayout'
+import Link from 'next/link'
+import { t } from 'lib/locales'
+import { NextSeo } from 'next-seo'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import Article from 'components/pure/Article'
+import { IoMdArrowRoundBack } from 'react-icons/io'
 
-const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, "/");
+const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, '/')
 
 const Page = ({ post, locale, ...rest }) => {
   return (
@@ -23,17 +23,17 @@ const Page = ({ post, locale, ...rest }) => {
           images: [
             {
               url: post.image.url,
-              alt: post.image.alt
-            }
+              alt: post.image.alt,
+            },
           ],
-          site_name: "pablo.im"
+          site_name: 'pablopunk.com',
         }}
       />
       <br />
       <Link as={`/${locale}/blog`} href="/[locale]/blog">
         <a>
           <IoMdArrowRoundBack />
-          <span>{t("Go back", locale)}</span>
+          <span>{t('Go back', locale)}</span>
         </a>
       </Link>
       <Article>
@@ -58,45 +58,45 @@ const Page = ({ post, locale, ...rest }) => {
         <div className="body" dangerouslySetInnerHTML={{ __html: post.body }} />
       </Article>
     </>
-  );
-};
+  )
+}
 
 export const getStaticProps = async ({ params, preview = false }) => {
-  const data = await getPostBySlug(params.slug, params.locale, preview);
+  const data = await getPostBySlug(params.slug, params.locale, preview)
 
   return {
     props: {
       ...data,
       post: data.post,
-      locale: params.locale
-    }
-  };
-};
+      locale: params.locale,
+    },
+  }
+}
 
 export const getStaticPaths = async () => {
-  const localePaths = await staticPaths();
-  const postsByLocale: any = {};
+  const localePaths = await staticPaths()
+  const postsByLocale: any = {}
 
   for (const p of localePaths.paths) {
-    const posts = await getAllPostsWithSlug(p.params.locale);
-    postsByLocale[p.params.locale] = posts;
+    const posts = await getAllPostsWithSlug(p.params.locale)
+    postsByLocale[p.params.locale] = posts
   }
 
-  const allPaths = { fallback: false, paths: [] };
+  const allPaths = { fallback: false, paths: [] }
 
   for (const locale in postsByLocale) {
-    const posts = postsByLocale[locale];
+    const posts = postsByLocale[locale]
     for (const post of posts) {
       allPaths.paths.push({
         params: {
           locale,
-          slug: post.slug
-        }
-      });
+          slug: post.slug,
+        },
+      })
     }
   }
 
-  return allPaths;
-};
+  return allPaths
+}
 
-export default withLayout(Page, "blog");
+export default withLayout(Page, 'blog')

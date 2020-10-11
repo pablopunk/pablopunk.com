@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { NextSeo, SocialProfileJsonLd } from 'next-seo'
 
-const siteUrl = 'https://pablo.im'
+const siteUrl = 'https://pablopunk.com'
 
 export default function Meta({ title, description, locale }) {
   return (
@@ -22,7 +22,7 @@ export default function Meta({ title, description, locale }) {
               alt: "Pablo Varela's profile picture",
             },
           ],
-          site_name: 'pablo.im',
+          site_name: 'pablopunk.com',
         }}
         twitter={{
           handle: '@pablopunk',

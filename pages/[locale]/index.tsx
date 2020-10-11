@@ -60,7 +60,7 @@ const Page = ({
       id: 'email',
       icon: <AiOutlineMail />,
       label: t('Email', locale),
-      url: 'mailto:me@pablo.im',
+      url: 'mailto:pablo@pablopunk.com',
     },
     {
       id: 'code',

@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import { AiFillStar } from 'react-icons/ai'
 
-const API = 'https://repos.pablo.im/api'
+const API = 'https://repos.pablopunk.com/api'
 
 const ADDITIONAL_REPOS = [
   {
