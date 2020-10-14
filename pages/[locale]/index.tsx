@@ -105,9 +105,9 @@ const Page = ({ locale, ...props }: IProps) => {
         <h1>
           <span>pablo</span>
           <TextLoop interval={freq} delay={initialLoopDelay}>
-            <span>.im</span>
-            <span>varela</span>
             <span>punk</span>
+            <span>varela</span>
+            <span></span>
           </TextLoop>
         </h1>
         <article>
