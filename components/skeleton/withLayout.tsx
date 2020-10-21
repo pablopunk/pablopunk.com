@@ -106,6 +106,7 @@ const GlobalStyle = createGlobalStyle`
   }
   section {
     padding: var(--space-3) 0;
+    width: 100%;
   }
   svg {
     vertical-align: middle;

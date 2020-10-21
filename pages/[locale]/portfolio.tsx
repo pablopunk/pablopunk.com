@@ -11,6 +11,7 @@ import Grid4 from 'components/containers/Grid4'
 import Repos from 'components/data-fetch/Repos'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiNextDotJs, SiGraphql } from 'react-icons/si'
+import NpmCharts from 'components/data-fetch/NpmCharts'
 
 const ExampleProject = styled.div`
   display: flex;
@@ -153,6 +154,12 @@ const Page = ({
             </FlexRows>
           </div>
         ))}
+      </section>
+      <section>
+        <CenterFlexColumns>
+          <h3>Popular npm packages</h3>
+          <NpmCharts locale={locale} />
+        </CenterFlexColumns>
       </section>
       <section>
         <CenterFlexColumns>
