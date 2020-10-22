@@ -9,7 +9,7 @@
     "export": "npm run build && next export"
   },
   "dependencies": {
-    "human-number": "^1.0.5",
+    "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.5",
     "next-seo": "^4.4.0",
@@ -20,7 +20,7 @@
     "react-icons": "3.11.0",
     "react-lazy-load-image-component": "^1.5.0-beta.0",
     "react-text-loop": "^2.3.0",
-    "react-vis": "^1.11.7",
+    "reaviz": "^9.3.0",
     "styled-components": "4.4.1",
     "swr": "^0.1.17"
   },

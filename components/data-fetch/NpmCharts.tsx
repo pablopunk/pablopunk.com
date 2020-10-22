@@ -1,72 +1,74 @@
 import React from 'react'
 import fetch from 'isomorphic-unfetch'
-import Loading from 'components/pure/Loading'
-import {
-  FlexibleWidthXYPlot,
-  LineSeries,
-  VerticalGrdiLines,
-  HorizontalGridLines,
-  XAxis,
-  YAxis,
-} from 'react-vis'
+import { AreaChart } from 'reaviz'
+import humanFormat from 'human-format'
+import { HiOutlineFolderDownload } from 'react-icons/hi'
+import { t } from 'lib/locales'
 
-type Package = {
-  name: string
-  from: string
-  to: string
-}
+const packages = ['nextjs-redirect', 'miny', 'livesoccertv-parser']
 
-const packages: Array<Package> = [
-  {
-    name: 'nextjs-redirect',
-    from: '2019-01-01',
-    to: '2020-11-01',
-  },
-]
+function convertStatsToChartData(stats) {
+  if (stats?.downloads == null) {
+    return []
+  }
 
-function normalizeStatsForAxis(stats) {
+  const max = Math.max(...stats.downloads.map((s) => parseInt(s.downloads)))
+  const min = max / 11
+
   return stats?.downloads
     .map((stat) => ({
-      x: new Date(stat.day).getTime(),
-      y: stat.downloads,
+      key: new Date(stat.day),
+      data: stat.downloads,
     }))
-    .filter((s) => s.y > 0)
-    .reduce((acc, curr) => {
-      if (curr.y - acc[acc.length - 1]?.y < -200) {
-        return acc
-      }
-      return [...acc, curr]
-    }, [])
+    .filter((s) => s.data > min)
 }
 
-const PackageStat = (props: Package) => {
+const totalDownloads = (stats) =>
+  humanFormat(
+    stats?.downloads?.reduce((acc, curr) => acc + curr.downloads, 0) ?? 0,
+    { decimals: 1 }
+  ).replace(' ', '')
+
+const PackageStat = ({ name, locale }) => {
   const [stats, statsSet] = React.useState(null)
 
   React.useEffect(() => {
     fetch(
-      `https://api.npmjs.org/downloads/range/${props.from}:${props.to}/${props.name}`
+      `https://api.npmjs.org/downloads/range/2010-01-01:${
+        new Date().toISOString().split('T')[0]
+      }/${name}`
     )
       .then((r) => r.json())
       .then(statsSet)
   }, [])
 
+  if (stats == null) {
+    return null
+  }
+
   return (
-    <span>
-      <h4>{props.name}</h4>
-      {stats == null && <Loading />}
-      {stats?.downloads?.reduce((acc, curr) => acc + curr.downloads, 0)}{' '}
-      downloads for {props.name}
-      <FlexibleWidthXYPlot height={400}>
-        <LineSeries data={normalizeStatsForAxis(stats)} />
-        <XAxis />
-        <YAxis />
-      </FlexibleWidthXYPlot>
-      <style global jsx>{`
-        .rv-xy-plot__axis__tick > text {
-          fill: var(--color-accent);
+    <div>
+      <div>
+        <span>
+          <HiOutlineFolderDownload /> {totalDownloads(stats)}{' '}
+        </span>
+        {t('downloads for', locale)}{' '}
+        <a href={'https://npm.im/' + name}>
+          <strong>{name}</strong>
+        </a>
+      </div>
+      <AreaChart height={300} data={convertStatsToChartData(stats)} />
+      <style jsx>{`
+        div {
+          width: 100%;
+          text-align: center;
+          margin-bottom: var(--space-2);
+        }
+        span {
+          color: var(--color-accent2);
         }
       `}</style>
-    </span>
+    </div>
   )
 }
 
@@ -74,8 +76,8 @@ export default function NpmCharts({ locale }) {
   return (
     <>
       {packages.map((p) => (
-        <div key={p.name} style={{ width: '100%' }}>
-          <PackageStat name={p.name} from={p.from} to={p.to} />
+        <div key={p} style={{ width: '100%' }}>
+          <PackageStat name={p} locale={locale} />
         </div>
       ))}
     </>

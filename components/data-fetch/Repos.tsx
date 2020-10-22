@@ -1,7 +1,7 @@
 import React from 'react'
 import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch'
-import humanNumber from 'human-number'
+import humanFormat from 'human-format'
 import Loading from 'components/pure/Loading'
 import { t } from 'lib/locales'
 import styled from 'styled-components'
@@ -74,7 +74,9 @@ function Repos({ locale }) {
     }))
     .map((repo) => ({
       ...repo,
-      stargazers_count_nice: humanNumber(repo.stargazers_count),
+      stargazers_count_nice: humanFormat(parseInt(repo.stargazers_count), {
+        decimals: 1,
+      }),
     }))
 
   return (

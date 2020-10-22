@@ -55,5 +55,11 @@
   },
   "Photos": {
     "es": "Fotos"
+  },
+  "downloads for": {
+    "es": "descargas de"
+  },
+  "Popular npm packages": {
+    "es": "Paquetes populares en npm"
   }
 }
