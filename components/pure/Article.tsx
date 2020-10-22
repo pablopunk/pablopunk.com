@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export default styled.article`
   display: flex;
@@ -32,7 +32,7 @@ export default styled.article`
   }
 
   pre {
-    font-family: "SF Mono", Menlo, monospace;
+    font-family: 'SF Mono', Menlo, monospace;
     background-color: var(--color-bgDim);
     padding: var(--space-1) var(--space-2);
     border-radius: var(--space-1);
@@ -42,7 +42,7 @@ export default styled.article`
 
   code {
     color: var(--color-accent);
-    font-family: Menlo, monospace;
+    font-family: 'SF Mono', Menlo, monospace;
     font-size: 85%;
   }
 
@@ -57,4 +57,4 @@ export default styled.article`
   small {
     opacity: 0.8;
   }
-`;
+`

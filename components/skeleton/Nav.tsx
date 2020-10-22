@@ -12,8 +12,6 @@ const StyledNav = styled.nav`
   a {
     padding: 0 var(--space-1);
     font-size: 2.25rem;
-    font-family: var(--font-fancy), -apple-system, BlinkMacSystemFont,
-      sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     color: var(--color-accent2);
