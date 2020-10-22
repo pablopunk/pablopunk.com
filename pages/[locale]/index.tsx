@@ -11,7 +11,7 @@ import { AiOutlineCode, AiOutlineMail, AiOutlineLinkedin } from 'react-icons/ai'
 import { RiLandscapeLine } from 'react-icons/ri'
 import { FiTwitter, FiCamera } from 'react-icons/fi'
 
-const StyledContent = styled.section`
+const StyledContent = styled.div`
   ul {
     list-style: none;
     padding: 0;
