@@ -40,9 +40,8 @@ const GlobalStyle = createGlobalStyle`
     --color-bgDim: #f4f4f4;
     --color-fg: #454545;
     --color-fgStrong: black;
-    --color-accent: #05899E;
-    --color-accent2: #5A84AE;
-    --color-bg-blur: #2d343444;
+    --color-accent: lightseagreen;
+    --color-accent2: mediumorchid;
     --color-blendMode: multiply;
 
     --transition-time: 0.3s;
@@ -57,9 +56,8 @@ const GlobalStyle = createGlobalStyle`
    --color-bgDim: #141e3b;
    --color-fg: #bebebe;
    --color-fgStrong: white;
-   --color-accent: #A2FADE;
-   --color-accent2: #BEE5FD;
-   --color-bg-blur: #2d343477;
+   --color-accent: aquamarine;
+   --color-accent2: powderblue;
    --color-blendMode: screen;
   }
   body.dark .show-dark {
