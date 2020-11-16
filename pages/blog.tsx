@@ -1,5 +1,5 @@
 import React from 'react'
-import { staticProps, staticPaths } from 'components/data-fetch/withCMS'
+import { staticProps } from 'components/data-fetch/withCMS'
 import withLayout from 'components/skeleton/withLayout'
 import CenterFlexColumns from 'components/containers/CenterFlexColumns'
 import SimpleList from 'components/containers/SimpleList'
@@ -53,5 +53,4 @@ const Page = ({ posts, emptyMessage, title, locale }: IProps) => {
 }
 
 export const getStaticProps = (ctx) => staticProps('blog', ctx)
-export const getStaticPaths = staticPaths
 export default withLayout(Page, 'blog')

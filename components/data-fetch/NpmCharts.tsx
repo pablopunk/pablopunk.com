@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import { AreaChart } from 'reaviz'
 import humanFormat from 'human-format'
 import { HiOutlineFolderDownload } from 'react-icons/hi'
-import { t } from 'lib/locales'
+import { _ } from 'lib/locales'
 
 const packages = ['nextjs-redirect', 'miny', 'livesoccertv-parser']
 
@@ -52,7 +52,7 @@ const PackageStat = ({ name, locale }) => {
         <span>
           <HiOutlineFolderDownload /> {totalDownloads(stats)}{' '}
         </span>
-        {t('downloads for', locale)}{' '}
+        {_('downloads for', locale)}{' '}
         <a href={'https://npm.im/' + name}>
           <strong>{name}</strong>
         </a>

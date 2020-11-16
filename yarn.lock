@@ -4478,11 +4478,6 @@ next@10:
   optionalDependencies:
     sharp "0.26.2"
 
-nextjs-redirect-locale@^1.0.2:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/nextjs-redirect-locale/-/nextjs-redirect-locale-1.0.3.tgz#2fb570299c1a06a1012564526278a58dc02d7ffd"
-  integrity sha512-zAabPSxQb/dhbtsoSfDDaWDyrXqDFFEMonu+c3ihu8kamw7yhW6S1nn142zPY+3Od2c4NMcVGVn2aQaXTW+XUw==
-
 nextjs-redirect@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/nextjs-redirect/-/nextjs-redirect-4.0.2.tgz#e8f18179bcfa3e3b9e04fee9a125b16f74eb2cb6"
