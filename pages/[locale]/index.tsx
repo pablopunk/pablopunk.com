@@ -7,7 +7,7 @@ import FixedCenter from 'components/containers/FixedCenter'
 import Card from 'components/containers/Card'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import { t } from 'lib/locales'
-import { AiOutlineCode, AiOutlineMail, AiOutlineLinkedin } from 'react-icons/ai'
+import { AiOutlineCode, AiOutlineMail, AiOutlineBook } from 'react-icons/ai'
 import { RiLandscapeLine } from 'react-icons/ri'
 import { FiTwitter, FiCamera } from 'react-icons/fi'
 
@@ -78,10 +78,11 @@ const Page = ({ locale, ...props }: IProps) => {
       url: '/photos',
     },
     {
-      id: 'linkedin',
-      icon: <AiOutlineLinkedin />,
-      label: t('Linkedin', locale),
-      url: 'https://linkedin.com/in/pablopunk',
+      id: 'books',
+      icon: <AiOutlineBook />,
+      label: t('Books', locale),
+      url:
+        'https://www.notion.so/pablopunk/Books-9de297d7668e4498a9769421d29889b8',
     },
   ]
 
