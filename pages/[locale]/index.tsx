@@ -81,8 +81,7 @@ const Page = ({ locale, ...props }: IProps) => {
       id: 'books',
       icon: <AiOutlineBook />,
       label: t('Books', locale),
-      url:
-        'https://www.notion.so/pablopunk/Books-9de297d7668e4498a9769421d29889b8',
+      url: '/books',
     },
   ]
 
