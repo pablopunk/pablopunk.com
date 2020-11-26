@@ -63,7 +63,7 @@ const Page = ({ locale, ...props }: IProps) => {
       id: 'twitter',
       icon: <FiTwitter />,
       label: t('Twitter', locale),
-      url: 'https://twitter.com/pablopunkdev',
+      url: 'https://twitter.com/pablopunkcodes',
     },
     {
       id: 'drawings',
