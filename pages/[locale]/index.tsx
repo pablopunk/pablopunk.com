@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import TextLoop from 'react-text-loop'
 import withLayout from 'components/skeleton/withLayout'
-import { staticProps } from 'components/data-fetch/withCMS'
+import { staticProps, staticPaths } from 'components/data-fetch/withCMS'
 import FixedCenter from 'components/containers/FixedCenter'
 import Card from 'components/containers/Card'
 import { smallMediaQuery } from 'components/utils/media-queries'
-import { _ } from 'lib/locales'
+import { t } from 'lib/locales'
 import { AiOutlineCode, AiOutlineMail, AiOutlineBook } from 'react-icons/ai'
 import { RiLandscapeLine } from 'react-icons/ri'
 import { FiTwitter, FiCamera } from 'react-icons/fi'
@@ -50,37 +50,37 @@ const Page = ({ locale, ...props }: IProps) => {
     {
       id: 'email',
       icon: <AiOutlineMail />,
-      label: _('Email', locale),
+      label: t('Email', locale),
       url: 'mailto:pablo@pablopunk.com',
     },
     {
       id: 'code',
       icon: <AiOutlineCode />,
-      label: _('Code', locale),
+      label: t('Code', locale),
       url: 'https://github.com/pablopunk',
     },
     {
       id: 'twitter',
       icon: <FiTwitter />,
-      label: _('Twitter', locale),
-      url: 'https://twitter.com/pablopunkdev',
+      label: t('Twitter', locale),
+      url: 'https://twitter.com/pablopunkcodes',
     },
     {
       id: 'drawings',
       icon: <RiLandscapeLine />,
-      label: _('Drawings', locale),
+      label: t('Drawings', locale),
       url: '/drawings',
     },
     {
       id: 'photos',
       icon: <FiCamera />,
-      label: _('Photos', locale),
+      label: t('Photos', locale),
       url: '/photos',
     },
     {
       id: 'books',
       icon: <AiOutlineBook />,
-      label: _('Books', locale),
+      label: t('Books', locale),
       url: '/books',
     },
   ]
@@ -110,7 +110,7 @@ const Page = ({ locale, ...props }: IProps) => {
         </h1>
         <article>
           <p>
-            {_(
+            {t(
               "Hi there! My name is Pablo and I'm a remote web developer",
               locale
             )}
@@ -132,4 +132,5 @@ const Page = ({ locale, ...props }: IProps) => {
 }
 
 export const getStaticProps = (ctx) => staticProps('home', ctx)
+export const getStaticPaths = staticPaths
 export default withLayout(Page, '')

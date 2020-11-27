@@ -61,5 +61,8 @@
   },
   "Popular npm packages": {
     "es": "Paquetes populares en npm"
+  },
+  "Books": {
+    "es": "Libros"
   }
 }
