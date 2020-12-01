@@ -7,12 +7,15 @@ import { NextSeo } from 'next-seo'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import Article from 'components/pure/Article'
 import { IoMdArrowRoundBack } from 'react-icons/io'
+import { useRouter } from 'next/router'
 
 const { i18n } = require('../../next.config')
 
 const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, '/')
 
-const Page = ({ post, locale, ...rest }) => {
+const Page = ({ post, ...rest }) => {
+  const { locale } = useRouter()
+
   return (
     <>
       <NextSeo
@@ -63,23 +66,22 @@ const Page = ({ post, locale, ...rest }) => {
 }
 
 export const getStaticProps = async ({ params, preview = false, locale }) => {
-  const data = await getPostBySlug(params.slug, params.locale, preview)
+  const data = await getPostBySlug(params.slug, locale, preview)
 
   return {
     props: {
       ...data,
       post: data.post,
-      locale,
     },
   }
 }
 
-export const getStaticPaths = async () => {
-  const postsByLocale: any = {}
-  const posts = await getAllPostsWithSlug(p.params.locale)
+export const getStaticPaths = async ({ locales }) => {
+  const postsByLocale = {}
 
-  for (const l of i18n.locales) {
-    postsByLocale[l] = posts
+  for (const locale of locales) {
+    const posts = await getAllPostsWithSlug(locale)
+    postsByLocale[locale] = posts
   }
 
   const allPaths = { fallback: false, paths: [] }
@@ -88,8 +90,8 @@ export const getStaticPaths = async () => {
     const posts = postsByLocale[locale]
     for (const post of posts) {
       allPaths.paths.push({
+        locale,
         params: {
-          locale,
           slug: post.slug,
         },
       })

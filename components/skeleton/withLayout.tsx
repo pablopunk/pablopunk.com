@@ -3,6 +3,8 @@ import Nav from 'components/skeleton/Nav'
 import Meta from 'components/skeleton/Meta'
 import styled, { createGlobalStyle } from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
+import Link from 'next/link'
+import { i18n } from '../../next.config'
 
 const GlobalStyle = createGlobalStyle`
 
@@ -151,7 +153,6 @@ const StyledFooter = styled.footer`
 
 interface IPageProps {
   children
-  locale
   nav: {
     changeThemeButtonDark: string
     changeThemeButtonLight: string
@@ -164,7 +165,6 @@ interface IPageProps {
 export default function withLayout(PageComponent, path?: string) {
   return function Layout({
     children,
-    locale = 'en',
     nav,
     footer,
     metaTags,
@@ -173,14 +173,22 @@ export default function withLayout(PageComponent, path?: string) {
     return (
       <>
         <GlobalStyle />
-        <Meta {...metaTags} locale={locale} />
-        <Nav {...nav} locale={locale} path={path} />
+        <Meta {...metaTags} />
+        <Nav {...nav} path={path} />
         <Inner>
           <StyledMain>
-            <PageComponent {...props} locale={locale} />
+            <PageComponent {...props} />
           </StyledMain>
           <StyledFooter>
-            <div dangerouslySetInnerHTML={{ __html: footer.copyright }}></div>
+            <p>
+              {i18n.locales.map((l) => (
+                <Link href="/" locale={l} key={l}>
+                  {l + ' '}
+                </Link>
+              ))}
+            </p>
+            <p>© Pablo Varela {new Date().getFullYear()}</p>
+            <p></p>
           </StyledFooter>
         </Inner>
       </>
