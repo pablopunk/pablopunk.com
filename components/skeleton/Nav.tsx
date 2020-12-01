@@ -77,8 +77,6 @@ const Nav = ({
         {main.map((link) => {
           let current = link.link === path
 
-          console.log(link.link)
-
           return (
             <div key={link.id}>
               <Link href={'/' + link.link} locale={locale}>

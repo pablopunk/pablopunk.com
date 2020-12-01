@@ -23,8 +23,6 @@ const Page = ({ posts, emptyMessage, title }: IProps) => {
     posts.reduce((acc, curr) => ({ ...acc, [year(curr)]: true }), {})
   )
 
-  console.log(posts)
-
   return (
     <CenterFlexColumns>
       <section>

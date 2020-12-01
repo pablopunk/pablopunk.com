@@ -4,7 +4,7 @@ import Meta from 'components/skeleton/Meta'
 import styled, { createGlobalStyle } from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import Link from 'next/link'
-import { i18n } from '../../next.config'
+import { i18n } from '../../next.config.js'
 
 const GlobalStyle = createGlobalStyle`
 
