@@ -14,7 +14,6 @@
     "next": "10",
     "next-seo": "^4.4.0",
     "nextjs-redirect": "^4.0.2",
-    "nextjs-redirect-locale": "^1.0.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-icons": "3.11.0",

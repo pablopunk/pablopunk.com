@@ -3,10 +3,10 @@ import { fetchData } from 'lib/api'
 
 export const staticProps = async (
   pageName: string,
-  { params, preview = false }
+  { params, preview = false, locale }
 ) => {
   const data = await fetchData(pageName, {
-    locale: params.locale,
+    locale,
     preview,
   })
 
@@ -14,13 +14,8 @@ export const staticProps = async (
     props: {
       ...data,
       ...data[pageName],
-      locale: params.locale,
+      locale,
       preview,
     },
   }
 }
-
-export const staticPaths = async () => ({
-  paths: [{ params: { locale: 'es' } }, { params: { locale: 'en' } }],
-  fallback: false,
-})

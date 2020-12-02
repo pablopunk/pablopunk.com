@@ -1,5 +1,6 @@
 import Document, { Main, NextScript, Html, Head } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { useRouter } from 'next/router'
 
 const darkModeCode = `(function() {
   function setDarkMode(v) {
@@ -33,6 +34,7 @@ export default class extends Document {
 
       return {
         ...initialProps,
+        locale: ctx.locale,
         styles: (
           <>
             {initialProps.styles}
@@ -46,10 +48,8 @@ export default class extends Document {
   }
 
   render() {
-    const lang = this.props.__NEXT_DATA__?.props?.pageProps?.locale || 'en'
-
     return (
-      <Html lang={lang}>
+      <Html lang={this.props.locale}>
         <Head>
           <script
             data-goatcounter="https://pablopink.goatcounter.com/count"

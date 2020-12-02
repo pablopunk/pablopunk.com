@@ -1,10 +1,11 @@
 import React from 'react'
-import { staticProps, staticPaths } from 'components/data-fetch/withCMS'
+import { staticProps } from 'components/data-fetch/withCMS'
 import withLayout from 'components/skeleton/withLayout'
 import CenterFlexColumns from 'components/containers/CenterFlexColumns'
 import SimpleList from 'components/containers/SimpleList'
 import Link from 'next/link'
 import { BsFilePost } from 'react-icons/bs'
+import { useRouter } from 'next/router'
 
 type Post = { title: string; slug: string; date: string }
 
@@ -12,12 +13,12 @@ interface IProps {
   posts: Array<Post>
   title: string
   emptyMessage: string
-  locale: string
 }
 
 const year = (post: Post) => post.date.slice(0, 4)
 
-const Page = ({ posts, emptyMessage, title, locale }: IProps) => {
+const Page = ({ posts, emptyMessage, title }: IProps) => {
+  const { locale } = useRouter()
   const years = Object.keys(
     posts.reduce((acc, curr) => ({ ...acc, [year(curr)]: true }), {})
   )
@@ -34,10 +35,7 @@ const Page = ({ posts, emptyMessage, title, locale }: IProps) => {
               {posts.map((post) => (
                 <li key={post.slug}>
                   <BsFilePost />
-                  <Link
-                    as={`/${locale}/posts/${post.slug}`}
-                    href="/[locale]/posts/[slug]"
-                  >
+                  <Link href={`/posts/${post.slug}`}>
                     <a>
                       <span>{post.title}</span>
                     </a>
@@ -53,5 +51,4 @@ const Page = ({ posts, emptyMessage, title, locale }: IProps) => {
 }
 
 export const getStaticProps = (ctx) => staticProps('blog', ctx)
-export const getStaticPaths = staticPaths
 export default withLayout(Page, 'blog')

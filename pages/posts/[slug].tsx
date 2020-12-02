@@ -1,17 +1,19 @@
 import React from 'react'
-import { staticPaths } from 'components/data-fetch/withCMS'
 import { getAllPostsWithSlug, getPostBySlug } from 'lib/api'
 import withLayout from 'components/skeleton/withLayout'
 import Link from 'next/link'
-import { t } from 'lib/locales'
+import { _ } from 'lib/locales'
 import { NextSeo } from 'next-seo'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import Article from 'components/pure/Article'
 import { IoMdArrowRoundBack } from 'react-icons/io'
+import { useRouter } from 'next/router'
 
 const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, '/')
 
-const Page = ({ post, locale, ...rest }) => {
+const Page = ({ post, ...rest }) => {
+  const { locale } = useRouter()
+
   return (
     <>
       <NextSeo
@@ -33,7 +35,7 @@ const Page = ({ post, locale, ...rest }) => {
       <Link as={`/${locale}/blog`} href="/[locale]/blog">
         <a>
           <IoMdArrowRoundBack />
-          <span>{t('Go back', locale)}</span>
+          <span>{_('Go back', locale)}</span>
         </a>
       </Link>
       <Article>
@@ -61,25 +63,24 @@ const Page = ({ post, locale, ...rest }) => {
   )
 }
 
-export const getStaticProps = async ({ params, preview = false }) => {
-  const data = await getPostBySlug(params.slug, params.locale, preview)
+export const getStaticProps = async ({ params, preview = false, locale }) => {
+  const data = await getPostBySlug(params.slug, locale, preview)
 
   return {
     props: {
       ...data,
       post: data.post,
-      locale: params.locale,
+      locale,
     },
   }
 }
 
-export const getStaticPaths = async () => {
-  const localePaths = await staticPaths()
-  const postsByLocale: any = {}
+export const getStaticPaths = async ({ locales }) => {
+  const postsByLocale = {}
 
-  for (const p of localePaths.paths) {
-    const posts = await getAllPostsWithSlug(p.params.locale)
-    postsByLocale[p.params.locale] = posts
+  for (const locale of locales) {
+    const posts = await getAllPostsWithSlug(locale)
+    postsByLocale[locale] = posts
   }
 
   const allPaths = { fallback: false, paths: [] }
@@ -88,8 +89,8 @@ export const getStaticPaths = async () => {
     const posts = postsByLocale[locale]
     for (const post of posts) {
       allPaths.paths.push({
+        locale,
         params: {
-          locale,
           slug: post.slug,
         },
       })

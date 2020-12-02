@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch'
 import humanFormat from 'human-format'
 import Loading from 'components/pure/Loading'
-import { t } from 'lib/locales'
+import { _ } from 'lib/locales'
 import styled from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import { AiFillStar } from 'react-icons/ai'
@@ -70,7 +70,7 @@ function Repos({ locale }) {
     }))
     .map((repo) => ({
       ...repo,
-      description: t(repo.description ?? '', locale),
+      description: _(repo.description ?? '', locale),
     }))
     .map((repo) => ({
       ...repo,

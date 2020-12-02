@@ -1,5 +1,5 @@
 import Card from 'components/containers/Card'
-import { staticPaths, staticProps } from 'components/data-fetch/withCMS'
+import { staticProps } from 'components/data-fetch/withCMS'
 import CenterFlexColumns from 'components/containers/CenterFlexColumns'
 import withLayout from 'components/skeleton/withLayout'
 import SimpleList from 'components/containers/SimpleList'
@@ -12,7 +12,7 @@ import Repos from 'components/data-fetch/Repos'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiNextDotJs, SiGraphql } from 'react-icons/si'
 import NpmCharts from 'components/data-fetch/NpmCharts'
-import { t } from 'lib/locales'
+import { _ } from 'lib/locales'
 
 const ExampleProject = styled.div`
   display: flex;
@@ -158,7 +158,7 @@ const Page = ({
       </section>
       <section style={{ width: '100%' }}>
         <CenterFlexColumns>
-          <h3>{t('Popular npm packages', locale)}</h3>
+          <h3>{_('Popular npm packages', locale)}</h3>
           <NpmCharts locale={locale} />
         </CenterFlexColumns>
       </section>
@@ -176,5 +176,4 @@ const Page = ({
 }
 
 export const getStaticProps = (ctx) => staticProps('portfolio', ctx)
-export const getStaticPaths = staticPaths
 export default withLayout(Page, 'portfolio')
