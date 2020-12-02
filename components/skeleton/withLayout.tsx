@@ -186,7 +186,7 @@ export default function withLayout(PageComponent, path?: string) {
                   return locale === l ? (
                     <span key={l}> {l} </span>
                   ) : (
-                    <Link href="/" locale={l} key={l}>
+                    <Link href={'/' + l} locale={l} key={l}>
                       {l}
                     </Link>
                   )
