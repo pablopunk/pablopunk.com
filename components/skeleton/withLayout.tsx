@@ -4,7 +4,7 @@ import Meta from 'components/skeleton/Meta'
 import styled, { createGlobalStyle } from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import Link from 'next/link'
-import { _, locales } from 'lib/locales'
+import { _, locales } from 'lib/locales.js'
 
 const GlobalStyle = createGlobalStyle`
 
