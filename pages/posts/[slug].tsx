@@ -9,8 +9,6 @@ import Article from 'components/pure/Article'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { useRouter } from 'next/router'
 
-const { i18n } = require('../../next.config')
-
 const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, '/')
 
 const Page = ({ post, ...rest }) => {

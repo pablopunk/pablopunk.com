@@ -4,8 +4,7 @@ import Meta from 'components/skeleton/Meta'
 import styled, { createGlobalStyle } from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import Link from 'next/link'
-import { _ } from 'lib/locales'
-const { i18n } = require('../../next.config.js')
+import { _, locales } from 'lib/locales'
 
 const GlobalStyle = createGlobalStyle`
 
@@ -183,9 +182,9 @@ export default function withLayout(PageComponent, path?: string) {
           <StyledFooter>
             <div>
               <p>
-                {i18n.locales.map((l) => {
+                {locales.map((l) => {
                   return locale === l ? (
-                    <span> {l} </span>
+                    <span key={l}> {l} </span>
                   ) : (
                     <Link href="/" locale={l} key={l}>
                       {l}
