@@ -41,9 +41,6 @@ const globalQueries = `
       text
     }
   }
-  footer(locale: $locale) {
-    copyright(markdown: true)
-  }
   header(locale: $locale) {
     title
     subtitle

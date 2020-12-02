@@ -1,9 +1,12 @@
-import additionalTranslations from './additional-translations.json'
+import es from './translations/es.json'
 
 export function _(text: string, locale: string) {
-  if (additionalTranslations[text]?.[locale]) {
-    return additionalTranslations[text]?.[locale]
+  switch (locale) {
+    case 'es':
+      if (es[text]) {
+        return es[text]
+      }
+    default:
+      return text
   }
-
-  return text
 }

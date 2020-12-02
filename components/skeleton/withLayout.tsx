@@ -4,6 +4,7 @@ import Meta from 'components/skeleton/Meta'
 import styled, { createGlobalStyle } from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import Link from 'next/link'
+import { _ } from 'lib/locales'
 import { i18n } from '../../next.config.js'
 
 const GlobalStyle = createGlobalStyle`
@@ -158,16 +159,16 @@ interface IPageProps {
     changeThemeButtonLight: string
     donateText: string
   }
-  footer: { copyright: string }
   metaTags
+  locale: string
 }
 
 export default function withLayout(PageComponent, path?: string) {
   return function Layout({
     children,
     nav,
-    footer,
     metaTags,
+    locale,
     ...props
   }: IPageProps) {
     return (
@@ -180,15 +181,25 @@ export default function withLayout(PageComponent, path?: string) {
             <PageComponent {...props} />
           </StyledMain>
           <StyledFooter>
-            <p>
-              {i18n.locales.map((l) => (
-                <Link href="/" locale={l} key={l}>
-                  {l + ' '}
-                </Link>
-              ))}
-            </p>
-            <p>© Pablo Varela {new Date().getFullYear()}</p>
-            <p></p>
+            <div>
+              <p>
+                {i18n.locales.map((l) => {
+                  return locale === l ? (
+                    <span> {l} </span>
+                  ) : (
+                    <Link href="/" locale={l} key={l}>
+                      {l}
+                    </Link>
+                  )
+                })}
+              </p>
+              <p>© Pablo Varela {new Date().getFullYear()}</p>
+              <p>
+                <a href="https://github.com/pablopunk/pablopunk.com">
+                  {_('Source code', locale)}
+                </a>
+              </p>
+            </div>
           </StyledFooter>
         </Inner>
       </>
