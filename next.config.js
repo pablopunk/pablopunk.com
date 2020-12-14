@@ -8,4 +8,18 @@ module.exports = {
     locales,
     defaultLocale: 'en',
   },
+  async rewrites() {
+    return [
+      {
+        source: '/(es|en)/count.js',
+        destination: 'https://gc.zgo.at/count.js',
+        locale: false,
+      },
+      {
+        source: '/(es|en)/goat',
+        destination: 'https://pablopunk.goatcounter.com/count',
+        locale: false,
+      },
+    ]
+  },
 }

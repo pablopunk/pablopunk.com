@@ -51,11 +51,7 @@ export default class extends Document {
     return (
       <Html lang={this.props.locale}>
         <Head>
-          <script
-            data-goatcounter="https://pablopunk.goatcounter.com/count"
-            async
-            src="//gc.zgo.at/count.js"
-          ></script>
+          <script data-goatcounter="/goat" async src="/count.js"></script>
         </Head>
         <body>
           <script dangerouslySetInnerHTML={{ __html: darkModeCode }} />
