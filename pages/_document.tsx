@@ -52,7 +52,7 @@ export default class extends Document {
       <Html lang={this.props.locale}>
         <Head>
           <script
-            data-goatcounter="https://pablopink.goatcounter.com/count"
+            data-goatcounter="https://pablopunk.goatcounter.com/count"
             async
             src="//gc.zgo.at/count.js"
           ></script>
