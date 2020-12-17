@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import TextLoop from 'react-text-loop'
 import withLayout from 'components/skeleton/withLayout'
 import { staticProps } from 'components/data-fetch/withCMS'
-import FixedCenter from 'components/containers/FixedCenter'
 import Card from 'components/containers/Card'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import { _ } from 'lib/locales'
@@ -72,33 +71,31 @@ const Page = ({ locale, cards, ...props }: IProps) => {
     )
 
   return (
-    <FixedCenter>
-      <StyledContent>
-        <h1>
-          <span>pablo</span>
-          <TextLoop interval={freq} delay={initialLoopDelay}>
-            <span>punk</span>
-            <span>varela</span>
-            <span></span>
-          </TextLoop>
-        </h1>
-        <article>
-          <p>
-            {_(
-              "Hi there! My name is Pablo and I'm a remote web developer",
-              locale
-            )}
-          </p>
-        </article>
-        <div>
-          {cards.map((card) => (
-            <React.Fragment key={card.title + Math.random().toString()}>
-              <HomeCard {...card} />
-            </React.Fragment>
-          ))}
-        </div>
-      </StyledContent>
-    </FixedCenter>
+    <StyledContent>
+      <h1>
+        <span>pablo</span>
+        <TextLoop interval={freq} delay={initialLoopDelay}>
+          <span>punk</span>
+          <span>varela</span>
+          <span></span>
+        </TextLoop>
+      </h1>
+      <article>
+        <p>
+          {_(
+            "Hi there! My name is Pablo and I'm a remote web developer",
+            locale
+          )}
+        </p>
+      </article>
+      <div>
+        {cards.map((card) => (
+          <React.Fragment key={card.title + Math.random().toString()}>
+            <HomeCard {...card} />
+          </React.Fragment>
+        ))}
+      </div>
+    </StyledContent>
   )
 }
 
