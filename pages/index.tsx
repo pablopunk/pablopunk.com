@@ -10,6 +10,7 @@ import { _ } from 'lib/locales'
 import { AiOutlineCode, AiOutlineMail, AiOutlineBook } from 'react-icons/ai'
 import { RiLandscapeLine } from 'react-icons/ri'
 import { FiTwitter, FiCamera } from 'react-icons/fi'
+import HomeCard from 'components/pure/HomeCard'
 
 const StyledContent = styled.div`
   ul {
@@ -41,49 +42,11 @@ const timeToIdleLoop = 3000
 
 interface IProps {
   locale
+  cards
 }
 
-const Page = ({ locale, ...props }: IProps) => {
+const Page = ({ locale, cards, ...props }: IProps) => {
   const [freq, setFreq] = React.useState(initialLoop)
-
-  const links = [
-    {
-      id: 'email',
-      icon: <AiOutlineMail />,
-      label: _('Email', locale),
-      url: 'mailto:pablo@pablopunk.com',
-    },
-    {
-      id: 'code',
-      icon: <AiOutlineCode />,
-      label: _('Code', locale),
-      url: 'https://github.com/pablopunk',
-    },
-    {
-      id: 'twitter',
-      icon: <FiTwitter />,
-      label: _('Twitter', locale),
-      url: 'https://twitter.com/pablopunkdev',
-    },
-    {
-      id: 'drawings',
-      icon: <RiLandscapeLine />,
-      label: _('Drawings', locale),
-      url: '/drawings',
-    },
-    {
-      id: 'photos',
-      icon: <FiCamera />,
-      label: _('Photos', locale),
-      url: '/photos',
-    },
-    {
-      id: 'books',
-      icon: <AiOutlineBook />,
-      label: _('Books', locale),
-      url: '/books',
-    },
-  ]
 
   React.useEffect(() => {
     if (freq === 0) {
@@ -96,6 +59,17 @@ const Page = ({ locale, ...props }: IProps) => {
       }, timeToShowLoop)
     }
   })
+
+  cards = [...cards, ...cards, ...cards]
+
+  const allTags = cards
+    .map((card) => card.tags)
+    .flat()
+    .reduce(
+      (acc, curr) =>
+        acc.find((t) => t.name === curr.name) ? acc : [...acc, curr],
+      []
+    )
 
   return (
     <FixedCenter>
@@ -115,17 +89,14 @@ const Page = ({ locale, ...props }: IProps) => {
               locale
             )}
           </p>
-          <ul>
-            {links.map((l) => (
-              <li key={l.id}>
-                <Card onClick={() => window.open(l.url)}>
-                  {l.icon}
-                  <strong>{l.label}</strong>
-                </Card>
-              </li>
-            ))}
-          </ul>
         </article>
+        <div>
+          {cards.map((card) => (
+            <React.Fragment key={card.title + Math.random().toString()}>
+              <HomeCard {...card} />
+            </React.Fragment>
+          ))}
+        </div>
       </StyledContent>
     </FixedCenter>
   )

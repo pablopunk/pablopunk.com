@@ -63,6 +63,22 @@ export async function fetchData(
       return fetchAPI(
         `
         home(locale: $locale) {
+          cards {
+            img {
+              url
+              title
+              alt
+            }
+            link
+            title
+            description
+            tags {
+              name
+              color {
+                hex
+              }
+            }
+          }
           ${commonPageQueries}
         }
         `,
