@@ -20,6 +20,29 @@ module.exports = {
         destination: 'https://pablopunk.goatcounter.com/count',
         locale: false,
       },
+      {
+        source: '/cv',
+        destination: 'https://cv.pablopunk.com',
+      },
+      {
+        source: '/books',
+        destination:
+          'https://www.notion.so/Books-9de297d7668e4498a9769421d29889b8',
+      },
+      {
+        source: '/illustrations',
+        destination:
+          'https://www.notion.so/pablopunk/Drawings-0c241704f0ea48d39591ca3bf1483966',
+      },
+      {
+        source: '/drawings',
+        destination:
+          'https://www.notion.so/pablopunk/Drawings-0c241704f0ea48d39591ca3bf1483966',
+      },
+      {
+        source: '/photos',
+        destination: 'https://www.pexels.com/@pablopunk',
+      },
     ]
   },
 }

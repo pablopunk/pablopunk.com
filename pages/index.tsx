@@ -16,21 +16,7 @@ import { dark } from 'components/utils/themes'
 import { useRouter } from 'next/router'
 
 const StyledContent = styled.div`
-  ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: center;
-    @media (${smallMediaQuery}) {
-      grid-template-columns: 50% 50%;
-    }
-    li {
-      margin: var(--space-1);
-    }
-  }
   h1 {
-    margin-top: 0;
     text-align: center;
   }
   p {
@@ -42,9 +28,15 @@ const StyledContent = styled.div`
     & > span > * {
       margin: 0 var(--space-1);
       cursor: pointer;
-      &:hover {
+      &:hover,
+      .active {
         border-bottom: 1px solid var(--color-accent);
       }
+    }
+  }
+  .cards {
+    @media (${smallMediaQuery}) {
+      font-size: 1.5rem;
     }
   }
 `
@@ -117,26 +109,31 @@ const Page = ({ cards, ...props }: IProps) => {
       </article>
       <article className="filters">
         <span onClick={() => showThisTagOnlySet(null)}>
-          <Tag text={_('all', locale)} color={dark.bg} />
+          <strong className={showThisTagOnly ? '' : 'active'}>
+            <Tag text={_('all', locale)} />
+          </strong>
         </span>
         {allTags.map((tag) => {
           return (
             <span
               key={'filters' + tag.name}
               onClick={() => showThisTagOnlySet(tag.name)}
+              className={showThisTagOnly === tag.name ? 'active' : ''}
             >
               <Tag text={tag.name} color={tag.color.hex} />
             </span>
           )
         })}
       </article>
-      <Grid columns={2} small={1}>
-        {cards.map((card) => (
-          <React.Fragment key={card.title + Math.random().toString()}>
-            <HomeCard {...card} />
-          </React.Fragment>
-        ))}
-      </Grid>
+      <article className="cards">
+        <Grid columns={2} small={1}>
+          {cards.map((card) => (
+            <React.Fragment key={card.title + Math.random().toString()}>
+              <HomeCard {...card} />
+            </React.Fragment>
+          ))}
+        </Grid>
+      </article>
     </StyledContent>
   )
 }

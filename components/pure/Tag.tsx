@@ -2,7 +2,7 @@ import React from 'react'
 import smartForeground from 'smart-foreground'
 import { light, dark } from 'components/utils/themes'
 
-export default ({ text, color }) => {
+export default function Tag({ text, color = 'transparent' }) {
   return (
     <span>
       {text}

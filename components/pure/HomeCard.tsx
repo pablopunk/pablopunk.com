@@ -47,8 +47,12 @@ export default function HomeCard({ title, description, img, link, tags }) {
             }
             img {
               width: 60px;
-              height: 100%;
+              height: 60px;
               margin-right: var(--space-2);
+            }
+            .left {
+              display: flex;
+              align-items: center;
             }
             .right {
               display: flex;
