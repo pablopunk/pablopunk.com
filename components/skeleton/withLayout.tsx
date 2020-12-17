@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import Link from 'next/link'
 import { _, locales } from 'lib/locales.js'
+import { light, dark } from 'components/utils/themes'
 
 const GlobalStyle = createGlobalStyle`
 
@@ -38,13 +39,12 @@ const GlobalStyle = createGlobalStyle`
     --nav-height: 40px;
     --footer-height: 7vh;
 
-    --color-bg: white;
-    --color-bgDim: #f4f4f4;
-    --color-fg: #454545;
-    --color-fgStrong: black;
-    --color-accent: lightseagreen;
-    --color-accent2: mediumorchid;
-    --color-blendMode: multiply;
+    --color-bg: ${light.bg};
+    --color-bgDim: ${light.bgDim};
+    --color-fg: ${light.fg};
+    --color-fgStrong: ${light.fgStrong};
+    --color-accent: ${light.accent};
+    --color-accent2: ${light.accent2};
 
     --transition-time: 0.3s;
 
@@ -54,13 +54,12 @@ const GlobalStyle = createGlobalStyle`
     transition: background-color var(--transition-time), color var(--transition-time);
   }
   body.dark {
-   --color-bg: #06191D;
-   --color-bgDim: #141e3b;
-   --color-fg: #bebebe;
-   --color-fgStrong: white;
-   --color-accent: aquamarine;
-   --color-accent2: powderblue;
-   --color-blendMode: screen;
+    --color-bg: ${dark.bg};
+    --color-bgDim: ${dark.bgDim};
+    --color-fg: ${dark.fg};
+    --color-fgStrong: ${dark.fgStrong};
+    --color-accent: ${dark.accent};
+    --color-accent2: ${dark.accent2};
   }
   body.dark .show-dark {
     display: block;
