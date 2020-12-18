@@ -1,5 +1,11 @@
 const { locales } = require('./lib/locales')
 
+const buildRewrite = ({ path, dest }) => ({
+  source: `/(${locales.join('|')})+/${path}`,
+  destination: dest,
+  locale: false,
+})
+
 const buildRedirect = ({ path, dest }) => ({
   source: `/(${locales.join('|')})+/${path}`,
   destination: dest,
@@ -7,7 +13,7 @@ const buildRedirect = ({ path, dest }) => ({
   permanent: false,
 })
 
-const redirections = [
+const rw = [
   {
     path: 'count.js',
     dest: 'https://gc.zgo.at/count.js',
@@ -16,6 +22,9 @@ const redirections = [
     path: 'goat',
     dest: 'https://pablopunk.goatcounter.com/count',
   },
+]
+
+const rd = [
   {
     path: 'cv',
     dest: 'https://cv.pablopunk.com',
@@ -48,7 +57,10 @@ module.exports = {
     locales,
     defaultLocale: 'en',
   },
+  async rewrites() {
+    return rw.map(buildRewrite)
+  },
   async redirects() {
-    return redirections.map(buildRedirect)
+    return rd.map(buildRedirect)
   },
 }
