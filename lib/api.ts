@@ -66,9 +66,10 @@ export async function fetchData(
           abstract(markdown: true)
           cards {
             img {
-              url
+              url(imgixParams: {fm: jpg, q:60})
               title
               alt
+              blurUpThumb(imgixParams: {fm: jpg, q:60})
             }
             link
             title

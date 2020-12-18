@@ -2,6 +2,9 @@ import React from 'react'
 import Tag from 'components/pure/Tag'
 import { RiExternalLinkLine } from 'react-icons/ri'
 import Link from 'next/link'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+
+const imgSize = '60px'
 
 export default function HomeCard({ title, description, img, link, tags }) {
   return (
@@ -9,7 +12,13 @@ export default function HomeCard({ title, description, img, link, tags }) {
       <a>
         <article>
           <div className="left">
-            <img src={img.url} alt={img.alt} />
+            <LazyLoadImage
+              src={img.url}
+              alt={img.alt}
+              height={imgSize}
+              width={imgSize}
+              placeholder={<img src={img.blurUpThumb} alt={img.alt} />}
+            />
           </div>
           <div className="right">
             <h4>{title}</h4>
@@ -46,14 +55,12 @@ export default function HomeCard({ title, description, img, link, tags }) {
             h4 {
               margin: 0;
             }
-            img {
-              width: 60px;
-              height: 60px;
-              margin-right: var(--space-2);
-            }
             .left {
               display: flex;
               align-items: center;
+              width: ${imgSize};
+              height: ${imgSize};
+              margin-right: var(--space-2);
             }
             .right {
               display: flex;
