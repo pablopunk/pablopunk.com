@@ -17,7 +17,14 @@ export default function HomeCard({ title, description, img, link, tags }) {
               alt={img.alt}
               height={imgSize}
               width={imgSize}
-              placeholder={<img src={img.blurUpThumb} alt={img.alt} />}
+              placeholder={
+                <img
+                  src={img.blurUpThumb}
+                  alt={img.alt}
+                  width={imgSize}
+                  height={imgSize}
+                />
+              }
             />
           </div>
           <div className="right">
