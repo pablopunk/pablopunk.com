@@ -7,6 +7,7 @@ import { _ } from 'lib/locales'
 import styled from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import { AiFillStar } from 'react-icons/ai'
+import Grid from 'components/containers/Grid'
 
 const API = 'https://repos.pablopunk.com/api'
 
@@ -32,23 +33,6 @@ const ADDITIONAL_REPOS = [
 ]
 
 const fetcher = (url) => fetch(url).then((_) => _.json())
-
-const StyledGrid2 = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  @media (${smallMediaQuery}) {
-    grid-template-columns: 1fr;
-    justify-content: center;
-  }
-  margin-top: 2rem;
-  margin-bottom: 4rem;
-  div {
-    padding: var(--space-2) 0 0 var(--space-2);
-    border-radius: var(--space-1);
-    border: 1px solid var(--color-bgDim);
-  }
-`
 
 function Repos({ locale }) {
   const { data, error } = useSWR(API, fetcher)
@@ -80,7 +64,7 @@ function Repos({ locale }) {
     }))
 
   return (
-    <StyledGrid2>
+    <Grid columns={2} small={1}>
       {repos.map((repo) => (
         <div key={repo.name}>
           <span className="first-line">
@@ -102,8 +86,14 @@ function Repos({ locale }) {
         .first-line > * {
           margin-right: 1rem;
         }
+        div {
+          background-color: var(--color-bgDim);
+          border: 1px solid var(--color-accent);
+          padding: var(--space-2);
+          box-shadow: 5px 5px 20px 2px var(--color-bgDim);
+        }
       `}</style>
-    </StyledGrid2>
+    </Grid>
   )
 }
 

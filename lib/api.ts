@@ -63,6 +63,24 @@ export async function fetchData(
       return fetchAPI(
         `
         home(locale: $locale) {
+          abstract(markdown: true)
+          cards {
+            img {
+              url(imgixParams: {fm: jpg, q:60})
+              title
+              alt
+              blurUpThumb(imgixParams: {fm: jpg, q:60})
+            }
+            link
+            title
+            description
+            tags {
+              name
+              color {
+                hex
+              }
+            }
+          }
           ${commonPageQueries}
         }
         `,

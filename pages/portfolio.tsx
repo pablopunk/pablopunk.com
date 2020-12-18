@@ -7,7 +7,7 @@ import { smallMediaQuery } from 'components/utils/media-queries'
 import React from 'react'
 import styled from 'styled-components'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import Grid4 from 'components/containers/Grid4'
+import Grid from 'components/containers/Grid'
 import Repos from 'components/data-fetch/Repos'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiNextDotJs, SiGraphql } from 'react-icons/si'
@@ -19,12 +19,11 @@ const ExampleProject = styled.div`
   align-items: center;
 
   padding: 1rem 2rem;
-  border-radius: 5px;
-  box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 5px 5px 20px 2px var(--color-bgDim);
   border: 1px solid var(--color-bgDim);
 
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-bgDim);
+  background-color: var(--color-bgDim);
+  border: 1px solid var(--color-accent);
 
   transition: border var(--transition-time), background var(--transition-time);
 
@@ -99,7 +98,7 @@ const Page = ({
     <CenterFlexColumns>
       <section>
         <h2 style={{ textAlign: 'center' }}>{introHeader}</h2>
-        <Grid4>
+        <Grid columns={4} small={2}>
           <div className="negative">
             <Card onClick={(_) => go('reactjs.org')}>
               <FaReact size={iconSize} />
@@ -120,7 +119,7 @@ const Page = ({
             <SiGraphql size={iconSize} />
             <strong>GraphQL</strong>
           </Card>
-        </Grid4>
+        </Grid>
         <SimpleList>
           <ul>
             <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
