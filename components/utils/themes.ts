@@ -7,7 +7,7 @@ export const light = {
   accent2: 'mediumorchid',
 }
 export const dark = {
-  bg: 'black',
+  bg: '#100321',
   bgDim: '#120458',
   fg: '#bebebe',
   fgStrong: 'white',
