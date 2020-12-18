@@ -71,9 +71,9 @@ const Loop = () => {
     <h1>
       <span>pablo</span>
       <TextLoop interval={freq} delay={initialLoopDelay}>
+        <span></span>
         <span>punk</span>
         <span>varela</span>
-        <span></span>
       </TextLoop>
     </h1>
   )
