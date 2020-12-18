@@ -48,7 +48,8 @@ const timeToIdleLoop = 3000
 
 interface IProps {
   locale
-  cards
+  cards: Array<any>
+  abstract: string
 }
 
 const Loop = () => {
@@ -78,7 +79,7 @@ const Loop = () => {
   )
 }
 
-const Page = ({ cards, ...props }: IProps) => {
+const Page = ({ abstract, cards, ...props }: IProps) => {
   const { locale } = useRouter()
   const [showThisTagOnly, showThisTagOnlySet] = React.useState(null)
   const allTags = cards
@@ -100,12 +101,7 @@ const Page = ({ cards, ...props }: IProps) => {
     <StyledContent>
       <article>
         <Loop />
-        <p>
-          {_(
-            "Hi there! My name is Pablo and I'm a remote web developer",
-            locale
-          )}
-        </p>
+        <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
       </article>
       <article className="filters">
         <span onClick={() => showThisTagOnlySet(null)}>

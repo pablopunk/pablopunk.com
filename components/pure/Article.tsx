@@ -24,7 +24,7 @@ export default styled.article`
   }
 
   img {
-    box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 5px 5px 20px 2px var(--color-bgDim);
   }
 
   h1 {
@@ -36,7 +36,7 @@ export default styled.article`
     background-color: var(--color-bgDim);
     padding: var(--space-1) var(--space-2);
     border-radius: var(--space-1);
-    box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 5px 5px 20px 2px var(--color-bgDim);
     overflow-x: scroll;
   }
 

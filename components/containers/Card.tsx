@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export default styled.div`
-  border-radius: 5px;
   padding: 10px 20px;
 
   display: flex;
@@ -11,15 +10,15 @@ export default styled.div`
   cursor: pointer;
   transition: border var(--transition-time), background var(--transition-time),
     color var(--transition-time);
-  box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 5px 5px 20px 2px var(--color-bgDim);
 
   border: 1px solid var(--color-bgDim);
   &:hover {
     border: 1px solid var(--color-accent);
   }
 
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-bgDim);
+  background-color: var(--color-bgDim);
+  border: 1px solid var(--color-accent);
 
   svg {
     color: var(--color-accent2);

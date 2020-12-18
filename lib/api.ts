@@ -63,6 +63,7 @@ export async function fetchData(
       return fetchAPI(
         `
         home(locale: $locale) {
+          abstract(markdown: true)
           cards {
             img {
               url

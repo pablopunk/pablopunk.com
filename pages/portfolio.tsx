@@ -19,12 +19,11 @@ const ExampleProject = styled.div`
   align-items: center;
 
   padding: 1rem 2rem;
-  border-radius: 5px;
-  box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 5px 5px 20px 2px var(--color-bgDim);
   border: 1px solid var(--color-bgDim);
 
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-bgDim);
+  background-color: var(--color-bgDim);
+  border: 1px solid var(--color-accent);
 
   transition: border var(--transition-time), background var(--transition-time);
 

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export default styled.div`
   ul {
@@ -7,11 +7,10 @@ export default styled.div`
   li {
     list-style: none;
     padding: var(--space-1);
-    border-radius: var(--space-1);
-    background-color: var(--color-bg);
-    border: 1px solid var(--color-bgDim);
+    background-color: var(--color-bgDim);
+    border: 1px solid var(--color-accent);
 
-    box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 5px 5px 20px 2px var(--color-bgDim);
     p {
       margin: 1rem 0;
     }
@@ -23,4 +22,4 @@ export default styled.div`
     transition: background-color var(--transition-time),
       color var(--transition-time), border var(--transition-time);
   }
-`;
+`

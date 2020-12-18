@@ -33,6 +33,7 @@ export default function HomeCard({ title, description, img, link, tags }) {
               border: 2px solid var(--color-accent);
               padding: var(--space-3) var(--space-2);
               background-color: var(--color-bgDim);
+              box-shadow: 5px 5px 20px 2px var(--color-bgDim);
             }
             article:hover {
               background-color: var(--color-bg);
