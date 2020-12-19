@@ -12,5 +12,5 @@ export const dark = {
   fg: '#bebebe',
   fgStrong: 'white',
   accent: '#ff98fe',
-  accent2: '#73fffe',
+  accent2: '#05dfd7',
 }
