@@ -72,7 +72,7 @@ const FlexRows = styled.div`
   }
 `
 
-function go(link: string) {
+export function go(link: string) {
   window.open(`https://${link}`)
 }
 

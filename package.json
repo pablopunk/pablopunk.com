@@ -22,7 +22,8 @@
     "reaviz": "^9.3.0",
     "smart-foreground": "^1.0.10",
     "styled-components": "4.4.1",
-    "swr": "^0.1.17"
+    "swr": "^0.1.18",
+    "unsplash-js": "6.3.0"
   },
   "devDependencies": {
     "@types/node": "^14.0.13",

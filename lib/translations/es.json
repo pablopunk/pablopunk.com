@@ -22,5 +22,7 @@
   "Popular npm packages": "Paquetes populares en npm",
   "Books": "Libros",
   "Source code": "Código fuente",
-  "all": "todo"
+  "all": "todo",
+  "total downloads": "descargas totales",
+  "total views": "visitas totales"
 }
