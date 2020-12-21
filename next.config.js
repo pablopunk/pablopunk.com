@@ -47,6 +47,11 @@ const rd = [
     path: 'photos',
     dest: 'https://www.pexels.com/@pablopunk',
   },
+  {
+    path: 'gear',
+    dest:
+      'https://www.notion.so/pablopunk/Gear-I-use-11cee5aed9a349309ef30a72f6923f37',
+  },
 ]
 
 module.exports = {
