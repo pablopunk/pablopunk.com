@@ -22,6 +22,9 @@ const StyledSection = styled.section`
   h3:before {
     content: '# ';
   }
+  h3 {
+    color: var(--color-fgStrong);
+  }
   blockquote {
     background-color: var(--color-bgDim);
     padding: var(--space-1) var(--space-2);
