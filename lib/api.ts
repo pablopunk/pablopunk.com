@@ -143,6 +143,18 @@ export async function fetchData(
         { locale },
         preview
       )
+
+    case 'stack':
+      return fetchAPI(
+        `
+        stack(locale: $locale) {
+          content(markdown: true)
+          ${commonPageQueries}
+        }
+        `,
+        { locale },
+        preview
+      )
   }
 }
 
