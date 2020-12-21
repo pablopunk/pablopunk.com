@@ -1,30 +1,20 @@
 import React from 'react'
 import withLayout from 'components/skeleton/withLayout'
-import useSWR from 'swr'
 import Loading from 'components/pure/Loading'
 import { staticProps } from 'components/data-fetch/withCMS'
-import CenterFlexColumns from 'components/containers/CenterFlexColumns'
 import { FiDownloadCloud } from 'react-icons/fi'
 import { MdPageview } from 'react-icons/md'
 import { useRouter } from 'next/router'
 import { _ } from 'lib/locales'
 import humanFormat from 'human-format'
-import Grid from 'components/containers/Grid'
 import Card from 'components/containers/Card'
 import { go } from './portfolio'
 import FixedCenter from 'components/containers/FixedCenter'
+import useSWR from 'swr'
 
 function Dashboard() {
   const { locale } = useRouter()
-  const [data, dataSet] = React.useState(null)
-
-  React.useEffect(() => {
-    fetch('/api/stats')
-      .then((r) => r.json())
-      .then((_data) => {
-        dataSet(_data)
-      })
-  }, [])
+  const { data } = useSWR('/api/stats', (u) => fetch(u).then((r) => r.json()))
 
   return (
     <FixedCenter>
