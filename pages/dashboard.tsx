@@ -42,7 +42,7 @@ function Dashboard() {
             <h2>GitHub</h2>
             <p>
               <AiOutlineStar />{' '}
-              <strong>{humanFormat(data.github?.stars_received || 0)} </strong>
+              <strong>+{humanFormat(data.github?.stars_received || 0)} </strong>
               {_('stars received', locale)}
             </p>
             <p>
