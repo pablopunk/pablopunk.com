@@ -57,6 +57,8 @@ const rd = [
 module.exports = {
   env: {
     DATOCMS_API_TOKEN: process.env.DATOCMS_API_TOKEN,
+    UNSPLASH_ACCESS_TOKEN: process.env.UNSPLASH_ACCESS_TOKEN,
+    GITHUB_TOKEN: process.env.GITHUB_TOKEN,
   },
   i18n: {
     locales,
