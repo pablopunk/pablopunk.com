@@ -7,39 +7,16 @@ module.exports = {
   theme: {
     extend: {},
     colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      pink: colors.pink,
-      red: colors.red,
-      indigo: colors.fuchsia,
-      green: colors.teal,
-      gray: colors.gray,
+      fg: 'var(--color-fg)',
+      bg: 'var(--color-bg)',
+      bg2: 'var(--color-bg2)',
+      accent: 'var(--color-accent)',
+      accent2: 'var(--color-accent2)',
+      ...colors,
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [
-    plugin(({ addBase, theme }) => {
-      addBase({
-        a: { color: theme('colors.green.500') },
-        h1: {
-          color: theme('colors.indigo.500'),
-          fontWeight: theme('fontWeight.bold'),
-        },
-        h2: {
-          color: theme('colors.indigo.500'),
-          fontWeight: theme('fontWeight.bold'),
-        },
-        h3: {
-          color: theme('colors.indigo.500'),
-          fontWeight: theme('fontWeight.bold'),
-        },
-        h4: {
-          color: theme('colors.indigo.500'),
-          fontWeight: theme('fontWeight.bold'),
-        },
-      })
-    }),
-  ],
+  plugins: [],
 }

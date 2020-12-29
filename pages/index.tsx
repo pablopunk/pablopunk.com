@@ -3,7 +3,6 @@ import TextLoop from 'react-text-loop'
 import withLayout from 'components/skeleton/withLayout'
 import { staticProps } from 'components/data-fetch/withCMS'
 import Card from 'components/containers/Card'
-import { smallMediaQuery } from 'components/utils/media-queries'
 import { _ } from 'lib/locales'
 import HomeCard from 'components/pure/HomeCard'
 import Tag from 'components/pure/Tag'
@@ -37,7 +36,7 @@ const Loop = () => {
   })
 
   return (
-    <h1 className="mb-3 text-2xl font-bold text-indigo-500">
+    <h1 className="mb-3 text-2xl font-bold text-accent">
       <span>pablo</span>
       <TextLoop interval={freq} delay={initialLoopDelay}>
         <span></span>
@@ -68,7 +67,7 @@ const Page = ({ abstract, cards, ...props }: IProps) => {
 
   return (
     <>
-      <article className="flex flex-col items-center mt-6 text-lg text-gray-700 leading-8">
+      <article className="flex flex-col items-center mt-6 text-lg leading-8">
         <Loop />
         <div
           className="text-center"
@@ -76,12 +75,13 @@ const Page = ({ abstract, cards, ...props }: IProps) => {
         ></div>
       </article>
       <article className="m-5 text-center">
-        <span onClick={() => showThisTagOnlySet(null)}>
-          <strong
-            className={`cursor-pointer mx-2 ${showThisTagOnly ? '' : 'active'}`}
-          >
-            <Tag text={_('all', locale)} />
-          </strong>
+        <span
+          onClick={() => showThisTagOnlySet(null)}
+          className={`font-bold cursor-pointer text-fg mx-2 ${
+            showThisTagOnly ? '' : 'active'
+          }`}
+        >
+          <Tag text={_('all', locale)} />
         </span>
         {allTags.map((tag) => {
           return (

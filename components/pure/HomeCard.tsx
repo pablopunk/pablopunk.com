@@ -10,7 +10,7 @@ export default function HomeCard({ title, description, img, link, tags }) {
   return (
     <Link href={link}>
       <a>
-        <article className="relative flex items-center px-3 py-4 bg-white border-2 border-green-500 hover:border-indigo-500 group">
+        <article className="relative flex items-center px-3 py-4 border-2 shadow-lg rounded-md border-accent2 hover:border-accent group bg-bg2 hover:bg-bg">
           <div className="mr-2" style={{ minWidth: imgSize }}>
             <LazyLoadImage
               src={img.url}
@@ -28,17 +28,17 @@ export default function HomeCard({ title, description, img, link, tags }) {
             />
           </div>
           <div>
-            <h4 className="text-xl font-bold text-indigo-600">{title}</h4>
-            <div className="text-lg text-green-500 leading-6 group-hover:text-indigo-500">
+            <h4 className="text-xl font-bold">{title}</h4>
+            <div className="text-lg text-accent2 leading-6 group-hover:text-accent">
               {description}
             </div>
             <div
-              className="absolute top-0 right-0 flex items-center justify-center text-white bg-green-500 group-hover:bg-indigo-500"
+              className="absolute top-0 right-0 flex items-center justify-center text-bg bg-accent2 group-hover:bg-accent"
               style={{ width: '22px', height: '22px' }}
             >
-              <RiExternalLinkLine color="white" />
+              <RiExternalLinkLine />
             </div>
-            <div className="absolute bottom-0 right-0">
+            <div className="absolute -bottom-1 -right-1">
               {tags.map(({ name, color }) => (
                 <span key={title + name}>
                   <Tag text={name} color={color.hex} />

@@ -1,6 +1,5 @@
 import { staticProps } from 'components/data-fetch/withCMS'
 import withLayout from 'components/skeleton/withLayout'
-import { smallMediaQuery } from 'components/utils/media-queries'
 import React from 'react'
 import styled from 'styled-components'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
@@ -27,7 +26,7 @@ const iconSize = '100'
 
 const BigIcon = ({ children, href }) => (
   <a
-    className="flex flex-col items-center justify-center px-4 py-2 m-4 text-lg border border-green-500 hover:border-indigo-500"
+    className="flex flex-col items-center justify-center px-4 py-2 m-4 text-lg border shadow-lg border-accent2 hover:border-accent bg-bg2 hover:bg-bg"
     href={href}
   >
     {children}
@@ -49,29 +48,29 @@ const Page = ({
         <div className="justify-center mx-auto grid grid-cols-4 sm:grid-col-2">
           <BigIcon href="https://reactjs.org">
             <FaReact size={iconSize} />
-            <strong className="text-center text-indigo-500">ReactJS</strong>
+            <strong className="text-center text-accent">ReactJS</strong>
           </BigIcon>
           <BigIcon href="https://nextjs.org">
-            <SiNextDotJs size={iconSize} className="text-indigo-500" />
+            <SiNextDotJs size={iconSize} className="text-accent" />
             <strong>NextJS</strong>
           </BigIcon>
           <BigIcon href="https://nodejs.org">
             <FaNodeJs size={iconSize} />
-            <strong className="text-indigo-500">NodeJS</strong>
+            <strong className="text-accent">NodeJS</strong>
           </BigIcon>
           <BigIcon href="https://graphql.org">
-            <SiGraphql size={iconSize} className="text-indigo-500" />
+            <SiGraphql size={iconSize} className="text-accent" />
             <strong>GraphQL</strong>
           </BigIcon>
         </div>
         <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
       </section>
       <section className="flex flex-col items-center w-full mx-auto">
-        <h3 className="text-xl">{exampleProjectsHeader}</h3>
+        <h3 className="mt-4 text-xl">{exampleProjectsHeader}</h3>
         {allExampleProjects.map((project) => (
           <div
             key={project.name}
-            className="flex items-center justify-center px-4 py-6 m-3 mx-auto border border-green-500"
+            className="flex items-center justify-center px-4 py-6 m-3 mx-auto border shadow-lg border-accent2 rounded-md bg-bg2"
           >
             <figure
               onClick={(_) => window.open(project.link)}
@@ -89,7 +88,7 @@ const Page = ({
                   />
                 }
               />
-              <strong className="mt-3 text-indigo-500">{project.name}</strong>
+              <strong className="mt-3 text-accent">{project.name}</strong>
             </figure>
             <div
               className="text-xl text-justify"

@@ -7,7 +7,6 @@ import { _ } from 'lib/locales'
 import styled from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import { AiFillStar } from 'react-icons/ai'
-import Grid from 'components/containers/Grid'
 
 const API = 'https://repos.pablopunk.com/api'
 
@@ -64,7 +63,7 @@ function Repos({ locale }) {
     }))
 
   return (
-    <Grid columns={2} small={1}>
+    <div>
       {repos.map((repo) => (
         <div key={repo.name}>
           <span className="first-line">
@@ -93,7 +92,7 @@ function Repos({ locale }) {
           box-shadow: 5px 5px 20px 2px var(--color-bgDim);
         }
       `}</style>
-    </Grid>
+    </div>
   )
 }
 

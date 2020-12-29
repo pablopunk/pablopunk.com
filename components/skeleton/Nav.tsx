@@ -54,9 +54,7 @@ const Nav = ({ main = [], path }) => {
               <Link href={'/' + link.link} locale={locale}>
                 <a
                   className={
-                    current
-                      ? 'text-green-500'
-                      : 'text-indigo-500 hover:text-green-500'
+                    current ? 'text-accent2' : 'text-accent hover:text-accent2'
                   }
                 >
                   {link.text}
@@ -66,11 +64,11 @@ const Nav = ({ main = [], path }) => {
           )
         })}
       </nav>
-      <div className="flex px-3 py-2 text-2xl text-green-500">
-        <div className="mr-2 cursor-pointer hover:text-indigo-500">
+      <div className="flex px-3 py-2 text-2xl text-accent2">
+        <div className="mr-2 cursor-pointer hover:text-accent">
           <ChangeThemeButton />
         </div>
-        <a href="/donate" title="Donate" className="hover:text-indigo-500">
+        <a href="/donate" title="Donate" className="hover:text-accent">
           <FaCreditCard />
         </a>
       </div>

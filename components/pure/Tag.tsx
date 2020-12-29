@@ -1,6 +1,6 @@
 import React from 'react'
 import smartForeground from 'smart-foreground'
-import { light, dark } from 'components/utils/themes'
+import colors from 'tailwindcss/colors'
 
 export default function Tag({ text, color = 'transparent' }) {
   return (
@@ -9,7 +9,12 @@ export default function Tag({ text, color = 'transparent' }) {
       <style jsx>{`
         span {
           background-color: ${color};
-          color: ${smartForeground(color, [dark.fg, light.fg])};
+          color: ${color === 'transparent'
+            ? 'var(--color-fg)'
+            : smartForeground(color, [
+                colors.blueGray['50'],
+                colors.blueGray['800'],
+              ])};
         }
       `}</style>
     </span>
