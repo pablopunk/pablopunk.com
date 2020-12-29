@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   purge: ['./pages/**/*.js', './components/**/*.js'],
@@ -10,7 +11,7 @@ module.exports = {
       current: 'currentColor',
       pink: colors.pink,
       red: colors.red,
-      indigo: colors.violet,
+      indigo: colors.fuchsia,
       green: colors.teal,
       gray: colors.gray,
     },
@@ -18,5 +19,11 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addBase, theme }) => {
+      addBase({
+        a: { color: theme('colors.green.500') },
+      })
+    }),
+  ],
 }

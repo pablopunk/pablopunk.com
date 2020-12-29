@@ -34,26 +34,24 @@ export default function withLayout(PageComponent, path?: string) {
           <main className="container px-5 mx-auto max-w-screen-lg">
             <PageComponent {...props} />
           </main>
-          <footer>
-            <div>
-              <p>
-                {locales.map((l) => {
-                  return locale === l ? (
-                    <span key={l}> {l} </span>
-                  ) : (
-                    <Link href={'/' + l} locale={l} key={l}>
-                      {l}
-                    </Link>
-                  )
-                })}
-              </p>
-              <p>© Pablo Varela {new Date().getFullYear()}</p>
-              <p>
-                <a href="https://github.com/pablopunk/pablopunk.com">
-                  {_('Source code', locale)}
-                </a>
-              </p>
-            </div>
+          <footer className="bottom-0 justify-around w-full p-4 mx-auto mt-10 text-gray-600 sm:hidden md:flex opacity-60">
+            <p>
+              {locales.map((l) => {
+                return locale === l ? (
+                  <span key={l}> {l} </span>
+                ) : (
+                  <Link href={'/' + l} locale={l} key={l}>
+                    {l}
+                  </Link>
+                )
+              })}
+            </p>
+            <p>© Pablo Varela {new Date().getFullYear()}</p>
+            <p>
+              <a href="https://github.com/pablopunk/pablopunk.com">
+                {_('Source code', locale)}
+              </a>
+            </p>
           </footer>
         </div>
       </>
