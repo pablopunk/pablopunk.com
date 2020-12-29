@@ -49,10 +49,18 @@ const Nav = ({ main = [], path }) => {
           return (
             <div
               key={link.id}
-              className="px-3 py-2 text-xl font-bold text-indigo-500 uppercase hover:text-green-500"
+              className="px-3 py-2 text-xl font-bold uppercase"
             >
               <Link href={'/' + link.link} locale={locale}>
-                <a className={current ? 'text-green-500' : ''}>{link.text}</a>
+                <a
+                  className={
+                    current
+                      ? 'text-green-500'
+                      : 'text-indigo-500 hover:text-green-500'
+                  }
+                >
+                  {link.text}
+                </a>
               </Link>
             </div>
           )

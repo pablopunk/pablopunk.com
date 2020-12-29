@@ -1,76 +1,14 @@
-import Card from 'components/containers/Card'
 import { staticProps } from 'components/data-fetch/withCMS'
-import CenterFlexColumns from 'components/containers/CenterFlexColumns'
 import withLayout from 'components/skeleton/withLayout'
-import SimpleList from 'components/containers/SimpleList'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import React from 'react'
 import styled from 'styled-components'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import Grid from 'components/containers/Grid'
 import Repos from 'components/data-fetch/Repos'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiNextDotJs, SiGraphql } from 'react-icons/si'
 import NpmCharts from 'components/data-fetch/NpmCharts'
 import { _ } from 'lib/locales'
-
-const ExampleProject = styled.div`
-  display: flex;
-  align-items: center;
-
-  padding: 1rem 2rem;
-  box-shadow: 5px 5px 20px 2px var(--color-bgDim);
-  border: 1px solid var(--color-bgDim);
-
-  background-color: var(--color-bgDim);
-  border: 1px solid var(--color-accent);
-
-  transition: border var(--transition-time), background var(--transition-time);
-
-  figure {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
-    strong {
-      color: var(--color-accent2);
-    }
-
-    img {
-      border-radius: 4px;
-      width: 150px;
-      @media (${smallMediaQuery}) {
-        width: 100%;
-      }
-    }
-  }
-
-  @media (${smallMediaQuery}) {
-    flex-direction: column;
-  }
-`
-
-const FlexRows = styled.div`
-  display: flex;
-  flex-direction: row;
-  * {
-    margin: 0.8rem 0.4rem;
-  }
-  p {
-    font-size: 2.1rem;
-    text-align: justify;
-  }
-  @media (${smallMediaQuery}) {
-    flex-direction: column;
-    p {
-      text-align: left;
-    }
-  }
-`
 
 export function go(link: string) {
   window.open(`https://${link}`)
@@ -85,6 +23,17 @@ interface IProps {
   locale: string
 }
 
+const iconSize = '100'
+
+const BigIcon = ({ children, href }) => (
+  <a
+    className="flex flex-col items-center justify-center px-4 py-2 m-4 text-lg border border-green-500 hover:border-indigo-500"
+    href={href}
+  >
+    {children}
+  </a>
+)
+
 const Page = ({
   introHeader,
   abstract,
@@ -93,84 +42,74 @@ const Page = ({
   allExampleProjects,
   locale,
 }: IProps) => {
-  const iconSize = '100'
   return (
-    <CenterFlexColumns>
-      <section>
-        <h2 style={{ textAlign: 'center' }}>{introHeader}</h2>
-        <Grid columns={4} small={2}>
-          <div className="negative">
-            <Card onClick={(_) => go('reactjs.org')}>
-              <FaReact size={iconSize} />
-              <strong>ReactJS</strong>
-            </Card>
-          </div>
-          <Card onClick={(_) => go('nextjs.org')}>
-            <SiNextDotJs size={iconSize} />
+    <>
+      <section className="flex flex-col items-center">
+        <h2 className="m-4 text-2xl text-center">{introHeader}</h2>
+        <div className="justify-center mx-auto grid grid-cols-4 sm:grid-col-2">
+          <BigIcon href="https://reactjs.org">
+            <FaReact size={iconSize} />
+            <strong className="text-center text-indigo-500">ReactJS</strong>
+          </BigIcon>
+          <BigIcon href="https://nextjs.org">
+            <SiNextDotJs size={iconSize} className="text-indigo-500" />
             <strong>NextJS</strong>
-          </Card>
-          <div className="negative">
-            <Card onClick={(_) => go('nodejs.org')}>
-              <FaNodeJs size={iconSize} />
-              <strong>NodeJS</strong>
-            </Card>
-          </div>
-          <Card onClick={(_) => go('graphql.org')}>
-            <SiGraphql size={iconSize} />
+          </BigIcon>
+          <BigIcon href="https://nodejs.org">
+            <FaNodeJs size={iconSize} />
+            <strong className="text-indigo-500">NodeJS</strong>
+          </BigIcon>
+          <BigIcon href="https://graphql.org">
+            <SiGraphql size={iconSize} className="text-indigo-500" />
             <strong>GraphQL</strong>
-          </Card>
-        </Grid>
-        <SimpleList>
-          <ul>
-            <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
-          </ul>
-        </SimpleList>
+          </BigIcon>
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
       </section>
-      <section>
-        <h3 style={{ textAlign: 'center' }}>{exampleProjectsHeader}</h3>
+      <section className="flex flex-col items-center w-full mx-auto">
+        <h3 className="text-xl">{exampleProjectsHeader}</h3>
         {allExampleProjects.map((project) => (
-          <div key={project.name}>
-            <FlexRows>
-              <ExampleProject>
-                <figure onClick={(_) => window.open(project.link)}>
-                  <LazyLoadImage
-                    src={project.picture.url}
+          <div
+            key={project.name}
+            className="flex items-center justify-center px-4 py-6 m-3 mx-auto border border-green-500"
+          >
+            <figure
+              onClick={(_) => window.open(project.link)}
+              className="flex flex-col items-center flex-shrink-0 mr-4 cursor-pointer"
+            >
+              <LazyLoadImage
+                src={project.picture.url}
+                alt={project.picture.alt}
+                width="150px"
+                placeholder={
+                  <img
+                    src={project.picture.blurUpThumb}
                     alt={project.picture.alt}
-                    placeholder={
-                      <img
-                        src={project.picture.blurUpThumb}
-                        alt={project.picture.alt}
-                      />
-                    }
+                    width="150px"
                   />
-                  <strong>{project.name}</strong>
-                </figure>
-                <CenterFlexColumns>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: project.description }}
-                  />
-                </CenterFlexColumns>
-              </ExampleProject>
-            </FlexRows>
+                }
+              />
+              <strong className="mt-3 text-indigo-500">{project.name}</strong>
+            </figure>
+            <div
+              className="text-xl text-justify"
+              dangerouslySetInnerHTML={{ __html: project.description }}
+            />
           </div>
         ))}
       </section>
       <section style={{ width: '100%' }}>
-        <CenterFlexColumns>
-          <h3>{_('Popular npm packages', locale)}</h3>
-          <NpmCharts locale={locale} />
-        </CenterFlexColumns>
+        <h3>{_('Popular npm packages', locale)}</h3>
+        <NpmCharts locale={locale} />
       </section>
       <section>
-        <CenterFlexColumns>
-          <div
-            style={{ textAlign: 'center' }}
-            dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
-          ></div>
-          <Repos locale={locale} />
-        </CenterFlexColumns>
+        <div
+          style={{ textAlign: 'center' }}
+          dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
+        ></div>
+        <Repos locale={locale} />
       </section>
-    </CenterFlexColumns>
+    </>
   )
 }
 

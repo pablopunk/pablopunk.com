@@ -23,6 +23,22 @@ module.exports = {
     plugin(({ addBase, theme }) => {
       addBase({
         a: { color: theme('colors.green.500') },
+        h1: {
+          color: theme('colors.indigo.500'),
+          fontWeight: theme('fontWeight.bold'),
+        },
+        h2: {
+          color: theme('colors.indigo.500'),
+          fontWeight: theme('fontWeight.bold'),
+        },
+        h3: {
+          color: theme('colors.indigo.500'),
+          fontWeight: theme('fontWeight.bold'),
+        },
+        h4: {
+          color: theme('colors.indigo.500'),
+          fontWeight: theme('fontWeight.bold'),
+        },
       })
     }),
   ],
