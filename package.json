@@ -9,11 +9,14 @@
     "export": "npm run build && next export"
   },
   "dependencies": {
+    "autoprefixer": "^10.1.0",
     "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^10.0.3",
     "next-seo": "^4.4.0",
+    "next-themes": "0.0.10",
     "nextjs-redirect": "^4.0.2",
+    "postcss": "^8.2.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-icons": "3.11.0",
@@ -23,6 +26,7 @@
     "smart-foreground": "^1.0.10",
     "styled-components": "4.4.1",
     "swr": "^0.1.18",
+    "tailwindcss": "^2.0.2",
     "unsplash-js": "6.3.0"
   },
   "devDependencies": {

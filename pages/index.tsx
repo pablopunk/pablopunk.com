@@ -1,42 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
 import TextLoop from 'react-text-loop'
 import withLayout from 'components/skeleton/withLayout'
 import { staticProps } from 'components/data-fetch/withCMS'
 import Card from 'components/containers/Card'
-import Grid from 'components/containers/Grid'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import { _ } from 'lib/locales'
 import HomeCard from 'components/pure/HomeCard'
 import Tag from 'components/pure/Tag'
 import { dark } from 'components/utils/themes'
 import { useRouter } from 'next/router'
-
-const StyledContent = styled.div`
-  h1 {
-    text-align: center;
-  }
-  p {
-    text-align: center;
-  }
-  .filters {
-    display: flex;
-    justify-content: center;
-    & > span > * {
-      margin: 0 var(--space-1);
-      cursor: pointer;
-      &:hover,
-      .active {
-        border-bottom: 1px solid var(--color-accent);
-      }
-    }
-  }
-  .cards {
-    @media (${smallMediaQuery}) {
-      font-size: 1.5rem;
-    }
-  }
-`
 
 const initialLoopDelay = 0
 const initialLoop = 800
@@ -65,7 +37,7 @@ const Loop = () => {
   })
 
   return (
-    <h1>
+    <h1 className="mb-3 text-2xl font-bold text-indigo-500">
       <span>pablo</span>
       <TextLoop interval={freq} delay={initialLoopDelay}>
         <span></span>
@@ -95,14 +67,19 @@ const Page = ({ abstract, cards, ...props }: IProps) => {
   }
 
   return (
-    <StyledContent>
-      <article>
+    <>
+      <article className="flex flex-col items-center mt-6 text-lg text-gray-700 leading-8">
         <Loop />
-        <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
+        <div
+          className="text-center"
+          dangerouslySetInnerHTML={{ __html: abstract }}
+        ></div>
       </article>
-      <article className="filters">
+      <article className="m-5 text-center">
         <span onClick={() => showThisTagOnlySet(null)}>
-          <strong className={showThisTagOnly ? '' : 'active'}>
+          <strong
+            className={`cursor-pointer mx-2 ${showThisTagOnly ? '' : 'active'}`}
+          >
             <Tag text={_('all', locale)} />
           </strong>
         </span>
@@ -111,23 +88,23 @@ const Page = ({ abstract, cards, ...props }: IProps) => {
             <span
               key={'filters' + tag.name}
               onClick={() => showThisTagOnlySet(tag.name)}
-              className={showThisTagOnly === tag.name ? 'active' : ''}
+              className={`cursor-pointer mx-2 ${
+                showThisTagOnly === tag.name ? 'active' : ''
+              }`}
             >
               <Tag text={tag.name} color={tag.color.hex} />
             </span>
           )
         })}
       </article>
-      <article className="cards">
-        <Grid columns={2} small={1}>
-          {cards.map((card) => (
-            <React.Fragment key={card.title + Math.random().toString()}>
-              <HomeCard {...card} />
-            </React.Fragment>
-          ))}
-        </Grid>
+      <article className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {cards.map((card) => (
+          <React.Fragment key={card.title + Math.random().toString()}>
+            <HomeCard {...card} />
+          </React.Fragment>
+        ))}
       </article>
-    </StyledContent>
+    </>
   )
 }
 

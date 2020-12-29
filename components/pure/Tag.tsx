@@ -4,11 +4,10 @@ import { light, dark } from 'components/utils/themes'
 
 export default function Tag({ text, color = 'transparent' }) {
   return (
-    <span>
+    <span className="p-1">
       {text}
       <style jsx>{`
         span {
-          padding: 2px var(--space-1);
           background-color: ${color};
           color: ${smartForeground(color, [dark.fg, light.fg])};
         }

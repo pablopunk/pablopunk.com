@@ -1,110 +1,72 @@
+import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { smallMediaQuery } from 'components/utils/media-queries'
 import { RiMoonClearLine, RiSunLine } from 'react-icons/ri'
 import { FaCreditCard } from 'react-icons/fa'
 import { useRouter } from 'next/router'
+import { useTheme } from 'next-themes'
 
-const StyledNav = styled.nav`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  a {
-    padding: 0 var(--space-1);
-    font-size: 2.25rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: var(--color-accent2);
-  }
-  @media (hover: hover) {
-    a:hover {
-      color: var(--color-accent);
-    }
-  }
-  a.current {
-    color: var(--color-accent);
-  }
-  @media (${smallMediaQuery}) {
-    justify-content: center;
-    a {
-      font-size: 1.6rem;
-    }
-    a.current {
-      display: none;
-    }
-  }
-`
+const ChangeThemeButton = () => {
+  const [mounted, mountedSet] = React.useState(false)
+  const { theme, setTheme } = useTheme()
 
-const StyledBar = styled.div`
-  position: relative;
-  left: 0;
-  z-index: 200;
-  height: var(--nav-height);
-  width: 100vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
+  React.useEffect(() => mountedSet(true), [])
 
-const RightButtons = styled.div`
-  display: flex;
-  margin-right: var(--space-4);
-  a {
-    font-size: 2.4rem;
-    margin-left: var(--space-2);
-    cursor: pointer;
+  if (!mounted) {
+    return null
   }
-  @media (hover: hover) {
-    a:hover {
-      opacity: 0.7;
-    }
-  }
-`
 
-const Nav = ({
-  main = [],
-  changeThemeButtonDark,
-  changeThemeButtonLight,
-  donateText,
-  path,
-}) => {
+  return (
+    <a
+      onClick={() => {
+        setTheme(theme === 'dark' ? 'light' : 'dark')
+      }}
+      title="Toggle light/dark colors"
+    >
+      {theme === 'dark' ? (
+        <span>
+          <RiMoonClearLine />
+        </span>
+      ) : (
+        <span>
+          <RiSunLine />
+        </span>
+      )}
+    </a>
+  )
+}
+
+const Nav = ({ main = [], path }) => {
   const { locale } = useRouter()
 
   return (
-    <StyledBar>
-      <StyledNav>
+    <div className="flex justify-between w-full">
+      <nav className="flex">
         {main.map((link) => {
           let current = link.link === path
 
           return (
-            <div key={link.id}>
+            <div
+              key={link.id}
+              className="px-3 py-2 text-xl font-bold text-indigo-500 uppercase hover:text-green-500"
+            >
               <Link href={'/' + link.link} locale={locale}>
-                <a className={current ? 'current' : ''}>{link.text}</a>
+                <a className={current ? 'text-green-500' : ''}>{link.text}</a>
               </Link>
             </div>
           )
         })}
-      </StyledNav>
-      <RightButtons>
-        <a
-          onClick={() => {
-            window['__toggleDarkMode']()
-          }}
-          title="Toggle light/dark colors"
-        >
-          <span className="show-dark">
-            <RiMoonClearLine />
-          </span>
-          <span className="show-light">
-            <RiSunLine />
-          </span>
-        </a>
-        <a href="/donate" title="Donate">
+      </nav>
+      <div className="flex px-3 py-2 text-2xl text-green-500">
+        <div className="mr-2 cursor-pointer hover:text-indigo-500">
+          <ChangeThemeButton />
+        </div>
+        <a href="/donate" title="Donate" className="hover:text-indigo-500">
           <FaCreditCard />
         </a>
-      </RightButtons>
-    </StyledBar>
+      </div>
+    </div>
   )
 }
 

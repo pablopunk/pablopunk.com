@@ -10,8 +10,8 @@ export default function HomeCard({ title, description, img, link, tags }) {
   return (
     <Link href={link}>
       <a>
-        <article>
-          <div className="left">
+        <article className="relative flex items-center px-3 py-4 bg-white border-2 border-green-500 hover:border-indigo-500 group">
+          <div className="mr-2" style={{ minWidth: imgSize }}>
             <LazyLoadImage
               src={img.url}
               alt={img.alt}
@@ -27,13 +27,18 @@ export default function HomeCard({ title, description, img, link, tags }) {
               }
             />
           </div>
-          <div className="right">
-            <h4>{title}</h4>
-            <div>{description}</div>
-            <div className="link-icon">
-              <RiExternalLinkLine />
+          <div>
+            <h4 className="text-xl font-bold text-indigo-600">{title}</h4>
+            <div className="text-lg text-green-500 leading-6 group-hover:text-indigo-500">
+              {description}
             </div>
-            <div className="tags">
+            <div
+              className="absolute top-0 right-0 flex items-center justify-center text-white bg-green-500 group-hover:bg-indigo-500"
+              style={{ width: '22px', height: '22px' }}
+            >
+              <RiExternalLinkLine color="white" />
+            </div>
+            <div className="absolute bottom-0 right-0">
               {tags.map(({ name, color }) => (
                 <span key={title + name}>
                   <Tag text={name} color={color.hex} />
@@ -41,60 +46,6 @@ export default function HomeCard({ title, description, img, link, tags }) {
               ))}
             </div>
           </div>
-          <style jsx>{`
-            article {
-              position: relative;
-              display: flex;
-              margin-bottom: var(--space-2);
-              border: 2px solid var(--color-accent);
-              padding: var(--space-3) var(--space-2);
-              background-color: var(--color-bgDim);
-              box-shadow: 5px 5px 20px 2px var(--color-bgDim);
-            }
-            article:hover {
-              background-color: var(--color-bg);
-              border-color: var(--color-accent2);
-              cursor: pointer;
-            }
-            article:hover .link-icon {
-              background-color: var(--color-accent);
-            }
-            h4 {
-              margin: 0;
-            }
-            .left {
-              display: flex;
-              align-items: center;
-              width: ${imgSize};
-              height: ${imgSize};
-              margin-right: var(--space-2);
-            }
-            .right {
-              display: flex;
-              flex-direction: column;
-              justify-content: space-around;
-            }
-            .link-icon {
-              position: absolute;
-              right: -2px;
-              top: 0px;
-              background-color: var(--color-accent);
-              color: var(--color-bg);
-              width: 22px;
-              height: 22px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
-            article:hover .link-icon {
-              background-color: var(--color-accent2);
-            }
-            .tags {
-              position: absolute;
-              right: -2px;
-              bottom: 0px;
-            }
-          `}</style>
         </article>
       </a>
     </Link>
