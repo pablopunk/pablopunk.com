@@ -86,7 +86,7 @@ const Page = ({
         {allExampleProjects.map((project) => (
           <div
             key={project.name}
-            className="flex items-center justify-center px-4 py-6 m-3 mx-auto border shadow-lg border-accent2 rounded-md bg-bg2"
+            className="flex flex-col items-center justify-center px-4 py-6 m-3 mx-auto border shadow-lg md:flex-row border-accent2 rounded-md bg-bg2"
           >
             <figure
               onClick={() => window.open(project.link)}
@@ -117,7 +117,7 @@ const Page = ({
         <h3 className="text-lg text-center">
           {_('Popular npm packages', locale)}
         </h3>
-        <NpmCharts locale={locale} />
+        <NpmCharts />
       </section>
       <section>
         <div

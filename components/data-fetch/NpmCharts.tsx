@@ -4,6 +4,7 @@ import { AreaChart } from 'reaviz'
 import humanFormat from 'human-format'
 import { HiOutlineFolderDownload } from 'react-icons/hi'
 import { _ } from 'lib/locales'
+import { useRouter } from 'next/router'
 
 const packages = ['nextjs-redirect', 'miny', 'livesoccertv-parser']
 
@@ -63,7 +64,9 @@ const PackageStat = ({ name, locale }) => {
   )
 }
 
-export default function NpmCharts({ locale }) {
+export default function NpmCharts() {
+  const { locale } = useRouter()
+
   return (
     <>
       {packages.map((p) => (
