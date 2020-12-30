@@ -20,7 +20,7 @@ const Page = ({ posts, emptyMessage, title }: IProps) => {
   )
 
   return (
-    <section className="flex flex-col items-center">
+    <section className="flex flex-col items-center fill-height">
       <h1>{title}</h1>
       {posts.length === 0 && <p>{emptyMessage}</p>}
       {years.map((y) => (
