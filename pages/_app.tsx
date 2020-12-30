@@ -73,8 +73,8 @@ const GlobalStyle = createGlobalStyle`
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
     const handleRouteChange = (url) => {
-      if (typeof window?.goatcounter !== 'undefined') {
-        window.goatcounter.count({ path: url })
+      if (typeof window?.['goatcounter'] !== 'undefined') {
+        window['goatcounter'].count({ path: url })
       }
     }
 
