@@ -11,14 +11,14 @@ const GlobalStyle = createGlobalStyle`
 
     --color-bg: ${colors.blueGray['50']};
     --color-fg: ${colors.blueGray['800']};
-    --color-bg2: ${colors.blueGray['50']};
+    --color-bg2: ${colors.gray['50']};
     --color-accent: ${colors.fuchsia['500']};
     --color-accent2: ${colors.teal['500']};
   }
   html.dark {
-    --color-bg: ${colors.blueGray['900']};
+    --color-bg: ${colors.coolGray['900']};
     --color-fg: ${colors.blueGray['50']};
-    --color-bg2: ${colors.indigo['900']};
+    --color-bg2: ${colors.blueGray['800']};
     --color-accent: ${colors.teal['300']};
     --color-accent2: ${colors.fuchsia['400']};
   }

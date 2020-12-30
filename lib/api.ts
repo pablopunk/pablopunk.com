@@ -54,13 +54,21 @@ const commonPageQueries = `
   }
 `
 
+let _cache = {}
+
 export async function fetchData(
   resource: string,
   { locale = 'en', preview = false, slug = null } = {}
 ) {
+  if (process.env.NODE_ENV !== 'production' && _cache?.[resource] != null) {
+    return _cache[resource]
+  }
+
+  let results
+
   switch (resource) {
     case 'home':
-      return fetchAPI(
+      results = fetchAPI(
         `
         home(locale: $locale) {
           abstract(markdown: true)
@@ -87,9 +95,10 @@ export async function fetchData(
         { locale },
         preview
       )
+      break
 
     case 'portfolio':
-      return fetchAPI(
+      results = fetchAPI(
         `
         portfolio(locale: $locale) {
           introHeader
@@ -113,9 +122,10 @@ export async function fetchData(
         { locale },
         preview
       )
+      break
 
     case 'about':
-      return fetchAPI(
+      results = fetchAPI(
         `
         about(locale: $locale) {
           content(markdown: true)
@@ -125,9 +135,10 @@ export async function fetchData(
         { locale },
         preview
       )
+      break
 
     case 'blog':
-      return fetchAPI(
+      results = fetchAPI(
         `
         blog(locale: $locale) {
           title
@@ -143,9 +154,10 @@ export async function fetchData(
         { locale },
         preview
       )
+      break
 
     case 'stack':
-      return fetchAPI(
+      results = fetchAPI(
         `
         stack(locale: $locale) {
           content(markdown: true)
@@ -155,7 +167,12 @@ export async function fetchData(
         { locale },
         preview
       )
+      break
   }
+
+  _cache[resource] = results
+
+  return results
 }
 
 export async function getAllPostsWithSlug(locale, preview = false) {

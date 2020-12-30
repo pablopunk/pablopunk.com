@@ -33,6 +33,20 @@ const BigIcon = ({ children, href }) => (
   </a>
 )
 
+const StyledAbstract = styled.div`
+  font-size: 1.25rem;
+  text-align: center;
+  ul {
+    li {
+      border-left: 4px solid var(--color-accent);
+      margin: 1rem 0;
+      padding: 0.4rem 1rem;
+      background-color: var(--color-bg2);
+      text-align: left;
+    }
+  }
+`
+
 const Page = ({
   introHeader,
   abstract,
@@ -63,7 +77,9 @@ const Page = ({
             <strong>GraphQL</strong>
           </BigIcon>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
+        <StyledAbstract>
+          <div dangerouslySetInnerHTML={{ __html: abstract }}></div>
+        </StyledAbstract>
       </section>
       <section className="flex flex-col items-center w-full mx-auto">
         <h3 className="mt-4 text-xl">{exampleProjectsHeader}</h3>
@@ -97,13 +113,15 @@ const Page = ({
           </div>
         ))}
       </section>
-      <section style={{ width: '100%' }}>
-        <h3>{_('Popular npm packages', locale)}</h3>
+      <section>
+        <h3 className="mt-8 text-lg text-center">
+          {_('Popular npm packages', locale)}
+        </h3>
         <NpmCharts locale={locale} />
       </section>
       <section>
         <div
-          style={{ textAlign: 'center' }}
+          className="mt-8 mb-8 text-lg text-center"
           dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
         ></div>
         <Repos locale={locale} />
