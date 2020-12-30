@@ -1,6 +1,7 @@
+import 'tailwindcss/tailwind.css'
+
 import React, { useEffect } from 'react'
 import Router from 'next/router'
-import 'tailwindcss/tailwind.css'
 import { ThemeProvider } from 'next-themes'
 import { createGlobalStyle } from 'styled-components'
 import colors from 'tailwindcss/colors'
