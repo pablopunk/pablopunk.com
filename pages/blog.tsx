@@ -3,7 +3,6 @@ import { staticProps } from 'components/data-fetch/withCMS'
 import withLayout from 'components/skeleton/withLayout'
 import Link from 'next/link'
 import { BsFilePost } from 'react-icons/bs'
-import { useRouter } from 'next/router'
 
 type Post = { title: string; slug: string; date: string }
 
@@ -16,7 +15,6 @@ interface IProps {
 const year = (post: Post) => post.date.slice(0, 4)
 
 const Page = ({ posts, emptyMessage, title }: IProps) => {
-  const { locale } = useRouter()
   const years = Object.keys(
     posts.reduce((acc, curr) => ({ ...acc, [year(curr)]: true }), {})
   )

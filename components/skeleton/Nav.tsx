@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import styled from 'styled-components'
 import { RiMoonClearLine, RiSunLine } from 'react-icons/ri'
 import { FaCreditCard } from 'react-icons/fa'
 import { useRouter } from 'next/router'

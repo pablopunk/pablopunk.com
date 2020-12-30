@@ -4,7 +4,6 @@ import fetch from 'isomorphic-unfetch'
 import humanFormat from 'human-format'
 import Loading from 'components/pure/Loading'
 import { _ } from 'lib/locales'
-import styled from 'styled-components'
 import { AiFillStar } from 'react-icons/ai'
 
 const API = 'https://repos.pablopunk.com/api'

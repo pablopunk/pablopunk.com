@@ -45,7 +45,7 @@ const Loop = () => {
   )
 }
 
-const Page = ({ abstract, cards, ...props }: IProps) => {
+const Page = ({ abstract, cards }: IProps) => {
   const { locale } = useRouter()
   const [showThisTagOnly, showThisTagOnlySet] = React.useState(null)
   const allTags = cards

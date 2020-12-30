@@ -89,7 +89,7 @@ const Page = ({
             className="flex items-center justify-center px-4 py-6 m-3 mx-auto border shadow-lg border-accent2 rounded-md bg-bg2"
           >
             <figure
-              onClick={(_) => window.open(project.link)}
+              onClick={() => window.open(project.link)}
               className="flex flex-col items-center flex-shrink-0 mr-4 cursor-pointer"
             >
               <LazyLoadImage

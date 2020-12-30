@@ -1,6 +1,5 @@
 import Document, { Main, NextScript, Html, Head } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import { useRouter } from 'next/router'
 
 export default class extends Document {
   static async getInitialProps(ctx) {

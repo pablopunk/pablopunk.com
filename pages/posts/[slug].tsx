@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 
 const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, '/')
 
-const Page = ({ post, ...rest }) => {
+const Page = ({ post }) => {
   const { locale } = useRouter()
 
   return (

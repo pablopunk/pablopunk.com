@@ -1,4 +1,3 @@
-import React from 'react'
 import withLayout from 'components/skeleton/withLayout'
 import { staticProps } from 'components/data-fetch/withCMS'
 import styled from 'styled-components'

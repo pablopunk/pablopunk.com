@@ -1,25 +1,17 @@
 import React from 'react'
 import Nav from 'components/skeleton/Nav'
 import Meta from 'components/skeleton/Meta'
-import styled from 'styled-components'
 import Link from 'next/link'
 import { _, locales } from 'lib/locales.js'
 
 interface IPageProps {
-  children
   nav
   metaTags
   locale: string
 }
 
 export default function withLayout(PageComponent, path?: string) {
-  return function Layout({
-    children,
-    nav,
-    metaTags,
-    locale,
-    ...props
-  }: IPageProps) {
+  return function Layout({ nav, metaTags, locale, ...props }: IPageProps) {
     return (
       <>
         <Meta {...metaTags} />

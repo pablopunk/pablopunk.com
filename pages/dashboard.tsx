@@ -1,4 +1,3 @@
-import React from 'react'
 import withLayout from 'components/skeleton/withLayout'
 import Loading from 'components/pure/Loading'
 import { staticProps } from 'components/data-fetch/withCMS'
