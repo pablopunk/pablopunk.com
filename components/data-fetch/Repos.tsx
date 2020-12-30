@@ -4,10 +4,7 @@ import fetch from 'isomorphic-unfetch'
 import humanFormat from 'human-format'
 import Loading from 'components/pure/Loading'
 import { _ } from 'lib/locales'
-import styled from 'styled-components'
-import { smallMediaQuery } from 'components/utils/media-queries'
 import { AiFillStar } from 'react-icons/ai'
-import Grid from 'components/containers/Grid'
 
 const API = 'https://repos.pablopunk.com/api'
 
@@ -42,7 +39,11 @@ function Repos({ locale }) {
   }
 
   if (!data) {
-    return <Loading />
+    return (
+      <span className="text-center">
+        <Loading />
+      </span>
+    )
   }
 
   const repos = [...ADDITIONAL_REPOS, ...data]
@@ -64,37 +65,26 @@ function Repos({ locale }) {
     }))
 
   return (
-    <Grid columns={2} small={1}>
+    <div className="grid sm:grid-cols-1 md:grid-cols-2">
       {repos.map((repo) => (
-        <div key={repo.name}>
-          <span className="first-line">
-            <a href={repo.html_url}>/{repo.name}</a>
+        <div
+          key={repo.name}
+          className="px-4 py-3 m-2 border rounded-lg shadow-lg border-accent"
+        >
+          <span className="flex items-center">
+            <a href={repo.html_url} className="mr-2">
+              /{repo.name}
+            </a>
             <span>{repo.stargazers_count_nice}</span>
-            <span>
+            <span className="ml-1">
               <AiFillStar color="gold" />
             </span>
           </span>
-          <p>{repo.description}</p>
+          <p className="text-lg">{repo.description}</p>
         </div>
       ))}
-      <style jsx>{`
-        .first-line {
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-        }
-        .first-line > * {
-          margin-right: 1rem;
-        }
-        div {
-          background-color: var(--color-bgDim);
-          border: 1px solid var(--color-accent);
-          padding: var(--space-2);
-          box-shadow: 5px 5px 20px 2px var(--color-bgDim);
-        }
-      `}</style>
-    </Grid>
+    </div>
   )
 }
 
-export default React.memo(Repos)
+export default Repos

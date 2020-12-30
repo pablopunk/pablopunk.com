@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import withLayout from 'components/skeleton/withLayout'
 import { staticProps } from 'components/data-fetch/withCMS'
-import { smallMediaQuery } from 'components/utils/media-queries'
 
 const StyledGrid = styled.div`
   div {
@@ -9,7 +8,7 @@ const StyledGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr 15fr;
     align-items: flex-start;
-    grid-gap: var(--space-3);
+    grid-gap: 1.6rem;
 
     p {
       margin: 0;
@@ -25,18 +24,6 @@ function howOldAmI() {
   return iHadABirthDayThisYear ? yearsSinceIWasBorn : yearsSinceIWasBorn - 1
 }
 
-const StyledContent = styled.div`
-  height: calc(100vh - var(--footer-height) - var(--nav-height));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (${smallMediaQuery}) {
-    height: 100%;
-    margin-top: 50px;
-  }
-`
-
 interface IProps {
   content
 }
@@ -45,11 +32,11 @@ const Page = ({ content }: IProps) => {
   content = content.replace('%years%', howOldAmI())
 
   return (
-    <StyledContent>
+    <div className="flex items-center justify-center w-full text-lg fill-height">
       <StyledGrid>
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </StyledGrid>
-    </StyledContent>
+    </div>
   )
 }
 

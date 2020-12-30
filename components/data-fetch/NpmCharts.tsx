@@ -47,28 +47,19 @@ const PackageStat = ({ name, locale }) => {
   }
 
   return (
-    <div>
-      <div>
-        <span>
-          <HiOutlineFolderDownload /> {totalDownloads(stats)}{' '}
+    <>
+      <div className="flex items-center justify-center mt-4">
+        <span className="mr-1 text-accent2">
+          <HiOutlineFolderDownload />
         </span>
-        {_('downloads for', locale)}{' '}
+        <span className="mr-1">{totalDownloads(stats)} </span>
+        <span className="mr-1">{_('downloads for', locale)} </span>
         <a href={'https://npm.im/' + name}>
           <strong>{name}</strong>
         </a>
       </div>
       <AreaChart height={300} data={convertStatsToChartData(stats)} />
-      <style jsx>{`
-        div {
-          width: 100%;
-          text-align: center;
-          margin-bottom: var(--space-2);
-        }
-        span {
-          color: var(--color-accent2);
-        }
-      `}</style>
-    </div>
+    </>
   )
 }
 

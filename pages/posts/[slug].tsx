@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 
 const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, '/')
 
-const Page = ({ post, ...rest }) => {
+const Page = ({ post }) => {
   const { locale } = useRouter()
 
   return (
@@ -33,7 +33,7 @@ const Page = ({ post, ...rest }) => {
       />
       <br />
       <Link as={`/${locale}/blog`} href="/[locale]/blog">
-        <a>
+        <a className="flex items-center text-lg">
           <IoMdArrowRoundBack />
           <span>{_('Go back', locale)}</span>
         </a>

@@ -1,6 +1,4 @@
-import React from 'react'
 import withLayout from 'components/skeleton/withLayout'
-import CenterFlexColumns from 'components/containers/CenterFlexColumns'
 import { staticProps } from 'components/data-fetch/withCMS'
 import styled from 'styled-components'
 
@@ -10,34 +8,47 @@ interface IProps {
 
 function Stack({ content }: IProps) {
   return (
-    <CenterFlexColumns>
+    <>
       <StyledSection
         dangerouslySetInnerHTML={{ __html: content }}
       ></StyledSection>
-    </CenterFlexColumns>
+    </>
   )
 }
 
 const StyledSection = styled.section`
+  max-width: 700px;
+  margin: 1rem auto;
+  text-align: justify;
+  h2 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  h3 {
+    color: var(--color-fg);
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
   h3:before {
     content: '# ';
   }
-  h3 {
-    color: var(--color-fgStrong);
-  }
   blockquote {
-    background-color: var(--color-bgDim);
-    padding: var(--space-1) var(--space-2);
+    position: relative;
+    background-color: var(--color-bg2);
+    padding: 0.4rem 1rem;
     margin: 0;
     border-left: 2px solid var(--color-accent);
   }
   blockquote:after {
     content: '🇪🇸';
     position: absolute;
-    top: 5px;
-    left: 10px;
+    right: 2px;
+    bottom: -8px;
     transform: rotate(-15deg);
-    font-size: 3rem;
+    font-size: 2rem;
+  }
+  p {
+    margin: 1rem 0;
   }
 `
 
