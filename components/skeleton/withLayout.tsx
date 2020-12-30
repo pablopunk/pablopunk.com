@@ -2,18 +2,12 @@ import React from 'react'
 import Nav from 'components/skeleton/Nav'
 import Meta from 'components/skeleton/Meta'
 import styled from 'styled-components'
-import { smallMediaQuery } from 'components/utils/media-queries'
 import Link from 'next/link'
 import { _, locales } from 'lib/locales.js'
-import { light, dark } from 'components/utils/themes'
 
 interface IPageProps {
   children
-  nav: {
-    changeThemeButtonDark: string
-    changeThemeButtonLight: string
-    donateText: string
-  }
+  nav
   metaTags
   locale: string
 }
@@ -34,7 +28,10 @@ export default function withLayout(PageComponent, path?: string) {
           <main className="container px-5 mx-auto max-w-screen-lg">
             <PageComponent {...props} />
           </main>
-          <footer className="bottom-0 justify-around w-full p-4 mx-auto mt-10 text-gray-600 sm:hidden md:flex opacity-60">
+          <footer
+            className="items-center justify-center justify-around hidden w-full p-4 mx-auto text-gray-600 md:flex bg-bg2 opacity-60"
+            style={{ height: 'var(--footer-height)' }}
+          >
             <p>
               {locales.map((l) => {
                 return locale === l ? (

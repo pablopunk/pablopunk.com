@@ -5,7 +5,6 @@ import humanFormat from 'human-format'
 import Loading from 'components/pure/Loading'
 import { _ } from 'lib/locales'
 import styled from 'styled-components'
-import { smallMediaQuery } from 'components/utils/media-queries'
 import { AiFillStar } from 'react-icons/ai'
 
 const API = 'https://repos.pablopunk.com/api'

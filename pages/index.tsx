@@ -2,11 +2,9 @@ import React from 'react'
 import TextLoop from 'react-text-loop'
 import withLayout from 'components/skeleton/withLayout'
 import { staticProps } from 'components/data-fetch/withCMS'
-import Card from 'components/containers/Card'
 import { _ } from 'lib/locales'
 import HomeCard from 'components/pure/HomeCard'
 import Tag from 'components/pure/Tag'
-import { dark } from 'components/utils/themes'
 import { useRouter } from 'next/router'
 
 const initialLoopDelay = 0
@@ -67,17 +65,17 @@ const Page = ({ abstract, cards, ...props }: IProps) => {
 
   return (
     <>
-      <article className="flex flex-col items-center mt-6 text-lg leading-8">
+      <article className="flex flex-col items-center justify-center mt-6 text-lg leading-8">
         <Loop />
         <div
           className="text-center"
           dangerouslySetInnerHTML={{ __html: abstract }}
         ></div>
       </article>
-      <article className="m-5 text-center">
+      <article className="flex flex-wrap items-center justify-center m-5">
         <span
           onClick={() => showThisTagOnlySet(null)}
-          className={`font-bold cursor-pointer text-fg mx-2 ${
+          className={`font-bold cursor-pointer text-fg m-2 ${
             showThisTagOnly ? '' : 'active'
           }`}
         >
@@ -88,7 +86,7 @@ const Page = ({ abstract, cards, ...props }: IProps) => {
             <span
               key={'filters' + tag.name}
               onClick={() => showThisTagOnlySet(tag.name)}
-              className={`cursor-pointer mx-2 ${
+              className={`cursor-pointer m-2 ${
                 showThisTagOnly === tag.name ? 'active' : ''
               }`}
             >
@@ -97,7 +95,7 @@ const Page = ({ abstract, cards, ...props }: IProps) => {
           )
         })}
       </article>
-      <article className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <article className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
         {cards.map((card) => (
           <React.Fragment key={card.title + Math.random().toString()}>
             <HomeCard {...card} />

@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { smallMediaQuery } from 'components/utils/media-queries'
 import { RiMoonClearLine, RiSunLine } from 'react-icons/ri'
 import { FaCreditCard } from 'react-icons/fa'
 import { useRouter } from 'next/router'
@@ -41,7 +40,10 @@ const Nav = ({ main = [], path }) => {
   const { locale } = useRouter()
 
   return (
-    <div className="flex justify-between w-full">
+    <div
+      className="flex items-center justify-between overflow-scroll"
+      style={{ height: 'var(--nav-height)' }}
+    >
       <nav className="flex">
         {main.map((link) => {
           let current = link.link === path
@@ -49,7 +51,9 @@ const Nav = ({ main = [], path }) => {
           return (
             <div
               key={link.id}
-              className="px-3 py-2 text-xl font-bold uppercase"
+              className={`px-3 py-2 text-lg font-bold uppercase ${
+                current ? 'hidden md:block' : ''
+              }`}
             >
               <Link href={'/' + link.link} locale={locale}>
                 <a

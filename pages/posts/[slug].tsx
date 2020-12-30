@@ -33,7 +33,7 @@ const Page = ({ post, ...rest }) => {
       />
       <br />
       <Link as={`/${locale}/blog`} href="/[locale]/blog">
-        <a>
+        <a className="flex items-center text-lg">
           <IoMdArrowRoundBack />
           <span>{_('Go back', locale)}</span>
         </a>

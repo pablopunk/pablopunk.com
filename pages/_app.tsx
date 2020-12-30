@@ -8,6 +8,8 @@ import colors from 'tailwindcss/colors'
 const GlobalStyle = createGlobalStyle`
   :root {
     --transition-time: 0.3s;
+    --nav-height: 44px;
+    --footer-height: 50px;
 
     --color-bg: ${colors.blueGray['50']};
     --color-fg: ${colors.blueGray['800']};
@@ -55,6 +57,17 @@ const GlobalStyle = createGlobalStyle`
   h1,h2,h3,h4 {
     color: var(--color-accent);
     font-weight: bold;
+  }
+  .fill-height {
+    height: calc(100vh - var(--footer-height) - var(--nav-height));
+    @media(max-width: 640px) {
+      height: 100%;
+      margin-top: 10%;
+    }
+  }
+  section {
+    padding: 2rem 0;
+    position: relative;
   }
 `
 const App = ({ Component, pageProps }) => {

@@ -59,7 +59,7 @@ const Page = ({
     <>
       <section className="flex flex-col items-center">
         <h2 className="m-4 text-2xl text-center">{introHeader}</h2>
-        <div className="justify-center mx-auto grid grid-cols-4 sm:grid-col-2">
+        <div className="justify-center mx-auto grid grid-cols-2 md:grid-cols-4">
           <BigIcon href="https://reactjs.org">
             <FaReact size={iconSize} />
             <strong className="text-center text-accent">ReactJS</strong>
@@ -82,7 +82,7 @@ const Page = ({
         </StyledAbstract>
       </section>
       <section className="flex flex-col items-center w-full mx-auto">
-        <h3 className="mt-4 text-xl">{exampleProjectsHeader}</h3>
+        <h3 className="text-xl ">{exampleProjectsHeader}</h3>
         {allExampleProjects.map((project) => (
           <div
             key={project.name}
@@ -114,14 +114,14 @@ const Page = ({
         ))}
       </section>
       <section>
-        <h3 className="mt-8 text-lg text-center">
+        <h3 className="text-lg text-center">
           {_('Popular npm packages', locale)}
         </h3>
         <NpmCharts locale={locale} />
       </section>
       <section>
         <div
-          className="mt-8 mb-8 text-lg text-center"
+          className="mb-8 text-lg text-center "
           dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
         ></div>
         <Repos locale={locale} />

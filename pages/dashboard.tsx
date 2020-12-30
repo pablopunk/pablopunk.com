@@ -8,59 +8,79 @@ import { MdPageview } from 'react-icons/md'
 import { useRouter } from 'next/router'
 import { _ } from 'lib/locales'
 import humanFormat from 'human-format'
-import Card from 'components/containers/Card'
 import { go } from './portfolio'
-import FixedCenter from 'components/containers/FixedCenter'
 import useSWR from 'swr'
-import Grid from 'components/containers/Grid'
 import { AiOutlineStar, AiOutlineUsergroupAdd } from 'react-icons/ai'
+
+const Stats = ({ children, onClick }) => {
+  return (
+    <div
+      onClick={onClick}
+      className="flex flex-col items-center justify-around p-4 m-4 border rounded-lg shadow-lg border-accent2"
+    >
+      {children}
+    </div>
+  )
+}
+
+const Stat = ({ children }) => {
+  return <div className="flex items-center justify-center">{children}</div>
+}
 
 function Dashboard() {
   const { locale } = useRouter()
   const { data } = useSWR('/api/stats', (u) => fetch(u).then((r) => r.json()))
 
   return (
-    <FixedCenter>
+    <div className="flex items-center justify-center fill-height">
       {data ? (
-        <Grid columns={2} small={1}>
-          <Card onClick={() => go('unsplash.com/@pablopunk')}>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <Stats onClick={() => go('unsplash.com/@pablopunk')}>
             <h2>Unsplash</h2>
-            <p>
+            <Stat>
               <FiDownloadCloud />{' '}
-              <strong>
+              <strong className="ml-1 text-accent2">
                 {humanFormat(data.unsplash?.downloads?.total || 0)}{' '}
               </strong>
-              {_('total downloads', locale)}
-            </p>
-            <p>
+              <span className="ml-1">{_('total downloads', locale)}</span>
+            </Stat>
+            <Stat>
               <MdPageview />{' '}
-              <strong>{humanFormat(data.unsplash?.views?.total || 0)} </strong>
-              {_('total views', locale)}
-            </p>
-          </Card>
-          <Card onClick={() => go('github.com/pablopunk')}>
+              <strong className="ml-1 text-accent2">
+                {humanFormat(data.unsplash?.views?.total || 0)}{' '}
+              </strong>
+              <span className="ml-1">{_('total views', locale)}</span>
+            </Stat>
+          </Stats>
+          <Stats onClick={() => go('github.com/pablopunk')}>
             <h2>GitHub</h2>
-            <p>
+            <Stat>
               <AiOutlineStar />{' '}
-              <strong>+{humanFormat(data.github?.stars_received || 0)} </strong>
-              {_('stars received', locale)}
-            </p>
-            <p>
+              <strong className="ml-1 text-accent2">
+                +{humanFormat(data.github?.stars_received || 0)}{' '}
+              </strong>
+              <span className="ml-1">{_('stars received', locale)}</span>
+            </Stat>
+            <Stat>
               <AiOutlineUsergroupAdd />{' '}
-              <strong>{humanFormat(data.github?.followers || 0)} </strong>
-              {_('followers', locale)}
-            </p>
-            <p>
+              <strong className="ml-1 text-accent2">
+                {humanFormat(data.github?.followers || 0)}{' '}
+              </strong>
+              <span className="ml-1">{_('followers', locale)}</span>
+            </Stat>
+            <Stat>
               <GoRepo />{' '}
-              <strong>{humanFormat(data.github?.public_repos || 0)} </strong>
-              {_('repos', locale)}
-            </p>
-          </Card>
-        </Grid>
+              <strong className="ml-1 text-accent2">
+                {humanFormat(data.github?.public_repos || 0)}{' '}
+              </strong>
+              <span className="ml-1">{_('repos', locale)}</span>
+            </Stat>
+          </Stats>
+        </div>
       ) : (
         <Loading />
       )}
-    </FixedCenter>
+    </div>
   )
 }
 
