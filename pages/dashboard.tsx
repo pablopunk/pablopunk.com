@@ -56,7 +56,7 @@ function Dashboard() {
             <Stat>
               <AiOutlineStar />{' '}
               <strong className="ml-1 text-accent2">
-                +{humanFormat(data.github?.stars_received || 0)}{' '}
+                +{humanFormat(180 + (data.github?.stars_received || 0))}{' '}
               </strong>
               <span className="ml-1">{_('stars received', locale)}</span>
             </Stat>
