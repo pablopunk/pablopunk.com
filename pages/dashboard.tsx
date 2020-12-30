@@ -15,7 +15,7 @@ const Stats = ({ children, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="flex flex-col items-center justify-around p-4 m-4 border rounded-lg shadow-lg border-accent2"
+      className="flex flex-col items-center justify-around p-4 m-4 border rounded-lg shadow-lg cursor-pointer border-accent2"
     >
       {children}
     </div>
