@@ -1,0 +1,25 @@
+name: Lighthouse Score
+on: [push]
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: UnlyEd/github-action-await-vercel@v1.1.0
+        id: await-vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        with:
+          deployment-url: pablopunk.com
+          timeout: 10
+      - name: Display deployment status
+        run: 'echo The deployment at ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).url }} is ${{ fromJson(steps.await-vercel.outputs.deploymentDetails).readyState }}'
+      - run: mkdir /tmp/artifacts
+      - name: Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          url: https://pablopunk.com
+      - name: Upload results
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: /tmp/artifacts
