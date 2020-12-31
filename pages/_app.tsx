@@ -70,6 +70,13 @@ const GlobalStyle = createGlobalStyle`
     padding: 2rem 0;
     position: relative;
   }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 `
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
