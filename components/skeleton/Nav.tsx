@@ -49,7 +49,7 @@ const Nav = ({ main = [], path }) => {
 
           return (
             <div
-              key={link.id}
+              key={link.link}
               className={`px-3 py-2 text-lg font-bold uppercase ${
                 current ? 'hidden md:block' : ''
               }`}
@@ -57,7 +57,9 @@ const Nav = ({ main = [], path }) => {
               <Link href={'/' + link.link} locale={locale}>
                 <a
                   className={
-                    current ? 'text-accent2' : 'text-accent hover:text-accent2'
+                    current
+                      ? 'md:text-accent2'
+                      : 'text-accent md:hover:text-accent2'
                   }
                 >
                   {link.text}

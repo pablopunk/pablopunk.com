@@ -65,7 +65,7 @@ const Page = ({ abstract, cards }: IProps) => {
 
   return (
     <>
-      <article className="flex flex-col items-center justify-center mt-6 text-lg leading-8">
+      <article className="flex flex-col items-center justify-center pt-6 text-lg leading-8">
         <Loop />
         <div
           className="text-center"

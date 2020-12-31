@@ -5,10 +5,11 @@ import { staticProps } from 'components/data-fetch/withCMS'
 const StyledGrid = styled.div`
   div {
     max-width: 600px;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 15fr;
     align-items: flex-start;
-    grid-gap: 1.6rem;
+    grid-gap: 1.3rem;
 
     p {
       margin: 0;
@@ -32,7 +33,7 @@ const Page = ({ content }: IProps) => {
   content = content.replace('%years%', howOldAmI())
 
   return (
-    <div className="flex items-center justify-center w-full text-lg fill-height">
+    <div className="block w-full text-lg fill-height md:items-center md:justify-center md:flex">
       <StyledGrid>
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </StyledGrid>

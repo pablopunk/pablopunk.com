@@ -49,21 +49,21 @@ const GlobalStyle = createGlobalStyle`
     color: var(--color-accent2);
     transition: background-color var(--transition-time), color var(--transition-time);
   }
-  article {
-    transition: background-color var(--transition-time), color var(--transition-time);
-  }
   a:hover {
     color: var(--color-accent);
+  }
+  article {
+    transition: background-color var(--transition-time), color var(--transition-time);
   }
   h1,h2,h3,h4 {
     color: var(--color-accent);
     font-weight: bold;
   }
   .fill-height {
-    height: calc(100vh - var(--footer-height) - var(--nav-height));
+    height: 100%;
+    min-height: calc(100vh - var(--footer-height) - var(--nav-height));
     @media(max-width: 640px) {
-      height: 100%;
-      margin-top: 10%;
+      min-height: calc(100vh - var(--nav-height));
     }
   }
   section {

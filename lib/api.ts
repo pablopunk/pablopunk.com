@@ -54,123 +54,126 @@ const commonPageQueries = `
   }
 `
 
+const homeQuery = `
+  home(locale: $locale) {
+    abstract(markdown: true)
+    cards {
+      img {
+        url(imgixParams: {fm: jpg, q:60})
+        title
+        alt
+        blurUpThumb(imgixParams: {fm: jpg, q:60})
+      }
+      link
+      title
+      description
+      tags {
+        name
+        color {
+          hex
+        }
+      }
+    }
+    ${commonPageQueries}
+  }
+`
+
+const portfolioQuery = `
+  portfolio(locale: $locale) {
+    introHeader
+    abstract(markdown: true)
+    exampleProjectsHeader
+    githubReposIntroduction(markdown: true)
+    ${commonPageQueries}
+  }
+  allExampleProjects(orderBy: _createdAt_ASC, locale: $locale) {
+    link
+    name
+    description(markdown: true)
+    picture {
+      url(imgixParams: {fm: jpg, q:60})
+      alt
+      title
+      blurUpThumb(imgixParams: {fm: jpg, q:60})
+    }
+  }
+`
+
+const aboutQuery = `
+  about(locale: $locale) {
+    content(markdown: true)
+    ${commonPageQueries}
+  }
+`
+
+const blogQuery = `
+  blog(locale: $locale) {
+    title
+    emptyMessage
+    posts {
+      title
+      slug
+      date
+    }
+    ${commonPageQueries}
+  }
+`
+
+const stackQuery = `
+  stack(locale: $locale) {
+    content(markdown: true)
+    ${commonPageQueries}
+  }
+`
+
 let _cache = {}
 
 export async function fetchData(
   resource: string,
   { locale = 'en', preview = false, slug = null } = {}
 ) {
-  if (process.env.NODE_ENV !== 'production' && _cache?.[resource] != null) {
-    return _cache[resource]
+  if (
+    process.env.NODE_ENV !== 'production' &&
+    _cache[locale]?.[resource] != null
+  ) {
+    return _cache[locale][resource]
   }
 
-  let results
+  let query
 
   switch (resource) {
     case 'home':
-      results = fetchAPI(
-        `
-        home(locale: $locale) {
-          abstract(markdown: true)
-          cards {
-            img {
-              url(imgixParams: {fm: jpg, q:60})
-              title
-              alt
-              blurUpThumb(imgixParams: {fm: jpg, q:60})
-            }
-            link
-            title
-            description
-            tags {
-              name
-              color {
-                hex
-              }
-            }
-          }
-          ${commonPageQueries}
-        }
-        `,
-        { locale },
-        preview
-      )
+      query = homeQuery
       break
 
     case 'portfolio':
-      results = fetchAPI(
-        `
-        portfolio(locale: $locale) {
-          introHeader
-          abstract(markdown: true)
-          exampleProjectsHeader
-          githubReposIntroduction(markdown: true)
-          ${commonPageQueries}
-        }
-        allExampleProjects(orderBy: _createdAt_ASC, locale: $locale) {
-          link
-          name
-          description(markdown: true)
-          picture {
-            url(imgixParams: {fm: jpg, q:60})
-            alt
-            title
-            blurUpThumb(imgixParams: {fm: jpg, q:60})
-          }
-        }
-        `,
-        { locale },
-        preview
-      )
+      query = portfolioQuery
       break
 
     case 'about':
-      results = fetchAPI(
-        `
-        about(locale: $locale) {
-          content(markdown: true)
-          ${commonPageQueries}
-        }
-      `,
-        { locale },
-        preview
-      )
+      query = aboutQuery
       break
 
     case 'blog':
-      results = fetchAPI(
-        `
-        blog(locale: $locale) {
-          title
-          emptyMessage
-          posts {
-            title
-            slug
-            date
-          }
-          ${commonPageQueries}
-        }
-      `,
-        { locale },
-        preview
-      )
+      query = blogQuery
       break
 
     case 'stack':
-      results = fetchAPI(
-        `
-        stack(locale: $locale) {
-          content(markdown: true)
-          ${commonPageQueries}
-        }
-        `,
-        { locale },
-        preview
-      )
+      query = stackQuery
       break
+
+    default:
+      throw new Error(`Unknown resource: ${resource}`)
   }
 
-  _cache[resource] = results
+  const results = fetchAPI(query, { locale }, preview)
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (_cache[locale] == null) {
+      _cache[locale] = {}
+    }
+    _cache[locale][resource] = results
+  }
 
   return results
 }
