@@ -18,6 +18,7 @@ jobs:
         uses: foo-software/lighthouse-check-action@master
         with:
           urls: 'https://pablopunk.com'
+          outputDirectory: /tmp/artifacts
       - name: Upload results
         uses: actions/upload-artifact@master
         with:
