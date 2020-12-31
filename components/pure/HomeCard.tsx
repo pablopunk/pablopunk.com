@@ -1,12 +1,15 @@
 import React from 'react'
 import Tag from 'components/pure/Tag'
 import { RiExternalLinkLine } from 'react-icons/ri'
+import { GrFormNextLink } from 'react-icons/gr'
 import Link from 'next/link'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const imgSize = '60px'
 
 export default function HomeCard({ title, description, img, link, tags }) {
+  const LinkIcon = link.startsWith('/') ? GrFormNextLink : RiExternalLinkLine
+
   return (
     <Link href={link}>
       <a>
@@ -36,7 +39,7 @@ export default function HomeCard({ title, description, img, link, tags }) {
               className="absolute top-0 right-0 flex items-center justify-center text-bg bg-accent2 group-hover:bg-accent"
               style={{ width: '22px', height: '22px' }}
             >
-              <RiExternalLinkLine />
+              <LinkIcon />
             </div>
             <div className="absolute -bottom-1 -right-1">
               {tags.map(({ name, color }) => (
