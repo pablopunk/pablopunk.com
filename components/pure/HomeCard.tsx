@@ -3,7 +3,7 @@ import Tag from 'components/pure/Tag'
 import { RiExternalLinkLine } from 'react-icons/ri'
 import { GrFormNextLink } from 'react-icons/gr'
 import Link from 'next/link'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+import Image from 'next/image'
 
 const imgSize = '60px'
 
@@ -15,19 +15,11 @@ export default function HomeCard({ title, description, img, link, tags }) {
       <a>
         <article className="relative flex items-center px-3 py-4 border-2 shadow-lg rounded-md border-accent2 hover:border-accent group bg-bg2 hover:bg-bg">
           <div className="mr-2" style={{ minWidth: imgSize }}>
-            <LazyLoadImage
+            <Image
               src={img.url}
               alt={img.alt}
               height={imgSize}
               width={imgSize}
-              placeholder={
-                <img
-                  src={img.blurUpThumb}
-                  alt={img.alt}
-                  width={imgSize}
-                  height={imgSize}
-                />
-              }
             />
           </div>
           <div>
