@@ -54,4 +54,20 @@ export default styled.article`
     opacity: 0.8;
     margin: 1rem 0;
   }
+
+  blockquote {
+    position: relative;
+    background-color: var(--color-bg2);
+    padding: 0.4rem 1rem;
+    margin: 1rem 0;
+    border-left: 2px solid var(--color-accent);
+  }
+  blockquote:after {
+    content: '🇪🇸';
+    position: absolute;
+    right: 2px;
+    bottom: -8px;
+    transform: rotate(-15deg);
+    font-size: 2rem;
+  }
 `
