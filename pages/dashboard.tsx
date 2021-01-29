@@ -10,6 +10,7 @@ import humanFormat from 'human-format'
 import { go } from './portfolio'
 import useSWR from 'swr'
 import { AiOutlineStar, AiOutlineUsergroupAdd } from 'react-icons/ai'
+import { getUnsplashStats, getGithubStats } from './api/stats'
 
 const Stats = ({ children, onClick }) => {
   return (
@@ -26,9 +27,11 @@ const Stat = ({ children }) => {
   return <div className="flex items-center justify-center">{children}</div>
 }
 
-function Dashboard() {
+function Dashboard({ initialData }) {
   const { locale } = useRouter()
-  const { data } = useSWR('/api/stats', (u) => fetch(u).then((r) => r.json()))
+  const { data } = useSWR('/api/stats', (u) => fetch(u).then((r) => r.json()), {
+    initialData,
+  })
 
   return (
     <div className="flex items-center justify-center fill-height">
@@ -84,4 +87,18 @@ function Dashboard() {
 }
 
 export default withLayout(Dashboard, 'dashboard')
-export const getStaticProps = (ctx) => staticProps('home', ctx)
+export const getStaticProps = async (ctx) => {
+  const staticP = await staticProps('home', ctx)
+  const [unsplash, github] = await Promise.all([
+    getUnsplashStats(),
+    getGithubStats(),
+  ])
+
+  return {
+    ...staticP,
+    props: {
+      ...staticP.props,
+      initialData: { unsplash, github },
+    },
+  }
+}
