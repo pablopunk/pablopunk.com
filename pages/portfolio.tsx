@@ -3,10 +3,10 @@ import withLayout from 'components/skeleton/withLayout'
 import React from 'react'
 import styled from 'styled-components'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import Repos from 'components/data-fetch/Repos'
+import Repos, { fetchAllReposData } from 'components/data-fetch/Repos'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiNextDotJs, SiGraphql } from 'react-icons/si'
-import NpmCharts from 'components/data-fetch/NpmCharts'
+import NpmCharts, { fetchAllNpmData } from 'components/data-fetch/NpmCharts'
 import { _ } from 'lib/locales'
 
 export function go(link: string) {
@@ -20,6 +20,10 @@ interface IProps {
   githubReposIntroduction: string
   allExampleProjects: Array<any>
   locale: string
+  initialData: {
+    npm: any
+    repos: any
+  }
 }
 
 const iconSize = '100'
@@ -53,6 +57,7 @@ const Page = ({
   exampleProjectsHeader,
   githubReposIntroduction,
   allExampleProjects,
+  initialData,
   locale,
 }: IProps) => {
   return (
@@ -117,18 +122,31 @@ const Page = ({
         <h3 className="text-lg text-center">
           {_('Popular npm packages', locale)}
         </h3>
-        <NpmCharts />
+        <NpmCharts initialData={initialData.npm} />
       </section>
       <section>
         <div
           className="mb-8 text-lg text-center "
           dangerouslySetInnerHTML={{ __html: githubReposIntroduction }}
         ></div>
-        <Repos locale={locale} />
+        <Repos locale={locale} initialData={initialData.repos} />
       </section>
     </>
   )
 }
 
-export const getStaticProps = (ctx) => staticProps('portfolio', ctx)
+export const getStaticProps = async (ctx) => {
+  const sProps = await staticProps('portfolio', ctx)
+
+  return {
+    ...sProps,
+    props: {
+      ...sProps.props,
+      initialData: {
+        npm: await fetchAllNpmData(),
+        repos: await fetchAllReposData(),
+      },
+    },
+  }
+}
 export default withLayout(Page, 'portfolio')

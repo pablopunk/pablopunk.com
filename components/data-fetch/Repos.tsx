@@ -31,8 +31,10 @@ const ADDITIONAL_REPOS = [
 
 const fetcher = (url) => fetch(url).then((_) => _.json())
 
-function Repos({ locale }) {
-  const { data, error } = useSWR(API, fetcher)
+export const fetchAllReposData = () => fetcher(API)
+
+function Repos({ locale, initialData }) {
+  const { data, error } = useSWR(API, fetcher, { initialData })
 
   if (error) {
     return <strong style={{ color: 'orangered' }}>Error fetching repos</strong>
