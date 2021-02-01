@@ -3,7 +3,10 @@ import styled from 'styled-components'
 export default styled.article`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 
   p {
     text-align: justify;
@@ -12,7 +15,6 @@ export default styled.article`
 
   .body {
     width: 100%;
-    max-width: 600px;
   }
 
   figure,
@@ -25,6 +27,23 @@ export default styled.article`
   h1 {
     text-align: center;
     font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  h3 {
+    color: var(--color-fg);
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: left;
+    margin-top: 1rem;
+  }
+
+  h3:before {
+    content: '# ';
   }
 
   pre {
@@ -53,6 +72,7 @@ export default styled.article`
   small {
     opacity: 0.8;
     margin: 1rem 0;
+    align-self: center;
   }
 
   blockquote {
@@ -61,6 +81,7 @@ export default styled.article`
     padding: 0.4rem 1rem;
     margin: 1rem 0;
     border-left: 2px solid var(--color-accent);
+    width: 100%;
   }
   blockquote:after {
     content: '🇪🇸';
