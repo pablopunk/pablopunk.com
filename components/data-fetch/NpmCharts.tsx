@@ -7,7 +7,12 @@ import { _ } from 'lib/locales'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
-const packages = ['nextjs-redirect', 'miny', 'livesoccertv-parser']
+const packages = [
+  'nextjs-redirect',
+  'miny',
+  'vim-colors',
+  'livesoccertv-parser',
+]
 
 export const fetchAllNpmData = () =>
   Promise.all(
