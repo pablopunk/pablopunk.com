@@ -14,7 +14,7 @@ export default function withLayout(PageComponent, path?: string) {
   return function Layout({ nav, metaTags, locale, ...props }: IPageProps) {
     return (
       <>
-        <Meta {...metaTags} />
+        <Meta {...metaTags} locale={locale} />
         <Nav {...nav} path={path} />
         <main className="container px-5 mx-auto max-w-screen-lg fill-height">
           <PageComponent {...props} />
