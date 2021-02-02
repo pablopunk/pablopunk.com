@@ -18,8 +18,8 @@ export default function HomeCard({ title, description, img, link, tags }) {
             <Image
               src={img.url}
               alt={img.alt}
-              height={img.width}
-              width={img.height}
+              height={imgSize}
+              width={imgSize}
             />
           </div>
           <div>
