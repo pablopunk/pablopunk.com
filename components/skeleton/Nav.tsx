@@ -40,7 +40,7 @@ const Nav = ({ main = [], path }) => {
 
   return (
     <div
-      className="flex items-center justify-between overflow-scroll"
+      className="flex items-center justify-between overflow-auto no-scrollbar"
       style={{ height: 'var(--nav-height)' }}
     >
       <nav className="flex">

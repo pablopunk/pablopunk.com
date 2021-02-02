@@ -9,7 +9,7 @@ const fetcher = (url) =>
     headers: { Authorization: `Bearer ${githubToken}` },
   }).then((r) => r.json())
 
-async function getUnsplash() {
+export async function getUnsplashStats() {
   const unsplashClient = new Unsplash({
     accessKey: unsplashAccessKey,
   })
@@ -20,7 +20,7 @@ async function getUnsplash() {
   return unsplash
 }
 
-async function getGithub() {
+export async function getGithubStats() {
   const user = await fetcher('https://api.github.com/users/pablopunk')
   const repos = await fetcher(user.repos_url + '?per_page=100')
 
@@ -33,8 +33,10 @@ async function getGithub() {
 }
 
 export default async function stats(_, res: NextApiResponse) {
-  const unsplash = await getUnsplash()
-  const github = await getGithub()
+  const [unsplash, github] = await Promise.all([
+    getUnsplashStats(),
+    getGithubStats(),
+  ])
 
   res.status(200).json({ unsplash, github })
 }

@@ -14,16 +14,16 @@ const GlobalStyle = createGlobalStyle`
 
     --color-bg: ${colors.blueGray['50']};
     --color-fg: ${colors.blueGray['800']};
-    --color-bg2: ${colors.gray['50']};
-    --color-accent: ${colors.fuchsia['500']};
-    --color-accent2: ${colors.teal['500']};
+    --color-bg2: ${colors.blueGray['100']};
+    --color-accent: ${colors.indigo['900']};
+    --color-accent2: ${colors.violet['600']};
   }
   html.dark {
     --color-bg: ${colors.coolGray['900']};
-    --color-fg: ${colors.blueGray['50']};
+    --color-fg: ${colors.coolGray['50']};
     --color-bg2: ${colors.blueGray['800']};
-    --color-accent: ${colors.teal['300']};
-    --color-accent2: ${colors.fuchsia['400']};
+    --color-accent: ${colors.teal['200']};
+    --color-accent2: ${colors.fuchsia['200']};
   }
   html {
     box-sizing: border-box;
@@ -69,6 +69,13 @@ const GlobalStyle = createGlobalStyle`
   section {
     padding: 2rem 0;
     position: relative;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 `
 const App = ({ Component, pageProps }) => {

@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import { NextSeo, SocialProfileJsonLd } from 'next-seo'
-
-const siteUrl = 'https://pablopunk.com'
+import { DEFAULT_LOCALE } from 'lib/locales'
 
 export default function Meta({ title, description, locale }) {
+  const siteUrl =
+    'https://pablopunk.com/' + (locale !== DEFAULT_LOCALE ? locale : '')
+
   return (
     <>
       <NextSeo

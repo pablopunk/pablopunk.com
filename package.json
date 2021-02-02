@@ -20,6 +20,7 @@
     "next-themes": "0.0.10",
     "nextjs-redirect": "^4.0.2",
     "postcss": "^8.2.1",
+    "preact": "^10.5.12",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-icons": "3.11.0",

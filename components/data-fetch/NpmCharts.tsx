@@ -5,8 +5,25 @@ import humanFormat from 'human-format'
 import { HiOutlineFolderDownload } from 'react-icons/hi'
 import { _ } from 'lib/locales'
 import { useRouter } from 'next/router'
+import useSWR from 'swr'
 
-const packages = ['nextjs-redirect', 'miny', 'livesoccertv-parser']
+const packages = [
+  'nextjs-redirect',
+  'miny',
+  'vim-colors',
+  'livesoccertv-parser',
+]
+
+export const fetchAllNpmData = () =>
+  Promise.all(
+    packages.map((p) =>
+      fetch(
+        `https://api.npmjs.org/downloads/range/2010-01-01:${
+          new Date().toISOString().split('T')[0]
+        }/${p}`
+      ).then((r) => r.json())
+    )
+  )
 
 function convertStatsToChartData(stats) {
   if (stats?.downloads == null) {
@@ -24,26 +41,13 @@ function convertStatsToChartData(stats) {
     .filter((s) => s.data > min)
 }
 
-const totalDownloads = (stats) =>
-  humanFormat(
-    stats?.downloads?.reduce((acc, curr) => acc + curr.downloads, 0) ?? 0,
-    { decimals: 1 }
-  ).replace(' ', '')
+const totalDownloads = (downloads) =>
+  humanFormat(downloads?.reduce((acc, curr) => acc + curr.downloads, 0) ?? 0, {
+    decimals: 1,
+  }).replace(' ', '')
 
-const PackageStat = ({ name, locale }) => {
-  const [stats, statsSet] = React.useState(null)
-
-  React.useEffect(() => {
-    fetch(
-      `https://api.npmjs.org/downloads/range/2010-01-01:${
-        new Date().toISOString().split('T')[0]
-      }/${name}`
-    )
-      .then((r) => r.json())
-      .then(statsSet)
-  }, [])
-
-  if (stats == null) {
+const PackageStat = ({ package: packageName, downloads, locale }) => {
+  if (downloads == null) {
     return null
   }
 
@@ -53,27 +57,29 @@ const PackageStat = ({ name, locale }) => {
         <span className="mr-1 text-accent2">
           <HiOutlineFolderDownload />
         </span>
-        <span className="mr-1">{totalDownloads(stats)} </span>
+        <span className="mr-1">{totalDownloads(downloads)} </span>
         <span className="mr-1">{_('downloads for', locale)} </span>
-        <a href={'https://npm.im/' + name}>
-          <strong>{name}</strong>
+        <a href={'https://npm.im/' + packageName}>
+          <strong>{packageName}</strong>
         </a>
       </div>
-      <AreaChart height={300} data={convertStatsToChartData(stats)} />
+      <AreaChart height={300} data={convertStatsToChartData({ downloads })} />
     </>
   )
 }
 
-export default function NpmCharts() {
+export default function NpmCharts({ initialData }) {
   const { locale } = useRouter()
+  const { data } = useSWR('npm-stats', fetchAllNpmData, { initialData })
 
   return (
     <>
-      {packages.map((p) => (
-        <div key={p} style={{ width: '100%' }}>
-          <PackageStat name={p} locale={locale} />
-        </div>
-      ))}
+      {data &&
+        data.map((packageData) => (
+          <div key={packageData.package} style={{ width: '100%' }}>
+            <PackageStat {...packageData} locale={locale} />
+          </div>
+        ))}
     </>
   )
 }

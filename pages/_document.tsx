@@ -1,5 +1,6 @@
 import Document, { Main, NextScript, Html, Head } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { DEFAULT_LOCALE } from 'lib/locales'
 
 const darkModeAutoForTailwind = `
 (function() {
@@ -50,7 +51,7 @@ export default class extends Document {
 
   render() {
     return (
-      <Html lang={this.props.locale}>
+      <Html lang={this.props.locale || DEFAULT_LOCALE}>
         <Head>
           <script
             dangerouslySetInnerHTML={{ __html: darkModeAutoForTailwind }}

@@ -73,4 +73,16 @@ module.exports = {
   images: {
     domains: ['www.datocms-assets.com'],
   },
+  webpack(config, { dev, isServer }) {
+    // use Preact in production
+    if (!dev && !isServer) {
+      Object.assign(config.resolve.alias, {
+        react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',
+      })
+    }
+
+    return config
+  },
 }

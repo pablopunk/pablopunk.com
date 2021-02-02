@@ -23,7 +23,7 @@ export default function HomeCard({ title, description, img, link, tags }) {
             />
           </div>
           <div>
-            <h4 className="text-xl font-bold">{title}</h4>
+            <h2 className="text-xl font-bold">{title}</h2>
             <div className="text-lg leading-6 text-fg group-hover:text-accent">
               {description}
             </div>
