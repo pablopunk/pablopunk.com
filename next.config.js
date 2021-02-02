@@ -70,6 +70,9 @@ module.exports = {
   async redirects() {
     return rd.map(buildRedirect)
   },
+  images: {
+    domains: ['www.datocms-assets.com'],
+  },
   webpack(config, { dev, isServer }) {
     // use Preact in production
     if (!dev && !isServer) {

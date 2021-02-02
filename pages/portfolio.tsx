@@ -2,12 +2,12 @@ import { staticProps } from 'components/data-fetch/withCMS'
 import withLayout from 'components/skeleton/withLayout'
 import React from 'react'
 import styled from 'styled-components'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import Repos, { fetchAllReposData } from 'components/data-fetch/Repos'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiNextDotJs, SiGraphql } from 'react-icons/si'
 import NpmCharts, { fetchAllNpmData } from 'components/data-fetch/NpmCharts'
 import { _ } from 'lib/locales'
+import Image from 'next/image'
 
 export function go(link: string) {
   window.open(`https://${link}`)
@@ -97,17 +97,11 @@ const Page = ({
               onClick={() => window.open(project.link)}
               className="flex flex-col items-center flex-shrink-0 mr-4 cursor-pointer"
             >
-              <LazyLoadImage
+              <Image
                 src={project.picture.url}
                 alt={project.picture.alt}
                 width="150px"
-                placeholder={
-                  <img
-                    src={project.picture.blurUpThumb}
-                    alt={project.picture.alt}
-                    width="150px"
-                  />
-                }
+                height="100%"
               />
               <strong className="mt-3 text-accent">{project.name}</strong>
             </figure>

@@ -4,10 +4,10 @@ import withLayout from 'components/skeleton/withLayout'
 import Link from 'next/link'
 import { _ } from 'lib/locales'
 import { NextSeo } from 'next-seo'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import Article from 'components/pure/Article'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, '/')
 
@@ -41,13 +41,11 @@ const Page = ({ post }) => {
       <Article>
         {post.image?.url ? (
           <figure>
-            <LazyLoadImage
+            <Image
               src={post.image.url}
               alt={post.image.alt}
-              title={post.image.title}
-              placeholder={
-                <img src={post.image.blurUpThumb} alt={post.image.alt} />
-              }
+              width={post.image.width}
+              height={post.image.height}
             />
             <h1>{post.title}</h1>
           </figure>

@@ -19,7 +19,7 @@ export default styled.article`
 
   figure,
   img {
-    width: 100%;
+    max-width: 100%;
     border-radius: 1rem;
     position: relative;
   }

@@ -63,6 +63,8 @@ const homeQuery = `
         title
         alt
         blurUpThumb(imgixParams: {fm: jpg, q:60})
+        width
+        height
       }
       link
       title
@@ -95,6 +97,8 @@ const portfolioQuery = `
       alt
       title
       blurUpThumb(imgixParams: {fm: jpg, q:60})
+      width
+      height
     }
   }
 `
@@ -207,6 +211,8 @@ export async function getPostBySlug(slug, locale, preview = false) {
           alt
           title
           blurUpThumb(imgixParams: {fm: jpg, q:60})
+          width
+          height
         }
         body(markdown: true)
         ${commonPageQueries}
