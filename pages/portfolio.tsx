@@ -30,7 +30,7 @@ const iconSize = '100'
 
 const BigIcon = ({ children, href }) => (
   <a
-    className="flex flex-col items-center justify-center px-4 py-2 m-4 text-lg border shadow-lg border-accent2 hover:border-accent bg-bg2 hover:bg-bg"
+    className="flex flex-col items-center justify-center px-4 py-2 m-4 text-lg border shadow-lg border-accent2 hover:border-accent hover:bg-bg rounded-md"
     href={href}
   >
     {children}
@@ -91,7 +91,7 @@ const Page = ({
         {allExampleProjects.map((project) => (
           <div
             key={project.name}
-            className="flex flex-col items-center justify-center px-4 py-6 m-3 mx-auto border shadow-lg md:flex-row border-accent2 rounded-md bg-bg2"
+            className="flex flex-col items-center justify-center px-4 py-6 m-3 mx-auto border shadow-lg md:flex-row border-accent2 rounded-md"
           >
             <figure
               onClick={() => window.open(project.link)}

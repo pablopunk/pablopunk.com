@@ -1,19 +1,18 @@
 import React from 'react'
 import Tag from 'components/pure/Tag'
-import { RiExternalLinkLine } from 'react-icons/ri'
-import { GrFormNextLink } from 'react-icons/gr'
+import { RiExternalLinkLine, RiLinksLine } from 'react-icons/ri'
 import Link from 'next/link'
 import Image from 'next/image'
 
 const imgSize = '60px'
 
 export default function HomeCard({ title, description, img, link, tags }) {
-  const LinkIcon = link.startsWith('/') ? GrFormNextLink : RiExternalLinkLine
+  const LinkIcon = link.startsWith('/') ? RiExternalLinkLine : RiLinksLine
 
   return (
     <Link href={link}>
       <a>
-        <article className="relative flex items-center px-3 py-4 border-2 shadow-lg rounded-md border-accent2 hover:border-accent group bg-bg2 hover:bg-bg">
+        <article className="relative flex items-center px-3 py-4 border-2 shadow-lg rounded-md border-accent2 hover:border-accent group hover:bg-bg">
           <div className="mr-2" style={{ minWidth: imgSize }}>
             <Image
               src={img.url}

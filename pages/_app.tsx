@@ -15,8 +15,8 @@ const GlobalStyle = createGlobalStyle`
     --color-bg: ${colors.blueGray['50']};
     --color-fg: ${colors.blueGray['800']};
     --color-bg2: ${colors.blueGray['100']};
-    --color-accent: ${colors.indigo['900']};
-    --color-accent2: ${colors.violet['600']};
+    --color-accent: ${colors.teal['500']};
+    --color-accent2: ${colors.red['500']};
   }
   html.dark {
     --color-bg: ${colors.coolGray['900']};

@@ -1,5 +1,4 @@
 import React from 'react'
-import TextLoop from 'react-text-loop'
 import withLayout from 'components/skeleton/withLayout'
 import { staticProps } from 'components/data-fetch/withCMS'
 import { _ } from 'lib/locales'
@@ -7,42 +6,14 @@ import HomeCard from 'components/pure/HomeCard'
 import Tag from 'components/pure/Tag'
 import { useRouter } from 'next/router'
 
-const initialLoopDelay = 0
-const initialLoop = 800
-const timeToShowLoop = 5000
-const timeToIdleLoop = 3000
-
 interface IProps {
   locale
   cards: Array<any>
   abstract: string
 }
 
-const Loop = () => {
-  const [freq, setFreq] = React.useState(initialLoop)
-
-  React.useEffect(() => {
-    if (freq === 0) {
-      setTimeout(() => {
-        setFreq(initialLoop)
-      }, timeToIdleLoop)
-    } else {
-      setTimeout(() => {
-        setFreq(0)
-      }, timeToShowLoop)
-    }
-  })
-
-  return (
-    <h1 className="mb-3 text-2xl font-bold text-accent">
-      <span>pablo</span>
-      <TextLoop interval={freq} delay={initialLoopDelay}>
-        <span></span>
-        <span>punk</span>
-        <span>varela</span>
-      </TextLoop>
-    </h1>
-  )
+const H1 = () => {
+  return <h1 className="mb-3 text-2xl font-bold text-accent">Pablo Varela</h1>
 }
 
 const Page = ({ abstract, cards }: IProps) => {
@@ -66,9 +37,9 @@ const Page = ({ abstract, cards }: IProps) => {
   return (
     <>
       <article className="flex flex-col items-center justify-center pt-6 text-lg leading-8">
-        <Loop />
+        <H1 />
         <div
-          className="text-center"
+          className="text-center bg-bg2 w-full p-4 rounded border-4 border-bg2"
           dangerouslySetInnerHTML={{ __html: abstract }}
         ></div>
       </article>
