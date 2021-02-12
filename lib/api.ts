@@ -105,6 +105,11 @@ const portfolioQuery = `
 
 const aboutQuery = `
   about(locale: $locale) {
+    image {
+      url(imgixParams: {fm: jpg, q:70, w:700})
+      blurUpThumb(imgixParams: {fm: jpg, q:40, w:700})
+      alt
+    }
     content(markdown: true)
     ${commonPageQueries}
   }

@@ -19,11 +19,11 @@ const GlobalStyle = createGlobalStyle`
     --color-accent2: ${colors.red['500']};
   }
   html.dark {
-    --color-bg: ${colors.coolGray['900']};
-    --color-fg: ${colors.coolGray['50']};
-    --color-bg2: ${colors.blueGray['800']};
-    --color-accent: ${colors.teal['200']};
-    --color-accent2: ${colors.fuchsia['200']};
+    --color-bg: black;
+    --color-fg: ${colors.coolGray['100']};
+    --color-bg2: ${colors.coolGray['900']};
+    --color-accent: ${colors.teal['300']};
+    --color-accent2: ${colors.rose['300']};
   }
   html {
     box-sizing: border-box;

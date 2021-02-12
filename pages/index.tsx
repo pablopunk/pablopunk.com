@@ -39,9 +39,12 @@ const Page = ({ abstract, cards }: IProps) => {
       <article className="flex flex-col items-center justify-center pt-6 text-lg leading-8">
         <H1 />
         <div
-          className="text-center bg-bg2 w-full p-4 rounded border-4 border-bg2"
+          className="text-center bg-bg2 p-4 rounded border-4 border-bg2"
           dangerouslySetInnerHTML={{ __html: abstract }}
         ></div>
+      </article>
+      <article className="text-xl text-center text-bold mt-4">
+        {_('Here are some interesting links', locale)}:
       </article>
       <article className="flex flex-wrap items-center justify-center m-5">
         <span

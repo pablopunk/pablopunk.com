@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import withLayout from 'components/skeleton/withLayout'
 import { staticProps } from 'components/data-fetch/withCMS'
+import Image from 'next/image'
 
 const StyledGrid = styled.div`
   div {
@@ -26,14 +27,24 @@ function howOldAmI() {
 }
 
 interface IProps {
+  image
   content
 }
 
-const Page = ({ content }: IProps) => {
+const Page = ({ content, image }: IProps) => {
   content = content.replace('%years%', howOldAmI())
 
   return (
-    <div className="block w-full text-lg fill-height md:items-center md:justify-center md:flex">
+    <div className="w-full text-lg flex flex-col items-center my-2">
+      <div className="my-2">
+        <Image
+          src={image.url}
+          alt={image.alt}
+          width={700}
+          height={588}
+          className="rounded"
+        />
+      </div>
       <StyledGrid>
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </StyledGrid>
