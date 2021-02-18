@@ -20,7 +20,7 @@ export default function withLayout(PageComponent, path?: string) {
           <PageComponent {...props} />
         </main>
         <footer
-          className="items-center justify-around hidden w-full p-4 mx-auto text-gray-600 md:flex bg-bg2 opacity-60"
+          className="items-center justify-around hidden w-full p-4 mx-auto text-gray-600 md:flex bg-bg2 opacity-90"
           style={{ height: 'var(--footer-height)' }}
         >
           <p>
