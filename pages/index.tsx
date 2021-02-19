@@ -5,18 +5,37 @@ import { _ } from 'lib/locales'
 import HomeCard from 'components/pure/HomeCard'
 import Tag from 'components/pure/Tag'
 import { useRouter } from 'next/router'
+import { ImTwitter, ImInstagram } from 'react-icons/im'
+import { MdEmail } from 'react-icons/md'
 
 interface IProps {
   locale
   cards: Array<any>
-  abstract: string
 }
 
 const H1 = () => {
   return <h1 className="mb-3 text-2xl font-bold text-accent">Pablo Varela</h1>
 }
 
-const Page = ({ abstract, cards }: IProps) => {
+const links = [
+  {
+    url: 'https://twitter.com/pablopunk',
+    label: '@pablopunk',
+    Icon: ImTwitter,
+  },
+  {
+    url: 'https://instagram.com/pablopunk',
+    label: '@pablopunk',
+    Icon: ImInstagram,
+  },
+  {
+    url: 'mailto:pablo@pablopunk.com',
+    label: 'email',
+    Icon: MdEmail,
+  },
+]
+
+const Page = ({ cards }: IProps) => {
   const { locale } = useRouter()
   const [showThisTagOnly, showThisTagOnlySet] = React.useState(null)
   const allTags = cards
@@ -38,10 +57,21 @@ const Page = ({ abstract, cards }: IProps) => {
     <>
       <article className="flex flex-col items-center justify-center pt-6 text-lg leading-8">
         <H1 />
-        <div
-          className="text-center p-4"
-          dangerouslySetInnerHTML={{ __html: abstract }}
-        ></div>
+        <p>{_('Web developer. Working remotely.', locale)}</p>
+        <p className="flex flex-col md:flex-row">
+          {links.map((link) => (
+            <a
+              href={link.url}
+              key={link.url}
+              className="flex items-center justify-center first-border bg-bg2 text-fg px-2 py-1 rounded m-1 shadow-md"
+            >
+              <span className="mr-1">
+                <link.Icon />
+              </span>
+              <span>{link.label}</span>
+            </a>
+          ))}
+        </p>
       </article>
       <article className="text-xl text-center text-bold mt-4">
         {_('Here are some interesting links', locale)}:
@@ -64,7 +94,7 @@ const Page = ({ abstract, cards }: IProps) => {
                 showThisTagOnly === tag.name ? 'active' : ''
               }`}
             >
-              <Tag text={tag.name} color={tag.color.hex} />
+              <Tag text={tag.name} color={tag.color.hex} className="rounded" />
             </span>
           )
         })}

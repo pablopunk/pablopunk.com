@@ -35,7 +35,7 @@ const Page = ({ posts, emptyMessage, title }: IProps) => {
               .map((post) => (
                 <li key={post.slug}>
                   <Link href={`/posts/${post.slug}`}>
-                    <a className="flex flex-col items-start p-2 mt-3 border shadow-lg rounded text-accent2 bg-bg2 hover:bg-bg">
+                    <a className="flex flex-col items-start p-2 mt-3 shadow-lg rounded text-accent2 bg-bg2 hover:bg-bg">
                       <div className="flex items-start">
                         <span className="mr-2 pt-1">
                           <BsFilePost />

@@ -71,7 +71,7 @@ function Repos({ locale, initialData }) {
       {repos.map((repo) => (
         <div
           key={repo.name}
-          className="px-4 py-3 m-2 border rounded-lg shadow-lg border-accent2"
+          className="px-4 py-3 m-2 bg-bg2 rounded-lg shadow-lg"
         >
           <span className="flex items-center">
             <a href={repo.html_url} className="mr-2">

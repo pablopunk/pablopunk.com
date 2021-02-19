@@ -12,7 +12,7 @@ export default function HomeCard({ title, description, img, link, tags }) {
   return (
     <Link href={link}>
       <a>
-        <article className="relative flex items-center px-3 py-4 border-2 shadow-lg rounded-md border-accent2 hover:border-accent group hover:bg-bg">
+        <article className="relative flex items-center px-3 py-4 bg-bg2 shadow-lg rounded-lg group hover:bg-bg">
           <div className="mr-2" style={{ minWidth: imgSize }}>
             <Image
               src={img.url}
@@ -27,17 +27,24 @@ export default function HomeCard({ title, description, img, link, tags }) {
               {description}
             </div>
             <div
-              className="absolute top-0 right-0 flex items-center justify-center text-bg bg-accent2 group-hover:bg-accent"
+              className="absolute top-0 right-0 flex items-center justify-center text-bg bg-accent2 group-hover:bg-accent rounded-tr-lg"
               style={{ width: '22px', height: '22px' }}
             >
               <LinkIcon />
             </div>
-            <div className="absolute -bottom-1 -right-1">
-              {tags.map(({ name, color }) => (
-                <span key={title + name}>
-                  <Tag text={name} color={color.hex} />
-                </span>
-              ))}
+            <div className="absolute bottom-0 right-0">
+              {tags.map(({ name, color }, index) => {
+                const isLast = index === tags.length - 1
+                return (
+                  <span key={title + name}>
+                    <Tag
+                      text={name}
+                      color={color.hex}
+                      className={isLast ? 'rounded-br-lg' : ''}
+                    />
+                  </span>
+                )
+              })}
             </div>
           </div>
         </article>

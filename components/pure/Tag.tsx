@@ -2,9 +2,9 @@ import React from 'react'
 import smartForeground from 'smart-foreground'
 import colors from 'tailwindcss/colors'
 
-export default function Tag({ text, color = 'transparent' }) {
+export default function Tag({ text, color = 'transparent', className = '' }) {
   return (
-    <span className="p-1">
+    <span className={'p-1 ' + className}>
       {text}
       <style jsx>{`
         span {

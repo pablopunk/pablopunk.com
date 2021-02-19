@@ -56,7 +56,6 @@ const commonPageQueries = `
 
 const homeQuery = `
   home(locale: $locale) {
-    abstract(markdown: true)
     cards {
       img {
         url(imgixParams: {fm: jpg, q:60})
