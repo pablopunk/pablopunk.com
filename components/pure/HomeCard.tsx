@@ -4,7 +4,7 @@ import { RiExternalLinkLine, RiLinksLine } from 'react-icons/ri'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const imgSize = '60px'
+const imgSize = '80px'
 
 export default function HomeCard({ title, description, img, link, tags }) {
   const LinkIcon = link.startsWith('/') ? RiExternalLinkLine : RiLinksLine
@@ -12,18 +12,22 @@ export default function HomeCard({ title, description, img, link, tags }) {
   return (
     <Link href={link}>
       <a>
-        <article className="relative flex items-center px-3 py-4 bg-bg2 shadow-lg rounded-lg group hover:bg-bg">
-          <div className="mr-2" style={{ minWidth: imgSize }}>
+        <article
+          className="relative flex items-stretch bg-bg2 shadow-lg rounded-lg group hover:bg-bg"
+          style={{ maxHeight: imgSize }}
+        >
+          <div style={{ minWidth: imgSize, minHeight: imgSize }}>
             <Image
               src={img.url}
               alt={img.alt}
               height={imgSize}
               width={imgSize}
+              className="rounded-l-lg"
             />
           </div>
-          <div>
-            <h2 className="text-xl font-bold">{title}</h2>
-            <div className="text-lg leading-6 text-fg group-hover:text-accent">
+          <div className="ml-2 flex flex-col justify-center min-h-full">
+            <h2 className="text-md font-bold">{title}</h2>
+            <div className="text-sm leading-6 text-fg group-hover:text-accent">
               {description}
             </div>
             <div

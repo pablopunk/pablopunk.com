@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { _ } from 'lib/locales'
 import { NextSeo } from 'next-seo'
 import Article from 'components/pure/Article'
-import { IoMdArrowRoundBack } from 'react-icons/io'
+import { IoIosArrowBack } from 'react-icons/io'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 
@@ -31,14 +31,13 @@ const Page = ({ post }) => {
           site_name: 'pablopunk.com',
         }}
       />
-      <br />
-      <Link as={`/${locale}/blog`} href="/[locale]/blog">
-        <a className="flex items-center text-lg">
-          <IoMdArrowRoundBack />
-          <span>{_('Go back', locale)}</span>
-        </a>
-      </Link>
       <Article>
+        <Link as={`/${locale}/blog`} href="/[locale]/blog">
+          <a className="bg-bg2 px-2 py-1 my-3 rounded flex items-center shadow-md">
+            <IoIosArrowBack />
+            {_('Go back', locale)}
+          </a>
+        </Link>
         {post.image?.url ? (
           <figure>
             <Image

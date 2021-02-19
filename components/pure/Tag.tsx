@@ -4,7 +4,7 @@ import colors from 'tailwindcss/colors'
 
 export default function Tag({ text, color = 'transparent', className = '' }) {
   return (
-    <span className={'p-1 ' + className}>
+    <span className={'p-1 text-sm ' + className}>
       {text}
       <style jsx>{`
         span {
