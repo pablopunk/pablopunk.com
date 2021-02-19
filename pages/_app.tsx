@@ -22,8 +22,8 @@ const GlobalStyle = createGlobalStyle`
     --color-bg: ${colors.blueGray['800']};
     --color-fg: ${colors.blueGray['100']};
     --color-bg2: ${colors.blueGray['700']};
-    --color-accent: ${colors.teal['300']};
-    --color-accent2: ${colors.rose['300']};
+    --color-accent: ${colors.cyan['300']};
+    --color-accent2: ${colors.teal['300']};
   }
   html {
     box-sizing: border-box;
