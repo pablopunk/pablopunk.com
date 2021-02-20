@@ -35,7 +35,7 @@ const links = [
     url: 'mailto:pablo@pablopunk.com',
     label: 'email',
     Icon: MdEmail,
-    className: 'text-emerald-200',
+    className: 'text-emerald-300',
   },
 ]
 
