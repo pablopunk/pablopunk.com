@@ -1,10 +1,9 @@
 import React from 'react'
-import Tag from 'components/pure/Tag'
 import { RiExternalLinkLine, RiLinksLine } from 'react-icons/ri'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const imgSize = '80px'
+const imgSize = '90px'
 
 export default function HomeCard({ title, description, img, link, tags }) {
   const LinkIcon = link.startsWith('/') ? RiExternalLinkLine : RiLinksLine
@@ -26,8 +25,11 @@ export default function HomeCard({ title, description, img, link, tags }) {
             />
           </div>
           <div className="ml-2 flex flex-col justify-center min-h-full">
-            <h2 className="text-md font-bold">{title}</h2>
-            <div className="text-sm leading-6 text-fg group-hover:text-accent">
+            <h2 className="text-md font-bold hidden md:block">{title}</h2>
+            <div
+              className="text-sm leading-6 text-fg group-hover:text-accent text-justify"
+              style={{ maxWidth: 'calc(100% - 22px)' }}
+            >
               {description}
             </div>
             <div
@@ -36,19 +38,17 @@ export default function HomeCard({ title, description, img, link, tags }) {
             >
               <LinkIcon />
             </div>
-            <div className="absolute bottom-0 right-0">
-              {tags.map(({ name, color }, index) => {
-                const isLast = index === tags.length - 1
-                return (
-                  <span key={title + name}>
-                    <Tag
-                      text={name}
-                      color={color.hex}
-                      className={isLast ? 'rounded-br-lg' : ''}
-                    />
-                  </span>
-                )
-              })}
+            <div className="absolute bottom-0 right-0 flex">
+              {tags.map(({ color }) => (
+                <span
+                  className="rounded-full"
+                  style={{
+                    backgroundColor: color.hex,
+                    width: '10px',
+                    height: '10px',
+                  }}
+                />
+              ))}
             </div>
           </div>
         </article>
