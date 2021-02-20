@@ -18,7 +18,8 @@ export default function Meta({ title, description, locale }) {
           description,
           images: [
             {
-              url: siteUrl + '/images/wide.jpg',
+              url:
+                'https://www.datocms-assets.com/26073/1613134367-p1080612.jpg',
               width: 150,
               height: 150,
               alt: "Pablo Varela's profile picture",
