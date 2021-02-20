@@ -24,7 +24,7 @@ export default function HomeCard({ title, description, img, link, tags }) {
               className="rounded-l-lg"
             />
           </div>
-          <div className="ml-2 flex flex-col justify-center min-h-full">
+          <div className="ml-2 flex flex-col justify-center min-h-full w-full">
             <h2 className="text-md font-bold hidden md:block">{title}</h2>
             <div
               className="text-sm leading-6 text-fg group-hover:text-accent text-justify"
@@ -39,8 +39,9 @@ export default function HomeCard({ title, description, img, link, tags }) {
               <LinkIcon />
             </div>
             <div className="absolute bottom-0 right-0 flex">
-              {tags.map(({ color }) => (
+              {tags.map(({ name, color }) => (
                 <span
+                  key={name + link}
                   className="rounded-full"
                   style={{
                     backgroundColor: color.hex,
