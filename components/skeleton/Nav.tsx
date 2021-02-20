@@ -4,8 +4,10 @@ import { RiMoonClearLine, RiSunLine } from 'react-icons/ri'
 import { FaCreditCard } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
+import { _ } from 'lib/locales'
 
 const ChangeThemeButton = () => {
+  const { locale } = useRouter()
   const [mounted, mountedSet] = React.useState(false)
   const { theme, setTheme } = useTheme()
 
@@ -20,7 +22,7 @@ const ChangeThemeButton = () => {
       onClick={() => {
         setTheme(theme === 'dark' ? 'light' : 'dark')
       }}
-      title="Toggle light/dark colors"
+      title={_('Change theme', locale)}
     >
       {theme === 'dark' ? (
         <span>
@@ -69,11 +71,15 @@ const Nav = ({ main = [], path }) => {
           )
         })}
       </nav>
-      <div className="flex px-3 py-2 text-2xl text-accent2">
-        <div className="mr-2 cursor-pointer hover:text-accent">
+      <div className="flex text-xl text-accent2 mt-2 mr-2 relative">
+        <div className="cursor-pointer hover:text-accent hover:bg-bg bg-bg2 p-1 rounded shadow text-3xl md:text-xl">
           <ChangeThemeButton />
         </div>
-        <a href="/donate" title="Donate" className="hover:text-accent">
+        <a
+          href="/donate"
+          title={_('Sponsor', locale)}
+          className="ml-2 hover:text-accent hover:bg-bg bg-bg2 p-1 rounded shadow hidden md:block"
+        >
           <FaCreditCard />
         </a>
       </div>

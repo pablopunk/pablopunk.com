@@ -22,16 +22,19 @@ const links = [
     url: 'https://twitter.com/pablopunk',
     label: '@pablopunk',
     Icon: ImTwitter,
+    className: 'text-lightBlue-300',
   },
   {
     url: 'https://instagram.com/pablopunk',
     label: '@pablopunk',
     Icon: ImInstagram,
+    className: 'text-rose-300',
   },
   {
     url: 'mailto:pablo@pablopunk.com',
     label: 'email',
     Icon: MdEmail,
+    className: 'text-emerald-200',
   },
 ]
 
@@ -63,7 +66,10 @@ const Page = ({ cards }: IProps) => {
             <a
               href={link.url}
               key={link.url}
-              className="flex items-center justify-center first-border bg-bg2 text-fg px-2 py-1 rounded m-1 shadow-md"
+              className={
+                link.className +
+                ' flex items-center justify-center first-border bg-bg2 px-2 py-1 rounded m-1 shadow-md'
+              }
             >
               <span className="mr-1">
                 <link.Icon />
