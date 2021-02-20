@@ -58,10 +58,10 @@ const homeQuery = `
   home(locale: $locale) {
     cards {
       img {
-        url(imgixParams: {fm: jpg, q:60})
+        url(imgixParams: {fm: jpg, q:70})
         title
         alt
-        blurUpThumb(imgixParams: {fm: jpg, q:60})
+        blurUpThumb(imgixParams: {fm: jpg, q:70})
         width
         height
       }
@@ -92,10 +92,10 @@ const portfolioQuery = `
     name
     description(markdown: true)
     picture {
-      url(imgixParams: {fm: jpg, q:60})
+      url(imgixParams: {fm: jpg, q:70})
       alt
       title
-      blurUpThumb(imgixParams: {fm: jpg, q:60})
+      blurUpThumb(imgixParams: {fm: jpg, q:70})
       width
       height
     }
@@ -211,10 +211,10 @@ export async function getPostBySlug(slug, locale, preview = false) {
         title
         date
         image {
-          url(imgixParams: {fm: jpg, q:60})
+          url(imgixParams: {fm: jpg, q:70})
           alt
           title
-          blurUpThumb(imgixParams: {fm: jpg, q:60})
+          blurUpThumb(imgixParams: {fm: jpg, q:70})
           width
           height
         }
