@@ -19,9 +19,9 @@ const GlobalStyle = createGlobalStyle`
     --color-accent2: ${colors.teal['500']};
   }
   html.dark {
-    --color-bg: ${colors.blueGray['800']};
+    --color-bg: ${colors.blueGray['900']};
     --color-fg: ${colors.blueGray['100']};
-    --color-bg2: ${colors.blueGray['700']};
+    --color-bg2: ${colors.blueGray['800']};
     --color-accent: ${colors.indigo['200']};
     --color-accent2: ${colors.teal['300']};
   }
