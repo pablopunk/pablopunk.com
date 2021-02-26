@@ -48,7 +48,7 @@ const Page = ({ cards }: IProps) => {
     .reduce(
       (acc, curr) =>
         acc.find((t) => t.name === curr.name) ? acc : [...acc, curr],
-      [{ name: _('all', locale), color: { hex: 'transparent' } }]
+      [{ name: _('all', locale), color: { hex: 'white' } }]
     )
 
   if (showThisTagOnly) {
@@ -93,9 +93,7 @@ const Page = ({ cards }: IProps) => {
                   ? showThisTagOnlySet(null)
                   : showThisTagOnlySet(tag.name)
               }
-              className={`cursor-pointer m-2 ${
-                showThisTagOnly === tag.name ? 'active' : ''
-              }`}
+              className="cursor-pointer m-2"
             >
               <span
                 style={{
@@ -105,7 +103,9 @@ const Page = ({ cards }: IProps) => {
                     twColors.blueGray['800'],
                   ]),
                 }}
-                className="rounded py-1 px-2"
+                className={`rounded py-1 px-2 shadow-lg hover:opacity-80 transition-all ${
+                  showThisTagOnly === tag.name ? 'text-xl' : ''
+                }`}
               >
                 {tag.name}
               </span>
