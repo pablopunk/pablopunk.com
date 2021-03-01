@@ -207,6 +207,7 @@ async function getPrezlyStories(locale) {
       ],
     }),
   })
+  // @ts-ignore
   return search.stories.filter((s) => s.culture.language_code === locale)
 }
 

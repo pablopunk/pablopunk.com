@@ -4,7 +4,7 @@ import withLayout from 'components/skeleton/withLayout'
 import Link from 'next/link'
 import { BsFilePost } from 'react-icons/bs'
 import { useRouter } from 'next/router'
-import { ExtendedStory } from '@prezly/sdk'
+import { ExtendedStory } from '@prezly/sdk/dist/types'
 
 interface IProps {
   posts: Array<ExtendedStory>

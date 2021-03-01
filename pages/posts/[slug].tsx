@@ -10,7 +10,8 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { ExtendedStory } from '@prezly/sdk/dist/types'
 
-const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, '/')
+const formatDate = (d: string) =>
+  new Date(d).toLocaleDateString().replace(/-/g, '/')
 
 const Page = ({ post }: { post: ExtendedStory }) => {
   const { locale } = useRouter()
@@ -39,19 +40,25 @@ const Page = ({ post }: { post: ExtendedStory }) => {
             {_('Go back', locale)}
           </a>
         </Link>
-        {post.oembed?.thumbnail_url ? (
-          <figure>
-            <Image
-              src={post.oembed.thumbnail_url}
-              alt={post.title}
-              width={post.oembed.thumbnail_width}
-              height={post.oembed.thumbnail_height}
-            />
+        {
+          // @ts-ignore
+          post.oembed?.thumbnail_url ? (
+            <figure>
+              <Image
+                // @ts-ignore
+                src={post.oembed.thumbnail_url}
+                alt={post.title}
+                // @ts-ignore
+                width={post.oembed.thumbnail_width}
+                // @ts-ignore
+                height={post.oembed.thumbnail_height}
+              />
+              <h1>{post.title}</h1>
+            </figure>
+          ) : (
             <h1>{post.title}</h1>
-          </figure>
-        ) : (
-          <h1>{post.title}</h1>
-        )}
+          )
+        }
         <small>
           Pablo Varela - <time>{formatDate(post.published_at)}</time>
         </small>
