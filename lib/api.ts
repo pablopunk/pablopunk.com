@@ -1,7 +1,12 @@
 import fetch from 'isomorphic-unfetch'
+import Prezly from '@prezly/sdk'
 
 const API_URL = 'https://graphql.datocms.com'
 const API_TOKEN = process.env.DATOCMS_API_TOKEN
+
+const prezly = new Prezly({
+  accessToken: process.env.PREZLY_TOKEN,
+})
 
 async function fetchAPI(query, variables = {}, preview) {
   const res = await fetch(API_URL + (preview ? '/preview' : ''), {
@@ -134,16 +139,14 @@ const stackQuery = `
   }
 `
 
+const CACHE_ENABLED = process.env.NODE_ENV !== 'production'
 let _cache = {}
 
 export async function fetchData(
   resource: string,
   { locale = 'en', preview = false, slug = null } = {}
 ) {
-  if (
-    process.env.NODE_ENV !== 'production' &&
-    _cache[locale]?.[resource] != null
-  ) {
+  if (CACHE_ENABLED && _cache[locale]?.[resource] != null) {
     return _cache[locale][resource]
   }
 
@@ -174,9 +177,13 @@ export async function fetchData(
       throw new Error(`Unknown resource: ${resource}`)
   }
 
-  const results = fetchAPI(query, { locale }, preview)
+  const results = await fetchAPI(query, { locale }, preview)
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (resource === 'blog') {
+    results.blog.posts = await getPrezlyStories(locale)
+  }
+
+  if (CACHE_ENABLED) {
     if (_cache[locale] == null) {
       _cache[locale] = {}
     }
@@ -187,46 +194,34 @@ export async function fetchData(
 }
 
 export async function getAllPostsWithSlug(locale, preview = false) {
-  const data = await fetchAPI(
-    `
-    query allPostsWithSlug($locale: SiteLocale) {
-      allPosts(locale: $locale) {
-        slug
-      }
-    }
-`,
-    { locale },
-    preview
-  )
+  return getPrezlyStories(locale)
+}
 
-  return data.allPosts
+async function getPrezlyStories(locale) {
+  const search = await prezly.stories.search({
+    jsonQuery: JSON.stringify({
+      $and: [
+        { lifecycle_status: { $in: ['published'] } },
+        { visibility: { $in: ['public'] } },
+        { 'newsroom.id': { $in: [process.env.PREZLY_NEWSROOM] } },
+      ],
+    }),
+  })
+  return search.stories.filter((s) => s.culture.language_code === locale)
 }
 
 export async function getPostBySlug(slug, locale, preview = false) {
-  const data = await fetchAPI(
-    `
-    query getPostBySlug($locale: SiteLocale, $slug: String) {
-      post(locale: $locale, filter: {slug: {eq: $slug}}) {
-        slug
-        title
-        date
-        image {
-          url(imgixParams: {fm: jpg, q:70})
-          alt
-          title
-          blurUpThumb(imgixParams: {fm: jpg, q:70})
-          width
-          height
-        }
-        body(markdown: true)
-        ${commonPageQueries}
-      }
-      ${globalQueries}
-    }
-  `,
-    { locale, slug },
-    preview
-  )
+  const search = await prezly.stories.search({
+    jsonQuery: JSON.stringify({
+      $and: [
+        { lifecycle_status: { $in: ['published'] } },
+        { visibility: { $in: ['public'] } },
+        { 'newsroom.id': { $in: [process.env.PREZLY_NEWSROOM] } },
+        { slug: { $eq: slug } },
+      ],
+    }),
+  })
+  const story = await prezly.stories.get(search.stories[0].id)
 
-  return data
+  return story
 }

@@ -4,16 +4,15 @@ import withLayout from 'components/skeleton/withLayout'
 import Link from 'next/link'
 import { BsFilePost } from 'react-icons/bs'
 import { useRouter } from 'next/router'
-
-type Post = { title: string; slug: string; date: string }
+import { ExtendedStory } from '@prezly/sdk'
 
 interface IProps {
-  posts: Array<Post>
+  posts: Array<ExtendedStory>
   title: string
   emptyMessage: string
 }
 
-const year = (post: Post) => post.date.slice(0, 4)
+const year = (post: ExtendedStory) => post.published_at.slice(0, 4)
 
 const Page = ({ posts, emptyMessage, title }: IProps) => {
   const years: Array<string> = Object.keys(
@@ -31,7 +30,7 @@ const Page = ({ posts, emptyMessage, title }: IProps) => {
           <h2 className="mt-4">{y}</h2>
           <ul>
             {posts
-              .filter(({ date }) => date.startsWith(y))
+              .filter(({ published_at }) => published_at.startsWith(y))
               .map((post) => (
                 <li key={post.slug}>
                   <Link href={`/posts/${post.slug}`}>
@@ -43,7 +42,7 @@ const Page = ({ posts, emptyMessage, title }: IProps) => {
                         <span>{post.title}</span>
                       </div>
                       <div className="text-fg text-sm text-gray">
-                        {new Date(post.date).toLocaleDateString(locale)}
+                        {new Date(post.published_at).toLocaleDateString(locale)}
                       </div>
                     </a>
                   </Link>

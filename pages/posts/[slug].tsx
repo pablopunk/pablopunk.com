@@ -8,24 +8,25 @@ import Article from 'components/pure/Article'
 import { IoIosArrowBack } from 'react-icons/io'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import { ExtendedStory } from '@prezly/sdk/dist/types'
 
 const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, '/')
 
-const Page = ({ post }) => {
+const Page = ({ post }: { post: ExtendedStory }) => {
   const { locale } = useRouter()
 
   return (
     <>
       <NextSeo
         title={post.title}
-        description={post.description}
+        description={post.subtitle}
         openGraph={{
           title: post.title,
-          description: post.description,
+          description: post.subtitle,
           images: [
             {
-              url: post.image.url,
-              alt: post.image.alt,
+              url: post.header_image,
+              alt: post.title,
             },
           ],
           site_name: 'pablopunk.com',
@@ -38,13 +39,13 @@ const Page = ({ post }) => {
             {_('Go back', locale)}
           </a>
         </Link>
-        {post.image?.url ? (
+        {post.oembed?.thumbnail_url ? (
           <figure>
             <Image
-              src={post.image.url}
-              alt={post.image.alt}
-              width={post.image.width}
-              height={post.image.height}
+              src={post.oembed.thumbnail_url}
+              alt={post.title}
+              width={post.oembed.thumbnail_width}
+              height={post.oembed.thumbnail_height}
             />
             <h1>{post.title}</h1>
           </figure>
@@ -52,21 +53,23 @@ const Page = ({ post }) => {
           <h1>{post.title}</h1>
         )}
         <small>
-          Pablo Varela - <time>{formatDate(post.date)}</time>
+          Pablo Varela - <time>{formatDate(post.published_at)}</time>
         </small>
-        <div className="body" dangerouslySetInnerHTML={{ __html: post.body }} />
+        <div
+          className="body"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
       </Article>
     </>
   )
 }
 
 export const getStaticProps = async ({ params, preview = false, locale }) => {
-  const data = await getPostBySlug(params.slug, locale, preview)
+  const post = await getPostBySlug(params.slug, locale, preview)
 
   return {
     props: {
-      ...data,
-      post: data.post,
+      post,
       locale,
     },
   }
