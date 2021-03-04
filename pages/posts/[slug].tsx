@@ -4,11 +4,12 @@ import withLayout from 'components/skeleton/withLayout'
 import Link from 'next/link'
 import { _ } from 'lib/locales'
 import { NextSeo } from 'next-seo'
-import Article from 'components/pure/Article'
 import { IoIosArrowBack } from 'react-icons/io'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { ExtendedStory } from '@prezly/sdk/dist/types'
+import Article from 'components/pure/Article'
+import ArticleContent from 'components/pure/ArticleContent'
 
 const formatDate = (d: string) =>
   new Date(d).toLocaleDateString().replace(/-/g, '/')
@@ -62,20 +63,18 @@ const Page = ({ post }: { post: ExtendedStory }) => {
         <small>
           Pablo Varela - <time>{formatDate(post.published_at)}</time>
         </small>
-        <div
-          className="body"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+        <ArticleContent story={post} />
       </Article>
     </>
   )
 }
 
 export const getStaticProps = async ({ params, preview = false, locale }) => {
-  const post = await getPostBySlug(params.slug, locale, preview)
+  const { post, pageProps } = await getPostBySlug(params.slug, locale, preview)
 
   return {
     props: {
+      ...pageProps,
       post,
       locale,
     },

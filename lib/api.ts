@@ -212,6 +212,7 @@ async function getPrezlyStories(locale) {
 }
 
 export async function getPostBySlug(slug, locale, preview = false) {
+  const pageProps = await fetchAPI(blogQuery, {}, preview)
   const search = await prezly.stories.search({
     jsonQuery: JSON.stringify({
       $and: [
@@ -224,5 +225,8 @@ export async function getPostBySlug(slug, locale, preview = false) {
   })
   const story = await prezly.stories.get(search.stories[0].id)
 
-  return story
+  return {
+    post: story,
+    pageProps,
+  }
 }

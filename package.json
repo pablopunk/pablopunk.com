@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@prezly/sdk": "^2.4.0",
+    "@prezly/slate-renderer": "0.1.0-alpha.21",
+    "@prezly/slate-types": "0.1.0-alpha.21",
     "autoprefixer": "^10.1.0",
     "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",
@@ -27,6 +29,8 @@
     "react-icons": "3.11.0",
     "react-text-loop": "^2.3.0",
     "reaviz": "^9.3.0",
+    "rmce": "^2.1.2",
+    "slate": "^0.59.0",
     "smart-foreground": "^1.0.10",
     "styled-components": "4.4.1",
     "swr": "^0.1.18",
