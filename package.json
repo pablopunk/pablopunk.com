@@ -16,7 +16,7 @@
     "autoprefixer": "^10.1.0",
     "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^10.0.3",
+    "next": "^10.0.9",
     "next-seo": "^4.4.0",
     "next-themes": "0.0.10",
     "nextjs-redirect": "^4.0.2",
