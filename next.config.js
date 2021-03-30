@@ -55,6 +55,9 @@ const rd = [
 ]
 
 module.exports = {
+  future: {
+    webpack5: true,
+  },
   env: {
     DATOCMS_API_TOKEN: process.env.DATOCMS_API_TOKEN,
     UNSPLASH_ACCESS_TOKEN: process.env.UNSPLASH_ACCESS_TOKEN,
