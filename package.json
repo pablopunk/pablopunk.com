@@ -12,9 +12,9 @@
     "prettier-staged": "pretty-quick --staged"
   },
   "dependencies": {
-    "@prezly/sdk": "^2.4.0",
-    "@prezly/slate-renderer": "0.1.0-alpha.21",
-    "@prezly/slate-types": "0.1.0-alpha.21",
+    "@prezly/sdk": "^2.5.0",
+    "@prezly/slate-renderer": "0.1.0",
+    "@prezly/slate-types": "0.1.0",
     "autoprefixer": "^10.1.0",
     "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",

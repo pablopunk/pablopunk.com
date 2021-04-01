@@ -10,14 +10,7 @@ import {
 const options: Options = {
   [LIST_ITEM_TEXT_NODE_TYPE]: ({ children }) => <>{children}</>,
   [PARAGRAPH_NODE_TYPE]: ({ children }) => {
-    console.log(children.props.options.text)
-    return (
-      <p>
-        {{
-          ...children,
-        }}
-      </p>
-    )
+    return <p>{children}</p>
   },
   [QUOTE_NODE_TYPE]: ({ children, node }) => {
     if (node && node.children[0].text) {

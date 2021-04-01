@@ -1,12 +1,10 @@
 import fetch from 'isomorphic-unfetch'
-import Prezly from '@prezly/sdk'
+import { getPrezlyApi } from './prezly/api'
 
 const API_URL = 'https://graphql.datocms.com'
 const API_TOKEN = process.env.DATOCMS_API_TOKEN
 
-const prezly = new Prezly({
-  accessToken: process.env.PREZLY_TOKEN,
-})
+const prezly = getPrezlyApi()
 
 async function fetchAPI(query, variables = {}, preview) {
   const res = await fetch(API_URL + (preview ? '/preview' : ''), {
@@ -198,35 +196,15 @@ export async function getAllPostsWithSlug(locale, preview = false) {
 }
 
 async function getPrezlyStories(locale) {
-  const search = await prezly.stories.search({
-    jsonQuery: JSON.stringify({
-      $and: [
-        { lifecycle_status: { $in: ['published'] } },
-        { visibility: { $in: ['public'] } },
-        { 'newsroom.id': { $in: [process.env.PREZLY_NEWSROOM] } },
-      ],
-    }),
-  })
-  // @ts-ignore
-  return search.stories.filter((s) => s.culture.language_code === locale)
+  return prezly.getAllStories()
 }
 
 export async function getPostBySlug(slug, locale, preview = false) {
   const pageProps = await fetchAPI(blogQuery, {}, preview)
-  const search = await prezly.stories.search({
-    jsonQuery: JSON.stringify({
-      $and: [
-        { lifecycle_status: { $in: ['published'] } },
-        { visibility: { $in: ['public'] } },
-        { 'newsroom.id': { $in: [process.env.PREZLY_NEWSROOM] } },
-        { slug: { $eq: slug } },
-      ],
-    }),
-  })
-  const story = await prezly.stories.get(search.stories[0].id)
+  const post = await prezly.getStoryBySlug(slug)
 
   return {
-    post: story,
+    post,
     pageProps,
   }
 }
