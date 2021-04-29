@@ -32,7 +32,7 @@ const Page = ({ post }) => {
         }}
       />
       <Article>
-        <Link as={`/${locale}/blog`} href="/[locale]/blog">
+        <Link href="/blog">
           <a className="bg-bg2 px-2 py-1 my-3 rounded flex items-center shadow-md">
             <IoIosArrowBack />
             {_('Go back', locale)}
