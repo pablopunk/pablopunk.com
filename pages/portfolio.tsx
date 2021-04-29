@@ -7,18 +7,15 @@ import { FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiNextDotJs, SiGraphql } from 'react-icons/si'
 import NpmCharts, { fetchAllNpmData } from 'components/data-fetch/NpmCharts'
 import { _ } from 'lib/locales'
-import Image from 'next/image'
-
-export function go(link: string) {
-  window.open(`https://${link}`)
-}
+import { ExampleProject } from 'types/datocms'
+import ExampleProjectComponent from 'components/pure/ExampleProjectComponent'
 
 interface IProps {
   introHeader: string
   abstract: string
   exampleProjectsHeader: string
   githubReposIntroduction: string
-  allExampleProjects: Array<any>
+  allExampleProjects: Array<ExampleProject>
   locale: string
   initialData: {
     npm: any
@@ -87,30 +84,12 @@ const Page = ({
         </StyledAbstract>
       </section>
       <section className="flex flex-col items-center w-full mx-auto">
-        <h3 className="text-xl ">{exampleProjectsHeader}</h3>
-        {allExampleProjects.map((project) => (
-          <div
-            key={project.name}
-            className="flex flex-col items-center justify-center px-4 py-6 m-3 mx-auto bg-bg2 shadow-lg md:flex-row rounded-md"
-          >
-            <figure
-              onClick={() => window.open(project.link)}
-              className="flex flex-col items-center flex-shrink-0 mr-4 cursor-pointer"
-            >
-              <Image
-                src={project.picture.url}
-                alt={project.picture.alt}
-                width="150px"
-                height="100%"
-              />
-              <strong className="mt-3 text-accent">{project.name}</strong>
-            </figure>
-            <div
-              className="text-xl text-justify"
-              dangerouslySetInnerHTML={{ __html: project.description }}
-            />
-          </div>
-        ))}
+        <h3 className="text-xl mb-5">{exampleProjectsHeader}</h3>
+        <div className="grid grid-cols-1 mx-auto">
+          {allExampleProjects.map((project) => (
+            <ExampleProjectComponent project={project} />
+          ))}
+        </div>
       </section>
       <section>
         <h3 className="text-lg text-center">
