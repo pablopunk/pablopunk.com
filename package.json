@@ -12,7 +12,6 @@
     "prettier-staged": "pretty-quick --staged"
   },
   "dependencies": {
-    "@tailwindcss/jit": "^0.1.0",
     "autoprefixer": "^10.1.0",
     "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",
@@ -30,7 +29,7 @@
     "smart-foreground": "^1.0.10",
     "styled-components": "4.4.1",
     "swr": "^0.1.18",
-    "tailwindcss": "^2.0.2",
+    "tailwindcss": "^2.1.2",
     "unsplash-js": "6.3.0"
   },
   "devDependencies": {

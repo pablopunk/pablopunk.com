@@ -87,7 +87,9 @@ const Page = ({
         <h3 className="text-xl mb-5">{exampleProjectsHeader}</h3>
         <div className="grid grid-cols-1 mx-auto">
           {allExampleProjects.map((project) => (
-            <ExampleProjectComponent project={project} />
+            <div key={project.link}>
+              <ExampleProjectComponent project={project} />
+            </div>
           ))}
         </div>
       </section>

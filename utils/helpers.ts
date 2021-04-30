@@ -1,3 +1,7 @@
 export function go(link: string) {
-  window.open(`https://${link}`)
+  if (link.startsWith('http')) {
+    window.open(link)
+  } else {
+    window.open(`https://${link}`)
+  }
 }
