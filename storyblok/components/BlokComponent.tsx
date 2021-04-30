@@ -1,12 +1,18 @@
 import SbEditable from 'storyblok-react'
 import { Title } from './Title'
+import { Paragraph } from './Paragraph'
+import { Flex } from './Flex'
+import { Button } from './Button'
 
 // resolve Storyblok components to Next.js components
 const Components = {
   title: Title,
+  paragraph: Paragraph,
+  flex: Flex,
+  button: Button,
 }
 
-const DynamicComponent = ({ blok }) => {
+export const BlokComponent = ({ blok }) => {
   // check if component is defined above
   if (typeof Components[blok.component] !== 'undefined') {
     const Component = Components[blok.component]
@@ -24,5 +30,3 @@ const DynamicComponent = ({ blok }) => {
     </p>
   )
 }
-
-export default DynamicComponent

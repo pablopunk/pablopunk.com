@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { getPageStaticProps } from '@/storyblok/middleware'
 import { GetStaticProps } from 'next'
 import { PageProps } from '@/types/page'
-import DynamicComponent from '@/storyblok/components/DynamicComponent'
+import { BlokComponent } from '@/storyblok/components/BlokComponent'
 import useStoryblok from '@/storyblok/hooks/useStoryblok'
 
 const Page: FunctionComponent<PageProps> = ({ page }) => {
@@ -11,7 +11,7 @@ const Page: FunctionComponent<PageProps> = ({ page }) => {
   return (
     <>
       {story.content.body.map((blok) => (
-        <DynamicComponent blok={blok} key={blok._uid} />
+        <BlokComponent blok={blok} key={blok._uid} />
       ))}
     </>
   )
