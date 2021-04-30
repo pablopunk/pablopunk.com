@@ -85,7 +85,7 @@ const Page = ({
       </section>
       <section className="flex flex-col items-center w-full mx-auto">
         <h3 className="text-xl mb-5">{exampleProjectsHeader}</h3>
-        <div className="grid grid-cols-1 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 w-full mx-auto">
           {allExampleProjects.map((project) => (
             <div key={project.link}>
               <ExampleProjectComponent project={project} />

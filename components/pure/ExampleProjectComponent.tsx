@@ -9,26 +9,24 @@ type Props = {
 
 const ExampleProjectComponent: FunctionComponent<Props> = ({ project }) => (
   <div
-    className="bg-bg2 rounded-xl my-3 max-w-[600px] md:flex md:max-w-4xl shadow-lg hover:bg-bg cursor-pointer transition-all group hover:shadow-none"
+    className="min-h-[450px] bg-bg2 rounded-xl m-3 shadow-lg hover:bg-bg cursor-pointer transition-all group hover:shadow-none flex flex-col justify-between"
     onClick={() => go(project.link)}
   >
-    <div className="w-full md:max-w-[250px] flex justify-center group-hover:opacity-80 transition-opacity">
+    <div className="w-full flex justify-center group-hover:opacity-80 transition-opacity h-[255px]">
       <Image
         src={project.picture.url}
         width={project.picture.width}
         height={project.picture.height}
-        className="rounded-t-xl md:rounded-t-none md:rounded-l-xl md:rounded-tl-xl object-cover filter grayscale"
+        className="rounded-t-xl object-cover filter grayscale"
       />
     </div>
-    <div className="md:p-4 flex flex-col-reverse md:flex-col">
-      <h4 className="text-center md:text-left text-3xl md:text-xl md:mb-4 bg-accent2 text-bg md:bg-bg2 md:text-accent p-2 md:p-0 rounded-b-xl group-hover:bg-bg transition-colors">
-        {project.name}
-      </h4>
-      <div
-        dangerouslySetInnerHTML={{ __html: project.description }}
-        className="text-justify p-4 md:p-0"
-      ></div>
-    </div>
+    <div
+      dangerouslySetInnerHTML={{ __html: project.description }}
+      className="p-4"
+    ></div>
+    <h4 className="text-center text-3xl bg-accent2 text-bg p-2 rounded-b-xl group-hover:bg-bg group-hover:text-accent2 transition-colors">
+      {project.name}
+    </h4>
   </div>
 )
 
