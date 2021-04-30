@@ -6,9 +6,9 @@ import Repos, { fetchAllReposData } from 'components/data-fetch/Repos'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiNextDotJs, SiGraphql } from 'react-icons/si'
 import NpmCharts, { fetchAllNpmData } from 'components/data-fetch/NpmCharts'
-import { _ } from 'lib/locales'
-import { ExampleProject } from 'types/datocms'
+import { _ } from '../lib/locales'
 import ExampleProjectComponent from 'components/pure/ExampleProjectComponent'
+import { ExampleProject } from '@/datocms/types'
 
 interface IProps {
   introHeader: string

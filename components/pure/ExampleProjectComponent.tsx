@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
-import { ExampleProject } from 'types/datocms'
+import { ExampleProject } from '@/datocms/types'
 import Image from 'next/image'
-import { go } from 'utils/helpers'
+import { go } from '@/utils/helpers'
 
 type Props = {
   project: ExampleProject
