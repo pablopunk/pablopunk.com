@@ -8,7 +8,7 @@ import { SiNextDotJs, SiGraphql } from 'react-icons/si'
 import NpmCharts, { fetchAllNpmData } from 'components/data-fetch/NpmCharts'
 import { _ } from '../lib/locales'
 import ExampleProjectComponent from 'components/pure/ExampleProjectComponent'
-import { ExampleProject } from '@/datocms/types'
+import { ExampleProject } from 'datocms/types'
 
 interface IProps {
   introHeader: string

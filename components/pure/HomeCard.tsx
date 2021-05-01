@@ -5,7 +5,8 @@ import Image from 'next/image'
 
 const imageSize = '90px'
 
-export default function HomeCard({ title, description, img, link }) {
+// eslint-disable-next-line no-unused-vars
+export default function HomeCard({ title, description, img, link, tags }) {
   const LinkIcon = link.startsWith('/') ? RiExternalLinkLine : RiLinksLine
 
   return (

@@ -1,4 +1,4 @@
-import { fetchData } from '@/datocms/api'
+import { fetchData } from 'datocms/api'
 
 export const staticProps = async (
   pageName: string,
