@@ -3,6 +3,8 @@ import { Title } from './Title'
 import { Paragraph } from './Paragraph'
 import { Flex } from './Flex'
 import { Button } from './Button'
+import { Cards } from './Cards'
+import { Card } from './Card'
 
 // resolve Storyblok components to Next.js components
 const Components = {
@@ -10,6 +12,8 @@ const Components = {
   paragraph: Paragraph,
   flex: Flex,
   button: Button,
+  cards: Cards,
+  card: Card,
 }
 
 export const BlokComponent = ({ blok }) => {

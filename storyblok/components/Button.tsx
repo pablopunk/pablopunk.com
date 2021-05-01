@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'react'
 import { ImTwitter, ImInstagram } from 'react-icons/im'
 import { MdEmail } from 'react-icons/md'
+import { LinkType } from 'storyblok/types'
 
 const Icon = ({ name }: { name: string }) => {
   switch (name) {
@@ -20,11 +21,15 @@ type Props = {
     text?: string
     type?: 'social'
     icon?: string
+    link?: LinkType
   }
 }
 
 export const Button: FunctionComponent<Props> = ({ blok }) => (
-  <button title={blok.text} className="flex items-center justify-evenly">
+  <button
+    title={blok.text}
+    className="flex items-center justify-evenly cursor-pointer text-accent hover:text-fg bg-bg2 shadow-md px-2 py-1 rounded-md transition-colors border border-bgDim"
+  >
     <span className="mr-1">
       <Icon name={blok.icon} />
     </span>

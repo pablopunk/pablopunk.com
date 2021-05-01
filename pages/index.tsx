@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import { getPageStaticProps } from '@/storyblok/middleware'
+import { getPageStaticProps } from 'storyblok/middleware'
 import { GetStaticProps } from 'next'
-import { PageProps } from '@/types/page'
-import { BlokComponent } from '@/storyblok/components/BlokComponent'
-import useStoryblok from '@/storyblok/hooks/useStoryblok'
+import { PageProps } from 'types/page'
+import { BlokComponent } from 'storyblok/components/BlokComponent'
+import useStoryblok from 'storyblok/hooks/useStoryblok'
 
 const Page: FunctionComponent<PageProps> = ({ page }) => {
   const story = useStoryblok(page)

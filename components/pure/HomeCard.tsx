@@ -3,9 +3,9 @@ import { RiExternalLinkLine, RiLinksLine } from 'react-icons/ri'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const imgSize = '90px'
+const imageSize = '90px'
 
-export default function HomeCard({ title, description, img, link, tags }) {
+export default function HomeCard({ title, description, img, link }) {
   const LinkIcon = link.startsWith('/') ? RiExternalLinkLine : RiLinksLine
 
   return (
@@ -13,14 +13,14 @@ export default function HomeCard({ title, description, img, link, tags }) {
       <a>
         <article
           className="relative flex items-stretch bg-bg2 shadow-lg rounded-lg group hover:bg-bg"
-          style={{ maxHeight: imgSize }}
+          style={{ maxHeight: imageSize }}
         >
-          <div style={{ minWidth: imgSize, minHeight: imgSize }}>
+          <div style={{ minWidth: imageSize, minHeight: imageSize }}>
             <Image
-              src={img.url}
+              src={img.filename}
               alt={img.alt}
-              height={imgSize}
-              width={imgSize}
+              height={imageSize}
+              width={imageSize}
               className="rounded-l-lg"
             />
           </div>
@@ -39,17 +39,17 @@ export default function HomeCard({ title, description, img, link, tags }) {
               <LinkIcon />
             </div>
             <div className="absolute bottom-0 right-0 flex">
-              {tags.map(({ name, color }) => (
-                <span
-                  key={name + link}
-                  className="rounded-full"
-                  style={{
-                    backgroundColor: color.hex,
-                    width: '10px',
-                    height: '10px',
-                  }}
-                />
-              ))}
+              {/* {tags.map(({ name, color }) => ( */}
+              {/*   <span */}
+              {/*     key={name + link} */}
+              {/*     className="rounded-full" */}
+              {/*     style={{ */}
+              {/*       backgroundColor: color?.hex, */}
+              {/*       width: '10px', */}
+              {/*       height: '10px' */}
+              {/*     }} */}
+              {/*   /> */}
+              {/* ))} */}
             </div>
           </div>
         </article>

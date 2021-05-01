@@ -11,14 +11,6 @@
     "module": "esnext",
     "moduleResolution": "node",
     "baseUrl": ".",
-    "paths": {
-      "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"],
-      "@/utils/*": ["utils/*"],
-      "@/datocms/*": ["datocms/*"],
-      "@/storyblok/*": ["storyblok/*"],
-      "@/types/*": ["types/*"]
-    },
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve"
