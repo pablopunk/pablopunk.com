@@ -5,6 +5,7 @@ import { FaCreditCard } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import { _ } from 'lib/locales'
+import { ButtonType } from 'storyblok/types'
 
 const ChangeThemeButton = () => {
   const { locale } = useRouter()
@@ -46,17 +47,17 @@ const Nav = ({ main = [], path }) => {
       style={{ height: 'var(--nav-height)' }}
     >
       <nav className="flex">
-        {main.map((link) => {
-          let current = link.link === path
+        {main.map((button: ButtonType) => {
+          let current = button.link.url === path
 
           return (
             <div
-              key={link.link}
+              key={button.link.url}
               className={`px-3 py-2 text-lg font-bold uppercase ${
                 current ? 'hidden md:block' : ''
               }`}
             >
-              <Link href={'/' + link.link} locale={locale}>
+              <Link href={'/' + button.link.url} locale={locale}>
                 <a
                   className={
                     current
@@ -64,7 +65,7 @@ const Nav = ({ main = [], path }) => {
                       : 'text-accent md:hover:text-accent2'
                   }
                 >
-                  {link.text}
+                  {button.text}
                 </a>
               </Link>
             </div>

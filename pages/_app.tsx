@@ -5,6 +5,7 @@ import Router from 'next/router'
 import { ThemeProvider } from 'next-themes'
 import { createGlobalStyle } from 'styled-components'
 import colors from 'tailwindcss/colors'
+import Layout from 'components/skeleton/Layout'
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -91,11 +92,15 @@ const App = ({ Component, pageProps }) => {
     return () => Router.events.off('routeChangeComplete', handleRouteChange)
   }, [])
 
+  console.log(pageProps)
+
   return (
     <>
       <GlobalStyle />
       <ThemeProvider attribute="class">
-        <Component {...pageProps} />
+        <Layout {...pageProps}>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </>
   )

@@ -10,17 +10,17 @@ type Props = {
 }
 
 export const Paragraph: FunctionComponent<Props> = ({ blok }) => {
-  let style = ''
+  let style = 'my-3'
 
   switch (blok.align) {
     case 'left':
-      style = 'text-left'
+      style = `${style} text-left`
       break
     case 'right':
-      style = 'text-right'
+      style = `${style} text-right`
       break
     case 'center':
-      style = 'text-center'
+      style = `${style} text-center`
       break
   }
 
