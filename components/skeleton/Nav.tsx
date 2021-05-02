@@ -50,6 +50,8 @@ const Nav = ({ main = [], path }) => {
         {main.map((button: ButtonType) => {
           let current = button.link.url === path
 
+          console.log(button.link.url, path)
+
           return (
             <div
               key={button.link.url}
@@ -57,7 +59,7 @@ const Nav = ({ main = [], path }) => {
                 current ? 'hidden md:block' : ''
               }`}
             >
-              <Link href={'/' + button.link.url} locale={locale}>
+              <Link href={button.link.url} locale={locale}>
                 <a
                   className={
                     current

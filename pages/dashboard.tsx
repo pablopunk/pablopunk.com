@@ -1,5 +1,4 @@
 import Loading from 'components/pure/Loading'
-import { staticProps } from 'components/data-fetch/withCMS'
 import { FiDownloadCloud } from 'react-icons/fi'
 import { GoRepo } from 'react-icons/go'
 import { MdPageview } from 'react-icons/md'
@@ -10,6 +9,7 @@ import { go } from 'utils/helpers'
 import useSWR from 'swr'
 import { AiOutlineStar, AiOutlineUsergroupAdd } from 'react-icons/ai'
 import { getUnsplashStats, getGithubStats } from './api/stats'
+import { getPageStaticProps } from 'storyblok/middleware'
 
 const Stats = ({ children, onClick }) => {
   return (
@@ -86,7 +86,7 @@ function Dashboard({ initialData }) {
 }
 
 export const getStaticProps = async (ctx) => {
-  const staticP = await staticProps('home', ctx)
+  const staticP = await getPageStaticProps('home', ctx)
   const [unsplash, github] = await Promise.all([
     getUnsplashStats(),
     getGithubStats(),

@@ -1,17 +1,14 @@
-import { staticProps } from 'components/data-fetch/withCMS'
 import Article from 'components/pure/Article'
+import { getPageStaticProps } from 'storyblok/middleware'
 
-interface IProps {
-  content: string
-}
-
-function Stack({ content }: IProps) {
+function Stack() {
   return (
     <>
-      <Article dangerouslySetInnerHTML={{ __html: content }}></Article>
+      <Article>stack (blog post)</Article>
     </>
   )
 }
-export const getStaticProps = (ctx) => staticProps('stack', ctx)
+
+export const getStaticProps = (ctx) => getPageStaticProps('stack', ctx)
 
 export default Stack

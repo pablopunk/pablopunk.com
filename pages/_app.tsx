@@ -92,8 +92,6 @@ const App = ({ Component, pageProps }) => {
     return () => Router.events.off('routeChangeComplete', handleRouteChange)
   }, [])
 
-  console.log(pageProps)
-
   return (
     <>
       <GlobalStyle />

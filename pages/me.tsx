@@ -1,56 +1,19 @@
-import styled from 'styled-components'
-import { staticProps } from 'components/data-fetch/withCMS'
-import Image from 'next/image'
+import { getPageStaticProps } from 'storyblok/middleware'
 
-const StyledGrid = styled.div`
-  div {
-    max-width: 600px;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 15fr;
-    align-items: flex-start;
-    grid-gap: 1.3rem;
+// function howOldAmI() {
+//   const now = new Date()
+//   const iHadABirthDayThisYear = now.getMonth() >= 6 && now.getDate() >= 9
+//   const yearsSinceIWasBorn = now.getFullYear() - 1993
 
-    p {
-      margin: 0;
-    }
-  }
-`
+//   return iHadABirthDayThisYear ? yearsSinceIWasBorn : yearsSinceIWasBorn - 1
+// }
 
-function howOldAmI() {
-  const now = new Date()
-  const iHadABirthDayThisYear = now.getMonth() >= 6 && now.getDate() >= 9
-  const yearsSinceIWasBorn = now.getFullYear() - 1993
-
-  return iHadABirthDayThisYear ? yearsSinceIWasBorn : yearsSinceIWasBorn - 1
-}
-
-interface IProps {
-  image
-  content
-}
-
-const Me = ({ content, image }: IProps) => {
-  content = content.replace('%years%', howOldAmI())
-
+const Me = () => {
   return (
-    <div className="w-full text-lg flex flex-col items-center my-2">
-      <div className="my-2">
-        <Image
-          src={image.url}
-          alt={image.alt}
-          width={700}
-          height={588}
-          className="rounded"
-        />
-      </div>
-      <StyledGrid>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-      </StyledGrid>
-    </div>
+    <div className="w-full text-lg flex flex-col items-center my-2">bio</div>
   )
 }
 
-export const getStaticProps = (ctx) => staticProps('about', ctx)
+export const getStaticProps = (ctx) => getPageStaticProps('me', ctx)
 
 export default Me
