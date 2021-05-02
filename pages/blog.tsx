@@ -1,6 +1,5 @@
 import React from 'react'
 import { staticProps } from 'components/data-fetch/withCMS'
-import withLayout from 'components/skeleton/withLayout'
 import Link from 'next/link'
 import { BsFilePost } from 'react-icons/bs'
 import { useRouter } from 'next/router'
@@ -15,7 +14,7 @@ interface IProps {
 
 const year = (post: Post) => post.date.slice(0, 4)
 
-const Page = ({ posts, emptyMessage, title }: IProps) => {
+const Blog = ({ posts, emptyMessage, title }: IProps) => {
   const years: Array<string> = Object.keys(
     posts.reduce((acc, curr) => ({ ...acc, [year(curr)]: true }), {})
   ).sort((a, b) => parseInt(b) - parseInt(a))
@@ -57,4 +56,5 @@ const Page = ({ posts, emptyMessage, title }: IProps) => {
 }
 
 export const getStaticProps = (ctx) => staticProps('blog', ctx)
-export default withLayout(Page, 'blog')
+
+export default Blog

@@ -1,4 +1,3 @@
-import withLayout from 'components/skeleton/withLayout'
 import { staticProps } from 'components/data-fetch/withCMS'
 import Article from 'components/pure/Article'
 
@@ -14,4 +13,5 @@ function Stack({ content }: IProps) {
   )
 }
 export const getStaticProps = (ctx) => staticProps('stack', ctx)
-export default withLayout(Stack, 'stack')
+
+export default Stack

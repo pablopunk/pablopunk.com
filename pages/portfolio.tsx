@@ -1,5 +1,4 @@
 import { staticProps } from 'components/data-fetch/withCMS'
-import withLayout from 'components/skeleton/withLayout'
 import React from 'react'
 import styled from 'styled-components'
 import Repos, { fetchAllReposData } from 'components/data-fetch/Repos'
@@ -48,7 +47,7 @@ const StyledAbstract = styled.div`
   }
 `
 
-const Page = ({
+const Portfolio = ({
   introHeader,
   abstract,
   exampleProjectsHeader,
@@ -124,4 +123,5 @@ export const getStaticProps = async (ctx) => {
     },
   }
 }
-export default withLayout(Page, 'portfolio')
+
+export default Portfolio

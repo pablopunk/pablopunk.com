@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import withLayout from 'components/skeleton/withLayout'
 import { staticProps } from 'components/data-fetch/withCMS'
 import Image from 'next/image'
 
@@ -31,7 +30,7 @@ interface IProps {
   content
 }
 
-const Page = ({ content, image }: IProps) => {
+const Me = ({ content, image }: IProps) => {
   content = content.replace('%years%', howOldAmI())
 
   return (
@@ -53,4 +52,5 @@ const Page = ({ content, image }: IProps) => {
 }
 
 export const getStaticProps = (ctx) => staticProps('about', ctx)
-export default withLayout(Page, 'me')
+
+export default Me

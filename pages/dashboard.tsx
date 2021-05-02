@@ -1,4 +1,3 @@
-import withLayout from 'components/skeleton/withLayout'
 import Loading from 'components/pure/Loading'
 import { staticProps } from 'components/data-fetch/withCMS'
 import { FiDownloadCloud } from 'react-icons/fi'
@@ -86,7 +85,6 @@ function Dashboard({ initialData }) {
   )
 }
 
-export default withLayout(Dashboard, 'dashboard')
 export const getStaticProps = async (ctx) => {
   const staticP = await staticProps('home', ctx)
   const [unsplash, github] = await Promise.all([
@@ -102,3 +100,5 @@ export const getStaticProps = async (ctx) => {
     },
   }
 }
+
+export default Dashboard

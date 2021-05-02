@@ -1,6 +1,5 @@
 import React from 'react'
 import { getAllPostsWithSlug, getPostBySlug } from 'datocms/api'
-import withLayout from 'components/skeleton/withLayout'
 import Link from 'next/link'
 import { _ } from 'lib/locales'
 import { NextSeo } from 'next-seo'
@@ -11,7 +10,7 @@ import Image from 'next/image'
 
 const formatDate = (d) => new Date(d).toLocaleDateString().replace(/-/g, '/')
 
-const Page = ({ post }) => {
+const Slug = ({ post }) => {
   const { locale } = useRouter()
 
   return (
@@ -97,4 +96,4 @@ export const getStaticPaths = async ({ locales }) => {
   return allPaths
 }
 
-export default withLayout(Page, 'blog')
+export default Slug
