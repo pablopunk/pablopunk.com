@@ -50,8 +50,6 @@ const Nav = ({ main = [], path }) => {
         {main.map((button: ButtonType) => {
           let current = button.link.url === path
 
-          console.log(button.link.url, path)
-
           return (
             <div
               key={button.link.url}

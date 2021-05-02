@@ -14,4 +14,5 @@ export interface PageProps {
     lang: string
     path: string
   }
+  statusCode: string
 }
