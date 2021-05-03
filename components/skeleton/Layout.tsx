@@ -14,7 +14,7 @@ const Layout: FunctionComponent<PageProps> = ({
 }) => {
   const meta = page?.content.metadata || {}
   const lang = page?.lang || DEFAULT_LOCALE
-  const mainNav = nav?.content.main || []
+  const mainNav = nav?.content?.main || []
   const path = page?.path || '/'
 
   return (

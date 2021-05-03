@@ -1,24 +1,33 @@
 import { Storyblok } from './client'
-import { GetStaticPropsContext } from 'next'
+import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
+import { PageProps } from 'types/page'
 
 async function getPageData(
   slug: string,
   context: GetStaticPropsContext,
-  version: string
+  version: string,
 ) {
-  let { data } = await Storyblok.get(`cdn/stories/${slug}`, {
-    version,
-    cv: Date.now(),
-    language: context.locale,
-  })
+  let data
+
+  try {
+    data = (
+      await Storyblok.get(`cdn/stories/${slug}`, {
+        version,
+        cv: Date.now(),
+        language: context.locale,
+      })
+    ).data
+  } catch (err) {
+    data = err.response?.status || 500
+  }
 
   return data
 }
 
 export const getPageStaticProps = async (
   page: string,
-  context: GetStaticPropsContext
-) => {
+  context: GetStaticPropsContext,
+): Promise<GetStaticPropsResult<PageProps>> => {
   const version =
     process.env.NODE_VERSION !== 'production' || context.preview
       ? 'draft'
@@ -26,6 +35,12 @@ export const getPageStaticProps = async (
 
   const pageData = await getPageData(page, context, version)
   const navData = await getPageData('nav', context, version)
+
+  if (pageData === 404) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {

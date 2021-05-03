@@ -1,12 +1,12 @@
 import { ButtonType } from 'storyblok/types'
 
 export interface PageProps {
-  nav: {
+  nav?: {
     content: {
       main: ButtonType[]
     }
   }
-  page: {
+  page?: {
     content: {
       body: any[]
       metadata: any
@@ -14,5 +14,6 @@ export interface PageProps {
     lang: string
     path: string
   }
-  statusCode: string
+  preview?: boolean
+  statusCode?: string
 }

@@ -32,6 +32,10 @@ const Portfolio = ({ initialData, locale }: IProps) => {
 export const getStaticProps = async (ctx) => {
   const sProps = await getPageStaticProps('portfolio', ctx)
 
+  if (!('props' in sProps) || 'notFound' in sProps) {
+    return { notFound: true }
+  }
+
   return {
     ...sProps,
     props: {

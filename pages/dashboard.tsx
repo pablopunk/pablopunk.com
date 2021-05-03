@@ -10,6 +10,9 @@ import useSWR from 'swr'
 import { AiOutlineStar, AiOutlineUsergroupAdd } from 'react-icons/ai'
 import { getUnsplashStats, getGithubStats } from './api/stats'
 import { getPageStaticProps } from 'storyblok/middleware'
+import { GetStaticProps } from 'next'
+import { FunctionComponent } from 'react'
+import { PageProps } from 'types/page'
 
 const Stats = ({ children, onClick }) => {
   return (
@@ -26,7 +29,11 @@ const Stat = ({ children }) => {
   return <div className="flex items-center justify-center">{children}</div>
 }
 
-function Dashboard({ initialData }) {
+interface Props extends PageProps {
+  initialData: any
+}
+
+const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
   const { locale } = useRouter()
   const { data } = useSWR('/api/stats', (u) => fetch(u).then((r) => r.json()), {
     initialData,
@@ -85,17 +92,21 @@ function Dashboard({ initialData }) {
   )
 }
 
-export const getStaticProps = async (ctx) => {
-  const staticP = await getPageStaticProps('home', ctx)
+export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
+  const sProps = await getPageStaticProps('home', ctx)
   const [unsplash, github] = await Promise.all([
     getUnsplashStats(),
     getGithubStats(),
   ])
 
+  if (!('props' in sProps) || 'notFound' in sProps) {
+    return { notFound: true }
+  }
+
   return {
-    ...staticP,
+    ...sProps,
     props: {
-      ...staticP.props,
+      ...sProps.props,
       initialData: { unsplash, github },
     },
   }
