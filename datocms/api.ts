@@ -138,7 +138,8 @@ let _cache = {}
 
 export async function fetchData(
   resource: string,
-  { locale = 'en', preview = false, slug = null } = {}
+  // eslint-disable-next-line no-unused-vars
+  { locale = 'en', preview = false, slug = null } = {},
 ) {
   if (
     process.env.NODE_ENV !== 'production' &&
@@ -196,7 +197,7 @@ export async function getAllPostsWithSlug(locale, preview = false) {
     }
 `,
     { locale },
-    preview
+    preview,
   )
 
   return data.allPosts
@@ -225,7 +226,7 @@ export async function getPostBySlug(slug, locale, preview = false) {
     }
   `,
     { locale, slug },
-    preview
+    preview,
   )
 
   return data

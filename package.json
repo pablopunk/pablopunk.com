@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "npm run build && next start",
     "export": "npm run build && next export",
-    "lint": "eslint --ext .ts --ext .tsx pages components",
-    "lint-fix": "eslint --fix --ext .ts --ext .tsx pages components",
+    "lint": "eslint --ext .ts --ext .tsx .",
+    "lint-fix": "eslint --fix --ext .ts --ext .tsx .",
     "prettier-staged": "pretty-quick --staged"
   },
   "dependencies": {
