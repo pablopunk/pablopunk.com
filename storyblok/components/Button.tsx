@@ -1,21 +1,7 @@
 import { FunctionComponent } from 'react'
-import { ImTwitter, ImInstagram } from 'react-icons/im'
-import { MdEmail } from 'react-icons/md'
 import { ButtonType } from 'storyblok/types'
 import Link from 'next/link'
-
-const Icon = ({ name }: { name: string }) => {
-  switch (name) {
-    case 'twitter':
-      return <ImTwitter />
-    case 'instagram':
-      return <ImInstagram />
-    case 'email':
-      return <MdEmail />
-    default:
-      return null
-  }
-}
+import { Icon } from './Icon'
 
 type Props = {
   blok: ButtonType

@@ -21,7 +21,7 @@ const Layout: FunctionComponent<PageProps> = ({
     <>
       <Meta {...meta} locale={lang} />
       <Nav main={mainNav} path={path} />
-      <main className="container px-5 mx-auto max-w-screen-lg fill-height">
+      <main className="container px-5 mx-auto max-w-screen-lg fill-height py-3">
         {page ? (
           children
         ) : (

@@ -5,26 +5,36 @@ import Image from 'next/image'
 
 const imageSize = '90px'
 
-// eslint-disable-next-line no-unused-vars
-export default function HomeCard({ title, description, img, link, tags }) {
-  const LinkIcon = link.startsWith('/') ? RiExternalLinkLine : RiLinksLine
+export default function HomeCard({
+  title,
+  description,
+  img,
+  link,
+  // eslint-disable-next-line no-unused-vars
+  tags,
+}) {
+  const LinkOrNot = ({ children }) =>
+    link ? <Link href={link}>{children}</Link> : <div>{children}</div>
+  const LinkIcon = link?.startsWith('/') ? RiExternalLinkLine : RiLinksLine
 
   return (
-    <Link href={link}>
+    <LinkOrNot>
       <a>
         <article
           className="relative flex items-stretch bg-bg2 shadow-lg rounded-lg group hover:bg-bg"
           style={{ maxHeight: imageSize }}
         >
-          <div style={{ minWidth: imageSize, minHeight: imageSize }}>
-            <Image
-              src={img.filename}
-              alt={img.alt}
-              height={imageSize}
-              width={imageSize}
-              className="rounded-l-lg"
-            />
-          </div>
+          {img?.filename && (
+            <div style={{ minWidth: imageSize, minHeight: imageSize }}>
+              <Image
+                src={img.filename}
+                alt={img.alt}
+                height={imageSize}
+                width={imageSize}
+                className="rounded-l-lg"
+              />
+            </div>
+          )}
           <div className="ml-2 flex flex-col justify-center min-h-full w-full">
             <h2 className="text-md font-bold hidden md:block">{title}</h2>
             <div
@@ -55,6 +65,6 @@ export default function HomeCard({ title, description, img, link, tags }) {
           </div>
         </article>
       </a>
-    </Link>
+    </LinkOrNot>
   )
 }

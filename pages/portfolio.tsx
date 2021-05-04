@@ -3,8 +3,12 @@ import Repos, { fetchAllReposData } from 'components/data-fetch/Repos'
 import NpmCharts, { fetchAllNpmData } from 'components/data-fetch/NpmCharts'
 import { _ } from '../lib/locales'
 import { getPageStaticProps } from 'storyblok/middleware'
+import { PageProps } from 'types/page'
+import { GetStaticProps } from 'next'
+import useStoryblok from 'storyblok/hooks/useStoryblok'
+import { BlokComponent } from 'storyblok/components/BlokComponent'
 
-interface IProps {
+interface Props extends PageProps {
   locale: string
   initialData: {
     npm: any
@@ -12,9 +16,14 @@ interface IProps {
   }
 }
 
-const Portfolio = ({ initialData, locale }: IProps) => {
+const Portfolio = ({ initialData, locale, page }: Props) => {
+  const story = useStoryblok(page)
+
   return (
     <>
+      {story.content.body.map((blok) => (
+        <BlokComponent blok={blok} key={blok._uid} />
+      ))}
       <section>
         <h3 className="text-lg text-center">
           {_('Popular npm packages', locale)}
@@ -29,7 +38,7 @@ const Portfolio = ({ initialData, locale }: IProps) => {
   )
 }
 
-export const getStaticProps = async (ctx) => {
+export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const sProps = await getPageStaticProps('portfolio', ctx)
 
   if (!('props' in sProps) || 'notFound' in sProps) {
@@ -44,6 +53,7 @@ export const getStaticProps = async (ctx) => {
         npm: await fetchAllNpmData(),
         repos: await fetchAllReposData(),
       },
+      locale: ctx.locale,
     },
   }
 }
