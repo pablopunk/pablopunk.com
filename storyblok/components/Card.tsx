@@ -7,7 +7,6 @@ type Props = {
     title: string
     description: string
     image: any
-    icon: string
     link: LinkType
     tags: string[]
   }
@@ -18,7 +17,6 @@ export const Card: FunctionComponent<Props> = ({ blok }) => (
     title={blok.title}
     description={blok.description}
     img={blok.image}
-    icon={blok.icon}
     link={blok.link.url}
     tags={blok.tags}
   />
