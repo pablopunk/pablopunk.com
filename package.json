@@ -19,7 +19,7 @@
     "next-seo": "^4.4.0",
     "next-themes": "0.0.10",
     "nextjs-redirect": "^4.0.2",
-    "postcss": "^8.2.1",
+    "postcss": "^8.2.10",
     "preact": "^10.5.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
