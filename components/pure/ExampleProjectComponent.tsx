@@ -17,7 +17,7 @@ const ExampleProjectComponent: FunctionComponent<Props> = ({ project }) => (
         src={project.picture.url}
         width={project.picture.width}
         height={project.picture.height}
-        className="rounded-t-xl object-cover filter grayscale"
+        className="rounded-t-xl object-cover filter group-hover:grayscale"
       />
     </div>
     <div
