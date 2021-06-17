@@ -4,7 +4,7 @@ export type ExampleProject = {
   description: string
   picture: {
     url: string
-    blurDataURL: string
+    blurUpThumb: string
     alt: string
     title: string
     width: number
