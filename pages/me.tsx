@@ -35,7 +35,7 @@ const Page = ({ content, image }: IProps) => {
   content = content.replace('%years%', howOldAmI())
 
   return (
-    <div className="w-full text-lg flex flex-col items-center my-2">
+    <div className="flex flex-col items-center w-full my-2 text-lg">
       <div className="my-2">
         <Image
           src={image.url}

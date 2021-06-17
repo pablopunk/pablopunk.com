@@ -33,7 +33,7 @@ const Page = ({ post }) => {
       />
       <Article>
         <Link href="/blog">
-          <a className="bg-bg2 px-2 py-1 my-3 rounded flex items-center shadow-md">
+          <a className="flex items-center px-2 py-1 my-3 rounded shadow-md bg-bg2">
             <IoIosArrowBack />
             {_('Go back', locale)}
           </a>
@@ -45,6 +45,8 @@ const Page = ({ post }) => {
               alt={post.image.alt}
               width={post.image.width}
               height={post.image.height}
+              placeholder="blur"
+              blurDataURL={post.image.blurUpThumb}
             />
             <h1>{post.title}</h1>
           </figure>

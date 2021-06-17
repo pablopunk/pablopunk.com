@@ -12,7 +12,7 @@ export default function HomeCard({ title, description, img, link, tags }) {
     <Link href={link}>
       <a>
         <article
-          className="relative flex items-stretch bg-bg2 shadow-lg rounded-lg group hover:bg-bg"
+          className="relative flex items-stretch rounded-lg shadow-lg bg-bg2 group hover:bg-bg"
           style={{ maxHeight: imgSize }}
         >
           <div style={{ minWidth: imgSize, minHeight: imgSize }}>
@@ -22,18 +22,20 @@ export default function HomeCard({ title, description, img, link, tags }) {
               height={imgSize}
               width={imgSize}
               className="rounded-l-lg"
+              placeholder="blur"
+              blurDataURL={img.blurUpThumb}
             />
           </div>
-          <div className="ml-2 flex flex-col justify-center min-h-full w-full">
-            <h2 className="text-md font-bold hidden md:block">{title}</h2>
+          <div className="flex flex-col justify-center w-full min-h-full ml-2">
+            <h2 className="hidden font-bold text-md md:block">{title}</h2>
             <div
-              className="text-sm leading-6 text-fg group-hover:text-accent text-justify"
+              className="text-sm leading-6 text-justify text-fg group-hover:text-accent"
               style={{ maxWidth: 'calc(100% - 22px)' }}
             >
               {description}
             </div>
             <div
-              className="absolute top-0 right-0 flex items-center justify-center text-bg bg-accent2 group-hover:bg-accent rounded-tr-lg"
+              className="absolute top-0 right-0 flex items-center justify-center rounded-tr-lg text-bg bg-accent2 group-hover:bg-accent"
               style={{ width: '22px', height: '22px' }}
             >
               <LinkIcon />

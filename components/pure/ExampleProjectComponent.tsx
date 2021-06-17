@@ -17,14 +17,16 @@ const ExampleProjectComponent: FunctionComponent<Props> = ({ project }) => (
         src={project.picture.url}
         width={project.picture.width}
         height={project.picture.height}
-        className="rounded-t-xl object-cover filter group-hover:grayscale"
+        className="object-cover rounded-t-xl filter group-hover:grayscale"
+        placeholder="blur"
+        blurDataURL={project.picture.blurUpThumb}
       />
     </div>
     <div
       dangerouslySetInnerHTML={{ __html: project.description }}
       className="p-4"
     ></div>
-    <h4 className="text-center text-3xl bg-accent2 text-bg p-2 rounded-b-xl group-hover:bg-bg group-hover:text-accent2 transition-colors">
+    <h4 className="p-2 text-3xl text-center transition-colors bg-accent2 text-bg rounded-b-xl group-hover:bg-bg group-hover:text-accent2">
       {project.name}
     </h4>
   </div>
