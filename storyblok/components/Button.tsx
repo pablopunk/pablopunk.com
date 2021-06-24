@@ -11,7 +11,7 @@ export const Button: FunctionComponent<Props> = ({ blok }) => (
   <Link href={blok.link.url}>
     <a
       title={blok.text}
-      className="flex items-center justify-evenly cursor-pointer text-accent hover:text-fg bg-bg2 shadow-md px-2 py-1 rounded-md transition-colors border border-bg2"
+      className="flex items-center px-2 py-1 transition-all border rounded-md shadow-md cursor-pointer justify-evenly text-accent hover:text-fg hover:shadow-lg bg-bg2 border-bg2"
     >
       <span className="mr-1">
         <Icon name={blok.icon} />
