@@ -138,7 +138,7 @@ let _cache = {}
 
 export async function fetchData(
   resource: string,
-  { locale = 'en', preview = false, slug = null } = {}
+  { locale = 'en', preview = false } = {}
 ) {
   if (
     process.env.NODE_ENV !== 'production' &&
