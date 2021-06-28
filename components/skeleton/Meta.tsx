@@ -123,6 +123,7 @@ export default function Meta({ title, description, locale }) {
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#1392a0" />
         <link rel="canonical" href={siteUrl} />
         <link rel="sitemap" href={siteUrl + '/sitemap.xml'} />
         <meta
