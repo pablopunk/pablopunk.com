@@ -1,6 +1,6 @@
 {
-  "name": "pablopunk.com",
-  "short_name": "pablopunk.com",
+  "name": "",
+  "short_name": "",
   "icons": [
     {
       "src": "/favicon/android-chrome-192x192.png",
@@ -8,8 +8,8 @@
       "type": "image/png"
     },
     {
-      "src": "/favicon/android-chrome-512x512.png",
-      "sizes": "512x512",
+      "src": "/favicon/android-chrome-384x384.png",
+      "sizes": "384x384",
       "type": "image/png"
     }
   ],
