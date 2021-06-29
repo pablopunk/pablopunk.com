@@ -15,18 +15,17 @@ const Layout: FunctionComponent<PageProps> = ({
   const meta = page?.content.metadata || {}
   const lang = page?.lang || DEFAULT_LOCALE
   const mainNav = nav?.content?.main || []
-  const path = page?.path || '/'
 
   return (
     <>
       <Meta {...meta} locale={lang} />
-      <Nav main={mainNav} path={path} />
-      <main className="container px-5 mx-auto max-w-screen-lg fill-height py-3">
+      <Nav main={mainNav} />
+      <main className="container max-w-screen-lg px-5 py-3 mx-auto fill-height">
         {page ? (
           children
         ) : (
-          <div className="w-full fill-height flex flex-col items-center justify-center">
-            <h1 className="text-2xl mb-4">oops! error {statusCode}</h1>
+          <div className="flex flex-col items-center justify-center w-full fill-height">
+            <h1 className="mb-4 text-2xl">oops! error {statusCode}</h1>
             <Button blok={{ text: 'Go home', link: { url: '/' } }} />
           </div>
         )}

@@ -2,6 +2,7 @@ import React from 'react'
 import { RiExternalLinkLine, RiLinksLine } from 'react-icons/ri'
 import Link from 'next/link'
 import Image from 'next/image'
+import Markdown from 'react-markdown'
 
 const imageSize = '90px'
 
@@ -29,8 +30,7 @@ export default function HomeCard({
               <Image
                 src={img.filename}
                 alt={img.alt}
-                height={imageSize}
-                width={imageSize}
+                layout="fill"
                 className="rounded-l-lg"
               />
             </div>
@@ -41,7 +41,7 @@ export default function HomeCard({
               className="text-sm leading-6 text-justify text-fg group-hover:text-accent"
               style={{ maxWidth: 'calc(100% - 22px)' }}
             >
-              {description}
+              <Markdown>{description}</Markdown>
             </div>
             <div
               className="absolute top-0 right-0 flex items-center justify-center rounded-tr-lg text-bg bg-accent2 group-hover:bg-accent"

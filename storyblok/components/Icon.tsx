@@ -3,6 +3,7 @@ import { ImTwitter, ImInstagram } from 'react-icons/im'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiNextDotJs, SiGraphql } from 'react-icons/si'
 import { MdEmail } from 'react-icons/md'
+import { BiArrowBack } from 'react-icons/bi'
 
 type Props = {
   name: string
@@ -33,6 +34,13 @@ export const Icon: FunctionComponent<Props> = ({ name, size = '1rem' }) => {
     case 'graphql':
       Component = SiGraphql
       break
+    case 'back':
+      Component = BiArrowBack
+      break
+  }
+
+  if (!Component) {
+    return null
   }
 
   return <Component size={size} />

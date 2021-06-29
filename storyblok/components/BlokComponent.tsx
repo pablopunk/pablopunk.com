@@ -8,6 +8,9 @@ import { Card } from './Card'
 import { Grid } from './Grid'
 import { Icon } from './Icon'
 import { TechCard } from './TechCard'
+import { JAMStack } from './JAMStack'
+import { Gallery } from './Gallery'
+import { Articles } from './Articles'
 
 // resolve Storyblok components to Next.js components
 const Components = {
@@ -20,6 +23,9 @@ const Components = {
   grid: Grid,
   icon: Icon,
   tech_card: TechCard,
+  JAMStack: JAMStack,
+  gallery: Gallery,
+  articles: Articles,
 }
 
 export const BlokComponent = ({ blok }) => {

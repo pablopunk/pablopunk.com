@@ -6,6 +6,7 @@ import { ThemeProvider } from 'next-themes'
 import { createGlobalStyle } from 'styled-components'
 import colors from 'tailwindcss/colors'
 import Layout from 'components/skeleton/Layout'
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -18,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     --color-bg2: white;
     --color-accent: ${colors.blue['500']};
     --color-accent2: ${colors.teal['500']};
+    --color-border: ${colors.blueGray['200']};
   }
   html.dark {
     --color-bg: ${colors.coolGray['900']};
@@ -25,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
     --color-bg2: ${colors.coolGray['800']};
     --color-accent: ${colors.indigo['200']};
     --color-accent2: ${colors.teal['300']};
+    --color-border: ${colors.blueGray['800']};
   }
   html {
     box-sizing: border-box;
@@ -68,7 +71,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   section {
-    padding: 2rem 0;
+    padding: 1rem 0;
     position: relative;
   }
   .no-scrollbar::-webkit-scrollbar {
@@ -97,7 +100,9 @@ const App = ({ Component, pageProps }) => {
       <GlobalStyle />
       <ThemeProvider attribute="class">
         <Layout {...pageProps}>
-          <Component {...pageProps} />
+          <SimpleReactLightbox>
+            <Component {...pageProps} />
+          </SimpleReactLightbox>
         </Layout>
       </ThemeProvider>
     </>

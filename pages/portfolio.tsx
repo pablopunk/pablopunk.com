@@ -7,6 +7,7 @@ import { PageProps } from 'types/page'
 import { GetStaticProps } from 'next'
 import useStoryblok from 'storyblok/hooks/useStoryblok'
 import { BlokComponent } from 'storyblok/components/BlokComponent'
+import { Title } from 'storyblok/components/Title'
 
 interface Props extends PageProps {
   locale: string
@@ -25,13 +26,25 @@ const Portfolio = ({ initialData, locale, page }: Props) => {
         <BlokComponent blok={blok} key={blok._uid} />
       ))}
       <section>
-        <h3 className="text-lg text-center">
-          {_('Popular npm packages', locale)}
-        </h3>
+        <Title
+          blok={{
+            text: _('Popular NPM packages', locale),
+            size: 'md',
+            heading: 'h2',
+            align: 'center',
+          }}
+        />
         <NpmCharts initialData={initialData.npm} />
       </section>
       <section>
-        <div className="mb-8 text-lg text-center ">change this intro</div>
+        <Title
+          blok={{
+            text: _('Featured repos', locale),
+            size: 'md',
+            heading: 'h2',
+            align: 'center',
+          }}
+        />
         <Repos locale={locale} initialData={initialData.repos} />
       </section>
     </>
@@ -39,7 +52,7 @@ const Portfolio = ({ initialData, locale, page }: Props) => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
-  const sProps = await getPageStaticProps('portfolio', ctx)
+  const sProps = await getPageStaticProps(ctx, 'portfolio')
 
   if (!('props' in sProps) || 'notFound' in sProps) {
     return { notFound: true }

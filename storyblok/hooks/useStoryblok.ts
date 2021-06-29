@@ -18,7 +18,7 @@ export default function useStoryblok(originalStory) {
         if (event.story.content._uid === story.content._uid) {
           event.story.content = window.storyblok.addComments(
             event.story.content,
-            event.story.id
+            event.story.id,
           )
           setStory(event.story)
         }

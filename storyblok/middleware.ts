@@ -1,6 +1,7 @@
 import { Storyblok } from './client'
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import { PageProps } from 'types/page'
+import { locales } from 'lib/locales'
 
 async function getPageData(
   slug: string,
@@ -15,6 +16,7 @@ async function getPageData(
         version,
         cv: Date.now(),
         language: context.locale,
+        resolve_relations: 'articles.items',
       })
     ).data
   } catch (err) {
@@ -25,15 +27,16 @@ async function getPageData(
 }
 
 export const getPageStaticProps = async (
-  page: string,
   context: GetStaticPropsContext,
+  _slug?: string,
 ): Promise<GetStaticPropsResult<PageProps>> => {
+  const slug = _slug || (context.params.slug as string[])?.join('/') || 'home'
   const version =
     process.env.NODE_VERSION !== 'production' || context.preview
       ? 'draft'
       : 'published'
 
-  const pageData = await getPageData(page, context, version)
+  const pageData = await getPageData(slug, context, version)
   const navData = await getPageData('nav', context, version)
 
   if (pageData === 404) {
@@ -49,5 +52,37 @@ export const getPageStaticProps = async (
       preview: version === 'draft',
     },
     revalidate: 10,
+  }
+}
+
+export const getPageStaticPaths = async (context: GetStaticPropsContext) => {
+  const version =
+    process.env.NODE_VERSION !== 'production' || context.preview
+      ? 'draft'
+      : 'published'
+
+  const { data } = await Storyblok.get(`cdn/stories`, {
+    version,
+    cv: Date.now(),
+    language: context.locale,
+  })
+
+  const paths = []
+
+  locales.forEach((locale) => {
+    data.stories?.map((story) => {
+      paths.push({
+        locale,
+        params:
+          story.full_slug === 'home'
+            ? { slug: [] }
+            : { slug: story.full_slug.split('/') },
+      })
+    })
+  })
+
+  return {
+    paths,
+    fallback: false,
   }
 }

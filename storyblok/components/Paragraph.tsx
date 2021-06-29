@@ -1,6 +1,7 @@
 import Markdown from 'react-markdown'
 import { FunctionComponent } from 'react'
 import type { AlignType } from 'storyblok/types'
+import { handlePlaceholders } from 'storyblok/utils'
 
 type Props = {
   blok: {
@@ -10,6 +11,7 @@ type Props = {
 }
 
 export const Paragraph: FunctionComponent<Props> = ({ blok }) => {
+  const text = handlePlaceholders(blok.text)
   let style = 'my-3'
 
   switch (blok.align) {
@@ -26,7 +28,7 @@ export const Paragraph: FunctionComponent<Props> = ({ blok }) => {
 
   return (
     <div className={style}>
-      <Markdown>{blok.text}</Markdown>
+      <Markdown>{text}</Markdown>
     </div>
   )
 }

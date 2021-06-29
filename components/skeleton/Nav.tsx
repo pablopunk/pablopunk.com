@@ -38,8 +38,8 @@ const ChangeThemeButton = () => {
   )
 }
 
-const Nav = ({ main = [], path }) => {
-  const { locale } = useRouter()
+const Nav = ({ main = [] }) => {
+  const { locale, asPath } = useRouter()
 
   return (
     <div
@@ -48,12 +48,12 @@ const Nav = ({ main = [], path }) => {
     >
       <nav className="flex">
         {main.map((button: ButtonType) => {
-          let current = button.link.url === path
+          let current = button.link.url === asPath
 
           return (
             <div
               key={button.link.url}
-              className={`px-3 py-2 text-lg font-bold uppercase ${
+              className={`p-2 text-lg font-bold uppercase ${
                 current ? 'hidden md:block' : ''
               }`}
             >
@@ -72,14 +72,14 @@ const Nav = ({ main = [], path }) => {
           )
         })}
       </nav>
-      <div className="flex text-xl text-accent2 mt-2 mr-2 relative">
-        <div className="cursor-pointer hover:text-accent hover:bg-bg bg-bg2 p-1 rounded shadow text-3xl md:text-xl">
+      <div className="relative flex mt-2 mr-2 text-xl text-accent2">
+        <div className="p-1 text-3xl rounded shadow cursor-pointer hover:text-accent hover:bg-bg bg-bg2 md:text-xl">
           <ChangeThemeButton />
         </div>
         <a
           href="/donate"
           title={_('Sponsor', locale)}
-          className="ml-2 hover:text-accent hover:bg-bg bg-bg2 p-1 rounded shadow hidden md:block"
+          className="hidden p-1 ml-2 rounded shadow hover:text-accent hover:bg-bg bg-bg2 md:block"
         >
           <FaCreditCard />
         </a>

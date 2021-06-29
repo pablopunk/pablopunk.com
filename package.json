@@ -12,6 +12,7 @@
     "prettier-staged": "pretty-quick --staged"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.2.1",
     "autoprefixer": "^10.1.0",
     "axios": "^0.21.1",
     "human-format": "^0.11.0",
@@ -26,8 +27,10 @@
     "react-dom": "^17.0.2",
     "react-icons": "3.11.0",
     "react-markdown": "^6.0.1",
+    "react-photo-gallery": "^8.0.0",
     "react-text-loop": "^2.3.0",
     "reaviz": "^9.3.0",
+    "simple-react-lightbox": "^3.6.6",
     "smart-foreground": "^1.0.10",
     "storyblok-js-client": "^4.0.6",
     "storyblok-react": "^0.1.2",

@@ -4,14 +4,15 @@ import { AlignType } from 'storyblok/types'
 type Props = {
   blok: {
     text: string
-    align: AlignType
-    size: 'lg' | 'md' | 'sm'
-    heading: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+    align?: AlignType
+    size?: 'lg' | 'md' | 'sm'
+    heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+    color?: 'accent' | 'accent2' | 'fg'
   }
 }
 
 export const Title: FunctionComponent<Props> = ({ blok }) => {
-  let style = 'text-lg'
+  let style = 'text-lg my-2 font-semibold'
 
   switch (blok.align) {
     case 'left':
@@ -27,13 +28,25 @@ export const Title: FunctionComponent<Props> = ({ blok }) => {
 
   switch (blok.size) {
     case 'sm':
-      style = `${style} text-md`
-      break
-    case 'md':
       style = `${style} text-lg`
       break
-    case 'lg':
+    case 'md':
       style = `${style} text-xl`
+      break
+    case 'lg':
+      style = `${style} text-3xl`
+      break
+  }
+
+  switch (blok.color) {
+    case 'accent':
+      style = `${style} text-accent`
+      break
+    case 'accent2':
+      style = `${style} text-accent2`
+      break
+    case 'fg':
+      style = `${style} text-fg`
       break
   }
 
