@@ -136,7 +136,7 @@ const Article: FunctionComponent<Props> = ({ story }) => {
             className="mt-4"
           />
           <div className="w-full mt-3 italic font-thin text-center opacity-75">
-            {new Date(story.first_published_at).toLocaleDateString()}
+            {new Date(story.created_at).toLocaleDateString()}
           </div>
         </>
       )}
