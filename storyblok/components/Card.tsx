@@ -45,7 +45,7 @@ export const Card: FunctionComponent<Props> = ({ blok }) => {
               />
             )}
           </div>
-          <div className="max-w-[70%] pl-3">
+          <div className="max-w-[65%] pl-3">
             <h4 className="font-semibold transition-colors text-md md:text-xl group-hover:text-accent2">
               {blok.title}
             </h4>
