@@ -81,7 +81,7 @@ export default function Meta(props) {
           name="msapplication-config"
           content="/favicon/browserconfig.xml"
         />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#14b8a6" />
         <meta
           name="google-site-verification"
           content="y-TnXGhfG_A0b-ttLIV076wjdtFdEMZw6d04iwfR2Xw"

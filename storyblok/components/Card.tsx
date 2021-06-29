@@ -56,7 +56,7 @@ export const Card: FunctionComponent<Props> = ({ blok }) => {
           </div>
         </a>
       </Link>
-      <div className="italic md:mt-3">
+      <div className="relative overflow-hidden italic max-h-10 md:mt-3">
         <Markdown className={classNames('hidden md:block', lineClamp)}>
           {blok.description}
         </Markdown>
