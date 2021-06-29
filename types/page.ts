@@ -1,4 +1,4 @@
-import { ButtonType } from 'storyblok/types'
+import { ButtonType, ImageType } from 'storyblok/types'
 
 export interface PageProps {
   nav?: {
@@ -10,6 +10,11 @@ export interface PageProps {
     content: {
       body: any[]
       metadata: any
+
+      // articles
+      title?: string
+      content?: string
+      image: ImageType
     }
     lang: string
     path: string

@@ -2,32 +2,32 @@ import Head from 'next/head'
 import { NextSeo, SocialProfileJsonLd } from 'next-seo'
 import { DEFAULT_LOCALE } from 'lib/locales'
 import { useRouter } from 'next/router'
+import { SITE_DESC, SITE_IMAGE, SITE_NAME, SITE_URL } from 'config'
 
-export default function Meta({ title, description }) {
+export default function Meta(props) {
+  const { title, description, og_title, og_description, og_image } = props
   const { locale } = useRouter()
-  const siteUrl =
-    'https://pablopunk.com/' + (locale !== DEFAULT_LOCALE ? locale : '')
+  const siteUrl = SITE_URL + (locale !== DEFAULT_LOCALE ? locale : '')
 
   return (
     <>
       <NextSeo
-        title={title}
-        description={description}
+        title={title || SITE_NAME}
+        description={description || SITE_DESC}
         canonical={siteUrl}
         openGraph={{
           url: siteUrl,
-          title,
-          description,
+          title: og_title || title,
+          description: og_description || description,
           images: [
             {
-              url:
-                'https://www.datocms-assets.com/26073/1613134367-p1080612.jpg',
+              url: og_image || SITE_IMAGE,
               width: 150,
               height: 150,
               alt: "Pablo Varela's profile picture",
             },
           ],
-          site_name: 'pablopunk.com',
+          site_name: SITE_NAME,
         }}
         twitter={{
           handle: '@pablopunk',
