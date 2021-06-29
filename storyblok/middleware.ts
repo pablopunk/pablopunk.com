@@ -17,9 +17,34 @@ async function getPageData(
         version,
         cv: Date.now(),
         language: context.locale,
-        resolve_relations: 'articles.items',
+        // resolve_relations: 'articles.items',
       })
     ).data
+  } catch (err) {
+    data = err.response?.status || 500
+  }
+
+  return data
+}
+
+export async function getAllPosts(context: GetStaticPropsContext) {
+  const version =
+    process.env.NODE_VERSION !== 'production' || context.preview
+      ? 'draft'
+      : 'published'
+
+  let data
+
+  try {
+    data = (
+      await Storyblok.get(`cdn/stories`, {
+        version,
+        cv: Date.now(),
+        language: context.locale,
+        starts_with: 'posts',
+        sort_by: 'created_at:desc',
+      })
+    ).data.stories
   } catch (err) {
     data = err.response?.status || 500
   }
