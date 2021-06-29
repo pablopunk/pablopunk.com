@@ -43,7 +43,7 @@ const Nav = ({ main = [] }) => {
 
   return (
     <div
-      className="flex items-center justify-between overflow-auto no-scrollbar"
+      className="relative z-20 flex items-center justify-between overflow-auto no-scrollbar"
       style={{ height: 'var(--nav-height)' }}
     >
       <nav className="flex">
@@ -73,7 +73,7 @@ const Nav = ({ main = [] }) => {
         })}
       </nav>
       <div className="relative flex mt-2 mr-2 text-xl text-accent2">
-        <div className="p-1 text-3xl rounded shadow cursor-pointer hover:text-accent hover:bg-bg bg-bg2 md:text-xl">
+        <div className="z-30 p-1 text-3xl transition-colors rounded shadow cursor-pointer hover:text-accent hover:bg-bg bg-bg2 md:text-xl">
           <ChangeThemeButton />
         </div>
         <a

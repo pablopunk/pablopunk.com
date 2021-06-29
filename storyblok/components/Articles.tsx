@@ -33,6 +33,7 @@ export const Articles: FunctionComponent<Props> = ({ blok }) => {
                     : article.full_slug,
                 },
                 tags: [new Date(article.created_at).toLocaleDateString()],
+                line_clamp: 2,
               }}
             />
           </div>
