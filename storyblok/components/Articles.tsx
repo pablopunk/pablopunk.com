@@ -16,6 +16,7 @@ export const Articles: FunctionComponent<Props> = ({ blok }) => {
             description: article.content?.content,
             image: article.content?.image,
             link: { url: article.full_slug },
+            tags: [new Date(article.first_published_at).toLocaleDateString()],
           }}
         />
       ))}
