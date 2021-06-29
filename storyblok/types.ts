@@ -12,7 +12,7 @@ export type PostType = {
   translated_slugs: Array<{
     lang: string
     name: string
-    slug: string
+    path: string
   }>
   content: {
     content: string
