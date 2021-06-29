@@ -1,6 +1,12 @@
 import styled from 'styled-components'
+import Markdown from 'react-markdown'
+import { Button } from 'storyblok/components/Button'
+import { _ } from 'lib/locales'
+import { useRouter } from 'next/router'
+import { FunctionComponent } from 'preact'
+import type { PostType } from 'storyblok/types'
 
-export default styled.article`
+const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -26,7 +32,10 @@ export default styled.article`
 
   h1 {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.75rem;
+    width: 100%;
+    margin: 1rem 0;
+    color: var(--color-accent2);
   }
 
   h2 {
@@ -47,6 +56,7 @@ export default styled.article`
   }
 
   pre {
+    width: 100%;
     font-family: 'SF Mono', Menlo, monospace;
     background-color: var(--color-bg2);
     padding: 0.5rem 1rem;
@@ -96,3 +106,44 @@ export default styled.article`
     font-size: 2rem;
   }
 `
+
+type Props = {
+  story: PostType
+}
+
+const Article: FunctionComponent<Props> = ({ story }) => {
+  const { asPath, locale } = useRouter()
+  const translatedSlug = story.translated_slugs.find(
+    (slug) => slug.lang === locale,
+  )
+
+  return (
+    <StyledArticle>
+      {asPath.startsWith('/posts') && (
+        <Button
+          blok={{
+            text: _('Go Back', locale),
+            icon: 'back',
+            link: { url: '/blog' },
+          }}
+        />
+      )}
+      {story.content.image?.filename && (
+        <>
+          <img
+            src={story.content.image.filename}
+            alt={story.name}
+            className="mt-4"
+          />
+          <div className="w-full mt-3 italic font-thin text-center opacity-75">
+            {new Date(story.created_at).toLocaleDateString()}
+          </div>
+        </>
+      )}
+      <h1>{translatedSlug?.name ? translatedSlug?.name : story.name}</h1>
+      <Markdown>{story.content.content}</Markdown>
+    </StyledArticle>
+  )
+}
+
+export default Article

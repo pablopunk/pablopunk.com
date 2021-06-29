@@ -19,7 +19,7 @@
   "Drawings": "Dibujos",
   "Photos": "Fotos",
   "downloads for": "descargas de",
-  "Popular npm packages": "Paquetes populares en npm",
+  "Popular NPM packages": "Paquetes populares en NPM",
   "Books": "Libros",
   "Source code": "Código fuente",
   "all": "todo",
@@ -31,5 +31,6 @@
   "Here are some interesting links": "Aquí dejo algunos enlaces de interés",
   "Web developer. Working remotely.": "Desarrollador web. Desde casa.",
   "Change theme": "Cambiar tema",
-  "Sponsor": "Sponsor"
+  "Sponsor": "Sponsor",
+  "Featured repos": "Repositorios destacados"
 }

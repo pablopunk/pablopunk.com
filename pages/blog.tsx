@@ -1,60 +1,48 @@
 import React from 'react'
-import { staticProps } from 'components/data-fetch/withCMS'
-import withLayout from 'components/skeleton/withLayout'
-import Link from 'next/link'
-import { BsFilePost } from 'react-icons/bs'
-import { useRouter } from 'next/router'
+import { getPageStaticProps, getAllPosts } from 'storyblok/middleware'
+import { PageProps } from 'types/page'
+import { GetStaticProps } from 'next'
+import useStoryblok from 'storyblok/hooks/useStoryblok'
+import { BlokComponent } from 'storyblok/components/BlokComponent'
+import { Articles } from 'storyblok/components/Articles'
+import { PostType } from 'storyblok/types'
 
-type Post = { title: string; slug: string; date: string }
-
-interface IProps {
-  posts: Array<Post>
-  title: string
-  emptyMessage: string
+interface Props extends PageProps {
+  locale: string
+  posts: PostType[]
 }
 
-const year = (post: Post) => post.date.slice(0, 4)
-
-const Page = ({ posts, emptyMessage, title }: IProps) => {
-  const years: Array<string> = Object.keys(
-    posts.reduce((acc, curr) => ({ ...acc, [year(curr)]: true }), {})
-  ).sort((a, b) => parseInt(b) - parseInt(a))
-
-  const { locale } = useRouter()
+const Blog = ({ page, posts }: Props) => {
+  const story = useStoryblok(page)
 
   return (
-    <section className="flex flex-col items-center fill-height">
-      <h1>{title}</h1>
-      {posts.length === 0 && <p>{emptyMessage}</p>}
-      {years.map((y) => (
-        <div key={y} className="w-full max-w-lg">
-          <h2 className="mt-4">{y}</h2>
-          <ul>
-            {posts
-              .filter(({ date }) => date.startsWith(y))
-              .map((post) => (
-                <li key={post.slug}>
-                  <Link href={`/posts/${post.slug}`}>
-                    <a className="flex flex-col items-start p-2 mt-3 shadow-lg rounded text-accent2 bg-bg2 hover:bg-bg">
-                      <div className="flex items-start">
-                        <span className="mr-2 pt-1">
-                          <BsFilePost />
-                        </span>
-                        <span>{post.title}</span>
-                      </div>
-                      <div className="text-fg text-sm text-gray">
-                        {new Date(post.date).toLocaleDateString(locale)}
-                      </div>
-                    </a>
-                  </Link>
-                </li>
-              ))}
-          </ul>
-        </div>
+    <>
+      {story.content.body.map((blok) => (
+        <BlokComponent blok={blok} key={blok._uid} />
       ))}
-    </section>
+      <Articles blok={{ items: posts }} />
+    </>
   )
 }
 
-export const getStaticProps = (ctx) => staticProps('blog', ctx)
-export default withLayout(Page, 'blog')
+export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
+  const [sProps, posts] = await Promise.all([
+    getPageStaticProps(ctx, 'blog'),
+    getAllPosts(ctx),
+  ])
+
+  if (!('props' in sProps) || 'notFound' in sProps) {
+    return { notFound: true }
+  }
+
+  return {
+    ...sProps,
+    props: {
+      ...sProps.props,
+      posts,
+      locale: ctx.locale,
+    },
+  }
+}
+
+export default Blog

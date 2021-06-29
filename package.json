@@ -5,31 +5,38 @@
   "scripts": {
     "dev": "next dev -p 1234",
     "build": "next build",
-    "start": "npm run build && next start",
-    "export": "npm run build && next export",
-    "lint": "eslint --ext .ts --ext .tsx pages components",
-    "lint-fix": "eslint --fix --ext .ts --ext .tsx pages components",
+    "start": "next start",
+    "lint": "eslint --ext .ts --ext .tsx .",
+    "lint-fix": "eslint --fix --ext .ts --ext .tsx .",
     "prettier-staged": "pretty-quick --staged"
   },
   "dependencies": {
-    "autoprefixer": "^10.1.0",
+    "@tailwindcss/line-clamp": "^0.2.1",
+    "autoprefixer": "^10.2.6",
+    "axios": "^0.21.1",
+    "classnames": "^2.3.1",
     "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^11.0.0",
+    "next": "^11.0.1",
     "next-seo": "^4.4.0",
     "next-themes": "0.0.10",
     "nextjs-redirect": "^4.0.2",
-    "postcss": "^8.2.10",
+    "postcss": "^8.3.5",
     "preact": "^10.5.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "3.11.0",
+    "react-markdown": "^6.0.1",
+    "react-photo-gallery": "^8.0.0",
     "react-text-loop": "^2.3.0",
     "reaviz": "^9.3.0",
+    "simple-react-lightbox": "^3.6.6",
     "smart-foreground": "^1.0.10",
+    "storyblok-js-client": "^4.0.6",
+    "storyblok-react": "^0.1.2",
     "styled-components": "4.4.1",
     "swr": "^0.1.18",
-    "tailwindcss": "^2.1.2",
+    "tailwindcss": "^2.2.4",
     "unsplash-js": "6.3.0"
   },
   "devDependencies": {
@@ -49,7 +56,7 @@
     "husky": "*",
     "prettier": "*",
     "pretty-quick": "*",
-    "typescript": "^3.9.5"
+    "typescript": "^4.3.4"
   },
   "husky": {
     "hooks": {
@@ -59,7 +66,8 @@
   "prettier": {
     "semi": false,
     "singleQuote": true,
-    "tabWidth": 2
+    "tabWidth": 2,
+    "trailingComma": "all"
   },
   "keywords": [],
   "description": ""
