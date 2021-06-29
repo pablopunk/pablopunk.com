@@ -16,11 +16,7 @@
     "axios": "^0.21.1",
     "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",
-<<<<<<< HEAD
     "next": "^11.0.1",
-=======
-    "next": "^11.0.0",
->>>>>>> origin/main
     "next-seo": "^4.4.0",
     "next-themes": "0.0.10",
     "nextjs-redirect": "^4.0.2",
