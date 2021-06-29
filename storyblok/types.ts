@@ -6,3 +6,22 @@ export type ButtonType = {
   icon?: string
   link?: LinkType
 }
+export type PostType = {
+  name: string
+  full_slug: string
+  translated_slugs: Array<{
+    lang: string
+    name: string
+    slug: string
+  }>
+  content: {
+    content: string
+    image: ImageType
+  }
+  created_at: string
+}
+
+export type ImageType = {
+  id: string
+  filename: string
+}

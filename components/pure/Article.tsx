@@ -3,6 +3,8 @@ import Markdown from 'react-markdown'
 import { Button } from 'storyblok/components/Button'
 import { _ } from 'lib/locales'
 import { useRouter } from 'next/router'
+import { FunctionComponent } from 'preact'
+import type { PostType } from 'storyblok/types'
 
 const StyledArticle = styled.article`
   display: flex;
@@ -105,7 +107,11 @@ const StyledArticle = styled.article`
   }
 `
 
-const Article = ({ story }) => {
+type Props = {
+  story: PostType
+}
+
+const Article: FunctionComponent<Props> = ({ story }) => {
   const { asPath, locale } = useRouter()
   const translatedSlug = story.translated_slugs.find(
     (slug) => slug.lang === locale,

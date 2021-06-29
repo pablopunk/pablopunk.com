@@ -3,6 +3,7 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import { PageProps } from 'types/page'
 import { locales } from 'lib/locales'
 import { readdirSync } from 'fs'
+import { PostType } from './types'
 
 async function getPageData(
   slug: string,
@@ -99,7 +100,7 @@ export const getPageStaticPaths = async (context: GetStaticPropsContext) => {
   const paths = []
 
   locales.forEach((locale) => {
-    data.stories?.forEach((story) => {
+    data.stories?.forEach((story: PostType) => {
       if (!exclude.includes(story.full_slug)) {
         paths.push({
           locale,

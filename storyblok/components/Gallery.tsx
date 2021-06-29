@@ -2,6 +2,7 @@ import { FunctionComponent } from 'react'
 import GalleryComponent from 'react-photo-gallery'
 import { SRLWrapper } from 'simple-react-lightbox'
 import styled from 'styled-components'
+import type { ImageType } from 'storyblok/types'
 
 const Section = styled.div`
   img:hover {
@@ -11,10 +12,7 @@ const Section = styled.div`
 
 type Props = {
   blok: {
-    images: Array<{
-      id: string
-      filename: string
-    }>
+    images: Array<ImageType>
   }
 }
 

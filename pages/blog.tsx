@@ -5,9 +5,11 @@ import { GetStaticProps } from 'next'
 import useStoryblok from 'storyblok/hooks/useStoryblok'
 import { BlokComponent } from 'storyblok/components/BlokComponent'
 import { Articles } from 'storyblok/components/Articles'
+import { PostType } from 'storyblok/types'
 
 interface Props extends PageProps {
   locale: string
+  posts: PostType[]
 }
 
 const Blog = ({ page, posts }: Props) => {

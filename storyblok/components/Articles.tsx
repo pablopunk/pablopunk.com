@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router'
 import { FunctionComponent } from 'react'
 import { Card } from './Card'
+import type { PostType } from 'storyblok/types'
 
 type Props = {
   blok: {
-    items: any[]
+    items: PostType[]
   }
 }
 export const Articles: FunctionComponent<Props> = ({ blok }) => {

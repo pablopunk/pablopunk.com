@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import type { LinkType } from 'storyblok/types'
+import type { LinkType, ImageType } from 'storyblok/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import Markdown from 'react-markdown'
@@ -8,7 +8,7 @@ type Props = {
   blok: {
     title: string
     description: string
-    image: any
+    image: ImageType
     link: LinkType
     tags?: string[]
   }
