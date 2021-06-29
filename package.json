@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.2.1",
-    "autoprefixer": "^10.1.0",
+    "autoprefixer": "^10.2.6",
     "axios": "^0.21.1",
     "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",
@@ -20,7 +20,7 @@
     "next-seo": "^4.4.0",
     "next-themes": "0.0.10",
     "nextjs-redirect": "^4.0.2",
-    "postcss": "^8.2.10",
+    "postcss": "^8.3.5",
     "preact": "^10.5.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -35,7 +35,7 @@
     "storyblok-react": "^0.1.2",
     "styled-components": "4.4.1",
     "swr": "^0.1.18",
-    "tailwindcss": "^2.1.2",
+    "tailwindcss": "^2.2.4",
     "unsplash-js": "6.3.0"
   },
   "devDependencies": {

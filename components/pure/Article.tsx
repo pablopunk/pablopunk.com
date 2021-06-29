@@ -107,6 +107,10 @@ const StyledArticle = styled.article`
 
 const Article = ({ story }) => {
   const { asPath, locale } = useRouter()
+  const translatedSlug = story.translated_slugs.find(
+    (slug) => slug.lang === locale,
+  )
+
   return (
     <StyledArticle>
       {asPath.startsWith('/posts') && (
@@ -130,7 +134,7 @@ const Article = ({ story }) => {
           </div>
         </>
       )}
-      {story.name && <h1>{story.name}</h1>}
+      <h1>{translatedSlug?.name ? translatedSlug?.name : story.name}</h1>
       <Markdown>{story.content.content}</Markdown>
     </StyledArticle>
   )

@@ -11,7 +11,7 @@ type Props = {
 }
 
 export const Flex: FunctionComponent<Props> = ({ blok }) => {
-  const styles = 'flex justify-center items-center'
+  const styles = 'flex'
   let sizeStyle = 'w-full'
   let justifyStyle = 'justify-center'
   let alignStyle = 'align-center'

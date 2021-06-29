@@ -83,6 +83,19 @@ export const getPageStaticPaths = async (context: GetStaticPropsContext) => {
               ? { slug: [] }
               : { slug: story.full_slug.split('/') },
         })
+
+        const translatedSlug = story.translated_slugs.find(
+          (slug) => slug.lang === locale,
+        )
+
+        if (translatedSlug) {
+          paths.push({
+            locale,
+            params: {
+              slug: translatedSlug.path.split('/'),
+            },
+          })
+        }
       }
     })
   })

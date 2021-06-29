@@ -38,10 +38,10 @@ export const Card: FunctionComponent<Props> = ({ blok }) => (
         </div>
       </a>
     </Link>
-    <p className="italic md:mt-3">
+    <div className="italic md:mt-3">
       <Markdown className="hidden md:block md:line-clamp-2">
         {blok.description}
       </Markdown>
-    </p>
+    </div>
   </div>
 )

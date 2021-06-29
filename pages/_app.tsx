@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     --color-bg: ${colors.coolGray['900']};
     --color-fg: ${colors.coolGray['100']};
     --color-bg2: ${colors.coolGray['800']};
-    --color-accent: ${colors.indigo['200']};
+    --color-accent: ${colors.fuchsia['300']};
     --color-accent2: ${colors.teal['300']};
     --color-border: ${colors.blueGray['800']};
   }
