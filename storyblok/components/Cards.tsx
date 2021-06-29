@@ -8,7 +8,7 @@ type Props = {
 }
 
 export const Cards: FunctionComponent<Props> = ({ blok }) => (
-  <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div className="grid grid-cols-1 gap-4 mt-3 mb-8 md:grid-cols-2">
     {blok.items.map((item) => (
       <BlokComponent blok={item} key={item._uid} />
     ))}
