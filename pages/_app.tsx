@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import Router from 'next/router'
 import { ThemeProvider } from 'next-themes'
 import { createGlobalStyle } from 'styled-components'
-import colors from 'tailwindcss/colors'
+import { blue, blueGray, teal, coolGray, fuchsia } from 'tailwindcss/colors'
 import Layout from 'components/skeleton/Layout'
 import SimpleReactLightbox from 'simple-react-lightbox'
 
@@ -14,20 +14,20 @@ const GlobalStyle = createGlobalStyle`
     --nav-height: 44px;
     --footer-height: 50px;
 
-    --color-bg: ${colors.blueGray['50']};
-    --color-fg: ${colors.blueGray['700']};
+    --color-bg: ${blueGray['50']};
+    --color-fg: ${blueGray['700']};
     --color-bg2: white;
-    --color-accent: ${colors.blue['500']};
-    --color-accent2: ${colors.teal['500']};
-    --color-border: ${colors.blueGray['200']};
+    --color-accent: ${blue['500']};
+    --color-accent2: ${teal['500']};
+    --color-border: ${blueGray['200']};
   }
   html.dark {
-    --color-bg: ${colors.coolGray['900']};
-    --color-fg: ${colors.coolGray['100']};
-    --color-bg2: ${colors.coolGray['800']};
-    --color-accent: ${colors.fuchsia['300']};
-    --color-accent2: ${colors.teal['300']};
-    --color-border: ${colors.blueGray['800']};
+    --color-bg: ${coolGray['900']};
+    --color-fg: ${coolGray['100']};
+    --color-bg2: ${coolGray['800']};
+    --color-accent: ${fuchsia['300']};
+    --color-accent2: ${teal['300']};
+    --color-border: ${blueGray['800']};
   }
   html {
     box-sizing: border-box;
