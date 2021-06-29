@@ -15,7 +15,7 @@ export const Articles: FunctionComponent<Props> = ({ blok }) => {
             title: article.name,
             description: article.content?.content,
             image: article.content?.image,
-            link: { url: article.slug },
+            link: { url: article.full_slug },
           }}
         />
       ))}

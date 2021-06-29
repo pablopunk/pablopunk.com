@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev -p 1234",
     "build": "next build",
-    "start": "npm run build && next start",
-    "export": "npm run build && next export",
+    "start": "next start",
     "lint": "eslint --ext .ts --ext .tsx .",
     "lint-fix": "eslint --fix --ext .ts --ext .tsx .",
     "prettier-staged": "pretty-quick --staged"
@@ -17,7 +16,7 @@
     "axios": "^0.21.1",
     "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^10.2.0",
+    "next": "^11.0.1",
     "next-seo": "^4.4.0",
     "next-themes": "0.0.10",
     "nextjs-redirect": "^4.0.2",
@@ -47,6 +46,7 @@
     "@typescript-eslint/parser": "^4.11.1",
     "babel-plugin-styled-components": "^1.10.7",
     "eslint": "^7.16.0",
+    "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
@@ -55,7 +55,7 @@
     "husky": "*",
     "prettier": "*",
     "pretty-quick": "*",
-    "typescript": "^3.9.5"
+    "typescript": "^4.3.4"
   },
   "husky": {
     "hooks": {

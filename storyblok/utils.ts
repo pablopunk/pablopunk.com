@@ -12,6 +12,8 @@ const howOldAmI = () => {
 const YEARS_OLD = (text: string) => text.replace('%YEARS_OLD%', howOldAmI())
 
 export const handlePlaceholders = (text: string) => {
+  if (!text) return ''
+
   let newText = String(text)
 
   newText = YEARS_OLD(text)
