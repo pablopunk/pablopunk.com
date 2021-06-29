@@ -2,7 +2,7 @@
 
 export function JAMStack(props) {
   return (
-    <div className="w-full px-10 pt-5 pb-3 my-4 border-2 border-dashed rounded-lg">
+    <div className="w-full px-2 pt-5 pb-3 my-4 border-2 border-dashed rounded-lg md:px-10">
       <svg
         viewBox="0 0 2209 569"
         fill="none"
