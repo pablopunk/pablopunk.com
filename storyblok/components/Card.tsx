@@ -38,6 +38,7 @@ export const Card: FunctionComponent<Props> = ({ blok }) => {
           <div className="relative w-[90px] h-[90px] rounded-full">
             {blok.image?.filename && (
               <Image
+                loading="lazy"
                 src={blok.image.filename}
                 alt={blok.title}
                 layout="fill"
