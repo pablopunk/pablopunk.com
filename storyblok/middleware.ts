@@ -2,6 +2,7 @@ import { Storyblok } from './client'
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import { PageProps } from 'types/page'
 import { locales } from 'lib/locales'
+import { readdirSync } from 'fs'
 
 async function getPageData(
   slug: string,
@@ -67,17 +68,22 @@ export const getPageStaticPaths = async (context: GetStaticPropsContext) => {
     language: context.locale,
   })
 
+  const exclude = readdirSync(process.cwd() + '/pages').map((name) =>
+    name.replace(/\.tsx$/, ''),
+  )
   const paths = []
 
   locales.forEach((locale) => {
-    data.stories?.map((story) => {
-      paths.push({
-        locale,
-        params:
-          story.full_slug === 'home'
-            ? { slug: [] }
-            : { slug: story.full_slug.split('/') },
-      })
+    data.stories?.forEach((story) => {
+      if (!exclude.includes(story.full_slug)) {
+        paths.push({
+          locale,
+          params:
+            story.full_slug === 'home'
+              ? { slug: [] }
+              : { slug: story.full_slug.split('/') },
+        })
+      }
     })
   })
 
