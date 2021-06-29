@@ -4,11 +4,11 @@ import { Storyblok } from '../client'
 
 export default function useStoryblok(originalStory) {
   let [story, setStory] = useState(originalStory)
-  const { asPath } = useRouter()
+  const { locale, asPath } = useRouter()
 
   useEffect(() => {
     setStory(originalStory)
-  }, [asPath])
+  }, [asPath, locale])
 
   // adds the events for updating the visual editor
   // see https://www.storyblok.com/docs/guide/essentials/visual-editor#initializing-the-storyblok-js-bridge
