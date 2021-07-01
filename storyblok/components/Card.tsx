@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react'
 import type { LinkType, ImageType } from 'storyblok/types'
 import Image from 'next/image'
 import Link from 'next/link'
-import Markdown from 'react-markdown'
+import Markdown from 'components/pure/Markdown'
 import classNames from 'classnames'
 
 type Props = {
@@ -21,13 +21,13 @@ export const Card: FunctionComponent<Props> = ({ blok }) => {
 
   switch (blok.line_clamp) {
     case 1:
-      lineClamp = 'md:line-clamp-1'
+      lineClamp = 'md:max-h-7 md:line-clamp-1'
       break
     case 2:
-      lineClamp = 'md:line-clamp-2'
+      lineClamp = 'md:max-h-7 md:line-clamp-2'
       break
     case 3:
-      lineClamp = 'md:line-clamp-3'
+      lineClamp = 'md:max-h-7 md:line-clamp-3'
       break
   }
 
@@ -56,7 +56,7 @@ export const Card: FunctionComponent<Props> = ({ blok }) => {
           </div>
         </a>
       </Link>
-      <div className="relative overflow-hidden italic max-h-10 md:mt-3">
+      <div className="relative overflow-hidden italic md:mt-3">
         <Markdown className={classNames('hidden md:block', lineClamp)}>
           {blok.description}
         </Markdown>

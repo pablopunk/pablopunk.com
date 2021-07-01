@@ -1,4 +1,4 @@
-import Markdown from 'react-markdown'
+import Markdown from 'components/pure/Markdown'
 import { FunctionComponent } from 'react'
 import type { AlignType } from 'storyblok/types'
 import { handlePlaceholders } from 'storyblok/utils'
