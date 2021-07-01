@@ -20,9 +20,9 @@ export const fetchAllNpmData = () =>
       fetch(
         `https://api.npmjs.org/downloads/range/2010-01-01:${
           new Date().toISOString().split('T')[0]
-        }/${p}`
-      ).then((r) => r.json())
-    )
+        }/${p}`,
+      ).then((r) => r.json()),
+    ),
   )
 
 function convertStatsToChartData(stats) {

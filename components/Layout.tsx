@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import Nav from 'components/skeleton/Nav'
-import Meta from 'components/skeleton/Meta'
+import Nav from 'components/Nav'
+import Meta from 'components/Meta'
 import { PageProps } from 'types/page'
 import { Button } from 'storyblok/components/Button'
 import Footer from './Footer'

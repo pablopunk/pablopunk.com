@@ -2,7 +2,7 @@ import React from 'react'
 import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch'
 import humanFormat from 'human-format'
-import Loading from 'components/pure/Loading'
+import Loading from 'components/Loading'
 import { _ } from 'lib/locales'
 import { AiFillStar } from 'react-icons/ai'
 

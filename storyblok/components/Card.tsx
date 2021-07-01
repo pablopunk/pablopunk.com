@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react'
 import type { LinkType, ImageType } from 'storyblok/types'
 import Image from 'next/image'
 import Link from 'next/link'
-import Markdown from 'components/pure/Markdown'
+import Markdown from 'components/Markdown'
 import classNames from 'classnames'
 
 type Props = {

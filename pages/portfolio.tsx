@@ -1,6 +1,6 @@
 import React from 'react'
-import Repos, { fetchAllReposData } from 'components/data-fetch/Repos'
-import NpmCharts, { fetchAllNpmData } from 'components/data-fetch/NpmCharts'
+import Repos, { fetchAllReposData } from 'components/Repos'
+import NpmCharts, { fetchAllNpmData } from 'components/NpmCharts'
 import { _ } from '../lib/locales'
 import { getPageStaticProps } from 'storyblok/middleware'
 import { PageProps } from 'types/page'

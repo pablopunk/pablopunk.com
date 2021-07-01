@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledLoading = styled.div`
   .circle {
@@ -57,7 +57,7 @@ const StyledLoading = styled.div`
       transform: translate(24px, 0);
     }
   }
-`;
+`
 
 export default function Loading() {
   return (
@@ -69,5 +69,5 @@ export default function Loading() {
         <div></div>
       </div>
     </StyledLoading>
-  );
+  )
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Markdown from 'components/pure/Markdown'
+import Markdown from 'components/Markdown'
 import { Button } from 'storyblok/components/Button'
 import { _ } from 'lib/locales'
 import { useRouter } from 'next/router'

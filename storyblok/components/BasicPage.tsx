@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { PageProps } from 'types/page'
 import { BlokComponent } from 'storyblok/components/BlokComponent'
 import useStoryblok from 'storyblok/hooks/useStoryblok'
-import Article from 'components/pure/Article'
+import Article from 'components/Article'
 
 const Page: FunctionComponent<PageProps> = ({ page }) => {
   const story = useStoryblok(page)

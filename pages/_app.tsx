@@ -5,7 +5,7 @@ import Router from 'next/router'
 import { ThemeProvider } from 'next-themes'
 import { createGlobalStyle } from 'styled-components'
 import { blue, blueGray, teal, coolGray, fuchsia } from 'tailwindcss/colors'
-import Layout from 'components/skeleton/Layout'
+import Layout from 'components/Layout'
 import SimpleReactLightbox from 'simple-react-lightbox'
 
 const GlobalStyle = createGlobalStyle`

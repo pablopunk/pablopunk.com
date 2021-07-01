@@ -1,4 +1,4 @@
-import Loading from 'components/pure/Loading'
+import Loading from 'components/Loading'
 import { FiDownloadCloud } from 'react-icons/fi'
 import { GoRepo } from 'react-icons/go'
 import { MdPageview } from 'react-icons/md'
