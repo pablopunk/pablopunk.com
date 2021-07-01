@@ -5,9 +5,8 @@ import { _ } from '../lib/locales'
 import { getPageStaticProps } from 'storyblok/middleware'
 import { PageProps } from 'types/page'
 import { GetStaticProps } from 'next'
-import useStoryblok from 'storyblok/hooks/useStoryblok'
-import { BlokComponent } from 'storyblok/components/BlokComponent'
 import { Title } from 'storyblok/components/Title'
+import BasicPage from 'storyblok/components/BasicPage'
 
 interface Props extends PageProps {
   locale: string
@@ -18,13 +17,9 @@ interface Props extends PageProps {
 }
 
 const Portfolio = ({ initialData, locale, page }: Props) => {
-  const story = useStoryblok(page)
-
   return (
     <>
-      {story.content.body.map((blok) => (
-        <BlokComponent blok={blok} key={blok._uid} />
-      ))}
+      <BasicPage page={page} />
       <section>
         <Title
           blok={{

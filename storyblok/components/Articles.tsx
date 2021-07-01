@@ -25,6 +25,7 @@ export const Articles: FunctionComponent<Props> = ({ blok }) => {
                 title: translatedSlug?.name
                   ? translatedSlug.name
                   : article.name,
+                subtitle: new Date(article.created_at).toLocaleDateString(),
                 description: article.content?.content,
                 image: article.content?.image,
                 link: {
@@ -32,7 +33,6 @@ export const Articles: FunctionComponent<Props> = ({ blok }) => {
                     ? translatedSlug.path
                     : article.full_slug,
                 },
-                tags: [new Date(article.created_at).toLocaleDateString()],
                 line_clamp: 2,
               }}
             />

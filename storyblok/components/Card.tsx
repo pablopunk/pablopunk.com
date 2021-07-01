@@ -8,10 +8,10 @@ import classNames from 'classnames'
 type Props = {
   blok: {
     title: string
+    subtitle?: string
     description: string
     image: ImageType
     link: LinkType
-    tags?: string[]
     line_clamp?: number
   }
 }
@@ -32,7 +32,7 @@ export const Card: FunctionComponent<Props> = ({ blok }) => {
   }
 
   return (
-    <div className="p-3 border rounded-lg shadow-lg bg-bg2">
+    <div className="p-3 border rounded-lg shadow-md bg-bg2">
       <Link href={blok.link?.url || ''}>
         <a className="relative flex items-center group hover:cursor-pointer">
           <div className="relative w-[90px] h-[90px] rounded-full">
@@ -51,7 +51,7 @@ export const Card: FunctionComponent<Props> = ({ blok }) => {
               {blok.title}
             </h4>
             <h5 id="job" className="text-sm italic font-semibold opacity-75">
-              {blok.tags?.join(', ')}
+              {blok.subtitle}
             </h5>
           </div>
         </a>
