@@ -1,4 +1,4 @@
-const { locales } = require('./lib/locales')
+const { locales } = require('./locales')
 
 const buildRewrite = ({ path, dest }) => ({
   source: `/(${locales.join('|')})+/${path}`,

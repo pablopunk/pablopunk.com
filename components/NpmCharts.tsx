@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import { AreaChart } from 'reaviz'
 import humanFormat from 'human-format'
 import { HiOutlineFolderDownload } from 'react-icons/hi'
-import { _ } from 'lib/locales'
+import { _ } from 'locales'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 

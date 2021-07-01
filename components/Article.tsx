@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Markdown from 'components/Markdown'
 import { Button } from 'storyblok/components/Button'
-import { _ } from 'lib/locales'
+import { _ } from 'locales'
 import { useRouter } from 'next/router'
 import { FunctionComponent } from 'preact'
 import type { PostType } from 'storyblok/types'

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { NextSeo, SocialProfileJsonLd } from 'next-seo'
-import { DEFAULT_LOCALE } from 'lib/locales'
+import { DEFAULT_LOCALE } from 'locales'
 import { useRouter } from 'next/router'
 import { SITE_DESC, SITE_IMAGE, SITE_NAME, SITE_URL } from 'config'
 

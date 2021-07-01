@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch'
 import humanFormat from 'human-format'
 import Loading from 'components/Loading'
-import { _ } from 'lib/locales'
+import { _ } from 'locales'
 import { AiFillStar } from 'react-icons/ai'
 
 const API = 'https://repos.pablopunk.com/api'

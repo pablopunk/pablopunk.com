@@ -1,4 +1,4 @@
-export function go(link: string) {
+export function openLink(link: string) {
   if (link.startsWith('http')) {
     window.open(link)
   } else {

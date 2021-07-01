@@ -3,9 +3,9 @@ import { FiDownloadCloud } from 'react-icons/fi'
 import { GoRepo } from 'react-icons/go'
 import { MdPageview } from 'react-icons/md'
 import { useRouter } from 'next/router'
-import { _ } from 'lib/locales'
+import { _ } from 'locales'
 import humanFormat from 'human-format'
-import { go } from 'utils/helpers'
+import { openLink } from 'lib/utils'
 import useSWR from 'swr'
 import { AiOutlineStar, AiOutlineUsergroupAdd } from 'react-icons/ai'
 import { getUnsplashStats, getGithubStats } from './api/stats'
@@ -43,7 +43,7 @@ const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
     <div className="flex items-center justify-center fill-height">
       {data ? (
         <div className="grid grid-cols-1 md:grid-cols-2">
-          <Stats onClick={() => go('unsplash.com/@pablopunk')}>
+          <Stats onClick={() => openLink('unsplash.com/@pablopunk')}>
             <h2>Unsplash</h2>
             <Stat>
               <FiDownloadCloud />{' '}
@@ -60,7 +60,7 @@ const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
               <span className="ml-1">{_('total views', locale)}</span>
             </Stat>
           </Stats>
-          <Stats onClick={() => go('github.com/pablopunk')}>
+          <Stats onClick={() => openLink('github.com/pablopunk')}>
             <h2>GitHub</h2>
             <Stat>
               <AiOutlineStar />{' '}

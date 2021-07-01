@@ -1,6 +1,6 @@
 import Document, { Main, NextScript, Html, Head } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import { DEFAULT_LOCALE } from 'lib/locales'
+import { DEFAULT_LOCALE } from 'locales'
 
 const darkModeAutoForTailwind = `
 (function() {

@@ -1,7 +1,7 @@
 import { Storyblok } from './client'
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import { PageProps } from 'types/page'
-import { locales } from 'lib/locales'
+import { locales } from 'locales'
 import { readdirSync } from 'fs'
 import { PostType } from './types'
 

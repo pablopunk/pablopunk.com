@@ -4,7 +4,7 @@ import { RiMoonClearLine, RiSunLine } from 'react-icons/ri'
 import { FaCreditCard } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
-import { _ } from 'lib/locales'
+import { _ } from 'locales'
 import { ButtonType } from 'storyblok/types'
 
 const ChangeThemeButton = () => {

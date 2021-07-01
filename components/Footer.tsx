@@ -1,4 +1,4 @@
-import { _, locales } from 'lib/locales'
+import { _, locales } from 'locales'
 import { useRouter } from 'next/router'
 
 const Footer = () => {
