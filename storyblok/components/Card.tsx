@@ -13,6 +13,7 @@ type Props = {
     image: ImageType
     link: LinkType
     line_clamp?: number
+    preload?: boolean
   }
 }
 
@@ -38,7 +39,8 @@ export const Card: FunctionComponent<Props> = ({ blok }) => {
           <div className="relative w-[90px] h-[90px] rounded-full">
             {blok.image?.filename && (
               <Image
-                loading="lazy"
+                loading={blok.preload ? 'eager' : 'lazy'}
+                priority={blok.preload}
                 src={blok.image.filename}
                 alt={blok.title}
                 layout="fill"
