@@ -17,8 +17,8 @@ const GlobalStyle = createGlobalStyle`
     --color-bg: ${blueGray['50']};
     --color-fg: ${blueGray['700']};
     --color-bg2: white;
-    --color-accent: ${blue['500']};
-    --color-accent2: ${teal['500']};
+    --color-accent: ${teal['500']};
+    --color-accent2: ${blue['500']};
     --color-border: ${blueGray['200']};
   }
   html.dark {
@@ -60,7 +60,7 @@ const GlobalStyle = createGlobalStyle`
     transition: background-color var(--transition-time), color var(--transition-time);
   }
   h1,h2,h3,h4 {
-    color: var(--color-accent);
+    color: var(--color-fg);
     font-weight: bold;
   }
   .fill-height {

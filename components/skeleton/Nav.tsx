@@ -24,6 +24,7 @@ const ChangeThemeButton = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark')
       }}
       title={_('Change theme', locale)}
+      className="text-current"
     >
       {theme === 'dark' ? (
         <span>
@@ -43,7 +44,7 @@ const Nav = ({ main = [] }) => {
 
   return (
     <div
-      className="relative z-20 flex items-center justify-between overflow-auto no-scrollbar"
+      className="relative z-20 flex items-center justify-between no-scrollbar"
       style={{ height: 'var(--nav-height)' }}
     >
       <nav className="flex">
@@ -62,7 +63,7 @@ const Nav = ({ main = [] }) => {
                   className={
                     current
                       ? 'md:text-accent2'
-                      : 'text-accent md:hover:text-accent2'
+                      : 'text-fg md:hover:text-accent2'
                   }
                 >
                   {button.text}
@@ -72,14 +73,14 @@ const Nav = ({ main = [] }) => {
           )
         })}
       </nav>
-      <div className="relative flex mt-2 mr-2 text-xl text-accent2">
-        <div className="z-30 p-1 text-3xl transition-colors rounded shadow cursor-pointer hover:text-accent hover:bg-bg bg-bg2 md:text-xl">
+      <div className="relative flex mt-4 mr-3 text-xl">
+        <div className="z-30 p-2 text-3xl transition-colors rounded-full shadow cursor-pointer text-accent hover:text-accent2 hover:bg-bg bg-bg2 md:text-xl">
           <ChangeThemeButton />
         </div>
         <a
           href="/donate"
           title={_('Sponsor', locale)}
-          className="hidden p-1 ml-2 rounded shadow hover:text-accent hover:bg-bg bg-bg2 md:block"
+          className="hidden p-2 ml-2 rounded-full shadow text-accent hover:text-accent2 hover:bg-bg bg-bg2 md:block"
         >
           <FaCreditCard />
         </a>

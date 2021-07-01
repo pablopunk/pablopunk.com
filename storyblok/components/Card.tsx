@@ -47,7 +47,7 @@ export const Card: FunctionComponent<Props> = ({ blok }) => {
             )}
           </div>
           <div className="max-w-[65%] pl-3">
-            <h4 className="font-semibold transition-colors text-md md:text-xl group-hover:text-accent2">
+            <h4 className="font-semibold transition-colors text-md md:text-lg group-hover:text-accent2">
               {blok.title}
             </h4>
             <h5 id="job" className="text-sm italic font-semibold opacity-75">
