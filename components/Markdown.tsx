@@ -1,20 +1,16 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, HTMLAttributes } from 'react'
 import snarkdown from 'snarkdown'
 
-type Props = {
-  className?: string
-}
-
-const Markdown: FunctionComponent<Props> = ({ className, children }) => {
+const Markdown: FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
+  children,
+  ...rest
+}) => {
   if (typeof children !== 'string') {
-    return <div>Markdown children must be a string</div>
+    return <div {...rest}>Markdown children must be a string</div>
   }
 
   return (
-    <div
-      className={className}
-      dangerouslySetInnerHTML={{ __html: snarkdown(children) }}
-    />
+    <div {...rest} dangerouslySetInnerHTML={{ __html: snarkdown(children) }} />
   )
 }
 
