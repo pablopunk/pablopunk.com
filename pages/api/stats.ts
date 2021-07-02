@@ -26,7 +26,7 @@ export async function getGithubStats() {
 
   user.stars_received = repos?.reduce(
     (acc, curr) => acc + curr.stargazers_count,
-    0
+    0,
   )
 
   return user
