@@ -105,6 +105,17 @@ const StyledArticle = styled.article`
     transform: rotate(-15deg);
     font-size: 2rem;
   }
+  ul {
+    padding: 0.25rem 0 0.25rem 1rem;
+  }
+  ul > li {
+    margin-bottom: 0.5rem;
+  }
+  ul > li:before {
+    content: '☞';
+    color: var(--color-accent);
+    margin-right: 0.5rem;
+  }
 `
 
 type Props = {
