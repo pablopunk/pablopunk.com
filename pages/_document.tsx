@@ -1,25 +1,7 @@
 import Document, { Main, NextScript, Html, Head } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import { DEFAULT_LOCALE } from 'locales'
-
-const darkModeAutoForTailwind = `
-(function() {
-  function setTheme(dark) {
-     var html = document.getElementsByTagName('html')[0]
-     var t = dark ? 'dark' : 'light'
-     html.classList.add(dark ? 'dark' : 'light')
-     html.classList.remove(dark ? 'light' : 'dark')
-     localStorage.setItem('theme', t)
-  }
-  var q = window.matchMedia('(prefers-color-scheme: dark)');
-  q.addListener(function(e) { setTheme(e.matches); })
-  var themeLS
-  try {
-    themeLS = localStorage.getItem('theme')
-  } catch(err) {}
-  setTheme(themeLS ? themeLS === 'dark' : q.matches)
-})()
-`
+import darkModeCode from 'dark-mode-code'
 
 export default class extends Document {
   static async getInitialProps(ctx) {
@@ -53,14 +35,12 @@ export default class extends Document {
     return (
       <Html lang={this.props.locale || DEFAULT_LOCALE}>
         <Head>
-          <script
-            dangerouslySetInnerHTML={{ __html: darkModeAutoForTailwind }}
-          ></script>
           <script data-goatcounter="/goat" async src="/count.js"></script>
         </Head>
         <body>
           <Main />
           <NextScript />
+          <script dangerouslySetInnerHTML={{ __html: darkModeCode }}></script>
         </body>
       </Html>
     )

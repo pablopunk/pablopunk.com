@@ -3,11 +3,25 @@ import { NextSeo, SocialProfileJsonLd } from 'next-seo'
 import { DEFAULT_LOCALE } from 'locales'
 import { useRouter } from 'next/router'
 import { SITE_DESC, SITE_IMAGE, SITE_NAME, SITE_URL } from 'config'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import useTheme from 'hooks/useTheme'
+import { THEME } from 'config'
 
 export default function Meta(props) {
   const { title, description, og_title, og_description, og_image } = props
   const { locale } = useRouter()
   const siteUrl = SITE_URL + (locale !== DEFAULT_LOCALE ? locale : '')
+  const [theme] = useTheme()
+  const [titleBarColor, setTitleBarColor] = useState('#fff')
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      setTitleBarColor(THEME.dark.bg)
+    } else {
+      setTitleBarColor(THEME.light.bg)
+    }
+  }, [theme])
 
   return (
     <>
@@ -81,7 +95,7 @@ export default function Meta(props) {
           name="msapplication-config"
           content="/favicon/browserconfig.xml"
         />
-        <meta name="theme-color" content="#14b8a6" />
+        <meta name="theme-color" content={titleBarColor} />
         <meta
           name="google-site-verification"
           content="y-TnXGhfG_A0b-ttLIV076wjdtFdEMZw6d04iwfR2Xw"

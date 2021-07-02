@@ -2,11 +2,10 @@ import 'tailwindcss/tailwind.css'
 
 import React, { useEffect } from 'react'
 import Router from 'next/router'
-import { ThemeProvider } from 'next-themes'
 import { createGlobalStyle } from 'styled-components'
-import { blue, blueGray, teal, coolGray, fuchsia } from 'tailwindcss/colors'
 import Layout from 'components/Layout'
 import SimpleReactLightbox from 'simple-react-lightbox'
+import { THEME } from 'config'
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -14,20 +13,20 @@ const GlobalStyle = createGlobalStyle`
     --nav-height: 44px;
     --footer-height: 50px;
 
-    --color-bg: ${blueGray['50']};
-    --color-fg: ${blueGray['700']};
-    --color-bg2: white;
-    --color-accent: ${teal['500']};
-    --color-accent2: ${blue['500']};
-    --color-border: ${blueGray['200']};
+    --color-bg: ${THEME.light.bg};
+    --color-fg: ${THEME.light.fg};
+    --color-bg2: ${THEME.light.bg2};
+    --color-accent: ${THEME.light.accent};
+    --color-accent2: ${THEME.light.accent2};
+    --color-border: ${THEME.light.border};
   }
-  html.dark {
-    --color-bg: ${coolGray['900']};
-    --color-fg: ${coolGray['100']};
-    --color-bg2: ${coolGray['800']};
-    --color-accent: ${fuchsia['300']};
-    --color-accent2: ${teal['300']};
-    --color-border: ${blueGray['800']};
+  body.dark {
+    --color-bg: ${THEME.dark.bg};
+    --color-fg: ${THEME.dark.fg};
+    --color-bg2: ${THEME.dark.bg2};
+    --color-accent: ${THEME.dark.accent};
+    --color-accent2: ${THEME.dark.accent2};
+    --color-border: ${THEME.dark.border};
   }
   html {
     box-sizing: border-box;
@@ -98,13 +97,11 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider attribute="class">
-        <Layout {...pageProps}>
-          <SimpleReactLightbox>
-            <Component {...pageProps} />
-          </SimpleReactLightbox>
-        </Layout>
-      </ThemeProvider>
+      <Layout {...pageProps}>
+        <SimpleReactLightbox>
+          <Component {...pageProps} />
+        </SimpleReactLightbox>
+      </Layout>
     </>
   )
 }

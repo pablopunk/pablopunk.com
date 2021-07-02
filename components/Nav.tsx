@@ -3,14 +3,14 @@ import Link from 'next/link'
 import { RiMoonClearLine, RiSunLine } from 'react-icons/ri'
 import { FaCreditCard } from 'react-icons/fa'
 import { useRouter } from 'next/router'
-import { useTheme } from 'next-themes'
 import { _ } from 'locales'
 import { ButtonType } from 'storyblok/types'
+import useTheme from 'hooks/useTheme'
 
 const ChangeThemeButton = () => {
   const { locale } = useRouter()
   const [mounted, mountedSet] = React.useState(false)
-  const { theme, setTheme } = useTheme()
+  const [theme, toggleTheme] = useTheme()
 
   React.useEffect(() => mountedSet(true), [])
 
@@ -20,9 +20,7 @@ const ChangeThemeButton = () => {
 
   return (
     <a
-      onClick={() => {
-        setTheme(theme === 'dark' ? 'light' : 'dark')
-      }}
+      onClick={toggleTheme}
       title={_('Change theme', locale)}
       className="text-current"
     >
