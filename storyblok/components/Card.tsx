@@ -52,7 +52,10 @@ export const Card: FunctionComponent<Props> = ({ blok }) => {
             <h4 className="font-semibold transition-colors text-md md:text-lg group-hover:text-accent2">
               {blok.title}
             </h4>
-            <h5 id="job" className="text-sm italic font-semibold opacity-75">
+            <h5
+              id="job"
+              className="text-sm italic font-semibold opacity-75 text-accent"
+            >
               {blok.subtitle}
             </h5>
           </div>

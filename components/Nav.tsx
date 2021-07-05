@@ -59,9 +59,7 @@ const Nav = ({ main = [] }) => {
               <Link href={button.link.url} locale={locale}>
                 <a
                   className={
-                    current
-                      ? 'md:text-accent2'
-                      : 'text-fg md:hover:text-accent2'
+                    current ? 'md:text-accent' : 'text-fg md:hover:text-accent'
                   }
                 >
                   {button.text}

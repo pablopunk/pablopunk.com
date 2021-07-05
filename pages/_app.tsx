@@ -49,16 +49,17 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: middle;
   }
   a {
-    color: var(--color-accent2);
+    color: var(--color-accent);
     transition: background-color var(--transition-time), color var(--transition-time);
+    font-weight: bold;
   }
   a:hover {
-    color: var(--color-accent);
+    color: var(--color-fg);
   }
   article {
     transition: background-color var(--transition-time), color var(--transition-time);
   }
-  h1,h2,h3,h4 {
+  h1,h2,h3,h4,h5,h6 {
     color: var(--color-fg);
     font-weight: bold;
   }

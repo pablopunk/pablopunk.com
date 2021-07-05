@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Markdown from 'components/Markdown'
 import { Button } from 'storyblok/components/Button'
 import { _ } from 'locales'
+import { SRLWrapper } from 'simple-react-lightbox'
 import { useRouter } from 'next/router'
 import { FunctionComponent } from 'preact'
 import type { PostType } from 'storyblok/types'
@@ -28,14 +29,7 @@ const StyledArticle = styled.article`
     max-width: 100%;
     border-radius: 1rem;
     position: relative;
-  }
-
-  h1 {
-    text-align: center;
-    font-size: 1.75rem;
-    width: 100%;
-    margin: 1rem 0;
-    color: var(--color-accent2);
+    cursor: zoom-in:
   }
 
   h2 {
@@ -70,7 +64,7 @@ const StyledArticle = styled.article`
   }
 
   code {
-    color: var(--color-accent2);
+    color: var(--color-accent);
     font-family: 'SF Mono', Menlo, monospace;
     font-size: 85%;
   }
@@ -81,15 +75,7 @@ const StyledArticle = styled.article`
     align-self: center;
   }
 
-  blockquote {
-    position: relative;
-    background-color: var(--color-bg2);
-    padding: 0.4rem 1rem;
-    margin: 1rem 0;
-    border-left: 2px solid var(--color-accent);
-    width: 100%;
-  }
-  blockquote:after {
+  .spain-flag:after {
     content: '🇪🇸';
     position: absolute;
     right: 2px;
@@ -97,17 +83,21 @@ const StyledArticle = styled.article`
     transform: rotate(-15deg);
     font-size: 2rem;
   }
+
   ul {
     padding: 0.25rem 0 0.25rem 1rem;
   }
+
   ul > li {
     margin-bottom: 0.5rem;
   }
+
   ul > li:before {
     content: '☞';
     color: var(--color-accent);
     margin-right: 0.5rem;
   }
+
   img {
     margin: 1rem 0;
   }
@@ -146,8 +136,19 @@ const Article: FunctionComponent<Props> = ({ story }) => {
           </div>
         </>
       )}
-      <h1>{translatedSlug?.name ? translatedSlug?.name : story.name}</h1>
-      <Markdown>{story.content.content}</Markdown>
+      <h1 className="w-full my-4 text-3xl font-semibold text-center">
+        {translatedSlug?.name ? translatedSlug?.name : story.name}
+      </h1>
+      {translatedSlug?.name && (
+        <div className="relative w-full p-3 border-l-2 bg-bg2 border-accent spain-flag">
+          Si quieres leer este artículo en español,{' '}
+          <a href="mailto:pablo@pablopunk.com">envíame un email</a> y lo
+          actualizo en cuanto pueda
+        </div>
+      )}
+      <SRLWrapper>
+        <Markdown>{story.content.content}</Markdown>
+      </SRLWrapper>
     </StyledArticle>
   )
 }
