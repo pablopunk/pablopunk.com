@@ -78,7 +78,7 @@ export const getPageStaticProps = async (
       nav: navData.story,
       preview: version === 'draft',
     },
-    revalidate: 10,
+    revalidate: 60,
   }
 }
 
@@ -128,6 +128,6 @@ export const getPageStaticPaths = async (context: GetStaticPropsContext) => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   }
 }

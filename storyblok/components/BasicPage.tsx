@@ -3,9 +3,20 @@ import { PageProps } from 'types/page'
 import { BlokComponent } from 'storyblok/components/BlokComponent'
 import useStoryblok from 'storyblok/hooks/useStoryblok'
 import Article from 'components/Article'
+import { useRouter } from 'next/router'
+import Loading from 'components/Loading'
 
 const Page: FunctionComponent<PageProps> = ({ page }) => {
   const story = useStoryblok(page)
+  const { isFallback } = useRouter()
+
+  if (isFallback) {
+    return (
+      <span className="text-center">
+        <Loading />
+      </span>
+    )
+  }
 
   return (
     <>
