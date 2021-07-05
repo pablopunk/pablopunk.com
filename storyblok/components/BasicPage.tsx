@@ -12,7 +12,7 @@ const Page: FunctionComponent<PageProps> = ({ page }) => {
 
   if (isFallback) {
     return (
-      <span className="text-center">
+      <span className="flex items-center justify-center w-full">
         <Loading />
       </span>
     )

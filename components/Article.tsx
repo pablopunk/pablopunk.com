@@ -75,14 +75,6 @@ const StyledArticle = styled.article`
     font-size: 85%;
   }
 
-  strong {
-    color: var(--color-accent);
-  }
-
-  em {
-    color: var(--color-accent);
-  }
-
   small {
     opacity: 0.8;
     margin: 1rem 0;
@@ -115,6 +107,9 @@ const StyledArticle = styled.article`
     content: '☞';
     color: var(--color-accent);
     margin-right: 0.5rem;
+  }
+  img {
+    margin: 1rem 0;
   }
 `
 
