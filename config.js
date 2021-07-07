@@ -25,7 +25,7 @@ module.exports = {
     dark: {
       bg: 'black',
       fg: blueGray[200],
-      bg2: coolGray[900],
+      bg2: '#040c12',
       accent: teal[300],
       accent2: fuchsia[300],
       border: blueGray[800],

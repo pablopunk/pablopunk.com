@@ -70,7 +70,7 @@ const Nav = ({ main = [] }) => {
         })}
       </nav>
       <div className="relative flex mt-4 mr-3 text-xl">
-        <div className="z-30 p-2 text-3xl transition-colors rounded-full shadow cursor-pointer text-accent hover:text-accent2 hover:bg-bg bg-bg2 md:text-xl">
+        <div className="z-30 p-2 text-3xl transition-colors rounded-full shadow cursor-pointer text-accent hover:text-accent2 hover:bg-bg bg-bg2 md:text-xl border">
           <ChangeThemeButton />
         </div>
         <a

@@ -16,7 +16,6 @@ const StyledArticle = styled.article`
   margin: 0 auto;
 
   p {
-    text-align: justify;
     margin: 1rem 0;
   }
 
@@ -96,6 +95,7 @@ const StyledArticle = styled.article`
     content: '☞';
     color: var(--color-accent);
     margin-right: 0.5rem;
+    font-size: 1.25rem;
   }
 
   img {
