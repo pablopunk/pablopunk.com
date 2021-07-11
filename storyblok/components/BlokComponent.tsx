@@ -33,7 +33,7 @@ export const BlokComponent = ({ blok }) => {
     // wrap with SbEditable for visual editing
     return (
       <SbEditable content={blok}>
-        <Component blok={blok} />
+        <Component {...blok} />
       </SbEditable>
     )
   }

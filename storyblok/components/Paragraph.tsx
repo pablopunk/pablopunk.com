@@ -4,17 +4,15 @@ import type { AlignType } from 'storyblok/types'
 import { handlePlaceholders } from 'storyblok/utils'
 
 type Props = {
-  blok: {
-    text: string
-    align?: AlignType
-  }
+  text: string
+  align?: AlignType
 }
 
-export const Paragraph: FunctionComponent<Props> = ({ blok }) => {
-  const text = handlePlaceholders(blok.text)
+export const Paragraph: FunctionComponent<Props> = ({ text, align }) => {
+  const finalText = handlePlaceholders(text)
   let style = 'my-3'
 
-  switch (blok.align) {
+  switch (align) {
     case 'left':
       style = `${style} text-left`
       break
@@ -28,7 +26,7 @@ export const Paragraph: FunctionComponent<Props> = ({ blok }) => {
 
   return (
     <div className={style}>
-      <Markdown>{text}</Markdown>
+      <Markdown>{finalText}</Markdown>
     </div>
   )
 }

@@ -117,11 +117,9 @@ const Article: FunctionComponent<Props> = ({ story }) => {
     <StyledArticle>
       {asPath.startsWith('/posts') && (
         <Button
-          blok={{
-            text: _('Go Back', locale),
-            icon: 'back',
-            link: { url: '/blog' },
-          }}
+          text={_('Go Back', locale)}
+          icon={'back'}
+          link={{ url: '/blog' }}
         />
       )}
       {story.content.image?.filename && (

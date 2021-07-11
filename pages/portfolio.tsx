@@ -22,23 +22,19 @@ const Portfolio = ({ initialData, locale, page }: Props) => {
       <BasicPage page={page} />
       <section>
         <Title
-          blok={{
-            text: _('Popular NPM packages', locale),
-            size: 'md',
-            heading: 'h2',
-            align: 'center',
-          }}
+          text={_('Popular NPM packages', locale)}
+          size={'md'}
+          heading={'h2'}
+          align={'center'}
         />
         <NpmCharts initialData={initialData.npm} />
       </section>
       <section>
         <Title
-          blok={{
-            text: _('Featured repos', locale),
-            size: 'md',
-            heading: 'h2',
-            align: 'center',
-          }}
+          text={_('Featured repos', locale)}
+          size={'md'}
+          heading={'h2'}
+          align={'center'}
         />
         <Repos locale={locale} initialData={initialData.repos} />
       </section>

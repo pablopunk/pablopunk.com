@@ -31,7 +31,7 @@ const Layout: FunctionComponent<PageProps> = ({
         ) : (
           <div className="flex flex-col items-center justify-center w-full fill-height">
             <h1 className="mb-4 text-2xl">oops! error {statusCode}</h1>
-            <Button blok={{ text: 'Go home', link: { url: '/' } }} />
+            <Button text="Go home" link={{ url: '/' }} />
           </div>
         )}
       </main>

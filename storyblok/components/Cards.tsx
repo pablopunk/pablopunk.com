@@ -2,14 +2,12 @@ import { FunctionComponent } from 'react'
 import { BlokComponent } from './BlokComponent'
 
 type Props = {
-  blok: {
-    items: any[]
-  }
+  items: any[]
 }
 
-export const Cards: FunctionComponent<Props> = ({ blok }) => (
+export const Cards: FunctionComponent<Props> = ({ items }) => (
   <div className="grid grid-cols-1 gap-4 mt-3 mb-8 md:grid-cols-2">
-    {blok.items.map((item) => (
+    {items.map((item) => (
       <BlokComponent blok={item} key={item._uid} />
     ))}
   </div>

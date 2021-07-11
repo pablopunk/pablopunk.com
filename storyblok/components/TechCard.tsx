@@ -4,16 +4,12 @@ import Link from 'next/link'
 import { Icon } from './Icon'
 
 type Props = {
-  blok: {
-    name: string
-    icon: string
-    link: LinkType
-  }
+  name: string
+  icon: string
+  link: LinkType
 }
 
-export const TechCard: FunctionComponent<Props> = ({
-  blok: { name, icon, link },
-}) => (
+export const TechCard: FunctionComponent<Props> = ({ name, icon, link }) => (
   <Link href={link.url}>
     <a>
       <Icon name={icon} size="100px" />

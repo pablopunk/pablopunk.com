@@ -2,21 +2,49 @@ import { FunctionComponent } from 'react'
 import { ButtonType } from 'storyblok/types'
 import Link from 'next/link'
 import { Icon } from './Icon'
+import classNames from 'classnames'
 
-type Props = {
-  blok: ButtonType
+interface Props extends ButtonType {
+  onClick?(): void
+  className?: string
+  disabled?: boolean
 }
 
-export const Button: FunctionComponent<Props> = ({ blok }) => (
-  <Link href={blok.link?.url || ''}>
-    <a
-      title={blok.text}
-      className="flex items-center justify-center px-2 py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-fg hover:text-fg hover:shadow-lg bg-bg2"
-    >
-      <span className="mr-1">
-        <Icon name={blok.icon} />
-      </span>
-      <span>{blok.text}</span>
-    </a>
-  </Link>
-)
+export const Button: FunctionComponent<Props> = ({
+  text,
+  link,
+  icon,
+  onClick,
+  className,
+  disabled,
+}) => {
+  const styles = classNames(
+    'flex items-center justify-center px-2 py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-fg hover:text-fg hover:shadow-lg bg-bg2 disabled:opacity-50',
+    className,
+  )
+
+  const children = (
+    <>
+      {icon && (
+        <span className="mr-1">
+          <Icon name={icon} />
+        </span>
+      )}
+      <span>{text}</span>
+    </>
+  )
+
+  if (onClick) {
+    return (
+      <button onClick={onClick} className={styles} disabled={disabled}>
+        {children}
+      </button>
+    )
+  }
+
+  return (
+    <Link href={link?.url || ''}>
+      <a className={styles}>{children}</a>
+    </Link>
+  )
+}

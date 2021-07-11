@@ -28,29 +28,40 @@ async function getPageData(
   return data
 }
 
-export async function getAllPosts(context: GetStaticPropsContext) {
-  const version =
-    process.env.NODE_VERSION !== 'production' || context.preview
-      ? 'draft'
-      : 'published'
+const POSTS_PAGE_SIZE = 6
 
-  let data
+export async function getAllPosts(
+  page: number,
+  preview: boolean = false,
+  locale: string,
+): Promise<{
+  posts: PostType[]
+  total: number
+}> {
+  const version =
+    process.env.NODE_VERSION !== 'production' || preview ? 'draft' : 'published'
+
+  let posts = [],
+    total = 0
 
   try {
-    data = (
-      await Storyblok.get(`cdn/stories`, {
-        version,
-        cv: Date.now(),
-        language: context.locale,
-        starts_with: 'posts',
-        sort_by: 'created_at:desc',
-      })
-    ).data.stories
+    const results = await Storyblok.get(`cdn/stories`, {
+      version,
+      cv: Date.now(),
+      language: locale,
+      starts_with: 'posts',
+      sort_by: 'created_at:desc',
+      per_page: POSTS_PAGE_SIZE,
+      page,
+    })
+
+    posts = results.data.stories
+    total = results.total
   } catch (err) {
-    data = err.response?.status || 500
+    console.error(err.response?.data?.error)
   }
 
-  return data
+  return { posts, total }
 }
 
 export const getPageStaticProps = async (

@@ -11,13 +11,11 @@ const Section = styled.div`
 `
 
 type Props = {
-  blok: {
-    images: Array<ImageType>
-  }
+  images: Array<ImageType>
 }
 
-export const Gallery: FunctionComponent<Props> = ({ blok }) => {
-  const images = blok.images.map((image) => {
+export const Gallery: FunctionComponent<Props> = ({ images }) => {
+  const photos = images.map((image) => {
     const width = parseInt(image.filename.split('/')[5].split('x')[0])
     const height = parseInt(image.filename.split('/')[5].split('x')[1])
 
@@ -31,7 +29,7 @@ export const Gallery: FunctionComponent<Props> = ({ blok }) => {
   return (
     <Section>
       <SRLWrapper>
-        <GalleryComponent photos={images} direction="column" />
+        <GalleryComponent photos={photos} direction="column" />
       </SRLWrapper>
     </Section>
   )

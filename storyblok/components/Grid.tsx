@@ -2,51 +2,49 @@ import { FunctionComponent } from 'react'
 import { BlokComponent } from './BlokComponent'
 
 type Props = {
-  blok: {
-    items: any[]
-    cols: string
-    colsSm: string
-  }
+  items: any[]
+  cols: string
+  colsSm: string
 }
 
-export const Grid: FunctionComponent<Props> = ({ blok }) => {
+export const Grid: FunctionComponent<Props> = ({ items, cols, colsSm }) => {
   const styles = 'grid gap-2 place-content-center'
-  let cols = 'grid-cols-2-auto'
-  let colsSm = 'grid-cols-1'
+  let colsStyles = 'grid-cols-2-auto'
+  let colsSmStyles = 'grid-cols-1'
 
-  switch (parseInt(blok.cols)) {
+  switch (parseInt(cols)) {
     case 1:
-      cols = 'md:grid-col-1'
+      colsStyles = 'md:grid-col-1'
       break
     case 2:
-      cols = 'md:grid-cols-2-auto'
+      colsStyles = 'md:grid-cols-2-auto'
       break
     case 3:
-      cols = 'md:grid-cols-3-auto'
+      colsStyles = 'md:grid-cols-3-auto'
       break
     case 4:
-      cols = 'md:grid-cols-4'
+      colsStyles = 'md:grid-cols-4'
       break
   }
 
-  switch (parseInt(blok.colsSm)) {
+  switch (parseInt(colsSm)) {
     case 1:
-      colsSm = 'grid-col-1'
+      colsSmStyles = 'grid-col-1'
       break
     case 2:
-      colsSm = 'grid-cols-2-auto'
+      colsSmStyles = 'grid-cols-2-auto'
       break
     case 3:
-      colsSm = 'grid-cols-3-auto'
+      colsSmStyles = 'grid-cols-3-auto'
       break
     case 4:
-      colsSm = 'grid-cols-4'
+      colsSmStyles = 'grid-cols-4'
       break
   }
 
   return (
-    <div className={`${styles} ${cols} ${colsSm}`}>
-      {blok.items?.map((item) => (
+    <div className={`${styles} ${colsStyles} ${colsSmStyles}`}>
+      {items?.map((item) => (
         <div key={item._uid}>
           <BlokComponent blok={item} />
         </div>
