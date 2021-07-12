@@ -8,6 +8,8 @@ export type ButtonType = {
 }
 export type PostType = {
   name: string
+  slug: string
+  default_full_slug: string
   full_slug: string
   translated_slugs: Array<{
     lang: string

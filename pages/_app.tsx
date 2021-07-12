@@ -1,11 +1,11 @@
 import 'tailwindcss/tailwind.css'
-
 import React, { useEffect } from 'react'
 import Router from 'next/router'
 import { createGlobalStyle } from 'styled-components'
 import Layout from 'components/Layout'
 import SimpleReactLightbox from 'simple-react-lightbox'
 import { THEME } from 'config'
+import { SupabaseProvider } from 'supabase/client'
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -98,11 +98,13 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <GlobalStyle />
-      <Layout {...pageProps}>
-        <SimpleReactLightbox>
-          <Component {...pageProps} />
-        </SimpleReactLightbox>
-      </Layout>
+      <SupabaseProvider>
+        <Layout {...pageProps}>
+          <SimpleReactLightbox>
+            <Component {...pageProps} />
+          </SimpleReactLightbox>
+        </Layout>
+      </SupabaseProvider>
     </>
   )
 }

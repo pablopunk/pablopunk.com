@@ -17,20 +17,22 @@ export const Button: FunctionComponent<Props> = ({
   onClick,
   className,
   disabled,
+  children,
 }) => {
   const styles = classNames(
-    'flex items-center justify-center px-2 py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-fg hover:text-fg hover:shadow-lg bg-bg2 disabled:opacity-50',
+    'flex items-center justify-center px-2 py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-fg hover:text-fg hover:shadow-lg bg-bg2 disabled:opacity-50 disabled:cursor-not-allowed',
     className,
   )
 
-  const children = (
+  children = (
     <>
       {icon && (
         <span className="mr-1">
           <Icon name={icon} />
         </span>
       )}
-      <span>{text}</span>
+      {text && <span>{text}</span>}
+      {children && children}
     </>
   )
 

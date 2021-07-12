@@ -6,6 +6,7 @@ import { SRLWrapper } from 'simple-react-lightbox'
 import { useRouter } from 'next/router'
 import { FunctionComponent } from 'preact'
 import type { PostType } from 'storyblok/types'
+import TranslationRequestComponent from './TranslationRequest'
 
 const StyledArticle = styled.article`
   display: flex;
@@ -74,15 +75,6 @@ const StyledArticle = styled.article`
     align-self: center;
   }
 
-  .spain-flag:after {
-    content: '🇪🇸';
-    position: absolute;
-    right: 2px;
-    bottom: -8px;
-    transform: rotate(-15deg);
-    font-size: 2rem;
-  }
-
   ul {
     padding: 0.25rem 0 0.25rem 1rem;
   }
@@ -138,11 +130,7 @@ const Article: FunctionComponent<Props> = ({ story }) => {
         {translatedSlug?.name ? translatedSlug?.name : story.name}
       </h1>
       {translatedSlug?.name && (
-        <div className="relative w-full p-3 border-l-2 bg-bg2 border-accent spain-flag">
-          Si quieres leer este artículo en español,{' '}
-          <a href="mailto:pablo@pablopunk.com">envíame un email</a> y lo
-          actualizo en cuanto pueda
-        </div>
+        <TranslationRequestComponent slug={story.slug} />
       )}
       <SRLWrapper>
         <Markdown>{story.content.content}</Markdown>
