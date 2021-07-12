@@ -20,7 +20,7 @@ export const Button: FunctionComponent<Props> = ({
   children,
 }) => {
   const styles = classNames(
-    'flex items-center justify-center px-2 py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-fg hover:text-fg hover:shadow-lg bg-bg2 disabled:opacity-50 disabled:cursor-not-allowed',
+    'flex items-center justify-center px-2 py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-fg hover:text-fg hover:shadow-lg bg-bg2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-accent hover:text-bg',
     className,
   )
 
