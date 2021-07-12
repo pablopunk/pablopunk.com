@@ -4,6 +4,7 @@ import {
   insertTranslationRequest,
 } from 'supabase/translation_requests'
 import { TranslationRequest } from 'supabase/types'
+import geoip from 'geoip-country'
 
 export default async function RequestTranslationApi(
   req: NextApiRequest,
@@ -19,14 +20,17 @@ export default async function RequestTranslationApi(
     return res.status(400).send('Missing slug')
   }
 
-  // save in db
   const ip =
     req.headers.forwarded ||
     req.headers.x_forwarded_for ||
-    req.rawHeaders['remoteAddress']
+    req.rawHeaders['remoteAddress'] ||
+    req.socket.remoteAddress
+  const guessed_country = ip == null ? null : geoip.lookup(ip)?.country || null
+
   const tRequest: TranslationRequest = {
     ip,
     slug,
+    guessed_country,
   }
 
   if (ip) {
