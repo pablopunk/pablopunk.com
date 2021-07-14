@@ -19,13 +19,29 @@ export const Button: FunctionComponent<Props> = ({
   disabled,
   children,
 }) => {
-  const styles = classNames(
-    'flex items-center justify-center px-2 py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-fg hover:text-fg hover:shadow-lg bg-bg2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-accent hover:text-bg',
-    className,
-  )
+  const LinkOrButton = ({ children, ...props }) => {
+    if (link) {
+      return (
+        <Link href={link?.url || ''}>
+          <a {...props}>{children}</a>
+        </Link>
+      )
+    }
 
-  children = (
-    <>
+    return (
+      <button onClick={onClick} disabled={disabled} {...props}>
+        {children}
+      </button>
+    )
+  }
+
+  return (
+    <LinkOrButton
+      className={classNames(
+        'flex items-center justify-center px-3 py-2 md:py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-fg hover:text-fg hover:shadow-lg bg-bg2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-accent hover:text-bg outline-none',
+        className,
+      )}
+    >
       {icon && (
         <span className="mr-1">
           <Icon name={icon} />
@@ -33,20 +49,6 @@ export const Button: FunctionComponent<Props> = ({
       )}
       {text && <span>{text}</span>}
       {children && children}
-    </>
-  )
-
-  if (onClick) {
-    return (
-      <button onClick={onClick} className={styles} disabled={disabled}>
-        {children}
-      </button>
-    )
-  }
-
-  return (
-    <Link href={link?.url || ''}>
-      <a className={styles}>{children}</a>
-    </Link>
+    </LinkOrButton>
   )
 }
