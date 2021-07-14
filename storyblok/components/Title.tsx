@@ -16,7 +16,7 @@ export const Title: FunctionComponent<Props> = ({
   text,
   heading,
 }) => {
-  let style = 'text-lg my-2 font-semibold'
+  let style = 'my-2 font-semibold'
 
   switch (align) {
     case 'left':
@@ -35,10 +35,10 @@ export const Title: FunctionComponent<Props> = ({
       style = `${style} text-lg`
       break
     case 'md':
-      style = `${style} text-xl`
+      style = `${style} text-2xl`
       break
     case 'lg':
-      style = `${style} text-3xl`
+      style = `${style} text-4xl`
       break
   }
 
