@@ -42,7 +42,7 @@ export const Card: FunctionComponent<Props> = ({
     <div className="p-3 border rounded-lg shadow-md bg-bg2">
       <Link href={link?.url || ''}>
         <a className="relative flex items-center group hover:cursor-pointer">
-          <div className="relative w-[90px] h-[90px] rounded-full">
+          <div className="relative w-[90px] h-[90px] rounded-full border-2">
             {image?.filename && (
               <Image
                 loading={preload ? 'eager' : 'lazy'}
@@ -50,7 +50,7 @@ export const Card: FunctionComponent<Props> = ({
                 src={image.filename}
                 alt={title}
                 layout="fill"
-                className="object-cover transition-opacity border-2 rounded-full filter group-hover:grayscale group-hover:opacity-75"
+                className="object-cover transition-opacity rounded-full filter group-hover:grayscale group-hover:opacity-75"
               />
             )}
           </div>
