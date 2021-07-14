@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { checkIfUserDidSomething, userDidSomething } from 'lib/storage'
 import { Fragment, FunctionComponent, useEffect, useState } from 'react'
 import { Button } from 'storyblok/components/Button'
-import { useTranslationRequestsCount } from 'supabase/translation_requests'
+import { useTranslationRequestsCount } from 'supabase/tables/translation_requests'
 import { Dialog, Transition } from '@headlessui/react'
 
 type Props = {

@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import {
   getAllTranslationRequestsForIpAndSlug,
   insertTranslationRequest,
-} from 'supabase/translation_requests'
+} from 'supabase/tables/translation_requests'
 import { TranslationRequest } from 'supabase/types'
 import geoip from 'geoip-country'
 
