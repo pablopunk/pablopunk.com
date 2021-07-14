@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { checkIfUserDidSomething, userDidSomething } from 'lib/storage'
 import { Fragment, FunctionComponent, useEffect, useState } from 'react'
 import { Button } from 'storyblok/components/Button'
-import { getAllTranslationRequestsForSlug } from 'supabase/translation_requests'
+import { useTranslationRequestsCount } from 'supabase/translation_requests'
 import { Dialog, Transition } from '@headlessui/react'
 
 type Props = {
@@ -12,15 +12,9 @@ type Props = {
 const TranslationRequestComponent: FunctionComponent<Props> = ({ slug }) => {
   const [translationWasRequested, setTranslationWasRequested] = useState(false)
   const [translationButtonText, setTranslationButtonText] = useState('🇪🇸')
-  const [translationRequestsCount, setTraslationRequestsCount] = useState(0)
+  const translationRequestsCount = useTranslationRequestsCount(slug)
   const [dialogOpen, setDialogOpen] = useState(false)
   const event = 'request-translation-' + slug
-
-  useEffect(() => {
-    getAllTranslationRequestsForSlug(slug).then((items) =>
-      setTraslationRequestsCount(items.length || 0),
-    )
-  }, [translationButtonText])
 
   useEffect(() => {
     if (slug && checkIfUserDidSomething(event)) {
@@ -51,6 +45,7 @@ const TranslationRequestComponent: FunctionComponent<Props> = ({ slug }) => {
         setTranslationButtonText('Error 👎🏻')
       })
   }
+
   return (
     <>
       <Transition show={dialogOpen} appear as={Fragment}>
