@@ -53,7 +53,7 @@ const PackageStat = ({ package: packageName, downloads, locale }) => {
 
   return (
     <>
-      <div className="flex items-center justify-center mt-4">
+      <div className="flex items-center justify-center mt-4 whitespace-nowrap">
         <span className="mr-1 text-accent2">
           <HiOutlineFolderDownload />
         </span>
