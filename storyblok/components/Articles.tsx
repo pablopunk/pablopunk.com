@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import { FunctionComponent } from 'react'
 import { Card } from './Card'
 import type { PostType } from 'storyblok/types'
+import { AnimatedCard } from './AnimatedCard'
 
 type Props = {
   items: PostType[]
@@ -11,13 +12,13 @@ export const Articles: FunctionComponent<Props> = ({ items }) => {
 
   return (
     <div className="my-3">
-      {items.map((article) => {
+      {items.map((article, i) => {
         const translatedSlug = article.translated_slugs?.find(
           (slug) => slug.lang === locale,
         )
 
         return (
-          <div key={article.full_slug} className="my-3">
+          <AnimatedCard key={article.full_slug} className="my-3" index={i}>
             <Card
               title={translatedSlug?.name ? translatedSlug.name : article.name}
               subtitle={new Date(article.created_at).toLocaleDateString()}
@@ -30,7 +31,7 @@ export const Articles: FunctionComponent<Props> = ({ items }) => {
               }}
               line_clamp={2}
             />
-          </div>
+          </AnimatedCard>
         )
       })}
     </div>

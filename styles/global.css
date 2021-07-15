@@ -23,10 +23,10 @@ body {
 body.dark {
   --color-bg: black;
   --color-fg: var(--slate7);
-  --color-bg2: hsl(222deg 19% 5%);
+  --color-bg2: hsl(222deg 19% 10%);
   --color-accent: var(--mint8);
   --color-accent2: var(--blue8);
-  --color-border: var(--gray12);
+  --color-border: hsl(222deg 19% 20%);
 }
 
 html {
