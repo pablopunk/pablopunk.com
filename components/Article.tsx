@@ -18,6 +18,7 @@ const StyledArticle = styled.article`
 
   p {
     margin: 1rem 0;
+    line-height: 1.7rem;
   }
 
   .body {

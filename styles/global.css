@@ -1,0 +1,97 @@
+:root {
+  --transition-time: 0.3s;
+  --nav-height: 44px;
+  --footer-height: 50px;
+
+  --color-bg: #f8fafc;
+  --color-fg: #334155;
+  --color-bg2: white;
+  --color-accent: #3b82f6;
+  --color-accent2: #14b8a6;
+  --color-border: #e2e8f0;
+}
+
+body.dark {
+  --color-bg: black;
+  --color-fg: #e2e8f0;
+  --color-bg2: #040c12;
+  --color-accent: #5eead4;
+  --color-accent2: #f0abfc;
+  --color-border: #1e293b;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html,
+body {
+  position: relative;
+}
+body {
+  margin: 0;
+  padding: 0;
+
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  transition: background-color var(--transition-time),
+    color var(--transition-time);
+}
+
+svg {
+  vertical-align: middle;
+}
+
+a {
+  color: var(--color-accent);
+  transition: background-color var(--transition-time),
+    color var(--transition-time);
+  font-weight: bold;
+}
+
+a:hover {
+  color: var(--color-fg);
+}
+
+article  {
+  transition: background-color var(--transition-time),
+    color var(--transition-time);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-fg);
+  font-weight: bold;
+}
+
+.fill-height {
+  height: 100%;
+  min-height: calc(100vh - var(--footer-height) - var(--nav-height));
+
+  @media (max-width: 640px) {
+    min-height: calc(100vh - var(--nav-height));
+  }
+}
+
+section {
+  padding: 1rem 0;
+  position: relative;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

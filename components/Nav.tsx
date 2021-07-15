@@ -42,7 +42,7 @@ const Nav = ({ main = [] }) => {
 
   return (
     <div
-      className="relative z-20 flex items-center justify-between no-scrollbar"
+      className="relative z-20 flex items-center justify-between px-1 no-scrollbar"
       style={{ height: 'var(--nav-height)' }}
     >
       <nav className="flex">
@@ -52,7 +52,7 @@ const Nav = ({ main = [] }) => {
           return (
             <div
               key={button.link.url}
-              className={`p-2 text-lg font-bold uppercase ${
+              className={`px-2 py-1 text-lg font-bold uppercase ${
                 current ? 'hidden md:block' : ''
               }`}
             >
@@ -70,13 +70,13 @@ const Nav = ({ main = [] }) => {
         })}
       </nav>
       <div className="relative flex mt-4 mr-3 text-xl">
-        <div className="z-30 p-2 text-3xl transition-colors rounded-full shadow cursor-pointer text-accent hover:text-accent2 hover:bg-bg bg-bg2 md:text-xl border">
+        <div className="z-30 p-2 text-3xl transition-colors border rounded-full shadow cursor-pointer text-accent hover:text-accent2 hover:bg-bg bg-bg2 md:text-xl">
           <ChangeThemeButton />
         </div>
         <a
           href="/donate"
           title={_('Sponsor', locale)}
-          className="hidden p-2 ml-2 rounded-full shadow text-accent hover:text-accent2 hover:bg-bg bg-bg2 md:block"
+          className="hidden p-2 ml-2 border rounded-full shadow text-accent hover:text-accent2 hover:bg-bg bg-bg2 md:block"
         >
           <FaCreditCard />
         </a>

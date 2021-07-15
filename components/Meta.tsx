@@ -6,7 +6,6 @@ import { SITE_DESC, SITE_IMAGE, SITE_NAME, SITE_URL } from 'config'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import useTheme from 'hooks/useTheme'
-import { THEME } from 'config'
 
 export default function Meta(props) {
   const { title, description, og_title, og_description, og_image } = props
@@ -16,11 +15,11 @@ export default function Meta(props) {
   const [titleBarColor, setTitleBarColor] = useState('#fff')
 
   useEffect(() => {
-    if (theme === 'dark') {
-      setTitleBarColor(THEME.dark.bg)
-    } else {
-      setTitleBarColor(THEME.light.bg)
-    }
+    const bodyBg = getComputedStyle(document.body).getPropertyValue(
+      '--color-bg',
+    )
+
+    setTitleBarColor(bodyBg)
   }, [theme])
 
   return (
