@@ -109,7 +109,8 @@ const TranslationRequestComponent: FunctionComponent<Props> = ({ slug }) => {
           >
             {translationButtonText}
             <span className="ml-2">
-              {translationRequestsCount} votos{' '}
+              {translationRequestsCount} voto
+              {translationRequestsCount !== 1 && 's'}{' '}
               {translationWasRequested && '(ya has votado)'}
             </span>
           </Button>
