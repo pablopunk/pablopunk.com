@@ -1,5 +1,4 @@
 import { useSpring, animated } from 'react-spring'
-import { useVisible } from 'react-hooks-visible'
 import { useEffect } from 'react'
 
 const ANIMATION_OFFSET = 100
@@ -8,16 +7,13 @@ export const AnimatedCard = ({ index, children, ...props }) => {
     from: { y: -ANIMATION_OFFSET, opacity: 0 },
   }))
   const cardEnter = () => cardEnterAnimation.start({ to: { y: 0, opacity: 1 } })
-  const [cardRef, isVisible] = useVisible<HTMLDivElement>()
 
   useEffect(() => {
-    if (isVisible) {
-      setTimeout(cardEnter, index * 70)
-    }
-  }, [isVisible])
+    setTimeout(cardEnter, index * 70)
+  }, [])
 
   return (
-    <animated.div style={cardEnterStyles} ref={cardRef} {...props}>
+    <animated.div style={cardEnterStyles} {...props}>
       {children}
     </animated.div>
   )
