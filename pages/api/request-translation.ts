@@ -5,6 +5,9 @@ import {
 } from 'supabase/tables/translation_requests'
 import { TranslationRequest } from 'supabase/types'
 import geoip from 'geoip-country'
+import { sendTranslationRequestEmail } from 'sendgrid/templates/translationRequest'
+import { sendErrorEmail } from 'sendgrid/templates/error'
+import { ADMIN_EMAIL } from 'sendgrid/constants'
 
 export default async function RequestTranslationApi(
   req: NextApiRequest,
@@ -51,8 +54,13 @@ export default async function RequestTranslationApi(
     if (process.env.NODE_ENV === 'development') {
       return res.status(500).send({ error })
     }
+
+    await sendErrorEmail(error.message, 'pablo@pablopunk.com')
+
     return res.status(500).send({ error: 'Error inserting on db' })
   }
+
+  await sendTranslationRequestEmail(tRequest, ADMIN_EMAIL)
 
   return res.status(200).send({ status: 'ok' })
 }
