@@ -44,7 +44,7 @@ export const Card: FunctionComponent<Props> = ({
           <div className="relative w-[90px] h-[90px] rounded-full border-2">
             {image?.filename && (
               <img
-                loading="lazy"
+                loading={preload ? 'eager' : 'lazy'}
                 src={image.filename}
                 alt={title}
                 className="object-cover w-full h-full transition-opacity rounded-full filter group-hover:grayscale group-hover:opacity-75"
