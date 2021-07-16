@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react'
 import type { LinkType, ImageType } from 'storyblok/types'
-import Image from 'next/image'
 import Link from 'next/link'
 import Markdown from 'components/Markdown'
 import classNames from 'classnames'
@@ -44,13 +43,11 @@ export const Card: FunctionComponent<Props> = ({
         <a className="relative flex items-center group hover:cursor-pointer">
           <div className="relative w-[90px] h-[90px] rounded-full border-2">
             {image?.filename && (
-              <Image
-                loading={preload ? 'eager' : 'lazy'}
-                priority={preload}
+              <img
+                loading="lazy"
                 src={image.filename}
                 alt={title}
-                layout="fill"
-                className="object-cover transition-opacity rounded-full filter group-hover:grayscale group-hover:opacity-75"
+                className="object-cover w-full h-full transition-opacity rounded-full filter group-hover:grayscale group-hover:opacity-75"
               />
             )}
           </div>
