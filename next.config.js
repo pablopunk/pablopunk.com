@@ -35,13 +35,11 @@ const rd = [
   },
   {
     path: 'illustrations',
-    dest:
-      'https://www.notion.so/pablopunk/Drawings-0c241704f0ea48d39591ca3bf1483966',
+    dest: 'https://www.notion.so/pablopunk/Drawings-0c241704f0ea48d39591ca3bf1483966',
   },
   {
     path: 'drawings',
-    dest:
-      'https://www.notion.so/pablopunk/Drawings-0c241704f0ea48d39591ca3bf1483966',
+    dest: 'https://www.notion.so/pablopunk/Drawings-0c241704f0ea48d39591ca3bf1483966',
   },
   {
     path: 'photos',
@@ -49,8 +47,23 @@ const rd = [
   },
   {
     path: 'gear',
-    dest:
-      'https://www.notion.so/pablopunk/Gear-I-use-11cee5aed9a349309ef30a72f6923f37',
+    dest: 'https://www.notion.so/pablopunk/Gear-I-use-11cee5aed9a349309ef30a72f6923f37',
+  },
+  {
+    path: 'healthi-app',
+    dest: 'https://pablopunk.github.io/healthi-app/',
+  },
+  {
+    path: 'admin',
+    dest: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  },
+  {
+    path: 'admin.php',
+    dest: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  },
+  {
+    path: 'wp-admin/includes',
+    dest: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   },
 ]
 
