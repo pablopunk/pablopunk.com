@@ -54,6 +54,14 @@ const rd = [
     dest: 'https://pablopunk.github.io/healthi-app/',
   },
   {
+    path: 'iga',
+    dest: 'https://github.com/pablopunk/iga',
+  },
+  {
+    path: 'favicon.ico',
+    dest: '/favicon/favicon.ico',
+  },
+  {
     path: 'admin',
     dest: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   },
@@ -63,6 +71,14 @@ const rd = [
   },
   {
     path: 'wp-admin/includes',
+    dest: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  },
+  {
+    path: 'wp-content',
+    dest: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  },
+  {
+    path: 'wp-login.php',
     dest: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   },
 ]
