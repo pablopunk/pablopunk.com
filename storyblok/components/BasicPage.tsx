@@ -25,7 +25,9 @@ const Page: FunctionComponent<PageProps> = ({ page }) => {
         <BlokComponent blok={blok} key={blok._uid} />
       ))}
       {/* story article */}
-      {story.content?.content && <Article story={story} />}
+      {story.content?.content && (
+        <Article story={story} translated={page.content.translated} />
+      )}
     </>
   )
 }

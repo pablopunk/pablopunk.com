@@ -59,7 +59,9 @@ const Nav = ({ main = [] }) => {
               <Link href={button.link.url} locale={locale}>
                 <a
                   className={
-                    current ? 'md:text-accent' : 'text-fg md:hover:text-accent'
+                    current
+                      ? 'md:text-accent3'
+                      : 'text-fg md:hover:text-accent3'
                   }
                 >
                   {button.text}
@@ -70,13 +72,13 @@ const Nav = ({ main = [] }) => {
         })}
       </nav>
       <div className="relative flex mt-4 mr-3 text-xl">
-        <div className="z-30 p-2 text-3xl transition-colors border rounded-full shadow cursor-pointer text-accent hover:text-accent2 hover:bg-bg bg-bg2 md:text-xl">
+        <div className="z-30 p-2 text-3xl transition-colors border rounded-full shadow cursor-pointer text-accent3 hover:text-accent3-alt hover:bg-bg bg-bg2 md:text-xl">
           <ChangeThemeButton />
         </div>
         <a
           href="/donate"
           title={_('Sponsor', locale)}
-          className="hidden p-2 ml-2 border rounded-full shadow text-accent hover:text-accent2 hover:bg-bg bg-bg2 md:block"
+          className="hidden p-2 ml-2 border rounded-full shadow text-accent3 hover:text-accent3-alt hover:bg-bg bg-bg2 md:block"
         >
           <FaCreditCard />
         </a>

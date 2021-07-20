@@ -52,7 +52,7 @@ export const Card: FunctionComponent<Props> = ({
             )}
           </div>
           <div className="max-w-[65%] pl-3">
-            <h4 className="font-semibold transition-colors text-md md:text-lg group-hover:text-accent2">
+            <h4 className="font-semibold transition-colors text-md md:text-lg group-hover:text-accent-alt">
               {title}
             </h4>
             <h5

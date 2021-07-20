@@ -6,7 +6,7 @@ type Props = {
   align?: AlignType
   size?: 'lg' | 'md' | 'sm'
   heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | null
-  color?: 'accent' | 'accent2' | 'fg'
+  color?: 'accent' | 'accent-alt' | 'fg'
 }
 
 export const Title: FunctionComponent<Props> = ({
@@ -46,8 +46,8 @@ export const Title: FunctionComponent<Props> = ({
     case 'accent':
       style = `${style} text-accent`
       break
-    case 'accent2':
-      style = `${style} text-accent2`
+    case 'accent-alt':
+      style = `${style} text-accent-alt`
       break
     case 'fg':
       style = `${style} text-fg`

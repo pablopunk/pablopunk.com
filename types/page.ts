@@ -15,6 +15,7 @@ export interface PageProps {
       title?: string
       content?: string
       image: ImageType
+      translated: boolean
     }
     lang: string
     path: string

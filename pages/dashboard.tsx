@@ -47,14 +47,14 @@ const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
             <h2>Unsplash</h2>
             <Stat>
               <FiDownloadCloud />{' '}
-              <strong className="ml-1 text-accent2">
+              <strong className="ml-1 text-accent-alt">
                 {humanFormat(data.unsplash?.downloads?.total || 0)}{' '}
               </strong>
               <span className="ml-1">{_('total downloads', locale)}</span>
             </Stat>
             <Stat>
               <MdPageview />{' '}
-              <strong className="ml-1 text-accent2">
+              <strong className="ml-1 text-accent-alt">
                 {humanFormat(data.unsplash?.views?.total || 0)}{' '}
               </strong>
               <span className="ml-1">{_('total views', locale)}</span>
@@ -64,21 +64,21 @@ const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
             <h2>GitHub</h2>
             <Stat>
               <AiOutlineStar />{' '}
-              <strong className="ml-1 text-accent2">
+              <strong className="ml-1 text-accent-alt">
                 +{humanFormat(180 + (data.github?.stars_received || 0))}{' '}
               </strong>
               <span className="ml-1">{_('stars received', locale)}</span>
             </Stat>
             <Stat>
               <AiOutlineUsergroupAdd />{' '}
-              <strong className="ml-1 text-accent2">
+              <strong className="ml-1 text-accent-alt">
                 {humanFormat(data.github?.followers || 0)}{' '}
               </strong>
               <span className="ml-1">{_('followers', locale)}</span>
             </Stat>
             <Stat>
               <GoRepo />{' '}
-              <strong className="ml-1 text-accent2">
+              <strong className="ml-1 text-accent-alt">
                 {humanFormat(data.github?.public_repos || 0)}{' '}
               </strong>
               <span className="ml-1">{_('repos', locale)}</span>

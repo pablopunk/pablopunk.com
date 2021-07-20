@@ -10,6 +10,8 @@ module.exports = {
         bg2: 'var(--color-bg2)',
         accent: 'var(--color-accent)',
         accent2: 'var(--color-accent2)',
+        accent3: 'var(--color-accent3)',
+        'accent-alt': 'var(--color-accent-alt)',
       },
       gridTemplateColumns: {
         '2-auto': 'auto auto',

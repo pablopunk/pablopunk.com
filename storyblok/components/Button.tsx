@@ -38,7 +38,7 @@ export const Button: FunctionComponent<Props> = ({
   return (
     <LinkOrButton
       className={classNames(
-        'flex items-center justify-center px-3 py-2 md:py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-bg hover:shadow-lg bg-accent disabled:opacity-50 disabled:cursor-not-allowed hover:bg-bg2 hover:text-fg outline-none hover:scale-x-110',
+        'flex items-center justify-center px-3 py-2 md:py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-bg hover:shadow-lg bg-accent disabled:opacity-50 disabled:cursor-not-allowed hover:bg-accent3 hover:text-bg outline-none hover:scale-x-110',
         className,
       )}
     >

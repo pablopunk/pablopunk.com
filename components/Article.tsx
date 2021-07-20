@@ -65,7 +65,7 @@ const StyledArticle = styled.article`
   }
 
   code {
-    color: var(--color-accent);
+    color: var(--color-accent-alt);
     font-family: 'SF Mono', Menlo, monospace;
     font-size: 85%;
   }
@@ -98,10 +98,12 @@ const StyledArticle = styled.article`
 
 type Props = {
   story: PostType
+  translated: boolean // true if content is translated
 }
 
-const Article: FunctionComponent<Props> = ({ story }) => {
+const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
   const { asPath, locale } = useRouter()
+  // "translated = false" means the content is not translated, but the title could still be translated
   const translatedSlug = story.translated_slugs.find(
     (slug) => slug.lang === locale,
   )
@@ -130,9 +132,7 @@ const Article: FunctionComponent<Props> = ({ story }) => {
       <h1 className="w-full my-4 text-3xl font-semibold text-center">
         {translatedSlug?.name ? translatedSlug?.name : story.name}
       </h1>
-      {translatedSlug?.name && (
-        <TranslationRequestComponent slug={story.slug} />
-      )}
+      {!translated && <TranslationRequestComponent slug={story.slug} />}
       <SRLWrapper>
         <Markdown>{story.content.content}</Markdown>
       </SRLWrapper>
