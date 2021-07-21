@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import {
-  getAllTranslationRequestsForIpAndSlug,
+  // getAllTranslationRequestsForIpAndSlug,
   insertTranslationRequest,
 } from 'supabase/tables/translation_requests'
 import { TranslationRequest } from 'supabase/types'
