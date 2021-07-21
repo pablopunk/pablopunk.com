@@ -24,9 +24,8 @@ export default async function RequestTranslationApi(
 
   const ip =
     req.headers.forwarded ||
-    req.headers.x_forwarded_for ||
-    req.rawHeaders['remoteAddress'] ||
-    req.socket.remoteAddress
+    req.headers.x_forwarded_for.toString() ||
+    res.socket.remoteAddress
   const guessed_country = ip == null ? null : geoip.lookup(ip)?.country || null
 
   const tRequest: TranslationRequest = {
@@ -35,17 +34,17 @@ export default async function RequestTranslationApi(
     guessed_country,
   }
 
-  if (ip) {
-    const allRequests = await getAllTranslationRequestsForIpAndSlug({
-      ip,
-      slug,
-    })
+  // if (ip) {
+  //   const allRequests = await getAllTranslationRequestsForIpAndSlug({
+  //     ip,
+  //     slug,
+  //   })
 
-    if (allRequests.length > 0) {
-      // ip already requested a translation for this slug
-      return res.status(200).send({ status: 'ok' })
-    }
-  }
+  //   if (allRequests.length > 0) {
+  //     // ip already requested a translation for this slug
+  //     return res.status(200).send({ status: 'ok' })
+  //   }
+  // }
 
   const { error } = await insertTranslationRequest(tRequest)
 
