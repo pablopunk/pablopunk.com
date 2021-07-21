@@ -24,7 +24,7 @@ export default async function RequestTranslationApi(
 
   const ip =
     req.headers.forwarded ||
-    req.headers.x_forwarded_for.toString() ||
+    req.headers.x_forwarded_for?.toString() ||
     res.socket.remoteAddress
   const guessed_country = ip == null ? null : geoip.lookup(ip)?.country || null
 
