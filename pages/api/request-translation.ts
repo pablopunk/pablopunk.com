@@ -22,10 +22,7 @@ export default async function RequestTranslationApi(
     return res.status(400).send('Missing slug')
   }
 
-  const ip =
-    req.headers.forwarded ||
-    req.headers.x_forwarded_for?.toString() ||
-    res.socket.remoteAddress
+  const ip = res.socket.remoteAddress
   const guessed_country = ip == null ? null : geoip.lookup(ip)?.country || null
 
   const tRequest: TranslationRequest = {
