@@ -7,6 +7,7 @@ import { TranslationRequest } from 'supabase/types'
 import geoip from 'geoip-country'
 import { sendTranslationRequestEmail } from 'sendgrid/templates/translationRequest'
 import { sendErrorEmail } from 'sendgrid/templates/error'
+import { getClientIp } from '@supercharge/request-ip'
 
 export default async function RequestTranslationApi(
   req: NextApiRequest,
@@ -22,7 +23,7 @@ export default async function RequestTranslationApi(
     return res.status(400).send('Missing slug')
   }
 
-  const ip = res.socket.remoteAddress
+  const ip = getClientIp(req) || null
   const guessed_country = ip == null ? null : geoip.lookup(ip)?.country || null
 
   const tRequest: TranslationRequest = {
