@@ -1,11 +1,13 @@
 import React from 'react'
 import fetch from 'isomorphic-unfetch'
-import { AreaChart } from 'reaviz'
 import humanFormat from 'human-format'
 import { HiOutlineFolderDownload } from 'react-icons/hi'
 import { _ } from 'locales'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
+import { Line } from 'react-chartjs-2'
+import 'chartjs-adapter-date-fns'
+import { useCssVar } from 'hooks/useCssVar'
 
 const packages = [
   'nextjs-redirect',
@@ -25,20 +27,28 @@ export const fetchAllNpmData = () =>
     ),
   )
 
-function convertStatsToChartData(stats) {
-  if (stats?.downloads == null) {
-    return []
+function convertDownloadsToChartJS(downloads, color) {
+  const max = Math.max(...downloads.map((d) => parseInt(d.downloads)))
+  const min = max / 10
+
+  let _downloads = downloads?.filter((x) => x.downloads > min)
+
+  let data = {
+    labels: _downloads.map((d) => d.day),
+    datasets: [
+      {
+        label: 'Downloads',
+        data: _downloads.map((x) => x.downloads),
+        backgroundColor: 'transparent',
+        borderColor: color,
+        fill: false,
+        // borderDash: [5, 5],
+        tension: 0.1,
+      },
+    ],
   }
 
-  const max = Math.max(...stats.downloads.map((s) => parseInt(s.downloads)))
-  const min = max / 11
-
-  return stats?.downloads
-    .map((stat) => ({
-      key: new Date(stat.day),
-      data: stat.downloads,
-    }))
-    .filter((s) => s.data > min)
+  return data
 }
 
 const totalDownloads = (downloads) =>
@@ -47,13 +57,15 @@ const totalDownloads = (downloads) =>
   }).replace(' ', '')
 
 const PackageStat = ({ package: packageName, downloads, locale }) => {
+  const color = useCssVar('--color-accent-alt')
+
   if (downloads == null) {
     return null
   }
 
   return (
     <>
-      <div className="flex items-center justify-center mt-4 whitespace-nowrap">
+      <div className="flex items-center justify-center my-3 mt-4 text-xl whitespace-nowrap">
         <span className="mr-1 text-accent-alt">
           <HiOutlineFolderDownload />
         </span>
@@ -63,7 +75,18 @@ const PackageStat = ({ package: packageName, downloads, locale }) => {
           <strong>{packageName}</strong>
         </a>
       </div>
-      <AreaChart height={300} data={convertStatsToChartData({ downloads })} />
+      <Line
+        data={convertDownloadsToChartJS(downloads, color)}
+        options={{
+          plugins: {
+            legend: { display: false },
+            decimation: { enabled: true, algorithm: 'lttb', samples: 5 },
+          },
+          scales: {
+            x: { type: 'time' },
+          },
+        }}
+      />
     </>
   )
 }

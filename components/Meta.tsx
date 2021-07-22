@@ -3,24 +3,13 @@ import { NextSeo, SocialProfileJsonLd } from 'next-seo'
 import { DEFAULT_LOCALE } from 'locales'
 import { useRouter } from 'next/router'
 import { SITE_DESC, SITE_IMAGE, SITE_NAME, SITE_URL } from 'config'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import useTheme from 'hooks/useTheme'
+import { useCssVar } from 'hooks/useCssVar'
 
 export default function Meta(props) {
   const { title, description, og_title, og_description, og_image } = props
   const { locale } = useRouter()
   const siteUrl = SITE_URL + (locale !== DEFAULT_LOCALE ? locale : '')
-  const [theme] = useTheme()
-  const [titleBarColor, setTitleBarColor] = useState('#fff')
-
-  useEffect(() => {
-    const bodyBg = getComputedStyle(document.body).getPropertyValue(
-      '--color-bg',
-    )
-
-    setTitleBarColor(bodyBg)
-  }, [theme])
+  const titleBarColor = useCssVar('--color-bg')
 
   return (
     <>
