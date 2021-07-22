@@ -42,7 +42,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   })
 
   posts.forEach((post: PostType) => {
-    const description = snarkdownEnhanced(post.content.content)
+    const contentHtml = snarkdownEnhanced(post.content.content)
     const translatedSlug = getTranslatedSlug(post, locale)
     const url = `${SITE_URL}/${translatedSlug.path}`
 
@@ -50,8 +50,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       title: translatedSlug.name,
       id: url,
       link: url,
-      description: description,
-      content: post.content.content,
+      description: contentHtml,
+      content: contentHtml,
       author: [AUTHOR],
       date: new Date(post.created_at),
       image: post.content.image.filename,
