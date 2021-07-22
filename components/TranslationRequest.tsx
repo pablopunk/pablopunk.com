@@ -105,7 +105,7 @@ const TranslationRequestComponent: FunctionComponent<Props> = ({ slug }) => {
           <Button
             onClick={translationRequestButtonClick}
             disabled={translationWasRequested}
-            className="text-sm bg-bg"
+            size="sm"
           >
             {translationButtonText}
             <span className="ml-2">

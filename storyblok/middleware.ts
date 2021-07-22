@@ -30,7 +30,7 @@ async function getPageData(
 
 const POSTS_PAGE_SIZE = 6
 
-export async function getAllPosts(
+export async function getPosts(
   page: number,
   preview: boolean = false,
   locale: string,
@@ -53,6 +53,37 @@ export async function getAllPosts(
       sort_by: 'created_at:desc',
       per_page: POSTS_PAGE_SIZE,
       page,
+    })
+
+    posts = results.data.stories
+    total = results.total
+  } catch (err) {
+    console.error(err.response?.data?.error)
+  }
+
+  return { posts, total }
+}
+
+export async function getAllPosts(
+  preview: boolean = false,
+  locale: string,
+): Promise<{
+  posts: PostType[]
+  total: number
+}> {
+  const version =
+    process.env.NODE_VERSION !== 'production' || preview ? 'draft' : 'published'
+
+  let posts = [],
+    total = 0
+
+  try {
+    const results = await Storyblok.get(`cdn/stories`, {
+      version,
+      cv: Date.now(),
+      language: locale,
+      starts_with: 'posts',
+      sort_by: 'created_at:desc',
     })
 
     posts = results.data.stories

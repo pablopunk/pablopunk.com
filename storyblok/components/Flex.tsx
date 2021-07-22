@@ -4,7 +4,7 @@ import { BlokComponent } from './BlokComponent'
 type Props = {
   items: any[]
   size: 'sm' | 'md' | 'lg' | 'full'
-  justify: 'start' | 'center' | 'end'
+  justify: 'start' | 'center' | 'end' | 'between'
   align: 'start' | 'center' | 'end'
 }
 
@@ -44,6 +44,9 @@ export const Flex: FunctionComponent<Props> = ({
       break
     case 'end':
       justifyStyle = 'justify-end'
+      break
+    case 'between':
+      justifyStyle = 'justify-between'
       break
   }
 

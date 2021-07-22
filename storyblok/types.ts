@@ -5,6 +5,7 @@ export type ButtonType = {
   type?: 'social'
   icon?: string
   link?: LinkType
+  size?: 'sm' | 'md' | 'lg'
 }
 export type PostType = {
   name: string

@@ -14,6 +14,7 @@ export const Button: FunctionComponent<Props> = ({
   text,
   link,
   icon,
+  size,
   onClick,
   className,
   disabled,
@@ -39,11 +40,16 @@ export const Button: FunctionComponent<Props> = ({
     <LinkOrButton
       className={classNames(
         'flex items-center justify-center px-3 py-2 md:py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-bg hover:shadow-lg bg-accent disabled:opacity-50 disabled:cursor-not-allowed hover:bg-accent3 hover:text-bg outline-none hover:scale-x-110',
+        {
+          'text-sm': size === 'sm',
+          'text-md': size === 'md',
+          'text-lg': size === 'lg',
+        },
         className,
       )}
     >
       {icon && (
-        <span className="mr-1">
+        <span className={classNames({ 'mr-1': text!! })}>
           <Icon name={icon} />
         </span>
       )}

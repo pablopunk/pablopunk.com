@@ -1,3 +1,5 @@
+import { PostType } from './types'
+
 const howOldAmI = () => {
   const now = new Date()
   const iHadABirthDayThisYear = now.getMonth() >= 6 && now.getDate() >= 9
@@ -19,4 +21,18 @@ export const handlePlaceholders = (text: string) => {
   newText = YEARS_OLD(text)
 
   return newText
+}
+
+export function getTranslatedSlug(post: PostType, locale: string) {
+  const translatedSlug = post.translated_slugs?.find(
+    (slug) => slug.lang === locale,
+  )
+
+  return (
+    translatedSlug || {
+      lang: locale,
+      name: post.name,
+      path: post.default_full_slug,
+    }
+  )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { getPageStaticProps, getAllPosts } from 'storyblok/middleware'
+import { getPageStaticProps, getPosts } from 'storyblok/middleware'
 import { PageProps } from 'types/page'
 import { GetStaticProps } from 'next'
 import useStoryblok from 'storyblok/hooks/useStoryblok'
@@ -71,7 +71,7 @@ const Blog = ({ page, locale, posts, total }: Props) => {
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const [sProps, postsResults] = await Promise.all([
     getPageStaticProps(ctx, 'blog'),
-    getAllPosts(1, ctx.preview, ctx.locale),
+    getPosts(1, ctx.preview, ctx.locale),
   ])
 
   if (!('props' in sProps) || 'notFound' in sProps) {

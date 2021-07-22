@@ -19,9 +19,9 @@ body.dark {
   --color-bg: black;
   --color-fg: #c3c3c3;
   --color-bg2: hsl(222deg 19% 10%);
-  --color-accent: #006d5b;
-  --color-accent: #019078;
-  --color-accent3: #02b194;
+  --color-accent: #05c7a7;
+  --color-accent: #00ddb8;
+  --color-accent3: #00ffd5;
   --color-accent-alt: #3e9afc;
   --color-border: hsl(222deg 19% 20%);
 }

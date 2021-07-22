@@ -1,7 +1,7 @@
 import { FunctionComponent, HTMLAttributes } from 'react'
 import snarkdown from 'snarkdown'
 
-const snarkdownEnhanced = (md: string) => {
+export const snarkdownEnhanced = (md: string) => {
   const htmls = md
     .split(/(?:\r?\n){2,}/)
     .map((l) =>
