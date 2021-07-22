@@ -28,17 +28,12 @@ export const fetchAllNpmData = () =>
   )
 
 function convertDownloadsToChartJS(downloads, color) {
-  const max = Math.max(...downloads.map((d) => parseInt(d.downloads)))
-  const min = max / 10
-
-  let _downloads = downloads?.filter((x) => x.downloads > min)
-
-  let data = {
-    labels: _downloads.map((d) => d.day),
+  return {
+    labels: downloads.map((d) => d.day),
     datasets: [
       {
         label: 'Downloads',
-        data: _downloads.map((x) => x.downloads),
+        data: downloads.map((x) => x.downloads),
         backgroundColor: 'transparent',
         borderColor: color,
         fill: false,
@@ -47,8 +42,6 @@ function convertDownloadsToChartJS(downloads, color) {
       },
     ],
   }
-
-  return data
 }
 
 const totalDownloads = (downloads) =>
