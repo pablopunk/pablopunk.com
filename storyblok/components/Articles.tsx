@@ -28,7 +28,7 @@ export const Articles: FunctionComponent<Props> = ({ items }) => {
                 ?.join('\n')}
               image={article.content?.image}
               link={{ url: translatedSlug?.path }}
-              // line_clamp={2}
+              line_clamp={2}
             />
           </AnimatedCard>
         )
