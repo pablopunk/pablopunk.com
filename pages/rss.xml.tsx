@@ -63,7 +63,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   feed.addCategory('Programming')
   feed.addCategory('Apple')
 
-  res.setHeader('Content-Type', 'text/xml')
+  res.setHeader('Content-Type', 'application/rss+xml')
   res.write(feed.rss2())
   res.end()
 
