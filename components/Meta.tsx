@@ -8,7 +8,7 @@ import { useCssVar } from 'hooks/useCssVar'
 export default function Meta(props) {
   const { title, description, og_title, og_description, og_image } = props
   const { locale } = useRouter()
-  const siteUrl = SITE_URL + (locale !== DEFAULT_LOCALE ? locale : '')
+  const siteUrl = `${SITE_URL}/${locale !== DEFAULT_LOCALE ? locale : ''}`
   const titleBarColor = useCssVar('--color-bg')
 
   return (
