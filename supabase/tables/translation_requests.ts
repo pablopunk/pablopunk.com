@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-import { useRealtime, useFilter } from 'react-supabase'
 import client from 'supabase/client'
 import {
   TRANSLATION_REQUESTS_TABLE,

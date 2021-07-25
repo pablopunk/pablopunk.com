@@ -15,7 +15,9 @@ export function useSlugCountInTable(tableName: string, slug?: string) {
   })
 
   useEffect(() => {
-    setCount(data?.length || 0)
+    const requestsWithThisSlug = data?.filter((t) => t.slug === slug) || []
+
+    setCount(requestsWithThisSlug.length)
   }, [data])
 
   if (error) {
