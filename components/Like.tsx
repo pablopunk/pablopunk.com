@@ -20,6 +20,7 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
   }, [])
 
   const likeThis = () => {
+    setAlreadyLiked(true)
     fetch(`/api/like`, {
       method: 'POST',
       body: JSON.stringify({
@@ -29,7 +30,6 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
       .then((r) => r.json())
       .then((response) => {
         if (response?.status === 'ok') {
-          setAlreadyLiked(true)
           userDidSomething(event)
         } else {
           setButtonText('Error 👎🏻')
