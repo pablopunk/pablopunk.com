@@ -2,10 +2,10 @@ export type LinkType = { url: string }
 export type AlignType = 'left' | 'center' | 'right'
 export type ButtonType = {
   text?: string
-  type?: 'social'
   icon?: string
   link?: LinkType
   size?: 'sm' | 'md' | 'lg'
+  type?: 'primary' | 'secondary' | 'outline'
 }
 export type PostType = {
   name: string

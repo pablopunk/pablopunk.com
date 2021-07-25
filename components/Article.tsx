@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { FunctionComponent } from 'preact'
 import type { PostType } from 'storyblok/types'
 import TranslationRequestComponent from './TranslationRequest'
+import LikeComponent from './Like'
 
 const StyledArticle = styled.article`
   display: flex;
@@ -132,7 +133,12 @@ const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
       <h1 className="w-full my-4 text-3xl font-semibold text-center">
         {translatedSlug?.name ? translatedSlug?.name : story.name}
       </h1>
-      {!translated && <TranslationRequestComponent slug={story.slug} />}
+      <div className="flex items-center justify-end w-full">
+        <div className="mx-3">
+          <LikeComponent slug={story.slug} />
+        </div>
+        {!translated && <TranslationRequestComponent slug={story.slug} />}
+      </div>
       <SRLWrapper>
         <Markdown>{story.content.content}</Markdown>
       </SRLWrapper>

@@ -33,7 +33,6 @@ const Blog = ({ page, locale, posts, total }: Props) => {
   }, [displayedPosts])
 
   const fetchMorePosts = () => {
-    console.log('fetching')
     setLoading(true)
 
     if (thereAreMorePosts && !loading) {

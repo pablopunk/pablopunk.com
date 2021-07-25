@@ -15,6 +15,7 @@ export const Button: FunctionComponent<Props> = ({
   link,
   icon,
   size,
+  type,
   onClick,
   className,
   disabled,
@@ -39,12 +40,18 @@ export const Button: FunctionComponent<Props> = ({
   return (
     <LinkOrButton
       className={classNames(
-        'flex items-center justify-center px-3 py-2 md:py-1 text-xl font-semibold transition-all border rounded-md shadow-md cursor-pointer md:text-md text-bg hover:shadow-lg bg-accent disabled:opacity-50 disabled:cursor-not-allowed hover:bg-accent3 hover:text-bg outline-none hover:scale-x-110',
+        'flex items-center justify-center px-3 py-2 md:py-1 text-xl font-semibold transition-all border rounded-md shadow-md hover:shadow-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed outline-none hover:scale-110',
         {
           'text-sm': size === 'sm',
           'text-md': size === 'md',
           'text-lg': size === 'lg',
+          'text-bg': type !== 'outline',
+          'bg-accent hover:bg-accent3 hover:text-bg':
+            type === 'primary' || type == null,
+          'bg-accent-alt hover:bg-accent2 hover:text-bg': type === 'secondary',
+          'bg-bg2 hover:bg-accent hover:text-bg': type === 'outline',
         },
+        {},
         className,
       )}
     >

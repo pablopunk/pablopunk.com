@@ -5,3 +5,9 @@ export type TranslationRequest = {
   guessed_country?: string
   inserted_at?: string
 }
+
+export type Like = {
+  id?: string
+  slug: string
+  ip?: string
+}

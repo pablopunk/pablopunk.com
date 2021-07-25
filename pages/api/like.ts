@@ -1,13 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import {
-  getAllTranslationRequestsForIpAndSlug,
-  insertTranslationRequest,
-} from 'supabase/tables/translation_requests'
-import { TranslationRequest } from 'supabase/types'
-import geoip from 'geoip-country'
-import { sendTranslationRequestEmail } from 'sendgrid/templates/translationRequest'
+import { Like } from 'supabase/types'
 import { sendErrorEmail } from 'sendgrid/templates/error'
 import { getClientIp } from '@supercharge/request-ip'
+import { getAllLikesForIpAndSlug, insertLike } from 'supabase/tables/likes'
 
 export default async function RequestTranslationApi(
   req: NextApiRequest,
@@ -24,27 +19,22 @@ export default async function RequestTranslationApi(
   }
 
   const ip = getClientIp(req) || null
-  const guessed_country = ip == null ? null : geoip.lookup(ip)?.country || null
 
-  const tRequest: TranslationRequest = {
+  const like: Like = {
     ip,
     slug,
-    guessed_country,
   }
 
   if (ip) {
-    const allRequests = await getAllTranslationRequestsForIpAndSlug({
-      ip,
-      slug,
-    })
+    const allLikes = await getAllLikesForIpAndSlug(slug, ip)
 
-    if (allRequests.length > 0) {
-      // ip already requested a translation for this slug
+    if (allLikes.length > 0) {
+      // ip already liked this slug
       return res.status(200).send({ status: 'ok' })
     }
   }
 
-  const { error } = await insertTranslationRequest(tRequest)
+  const { error } = await insertLike(like)
 
   if (error) {
     if (process.env.NODE_ENV === 'development') {
@@ -55,8 +45,6 @@ export default async function RequestTranslationApi(
 
     return res.status(500).send({ error: 'Error inserting on db' })
   }
-
-  await sendTranslationRequestEmail(tRequest, process.env.ADMIN_EMAIL)
 
   return res.status(200).send({ status: 'ok' })
 }

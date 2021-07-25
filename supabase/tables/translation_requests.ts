@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useRealtime, useFilter } from 'react-supabase'
 import client from 'supabase/client'
-import { TRANSLATION_REQUESTS_TABLE } from 'supabase/tables'
+import {
+  TRANSLATION_REQUESTS_TABLE,
+  useSlugCountInTable,
+} from 'supabase/tables'
 import { TranslationRequest } from 'supabase/types'
 
 export async function getAllTranslationRequestsForIpAndSlug({
@@ -11,7 +14,7 @@ export async function getAllTranslationRequestsForIpAndSlug({
   return (
     await client
       .from<TranslationRequest>(TRANSLATION_REQUESTS_TABLE)
-      .select('*')
+      .select('id')
       .match({ ip, slug })
   ).data
 }
@@ -32,25 +35,5 @@ export async function insertTranslationRequest(request: TranslationRequest) {
 }
 
 export function useTranslationRequestsCount(slug: string) {
-  const [count, setCount] = useState(0)
-  const filter = useFilter((query) => query.eq('slug', slug), [slug])
-  const [{ data, error }] = useRealtime(TRANSLATION_REQUESTS_TABLE, {
-    select: {
-      columns: 'id, slug',
-      filter,
-    },
-  })
-
-  useEffect(() => {
-    const requestsWithThisSlug = data?.filter((t) => t.slug === slug) || []
-
-    setCount(requestsWithThisSlug.length)
-  }, [data])
-
-  if (error) {
-    console.error(error)
-    return []
-  }
-
-  return count
+  return useSlugCountInTable(TRANSLATION_REQUESTS_TABLE, slug)
 }
