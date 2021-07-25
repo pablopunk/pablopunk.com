@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import { checkIfUserDidSomething, userDidSomething } from 'lib/storage'
 import { Fragment, FunctionComponent, useEffect, useState } from 'react'
 import { Button } from 'storyblok/components/Button'
