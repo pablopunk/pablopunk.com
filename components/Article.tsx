@@ -142,6 +142,12 @@ const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
       <SRLWrapper>
         <Markdown>{story.content.content}</Markdown>
       </SRLWrapper>
+      <div className="flex items-center justify-center w-full my-3">
+        <div className="mx-3">
+          <LikeComponent slug={story.slug} />
+        </div>
+        {!translated && <TranslationRequestComponent slug={story.slug} />}
+      </div>
     </StyledArticle>
   )
 }

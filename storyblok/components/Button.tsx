@@ -47,11 +47,10 @@ export const Button: FunctionComponent<Props> = ({
           'text-lg': size === 'lg',
           'text-bg': type !== 'outline',
           'bg-accent hover:bg-accent3 hover:text-bg':
-            type === 'primary' || type == null,
+            type === 'primary' || !type || type.length === 0,
           'bg-accent-alt hover:bg-accent2 hover:text-bg': type === 'secondary',
           'bg-bg2 hover:bg-accent hover:text-bg': type === 'outline',
         },
-        {},
         className,
       )}
     >
