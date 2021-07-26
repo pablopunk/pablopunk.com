@@ -20,6 +20,7 @@ export type PostType = {
   content: {
     content: string
     image: ImageType
+    subtitle: string
   }
   created_at: string
 }

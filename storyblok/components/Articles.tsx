@@ -21,14 +21,9 @@ export const Articles: FunctionComponent<Props> = ({ items }) => {
             <Card
               title={translatedSlug?.name}
               subtitle={new Date(article.created_at).toLocaleDateString()}
-              description={article.content?.content
-                ?.split('\n')
-                ?.filter(Boolean)
-                ?.slice(0, 2)
-                ?.join('\n')}
+              description={article.content?.subtitle}
               image={article.content?.image}
               link={{ url: translatedSlug?.path }}
-              line_clamp={2}
             />
           </AnimatedCard>
         )

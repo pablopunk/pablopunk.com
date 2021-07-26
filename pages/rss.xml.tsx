@@ -50,7 +50,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       title: translatedSlug.name,
       id: url,
       link: url,
-      description: post.content.content?.split(/\n/).filter(Boolean)?.[0] || '',
+      description: post.content.subtitle,
       content: contentHtml,
       author: [AUTHOR],
       date: new Date(post.created_at),
