@@ -14,7 +14,7 @@ export const Flex: FunctionComponent<Props> = ({
   justify,
   align,
 }) => {
-  const styles = 'flex'
+  const styles = 'flex flex-col md:flex-row'
   let sizeStyle = 'w-full'
   let justifyStyle = 'justify-center'
   let alignStyle = 'align-center'
