@@ -1,6 +1,6 @@
 import { getPageStaticPaths, getPageStaticProps } from 'cms/middleware'
-import { ComponentPage } from 'components/ComponentPage'
+import { CMSPage } from 'components/CMSPage'
 
 export const getStaticProps = getPageStaticProps
 export const getStaticPaths = getPageStaticPaths
-export default ComponentPage
+export default CMSPage

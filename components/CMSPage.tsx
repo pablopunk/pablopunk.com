@@ -6,7 +6,7 @@ import Article from 'components/Article'
 import { useRouter } from 'next/router'
 import Loading from 'components/Loading'
 
-export const ComponentPage: FunctionComponent<PageProps> = ({ page }) => {
+export const CMSPage: FunctionComponent<PageProps> = ({ page }) => {
   const story = useStoryblok(page)
   const { isFallback } = useRouter()
 

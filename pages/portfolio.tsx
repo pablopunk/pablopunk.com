@@ -6,7 +6,7 @@ import { getPageStaticProps } from 'cms/middleware'
 import { PageProps } from 'types/page'
 import { GetStaticProps } from 'next'
 import { Title } from 'components/Title'
-import { ComponentPage } from 'components/ComponentPage'
+import { CMSPage } from 'components/CMSPage'
 
 interface Props extends PageProps {
   locale: string
@@ -19,7 +19,7 @@ interface Props extends PageProps {
 const Portfolio = ({ initialData, locale, page }: Props) => {
   return (
     <>
-      <ComponentPage page={page} />
+      <CMSPage page={page} />
       <section>
         <Title
           text={_('Popular NPM packages', locale)}
