@@ -2,11 +2,11 @@ import React from 'react'
 import Repos, { fetchAllReposData } from 'components/Repos'
 import NpmCharts, { fetchAllNpmData } from 'components/NpmCharts'
 import { _ } from '../locales'
-import { getPageStaticProps } from 'storyblok/middleware'
+import { getPageStaticProps } from 'cms/middleware'
 import { PageProps } from 'types/page'
 import { GetStaticProps } from 'next'
-import { Title } from 'storyblok/components/Title'
-import BasicPage from 'storyblok/components/BasicPage'
+import { Title } from 'components/Title'
+import { ComponentPage } from 'components/ComponentPage'
 
 interface Props extends PageProps {
   locale: string
@@ -19,7 +19,7 @@ interface Props extends PageProps {
 const Portfolio = ({ initialData, locale, page }: Props) => {
   return (
     <>
-      <BasicPage page={page} />
+      <ComponentPage page={page} />
       <section>
         <Title
           text={_('Popular NPM packages', locale)}

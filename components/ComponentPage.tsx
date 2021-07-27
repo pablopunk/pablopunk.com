@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import { PageProps } from 'types/page'
-import { BlokComponent } from 'storyblok/components/BlokComponent'
-import useStoryblok from 'storyblok/hooks/useStoryblok'
+import { BlokComponent } from 'cms/BlokComponent'
+import useStoryblok from 'cms/storyblok/hooks/useStoryblok'
 import Article from 'components/Article'
 import { useRouter } from 'next/router'
 import Loading from 'components/Loading'
 
-const Page: FunctionComponent<PageProps> = ({ page }) => {
+export const ComponentPage: FunctionComponent<PageProps> = ({ page }) => {
   const story = useStoryblok(page)
   const { isFallback } = useRouter()
 
@@ -31,5 +31,3 @@ const Page: FunctionComponent<PageProps> = ({ page }) => {
     </>
   )
 }
-
-export default Page

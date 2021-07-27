@@ -1,7 +1,7 @@
 import Markdown from 'components/Markdown'
 import { FunctionComponent } from 'react'
-import type { AlignType } from 'storyblok/types'
-import { handlePlaceholders } from 'storyblok/utils'
+import type { AlignType } from 'cms/storyblok/types'
+import { handlePlaceholders } from 'cms/storyblok/utils'
 
 type Props = {
   text: string

@@ -1,6 +1,6 @@
 import { DEFAULT_LOCALE } from 'locales'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getPosts } from 'storyblok/middleware'
+import { getPosts } from 'cms/middleware'
 
 export default async function postsApi(
   req: NextApiRequest,

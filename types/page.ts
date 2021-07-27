@@ -1,4 +1,4 @@
-import { ButtonType, ImageType } from 'storyblok/types'
+import { ButtonType, ImageType } from 'cms/storyblok/types'
 
 export interface PageProps {
   nav?: {

@@ -1,9 +1,9 @@
-import { Storyblok } from './client'
+import { Storyblok } from './storyblok/client'
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import { PageProps } from 'types/page'
 import { locales } from 'locales'
 import { readdirSync } from 'fs'
-import { PostType } from './types'
+import { PostType } from './storyblok/types'
 
 async function getPageData(
   slug: string,

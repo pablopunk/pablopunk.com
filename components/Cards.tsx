@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
 import { useVisible } from 'react-hooks-visible'
 import { AnimatedCard } from './AnimatedCard'
-import { BlokComponent } from './BlokComponent'
+import { BlokComponent } from 'cms/BlokComponent'
 
 type Props = {
   items: any[]

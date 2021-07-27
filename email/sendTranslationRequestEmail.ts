@@ -1,6 +1,9 @@
-import { DEFAULT_EMAIL_FROM } from 'sendgrid/constants'
-import sendgrid from 'sendgrid/client'
-import { TranslationRequest } from 'supabase/types'
+import {
+  DEFAULT_EMAIL_FROM,
+  TRANSLATION_REQUEST_EMAIL_TEMPLATE,
+} from 'email/sendgrid/constants'
+import sendgrid from 'email/sendgrid/client'
+import { TranslationRequest } from 'db/supabase/types'
 
 export function sendTranslationRequestEmail(
   request: TranslationRequest,
@@ -9,7 +12,7 @@ export function sendTranslationRequestEmail(
   const mailOptions = {
     to: email,
     from: DEFAULT_EMAIL_FROM,
-    templateId: 'd-c93c9e99beaf43359bb03c7ac5a5d999',
+    templateId: TRANSLATION_REQUEST_EMAIL_TEMPLATE,
     dynamic_template_data: {
       slug: request.slug,
       ip: request.ip || '',

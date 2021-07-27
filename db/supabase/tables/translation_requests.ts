@@ -1,9 +1,6 @@
-import client from 'supabase/client'
-import {
-  TRANSLATION_REQUESTS_TABLE,
-  useSlugCountInTable,
-} from 'supabase/tables'
-import { TranslationRequest } from 'supabase/types'
+import client from 'db/supabase/client'
+import { TRANSLATION_REQUESTS_TABLE } from 'db/supabase/tables'
+import { TranslationRequest } from 'db/supabase/types'
 
 export async function getAllTranslationRequestsForIpAndSlug({
   ip,
@@ -30,8 +27,4 @@ export async function insertTranslationRequest(request: TranslationRequest) {
   return client
     .from<TranslationRequest>(TRANSLATION_REQUESTS_TABLE)
     .insert(request)
-}
-
-export function useTranslationRequestsCount(slug: string) {
-  return useSlugCountInTable(TRANSLATION_REQUESTS_TABLE, slug)
 }

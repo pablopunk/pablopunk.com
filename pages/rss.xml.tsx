@@ -2,9 +2,9 @@ import { snarkdownEnhanced } from 'components/Markdown'
 import { SITE_DESC, SITE_NAME, SITE_URL } from 'config'
 import { Feed } from 'feed'
 import { GetServerSidePropsContext } from 'next'
-import { getAllPosts } from 'storyblok/middleware'
-import { PostType } from 'storyblok/types'
-import { getTranslatedSlug } from 'storyblok/utils'
+import { getAllPosts } from 'cms/middleware'
+import { PostType } from 'cms/storyblok/types'
+import { getTranslatedSlug } from 'cms/storyblok/utils'
 
 const AUTHOR = {
   name: 'Pablo Varela',

@@ -1,7 +1,7 @@
 import { checkIfUserDidSomething, userDidSomething } from 'lib/storage'
 import { FunctionComponent, useEffect, useState } from 'react'
-import { Button } from 'storyblok/components/Button'
-import { useLikes } from 'supabase/tables/likes'
+import { Button } from 'components/Button'
+import useLikes from 'db/hooks/useLikes'
 
 type Props = {
   slug: string

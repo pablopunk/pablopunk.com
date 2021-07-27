@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import Router from 'next/router'
 import Layout from 'components/Layout'
 import SimpleReactLightbox from 'simple-react-lightbox'
-import { SupabaseProvider } from 'supabase/client'
+import { SupabaseProvider } from 'db/supabase/client'
 
 const App = ({ Component, pageProps }) => {
   useEffect(() => {

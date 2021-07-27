@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import type { LinkType } from 'storyblok/types'
+import type { LinkType } from 'cms/storyblok/types'
 import Link from 'next/link'
 import { Icon } from './Icon'
 

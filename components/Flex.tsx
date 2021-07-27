@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { BlokComponent } from './BlokComponent'
+import { BlokComponent } from 'cms/BlokComponent'
 
 type Props = {
   items: any[]

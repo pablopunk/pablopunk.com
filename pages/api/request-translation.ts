@@ -2,11 +2,11 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import {
   getAllTranslationRequestsForIpAndSlug,
   insertTranslationRequest,
-} from 'supabase/tables/translation_requests'
-import { TranslationRequest } from 'supabase/types'
+} from 'db/supabase/tables/translation_requests'
+import { TranslationRequest } from 'db/supabase/types'
 import geoip from 'geoip-country'
-import { sendTranslationRequestEmail } from 'sendgrid/templates/translationRequest'
-import { sendErrorEmail } from 'sendgrid/templates/error'
+import { sendTranslationRequestEmail } from 'email/sendTranslationRequestEmail'
+import { sendErrorEmail } from 'email/sendErrorEmail'
 import { getClientIp } from '@supercharge/request-ip'
 
 export default async function RequestTranslationApi(

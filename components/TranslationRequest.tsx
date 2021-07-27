@@ -1,8 +1,8 @@
 import { checkIfUserDidSomething, userDidSomething } from 'lib/storage'
 import { Fragment, FunctionComponent, useEffect, useState } from 'react'
-import { Button } from 'storyblok/components/Button'
-import { useTranslationRequestsCount } from 'supabase/tables/translation_requests'
+import { Button } from 'components/Button'
 import { Dialog, Transition } from '@headlessui/react'
+import useTranslationRequestsCount from 'db/hooks/useTranslationRequestsCount'
 
 type Props = {
   slug: string

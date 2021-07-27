@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import type { LinkType, ImageType } from 'storyblok/types'
+import type { LinkType, ImageType } from 'cms/storyblok/types'
 import Link from 'next/link'
 import Markdown from 'components/Markdown'
 import classNames from 'classnames'

@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import Markdown from 'components/Markdown'
-import { Button } from 'storyblok/components/Button'
+import { Button } from 'components/Button'
 import { _ } from 'locales'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useRouter } from 'next/router'
 import { FunctionComponent } from 'preact'
-import type { PostType } from 'storyblok/types'
+import type { PostType } from 'cms/storyblok/types'
 import TranslationRequestComponent from './TranslationRequest'
 import LikeComponent from './Like'
 
@@ -134,19 +134,19 @@ const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
         {translatedSlug?.name ? translatedSlug?.name : story.name}
       </h1>
       <div className="flex flex-col items-center justify-end w-full md:flex-row">
+        {!translated && <TranslationRequestComponent slug={story.slug} />}
         <div className="m-3">
           <LikeComponent slug={story.slug} />
         </div>
-        {!translated && <TranslationRequestComponent slug={story.slug} />}
       </div>
       <SRLWrapper>
         <Markdown>{story.content.content}</Markdown>
       </SRLWrapper>
       <div className="flex flex-col items-center justify-center w-full my-3 md:flex-row">
+        {!translated && <TranslationRequestComponent slug={story.slug} />}
         <div className="m-3">
           <LikeComponent slug={story.slug} />
         </div>
-        {!translated && <TranslationRequestComponent slug={story.slug} />}
       </div>
     </StyledArticle>
   )

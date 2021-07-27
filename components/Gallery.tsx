@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
 import { SRLWrapper } from 'simple-react-lightbox'
 import styled from 'styled-components'
-import type { ImageType } from 'storyblok/types'
+import type { ImageType } from 'cms/storyblok/types'
 import dynamic from 'next/dynamic'
 
 const GalleryComponent = dynamic(() => import('react-photo-gallery'), {

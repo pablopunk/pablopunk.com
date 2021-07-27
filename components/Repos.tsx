@@ -6,7 +6,7 @@ import Loading from 'components/Loading'
 import { _ } from 'locales'
 import { AiFillStar } from 'react-icons/ai'
 import { useVisible } from 'react-hooks-visible'
-import { AnimatedCard } from 'storyblok/components/AnimatedCard'
+import { AnimatedCard } from 'components/AnimatedCard'
 
 const API = 'https://repos.pablopunk.com/api'
 

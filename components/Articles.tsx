@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
 import { FunctionComponent } from 'react'
 import { Card } from './Card'
-import type { PostType } from 'storyblok/types'
+import type { PostType } from 'cms/storyblok/types'
 import { AnimatedCard } from './AnimatedCard'
-import { getTranslatedSlug } from 'storyblok/utils'
+import { getTranslatedSlug } from 'cms/storyblok/utils'
 
 type Props = {
   items: PostType[]

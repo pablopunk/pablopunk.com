@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { AlignType } from 'storyblok/types'
+import { AlignType } from 'cms/storyblok/types'
 
 type Props = {
   text: string
