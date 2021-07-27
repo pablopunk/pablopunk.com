@@ -55,7 +55,7 @@ export const Button: FunctionComponent<Props> = ({
       )}
     >
       {icon && (
-        <span className={classNames({ 'mr-1': text!! })}>
+        <span className={classNames({ 'mr-1': text || children != null })}>
           <Icon name={icon} />
         </span>
       )}

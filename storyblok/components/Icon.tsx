@@ -3,7 +3,7 @@ import { ImTwitter, ImInstagram } from 'react-icons/im'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiNextDotJs, SiGraphql } from 'react-icons/si'
 import { MdEmail } from 'react-icons/md'
-import { BiArrowBack, BiRss } from 'react-icons/bi'
+import { BiArrowBack, BiHeart, BiRss } from 'react-icons/bi'
 
 type Props = {
   name: string
@@ -39,6 +39,9 @@ export const Icon: FunctionComponent<Props> = ({ name, size = '1rem' }) => {
       break
     case 'rss':
       Component = BiRss
+      break
+    case 'heart':
+      Component = () => <BiHeart className="text-red-500" />
       break
   }
 

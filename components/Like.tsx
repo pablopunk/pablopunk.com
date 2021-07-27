@@ -8,7 +8,6 @@ type Props = {
 }
 
 const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
-  const [buttonText, setButtonText] = useState('❤️')
   const likeCount = useLikes(slug)
   const [alreadyLiked, setAlreadyLiked] = useState(false)
   const event = 'liked-' + slug
@@ -29,21 +28,26 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
     })
       .then((r) => r.json())
       .then((response) => {
-        if (response?.status === 'ok') {
-          userDidSomething(event)
-        } else {
-          setButtonText('Error 👎🏻')
+        userDidSomething(event)
+        if (response?.status !== 'ok') {
+          console.error(response)
+          console.error(response?.error)
         }
       })
       .catch((err) => {
         console.error(err)
-        setButtonText('Error 👎🏻')
       })
   }
 
   return (
-    <Button size="sm" type="outline" disabled={alreadyLiked} onClick={likeThis}>
-      {buttonText} {likeCount}
+    <Button
+      size="sm"
+      type="outline"
+      disabled={alreadyLiked}
+      onClick={likeThis}
+      icon="heart"
+    >
+      {likeCount}
     </Button>
   )
 }
