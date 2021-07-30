@@ -75,6 +75,7 @@ const PackageStat = ({ package: packageName, downloads, locale }) => {
             legend: { display: false },
             decimation: { enabled: true, algorithm: 'lttb', samples: 5 },
           },
+          elements: { point: { radius: 0 } },
           scales: {
             x: { type: 'time' },
           },
