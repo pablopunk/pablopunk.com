@@ -3,6 +3,10 @@ import markdownIt from 'markdown-it'
 
 const md = new markdownIt()
 
+export function renderMarkdown(markdown: string) {
+  return md.render(markdown)
+}
+
 // export const snarkdownEnhanced = (md: string) => {
 //   const htmls = md
 //     .replaceAll('~~~', '```') // storyblok code blocks suck
@@ -25,7 +29,10 @@ const Markdown: FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
   }
 
   return (
-    <div {...rest} dangerouslySetInnerHTML={{ __html: md.render(children) }} />
+    <div
+      {...rest}
+      dangerouslySetInnerHTML={{ __html: renderMarkdown(children) }}
+    />
   )
 }
 

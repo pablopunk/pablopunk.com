@@ -1,4 +1,4 @@
-import { snarkdownEnhanced } from 'components/Markdown'
+import { renderMarkdown } from 'components/Markdown'
 import { SITE_DESC, SITE_NAME, SITE_URL } from 'config'
 import { Feed } from 'feed'
 import { GetServerSidePropsContext } from 'next'
@@ -42,7 +42,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   })
 
   posts.forEach((post: PostType) => {
-    const contentHtml = snarkdownEnhanced(post.content.content)
+    const contentHtml = renderMarkdown(post.content.content)
     const translatedSlug = getTranslatedSlug(post, locale)
     const url = `${SITE_URL}/${translatedSlug.path}`
 

@@ -19,12 +19,17 @@ export type PostType = {
   }>
   content: {
     content: string
-    image: ImageType
+    title: string
     subtitle: string
+    image: ImageType
+    translated: boolean
   }
   created_at: string
 }
-
+export type PageContentType = {
+  body: any[]
+  metadata: any
+}
 export type ImageType = {
   id: string
   filename: string

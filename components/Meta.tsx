@@ -4,24 +4,31 @@ import { DEFAULT_LOCALE } from 'locales'
 import { useRouter } from 'next/router'
 import { SITE_DESC, SITE_IMAGE, SITE_NAME, SITE_URL } from 'config'
 import { useCssVar } from 'hooks/useCssVar'
+import { PageProps } from 'types/page'
 
-export default function Meta(props) {
-  const { title, description, og_title, og_description, og_image } = props
+type Props = {
+  meta: any
+  page: PageProps['page']
+}
+
+export default function Meta({ meta, page }: Props) {
+  const { title, description, og_title, og_description, og_image } = meta
   const { locale } = useRouter()
   const siteUrl = `${SITE_URL}/${locale !== DEFAULT_LOCALE ? locale : ''}`
   const titleBarColor = useCssVar('--color-bg')
-  console.log(props)
+  const _description =
+    page?.content?.subtitle || og_description || description || SITE_DESC
 
   return (
     <>
       <NextSeo
         title={title || SITE_NAME}
-        description={description || SITE_DESC}
+        description={_description}
         canonical={siteUrl}
         openGraph={{
           url: siteUrl,
           title: og_title || title,
-          description: og_description || description,
+          description: _description,
           images: [
             {
               url: og_image || SITE_IMAGE,
