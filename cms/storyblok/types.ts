@@ -19,7 +19,6 @@ export type PostType = {
   }>
   content: {
     content: string
-    title: string
     subtitle: string
     image: ImageType
     translated: boolean

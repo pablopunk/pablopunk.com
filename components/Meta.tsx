@@ -18,16 +18,17 @@ export default function Meta({ meta, page }: Props) {
   const titleBarColor = useCssVar('--color-bg')
   const _description =
     page?.content?.subtitle || og_description || description || SITE_DESC
+  const _title = page?.name || og_title || title || SITE_NAME
 
   return (
     <>
       <NextSeo
-        title={title || SITE_NAME}
+        title={_title}
         description={_description}
         canonical={siteUrl}
         openGraph={{
           url: siteUrl,
-          title: og_title || title,
+          title: _title,
           description: _description,
           images: [
             {

@@ -10,6 +10,7 @@ export interface PageProps {
     content: PageContentType & PostType['content']
     lang: string
     path: string
+    name?: string
   }
   preview?: boolean
   statusCode?: string
