@@ -14,13 +14,6 @@ const Layout: FunctionComponent<PageProps> = ({
   const meta = page?.content.metadata || {}
   const mainNav = nav?.content?.main || []
 
-  if (page?.content.image) {
-    // articles
-    meta.title = page.content.title
-    meta.description = page.content.content
-    meta.og_image = page.content.image.filename
-  }
-
   return (
     <>
       <Meta meta={meta} page={page} />

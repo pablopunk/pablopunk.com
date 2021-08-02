@@ -19,6 +19,7 @@ export default function Meta({ meta, page }: Props) {
   const _description =
     page?.content?.subtitle || og_description || description || SITE_DESC
   const _title = page?.name || og_title || title || SITE_NAME
+  const _image = page?.content?.image?.filename || og_image || SITE_IMAGE
 
   return (
     <>
@@ -32,7 +33,7 @@ export default function Meta({ meta, page }: Props) {
           description: _description,
           images: [
             {
-              url: og_image || SITE_IMAGE,
+              url: _image,
               width: 150,
               height: 150,
               alt: "Pablo Varela's profile picture",
