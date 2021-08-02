@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Markdown from 'components/Markdown'
 import { Button } from 'components/Button'
-import { _ } from 'locales'
+import { DEFAULT_LOCALE, _ } from 'locales'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useRouter } from 'next/router'
 import { FunctionComponent } from 'preact'
@@ -108,6 +108,7 @@ const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
   const translatedSlug = story.translated_slugs.find(
     (slug) => slug.lang === locale,
   )
+  const showTranslationRequest = locale !== DEFAULT_LOCALE && !translated
 
   return (
     <StyledArticle>
@@ -134,7 +135,9 @@ const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
         {translatedSlug?.name ? translatedSlug?.name : story.name}
       </h1>
       <div className="flex flex-col items-center justify-end w-full md:flex-row">
-        {!translated && <TranslationRequestComponent slug={story.slug} />}
+        {showTranslationRequest && (
+          <TranslationRequestComponent slug={story.slug} />
+        )}
         <div className="m-3">
           <LikeComponent slug={story.slug} />
         </div>
@@ -143,7 +146,9 @@ const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
         <Markdown>{story.content.content}</Markdown>
       </SRLWrapper>
       <div className="flex flex-col items-center justify-center w-full my-3 md:flex-row">
-        {!translated && <TranslationRequestComponent slug={story.slug} />}
+        {showTranslationRequest && (
+          <TranslationRequestComponent slug={story.slug} />
+        )}
         <div className="m-3">
           <LikeComponent slug={story.slug} />
         </div>
