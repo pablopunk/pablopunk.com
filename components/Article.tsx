@@ -95,6 +95,16 @@ const StyledArticle = styled.article`
   img {
     margin: 1rem auto;
   }
+
+  blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding: 0.25rem 0.5rem;
+    background-color: var(--color-bg2);
+  }
+
+  blockquote p {
+    margin: 0.5rem 0;
+  }
 `
 
 type Props = {
