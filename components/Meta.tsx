@@ -10,6 +10,7 @@ export default function Meta(props) {
   const { locale } = useRouter()
   const siteUrl = `${SITE_URL}/${locale !== DEFAULT_LOCALE ? locale : ''}`
   const titleBarColor = useCssVar('--color-bg')
+  console.log(props)
 
   return (
     <>

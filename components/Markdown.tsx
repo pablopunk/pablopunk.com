@@ -1,17 +1,20 @@
 import { FunctionComponent, HTMLAttributes } from 'react'
-import snarkdown from 'snarkdown'
+import markdownIt from 'markdown-it'
 
-export const snarkdownEnhanced = (md: string) => {
-  const htmls = md
-    .split(/(?:\r?\n){2,}/)
-    .map((l) =>
-      [' ', '\t', '#', '-', '*'].some((ch) => l.startsWith(ch))
-        ? snarkdown(l)
-        : `<p>${snarkdown(l)}</p>`,
-    )
+const md = new markdownIt()
 
-  return htmls.join('\n\n')
-}
+// export const snarkdownEnhanced = (md: string) => {
+//   const htmls = md
+//     .replaceAll('~~~', '```') // storyblok code blocks suck
+//     .split(/(?:\r?\n){2,}/)
+//     .map((l) =>
+//       [' ', '\t', '#', '-', '*'].some((ch) => l.startsWith(ch))
+//         ? snarkdown(l)
+//         : `<p>${snarkdown(l)}</p>`,
+//     )
+
+//   return htmls.join('\n\n')
+// }
 
 const Markdown: FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
   children,
@@ -22,10 +25,7 @@ const Markdown: FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
   }
 
   return (
-    <div
-      {...rest}
-      dangerouslySetInnerHTML={{ __html: snarkdownEnhanced(children) }}
-    />
+    <div {...rest} dangerouslySetInnerHTML={{ __html: md.render(children) }} />
   )
 }
 

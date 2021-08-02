@@ -93,7 +93,7 @@ const StyledArticle = styled.article`
   }
 
   img {
-    margin: 1rem 0;
+    margin: 1rem auto;
   }
 `
 
