@@ -1,13 +1,4 @@
-export type TranslationRequest = {
-  id?: string
-  slug: string
-  ip?: string
-  guessed_country?: string
-  inserted_at?: string
-}
+import { definitions } from './generated-types'
 
-export type Like = {
-  id?: string
-  slug: string
-  ip?: string
-}
+export type TranslationRequest = Partial<definitions['translation_requests']>
+export type Like = Partial<definitions['likes']>
