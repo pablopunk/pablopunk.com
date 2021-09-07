@@ -4,7 +4,7 @@ import { sendErrorEmail } from 'email/sendErrorEmail'
 import { getClientIp } from '@supercharge/request-ip'
 import { getAllLikesForIpAndSlug, insertLike } from 'db/supabase/tables/likes'
 
-export default async function RequestTranslationApi(
+export default async function LikeApi(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
@@ -12,7 +12,7 @@ export default async function RequestTranslationApi(
     return res.status(405).send('Method not allowed')
   }
 
-  const slug: string = JSON.parse(req.body || {}).slug
+  const slug: string = JSON.parse(req.body || '{}').slug
 
   if (!slug) {
     return res.status(400).send('Missing slug')
