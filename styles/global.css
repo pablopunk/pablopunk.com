@@ -8,9 +8,9 @@ body {
   --color-bg: rgb(247, 247, 247);
   --color-bg2: white;
   --color-fg: rgb(40, 40, 40);
-  --color-accent: #05a797;
+  --color-accent: #03635a;
   --color-accent2: #03a091;
-  --color-accent3: #03635a;
+  --color-accent3: #05a797;
   --color-accent-alt: #006adc;
   --color-border: rgb(228, 228, 228);
 }

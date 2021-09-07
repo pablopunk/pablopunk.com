@@ -15,3 +15,11 @@ export function postJson(url: string, data: any) {
     body: JSON.stringify(data),
   })
 }
+
+export function getJson(url: string) {
+  return fetch(url, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((res) => res.json())
+}

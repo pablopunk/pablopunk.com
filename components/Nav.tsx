@@ -1,11 +1,16 @@
 import React from 'react'
 import Link from 'next/link'
-import { RiMoonClearLine, RiSunLine } from 'react-icons/ri'
-import { FaCreditCard } from 'react-icons/fa'
+import { RiMoonClearLine, RiSunLine, RiContactsFill } from 'react-icons/ri'
+import { FaCreditCard, FaSpotify } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import { _ } from 'locales'
 import { ButtonType } from 'cms/storyblok/types'
 import useTheme from 'hooks/useTheme'
+import useSWR from 'swr'
+import { getJson } from 'lib/utils'
+
+const MAX_SONG = 21
+const MAX_ARTIST = 15
 
 const ChangeThemeButton = () => {
   const { locale } = useRouter()
@@ -39,6 +44,14 @@ const ChangeThemeButton = () => {
 
 const Nav = ({ main = [] }) => {
   const { locale, asPath } = useRouter()
+  const { data: nowPlaying } = useSWR<{
+    album: string
+    albumImageUrl: string
+    artist: string
+    isPlaying: boolean
+    songUrl: string
+    title: string
+  }>('/api/now-playing', getJson)
 
   return (
     <div
@@ -70,6 +83,45 @@ const Nav = ({ main = [] }) => {
             </div>
           )
         })}
+        {nowPlaying?.isPlaying ? (
+          <a
+            className="items-center hidden ml-2 text-xs transition-colors border rounded-md md:flex bg-bg2 hover:bg-bg group max-w-[426px]"
+            href={nowPlaying.songUrl}
+          >
+            <FaSpotify className="mx-2 text-xl" />
+            <div className="mr-1">{_('Now playing', locale)}</div>
+            <div
+              className="mr-1 text-fg whitespace-nowrap"
+              title={nowPlaying.title}
+            >
+              {nowPlaying.title.length > MAX_SONG
+                ? nowPlaying.title.substring(0, MAX_SONG) + '...'
+                : nowPlaying.title}
+            </div>
+            <div className="mr-1">
+              <RiContactsFill />
+            </div>
+            <div className="mr-1 whitespace-nowrap">
+              {nowPlaying.artist.length > MAX_ARTIST
+                ? nowPlaying.artist.substring(0, MAX_ARTIST) + '...'
+                : nowPlaying.artist}
+            </div>
+            <img
+              src={nowPlaying.albumImageUrl}
+              alt=""
+              width="30"
+              className="mr-1 transition-all filter group-hover:blur-sm"
+            />
+          </a>
+        ) : (
+          <a
+            className="items-center hidden ml-2 text-xs transition-colors border rounded-md opacity-70 md:flex bg-bg2 hover:bg-bg"
+            href="https://open.spotify.com/user/pablovarela12"
+          >
+            <FaSpotify className="mx-2 text-xl" />
+            <div className="mr-1">{_('Not playing anything', locale)}</div>
+          </a>
+        )}
       </nav>
       <div className="relative flex mt-4 mr-3 text-xl">
         <div className="z-30 p-2 text-3xl transition-colors border rounded-full shadow cursor-pointer text-accent3 hover:text-accent3-alt hover:bg-bg bg-bg2 md:text-xl">
