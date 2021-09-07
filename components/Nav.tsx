@@ -8,6 +8,7 @@ import { ButtonType } from 'cms/storyblok/types'
 import useTheme from 'hooks/useTheme'
 import useSWR from 'swr'
 import { getJson } from 'lib/utils'
+import { useSpring, animated } from 'react-spring'
 
 const MAX_SONG = 21
 const MAX_ARTIST = 15
@@ -44,7 +45,7 @@ const ChangeThemeButton = () => {
 
 const Nav = ({ main = [] }) => {
   const { locale, asPath } = useRouter()
-  const { data: nowPlaying } = useSWR<{
+  const { data: nowPlaying, isValidating } = useSWR<{
     album: string
     albumImageUrl: string
     artist: string
@@ -52,6 +53,7 @@ const Nav = ({ main = [] }) => {
     songUrl: string
     title: string
   }>('/api/now-playing', getJson)
+  const spotifyStyles = useSpring({ y: nowPlaying && !isValidating ? 0 : -100 })
 
   return (
     <div
@@ -83,10 +85,11 @@ const Nav = ({ main = [] }) => {
             </div>
           )
         })}
-        {nowPlaying?.isPlaying ? (
-          <a
+        {nowPlaying?.isPlaying && (
+          <animated.a
             className="items-center hidden ml-2 text-xs transition-colors border rounded-md md:flex bg-bg2 hover:bg-bg group max-w-[426px]"
             href={nowPlaying.songUrl}
+            style={spotifyStyles}
           >
             <FaSpotify className="mx-2 text-xl" />
             <div className="mr-1">{_('Now playing', locale)}</div>
@@ -112,8 +115,9 @@ const Nav = ({ main = [] }) => {
               width="30"
               className="mr-1 transition-all filter group-hover:blur-sm"
             />
-          </a>
-        ) : (
+          </animated.a>
+        )}
+        {nowPlaying && !nowPlaying.isPlaying && (
           <a
             className="items-center hidden ml-2 text-xs transition-colors border rounded-md opacity-70 md:flex bg-bg2 hover:bg-bg"
             href="https://open.spotify.com/user/pablovarela12"
