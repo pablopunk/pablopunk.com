@@ -4,9 +4,9 @@ import {
 } from 'email/sendgrid/constants'
 import sendgrid from 'email/sendgrid/client'
 
-export function sendErrorEmail(error: string, email: string) {
+export function sendErrorEmail(error: string) {
   const mailOptions = {
-    to: email,
+    to: process.env.ADMIN_EMAIL,
     from: DEFAULT_EMAIL_FROM,
     templateId: ERROR_EMAIL_TEMPLATE,
     dynamic_template_data: {

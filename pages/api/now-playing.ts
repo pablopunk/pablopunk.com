@@ -1,9 +1,13 @@
+import { sendErrorEmail } from 'email/sendErrorEmail'
 import { getNowPlaying } from 'lib/spotify'
 
 export default async function NowPlayingApi(_, res) {
   const response = await getNowPlaying()
 
   if (response.status === 204 || response.status > 400) {
+    if (response.status > 400) {
+      sendErrorEmail('Error from spotify API')
+    }
     return res.status(200).json({ isPlaying: false })
   }
 

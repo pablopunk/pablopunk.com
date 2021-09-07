@@ -55,7 +55,7 @@ export default async function RequestTranslationApi(
       return res.status(500).send({ error })
     }
 
-    await sendErrorEmail(error.message, process.env.ADMIN_EMAIL)
+    sendErrorEmail(error.message)
 
     return res.status(500).send({ error: 'Error inserting on db' })
   }
