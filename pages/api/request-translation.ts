@@ -17,7 +17,11 @@ export default async function RequestTranslationApi(
     return res.status(405).send('Method not allowed')
   }
 
-  const slug: string = JSON.parse(req.body || {}).slug
+  if (typeof req.body !== 'object') {
+    return res.status(400).send('Body is not JSON')
+  }
+
+  const slug: string = req.body.slug
 
   if (!slug) {
     return res.status(400).send('Missing slug')

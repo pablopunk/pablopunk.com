@@ -12,7 +12,11 @@ export default async function LikeApi(
     return res.status(405).send('Method not allowed')
   }
 
-  const slug: string = JSON.parse(req.body || '{}').slug
+  if (typeof req.body !== 'object') {
+    return res.status(400).send('Body is not JSON')
+  }
+
+  const slug: string = req.body?.slug || null
 
   if (!slug) {
     return res.status(400).send('Missing slug')

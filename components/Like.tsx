@@ -2,6 +2,7 @@ import { checkIfUserDidSomething, userDidSomething } from 'lib/storage'
 import { FunctionComponent, useEffect, useState } from 'react'
 import { Button } from 'components/Button'
 import useLikes from 'db/hooks/useLikes'
+import { postJson } from 'lib/utils'
 
 type Props = {
   slug: string
@@ -20,12 +21,7 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
 
   const likeThis = () => {
     setAlreadyLiked(true)
-    fetch(`/api/like`, {
-      method: 'POST',
-      body: JSON.stringify({
-        slug,
-      }),
-    })
+    postJson(`/api/like`, { slug })
       .then((r) => r.json())
       .then((response) => {
         userDidSomething(event)

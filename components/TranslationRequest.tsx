@@ -3,6 +3,7 @@ import { Fragment, FunctionComponent, useEffect, useState } from 'react'
 import { Button } from 'components/Button'
 import { Dialog, Transition } from '@headlessui/react'
 import useTranslationRequestsCount from 'db/hooks/useTranslationRequestsCount'
+import { postJson } from 'lib/utils'
 
 type Props = {
   slug: string
@@ -27,12 +28,7 @@ const TranslationRequestComponent: FunctionComponent<Props> = ({ slug }) => {
   const translationRequestButtonClick = () => {
     setDialogOpen(true)
     setTranslationWasRequested(true)
-    fetch(`/api/request-translation`, {
-      method: 'POST',
-      body: JSON.stringify({
-        slug: slug,
-      }),
-    })
+    postJson(`/api/request-translation`, { slug })
       .then((r) => r.json())
       .then((apiResponse) => {
         if (apiResponse.status === 'ok') {
