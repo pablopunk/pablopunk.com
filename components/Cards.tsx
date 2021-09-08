@@ -1,14 +1,14 @@
 import { FunctionComponent } from 'react'
-import { useVisible } from 'react-hooks-visible'
 import { AnimatedCard } from './AnimatedCard'
 import { BlokComponent } from 'cms/BlokComponent'
+import { useAppearedOnScreen } from 'hooks/useFirstTimeVisible'
 
 type Props = {
   items: any[]
 }
 
 export const Cards: FunctionComponent<Props> = ({ items }) => {
-  const [elementRef, isVisible] = useVisible<HTMLDivElement>()
+  const [elementRef, appearedOnScreen] = useAppearedOnScreen<HTMLDivElement>()
 
   return (
     <div
@@ -17,7 +17,7 @@ export const Cards: FunctionComponent<Props> = ({ items }) => {
     >
       {items.map((item, i) => (
         <div key={item._uid}>
-          {isVisible ? (
+          {appearedOnScreen ? (
             <AnimatedCard index={i}>
               <BlokComponent blok={item} />
             </AnimatedCard>

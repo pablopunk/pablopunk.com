@@ -5,8 +5,8 @@ import humanFormat from 'human-format'
 import Loading from 'components/Loading'
 import { _ } from 'locales'
 import { AiFillStar } from 'react-icons/ai'
-import { useVisible } from 'react-hooks-visible'
 import { AnimatedCard } from 'components/AnimatedCard'
+import { useAppearedOnScreen } from 'hooks/useFirstTimeVisible'
 
 const API = 'https://repos.pablopunk.com/api'
 
@@ -65,7 +65,7 @@ const Repo = ({
 
 function Repos({ locale, initialData }) {
   const { data, error } = useSWR(API, fetcher, { initialData })
-  const [elementRef, isVisible] = useVisible<HTMLDivElement>()
+  const [elementRef, appearedOnScreen] = useAppearedOnScreen<HTMLDivElement>()
 
   if (error) {
     return <strong style={{ color: 'orangered' }}>Error fetching repos</strong>
@@ -103,7 +103,7 @@ function Repos({ locale, initialData }) {
     <div className="grid sm:grid-cols-1 md:grid-cols-2" ref={elementRef}>
       {repos.map((repo, index) => (
         <Fragment key={repo.name}>
-          {isVisible ? (
+          {appearedOnScreen ? (
             <AnimatedCard index={index} className={boxStyles}>
               <Repo repo={repo} />
             </AnimatedCard>
