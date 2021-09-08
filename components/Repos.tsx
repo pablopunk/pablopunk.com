@@ -6,7 +6,7 @@ import Loading from 'components/Loading'
 import { _ } from 'locales'
 import { AiFillStar } from 'react-icons/ai'
 import { AnimatedCard } from 'components/AnimatedCard'
-import { useAppearedOnScreen } from 'hooks/useFirstTimeVisible'
+import RenderOnFirstAppearance from './RenderOnFirstAppearance'
 
 const API = 'https://repos.pablopunk.com/api'
 
@@ -65,7 +65,6 @@ const Repo = ({
 
 function Repos({ locale, initialData }) {
   const { data, error } = useSWR(API, fetcher, { initialData })
-  const [elementRef, appearedOnScreen] = useAppearedOnScreen<HTMLDivElement>()
 
   if (error) {
     return <strong style={{ color: 'orangered' }}>Error fetching repos</strong>
@@ -100,16 +99,16 @@ function Repos({ locale, initialData }) {
   const boxStyles = 'px-4 py-3 m-2 border rounded-lg shadow-lg bg-bg2'
 
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2" ref={elementRef}>
+    <div className="grid sm:grid-cols-1 md:grid-cols-2">
       {repos.map((repo, index) => (
         <Fragment key={repo.name}>
-          {appearedOnScreen ? (
+          <RenderOnFirstAppearance
+            Placeholder={<Repo repo={repo} className={boxStyles} />}
+          >
             <AnimatedCard index={index} className={boxStyles}>
               <Repo repo={repo} />
             </AnimatedCard>
-          ) : (
-            <Repo repo={repo} className={boxStyles} />
-          )}
+          </RenderOnFirstAppearance>
         </Fragment>
       ))}
     </div>
