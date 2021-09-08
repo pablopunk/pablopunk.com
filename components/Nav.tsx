@@ -53,7 +53,9 @@ const Nav = ({ main = [] }) => {
     songUrl: string
     title: string
   }>('/api/now-playing', getJson)
-  const spotifyStyles = useSpring({ y: nowPlaying && !isValidating ? 0 : -100 })
+  const spotifyStyles = useSpring({
+    y: nowPlaying == null || isValidating ? -100 : 0,
+  })
 
   return (
     <div
@@ -118,13 +120,14 @@ const Nav = ({ main = [] }) => {
           </animated.a>
         )}
         {nowPlaying && !nowPlaying.isPlaying && (
-          <a
+          <animated.a
             className="items-center hidden ml-2 text-xs transition-colors border rounded-md opacity-70 md:flex bg-bg2 hover:bg-bg"
             href="https://open.spotify.com/user/pablovarela12"
+            style={spotifyStyles}
           >
             <FaSpotify className="mx-2 text-xl" />
             <div className="mr-1">{_('Not playing anything', locale)}</div>
-          </a>
+          </animated.a>
         )}
       </nav>
       <div className="relative flex mt-4 mr-3 text-xl">
