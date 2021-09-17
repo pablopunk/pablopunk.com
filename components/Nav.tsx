@@ -93,7 +93,7 @@ const Nav = ({ main = [] }) => {
             href={nowPlaying.songUrl}
             style={spotifyStyles}
           >
-            <FaSpotify className="mx-2 text-xl" />
+            <FaSpotify className="mx-2 text-xl min-w-[1em]" />
             <div className="mr-1">{_('Now playing', locale)}</div>
             <div
               className="mr-1 text-fg whitespace-nowrap"
