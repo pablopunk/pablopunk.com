@@ -28,7 +28,7 @@ const ChangeThemeButton = () => {
     <a
       onClick={toggleTheme}
       title={_('Change theme', locale)}
-      className="text-current"
+      className="text-current toggle-theme-button"
     >
       {theme === 'dark' ? (
         <span>

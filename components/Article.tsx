@@ -124,6 +124,7 @@ const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
     <StyledArticle>
       {asPath.startsWith('/posts') && (
         <Button
+          className="go-back-button"
           text={_('Go Back', locale)}
           icon={'back'}
           link={{ url: '/blog' }}

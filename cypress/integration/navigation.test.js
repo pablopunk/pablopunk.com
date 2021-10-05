@@ -1,4 +1,4 @@
-describe('Basic navigation', () => {
+describe('Navigate between pages', () => {
   it('/ has content', () => {
     cy.visit('/')
     cy.contains('h1')
@@ -22,5 +22,12 @@ describe('Basic navigation', () => {
     cy.visit('/me')
     cy.get('[href="/"]').click()
     cy.url().should('include', '/')
+  })
+  it('Navigate to a blog post and go back', () => {
+    cy.visit('/blog')
+    cy.get('h4').first().click()
+    cy.url().should('include', '/posts')
+    cy.get('.go-back-button').first().click()
+    cy.url().should('include', '/blog')
   })
 })
