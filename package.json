@@ -16,7 +16,7 @@
     "@sendgrid/mail": "^7.4.5",
     "@supabase/supabase-js": "^1.18.1",
     "@supercharge/request-ip": "^1.1.2",
-    "@tailwindcss/line-clamp": "^0.2.1",
+    "@tailwindcss/line-clamp": "^0.2.2",
     "autoprefixer": "^10.2.6",
     "axios": "^0.21.2",
     "chart.js": "^3.4.1",
@@ -29,7 +29,7 @@
     "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",
     "markdown-it": "^12.1.0",
-    "next": "^11.1.1",
+    "next": "^12.0.1",
     "next-seo": "^4.4.0",
     "nextjs-redirect": "^4.0.2",
     "postcss": "^8.3.5",
@@ -50,7 +50,7 @@
     "storyblok-react": "^0.1.2",
     "styled-components": "4.4.1",
     "swr": "^0.1.18",
-    "tailwindcss": "^2.2.4",
+    "tailwindcss": "^2.2.19",
     "unsplash-js": "6.3.0"
   },
   "devDependencies": {
