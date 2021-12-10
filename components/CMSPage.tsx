@@ -12,14 +12,14 @@ export const CMSPage: FunctionComponent<PageProps> = ({ page }) => {
 
   if (isFallback) {
     return (
-      <span className="flex items-center justify-center w-full">
+      <span className="py-4 flex items-center justify-center w-full">
         <Loading />
       </span>
     )
   }
 
   return (
-    <>
+    <div className="py-4">
       {/* story page */}
       {story.content?.body?.map((blok) => (
         <BlokComponent blok={blok} key={blok._uid} />
@@ -28,6 +28,6 @@ export const CMSPage: FunctionComponent<PageProps> = ({ page }) => {
       {story.content?.content && (
         <Article story={story} translated={page.content.translated} />
       )}
-    </>
+    </div>
   )
 }

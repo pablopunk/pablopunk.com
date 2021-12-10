@@ -49,7 +49,7 @@ const Blog = ({ page, locale, posts, total }: Props) => {
   }
 
   return (
-    <>
+    <div className="py-4">
       {story.content.body.map((blok) => (
         <BlokComponent blok={blok} key={blok._uid} />
       ))}
@@ -63,7 +63,7 @@ const Blog = ({ page, locale, posts, total }: Props) => {
           />
         </div>
       )}
-    </>
+    </div>
   )
 }
 
