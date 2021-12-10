@@ -1,4 +1,4 @@
-import { _, locales } from 'locales'
+import { _, locales, emojiForLocale } from 'locales'
 import { useRouter } from 'next/router'
 
 const Footer = () => {
@@ -9,23 +9,32 @@ const Footer = () => {
       className="items-center justify-around hidden w-full p-4 mx-auto md:flex bg-bg2 opacity-80"
       style={{ height: 'var(--footer-height)' }}
     >
-      <p>
+      <div className="relative">
         {locales.map((l) => {
           return locale === l ? (
-            <span key={l}> {l} </span>
+            <div
+              key={l}
+              className="inline relative rotate-[-15deg] mx-1 after:content-['•'] after:text-accent after:absolute after:top-2 after:ml-[-50%] after:translate-x-[-25%] font-bold"
+            >
+              {emojiForLocale[l]}
+            </div>
           ) : (
-            <a href={`/${l}`} key={l}>
-              {l}
+            <a
+              href={`/${l}`}
+              key={l}
+              className="rotate-[-15deg] mx-1 opacity-50 transition-opacity hover:opacity-100"
+            >
+              {emojiForLocale[l]}
             </a>
           )
         })}
-      </p>
-      <p>© Pablo Varela {new Date().getFullYear()}</p>
-      <p>
+      </div>
+      <div>© Pablo Varela {new Date().getFullYear()}</div>
+      <div>
         <a href="https://github.com/pablopunk/pablopunk.com">
           {_('Source code', locale)}
         </a>
-      </p>
+      </div>
     </footer>
   )
 }
