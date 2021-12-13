@@ -1,7 +1,7 @@
 import Loading from 'components/Loading'
 import { FiDownloadCloud } from 'react-icons/fi'
 import { GoRepo } from 'react-icons/go'
-import { MdPageview } from 'react-icons/md'
+import { MdCameraAlt, MdPageview } from 'react-icons/md'
 import { useRouter } from 'next/router'
 import { _ } from 'locales'
 import humanFormat from 'human-format'
@@ -46,29 +46,29 @@ const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
           <Stats onClick={() => openLink('unsplash.com/@pablopunk')}>
             <h2>Unsplash</h2>
             <Stat>
-              <FiDownloadCloud />{' '}
+              <MdCameraAlt />{' '}
               <strong className="ml-1 text-accent-alt">
-                {humanFormat(data.unsplash?.downloads?.total || 0)}{' '}
+                {humanFormat(data.unsplash?.photos || 0)}{' '}
               </strong>
-              <span className="ml-1">{_('total downloads', locale)}</span>
+              <span className="ml-1">{_('photos', locale)}</span>
             </Stat>
             <Stat>
               <MdPageview />{' '}
               <strong className="ml-1 text-accent-alt">
-                {humanFormat(data.unsplash?.views?.total || 0)}{' '}
+                {humanFormat(data.unsplash?.views || 9000000)}{' '}
               </strong>
               <span className="ml-1">{_('total views', locale)}</span>
+            </Stat>
+            <Stat>
+              <FiDownloadCloud />{' '}
+              <strong className="ml-1 text-accent-alt">
+                {humanFormat(data.unsplash?.downloads || 0)}{' '}
+              </strong>
+              <span className="ml-1">{_('total downloads', locale)}</span>
             </Stat>
           </Stats>
           <Stats onClick={() => openLink('github.com/pablopunk')}>
             <h2>GitHub</h2>
-            <Stat>
-              <AiOutlineStar />{' '}
-              <strong className="ml-1 text-accent-alt">
-                +{humanFormat(180 + (data.github?.stars_received || 0))}{' '}
-              </strong>
-              <span className="ml-1">{_('stars received', locale)}</span>
-            </Stat>
             <Stat>
               <AiOutlineUsergroupAdd />{' '}
               <strong className="ml-1 text-accent-alt">
@@ -82,6 +82,13 @@ const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
                 {humanFormat(data.github?.public_repos || 0)}{' '}
               </strong>
               <span className="ml-1">{_('repos', locale)}</span>
+            </Stat>
+            <Stat>
+              <AiOutlineStar />{' '}
+              <strong className="ml-1 text-accent-alt">
+                +{humanFormat(180 + (data.github?.stars_received || 0))}{' '}
+              </strong>
+              <span className="ml-1">{_('stars received', locale)}</span>
             </Stat>
           </Stats>
         </div>

@@ -18,6 +18,7 @@
   "Code": "Código",
   "Drawings": "Dibujos",
   "Photos": "Fotos",
+  "photos": "fotos",
   "downloads for": "descargas de",
   "Popular NPM packages": "Paquetes populares en NPM",
   "Books": "Libros",
@@ -36,3 +37,4 @@
   "Not playing anything": "No se está reproduciendo nada",
   "Now playing": "Reproduciendo"
 }
+

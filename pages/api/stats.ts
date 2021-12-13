@@ -1,5 +1,5 @@
 import { NextApiResponse } from 'next'
-import Unsplash, { toJson } from 'unsplash-js'
+import { createApi } from 'unsplash-js'
 
 const unsplashAccessKey = process.env.UNSPLASH_ACCESS_TOKEN
 const githubToken = process.env.GITHUB_TOKEN
@@ -10,12 +10,17 @@ const fetcher = (url) =>
   }).then((r) => r.json())
 
 export async function getUnsplashStats() {
-  const unsplashClient = new Unsplash({
+  const unsplashClient = createApi({
     accessKey: unsplashAccessKey,
   })
 
-  const userStats = await unsplashClient.users.statistics('pablopunk')
-  const unsplash = await toJson(userStats)
+  const unsplash = await unsplashClient.users
+    .get({ username: 'pablopunk' })
+    .then((result) => result.response)
+    .then((u) => ({
+      downloads: u.downloads,
+      photos: u.total_photos,
+    }))
 
   return unsplash
 }
