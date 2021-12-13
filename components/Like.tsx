@@ -42,6 +42,7 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
       disabled={alreadyLiked}
       onClick={likeThis}
       icon="heart"
+      className="button-like"
     >
       {likeCount}
     </Button>
