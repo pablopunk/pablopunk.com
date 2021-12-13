@@ -1,3 +1,7 @@
 export const AnimatedCard = ({ index, children, ...props }) => {
-  return <div {...props}>{children}</div>
+  return (
+    <div key={index} {...props}>
+      {children}
+    </div>
+  )
 }
