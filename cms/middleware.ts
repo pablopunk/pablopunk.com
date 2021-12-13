@@ -117,7 +117,7 @@ export const getPageStaticProps = async (
   return {
     props: {
       page: pageData.story,
-      nav: navData.story,
+      nav: navData.story || null,
       preview: version === 'draft',
     },
     revalidate: 60,
