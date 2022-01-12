@@ -30,7 +30,7 @@
     "geoip-country": "^4.0.76",
     "human-format": "^0.11.0",
     "isomorphic-unfetch": "^3.0.0",
-    "markdown-it": "^12.1.0",
+    "markdown-it": "^12.3.2",
     "next": "^12.0.7",
     "next-seo": "^4.4.0",
     "nextjs-redirect": "^4.0.2",
