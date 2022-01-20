@@ -17,7 +17,7 @@ export const Footer = ({ copyright, source }) => {
               rounded
               disabled
               type="outline"
-              onClick={() => {}}
+              href={`/${l}`}
               className="rotate-[-15deg]"
             >
               {emojiForLocale[l]}
@@ -26,7 +26,7 @@ export const Footer = ({ copyright, source }) => {
             <Button
               rounded
               type="outline"
-              onClick={() => {}}
+              href={`/${l}`}
               className="rotate-[-15deg]"
             >
               {emojiForLocale[l]}
