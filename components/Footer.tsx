@@ -22,7 +22,7 @@ export const Footer = ({ copyright, source }) => {
               }}
               className="rotate-[-15deg]"
             >
-              <img src={`/svg/locales/${l}.svg`} width="20px" />
+              <img src={`/svg/locales/${l}.svg`} width="20px" height="20px" />
             </Button>
           )
         })}
