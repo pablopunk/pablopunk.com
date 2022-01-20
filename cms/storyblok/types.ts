@@ -33,3 +33,14 @@ export type ImageType = {
   id: string
   filename: string
 }
+export type NavType = {
+  content?: {
+    main: ButtonType[]
+  }
+}
+export type FooterType = {
+  content?: {
+    copyright: string
+    source: string
+  }
+}

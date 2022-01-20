@@ -1,17 +1,19 @@
-import { ButtonType, PageContentType, PostType } from 'cms/storyblok/types'
+import {
+  ButtonType,
+  NavType,
+  PageContentType,
+  PostType,
+} from 'cms/storyblok/types'
 
 export interface PageProps {
-  nav?: {
-    content: {
-      main: ButtonType[]
-    }
-  }
   page?: {
     content: PageContentType & PostType['content']
     lang: string
     path: string
     name?: string
   }
+  nav?: NavType
+  footer?: FooterType
   preview?: boolean
   statusCode?: string
 }

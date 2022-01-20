@@ -3,21 +3,23 @@ import Nav from 'components/Nav'
 import Meta from 'components/Meta'
 import { PageProps } from 'types/page'
 import { Button } from 'components/Button'
-import Footer from './Footer'
+import { Footer } from './Footer'
 
 const Layout: FunctionComponent<PageProps> = ({
   page,
   nav,
+  footer,
   children,
   statusCode,
 }) => {
   const meta = page?.content.metadata || {}
-  const mainNav = nav?.content?.main || []
+
+  console.log({ footer })
 
   return (
     <>
       <Meta meta={meta} page={page} />
-      <Nav main={mainNav} />
+      <Nav {...nav} />
       <main className="z-0 max-w-screen-lg px-5 mx-auto fill-height">
         {page ? (
           children
@@ -28,7 +30,7 @@ const Layout: FunctionComponent<PageProps> = ({
           </div>
         )}
       </main>
-      <Footer />
+      <Footer {...footer.content} />
     </>
   )
 }

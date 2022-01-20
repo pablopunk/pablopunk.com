@@ -1,7 +1,7 @@
-import { _, locales, emojiForLocale } from 'locales'
+import { locales, emojiForLocale } from 'locales'
 import { useRouter } from 'next/router'
 
-const Footer = () => {
+export const Footer = ({ copyright, source }) => {
   const { locale } = useRouter()
 
   return (
@@ -29,14 +29,12 @@ const Footer = () => {
           )
         })}
       </div>
-      <div>© Pablo Varela {new Date().getFullYear()}</div>
       <div>
-        <a href="https://github.com/pablopunk/pablopunk.com">
-          {_('Source code', locale)}
-        </a>
+        {copyright} {new Date().getFullYear()}
+      </div>
+      <div>
+        <a href="https://github.com/pablopunk/pablopunk.com">{source}</a>
       </div>
     </footer>
   )
 }
-
-export default Footer

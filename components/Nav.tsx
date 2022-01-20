@@ -4,7 +4,7 @@ import { RiMoonClearLine, RiSunLine, RiContactsFill } from 'react-icons/ri'
 import { FaCreditCard, FaSpotify } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import { _ } from 'locales'
-import { ButtonType } from 'cms/storyblok/types'
+import { ButtonType, NavType } from 'cms/storyblok/types'
 import useTheme from 'hooks/useTheme'
 import useSWR from 'swr'
 import { getJson } from 'lib/utils'
@@ -43,7 +43,12 @@ const ChangeThemeButton = () => {
   )
 }
 
-const Nav = ({ main = [] }) => {
+const Nav = (nav: NavType) => {
+  const { main } = nav?.content
+  if (!main) {
+    return null
+  }
+
   const { locale, asPath } = useRouter()
   const { data: nowPlaying, isValidating } = useSWR<{
     album: string

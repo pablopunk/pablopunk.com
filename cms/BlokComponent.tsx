@@ -10,6 +10,7 @@ import { Icon } from '../components/Icon'
 import { TechCard } from '../components/TechCard'
 import { JAMStack } from '../components/JAMStack'
 import { Gallery } from '../components/Gallery'
+import { Footer } from '../components/Footer'
 
 // resolve Storyblok components to Next.js components
 const Components = {
@@ -24,6 +25,7 @@ const Components = {
   tech_card: TechCard,
   JAMStack: JAMStack,
   gallery: Gallery,
+  footer: Footer,
 }
 
 export const BlokComponent = ({ blok }) => {

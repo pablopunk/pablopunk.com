@@ -107,6 +107,7 @@ export const getPageStaticProps = async (
 
   const pageData = await getPageData(slug, context, version)
   const navData = await getPageData('nav', context, version)
+  const footerData = await getPageData('footer', context, version)
 
   if (pageData === 404) {
     return {
@@ -118,6 +119,7 @@ export const getPageStaticProps = async (
     props: {
       page: pageData.story,
       nav: navData.story || null,
+      footer: footerData.story || null,
       preview: version === 'draft',
     },
     revalidate: 60,
