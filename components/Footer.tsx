@@ -12,24 +12,17 @@ export const Footer = ({ copyright, source }) => {
     >
       <div className="flex gap-x-1">
         {locales.map((l) => {
-          return locale === l ? (
+          return (
             <Button
               rounded
-              disabled
+              disabled={locale === l}
               type="outline"
-              href={`//${l}`}
+              onClick={() => {
+                window.location.href = `/${l}`
+              }}
               className="rotate-[-15deg]"
             >
-              {emojiForLocale[l]}
-            </Button>
-          ) : (
-            <Button
-              rounded
-              type="outline"
-              href={`//${l}`}
-              className="rotate-[-15deg]"
-            >
-              {emojiForLocale[l]}
+              <img src={`/svg/locales/${l}.svg`} width="20px" />
             </Button>
           )
         })}
