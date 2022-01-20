@@ -28,7 +28,7 @@ const Layout: FunctionComponent<PageProps> = ({
           </div>
         )}
       </main>
-      <Footer {...footer.content} />
+      <Footer {...footer?.content} />
     </>
   )
 }

@@ -6,6 +6,7 @@ export type ButtonType = {
   link?: LinkType
   size?: 'sm' | 'md' | 'lg'
   type?: 'primary' | 'secondary' | 'outline'
+  rounded?: boolean
 }
 export type PostType = {
   name: string

@@ -1,3 +1,5 @@
+const nextConfig = require('../../next.config')
+
 describe('Navigate between pages', () => {
   it('/ has content', () => {
     cy.visit('/')
@@ -30,4 +32,16 @@ describe('Navigate between pages', () => {
     cy.get('.go-back-button').first().click()
     cy.url().should('include', '/blog')
   })
+  // it('Goes to /donate and gets redirected', () => {
+  //   const urlRedirects = []
+
+  //   cy.visit('/')
+  //   cy.on('url:changed', (url) => urlRedirects.push(url))
+  //   cy.get('[href="/donate"]').click()
+  //   cy.then(() => {
+  //     expect(urlRedirects).to.have.length(3)
+  //     expect(urlRedirects[1]).to.include('/donate')
+  //     expect(urlRedirects[2]).to.include('github.com/sponsors/pablopunk')
+  //   })
+  // })
 })

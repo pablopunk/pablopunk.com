@@ -8,6 +8,8 @@ interface Props extends ButtonType {
   onClick?(): void
   className?: string
   disabled?: boolean
+  title?: string
+  href?: string
 }
 
 export const Button: FunctionComponent<Props> = ({
@@ -16,15 +18,20 @@ export const Button: FunctionComponent<Props> = ({
   icon,
   size,
   type,
+  rounded,
   onClick,
   className,
   disabled,
+  title,
+  href,
   children,
 }) => {
   const LinkOrButton = ({ children, ...props }) => {
-    if (link) {
+    const url = link?.url || href
+
+    if (url) {
       return (
-        <Link href={link?.url || ''}>
+        <Link href={url}>
           <a {...props}>{children}</a>
         </Link>
       )
@@ -39,6 +46,7 @@ export const Button: FunctionComponent<Props> = ({
 
   return (
     <LinkOrButton
+      title={title}
       className={classNames(
         'flex items-center justify-center p-2 md:py-1 text-xl font-semibold transition-all border rounded-md shadow-md hover:shadow-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed outline-none hover:scale-110',
         {
@@ -49,7 +57,9 @@ export const Button: FunctionComponent<Props> = ({
           'bg-accent hover:bg-accent3 hover:text-bg':
             type === 'primary' || !type || type.length === 0,
           'bg-accent-alt hover:bg-accent2 hover:text-bg': type === 'secondary',
-          'bg-bg2 hover:bg-accent hover:text-bg': type === 'outline',
+          'bg-bg2 hover:bg-accent hover:text-bg text-accent':
+            type === 'outline',
+          'rounded-full min-h-[38px]': rounded === true,
         },
         className,
       )}

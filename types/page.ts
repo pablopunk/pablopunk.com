@@ -1,5 +1,6 @@
 import {
   ButtonType,
+  FooterType,
   NavType,
   PageContentType,
   PostType,

@@ -9,6 +9,7 @@ import useTheme from 'hooks/useTheme'
 import useSWR from 'swr'
 import { getJson } from 'lib/utils'
 import { useSpring, animated } from 'react-spring'
+import { Button } from './Button'
 
 const MAX_SONG = 21
 const MAX_ARTIST = 15
@@ -25,30 +26,24 @@ const ChangeThemeButton = () => {
   }
 
   return (
-    <a
+    <Button
       onClick={toggleTheme}
       title={_('Change theme', locale)}
-      className="text-current toggle-theme-button"
+      rounded
+      type="outline"
+      className="toggle-theme-button"
     >
-      {theme === 'dark' ? (
-        <span>
-          <RiMoonClearLine />
-        </span>
-      ) : (
-        <span>
-          <RiSunLine />
-        </span>
-      )}
-    </a>
+      {theme === 'dark' ? <RiMoonClearLine /> : <RiSunLine />}
+    </Button>
   )
 }
 
 const Nav = (nav: NavType) => {
-  const { main } = nav?.content
-  if (!main) {
+  if (!nav?.content) {
     return null
   }
 
+  const { main } = nav?.content
   const { locale, asPath } = useRouter()
   const { data: nowPlaying, isValidating } = useSWR<{
     album: string
@@ -135,17 +130,16 @@ const Nav = (nav: NavType) => {
           </animated.a>
         )}
       </nav>
-      <div className="relative flex mt-4 mr-3 text-xl">
-        <div className="z-30 p-2 text-3xl transition-colors border rounded-full shadow cursor-pointer text-accent3 hover:text-accent3-alt hover:bg-bg bg-bg2 md:text-xl">
-          <ChangeThemeButton />
-        </div>
-        <a
+      <div className="flex gap-x-1 mt-4 mr-3 text-xl">
+        <ChangeThemeButton />
+        <Button
           href="/donate"
+          type="outline"
+          rounded
           title={_('Sponsor', locale)}
-          className="hidden p-2 ml-2 border rounded-full shadow text-accent3 hover:text-accent3-alt hover:bg-bg bg-bg2 md:block"
         >
           <FaCreditCard />
-        </a>
+        </Button>
       </div>
     </div>
   )
