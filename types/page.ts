@@ -1,5 +1,4 @@
 import {
-  ButtonType,
   FooterType,
   NavType,
   PageContentType,
