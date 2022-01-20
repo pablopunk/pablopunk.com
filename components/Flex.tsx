@@ -18,7 +18,6 @@ export const Flex: FunctionComponent<Props> = ({
   direction,
 }) => {
   const styles = 'flex flex-col md:flex-row gap-1'
-  let sizeStyle = 'w-full'
 
   return (
     <div
