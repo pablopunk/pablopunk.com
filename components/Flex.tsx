@@ -30,6 +30,7 @@ export const Flex: FunctionComponent<Props> = ({
         'justify-start': justify === 'start',
         'justify-center': justify === 'center',
         'justify-end': justify === 'end',
+        'justify-between': justify === 'between',
         'align-start': align === 'start',
         'align-center': align === 'center',
         'align-end': align === 'end',
