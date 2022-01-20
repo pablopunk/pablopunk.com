@@ -21,6 +21,7 @@ export const Footer = ({ copyright, source }) => {
                 window.location.href = `/${l}`
               }}
               className="rotate-[-15deg]"
+              key={`change-locale-${l}`}
             >
               <img src={`/svg/locales/${l}.svg`} width="20px" height="20px" />
             </Button>
