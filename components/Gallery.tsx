@@ -19,6 +19,10 @@ type Props = {
 }
 
 export const Gallery: FunctionComponent<Props> = ({ images }) => {
+  if (images?.length < 1) {
+    return null
+  }
+
   const photos = images.map((image) => {
     const width = parseInt(image.filename.split('/')[5].split('x')[0])
     const height = parseInt(image.filename.split('/')[5].split('x')[1])

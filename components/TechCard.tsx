@@ -13,7 +13,7 @@ export const TechCard: FunctionComponent<Props> = ({ name, icon, link }) => (
   <Link href={link.url}>
     <a>
       <Icon name={icon} size="100px" />
-      <h2>{name}</h2>
+      <h2 className="text-center">{name}</h2>
     </a>
   </Link>
 )

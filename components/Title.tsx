@@ -38,7 +38,7 @@ export const Title: FunctionComponent<Props> = ({
       style = `${style} text-2xl`
       break
     case 'lg':
-      style = `${style} text-4xl`
+      style = `${style} text-4xl mt-5`
       break
   }
 
