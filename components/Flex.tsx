@@ -17,6 +17,10 @@ export const Flex: FunctionComponent<Props> = ({
   align,
   direction,
 }) => {
+  if (items?.filter(Boolean)?.length < 1) {
+    return null
+  }
+
   const styles = 'flex flex-col md:flex-row gap-1'
 
   return (

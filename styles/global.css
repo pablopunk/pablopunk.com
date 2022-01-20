@@ -8,9 +8,9 @@ body {
   --color-bg: rgb(247, 247, 247);
   --color-bg2: white;
   --color-fg: rgb(40, 40, 40);
-  --color-accent: #03635a;
-  --color-accent2: #03a091;
-  --color-accent3: #05a797;
+  --color-accent: #12a594;
+  --color-accent2: #0c6d62;
+  --color-accent3: #0b544a;
   --color-accent-alt: #006adc;
   --color-border: rgb(228, 228, 228);
 }
@@ -19,10 +19,10 @@ body.dark {
   --color-bg: black;
   --color-fg: #c3c3c3;
   --color-bg2: hsl(222deg 19% 10%);
-  --color-accent: #05c7a7;
-  --color-accent: #00ddb8;
-  --color-accent3: #00ffd5;
-  --color-accent-alt: #3e9afc;
+  --color-accent: #0ac5b3;
+  --color-accent2: #10b3a3;
+  --color-accent3: #12a594;
+  --color-accent-alt: #0091ff;
   --color-border: hsl(222deg 19% 20%);
 }
 
