@@ -13,8 +13,4 @@ module.exports = {
   },
   locales: ['en', 'es'],
   DEFAULT_LOCALE: 'en',
-  emojiForLocale: {
-    en: '🇬🇧',
-    es: '🇪🇸',
-  },
 }

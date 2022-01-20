@@ -1,4 +1,4 @@
-import { locales, emojiForLocale } from 'locales'
+import { locales } from 'locales'
 import { useRouter } from 'next/router'
 import { Button } from './Button'
 
