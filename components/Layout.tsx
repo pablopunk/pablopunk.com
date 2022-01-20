@@ -14,8 +14,6 @@ const Layout: FunctionComponent<PageProps> = ({
 }) => {
   const meta = page?.content.metadata || {}
 
-  console.log({ footer })
-
   return (
     <>
       <Meta meta={meta} page={page} />
