@@ -38,15 +38,7 @@ export const Card: FunctionComponent<Props> = ({
   }
 
   return (
-    <div
-      className="p-3 border rounded-lg shadow-md bg-bg2"
-      //      style={{
-      //        backgroundImage: `url(${image.filename})`,
-      //       filter: 'blur(9px)',
-      //       WebkitFilter: 'blur(9px)',
-      //       backgroundSize: 'cover',
-      //      }}
-    >
+    <div className="p-3 border rounded-lg shadow-md bg-gradient-to-b from-bg2 to-bg">
       <Link href={link?.url || ''}>
         <a className="relative flex items-center group hover:cursor-pointer">
           <div className="relative w-[90px] h-[90px] rounded-full border-2">
