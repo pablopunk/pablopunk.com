@@ -1,12 +1,11 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch'
 import humanFormat from 'human-format'
 import Loading from 'components/Loading'
 import { _ } from 'locales'
-import { AiFillStar } from 'react-icons/ai'
 import { AnimatedCard } from 'components/AnimatedCard'
-import RenderOnFirstAppearance from './RenderOnFirstAppearance'
+import { Card } from './Card'
 
 const API = 'https://repos.pablopunk.com/api'
 
@@ -34,34 +33,6 @@ const ADDITIONAL_REPOS = [
 const fetcher = (url) => fetch(url).then((_) => _.json())
 
 export const fetchAllReposData = () => fetcher(API)
-
-const Repo = ({
-  repo,
-  className,
-}: {
-  repo: {
-    name: string
-    html_url: string
-    description: string
-    stargazers_count_nice: number
-  }
-  className?: string
-}) => {
-  return (
-    <div className={className}>
-      <span className="flex items-center">
-        <a href={repo.html_url} className="mr-2">
-          /{repo.name}
-        </a>
-        <span>{repo.stargazers_count_nice}</span>
-        <span className="ml-1">
-          <AiFillStar color="gold" />
-        </span>
-      </span>
-      <p className="text-lg">{repo.description}</p>
-    </div>
-  )
-}
 
 function Repos({ locale, initialData }) {
   const { data, error } = useSWR(API, fetcher, { initialData })
@@ -96,20 +67,19 @@ function Repos({ locale, initialData }) {
       }),
     }))
 
-  const boxStyles = 'px-4 py-3 m-2 border rounded-lg shadow-lg bg-bg2'
-
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2">
-      {repos.map((repo, index) => (
-        <Fragment key={repo.name}>
-          <RenderOnFirstAppearance
-            Placeholder={<Repo repo={repo} className={boxStyles} />}
-          >
-            <AnimatedCard index={index} className={boxStyles}>
-              <Repo repo={repo} />
-            </AnimatedCard>
-          </RenderOnFirstAppearance>
-        </Fragment>
+    <div className="grid grid-cols-1 gap-4 mt-4 mb-8 md:grid-cols-2">
+      {repos.map((repo, i) => (
+        <div key={repo.html_url}>
+          <AnimatedCard index={i}>
+            <Card
+              title={`/${repo.name}`}
+              subtitle={`${repo.stargazers_count_nice} ⭐️`}
+              description={repo.description}
+              link={{ url: repo.html_url }}
+            />
+          </AnimatedCard>
+        </div>
       ))}
     </div>
   )
