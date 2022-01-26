@@ -11,9 +11,9 @@ type Props = {
 
 export const TechCard: FunctionComponent<Props> = ({ name, icon, link }) => (
   <Link href={link.url}>
-    <a>
+    <a className="flex flex-col items-center justify-center gap-2">
       <Icon name={icon} size="100px" />
-      <h2 className="text-center">{name}</h2>
+      <h2>{name}</h2>
     </a>
   </Link>
 )
