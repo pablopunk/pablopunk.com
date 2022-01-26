@@ -23,8 +23,6 @@ export const Card: FunctionComponent<Props> = ({
   line_clamp,
   preload,
 }) => {
-  let lineClamp = ''
-
   switch (line_clamp) {
     case 1:
       lineClamp = 'md:max-h-7 md:line-clamp-1'
@@ -38,7 +36,7 @@ export const Card: FunctionComponent<Props> = ({
   }
 
   return (
-    <div className="p-3 border rounded-lg shadow-md bg-gradient-to-b from-bg2 to-bg">
+    <div className="p-3 dark:border rounded-lg shadow-md bg-bg2">
       <Link href={link?.url || ''}>
         <a className="relative flex items-center group hover:cursor-pointer">
           <div className="relative w-[90px] h-[90px] rounded-full border-2">
@@ -64,11 +62,19 @@ export const Card: FunctionComponent<Props> = ({
           </div>
         </a>
       </Link>
-      <div className="relative overflow-hidden italic md:mt-3">
-        <Markdown className={classNames('hidden md:block', lineClamp)}>
-          {description}
-        </Markdown>
-      </div>
+      {description && (
+        <div className="relative overflow-hidden italic md:mt-3">
+          <Markdown
+            className={classNames('hidden md:block', 'md:max-h-7', {
+              'md:max-h-7 md:line-clamp-1': line_clamp === 1,
+              'md:max-h-7 md:line-clamp-2': line_clamp === 2,
+              'md:max-h-7 md:line-clamp-3': line_clamp === 3,
+            })}
+          >
+            {description}
+          </Markdown>
+        </div>
+      )}
     </div>
   )
 }

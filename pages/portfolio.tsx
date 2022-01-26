@@ -7,6 +7,9 @@ import { PageProps } from 'types/page'
 import { GetStaticProps } from 'next'
 import { Title } from 'components/Title'
 import { CMSPage } from 'components/CMSPage'
+import { getFromCache, setInCache } from 'db/redis'
+
+const isDev = process.env.NODE_ENV !== 'production'
 
 interface Props extends PageProps {
   locale: string
@@ -49,13 +52,28 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     return { notFound: true }
   }
 
+  let npm, repos
+
+  if (isDev) {
+    npm = await getFromCache('npm')
+    repos = await getFromCache('repos')
+  }
+
+  if (!npm || !repos) {
+    npm = await fetchAllNpmData()
+    repos = await fetchAllReposData()
+
+    isDev && setInCache('npm', npm)
+    isDev && setInCache('repos', repos)
+  }
+
   return {
     ...sProps,
     props: {
       ...sProps.props,
       initialData: {
-        npm: await fetchAllNpmData(),
-        repos: await fetchAllReposData(),
+        npm,
+        repos,
       },
       locale: ctx.locale,
     },

@@ -48,7 +48,7 @@ export const Button: FunctionComponent<Props> = ({
     <LinkOrButton
       title={title}
       className={classNames(
-        'flex items-center justify-center p-2 md:py-1 font-semibold transition-all border rounded-md shadow-md hover:shadow-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed outline-none hover:scale-110',
+        'flex items-center justify-center p-2 md:py-1 font-semibold transition-all border shadow-md hover:shadow-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed outline-none hover:scale-110',
         {
           'text-sm': size === 'sm',
           'text-md': size === 'md',
@@ -57,8 +57,9 @@ export const Button: FunctionComponent<Props> = ({
           'bg-accent hover:bg-accent3 hover:text-bg':
             type === 'primary' || !type || type.length === 0,
           'bg-accent-alt hover:bg-accent2 hover:text-bg': type === 'secondary',
-          'bg-bg2 hover:bg-accent hover:text-bg text-accent':
+          'bg-bg2 hover:bg-accent hover:text-bg text-accent border-accent':
             type === 'outline',
+          'rounded-md': rounded !== true,
           'rounded-full min-h-[38px] min-w-[38px]': rounded === true,
         },
         className,

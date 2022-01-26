@@ -125,6 +125,8 @@ const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
       {asPath.startsWith('/posts') && (
         <Button
           className="go-back-button"
+          type="outline"
+          rounded
           text={_('Go Back', locale)}
           icon={'back'}
           link={{ url: '/blog' }}
