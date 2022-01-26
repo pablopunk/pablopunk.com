@@ -29,6 +29,7 @@
     "feed": "^4.2.2",
     "geoip-country": "^4.0.76",
     "human-format": "^0.11.0",
+    "ioredis": "^4.28.3",
     "isomorphic-unfetch": "^3.0.0",
     "markdown-it": "^12.1.0",
     "next": "^12.0.8",

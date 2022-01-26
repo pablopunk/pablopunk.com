@@ -4,6 +4,9 @@ import { PageProps } from 'types/page'
 import { locales } from 'locales'
 import { readdirSync } from 'fs'
 import { PostType } from './storyblok/types'
+import { getFromCache, setInCache } from 'db/redis'
+
+const isDev = process.env.NODE_ENV !== 'production'
 
 async function getPageData(
   slug: string,
@@ -11,6 +14,14 @@ async function getPageData(
   version: string,
 ) {
   let data
+  const cacheKey = `${slug}-${context.locale}`
+
+  if (isDev) {
+    const dataFromCache = await getFromCache(cacheKey)
+    if (dataFromCache) {
+      return dataFromCache
+    }
+  }
 
   try {
     data = (
@@ -25,6 +36,8 @@ async function getPageData(
     data = err.response?.status || 500
   }
 
+  isDev && setInCache(cacheKey, data)
+
   return data
 }
 
@@ -38,6 +51,14 @@ export async function getPosts(
   posts: PostType[]
   total: number
 }> {
+  const cacheKey = `posts-${locale}-page${page}`
+  if (isDev) {
+    const dataFromCache = await getFromCache(cacheKey)
+    if (dataFromCache) {
+      return dataFromCache
+    }
+  }
+
   const version =
     process.env.NODE_VERSION !== 'production' || preview ? 'draft' : 'published'
 
@@ -61,6 +82,8 @@ export async function getPosts(
     console.error(err.response?.data?.error)
   }
 
+  isDev && setInCache(cacheKey, { posts, total })
+
   return { posts, total }
 }
 
@@ -71,6 +94,14 @@ export async function getAllPosts(
   posts: PostType[]
   total: number
 }> {
+  const cacheKey = `all-posts-${locale}`
+  if (isDev) {
+    const dataFromCache = await getFromCache(cacheKey)
+    if (dataFromCache) {
+      return dataFromCache
+    }
+  }
+
   const version =
     process.env.NODE_VERSION !== 'production' || preview ? 'draft' : 'published'
 
@@ -91,6 +122,8 @@ export async function getAllPosts(
   } catch (err) {
     console.error(err.response?.data?.error)
   }
+
+  isDev && setInCache(cacheKey, { posts, total })
 
   return { posts, total }
 }
@@ -127,6 +160,14 @@ export const getPageStaticProps = async (
 }
 
 export const getPageStaticPaths = async (context: GetStaticPropsContext) => {
+  const cacheKey = `staticPaths`
+  if (isDev) {
+    const dataFromCache = await getFromCache(cacheKey)
+    if (dataFromCache) {
+      return dataFromCache
+    }
+  }
+
   const version =
     process.env.NODE_VERSION !== 'production' || context.preview
       ? 'draft'
@@ -169,6 +210,8 @@ export const getPageStaticPaths = async (context: GetStaticPropsContext) => {
       }
     })
   })
+
+  isDev && setInCache(cacheKey, { paths, fallback: true })
 
   return {
     paths,
