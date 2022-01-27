@@ -27,7 +27,11 @@ export const Button: FunctionComponent<Props> = ({
   children,
 }) => {
   const LinkOrButton = ({ children, ...props }) => {
-    const url = link?.url || link?.cached_url || href
+    let url = link?.url || link?.cached_url || href
+
+    if (!url?.includes('://') && !url?.startsWith('/')) {
+      url = `/${url}`
+    }
 
     if (url) {
       return (
