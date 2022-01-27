@@ -7,9 +7,7 @@ import { PageProps } from 'types/page'
 import { GetStaticProps } from 'next'
 import { Title } from 'components/Title'
 import { CMSPage } from 'components/CMSPage'
-import { getFromCache, setInCache } from 'db/redis'
-
-const isDev = process.env.NODE_ENV !== 'production'
+import { getFromCache } from 'db/redis'
 
 interface Props extends PageProps {
   locale: string
