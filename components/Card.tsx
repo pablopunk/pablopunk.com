@@ -3,6 +3,7 @@ import type { LinkType, ImageType } from 'cms/storyblok/types'
 import Link from 'next/link'
 import Markdown from 'components/Markdown'
 import classNames from 'classnames'
+import { normalizeHref } from 'lib/utils'
 
 type Props = {
   title: string
@@ -24,7 +25,7 @@ export const Card: FunctionComponent<Props> = ({
   preload,
 }) => (
   <div className="p-3 rounded-lg shadow-md dark:border bg-bg2">
-    <Link href={link?.url || ''}>
+    <Link href={normalizeHref(link?.url || link?.cached_url || '')}>
       <a className="relative flex items-center group hover:cursor-pointer">
         {image?.filename && (
           <div className="relative w-[90px] h-[90px] rounded-full border-2">
