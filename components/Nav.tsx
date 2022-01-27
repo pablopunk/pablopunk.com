@@ -64,7 +64,8 @@ const Nav = (nav: NavType) => {
     >
       <nav className="flex">
         {main.map((button: ButtonType) => {
-          let current = button.link.url === asPath
+          const url = button.link?.url || button.link?.cached_url
+          let current = url === asPath
 
           return (
             <div
@@ -73,7 +74,7 @@ const Nav = (nav: NavType) => {
                 current ? 'hidden md:block' : ''
               }`}
             >
-              <Link href={button.link.url} locale={locale}>
+              <Link href={url} locale={locale}>
                 <a
                   className={
                     current
@@ -130,7 +131,7 @@ const Nav = (nav: NavType) => {
           </animated.a>
         )}
       </nav>
-      <div className="flex gap-x-1 mt-4 mr-3 text-xl">
+      <div className="flex mt-4 mr-3 text-xl gap-x-1">
         <ChangeThemeButton />
         <Button
           href="/donate"
