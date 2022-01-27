@@ -18,7 +18,7 @@ const Layout: FunctionComponent<PageProps> = ({
     <>
       <Meta meta={meta} page={page} />
       <Nav {...nav} />
-      <main className="z-0 max-w-screen-lg px-5 mx-auto fill-height">
+      <main className="z-0 max-w-screen-lg px-5 mx-auto fill-height py-5 md:py-0">
         {page ? (
           children
         ) : (

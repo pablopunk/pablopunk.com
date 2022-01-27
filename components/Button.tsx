@@ -52,7 +52,7 @@ export const Button: FunctionComponent<Props> = ({
         {
           'text-sm': size === 'sm',
           'text-md': size === 'md',
-          'text-lg': size === 'lg',
+          'text-xl': size === 'lg',
           'text-bg': type !== 'outline',
           'bg-accent hover:bg-accent3 hover:text-bg':
             type === 'primary' || !type || type.length === 0,
@@ -60,7 +60,8 @@ export const Button: FunctionComponent<Props> = ({
           'bg-bg2 hover:bg-accent hover:text-bg text-accent border-accent':
             type === 'outline',
           'rounded-md': rounded !== true,
-          'rounded-full min-h-[38px] min-w-[38px]': rounded === true,
+          'rounded-full min-h-[50px] min-w-[50px] md:min-h-[38px] md:min-w-[38px]':
+            rounded === true,
         },
         className,
       )}

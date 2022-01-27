@@ -127,7 +127,7 @@ const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
           className="go-back-button"
           type="outline"
           rounded
-          text={_('Go Back', locale)}
+          text={_('Go back', locale)}
           icon={'back'}
           link={{ url: '/blog' }}
         />

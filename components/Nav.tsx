@@ -32,6 +32,7 @@ const ChangeThemeButton = () => {
       rounded
       type="outline"
       className="toggle-theme-button"
+      size="lg"
     >
       {theme === 'dark' ? <RiMoonClearLine /> : <RiSunLine />}
     </Button>
@@ -59,22 +60,17 @@ const Nav = (nav: NavType) => {
 
   return (
     <div
-      className="relative z-20 flex items-center justify-between px-1 no-scrollbar"
+      className="relative z-20 flex flex-col md:flex-row items-center justify-between px-1 no-scrollbar mb-2"
       style={{ height: 'var(--nav-height)' }}
     >
-      <nav className="flex">
+      <nav className="flex my-2 md:my-0">
         {main.map((button: ButtonType) => {
           const url = button.link?.url || button.link?.cached_url
           let current =
             asPath === '/' ? url.includes('/home') : url.includes(asPath)
 
           return (
-            <div
-              key={url}
-              className={`px-2 py-1 text-lg font-bold uppercase ${
-                current ? 'hidden md:block' : ''
-              }`}
-            >
+            <div key={url} className="px-2 py-1 text-xl font-bold uppercase">
               <Link href={url} locale={locale}>
                 <a
                   className={
@@ -132,12 +128,13 @@ const Nav = (nav: NavType) => {
           </animated.a>
         )}
       </nav>
-      <div className="flex mt-4 mr-3 text-xl gap-x-1">
+      <div className="flex mb-0 md:mt-4 md:mr-3 text-xl gap-x-2">
         <ChangeThemeButton />
         <Button
           href="/donate"
           type="outline"
           rounded
+          size="lg"
           title={_('Sponsor', locale)}
         >
           <FaCreditCard />
