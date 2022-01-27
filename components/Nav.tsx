@@ -60,7 +60,7 @@ const Nav = (nav: NavType) => {
 
   return (
     <div
-      className="relative z-20 flex flex-col md:flex-row items-center justify-between px-1 no-scrollbar mb-2"
+      className="relative z-20 flex flex-col md:flex-row items-center justify-between px-1 no-scrollbar"
       style={{ height: 'var(--nav-height)' }}
     >
       <nav className="flex my-2 md:my-0">
