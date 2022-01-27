@@ -25,7 +25,7 @@ export const Flex: FunctionComponent<Props> = ({
     return null
   }
 
-  const styles = 'flex md:flex-row'
+  const styles = 'flex md:flex-row h-full'
 
   return (
     <div

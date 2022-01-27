@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
 import { ImTwitter, ImInstagram } from 'react-icons/im'
-import { FaReact, FaNodeJs } from 'react-icons/fa'
-import { SiNextDotJs, SiGraphql } from 'react-icons/si'
+import { FaReact, FaNodeJs, FaCamera } from 'react-icons/fa'
+import { SiNextDotJs, SiGraphql, SiGithub } from 'react-icons/si'
 import { MdEmail } from 'react-icons/md'
 import { BiArrowBack, BiHeart, BiRss } from 'react-icons/bi'
 
@@ -34,11 +34,17 @@ export const Icon: FunctionComponent<Props> = ({ name, size = '1rem' }) => {
     case 'graphql':
       Component = SiGraphql
       break
+    case 'github':
+      Component = SiGithub
+      break
     case 'back':
       Component = BiArrowBack
       break
     case 'rss':
       Component = BiRss
+      break
+    case 'camera':
+      Component = FaCamera
       break
     case 'heart':
       Component = () => <BiHeart className="text-red-500" />

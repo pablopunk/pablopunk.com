@@ -27,7 +27,7 @@ export const Button: FunctionComponent<Props> = ({
   children,
 }) => {
   const LinkOrButton = ({ children, ...props }) => {
-    const url = link?.url || href
+    const url = link?.url || link?.cached_url || href
 
     if (url) {
       return (

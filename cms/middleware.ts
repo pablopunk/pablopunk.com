@@ -4,7 +4,7 @@ import { PageProps } from 'types/page'
 import { locales } from 'locales'
 import { readdirSync } from 'fs'
 import { PostType } from './storyblok/types'
-import { getFromCache, setInCache } from 'db/redis'
+import { getFromCache } from 'db/redis'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -14,14 +14,6 @@ async function getPageData(
   version: string,
 ) {
   let data
-  const cacheKey = `${slug}-${context.locale}`
-
-  if (isDev) {
-    const dataFromCache = await getFromCache(cacheKey)
-    if (dataFromCache) {
-      return dataFromCache
-    }
-  }
 
   try {
     data = (
@@ -36,8 +28,6 @@ async function getPageData(
     data = err.response?.status || 500
   }
 
-  isDev && setInCache(cacheKey, data)
-
   return data
 }
 
@@ -51,38 +41,29 @@ export async function getPosts(
   posts: PostType[]
   total: number
 }> {
-  const cacheKey = `posts-${locale}-page${page}`
-  if (isDev) {
-    const dataFromCache = await getFromCache(cacheKey)
-    if (dataFromCache) {
-      return dataFromCache
-    }
-  }
-
   const version =
     process.env.NODE_VERSION !== 'production' || preview ? 'draft' : 'published'
 
-  let posts = [],
-    total = 0
-
-  try {
-    const results = await Storyblok.get(`cdn/stories`, {
-      version,
-      cv: Date.now(),
-      language: locale,
-      starts_with: 'posts',
-      sort_by: 'created_at:desc',
-      per_page: POSTS_PAGE_SIZE,
-      page,
-    })
-
-    posts = results.data.stories
-    total = results.total
-  } catch (err) {
-    console.error(err.response?.data?.error)
-  }
-
-  isDev && setInCache(cacheKey, { posts, total })
+  const { posts, total } = await getFromCache(
+    `posts-${locale}-page${page}`,
+    async () => {
+      try {
+        const results = await Storyblok.get(`cdn/stories`, {
+          version,
+          cv: Date.now(),
+          language: locale,
+          starts_with: 'posts',
+          sort_by: 'created_at:desc',
+          per_page: POSTS_PAGE_SIZE,
+          page,
+        })
+        return { posts: results.data.stories, total: results.total }
+      } catch (err) {
+        console.error(err.response?.data?.error)
+        return { posts: [], total: 0 }
+      }
+    },
+  )
 
   return { posts, total }
 }
@@ -94,36 +75,24 @@ export async function getAllPosts(
   posts: PostType[]
   total: number
 }> {
-  const cacheKey = `all-posts-${locale}`
-  if (isDev) {
-    const dataFromCache = await getFromCache(cacheKey)
-    if (dataFromCache) {
-      return dataFromCache
-    }
-  }
-
   const version =
     process.env.NODE_VERSION !== 'production' || preview ? 'draft' : 'published'
 
-  let posts = [],
-    total = 0
-
-  try {
-    const results = await Storyblok.get(`cdn/stories`, {
-      version,
-      cv: Date.now(),
-      language: locale,
-      starts_with: 'posts',
-      sort_by: 'created_at:desc',
-    })
-
-    posts = results.data.stories
-    total = results.total
-  } catch (err) {
-    console.error(err.response?.data?.error)
-  }
-
-  isDev && setInCache(cacheKey, { posts, total })
+  const { posts, total } = await getFromCache(`posts-${locale}`, async () => {
+    try {
+      const results = await Storyblok.get(`cdn/stories`, {
+        version,
+        cv: Date.now(),
+        language: locale,
+        starts_with: 'posts',
+        sort_by: 'created_at:desc',
+      })
+      return { posts: results.data.stories, total: results.total }
+    } catch (err) {
+      console.error(err.response?.data?.error)
+      return { posts: [], total: 0 }
+    }
+  })
 
   return { posts, total }
 }
@@ -133,14 +102,18 @@ export const getPageStaticProps = async (
   _slug?: string,
 ): Promise<GetStaticPropsResult<PageProps>> => {
   const slug = _slug || (context.params.slug as string[])?.join('/') || 'home'
-  const version =
-    process.env.NODE_VERSION !== 'production' || context.preview
-      ? 'draft'
-      : 'published'
+  const version = isDev || context.preview ? 'draft' : 'published'
+  const { locale } = context
 
-  const pageData = await getPageData(slug, context, version)
-  const navData = await getPageData('nav', context, version)
-  const footerData = await getPageData('footer', context, version)
+  const pageData = await getFromCache(`${slug}-${locale}`, () =>
+    getPageData(slug, context, version),
+  )
+  const navData = await getFromCache(`nav-${locale}`, () =>
+    getPageData('nav', context, version),
+  )
+  const footerData = await getFromCache(`footer-${locale}`, () =>
+    getPageData('footer', context, version),
+  )
 
   if (pageData === 404) {
     return {
@@ -160,14 +133,6 @@ export const getPageStaticProps = async (
 }
 
 export const getPageStaticPaths = async (context: GetStaticPropsContext) => {
-  const cacheKey = `staticPaths`
-  if (isDev) {
-    const dataFromCache = await getFromCache(cacheKey)
-    if (dataFromCache) {
-      return dataFromCache
-    }
-  }
-
   const version =
     process.env.NODE_VERSION !== 'production' || context.preview
       ? 'draft'
@@ -182,36 +147,35 @@ export const getPageStaticPaths = async (context: GetStaticPropsContext) => {
   const exclude = readdirSync(process.cwd() + '/pages').map((name) =>
     name.replace(/\.tsx$/, ''),
   )
-  const paths = []
 
-  locales.forEach((locale) => {
-    data.stories?.forEach((story: PostType) => {
-      if (!exclude.includes(story.full_slug)) {
-        paths.push({
-          locale,
-          params:
-            story.full_slug === 'home'
-              ? { slug: [] }
-              : { slug: story.full_slug.split('/') },
-        })
-
-        const translatedSlug = story.translated_slugs.find(
-          (slug) => slug.lang === locale,
-        )
-
-        if (translatedSlug) {
-          paths.push({
+  const paths = await getFromCache('staticPaths', async () => {
+    const staticPaths = []
+    locales.forEach((locale) => {
+      data.stories?.forEach((story: PostType) => {
+        if (!exclude.includes(story.full_slug)) {
+          staticPaths.push({
             locale,
-            params: {
-              slug: translatedSlug.path.split('/'),
-            },
+            params:
+              story.full_slug === 'home'
+                ? { slug: [] }
+                : { slug: story.full_slug.split('/') },
           })
+          const translatedSlug = story.translated_slugs.find(
+            (slug) => slug.lang === locale,
+          )
+          if (translatedSlug) {
+            staticPaths.push({
+              locale,
+              params: {
+                slug: translatedSlug.path.split('/'),
+              },
+            })
+          }
         }
-      }
+      })
     })
+    return staticPaths
   })
-
-  isDev && setInCache(cacheKey, { paths, fallback: true })
 
   return {
     paths,

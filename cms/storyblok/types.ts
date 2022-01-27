@@ -1,4 +1,4 @@
-export type LinkType = { url: string }
+export type LinkType = { url?: string; cached_url?: string }
 export type AlignType = 'left' | 'center' | 'right'
 export type ButtonType = {
   text?: string

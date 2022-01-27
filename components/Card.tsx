@@ -23,7 +23,7 @@ export const Card: FunctionComponent<Props> = ({
   line_clamp,
   preload,
 }) => (
-  <div className="p-3 dark:border rounded-lg shadow-md bg-bg2">
+  <div className="p-3 rounded-lg shadow-md dark:border bg-bg2">
     <Link href={link?.url || ''}>
       <a className="relative flex items-center group hover:cursor-pointer">
         {image?.filename && (
@@ -44,9 +44,15 @@ export const Card: FunctionComponent<Props> = ({
             'max-w-[65%] pl-3 flex-col': !!image?.filename,
           })}
         >
-          <h4 className="font-semibold transition-colors text-md md:text-lg group-hover:text-accent-alt">
-            {title}
-          </h4>
+          {title === 'Pablo Varela' ? (
+            <h1 className="font-semibold transition-colors text-md md:text-lg group-hover:text-accent-alt">
+              {title}
+            </h1>
+          ) : (
+            <h4 className="font-semibold transition-colors text-md md:text-lg group-hover:text-accent-alt">
+              {title}
+            </h4>
+          )}
           <h5
             id="job"
             className="text-sm italic font-semibold opacity-75 text-accent"

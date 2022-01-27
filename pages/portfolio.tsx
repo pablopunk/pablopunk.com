@@ -52,20 +52,8 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     return { notFound: true }
   }
 
-  let npm, repos
-
-  if (isDev) {
-    npm = await getFromCache('npm')
-    repos = await getFromCache('repos')
-  }
-
-  if (!npm || !repos) {
-    npm = await fetchAllNpmData()
-    repos = await fetchAllReposData()
-
-    isDev && setInCache('npm', npm)
-    isDev && setInCache('repos', repos)
-  }
+  const npm = await getFromCache('npm', fetchAllNpmData)
+  const repos = await getFromCache('repos', fetchAllReposData)
 
   return {
     ...sProps,
