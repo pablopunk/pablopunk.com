@@ -7,7 +7,7 @@ import { _ } from 'locales'
 import { ButtonType, NavType } from 'cms/storyblok/types'
 import useTheme from 'hooks/useTheme'
 import useSWR from 'swr'
-import { getJson } from 'lib/utils'
+import { getJson, normalizeHref } from 'lib/utils'
 import { useSpring, animated } from 'react-spring'
 import { Button } from './Button'
 
@@ -65,7 +65,7 @@ const Nav = (nav: NavType) => {
     >
       <nav className="flex my-2 md:my-0">
         {main.map((button: ButtonType) => {
-          const url = button.link?.url || button.link?.cached_url
+          const url = normalizeHref(button.link?.url || button.link?.cached_url)
           let current =
             asPath === '/' ? url.includes('/home') : url.includes(asPath)
 

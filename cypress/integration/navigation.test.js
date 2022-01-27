@@ -3,7 +3,7 @@ const nextConfig = require('../../next.config')
 describe('Navigate between pages', () => {
   it('/ has content', () => {
     cy.visit('/')
-    cy.contains('h1')
+    cy.get('h1').contains('Pablo Varela')
   })
   it('can navigate from / to /portfolio', () => {
     cy.visit('/')
@@ -22,8 +22,8 @@ describe('Navigate between pages', () => {
   })
   it('can navigate from /me to /', () => {
     cy.visit('/me')
-    cy.get('[href="/"]').click()
-    cy.url().should('include', '/')
+    cy.get('[href="/home"]').click()
+    cy.url().should('include', '/home')
   })
   it('Navigate to a blog post and go back', () => {
     cy.visit('/blog')

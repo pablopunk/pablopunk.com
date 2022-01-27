@@ -23,3 +23,16 @@ export function getJson(url: string) {
     },
   }).then((res) => res.json())
 }
+
+export function normalizeHref(url?: string) {
+  if (
+    url == null ||
+    url.includes('://') ||
+    url.includes('mailto') ||
+    url.startsWith('/')
+  ) {
+    return url
+  }
+
+  return '/' + url
+}

@@ -3,6 +3,7 @@ import { ButtonType } from 'cms/storyblok/types'
 import Link from 'next/link'
 import { Icon } from './Icon'
 import classNames from 'classnames'
+import { normalizeHref } from 'lib/utils'
 
 interface Props extends ButtonType {
   onClick?(): void
@@ -29,9 +30,7 @@ export const Button: FunctionComponent<Props> = ({
   const LinkOrButton = ({ children, ...props }) => {
     let url = link?.url || link?.cached_url || href
 
-    if (!url?.includes('://') && !url?.startsWith('/')) {
-      url = `/${url}`
-    }
+    url = normalizeHref(url)
 
     if (url) {
       return (
