@@ -69,7 +69,7 @@ const Nav = (nav: NavType) => {
 
           return (
             <div
-              key={button.link.url}
+              key={url}
               className={`px-2 py-1 text-lg font-bold uppercase ${
                 current ? 'hidden md:block' : ''
               }`}
