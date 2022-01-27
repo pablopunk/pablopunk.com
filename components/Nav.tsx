@@ -65,7 +65,7 @@ const Nav = (nav: NavType) => {
       <nav className="flex">
         {main.map((button: ButtonType) => {
           const url = button.link?.url || button.link?.cached_url
-          let current = url === asPath
+          let current = url.includes(asPath)
 
           return (
             <div
