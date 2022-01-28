@@ -32,7 +32,7 @@
     "ioredis": "^4.28.3",
     "isomorphic-unfetch": "^3.0.0",
     "markdown-it": "^12.1.0",
-    "next": "^12.0.8",
+    "next": "^12.0.9",
     "next-seo": "^4.4.0",
     "nextjs-redirect": "^4.0.2",
     "postcss": "^8.3.5",
