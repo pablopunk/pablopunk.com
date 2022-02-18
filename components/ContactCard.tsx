@@ -26,7 +26,7 @@ export const ContactCard: FunctionComponent<Props> = ({
     <div>
       {image?.filename && (
         <img
-          src={image?.filename || ''}
+          src={image?.filename}
           alt={title}
           width="100px"
           className="border-2 rounded-full shadow-md"
