@@ -24,7 +24,7 @@ export const Card: FunctionComponent<Props> = ({
   line_clamp,
   preload,
 }) => (
-  <div className="p-3 transition-colors border-4 border-dashed rounded-lg shadow-md group hover:cursor-pointer hover:border-accent">
+  <div className="p-3 transition-colors border-4 border-dashed rounded-lg group hover:cursor-pointer hover:border-accent">
     <Link href={normalizeHref(link?.url || link?.cached_url || '')}>
       <a className="relative flex items-center">
         {image?.filename && (
