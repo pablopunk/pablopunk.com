@@ -15,7 +15,7 @@ export const ContactCard: FunctionComponent<Props> = ({
   description,
   image,
 }) => (
-  <div className="flex items-start justify-between max-w-2xl gap-2 px-3 py-3 border rounded-lg shadow-md md:items-center">
+  <div className="flex items-start justify-between max-w-2xl gap-2 px-3 py-3 border rounded-lg shadow-md md:items-center bg-bg2">
     <div>
       <h1 className="text-2xl">{title}</h1>
       <h2 className="mb-2 text-md text-accent-alt">{subtitle}</h2>
