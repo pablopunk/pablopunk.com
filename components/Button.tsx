@@ -51,7 +51,7 @@ export const Button: FunctionComponent<Props> = ({
     <LinkOrButton
       title={title}
       className={classNames(
-        'flex items-center justify-center p-2 md:py-1 font-semibold transition-all border shadow-md hover:shadow-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed outline-none hover:scale-110',
+        'flex items-center justify-center p-2 md:py-1 font-semibold transition-all border cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed outline-none hover:scale-110',
         {
           'text-sm': size === 'sm',
           'text-md': size === 'md',

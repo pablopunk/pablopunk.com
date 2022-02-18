@@ -71,7 +71,7 @@ const TranslationRequestComponent: FunctionComponent<Props> = ({ slug }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="z-20 flex flex-col items-center justify-center max-w-md p-4 mx-auto border rounded-lg shadow-lg bg-bg2">
+              <div className="z-20 flex flex-col items-center justify-center max-w-md p-4 mx-auto border rounded-lg bg-bg2">
                 <Dialog.Title as="h4" className="text-2xl">
                   ¡Hecho!
                 </Dialog.Title>

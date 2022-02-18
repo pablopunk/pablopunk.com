@@ -36,6 +36,7 @@ const Portfolio = ({ initialData, locale, page }: Props) => {
           size={'md'}
           heading={'h2'}
           align={'center'}
+          noMargin
         />
         <Repos locale={locale} initialData={initialData.repos} />
       </section>

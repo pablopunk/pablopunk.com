@@ -5,7 +5,7 @@
 }
 
 body {
-  --color-bg: rgb(247, 247, 247);
+  --color-bg: white;
   --color-bg2: white;
   --color-fg: rgb(40, 40, 40);
   --color-accent: #18bbc3;
@@ -91,7 +91,6 @@ h6 {
 }
 
 section {
-  padding: 1rem 0;
   position: relative;
 }
 

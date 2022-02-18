@@ -24,11 +24,11 @@ export const Card: FunctionComponent<Props> = ({
   line_clamp,
   preload,
 }) => (
-  <div className="p-3 rounded-lg shadow-md dark:border bg-bg2">
+  <div className="p-3 transition-colors border-4 border-dashed rounded-lg shadow-md group hover:cursor-pointer hover:border-accent">
     <Link href={normalizeHref(link?.url || link?.cached_url || '')}>
-      <a className="relative flex items-center group hover:cursor-pointer">
+      <a className="relative flex items-center">
         {image?.filename && (
-          <div className="relative w-[90px] h-[90px] rounded-full border-2">
+          <div className="relative w-[90px] h-[90px] rounded-full border-2 border-dashed">
             {image?.filename && (
               <img
                 loading={preload ? 'eager' : 'lazy'}

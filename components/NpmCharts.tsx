@@ -58,7 +58,7 @@ const PackageStat = ({ package: packageName, downloads, locale }) => {
 
   return (
     <>
-      <div className="flex flex-wrap items-center justify-center my-3 mt-4 text-xl whitespace-nowrap">
+      <div className="flex flex-wrap items-center justify-center text-xl whitespace-nowrap">
         <span className="mr-1 text-accent-alt">
           <HiOutlineFolderDownload />
         </span>
@@ -93,7 +93,11 @@ export function NpmCharts({ initialData }) {
     <>
       {data &&
         data.map((packageData) => (
-          <div key={packageData.package} style={{ width: '100%' }}>
+          <div
+            key={packageData.package}
+            style={{ width: '100%' }}
+            className="p-3 my-4 border-4 border-dashed rounded-md"
+          >
             <PackageStat {...packageData} locale={locale} />
           </div>
         ))}
