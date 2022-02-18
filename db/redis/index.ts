@@ -3,7 +3,7 @@ import Redis from 'ioredis'
 let redis
 const isDev = process.env.NODE_ENV !== 'production'
 
-if (false) {
+if (isDev) {
   redis = new Redis('redis://127.0.0.1:6379')
 }
 
