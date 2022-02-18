@@ -16,7 +16,7 @@ export const Footer = ({ copyright, source }) => {
             <Button
               rounded
               disabled={locale === l}
-              type="outline"
+              outline
               onClick={() => {
                 window.location.href = `/${l}`
               }}

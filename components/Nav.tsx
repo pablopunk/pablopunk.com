@@ -30,7 +30,7 @@ const ChangeThemeButton = () => {
       onClick={toggleTheme}
       title={_('Change theme', locale)}
       rounded
-      type="outline"
+      outline
       className="toggle-theme-button"
       size="lg"
     >
@@ -132,7 +132,7 @@ export const Nav = (nav: NavType) => {
         <ChangeThemeButton />
         <Button
           href="/donate"
-          type="outline"
+          outline
           rounded
           size="lg"
           title={_('Sponsor', locale)}

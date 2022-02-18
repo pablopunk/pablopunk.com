@@ -128,7 +128,7 @@ export const Article: FunctionComponent<Props> = ({
       {asPath.startsWith('/posts') && (
         <Button
           className="go-back-button"
-          type="outline"
+          outline
           rounded
           text={_('Go back', locale)}
           icon={'back'}

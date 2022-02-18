@@ -16,6 +16,7 @@ export const FeaturedPosts: FunctionComponent<Props> = ({ posts }) => {
       <Cards
         items={posts?.map((post) => ({
           component: 'card',
+          _uid: post.full_slug,
           title: getTranslatedSlug(post, locale)?.name,
           image: post.content?.image,
           link: { url: post.full_slug },
