@@ -8,10 +8,10 @@ body {
   --color-bg: white;
   --color-bg2: white;
   --color-fg: rgb(40, 40, 40);
-  --color-accent: #18bbc3;
-  --color-accent2: #11c7be;
-  --color-accent3: #059299;
-  --color-accent-alt: #f536ba;
+  --color-accent: #69bfc4;
+  --color-accent2: #47aca7;
+  --color-accent3: #3f989c;
+  --color-accent-alt: #af6ece;
   --color-border: rgb(228, 228, 228);
 }
 
@@ -19,10 +19,10 @@ body.dark {
   --color-bg: black;
   --color-fg: #c3c3c3;
   --color-bg2: hsl(222deg 19% 10%);
-  --color-accent: #18bbc3;
-  --color-accent2: #58e9d5;
-  --color-accent3: #12c9b0;
-  --color-accent-alt: #ff4fb9;
+  --color-accent: #69aaa0;
+  --color-accent2: #5d9a9b;
+  --color-accent3: #457973;
+  --color-accent-alt: #b981c5;
   --color-border: hsl(222deg 19% 20%);
 }
 

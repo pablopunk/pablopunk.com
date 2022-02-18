@@ -1,3 +1,5 @@
+import { ThemeColor } from 'styles/types'
+
 export type LinkType = { url?: string; cached_url?: string }
 export type AlignType = 'left' | 'center' | 'right'
 export type ButtonType = {
@@ -5,7 +7,8 @@ export type ButtonType = {
   icon?: string
   link?: LinkType
   size?: 'sm' | 'md' | 'lg'
-  type?: 'primary' | 'secondary' | 'outline'
+  color?: ThemeColor
+  outline?: boolean
   rounded?: boolean
 }
 export type PostType = {

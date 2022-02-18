@@ -1,13 +1,14 @@
 import { FunctionComponent } from 'react'
 import { AlignType } from 'cms/storyblok/types'
 import classNames from 'classnames'
+import { ThemeColor } from 'styles/types'
 
 type Props = {
   text: string
   align?: AlignType
   size?: 'lg' | 'md' | 'sm'
   heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | null
-  color?: 'accent' | 'accent2' | 'accent3' | 'accent-alt' | 'fg'
+  color?: ThemeColor
   noMargin?: boolean
 }
 

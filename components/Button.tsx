@@ -18,7 +18,8 @@ export const Button: FunctionComponent<Props> = ({
   link,
   icon,
   size,
-  type,
+  outline,
+  color,
   rounded,
   onClick,
   className,
@@ -56,12 +57,13 @@ export const Button: FunctionComponent<Props> = ({
           'text-sm': size === 'sm',
           'text-md': size === 'md',
           'text-xl': size === 'lg',
-          'text-bg': type !== 'outline',
+          'text-bg': !outline,
           'bg-accent hover:bg-accent3 hover:text-bg':
-            type === 'primary' || !type || type.length === 0,
-          'bg-accent-alt hover:bg-accent2 hover:text-bg': type === 'secondary',
+            color === 'accent' || !outline,
+          'bg-accent-alt hover:bg-accent2 hover:text-bg':
+            color === 'accent-alt',
           'bg-bg2 hover:bg-accent hover:text-bg text-accent border-accent':
-            type === 'outline',
+            !!outline,
           'rounded-md': rounded !== true,
           'rounded-full min-h-[50px] min-w-[50px] md:min-h-[38px] md:min-w-[38px]':
             rounded === true,
