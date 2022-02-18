@@ -1,4 +1,4 @@
-import { renderMarkdown } from 'components'
+import { renderMarkdown } from 'components/Markdown'
 import { SITE_DESC, SITE_NAME, SITE_URL } from 'config'
 import { Feed } from 'feed'
 import { GetServerSidePropsContext } from 'next'
