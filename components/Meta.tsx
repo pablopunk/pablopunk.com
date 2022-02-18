@@ -11,7 +11,7 @@ type Props = {
   page: PageProps['page']
 }
 
-export default function Meta({ meta, page }: Props) {
+export function Meta({ meta, page }: Props) {
   const { title, description, og_title, og_description, og_image } = meta
   const { locale } = useRouter()
   const siteUrl = `${SITE_URL}/${locale !== DEFAULT_LOCALE ? locale : ''}`

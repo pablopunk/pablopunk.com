@@ -39,7 +39,7 @@ const ChangeThemeButton = () => {
   )
 }
 
-const Nav = (nav: NavType) => {
+export const Nav = (nav: NavType) => {
   if (!nav?.content) {
     return null
   }
@@ -60,7 +60,7 @@ const Nav = (nav: NavType) => {
 
   return (
     <div
-      className="relative z-20 flex flex-col md:flex-row items-center justify-between px-1 no-scrollbar"
+      className="relative z-20 flex flex-col items-center justify-between px-1 md:flex-row no-scrollbar"
       style={{ height: 'var(--nav-height)' }}
     >
       <nav className="flex my-2 md:my-0">
@@ -128,7 +128,7 @@ const Nav = (nav: NavType) => {
           </animated.a>
         )}
       </nav>
-      <div className="flex mb-0 md:mt-4 md:mr-3 text-xl gap-x-2">
+      <div className="flex mb-0 text-xl md:mt-4 md:mr-3 gap-x-2">
         <ChangeThemeButton />
         <Button
           href="/donate"
@@ -143,5 +143,3 @@ const Nav = (nav: NavType) => {
     </div>
   )
 }
-
-export default Nav

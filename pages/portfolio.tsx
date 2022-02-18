@@ -1,6 +1,6 @@
 import React from 'react'
-import Repos, { fetchAllReposData } from 'components/Repos'
-import NpmCharts, { fetchAllNpmData } from 'components/NpmCharts'
+import { Repos, fetchAllReposData } from 'components/Repos'
+import { NpmCharts, fetchAllNpmData } from 'components/NpmCharts'
 import { _ } from '../locales'
 import { getPageStaticProps } from 'cms/middleware'
 import { PageProps } from 'types/page'

@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import Nav from 'components/Nav'
-import Meta from 'components/Meta'
+import { Nav } from 'components/Nav'
+import { Meta } from 'components/Meta'
 import { PageProps } from 'types/page'
 import { Button } from 'components/Button'
 import { Footer } from './Footer'
 
-const Layout: FunctionComponent<PageProps> = ({
+export const Layout: FunctionComponent<PageProps> = ({
   page,
   nav,
   footer,
@@ -18,7 +18,7 @@ const Layout: FunctionComponent<PageProps> = ({
     <>
       <Meta meta={meta} page={page} />
       <Nav {...nav} />
-      <main className="z-0 max-w-screen-lg px-5 mx-auto fill-height py-5 md:py-0">
+      <main className="z-0 max-w-screen-lg px-5 py-5 mx-auto fill-height md:py-0">
         {page ? (
           children
         ) : (
@@ -32,5 +32,3 @@ const Layout: FunctionComponent<PageProps> = ({
     </>
   )
 }
-
-export default Layout

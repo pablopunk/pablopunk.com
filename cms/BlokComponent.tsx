@@ -12,6 +12,8 @@ import { JAMStack } from '../components/JAMStack'
 import { Gallery } from '../components/Gallery'
 import { Footer } from '../components/Footer'
 import { Separator } from 'components/Separator'
+import { ContactCard } from 'components/ContactCard'
+import { FeaturedPosts } from 'components/FeaturedPosts'
 
 // resolve Storyblok components to Next.js components
 const Components = {
@@ -28,6 +30,8 @@ const Components = {
   gallery: Gallery,
   footer: Footer,
   separator: Separator,
+  contact_card: ContactCard,
+  featured_posts: FeaturedPosts,
 }
 
 export const BlokComponent = ({ blok }) => {

@@ -4,11 +4,13 @@ import classNames from 'classnames'
 type Props = {
   x: string
   y: string
+  hide: boolean
 }
 
-export const Separator: FunctionComponent<Props> = ({ x, y }) => (
+export const Separator: FunctionComponent<Props> = ({ x, y, hide }) => (
   <div
-    className={classNames('relative border-b', {
+    className={classNames('relative', {
+      'border-b': !hide,
       'my-2': y === '1',
       'my-4': y === '2',
       'my-6': y === '3',

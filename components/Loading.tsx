@@ -59,7 +59,7 @@ const StyledLoading = styled.div`
   }
 `
 
-export default function Loading() {
+export function Loading() {
   return (
     <StyledLoading>
       <div className="circle">

@@ -21,7 +21,7 @@ async function getPageData(
         version,
         cv: Date.now(),
         language: context.locale,
-        // resolve_relations: 'articles.items',
+        resolve_relations: 'featured_posts.posts',
       })
     ).data
   } catch (err) {

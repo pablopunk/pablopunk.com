@@ -20,7 +20,7 @@ export function renderMarkdown(markdown: string) {
 //   return htmls.join('\n\n')
 // }
 
-const Markdown: FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
+export const Markdown: FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
   children,
   ...rest
 }) => {
@@ -35,5 +35,3 @@ const Markdown: FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
     />
   )
 }
-
-export default Markdown

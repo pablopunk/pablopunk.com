@@ -1,4 +1,4 @@
-import Loading from 'components/Loading'
+import Loading from 'components'
 import { FiDownloadCloud } from 'react-icons/fi'
 import { GoRepo } from 'react-icons/go'
 import { MdCameraAlt, MdPageview } from 'react-icons/md'

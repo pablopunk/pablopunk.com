@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react'
 import { PageProps } from 'types/page'
 import { BlokComponent } from 'cms/BlokComponent'
 import useStoryblok from 'cms/storyblok/hooks/useStoryblok'
-import Article from 'components/Article'
+import { Article } from 'components/Article'
 import { useRouter } from 'next/router'
-import Loading from 'components/Loading'
+import { Loading } from 'components/Loading'
 
 export const CMSPage: FunctionComponent<PageProps> = ({ page }) => {
   const story = useStoryblok(page)
@@ -12,7 +12,7 @@ export const CMSPage: FunctionComponent<PageProps> = ({ page }) => {
 
   if (isFallback) {
     return (
-      <span className="py-4 flex items-center justify-center w-full">
+      <span className="flex items-center justify-center w-full py-4">
         <Loading />
       </span>
     )

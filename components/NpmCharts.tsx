@@ -58,7 +58,7 @@ const PackageStat = ({ package: packageName, downloads, locale }) => {
 
   return (
     <>
-      <div className="flex items-center justify-center my-3 mt-4 text-xl whitespace-nowrap flex-wrap">
+      <div className="flex flex-wrap items-center justify-center my-3 mt-4 text-xl whitespace-nowrap">
         <span className="mr-1 text-accent-alt">
           <HiOutlineFolderDownload />
         </span>
@@ -85,7 +85,7 @@ const PackageStat = ({ package: packageName, downloads, locale }) => {
   )
 }
 
-export default function NpmCharts({ initialData }) {
+export function NpmCharts({ initialData }) {
   const { locale } = useRouter()
   const { data } = useSWR('npm-stats', fetchAllNpmData, { initialData })
 

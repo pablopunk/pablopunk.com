@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Markdown from 'components/Markdown'
+import { Markdown } from 'components/Markdown'
 import { Button } from 'components/Button'
 import { DEFAULT_LOCALE, _ } from 'locales'
 import { SRLWrapper } from 'simple-react-lightbox'
@@ -112,7 +112,10 @@ type Props = {
   translated: boolean // true if content is translated
 }
 
-const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
+export const Article: FunctionComponent<Props> = ({
+  story,
+  translated = false,
+}) => {
   const { asPath, locale } = useRouter()
   // "translated = false" means the content is not translated, but the title could still be translated
   const translatedSlug = story.translated_slugs.find(
@@ -171,5 +174,3 @@ const Article: FunctionComponent<Props> = ({ story, translated = false }) => {
     </StyledArticle>
   )
 }
-
-export default Article

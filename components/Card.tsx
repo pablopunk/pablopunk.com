@@ -1,9 +1,9 @@
-import { FunctionComponent } from 'react'
-import type { LinkType, ImageType } from 'cms/storyblok/types'
-import Link from 'next/link'
-import Markdown from 'components/Markdown'
 import classNames from 'classnames'
+import type { ImageType, LinkType } from 'cms/storyblok/types'
+import { Markdown } from 'components/Markdown'
 import { normalizeHref } from 'lib/utils'
+import Link from 'next/link'
+import { FunctionComponent } from 'react'
 
 type Props = {
   title: string

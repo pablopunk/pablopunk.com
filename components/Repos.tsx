@@ -2,7 +2,7 @@ import React from 'react'
 import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch'
 import humanFormat from 'human-format'
-import Loading from 'components/Loading'
+import { Loading } from 'components/Loading'
 import { _ } from 'locales'
 import { AnimatedCard } from 'components/AnimatedCard'
 import { Card } from './Card'
@@ -34,7 +34,7 @@ const fetcher = (url) => fetch(url).then((_) => _.json())
 
 export const fetchAllReposData = () => fetcher(API)
 
-function Repos({ locale, initialData }) {
+export function Repos({ locale, initialData }) {
   const { data, error } = useSWR(API, fetcher, { initialData })
 
   if (error) {
@@ -84,5 +84,3 @@ function Repos({ locale, initialData }) {
     </div>
   )
 }
-
-export default Repos
