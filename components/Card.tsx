@@ -32,6 +32,8 @@ export const Card: FunctionComponent<Props> = ({
             {image?.filename && (
               <img
                 loading={preload ? 'eager' : 'lazy'}
+                width="90px"
+                height="90px"
                 src={image.filename + '/m/90x90'}
                 alt={title}
                 className="object-cover w-full h-full transition-opacity rounded-full filter group-hover:grayscale group-hover:opacity-75"
