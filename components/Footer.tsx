@@ -7,7 +7,7 @@ export const Footer = ({ copyright, source }) => {
 
   return (
     <footer
-      className="items-center justify-around hidden w-full p-4 mx-auto md:flex bg-bg2 opacity-80"
+      className="items-center overflow-hidden justify-around hidden w-full p-4 mx-auto md:flex bg-bg2 opacity-80"
       style={{ height: 'var(--footer-height)' }}
     >
       <div className="flex gap-x-1">
