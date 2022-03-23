@@ -136,7 +136,7 @@ export const Nav = (nav: NavType) => {
           outline
           rounded
           size="lg"
-          title={_('Sponsor', locale)}
+          title={_('Give me money', locale)}
         >
           <FiCoffee />
         </Button>

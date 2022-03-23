@@ -10,7 +10,7 @@ type Props = {
   size?: string
 }
 
-export const Icon: FunctionComponent<Props> = ({ name, size = '1rem' }) => {
+export const Icon: FunctionComponent<Props> = ({ name, size = '1em' }) => {
   let Component = null
   switch (name) {
     case 'twitter':
