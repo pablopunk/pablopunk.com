@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import { RiMoonClearLine, RiSunLine, RiContactsFill } from 'react-icons/ri'
-import { FaCreditCard, FaSpotify } from 'react-icons/fa'
+import { FaSpotify } from 'react-icons/fa'
+import { FiCoffee } from 'react-icons/fi'
 import { useRouter } from 'next/router'
 import { _ } from 'locales'
 import { ButtonType, NavType } from 'cms/storyblok/types'
@@ -137,7 +138,7 @@ export const Nav = (nav: NavType) => {
           size="lg"
           title={_('Sponsor', locale)}
         >
-          <FaCreditCard />
+          <FiCoffee />
         </Button>
       </div>
     </div>
