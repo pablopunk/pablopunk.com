@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react'
 import { ButtonType } from 'cms/storyblok/types'
-import Link from 'next/link'
 import { Icon } from './Icon'
 import classNames from 'classnames'
 import { normalizeHref } from 'lib/utils'
@@ -35,9 +34,9 @@ export const Button: FunctionComponent<Props> = ({
 
     if (url) {
       return (
-        <Link href={url}>
-          <a {...props}>{children}</a>
-        </Link>
+        <a href={url} {...props}>
+          {children}
+        </a>
       )
     }
 

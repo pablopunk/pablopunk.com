@@ -10,7 +10,6 @@ const buildRewrite = ({ path, dest }) => ({
 const buildRedirect = ({ path, dest }) => ({
   source: `/(${locales.join('|')})+/${path}`,
   destination: dest,
-  locale: false,
   permanent: false,
 })
 
