@@ -33,6 +33,7 @@ yarn-error.log*
 
 # Cypress
 /cypress/videos
+/cypress/screenshots
 
 # Sentry
 .sentryclirc

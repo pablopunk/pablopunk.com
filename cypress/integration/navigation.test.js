@@ -35,7 +35,7 @@ describe('Navigate between pages', () => {
   it('Goes to /donate and gets redirected', () => {
     cy.request('/donate').then((response) => {
       expect(response.redirects[0]).to.include(
-        'https://github.com/sponsors/pablopunk',
+        'https://www.buymeacoffee.com/pablopunk',
       )
     })
   })
