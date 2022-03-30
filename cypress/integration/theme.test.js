@@ -1,5 +1,5 @@
 describe('Theme control', () => {
-  it.skip('can toggle between themes', () => {
+  it('can toggle between themes', () => {
     cy.visit('/')
     cy.get('body')
       .invoke('css', 'background-color')
