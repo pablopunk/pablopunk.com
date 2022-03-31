@@ -31,7 +31,6 @@ const ChangeThemeButton = () => {
       onClick={toggleTheme}
       title={_('Change theme', locale)}
       rounded
-      outline
       className="toggle-theme-button"
       size="lg"
     >
@@ -58,6 +57,8 @@ export const Nav = (nav: NavType) => {
   const spotifyStyles = useSpring({
     y: nowPlaying == null || isValidating ? -100 : 0,
   })
+  const boxStyles =
+    'items-center hidden ml-2 text-xs transition-colors bg-primary-4 border border-primary-6 rounded-md opacity-70 md:flex hover:bg-bg'
 
   return (
     <div
@@ -76,8 +77,8 @@ export const Nav = (nav: NavType) => {
                 <a
                   className={
                     current
-                      ? 'md:text-accent3'
-                      : 'text-fg md:hover:text-accent3'
+                      ? 'md:text-primary-10'
+                      : 'text-fg md:hover:text-primary-8'
                   }
                 >
                   {button.text}
@@ -88,12 +89,14 @@ export const Nav = (nav: NavType) => {
         })}
         {nowPlaying?.isPlaying && (
           <animated.a
-            className="items-center hidden ml-2 text-xs transition-colors border rounded-md md:flex bg-bg2 hover:bg-bg group max-w-[426px]"
+            className={boxStyles}
             href={nowPlaying.songUrl}
             style={spotifyStyles}
           >
             <FaSpotify className="mx-2 text-xl min-w-[1em]" />
-            <div className="mr-1">{_('Now playing', locale)}</div>
+            <div className="mr-1 whitespace-nowrap">
+              {_('Now playing', locale)}
+            </div>
             <div
               className="mr-1 text-fg whitespace-nowrap"
               title={nowPlaying.title}
@@ -120,12 +123,12 @@ export const Nav = (nav: NavType) => {
         )}
         {nowPlaying && !nowPlaying.isPlaying && (
           <animated.a
-            className="items-center hidden ml-2 text-xs transition-colors border rounded-md opacity-70 md:flex bg-bg2 hover:bg-bg"
+            className={boxStyles}
             href="https://open.spotify.com/user/pablovarela12"
             style={spotifyStyles}
           >
             <FaSpotify className="mx-2 text-xl" />
-            <div className="mr-1">{_('Not playing anything', locale)}</div>
+            <div className="mr-2">{_('Not playing anything', locale)}</div>
           </animated.a>
         )}
       </nav>
@@ -133,7 +136,6 @@ export const Nav = (nav: NavType) => {
         <ChangeThemeButton />
         <Button
           href="/donate"
-          outline
           rounded
           size="lg"
           title={_('Give me money', locale)}

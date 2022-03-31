@@ -6,6 +6,7 @@ import { Loading } from 'components/Loading'
 import { _ } from 'locales'
 import { AnimatedCard } from 'components/AnimatedCard'
 import { Card } from './Card'
+import { BorderGradient } from './BorderGradient'
 
 const API = 'https://repos.pablopunk.com/api'
 
@@ -71,14 +72,16 @@ export function Repos({ locale, initialData }) {
     <div className="grid grid-cols-1 gap-4 mt-4 mb-8 md:grid-cols-2">
       {repos.map((repo, i) => (
         <div key={repo.html_url}>
-          <AnimatedCard index={i}>
-            <Card
-              title={`/${repo.name}`}
-              subtitle={`${repo.stargazers_count_nice} ⭐️`}
-              description={repo.description}
-              link={{ url: repo.html_url }}
-            />
-          </AnimatedCard>
+          <BorderGradient>
+            <AnimatedCard index={i}>
+              <Card
+                title={`/${repo.name}`}
+                subtitle={`${repo.stargazers_count_nice} ⭐️`}
+                description={repo.description}
+                link={{ url: repo.html_url }}
+              />
+            </AnimatedCard>
+          </BorderGradient>
         </div>
       ))}
     </div>

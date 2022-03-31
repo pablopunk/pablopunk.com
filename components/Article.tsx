@@ -54,7 +54,7 @@ const StyledArticle = styled.article`
   pre {
     width: 100%;
     font-family: 'SF Mono', Menlo, monospace;
-    background-color: var(--color-bg2);
+    background-color: var(--color-bg-2);
     padding: 0.5rem 1rem;
     margin: 0.5rem 0;
     border-radius: 0.5rem;
@@ -66,7 +66,7 @@ const StyledArticle = styled.article`
   }
 
   code {
-    color: var(--color-accent-alt);
+    color: var(--color-secondary-11);
     font-family: 'SF Mono', Menlo, monospace;
     font-size: 85%;
   }
@@ -87,7 +87,7 @@ const StyledArticle = styled.article`
 
   ul > li:before {
     content: '☞';
-    color: var(--color-accent);
+    color: var(--color-primary-8);
     margin-right: 0.5rem;
     font-size: 1.25rem;
   }
@@ -97,9 +97,9 @@ const StyledArticle = styled.article`
   }
 
   blockquote {
-    border-left: 3px solid var(--color-accent);
+    border-left: 3px solid var(--color-primary-8);
     padding: 0.25rem 0.5rem;
-    background-color: var(--color-bg2);
+    background-color: var(--color-bg-2);
   }
 
   blockquote p {
@@ -117,6 +117,7 @@ export const Article: FunctionComponent<Props> = ({
   translated = false,
 }) => {
   const { asPath, locale } = useRouter()
+  console.log({ translated })
   // "translated = false" means the content is not translated, but the title could still be translated
   const translatedSlug = story.translated_slugs.find(
     (slug) => slug.lang === locale,
@@ -128,8 +129,8 @@ export const Article: FunctionComponent<Props> = ({
       {asPath.startsWith('/posts') && (
         <Button
           className="go-back-button"
-          outline
           rounded
+          secondary
           text={_('Go back', locale)}
           icon={'back'}
           link={{ url: '/blog' }}

@@ -1,33 +1,43 @@
+@import './radix-colors.css';
+
 :root {
   --transition-time: 0.3s;
   --nav-height: 50px;
   --footer-height: 50px;
 }
 
-body {
-  --color-bg: white;
-  --color-bg2: white;
-  --color-fg: rgb(40, 40, 40);
-  --color-accent: #69bfc4;
-  --color-accent2: #47aca7;
-  --color-accent3: #3f989c;
-  --color-accent-alt: #af6ece;
-  --color-border: rgb(228, 228, 228);
-}
-
-body.dark {
-  --color-bg: black;
-  --color-fg: #c3c3c3;
-  --color-bg2: hsl(222deg 19% 10%);
-  --color-accent: #69aaa0;
-  --color-accent2: #5d9a9b;
-  --color-accent3: #457973;
-  --color-accent-alt: #b981c5;
-  --color-border: hsl(222deg 19% 20%);
-}
-
 html {
   box-sizing: border-box;
+}
+
+body {
+  --color-bg: var(--colors-gray1);
+  --color-bg-2: var(--colors-gray3);
+  --color-fg: var(--colors-gray12);
+  --color-primary-1: var(--colors-teal1);
+  --color-primary-2: var(--colors-teal2);
+  --color-primary-3: var(--colors-teal3);
+  --color-primary-4: var(--colors-teal4);
+  --color-primary-5: var(--colors-teal5);
+  --color-primary-6: var(--colors-teal6);
+  --color-primary-7: var(--colors-teal7);
+  --color-primary-8: var(--colors-teal8);
+  --color-primary-9: var(--colors-teal9);
+  --color-primary-10: var(--colors-teal10);
+  --color-primary-11: var(--colors-teal11);
+  --color-primary-12: var(--colors-teal12);
+  --color-secondary-1: var(--colors-violet1);
+  --color-secondary-2: var(--colors-violet2);
+  --color-secondary-3: var(--colors-violet3);
+  --color-secondary-4: var(--colors-violet4);
+  --color-secondary-5: var(--colors-violet5);
+  --color-secondary-6: var(--colors-violet6);
+  --color-secondary-7: var(--colors-violet7);
+  --color-secondary-8: var(--colors-violet8);
+  --color-secondary-9: var(--colors-violet9);
+  --color-secondary-10: var(--colors-violet10);
+  --color-secondary-11: var(--colors-violet11);
+  --color-secondary-12: var(--colors-violet12);
 }
 
 *,
@@ -39,6 +49,11 @@ html,
 body {
   position: relative;
 }
+
+*::selection {
+  background-color: var(--color-secondary-7);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -54,14 +69,14 @@ svg {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-primary-11);
   transition: background-color var(--transition-time),
     color var(--transition-time);
   font-weight: bold;
 }
 
-a:hover {
-  color: var(--color-accent3);
+p a:hover {
+  color: var(--color-primary-3);
 }
 
 article  {

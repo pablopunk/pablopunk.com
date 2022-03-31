@@ -50,7 +50,7 @@ const totalDownloads = (downloads) =>
   }).replace(' ', '')
 
 const PackageStat = ({ package: packageName, downloads, locale }) => {
-  const color = useCssVar('--color-accent-alt')
+  const color = useCssVar('--color-secondary-9')
 
   if (downloads == null) {
     return null
@@ -59,7 +59,7 @@ const PackageStat = ({ package: packageName, downloads, locale }) => {
   return (
     <>
       <div className="flex flex-wrap items-center justify-center text-xl whitespace-nowrap">
-        <span className="mr-1 text-accent-alt">
+        <span className="mr-1 text-secondary-11">
           <HiOutlineFolderDownload />
         </span>
         <span className="mr-1">{totalDownloads(downloads)} </span>

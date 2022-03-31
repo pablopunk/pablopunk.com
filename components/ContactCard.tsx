@@ -20,7 +20,7 @@ export const ContactCard: FunctionComponent<Props> = ({
     <div className="flex items-start justify-between gap-2 px-3 py-3 rounded-lg md:items-center">
       <div>
         <h1 className="text-2xl">{title}</h1>
-        <h2 className="mb-2 text-md text-accent-alt">{subtitle}</h2>
+        <h2 className="mb-2 text-md text-secondary-11">{subtitle}</h2>
         <div className="max-w-md">
           <Markdown>{description}</Markdown>
         </div>

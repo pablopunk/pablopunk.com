@@ -14,6 +14,7 @@ import { Footer } from '../components/Footer'
 import { Separator } from 'components/Separator'
 import { ContactCard } from 'components/ContactCard'
 import { FeaturedPosts } from 'components/FeaturedPosts'
+import { Colors } from 'components/Colors'
 
 // resolve Storyblok components to Next.js components
 const Components = {
@@ -32,6 +33,7 @@ const Components = {
   separator: Separator,
   contact_card: ContactCard,
   featured_posts: FeaturedPosts,
+  colors: Colors,
 }
 
 export const BlokComponent = ({ blok }) => {

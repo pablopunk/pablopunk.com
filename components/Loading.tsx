@@ -14,7 +14,7 @@ const StyledLoading = styled.div`
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background-color: var(--color-accent);
+    background-color: var(--color-primary-10);
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
   }
   .circle div:nth-child(1) {

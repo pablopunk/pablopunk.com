@@ -1,3 +1,4 @@
+import 'styles/radix-colors.css'
 import 'tailwindcss/tailwind.css'
 import 'styles/global.css'
 import React, { useEffect } from 'react'

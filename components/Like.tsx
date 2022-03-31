@@ -38,7 +38,6 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
   return (
     <Button
       size="sm"
-      outline
       disabled={alreadyLiked}
       onClick={likeThis}
       icon="heart"

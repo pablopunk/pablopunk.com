@@ -25,61 +25,63 @@ export const Card: FunctionComponent<Props> = ({
   line_clamp,
   preload,
 }) => (
-  <BorderGradient>
-    <div className="p-3">
-      <Link href={normalizeHref(link?.url || link?.cached_url || '')}>
-        <a className="relative flex items-center">
-          {image?.filename && (
-            <div className="relative w-[90px] h-[90px] rounded-full">
-              {image?.filename && (
-                <img
-                  loading={preload ? 'eager' : 'lazy'}
-                  width="90px"
-                  height="90px"
-                  src={image.filename + '/m/90x90'}
-                  alt={title}
-                  className="object-cover w-full h-full transition-opacity rounded-full filter group-hover:grayscale group-hover:opacity-75"
-                />
-              )}
-            </div>
-          )}
-          <div
-            className={classNames('flex items-start justify-between', {
-              'w-full': !image?.filename,
-              'max-w-[65%] pl-3 flex-col': !!image?.filename,
-            })}
-          >
-            {title === 'Pablo Varela' ? (
-              <h1 className="font-semibold transition-colors text-md md:text-lg group-hover:text-accent-alt">
-                {title}
-              </h1>
-            ) : (
-              <h4 className="font-semibold transition-colors text-md md:text-lg group-hover:text-accent-alt">
-                {title}
-              </h4>
+  <div
+    className={classNames('p-3 border rounded-lg transition-colors shadow-lg', {
+      'hover:bg-primary-3 hover:border-primary-3': !description,
+    })}
+  >
+    <Link href={normalizeHref(link?.url || link?.cached_url || '')}>
+      <a className="relative flex items-center group">
+        {image?.filename && (
+          <div className="relative w-[90px] h-[90px] rounded-full">
+            {image?.filename && (
+              <img
+                loading={preload ? 'eager' : 'lazy'}
+                width="90px"
+                height="90px"
+                src={image.filename + '/m/90x90'}
+                alt={title}
+                className="object-cover w-full h-full transition-all rounded-full filter group-hover:grayscale group-hover:opacity-75"
+              />
             )}
-            <h5
-              id="job"
-              className="text-sm italic font-semibold opacity-75 text-accent"
-            >
-              {subtitle}
-            </h5>
           </div>
-        </a>
-      </Link>
-      {description && (
-        <div className="relative overflow-hidden italic md:mt-3">
-          <Markdown
-            className={classNames('hidden md:block', 'md:max-h-7', {
-              'md:max-h-7 md:line-clamp-1': line_clamp === 1,
-              'md:max-h-7 md:line-clamp-2': line_clamp === 2,
-              'md:max-h-7 md:line-clamp-3': line_clamp === 3,
-            })}
+        )}
+        <div
+          className={classNames('flex items-start justify-between', {
+            'w-full': !image?.filename,
+            'max-w-[65%] pl-3 flex-col': !!image?.filename,
+          })}
+        >
+          {title === 'Pablo Varela' ? (
+            <h1 className="font-semibold transition-colors text-md md:text-lg group-hover:text-primary-11">
+              {title}
+            </h1>
+          ) : (
+            <h4 className="font-semibold transition-colors text-md md:text-lg group-hover:text-primary-11">
+              {title}
+            </h4>
+          )}
+          <h5
+            id="job"
+            className="text-sm italic font-semibold opacity-75 text-primary"
           >
-            {description}
-          </Markdown>
+            {subtitle}
+          </h5>
         </div>
-      )}
-    </div>
-  </BorderGradient>
+      </a>
+    </Link>
+    {description && (
+      <div className="relative overflow-hidden italic md:mt-3">
+        <Markdown
+          className={classNames('hidden md:block', 'md:max-h-7', {
+            'md:max-h-7 md:line-clamp-1': line_clamp === 1,
+            'md:max-h-7 md:line-clamp-2': line_clamp === 2,
+            'md:max-h-7 md:line-clamp-3': line_clamp === 3,
+          })}
+        >
+          {description}
+        </Markdown>
+      </div>
+    )}
+  </div>
 )

@@ -11,7 +11,7 @@ export const BorderGradient: FunctionComponent<Props> = ({
 }) => (
   <div
     className={classNames(
-      'p-1 rounded-xl bg-gradient-to-r from-accent to-accent-alt hover:to-accent',
+      'p-1 rounded-xl bg-gradient-to-r from-primary-10 to-secondary-10 hover:to-primary-10',
       className,
     )}
   >

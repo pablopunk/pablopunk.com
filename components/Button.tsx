@@ -17,8 +17,8 @@ export const Button: FunctionComponent<Props> = ({
   link,
   icon,
   size,
-  outline,
-  color,
+  primary,
+  secondary,
   rounded,
   onClick,
   className,
@@ -51,21 +51,18 @@ export const Button: FunctionComponent<Props> = ({
     <LinkOrButton
       title={title}
       className={classNames(
-        'flex items-center justify-center p-2 md:py-1 font-semibold transition-all border cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed outline-none hover:scale-110',
+        'flex items-center justify-center p-2 md:py-1 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed outline-none hover:scale-110',
+        'font-semibold',
         {
           'text-sm': size === 'sm',
           'text-md': size === 'md',
           'text-xl': size === 'lg',
-          'text-bg': !outline,
-          'bg-accent hover:bg-accent3 hover:text-bg':
-            color === 'accent' || !outline,
-          'bg-accent-alt hover:bg-accent2 hover:text-bg':
-            color === 'accent-alt',
-          'bg-bg2 hover:bg-accent hover:text-bg text-accent border-accent':
-            !!outline,
-          'rounded-md': rounded !== true,
-          'rounded-full min-h-[50px] min-w-[50px] md:min-h-[38px] md:min-w-[38px]':
+          'min-h-[50px] min-w-[50px] md:min-h-[38px] md:min-w-[38px]':
             rounded === true,
+          'bg-primary-5 text-primary-11 hover:text-primary-11 hover:bg-primary-7 rounded-full':
+            !!primary || !secondary,
+          'bg-secondary-5 text-secondary-11 hover:text-secondary-11 hover:bg-secondary-7 rounded-full':
+            !!secondary,
         },
         className,
       )}
