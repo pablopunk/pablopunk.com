@@ -4,7 +4,6 @@ import { Markdown } from 'components/Markdown'
 import { normalizeHref } from 'lib/utils'
 import Link from 'next/link'
 import { FunctionComponent } from 'react'
-import { BorderGradient } from './BorderGradient'
 
 type Props = {
   title: string
