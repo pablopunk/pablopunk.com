@@ -116,7 +116,7 @@ const moduleExports = {
 }
 
 const sentryWebpackPluginOptions = {
-  silent: false, // Suppresses all logs
+  silent: true, // Suppresses all logs
 }
 
 if (typeof withSentryConfig !== 'function') {
