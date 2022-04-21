@@ -7,14 +7,14 @@ let redis: any
 const isDev = process.env.NODE_ENV !== 'production'
 
 if (isDev) {
-  isPortReachable(REDIS_PORT, { host: REDIS_HOST }).then((isReachable) => {
-    if (isReachable) {
+  // isPortReachable(REDIS_PORT, { host: REDIS_HOST }).then((isReachable) => {
+  //   if (isReachable) {
       redis = new Redis({
         host: REDIS_HOST,
         port: REDIS_PORT,
       })
-    }
-  })
+    // }
+  // })
 }
 
 export async function getFromCache(key: string, fetcher: () => Promise<any>) {
