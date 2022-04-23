@@ -117,7 +117,6 @@ export const Article: FunctionComponent<Props> = ({
   translated = false,
 }) => {
   const { asPath, locale } = useRouter()
-  console.log({ translated })
   // "translated = false" means the content is not translated, but the title could still be translated
   const translatedSlug = story.translated_slugs.find(
     (slug) => slug.lang === locale,
