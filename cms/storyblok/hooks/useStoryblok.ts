@@ -17,7 +17,7 @@ export default function useStoryblok(originalStory) {
       window.storyblok.init()
 
       // reload on Next.js page on save or publish event in the Visual Editor
-      window.storyblok.on(['change', 'published'], () => location.reload(true))
+      window.storyblok.on(['change', 'published'], () => location.reload())
 
       // live update the story on input events
       window.storyblok.on('input', (event) => {
