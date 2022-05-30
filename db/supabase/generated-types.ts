@@ -19,6 +19,7 @@ export interface paths {
           id?: parameters["rowFilter.likes.id"];
           slug?: parameters["rowFilter.likes.slug"];
           ip?: parameters["rowFilter.likes.ip"];
+          inserted_at?: parameters["rowFilter.likes.inserted_at"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -72,6 +73,7 @@ export interface paths {
           id?: parameters["rowFilter.likes.id"];
           slug?: parameters["rowFilter.likes.slug"];
           ip?: parameters["rowFilter.likes.ip"];
+          inserted_at?: parameters["rowFilter.likes.inserted_at"];
         };
         header: {
           /** Preference */
@@ -89,10 +91,197 @@ export interface paths {
           id?: parameters["rowFilter.likes.id"];
           slug?: parameters["rowFilter.likes.slug"];
           ip?: parameters["rowFilter.likes.ip"];
+          inserted_at?: parameters["rowFilter.likes.inserted_at"];
         };
         body: {
           /** likes */
           likes?: definitions["likes"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/lurdle_solutions": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.lurdle_solutions.id"];
+          day?: parameters["rowFilter.lurdle_solutions.day"];
+          word?: parameters["rowFilter.lurdle_solutions.word"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["lurdle_solutions"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** lurdle_solutions */
+          lurdle_solutions?: definitions["lurdle_solutions"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.lurdle_solutions.id"];
+          day?: parameters["rowFilter.lurdle_solutions.day"];
+          word?: parameters["rowFilter.lurdle_solutions.word"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.lurdle_solutions.id"];
+          day?: parameters["rowFilter.lurdle_solutions.day"];
+          word?: parameters["rowFilter.lurdle_solutions.word"];
+        };
+        body: {
+          /** lurdle_solutions */
+          lurdle_solutions?: definitions["lurdle_solutions"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/realtime_clicks": {
+    get: {
+      parameters: {
+        query: {
+          type?: parameters["rowFilter.realtime_clicks.type"];
+          id?: parameters["rowFilter.realtime_clicks.id"];
+          inserted_at?: parameters["rowFilter.realtime_clicks.inserted_at"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["realtime_clicks"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** realtime_clicks */
+          realtime_clicks?: definitions["realtime_clicks"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          type?: parameters["rowFilter.realtime_clicks.type"];
+          id?: parameters["rowFilter.realtime_clicks.id"];
+          inserted_at?: parameters["rowFilter.realtime_clicks.inserted_at"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          type?: parameters["rowFilter.realtime_clicks.type"];
+          id?: parameters["rowFilter.realtime_clicks.id"];
+          inserted_at?: parameters["rowFilter.realtime_clicks.inserted_at"];
+        };
+        body: {
+          /** realtime_clicks */
+          realtime_clicks?: definitions["realtime_clicks"];
         };
         header: {
           /** Preference */
@@ -204,6 +393,108 @@ export interface paths {
       };
     };
   };
+  "/url_redirects": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.url_redirects.id"];
+          from?: parameters["rowFilter.url_redirects.from"];
+          to?: parameters["rowFilter.url_redirects.to"];
+          user_id?: parameters["rowFilter.url_redirects.user_id"];
+          updated_at?: parameters["rowFilter.url_redirects.updated_at"];
+          created_at?: parameters["rowFilter.url_redirects.created_at"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["url_redirects"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** url_redirects */
+          url_redirects?: definitions["url_redirects"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.url_redirects.id"];
+          from?: parameters["rowFilter.url_redirects.from"];
+          to?: parameters["rowFilter.url_redirects.to"];
+          user_id?: parameters["rowFilter.url_redirects.user_id"];
+          updated_at?: parameters["rowFilter.url_redirects.updated_at"];
+          created_at?: parameters["rowFilter.url_redirects.created_at"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.url_redirects.id"];
+          from?: parameters["rowFilter.url_redirects.from"];
+          to?: parameters["rowFilter.url_redirects.to"];
+          user_id?: parameters["rowFilter.url_redirects.user_id"];
+          updated_at?: parameters["rowFilter.url_redirects.updated_at"];
+          created_at?: parameters["rowFilter.url_redirects.created_at"];
+        };
+        body: {
+          /** url_redirects */
+          url_redirects?: definitions["url_redirects"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
 }
 
 export interface definitions {
@@ -215,6 +506,26 @@ export interface definitions {
     id: number;
     slug?: string;
     ip?: string;
+    inserted_at?: string;
+  };
+  lurdle_solutions: {
+    /**
+     * Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    day?: string;
+    word?: string;
+  };
+  /** realtime.pablopunk.com */
+  realtime_clicks: {
+    type?: string;
+    /**
+     * Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    inserted_at?: string;
   };
   translation_requests: {
     /**
@@ -222,10 +533,23 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: number;
-    slug?: string;
+    slug: string;
     ip?: string;
     inserted_at?: string;
     guessed_country?: string;
+  };
+  /** pablo.im */
+  url_redirects: {
+    /**
+     * Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    from?: string;
+    to?: string;
+    user_id?: string;
+    updated_at?: string;
+    created_at?: string;
   };
 }
 
@@ -255,6 +579,17 @@ export interface parameters {
   "rowFilter.likes.id": string;
   "rowFilter.likes.slug": string;
   "rowFilter.likes.ip": string;
+  "rowFilter.likes.inserted_at": string;
+  /** lurdle_solutions */
+  "body.lurdle_solutions": definitions["lurdle_solutions"];
+  "rowFilter.lurdle_solutions.id": string;
+  "rowFilter.lurdle_solutions.day": string;
+  "rowFilter.lurdle_solutions.word": string;
+  /** realtime_clicks */
+  "body.realtime_clicks": definitions["realtime_clicks"];
+  "rowFilter.realtime_clicks.type": string;
+  "rowFilter.realtime_clicks.id": string;
+  "rowFilter.realtime_clicks.inserted_at": string;
   /** translation_requests */
   "body.translation_requests": definitions["translation_requests"];
   "rowFilter.translation_requests.id": string;
@@ -262,6 +597,14 @@ export interface parameters {
   "rowFilter.translation_requests.ip": string;
   "rowFilter.translation_requests.inserted_at": string;
   "rowFilter.translation_requests.guessed_country": string;
+  /** url_redirects */
+  "body.url_redirects": definitions["url_redirects"];
+  "rowFilter.url_redirects.id": string;
+  "rowFilter.url_redirects.from": string;
+  "rowFilter.url_redirects.to": string;
+  "rowFilter.url_redirects.user_id": string;
+  "rowFilter.url_redirects.updated_at": string;
+  "rowFilter.url_redirects.created_at": string;
 }
 
 export interface operations {}
