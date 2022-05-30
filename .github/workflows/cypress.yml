@@ -29,6 +29,6 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install: false
-          pnpm: pnpm install
+          command: pnpm install
           build: pnpm run build
           start: pnpm start
