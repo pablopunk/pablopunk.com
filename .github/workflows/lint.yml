@@ -6,5 +6,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2
+        with: version: 6
+        run_install: |
+          - recursive: true
       - run: pnpm install
       - run: pnpm run lint
