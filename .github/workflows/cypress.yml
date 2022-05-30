@@ -28,6 +28,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          install-command: pnpm install
+          install: false
+          pnpm: pnpm install
           build: pnpm run build
           start: pnpm start
