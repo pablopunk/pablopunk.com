@@ -3,6 +3,16 @@ import { ServerStyleSheet } from 'styled-components'
 import { DEFAULT_LOCALE } from 'locales'
 import darkModeCode from 'dark-mode-code'
 
+const htmlHello = `
+console.log(\`%c
+<>
+Hi! I'm Pablo, the owner of this website.
+What are you doing here? Is there something wrong?
+You can contact me at pablo@pablopunk.com
+</>\n
+\`, "color:royalblue");
+`
+
 export default class extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet()
@@ -41,6 +51,7 @@ export default class extends Document {
           <Main />
           <NextScript />
           <script dangerouslySetInnerHTML={{ __html: darkModeCode }}></script>
+          <script dangerouslySetInnerHTML={{__html: htmlHello}} />
         </body>
       </Html>
     )
