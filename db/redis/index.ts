@@ -1,20 +1,10 @@
 import Redis from 'ioredis'
-import isPortReachable from 'is-port-reachable'
 
-const REDIS_HOST = '127.0.0.1'
-const REDIS_PORT = 6379
 let redis: any
 const isDev = process.env.NODE_ENV !== 'production'
 
 if (isDev) {
-  isPortReachable(REDIS_PORT, { host: REDIS_HOST }).then((isReachable) => {
-    if (isReachable) {
-      redis = new Redis({
-        host: REDIS_HOST,
-        port: REDIS_PORT,
-      })
-    }
-  })
+  redis = new Redis(process.env.REDIS_URL)
 }
 
 export async function getFromCache(key: string, fetcher: () => Promise<any>) {

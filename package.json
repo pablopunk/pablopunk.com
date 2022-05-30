@@ -78,7 +78,6 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.22.0",
     "husky": "*",
-    "is-port-reachable": "^4.0.0",
     "openapi-typescript": "^4.0.2",
     "prettier": "*",
     "pretty-quick": "*",
