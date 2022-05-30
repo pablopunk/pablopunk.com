@@ -27,6 +27,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Cypress run
         uses: cypress-io/github-action@v2
+        install: false
         with:
+          install: pnpm install
           build: pnpm run build
           start: pnpm start
