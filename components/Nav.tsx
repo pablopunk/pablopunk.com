@@ -138,7 +138,7 @@ export const Nav = (nav: NavType) => {
           href="/donate"
           rounded
           size="lg"
-          title={_('Give me money', locale)}
+          title={_('Buy me a coffee', locale)}
         >
           <FiCoffee />
         </Button>
