@@ -1,26 +1,35 @@
 import { useEffect, useState } from 'react'
 
+const API_URL = 'https://pablopunk.goatcounter.com/counter/'
+const fetchFromApi = (pathname: string) =>
+  fetch(API_URL + encodeURIComponent(pathname) + '.json')
+    .then((res) => res.json())
+    .then((result) => result?.count?.replace('.', '') || 0)
+    .then((result) => parseInt(result))
+    .catch((err) => {
+      console.log('Error fetching visits', err)
+      return null
+    })
+
 export const useVisitsCount = (): null | number => {
   const [count, setCount] = useState(null)
   useEffect(() => {
     if (typeof location !== 'undefined') {
-      fetch(
-        'https://pablopunk.goatcounter.com/counter/' +
-          encodeURIComponent(location.pathname) +
-          '.json',
+      fetchFromApi(location.pathname).then((countNumber) =>
+        setCount(countNumber),
       )
-        .then((res) => res.json())
-        .then((result) => {
-          if (result?.count) {
-            const countNumber = parseInt(result?.count.replace('.', ''))
-            setCount(countNumber)
-          }
-        })
-        .catch((err) => {
-          console.log('Error fetching visits', err)
-        })
     }
   })
 
   return count
+}
+
+export const useVisitsCountMultiple = (pathnames: string[]) => {
+  const [counts, setCounts] = useState<number[]>([])
+
+  useEffect(() => {
+    Promise.all(pathnames.map(fetchFromApi)).then(setCounts)
+  }, [])
+
+  return counts
 }

@@ -4,7 +4,6 @@ import fetch from 'isomorphic-unfetch'
 import humanFormat from 'human-format'
 import { Loading } from 'components/Loading'
 import { _ } from 'locales'
-import { AnimatedCard } from 'components/AnimatedCard'
 import { Card } from './Card'
 import { BorderGradient } from './BorderGradient'
 
@@ -70,17 +69,15 @@ export function Repos({ locale, initialData }) {
 
   return (
     <div className="grid grid-cols-1 gap-4 mt-4 mb-8 md:grid-cols-2">
-      {repos.map((repo, i) => (
+      {repos.map((repo) => (
         <div key={repo.html_url}>
           <BorderGradient>
-            <AnimatedCard index={i}>
-              <Card
-                title={`/${repo.name}`}
-                subtitle={`${repo.stargazers_count_nice} ⭐️`}
-                description={repo.description}
-                link={{ url: repo.html_url }}
-              />
-            </AnimatedCard>
+            <Card
+              title={`/${repo.name}`}
+              subtitle={`${repo.stargazers_count_nice} ⭐️`}
+              description={repo.description}
+              link={{ url: repo.html_url }}
+            />
           </BorderGradient>
         </div>
       ))}
