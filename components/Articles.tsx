@@ -5,6 +5,16 @@ import type { PostType } from 'cms/storyblok/types'
 import { getTranslatedSlug } from 'cms/storyblok/utils'
 import { useVisitsCountMultiple } from 'hooks/useVisitsCount'
 
+const showDateAndVisits = (date: string, visits: number) => {
+  const dateString = `📅 ${date}`
+
+  if (!visits) {
+    return dateString
+  }
+
+  return `${dateString} 👁‍🗨 ${visits}`
+}
+
 type Props = {
   items: PostType[]
 }
@@ -23,12 +33,10 @@ export const Articles: FunctionComponent<Props> = ({ items }) => {
           <div key={article.full_slug} className="my-3">
             <Card
               title={translatedSlug?.name}
-              subtitle={
-                visitsCounts[i] &&
-                `📅 ${new Date(article.created_at).toLocaleDateString()} 👁‍🗨 ${
-                  visitsCounts[i]
-                }`
-              }
+              subtitle={showDateAndVisits(
+                new Date(article.created_at).toLocaleDateString(),
+                visitsCounts[i],
+              )}
               description={article.content?.subtitle}
               image={article.content?.image}
               link={{ url: translatedSlug?.path }}
