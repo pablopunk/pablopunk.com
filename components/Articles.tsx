@@ -23,9 +23,12 @@ export const Articles: FunctionComponent<Props> = ({ items }) => {
           <div key={article.full_slug} className="my-3">
             <Card
               title={translatedSlug?.name}
-              subtitle={`📅 ${new Date(
-                article.created_at,
-              ).toLocaleDateString()} 👁‍🗨 ${visitsCounts[i]}`}
+              subtitle={
+                visitsCounts[i] &&
+                `📅 ${new Date(article.created_at).toLocaleDateString()} 👁‍🗨 ${
+                  visitsCounts[i]
+                }`
+              }
               description={article.content?.subtitle}
               image={article.content?.image}
               link={{ url: translatedSlug?.path }}
