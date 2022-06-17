@@ -4,6 +4,7 @@ export type ButtonType = {
   text?: string
   icon?: string
   link?: LinkType
+  title?: string
   size?: 'sm' | 'md' | 'lg'
   primary?: boolean
   secondary?: boolean

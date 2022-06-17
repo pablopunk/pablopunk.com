@@ -11,9 +11,7 @@ type Props = {
 
 const TranslationRequestComponent: FunctionComponent<Props> = ({ slug }) => {
   const [translationWasRequested, setTranslationWasRequested] = useState(false)
-  const [translationButtonText, setTranslationButtonText] = useState(
-    '🇪🇸 Pedir traducción en español',
-  )
+  const [translationButtonText, setTranslationButtonText] = useState('🇪🇸')
   const translationRequestsCount = useTranslationRequestsCount(slug)
   const [dialogOpen, setDialogOpen] = useState(false)
   const event = 'request-translation-' + slug
@@ -87,14 +85,14 @@ const TranslationRequestComponent: FunctionComponent<Props> = ({ slug }) => {
         </Dialog>
       </Transition>
       <Button
+        title="Pedir traducción al español"
         onClick={translationRequestButtonClick}
         disabled={translationWasRequested}
         size="sm"
       >
         {translationButtonText}
         <span className="ml-1">
-          ({translationRequestsCount} voto
-          {translationRequestsCount !== 1 && 's'}){' '}
+          {translationRequestsCount}
           {translationWasRequested && '- ya has votado'}
         </span>
       </Button>

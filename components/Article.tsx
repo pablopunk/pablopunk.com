@@ -8,6 +8,8 @@ import { FunctionComponent } from 'preact'
 import type { PostType } from 'cms/storyblok/types'
 import TranslationRequestComponent from './TranslationRequest'
 import LikeComponent from './Like'
+import { useVisitsCount } from 'hooks/useVisitsCount'
+import { VisitsCount } from './VisitsCount'
 
 const StyledArticle = styled.article`
   display: flex;
@@ -122,6 +124,7 @@ export const Article: FunctionComponent<Props> = ({
     (slug) => slug.lang === locale,
   )
   const showTranslationRequest = locale !== DEFAULT_LOCALE && !translated
+  const visitsCount = useVisitsCount()
 
   return (
     <StyledArticle>
@@ -150,13 +153,12 @@ export const Article: FunctionComponent<Props> = ({
       <h1 className="w-full my-4 text-3xl font-semibold text-center">
         {translatedSlug?.name ? translatedSlug?.name : story.name}
       </h1>
-      <div className="flex flex-col items-center justify-end w-full md:flex-row">
+      <div className="flex items-center justify-center md:justify-end w-full gap-3">
         {showTranslationRequest && (
           <TranslationRequestComponent slug={story.slug} />
         )}
-        <div className="m-3">
-          <LikeComponent slug={story.slug} />
-        </div>
+        {visitsCount && <VisitsCount count={visitsCount} />}
+        <LikeComponent slug={story.slug} />
       </div>
       <div className="max-w-full">
         <SRLWrapper>

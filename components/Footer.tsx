@@ -21,6 +21,7 @@ export const Footer = ({ copyright, source }) => {
               }}
               className="rotate-[-15deg]"
               key={`change-locale-${l}`}
+              title={locale === l ? null : 'Change language'}
             >
               <img
                 src={`/svg/locales/${l}.svg`}
