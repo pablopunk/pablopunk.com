@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from 'react'
+import { FunctionComponent } from 'react'
 import { ButtonType } from 'cms/storyblok/types'
 import { Icon } from './Icon'
 import classNames from 'classnames'

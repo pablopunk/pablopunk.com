@@ -4,7 +4,6 @@ import { Meta } from 'components/Meta'
 import { PageProps } from 'types/page'
 import { Button } from 'components/Button'
 import { Footer } from './Footer'
-import { useVisitsCount } from 'hooks/useVisitsCount'
 
 export const Layout: FunctionComponent<PageProps> = ({
   page,
