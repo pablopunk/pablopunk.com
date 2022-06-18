@@ -8,6 +8,7 @@ env:
 extends:
   - prettier
   - 'prettier/react'
+  - 'plugin:@next/next/recommended'
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures:
@@ -15,7 +16,6 @@ parserOptions:
   ecmaVersion: 12
   sourceType: module
 plugins:
-  - react
   - '@typescript-eslint'
 rules:
   no-unused-vars: error
