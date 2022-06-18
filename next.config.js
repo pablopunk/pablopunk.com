@@ -23,6 +23,10 @@ const rw = [
     path: 'goat',
     dest: 'https://pablopunk.goatcounter.com/count',
   },
+  {
+    path: 'visits/:path*',
+    dest: 'https://pablopunk.goatcounter.com/counter/:path*',
+  },
 ]
 
 const rd = [

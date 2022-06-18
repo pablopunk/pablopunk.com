@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const API_URL = 'https://pablopunk.goatcounter.com/counter/'
+const API_URL = '/visits/'
 const fetchFromApi = (pathname: string) =>
   fetch(API_URL + encodeURIComponent(pathname) + '.json')
     .then((res) => res.json())
