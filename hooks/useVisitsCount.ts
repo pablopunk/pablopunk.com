@@ -29,7 +29,7 @@ export const useVisitsCountMultiple = (pathnames: string[]) => {
 
   useEffect(() => {
     Promise.all(pathnames.map(fetchFromApi)).then(setCounts)
-  }, [])
+  }, [pathnames])
 
   return counts
 }
