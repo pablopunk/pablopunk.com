@@ -19,3 +19,4 @@ plugins:
   - '@typescript-eslint'
 rules:
   no-unused-vars: error
+  '@next/next/no-img-element': 0
