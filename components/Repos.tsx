@@ -32,7 +32,21 @@ const ADDITIONAL_REPOS = [
 
 const fetcher = (url) => fetch(url).then((_) => _.json())
 
-export const fetchAllReposData = () => fetcher(API)
+const cleanReposData = (data: any[]) => {
+  const wantedKeys = Object.keys(ADDITIONAL_REPOS[0])
+  const cleanData = data.map((dataObject) => {
+    for (const key of Object.keys(dataObject)) {
+      if (!wantedKeys.includes(key)) {
+        delete dataObject[key]
+      }
+    }
+    return dataObject
+  })
+
+  return cleanData
+}
+
+export const fetchAllReposData = () => fetcher(API).then(cleanReposData)
 
 export function Repos({ locale, initialData }) {
   const { data, error } = useSWR(API, fetcher, { initialData })

@@ -9,12 +9,7 @@ import { Line } from 'react-chartjs-2'
 import 'chartjs-adapter-date-fns'
 import { useCssVar } from 'hooks/useCssVar'
 
-const packages = [
-  'nextjs-redirect',
-  'miny',
-  'vim-colors',
-  'livesoccertv-parser',
-]
+const packages = ['nextjs-redirect', 'miny']
 
 export const fetchAllNpmData = () =>
   Promise.all(
