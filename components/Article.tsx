@@ -153,7 +153,7 @@ export const Article: FunctionComponent<Props> = ({
       <h1 className="w-full my-4 text-3xl font-semibold text-center">
         {translatedSlug?.name ? translatedSlug?.name : story.name}
       </h1>
-      <div className="flex items-center justify-center md:justify-end w-full gap-3">
+      <div className="flex items-center justify-center md:justify-end w-full gap-2">
         {showTranslationRequest && (
           <TranslationRequestComponent slug={story.slug} />
         )}
@@ -165,13 +165,11 @@ export const Article: FunctionComponent<Props> = ({
           <Markdown>{story.content.content}</Markdown>
         </SRLWrapper>
       </div>
-      <div className="flex flex-col items-center justify-center w-full my-3 md:flex-row">
+      <div className="flex items-center justify-center w-full my-3 gap-2 md:justify-end ">
         {showTranslationRequest && (
           <TranslationRequestComponent slug={story.slug} />
         )}
-        <div className="m-3">
-          <LikeComponent slug={story.slug} />
-        </div>
+        <LikeComponent slug={story.slug} />
       </div>
     </StyledArticle>
   )

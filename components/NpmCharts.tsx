@@ -8,36 +8,33 @@ import useSWR from 'swr'
 import { Line } from 'react-chartjs-2'
 import 'chartjs-adapter-date-fns'
 import { useCssVar } from 'hooks/useCssVar'
+import * as R from 'ramda'
+import { getJson } from 'lib/utils'
 
 const packages = ['nextjs-redirect', 'miny']
 
-export const fetchAllNpmData = () =>
-  Promise.all(
-    packages.map((p) =>
-      fetch(
-        `https://api.npmjs.org/downloads/range/2010-01-01:${
-          new Date().toISOString().split('T')[0]
-        }/${p}`,
-      ).then((r) => r.json()),
-    ),
-  )
+const apiURLForPackage = (packageName) =>
+  `https://api.npmjs.org/downloads/range/2010-01-01:${
+    new Date().toISOString().split('T')[0]
+  }/${packageName}`
 
-function convertDownloadsToChartJS(downloads, color) {
-  return {
-    labels: downloads.map((d) => d.day),
-    datasets: [
-      {
-        label: 'Downloads',
-        data: downloads.map((x) => x.downloads),
-        backgroundColor: 'transparent',
-        borderColor: color,
-        fill: false,
-        // borderDash: [5, 5],
-        tension: 0.1,
-      },
-    ],
-  }
-}
+export const fetchAllNpmData = () =>
+  Promise.all(R.map(getJson, R.map(apiURLForPackage, packages)))
+
+const convertDownloadsToChartJS = ({ downloads, color }) => ({
+  labels: R.pluck('day')(downloads),
+  datasets: [
+    {
+      label: 'Downloads',
+      data: R.pluck('downloads')(downloads),
+      backgroundColor: 'transparent',
+      borderColor: color,
+      fill: false,
+      // borderDash: [5, 5],
+      tension: 0.1,
+    },
+  ],
+})
 
 const totalDownloads = (downloads) =>
   humanFormat(downloads?.reduce((acc, curr) => acc + curr.downloads, 0) ?? 0, {
@@ -64,7 +61,7 @@ const PackageStat = ({ package: packageName, downloads, locale }) => {
         </a>
       </div>
       <Line
-        data={convertDownloadsToChartJS(downloads, color)}
+        data={convertDownloadsToChartJS({ downloads, color })}
         options={{
           plugins: {
             legend: { display: false },

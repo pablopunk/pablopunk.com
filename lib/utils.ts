@@ -6,23 +6,21 @@ export function openLink(link: string) {
   }
 }
 
-export function postJson(url: string, data: any) {
-  return fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  })
+const headersForJson = {
+  headers: {
+    'Content-Type': 'application/json',
+  },
 }
 
-export function getJson(url: string) {
-  return fetch(url, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then((res) => res.json())
-}
+export const postJson = (url: string, data: any) =>
+  fetch(url, {
+    method: 'POST',
+    ...headersForJson,
+    body: JSON.stringify(data),
+  })
+
+export const getJson = (url: string) =>
+  fetch(url, headersForJson).then((res) => res.json())
 
 export function normalizeHref(url?: string) {
   if (

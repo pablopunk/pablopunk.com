@@ -15,6 +15,15 @@ import { Button } from './Button'
 const MAX_SONG = 21
 const MAX_ARTIST = 15
 
+type Song = {
+  album: string
+  albumImageUrl: string
+  artist: string
+  isPlaying: boolean
+  songUrl: string
+  title: string
+}
+
 const ChangeThemeButton = () => {
   const { locale } = useRouter()
   const [mounted, mountedSet] = React.useState(false)
@@ -46,14 +55,10 @@ export const Nav = (nav: NavType) => {
 
   const { main } = nav?.content
   const { locale, asPath } = useRouter()
-  const { data: nowPlaying, isValidating } = useSWR<{
-    album: string
-    albumImageUrl: string
-    artist: string
-    isPlaying: boolean
-    songUrl: string
-    title: string
-  }>('/api/now-playing', getJson)
+  const { data: nowPlaying, isValidating } = useSWR<Song>(
+    '/api/now-playing',
+    getJson,
+  )
   const spotifyStyles = useSpring({
     y: nowPlaying == null || isValidating ? -100 : 0,
   })

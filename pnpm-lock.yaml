@@ -19,6 +19,7 @@ specifiers:
   '@supercharge/request-ip': ^1.1.2
   '@tailwindcss/line-clamp': ^0.2.2
   '@types/node': ^14.0.13
+  '@types/ramda': ^0.28.14
   '@types/react': ^16.9.38
   '@types/styled-components': ^4.4.1
   '@typescript-eslint/eslint-plugin': ^4.11.1
@@ -56,6 +57,7 @@ specifiers:
   prettier: '*'
   pretty-quick: '*'
   querystring: ^0.2.1
+  ramda: ^0.28.0
   react: ^17.0.2
   react-chartjs-2: ^3.0.4
   react-dom: ^17.0.2
@@ -87,6 +89,7 @@ dependencies:
   '@supabase/supabase-js': 1.35.3
   '@supercharge/request-ip': 1.2.0
   '@tailwindcss/line-clamp': 0.2.2_tailwindcss@2.2.19
+  '@types/ramda': 0.28.14
   autoprefixer: 10.4.7_postcss@8.4.14
   axios: 0.21.4
   chart.js: 3.8.0
@@ -106,6 +109,7 @@ dependencies:
   postcss: 8.4.14
   preact: 10.7.2
   querystring: 0.2.1
+  ramda: 0.28.0
   react: 17.0.2
   react-chartjs-2: 3.3.0_chart.js@3.8.0+react@17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -1047,6 +1051,12 @@ packages:
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
+
+  /@types/ramda/0.28.14:
+    resolution: {integrity: sha512-hLgAeKxS5MpIEROaIRHscFqWf+V04CB+A0Kq+OjnTs1fEGHXEs4aeOhXIRovAPe6PfWYKHEwEkVIYWf98OjxnA==}
+    dependencies:
+      ts-toolbelt: 6.15.5
+    dev: false
 
   /@types/react-native/0.67.7:
     resolution: {integrity: sha512-G7vi9vE226diNNXVNbIa8HH/wPxMWHTHkn9iQtQSezaWzO5WNsKZZW2/TOzCehtBDVx4MZieTs6GsdtpBBttMA==}
@@ -5211,6 +5221,10 @@ packages:
     resolution: {integrity: sha512-SbiLPU40JuJniHexQSAgad32hfwd+DRUdwF2PlVuI5RZD0/vahUco7R8vD86J/tcEKKF9vZrUVwgtmGCqlCKyA==}
     dev: true
 
+  /ramda/0.28.0:
+    resolution: {integrity: sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==}
+    dev: false
+
   /range-parser/1.2.1:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
@@ -6330,6 +6344,10 @@ packages:
 
   /ts-easing/0.2.0:
     resolution: {integrity: sha512-Z86EW+fFFh/IFB1fqQ3/+7Zpf9t2ebOAxNI/V6Wo7r5gqiqtxmgTlQ1qbqQcjLKYeSHPTsEmvlJUDg/EuL0uHQ==}
+    dev: false
+
+  /ts-toolbelt/6.15.5:
+    resolution: {integrity: sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==}
     dev: false
 
   /tsconfig-paths/3.14.1:
