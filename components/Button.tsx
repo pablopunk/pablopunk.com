@@ -3,7 +3,7 @@ import { ButtonType } from 'cms/storyblok/types'
 import { Icon } from './Icon'
 import classNames from 'classnames'
 import { normalizeHref } from 'lib/utils'
-import Tooltip from 'react-simple-tooltip'
+import { Tooltip } from './Tooltip'
 
 interface Props extends ButtonType {
   onClick?(): void
@@ -28,23 +28,7 @@ export const Button: FunctionComponent<Props> = ({
   children,
 }) => {
   const TooltipComponent = ({ children }) =>
-    title ? (
-      <Tooltip
-        content={title}
-        placement="left"
-        background="var(--color-primary-3)"
-        border="1px solid var(--color-primary-6)"
-        fadeDuration={200}
-        padding={8}
-        radius={99999}
-        customCss="white-space:nowrap;"
-        fontSize="16px"
-      >
-        {children}
-      </Tooltip>
-    ) : (
-      <>{children}</>
-    )
+    title ? <Tooltip text={title}>{children}</Tooltip> : <>{children}</>
   const LinkOrButton = ({ children, ...props }) => {
     let url = link?.url || link?.cached_url || href
 
