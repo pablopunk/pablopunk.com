@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { FunctionComponent, useMemo } from 'react'
+import { FunctionComponent } from 'react'
 import { Card } from './Card'
 import type { PostType } from 'cms/storyblok/types'
 import { getTranslatedSlug } from 'cms/storyblok/utils'

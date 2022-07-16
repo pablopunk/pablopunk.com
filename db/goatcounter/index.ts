@@ -31,10 +31,6 @@ export const fetchNumberOfVisits = async (post: PostType) => {
 }
 
 export const fetchMultipleNumberOfVisits = (posts: PostType[]) =>
-  console.log('fetching', posts) || Promise.all(posts.map(fetchNumberOfVisits))
+  Promise.all(posts.map(fetchNumberOfVisits))
 
-const prependSlash = R.concat('/') as (str: any) => string
-const getPathsForArticles = R.pipe(
-  R.pluck('default_full_slug'),
-  R.map(prependSlash),
-)
+const prependSlash = R.concat('/') as () => string
