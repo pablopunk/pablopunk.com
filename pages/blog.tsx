@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { getPageStaticProps, getPosts } from 'cms/middleware'
 import { PageProps } from 'types/page'
 import { GetStaticProps } from 'next'
@@ -10,14 +10,25 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { Button } from 'components/Button'
 import { _ } from 'locales'
+import * as R from 'ramda'
+import { fetchMultipleNumberOfVisits } from 'db/goatcounter'
+import { getFromCache } from 'db/redis'
+import useSWR from 'swr'
 
 interface Props extends PageProps {
   locale: string
   posts: PostType[]
+  visitsCounts: number[]
   total: number
 }
 
-const Blog = ({ page, locale, posts, total }: Props) => {
+const Blog = ({
+  page,
+  locale,
+  posts,
+  total,
+  visitsCounts: visitsCountsInitial,
+}: Props) => {
   const story = useStoryblok(page)
   const [displayedPosts, setDisplayedPosts] = useState(posts)
   const [thereAreMorePosts, setThereAreMorePosts] = useState(
@@ -25,11 +36,19 @@ const Blog = ({ page, locale, posts, total }: Props) => {
   )
   const [pagination, setPagination] = useState(2)
   const [loading, setLoading] = useState(false)
+  const { data: visitsCounts, revalidate: revalidateVisits } = useSWR<number[]>(
+    [displayedPosts],
+    fetchMultipleNumberOfVisits,
+    {
+      initialData: visitsCountsInitial,
+    },
+  )
 
   useEffect(() => {
     if (displayedPosts.length === total) {
       setThereAreMorePosts(false)
     }
+    revalidateVisits()
   }, [displayedPosts])
 
   const fetchMorePosts = () => {
@@ -53,7 +72,7 @@ const Blog = ({ page, locale, posts, total }: Props) => {
       {story.content.body.map((blok) => (
         <BlokComponent blok={blok} key={blok._uid} />
       ))}
-      <Articles items={displayedPosts} />
+      <Articles items={displayedPosts} visits={visitsCounts} />
       {thereAreMorePosts && (
         <div className="flex justify-center">
           <Button
@@ -72,6 +91,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     getPageStaticProps(ctx, 'blog'),
     getPosts(1, ctx.preview, ctx.locale),
   ])
+  const visitsCounts = await fetchMultipleNumberOfVisits(postsResults.posts)
 
   if (!('props' in sProps) || 'notFound' in sProps) {
     return { notFound: true }
@@ -82,6 +102,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     props: {
       ...sProps.props,
       posts: postsResults.posts,
+      visitsCounts,
       total: postsResults.total,
       locale: ctx.locale,
     },

@@ -8,8 +8,9 @@ import { FunctionComponent } from 'preact'
 import type { PostType } from 'cms/storyblok/types'
 import TranslationRequestComponent from './TranslationRequest'
 import LikeComponent from './Like'
-import { useVisitsCount } from 'hooks/useVisitsCount'
 import { VisitsCount } from './VisitsCount'
+import useSWR from 'swr'
+import { fetchNumberOfVisits } from 'db/goatcounter'
 
 const StyledArticle = styled.article`
   display: flex;
@@ -124,7 +125,9 @@ export const Article: FunctionComponent<Props> = ({
     (slug) => slug.lang === locale,
   )
   const showTranslationRequest = locale !== DEFAULT_LOCALE && !translated
-  const visitsCount = useVisitsCount()
+  const { data: visitsCount } = useSWR<number>([story], fetchNumberOfVisits, {
+    initialData: 0,
+  })
 
   return (
     <StyledArticle>
