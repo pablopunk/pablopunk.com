@@ -12,26 +12,12 @@ const MAX_REPOS = 8
 
 const fetcher = (url) => fetch(url).then((_) => _.json())
 
-const cleanReposData = (data: any[]) => {
-  const wantedKeys = ['name', 'html_url', 'stargazers_count', 'description']
-  const cleanData = data.map((dataObject) => {
-    for (const key of Object.keys(dataObject)) {
-      if (!wantedKeys.includes(key)) {
-        delete dataObject[key]
-      }
-    }
-    return dataObject
-  })
-
-  return cleanData
-}
-
-export const fetchAllReposData = () => fetcher(API).then(cleanReposData)
+export const fetchAllReposData = () => fetcher(API)
 
 export function Repos({ locale, initialData }) {
   const { data, error } = useSWR(API, fetcher, { initialData })
 
-  if (error) {
+  if (error && !data) {
     return <strong style={{ color: 'orangered' }}>Error fetching repos</strong>
   }
 
