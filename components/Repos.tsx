@@ -8,32 +8,12 @@ import { Card } from './Card'
 import { BorderGradient } from './BorderGradient'
 
 const API = 'https://repos.pablopunk.com/api'
-
-const ADDITIONAL_REPOS = [
-  {
-    name: 'codesandbox',
-    html_url: 'https://github.com/codesandbox/codesandbox-client',
-    stargazers_count: '9900',
-    description: 'An online IDE for rapid web development',
-  },
-  {
-    name: 'lad',
-    html_url: 'https://github.com/ladjs/lad',
-    stargazers_count: '1700',
-    description: 'Lad scaffolds a Koa webapp and API framework for Node.js',
-  },
-  {
-    name: 'forwardemail.net',
-    html_url: 'https://github.com/forwardemail/free-email-forwarding',
-    stargazers_count: '1500',
-    description: 'The best free email forwarding for custom domains',
-  },
-]
+const MAX_REPOS = 8
 
 const fetcher = (url) => fetch(url).then((_) => _.json())
 
 const cleanReposData = (data: any[]) => {
-  const wantedKeys = Object.keys(ADDITIONAL_REPOS[0])
+  const wantedKeys = ['name', 'html_url', 'stargazers_count', 'description']
   const cleanData = data.map((dataObject) => {
     for (const key of Object.keys(dataObject)) {
       if (!wantedKeys.includes(key)) {
@@ -63,9 +43,9 @@ export function Repos({ locale, initialData }) {
     )
   }
 
-  const repos = [...ADDITIONAL_REPOS, ...data]
+  const repos = data
     .sort((a, b) => b.stargazers_count - a.stargazers_count)
-    .slice(0, 13)
+    .slice(0, MAX_REPOS)
     .map((repo) => ({
       ...repo,
       description: repo.description?.replace('[UNMANTAINED]. ', '') || '',
