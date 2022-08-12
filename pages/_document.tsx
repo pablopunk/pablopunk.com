@@ -47,6 +47,11 @@ export default class extends Document {
       <Html lang={this.props.locale || DEFAULT_LOCALE}>
         <Head>
           <script data-goatcounter="/goat" async src="/count.js"></script>
+          <script
+            async
+            type="text/javascript"
+            src="https://lwt-snippet.surge.sh/maze-lwt.js"
+          />
         </Head>
         <body>
           <Main />
