@@ -27,6 +27,10 @@ const rw = [
     path: 'visits/:path*',
     dest: 'https://pablopunk.goatcounter.com/counter/:path*',
   },
+  {
+    path: 'api.npmjs.org',
+    dest: 'https://api.npmjs.org',
+  },
 ]
 
 const rd = [
