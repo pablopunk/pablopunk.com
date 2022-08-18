@@ -7,12 +7,10 @@ import { _ } from 'locales'
 import { Card } from './Card'
 import { BorderGradient } from './BorderGradient'
 
-const API = 'https://repos.pablopunk.com/api'
+const API = '/api/repos'
 const MAX_REPOS = 8
 
 const fetcher = (url) => fetch(url).then((_) => _.json())
-
-export const fetchAllReposData = () => fetcher(API)
 
 export function Repos({ locale, initialData }) {
   const { data, error } = useSWR(API, fetcher, { initialData })

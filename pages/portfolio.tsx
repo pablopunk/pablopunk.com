@@ -1,5 +1,5 @@
 import React from 'react'
-import { Repos, fetchAllReposData } from 'components/Repos'
+import { Repos } from 'components/Repos'
 import { NpmCharts, fetchAllNpmData } from 'components/NpmCharts'
 import { _ } from '../locales'
 import { getPageStaticProps } from 'cms/middleware'
@@ -8,6 +8,7 @@ import { GetStaticProps } from 'next'
 import { Title } from 'components/Title'
 import { CMSPage } from 'components/CMSPage'
 import { getFromCache } from 'db/redis'
+import { getReposApiResponse } from './api/repos'
 
 interface Props extends PageProps {
   locale: string
@@ -52,7 +53,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   }
 
   const npm = await getFromCache('npm', fetchAllNpmData)
-  const repos = await getFromCache('repos', fetchAllReposData)
+  const repos = await getFromCache('repos', getReposApiResponse)
 
   return {
     ...sProps,

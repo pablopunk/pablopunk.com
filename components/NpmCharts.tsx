@@ -10,10 +10,13 @@ import { useCssVar } from 'hooks/useCssVar'
 import * as R from 'ramda'
 import { getJson } from 'lib/utils'
 
+const SSR = typeof window === 'undefined'
+
 const packages = ['nextjs-redirect', 'miny']
 
 const apiURLForPackage = (packageName) =>
-  `https://api.npmjs.org/downloads/range/2010-01-01:${
+  (SSR ? 'https://api.npmjs.org' : '/api.npmjs.org') +
+  `/downloads/range/2010-01-01:${
     new Date().toISOString().split('T')[0]
   }/${packageName}`
 
