@@ -28,8 +28,8 @@ const rw = [
     dest: 'https://pablopunk.goatcounter.com/counter/:path*',
   },
   {
-    path: 'api.npmjs.org',
-    dest: 'https://api.npmjs.org',
+    path: 'api.npmjs.org:path*',
+    dest: 'https://api.npmjs.org:path*',
   },
 ]
 
