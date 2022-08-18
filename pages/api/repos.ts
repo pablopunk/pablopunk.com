@@ -1,9 +1,5 @@
-import type { Repo } from '../../types'
-import * as dotenv from 'dotenv'
 import fetch from 'isomorphic-unfetch'
 import { NextApiRequest, NextApiResponse } from 'next'
-
-dotenv.config()
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 const GITHUB_API = 'https://api.github.com/users/pablopunk/repos'
