@@ -1,15 +1,14 @@
-import React from 'react'
+import useTheme from 'hooks/useTheme'
+import { getJson, normalizeHref } from 'lib/utils'
+import { _ } from 'locales'
 import Link from 'next/link'
-import { RiMoonClearLine, RiSunLine, RiContactsFill } from 'react-icons/ri'
+import { useRouter } from 'next/router'
+import React from 'react'
 import { FaSpotify } from 'react-icons/fa'
 import { FiCoffee } from 'react-icons/fi'
-import { useRouter } from 'next/router'
-import { _ } from 'locales'
-import { ButtonType, NavType } from 'cms/storyblok/types'
-import useTheme from 'hooks/useTheme'
+import { RiContactsFill, RiMoonClearLine, RiSunLine } from 'react-icons/ri'
+import { animated, useSpring } from 'react-spring'
 import useSWR from 'swr'
-import { getJson, normalizeHref } from 'lib/utils'
-import { useSpring, animated } from 'react-spring'
 import { Button } from './Button'
 
 const MAX_SONG = 21
@@ -48,12 +47,31 @@ const ChangeThemeButton = () => {
   )
 }
 
-export const Nav = (nav: NavType) => {
-  if (!nav?.content) {
-    return null
-  }
+type Link = {
+  href: string
+  text: string
+}
+const LINKS = [
+  { href: '/', text: 'Home' },
+  {
+    href: '/portfolio',
+    text: 'Work',
+  },
+  {
+    href: '/me',
+    text: 'Bio',
+  },
+  {
+    href: '/blog',
+    text: 'Blog',
+  },
+  {
+    href: 'https://cv.pablopunk.com',
+    text: 'CV',
+  },
+]
 
-  const { main } = nav?.content
+export const Nav = () => {
   const { locale, asPath } = useRouter()
   const { data: nowPlaying, isValidating } = useSWR<Song>(
     '/api/now-playing',
@@ -71,10 +89,9 @@ export const Nav = (nav: NavType) => {
       style={{ height: 'var(--nav-height)' }}
     >
       <nav className="flex my-2 md:my-0">
-        {main.map((button: ButtonType) => {
-          const url = normalizeHref(button.link?.url || button.link?.cached_url)
-          let current =
-            asPath === '/' ? url.includes('/home') : url.includes(asPath)
+        {LINKS.map((link) => {
+          const url = normalizeHref(link.href)
+          let current = asPath === '/' ? url === '/' : url.includes(asPath)
 
           return (
             <div key={url} className="px-2 py-1 text-xl font-bold uppercase">
@@ -86,7 +103,7 @@ export const Nav = (nav: NavType) => {
                       : 'text-fg md:hover:text-primary-8'
                   }
                 >
-                  {button.text}
+                  {_(link.text, locale)}
                 </a>
               </Link>
             </div>

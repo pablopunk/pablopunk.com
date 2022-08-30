@@ -2,13 +2,11 @@ import React from 'react'
 import { Repos } from 'components/Repos'
 import { NpmCharts, fetchAllNpmData } from 'components/NpmCharts'
 import { _ } from '../locales'
-import { getPageStaticProps } from 'cms/middleware'
 import { PageProps } from 'types/page'
 import { GetStaticProps } from 'next'
-import { Title } from 'components/Title'
-import { CMSPage } from 'components/CMSPage'
 import { getFromCache } from 'db/redis'
 import { getReposApiResponse } from './api/repos'
+import { JAMStack } from 'components/JAMStack'
 
 interface Props extends PageProps {
   locale: string
@@ -18,10 +16,15 @@ interface Props extends PageProps {
   }
 }
 
-const Portfolio = ({ initialData, locale, page }: Props) => {
+const Portfolio = ({ initialData, locale }: Props) => {
   return (
-    <>
-      <CMSPage page={page} />
+    <div className="mt-5">
+      <h1>{_('The power of JAMStack', locale)}</h1>
+      <p className="text-center mt-1">
+        With JAMStack you get the best of dynamic React components and the speed
+        of static HTML content
+      </p>
+      <JAMStack />
       <section>
         <Title
           text={_('Popular NPM packages', locale)}
@@ -41,24 +44,16 @@ const Portfolio = ({ initialData, locale, page }: Props) => {
         />
         <Repos locale={locale} initialData={initialData.repos} />
       </section>
-    </>
+    </div>
   )
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
-  const sProps = await getPageStaticProps(ctx, 'portfolio')
-
-  if (!('props' in sProps) || 'notFound' in sProps) {
-    return { notFound: true }
-  }
-
   const npm = await getFromCache('npm', fetchAllNpmData)
   const repos = await getFromCache('repos', getReposApiResponse)
 
   return {
-    ...sProps,
     props: {
-      ...sProps.props,
       initialData: {
         npm,
         repos,

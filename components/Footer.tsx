@@ -1,8 +1,10 @@
 import { locales } from 'locales'
 import { useRouter } from 'next/router'
 import { Button } from './Button'
+import { _ } from 'locales'
+import { SITE_COPYRIGHT, SITE_REPO } from 'config'
 
-export const Footer = ({ copyright, source }) => {
+export const Footer = () => {
   const { locale } = useRouter()
 
   return (
@@ -32,10 +34,10 @@ export const Footer = ({ copyright, source }) => {
         })}
       </div>
       <div>
-        {copyright} {new Date().getFullYear()}
+        © {SITE_COPYRIGHT} {new Date().getFullYear()}
       </div>
       <div>
-        <a href="https://github.com/pablopunk/pablopunk.com">{source}</a>
+        <a href={SITE_REPO}>{_('Source', locale)}</a>
       </div>
     </footer>
   )

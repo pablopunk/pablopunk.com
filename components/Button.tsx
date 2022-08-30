@@ -1,11 +1,19 @@
 import { FunctionComponent } from 'react'
-import { ButtonType } from 'cms/storyblok/types'
 import { Icon } from './Icon'
 import classNames from 'classnames'
 import { normalizeHref } from 'lib/utils'
 import { Tooltip } from './Tooltip'
+import { Size } from 'types/styles'
 
-interface Props extends ButtonType {
+interface Props {
+  text?: string
+  link?: string
+  icon?: string
+  size?: Size
+  primary?: boolean
+  secondary?: boolean
+  rounded?: boolean
+  title?: string
   onClick?(): void
   className?: string
   disabled?: boolean
@@ -30,7 +38,7 @@ export const Button: FunctionComponent<Props> = ({
   const TooltipComponent = ({ children }) =>
     title ? <Tooltip text={title}>{children}</Tooltip> : <>{children}</>
   const LinkOrButton = ({ children, ...props }) => {
-    let url = link?.url || link?.cached_url || href
+    let url = link || href
 
     url = normalizeHref(url)
 

@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 const { locales } = require('./locales')
 const { withSentryConfig } = require('@sentry/nextjs')
 

@@ -4,36 +4,27 @@ import { DEFAULT_LOCALE } from 'locales'
 import { useRouter } from 'next/router'
 import { SITE_DESC, SITE_IMAGE, SITE_NAME, SITE_URL } from 'config'
 import { useCssVar } from 'hooks/useCssVar'
-import { PageProps } from 'types/page'
+import { useMeta } from 'hooks/useMeta'
 
-type Props = {
-  meta: any
-  page: PageProps['page']
-}
-
-export function Meta({ meta, page }: Props) {
-  const { title, description, og_title, og_description, og_image } = meta
+export function Meta() {
+  const { title, description, imageUrl } = useMeta()
   const { locale } = useRouter()
   const siteUrl = `${SITE_URL}/${locale !== DEFAULT_LOCALE ? locale : ''}`
   const titleBarColor = useCssVar('--color-bg')
-  const _description =
-    page?.content?.subtitle || og_description || description || SITE_DESC
-  const _title = page?.name || og_title || title || SITE_NAME
-  const _image = page?.content?.image?.filename || og_image || SITE_IMAGE
 
   return (
     <>
       <NextSeo
-        title={_title}
-        description={_description}
+        title={title}
+        description={description || SITE_DESC}
         canonical={siteUrl}
         openGraph={{
           url: siteUrl,
-          title: _title,
-          description: _description,
+          title: title,
+          description: description,
           images: [
             {
-              url: _image,
+              url: imageUrl || SITE_IMAGE,
               width: 150,
               height: 150,
               alt: "Pablo Varela's profile picture",
