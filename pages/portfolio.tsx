@@ -7,6 +7,7 @@ import { GetStaticProps } from 'next'
 import { getFromCache } from 'db/redis'
 import { getReposApiResponse } from './api/repos'
 import { JAMStack } from 'components/JAMStack'
+import { Section } from 'components/Section'
 
 interface Props extends PageProps {
   locale: string
@@ -18,33 +19,26 @@ interface Props extends PageProps {
 
 const Portfolio = ({ initialData, locale }: Props) => {
   return (
-    <div className="mt-5">
-      <h1>{_('The power of JAMStack', locale)}</h1>
-      <p className="text-center mt-1">
-        With JAMStack you get the best of dynamic React components and the speed
-        of static HTML content
-      </p>
-      <JAMStack />
-      <section>
-        <Title
-          text={_('Popular NPM packages', locale)}
-          size={'md'}
-          heading={'h2'}
-          align={'center'}
-        />
+    <>
+      <Section>
+        <h1 className="text-3xl text-center">
+          {_('The power of JAMStack', locale)}
+        </h1>
+        <p className="text-center mt-1 opacity-80">
+          With JAMStack you get the best of dynamic React components and the
+          speed of static HTML content
+        </p>
+        <JAMStack />
+      </Section>
+      <Section alt>
+        <h2 className="text-xl">Popular NPM packages</h2>
         <NpmCharts initialData={initialData.npm} />
-      </section>
-      <section>
-        <Title
-          text={_('Featured repos', locale)}
-          size={'md'}
-          heading={'h2'}
-          align={'center'}
-          noMargin
-        />
+      </Section>
+      <Section>
+        <h2 className="text-xl">Featured repos</h2>
         <Repos locale={locale} initialData={initialData.repos} />
-      </section>
-    </div>
+      </Section>
+    </>
   )
 }
 
