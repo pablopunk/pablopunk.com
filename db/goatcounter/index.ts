@@ -1,4 +1,3 @@
-import { PostType } from 'cms/storyblok/types'
 import { SITE_URL } from 'config'
 import * as R from 'ramda'
 
@@ -18,7 +17,7 @@ const fetchFromAPI = (path: string) => {
     })
 }
 
-export const fetchNumberOfVisits = async (post: PostType) => {
+export const fetchNumberOfVisits = async (post: any) => {
   const visitsFromAllLocales = await Promise.all(
     post.translated_slugs
       .map((p) => p.lang + '/' + p.path)
@@ -30,7 +29,7 @@ export const fetchNumberOfVisits = async (post: PostType) => {
   return R.sum(visitsFromAllLocales)
 }
 
-export const fetchMultipleNumberOfVisits = (posts: PostType[]) =>
+export const fetchMultipleNumberOfVisits = (posts: any[]) =>
   Promise.all(posts.map(fetchNumberOfVisits))
 
 const prependSlash = R.concat('/') as () => string

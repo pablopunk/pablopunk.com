@@ -9,7 +9,6 @@ import { RiContactsFill, RiMoonClearLine, RiSunLine } from 'react-icons/ri'
 import { animated, useSpring } from 'react-spring'
 import useSWR from 'swr'
 import { Button } from './Button'
-import { _ } from 'components/T'
 import { useTranslation } from 'hooks/useTranslation'
 
 const MAX_SONG = 21

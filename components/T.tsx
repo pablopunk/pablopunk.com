@@ -15,7 +15,7 @@ export const T = ({ children }: Props) => {
     return (
       <>
         {children.map((child) => (
-          <React.Fragment key={child}>
+          <React.Fragment key={child.toString()}>
             <T>{child}</T>
           </React.Fragment>
         ))}

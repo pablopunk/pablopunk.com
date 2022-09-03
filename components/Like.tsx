@@ -3,6 +3,7 @@ import { FunctionComponent, useEffect, useState } from 'react'
 import { Button } from 'components/Button'
 import useLikes from 'db/hooks/useLikes'
 import { postJson } from 'lib/utils'
+import { RiHeart2Line } from 'react-icons/ri'
 
 type Props = {
   slug: string
@@ -40,7 +41,7 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
       size="sm"
       disabled={alreadyLiked}
       onClick={likeThis}
-      icon="heart"
+      Icon={RiHeart2Line}
       className="button-like"
     >
       {likeCount}

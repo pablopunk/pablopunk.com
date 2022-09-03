@@ -98,7 +98,7 @@ const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
-  const sProps = await getPageStaticProps(ctx, 'dashboard')
+  const sProps = await getStaticProps(ctx)
   const [unsplash, github] = await Promise.all([
     getUnsplashStats(),
     getGithubStats(),
