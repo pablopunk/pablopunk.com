@@ -8,6 +8,7 @@ export async function getAllTranslationsForLocale(locale: string) {
       .from<Translation>(I18N_TABLE)
       .select('id,locale,key,value')
       .match({ locale })
+      .order('id')
   ).data
 }
 

@@ -7,8 +7,8 @@ interface Props extends React.ComponentProps<'section'> {
 export const Section = ({ children, alt, className }: Props) => {
   return (
     <div
-      className={classnames('py-3', {
-        'bg-primary-7': alt === true,
+      className={classnames('p-3', {
+        'bg-primary-4': alt === true,
       })}
     >
       <section className={className}>{children}</section>

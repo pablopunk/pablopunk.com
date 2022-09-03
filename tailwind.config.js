@@ -32,6 +32,7 @@ module.exports = {
         'secondary-10': 'var(--color-secondary-10)',
         'secondary-11': 'var(--color-secondary-11)',
         'secondary-12': 'var(--color-secondary-12)',
+        danger: 'var(--color-danger)',
       },
       gridTemplateColumns: {
         '2-auto': 'auto auto',

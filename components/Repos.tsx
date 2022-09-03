@@ -3,9 +3,7 @@ import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch'
 import humanFormat from 'human-format'
 import { Loading } from 'components/Loading'
-import { _ } from 'components/T'
 import { Card } from './Card'
-import { BorderGradient } from './BorderGradient'
 import { useTranslation } from 'hooks/useTranslation'
 
 const API = '/api/repos'
@@ -51,14 +49,12 @@ export function Repos({ initialData }) {
     <div className="grid grid-cols-1 gap-4 mt-4 mb-8 md:grid-cols-2">
       {repos.map((repo) => (
         <div key={repo.html_url}>
-          <BorderGradient>
-            <Card
-              title={`/${repo.name}`}
-              subtitle={`${repo.stargazers_count_nice} ⭐️`}
-              description={repo.description}
-              link={{ url: repo.html_url }}
-            />
-          </BorderGradient>
+          <Card
+            title={`/${repo.name}`}
+            subtitle={`${repo.stargazers_count_nice} ⭐️`}
+            description={repo.description}
+            link={repo.html_url}
+          />
         </div>
       ))}
     </div>

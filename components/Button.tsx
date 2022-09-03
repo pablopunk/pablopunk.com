@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { Icon } from './Icon'
+import Link from 'next/link'
 import classNames from 'classnames'
 import { normalizeHref } from 'lib/utils'
 import { Tooltip } from './Tooltip'
@@ -8,7 +8,7 @@ import { Size } from 'types/styles'
 interface Props {
   text?: string
   link?: string
-  icon?: string
+  Icon?: any
   size?: Size
   primary?: boolean
   secondary?: boolean
@@ -23,7 +23,7 @@ interface Props {
 export const Button: FunctionComponent<Props> = ({
   text,
   link,
-  icon,
+  Icon,
   size,
   primary,
   secondary,
@@ -44,9 +44,9 @@ export const Button: FunctionComponent<Props> = ({
 
     if (url) {
       return (
-        <a href={url} {...props}>
-          {children}
-        </a>
+        <Link href={url}>
+          <button {...props}>{children}</button>
+        </Link>
       )
     }
 
@@ -62,7 +62,7 @@ export const Button: FunctionComponent<Props> = ({
       <LinkOrButton
         title={title}
         className={classNames(
-          'flex items-center justify-center p-2 md:py-1 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed outline-none',
+          'flex items-center justify-center px-2 py-1 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed outline-none gap-1',
           'font-semibold',
           {
             'text-sm': size === 'sm',
@@ -79,11 +79,7 @@ export const Button: FunctionComponent<Props> = ({
           className,
         )}
       >
-        {icon && (
-          <span className={classNames({ 'mr-1': text || children != null })}>
-            <Icon name={icon} />
-          </span>
-        )}
+        {Icon && <Icon />}
         {text && <span>{text}</span>}
         {children && children}
       </LinkOrButton>

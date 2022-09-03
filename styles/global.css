@@ -38,6 +38,7 @@ body {
   --color-secondary-10: var(--colors-violet10);
   --color-secondary-11: var(--colors-violet11);
   --color-secondary-12: var(--colors-violet12);
+  --color-danger: var(--colors-red9);
 }
 
 *,

@@ -1,7 +1,6 @@
 import React from 'react'
 import humanFormat from 'human-format'
 import { HiOutlineFolderDownload } from 'react-icons/hi'
-import { _ } from 'components/T'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { Line } from 'react-chartjs-2'
@@ -54,7 +53,7 @@ const PackageStat = ({ package: packageName, downloads }) => {
 
   return (
     <>
-      <div className="flex flex-wrap items-center justify-center text-xl whitespace-nowrap">
+      <div className="flex flex-wrap items-center justify-center whitespace-nowrap">
         <span className="mr-1 text-secondary-11">
           <HiOutlineFolderDownload />
         </span>

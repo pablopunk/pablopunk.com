@@ -1,5 +1,6 @@
 import { Button } from './Button'
 import { useTranslation } from 'hooks/useTranslation'
+import { BiLineChart } from 'react-icons/bi'
 
 export const VisitsCount = (props: { count: number }) => {
   const { _ } = useTranslation()
@@ -8,7 +9,7 @@ export const VisitsCount = (props: { count: number }) => {
     <Button
       title={_('Visits')}
       size="sm"
-      icon="chart"
+      Icon={BiLineChart}
       className="button-like"
       disabled
     >

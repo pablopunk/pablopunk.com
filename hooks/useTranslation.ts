@@ -45,9 +45,10 @@ export function useTranslation() {
 
       if (!value) {
         markTranslationAssMissing(key, locale)
+        return key
       }
 
-      return value ?? key
+      return value
     },
   }
 }
