@@ -30,6 +30,7 @@ const EditableCell = ({ value: initialValue, onSave }) => {
     (value) => {
       if (!disabled && valueChanged) {
         setDisabled(true)
+        setValueChanged(false)
         onSave(value).then(() => setDisabled(false))
       }
     },
