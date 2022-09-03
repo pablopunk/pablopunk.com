@@ -24,17 +24,16 @@ const EditableCell = ({ value: initialValue, onSave }) => {
   const inputRef = useRef<HTMLInputElement>()
   const [value, setValue] = useState(initialValue)
   const [disabled, setDisabled] = useState(false)
-  const [valueChanged, setValueChanged] = useState(false)
 
   const save = useCallback(
     (value) => {
+      const valueChanged = value !== initialValue
       if (!disabled && valueChanged) {
         setDisabled(true)
-        setValueChanged(false)
         onSave(value).then(() => setDisabled(false))
       }
     },
-    [disabled, valueChanged],
+    [disabled, value, initialValue],
   )
 
   return (
@@ -44,10 +43,7 @@ const EditableCell = ({ value: initialValue, onSave }) => {
         ref={inputRef}
         type="text"
         value={value}
-        onChange={(ev) => {
-          setValue(ev.target.value)
-          setValueChanged(true)
-        }}
+        onChange={(ev) => setValue(ev.target.value)}
         onKeyUp={(ev) => {
           if (ev.key === 'Enter') {
             save(value)
