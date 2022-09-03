@@ -1,16 +1,15 @@
 import styled from 'styled-components'
 import { Markdown } from 'components/Markdown'
 import { Button } from 'components/Button'
-import { DEFAULT_LOCALE, _ } from 'locales'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useRouter } from 'next/router'
 import { FunctionComponent } from 'preact'
-import type { PostType } from 'cms/storyblok/types'
 import TranslationRequestComponent from './TranslationRequest'
 import LikeComponent from './Like'
 import { VisitsCount } from './VisitsCount'
 import useSWR from 'swr'
 import { fetchNumberOfVisits } from 'db/goatcounter'
+import { useTranslation } from 'hooks/useTranslation'
 
 const StyledArticle = styled.article`
   display: flex;
@@ -119,15 +118,16 @@ export const Article: FunctionComponent<Props> = ({
   story,
   translated = false,
 }) => {
-  const { asPath, locale } = useRouter()
+  const { asPath, locale, defaultLocale } = useRouter()
   // "translated = false" means the content is not translated, but the title could still be translated
   const translatedSlug = story.translated_slugs.find(
     (slug) => slug.lang === locale,
   )
-  const showTranslationRequest = locale !== DEFAULT_LOCALE && !translated
+  const showTranslationRequest = locale !== defaultLocale && !translated
   const { data: visitsCount } = useSWR<number>([story], fetchNumberOfVisits, {
     initialData: 0,
   })
+  const { _ } = useTranslation()
 
   return (
     <StyledArticle>
@@ -136,9 +136,9 @@ export const Article: FunctionComponent<Props> = ({
           className="go-back-button"
           rounded
           secondary
-          text={_('Go back', locale)}
+          text={_('Go back')}
           icon={'back'}
-          link={{ url: '/blog' }}
+          link="/blog"
         />
       )}
       {story.content.image?.filename && (

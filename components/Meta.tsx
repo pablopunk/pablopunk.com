@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { NextSeo, SocialProfileJsonLd } from 'next-seo'
-import { DEFAULT_LOCALE } from 'locales'
 import { useRouter } from 'next/router'
 import { SITE_DESC, SITE_IMAGE, SITE_NAME, SITE_URL } from 'config'
 import { useCssVar } from 'hooks/useCssVar'
@@ -8,8 +7,8 @@ import { useMeta } from 'hooks/useMeta'
 
 export function Meta() {
   const { title, description, imageUrl } = useMeta()
-  const { locale } = useRouter()
-  const siteUrl = `${SITE_URL}/${locale !== DEFAULT_LOCALE ? locale : ''}`
+  const { locale, defaultLocale } = useRouter()
+  const siteUrl = `${SITE_URL}/${locale !== defaultLocale ? locale : ''}`
   const titleBarColor = useCssVar('--color-bg')
 
   return (

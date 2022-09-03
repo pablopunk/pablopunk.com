@@ -1,13 +1,12 @@
 import { Button } from './Button'
-import { _ } from 'locales'
-import { useRouter } from 'next/router'
+import { useTranslation } from 'hooks/useTranslation'
 
 export const VisitsCount = (props: { count: number }) => {
-  const { locale } = useRouter()
+  const { _ } = useTranslation()
 
   return (
     <Button
-      title={_('Visits', locale)}
+      title={_('Visits')}
       size="sm"
       icon="chart"
       className="button-like"

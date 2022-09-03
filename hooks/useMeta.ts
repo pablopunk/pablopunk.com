@@ -1,21 +1,20 @@
 import { useRouter } from 'next/router'
-import { _ } from 'locales'
 import { useEffect, useState } from 'react'
+import { useTranslation } from './useTranslation'
 
-const genericPage = (locale: string) => ({
-  title: _('Remote Web Developer | Pablo Varela', locale),
+const genericPage = (_: any) => ({
+  title: _('Remote Web Developer | Pablo Varela'),
   description: _(
     "Check out my work or contact me. I'm @pablopunk in most social networks",
-    locale,
   ),
 })
 
-const getMeta = (pathname: string | null, locale: string) => {
+const getMeta = (pathname: string | null, _: any) => {
   // switch (pathname) {
   //   case null:
   // }
 
-  return genericPage(locale)
+  return genericPage(_)
 }
 
 export const useMeta = (): {
@@ -23,12 +22,13 @@ export const useMeta = (): {
   description: string
   imageUrl?: string
 } => {
-  const { pathname, locale } = useRouter()
-  const [meta, setMeta] = useState(getMeta(pathname, locale))
+  const { pathname } = useRouter()
+  const { _ } = useTranslation()
+  const [meta, setMeta] = useState(getMeta(pathname, _))
 
   useEffect(() => {
-    setMeta(getMeta(pathname, locale))
-  }, [pathname, locale])
+    setMeta(getMeta(pathname, _))
+  }, [pathname])
 
   return meta
 }

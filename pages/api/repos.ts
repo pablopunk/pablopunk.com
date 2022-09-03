@@ -58,6 +58,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
       return response.status(200).json(repos)
     })
     .catch((error) => {
+      console.error(error)
       return response.status(500).json(error)
     })
 }

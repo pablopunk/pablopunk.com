@@ -1,11 +1,10 @@
-import { locales } from 'locales'
 import { useRouter } from 'next/router'
 import { Button } from './Button'
-import { _ } from 'locales'
 import { SITE_COPYRIGHT, SITE_REPO } from 'config'
+import { T } from 'components/T'
 
 export const Footer = () => {
-  const { locale } = useRouter()
+  const { locale, locales } = useRouter()
 
   return (
     <footer
@@ -37,7 +36,9 @@ export const Footer = () => {
         © {SITE_COPYRIGHT} {new Date().getFullYear()}
       </div>
       <div>
-        <a href={SITE_REPO}>{_('Source', locale)}</a>
+        <a href={SITE_REPO}>
+          <T>Source</T>
+        </a>
       </div>
     </footer>
   )

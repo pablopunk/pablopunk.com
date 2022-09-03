@@ -1,7 +1,7 @@
 import React from 'react'
 import humanFormat from 'human-format'
 import { HiOutlineFolderDownload } from 'react-icons/hi'
-import { _ } from 'locales'
+import { _ } from 'components/T'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { Line } from 'react-chartjs-2'
@@ -9,6 +9,7 @@ import 'chartjs-adapter-date-fns'
 import { useCssVar } from 'hooks/useCssVar'
 import * as R from 'ramda'
 import { getJson } from 'lib/utils'
+import { useTranslation } from 'hooks/useTranslation'
 
 const SSR = typeof window === 'undefined'
 
@@ -43,7 +44,8 @@ const totalDownloads = (downloads) =>
     decimals: 1,
   }).replace(' ', '')
 
-const PackageStat = ({ package: packageName, downloads, locale }) => {
+const PackageStat = ({ package: packageName, downloads }) => {
+  const { _ } = useTranslation()
   const color = useCssVar('--color-secondary-9')
 
   if (downloads == null) {
@@ -57,7 +59,7 @@ const PackageStat = ({ package: packageName, downloads, locale }) => {
           <HiOutlineFolderDownload />
         </span>
         <span className="mr-1">{totalDownloads(downloads)} </span>
-        <span className="mr-1">{_('downloads for', locale)} </span>
+        <span className="mr-1">{_('downloads for')} </span>
         <a href={'https://npm.im/' + packageName}>
           <strong>{packageName}</strong>
         </a>

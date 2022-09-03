@@ -1,6 +1,5 @@
 import useTheme from 'hooks/useTheme'
 import { getJson, normalizeHref } from 'lib/utils'
-import { _ } from 'locales'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -10,6 +9,8 @@ import { RiContactsFill, RiMoonClearLine, RiSunLine } from 'react-icons/ri'
 import { animated, useSpring } from 'react-spring'
 import useSWR from 'swr'
 import { Button } from './Button'
+import { _ } from 'components/T'
+import { useTranslation } from 'hooks/useTranslation'
 
 const MAX_SONG = 21
 const MAX_ARTIST = 15
@@ -24,7 +25,6 @@ type Song = {
 }
 
 const ChangeThemeButton = () => {
-  const { locale } = useRouter()
   const [mounted, mountedSet] = React.useState(false)
   const [theme, toggleTheme] = useTheme()
 
@@ -37,7 +37,7 @@ const ChangeThemeButton = () => {
   return (
     <Button
       onClick={toggleTheme}
-      title={_('Change theme', locale)}
+      title={'Change theme'}
       rounded
       className="toggle-theme-button"
       size="lg"
@@ -82,6 +82,7 @@ export const Nav = () => {
   })
   const boxStyles =
     'items-center hidden ml-2 text-xs transition-colors bg-primary-4 border border-primary-6 rounded-md opacity-70 md:flex hover:bg-bg'
+  const { _ } = useTranslation()
 
   return (
     <div
@@ -103,7 +104,7 @@ export const Nav = () => {
                       : 'text-fg md:hover:text-primary-8'
                   }
                 >
-                  {_(link.text, locale)}
+                  {_(link.text)}
                 </a>
               </Link>
             </div>
@@ -116,9 +117,7 @@ export const Nav = () => {
             style={spotifyStyles}
           >
             <FaSpotify className="mx-2 text-xl min-w-[1em]" />
-            <div className="mr-1 whitespace-nowrap">
-              {_('Now playing', locale)}
-            </div>
+            <div className="mr-1 whitespace-nowrap">{_('Now playing')}</div>
             <div
               className="mr-1 text-fg whitespace-nowrap"
               title={nowPlaying.title}
@@ -150,18 +149,13 @@ export const Nav = () => {
             style={spotifyStyles}
           >
             <FaSpotify className="mx-2 text-xl" />
-            <div className="mr-2">{_('Not playing anything', locale)}</div>
+            <div className="mr-2">{_('Not playing anything')}</div>
           </animated.a>
         )}
       </nav>
       <div className="flex mb-0 text-xl md:mt-4 md:mr-3 gap-x-2">
         <ChangeThemeButton />
-        <Button
-          href="/donate"
-          rounded
-          size="lg"
-          title={_('Buy me a coffee', locale)}
-        >
+        <Button href="/donate" rounded size="lg" title={_('Buy me a coffee')}>
           <FiCoffee />
         </Button>
       </div>

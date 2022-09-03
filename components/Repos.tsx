@@ -3,16 +3,18 @@ import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch'
 import humanFormat from 'human-format'
 import { Loading } from 'components/Loading'
-import { _ } from 'locales'
+import { _ } from 'components/T'
 import { Card } from './Card'
 import { BorderGradient } from './BorderGradient'
+import { useTranslation } from 'hooks/useTranslation'
 
 const API = '/api/repos'
 const MAX_REPOS = 8
 
 const fetcher = (url) => fetch(url).then((_) => _.json())
 
-export function Repos({ locale, initialData }) {
+export function Repos({ initialData }) {
+  const { _ } = useTranslation()
   const { data, error } = useSWR(API, fetcher, { initialData })
 
   if (error && !data) {
@@ -36,7 +38,7 @@ export function Repos({ locale, initialData }) {
     }))
     .map((repo) => ({
       ...repo,
-      description: _(repo.description ?? '', locale),
+      description: _(repo.description ?? ''),
     }))
     .map((repo) => ({
       ...repo,

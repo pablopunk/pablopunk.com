@@ -12,6 +12,105 @@ export interface paths {
       };
     };
   };
+  "/i18n": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.i18n.id"];
+          created_at?: parameters["rowFilter.i18n.created_at"];
+          locale?: parameters["rowFilter.i18n.locale"];
+          key?: parameters["rowFilter.i18n.key"];
+          value?: parameters["rowFilter.i18n.value"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["i18n"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** i18n */
+          i18n?: definitions["i18n"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.i18n.id"];
+          created_at?: parameters["rowFilter.i18n.created_at"];
+          locale?: parameters["rowFilter.i18n.locale"];
+          key?: parameters["rowFilter.i18n.key"];
+          value?: parameters["rowFilter.i18n.value"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.i18n.id"];
+          created_at?: parameters["rowFilter.i18n.created_at"];
+          locale?: parameters["rowFilter.i18n.locale"];
+          key?: parameters["rowFilter.i18n.key"];
+          value?: parameters["rowFilter.i18n.value"];
+        };
+        body: {
+          /** i18n */
+          i18n?: definitions["i18n"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/likes": {
     get: {
       parameters: {
@@ -498,112 +597,204 @@ export interface paths {
 }
 
 export interface definitions {
-  likes: {
+  /** @description Translations for pablopunk.com */
+  i18n: {
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /**
+     * Format: character varying
+     * @default en
+     */
+    locale: string;
+    /** Format: character varying */
+    key: string;
+    /** Format: character varying */
+    value?: string;
+  };
+  likes: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /** Format: text */
     slug?: string;
+    /** Format: text */
     ip?: string;
+    /**
+     * Format: timestamp without time zone
+     * @default now()
+     */
     inserted_at?: string;
   };
   lurdle_solutions: {
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
+    /** Format: date */
     day?: string;
+    /** Format: character varying */
     word?: string;
   };
-  /** realtime.pablopunk.com */
+  /** @description realtime.pablopunk.com */
   realtime_clicks: {
+    /** Format: text */
     type?: string;
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
+    /**
+     * Format: timestamp without time zone
+     * @default now()
+     */
     inserted_at?: string;
   };
   translation_requests: {
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
+    /** Format: character varying */
     slug: string;
+    /** Format: character varying */
     ip?: string;
+    /**
+     * Format: timestamp without time zone
+     * @default now()
+     */
     inserted_at?: string;
+    /** Format: character varying */
     guessed_country?: string;
   };
-  /** pablo.im */
+  /** @description pablo.im */
   url_redirects: {
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
+    /** Format: text */
     from?: string;
+    /** Format: text */
     to?: string;
+    /** Format: text */
     user_id?: string;
+    /** Format: timestamp without time zone */
     updated_at?: string;
+    /**
+     * Format: timestamp without time zone
+     * @default now()
+     */
     created_at?: string;
   };
 }
 
 export interface parameters {
-  /** Preference */
+  /** @description Preference */
   preferParams: "params=single-object";
-  /** Preference */
+  /** @description Preference */
   preferReturn: "return=representation" | "return=minimal" | "return=none";
-  /** Preference */
+  /** @description Preference */
   preferCount: "count=none";
-  /** Filtering Columns */
+  /** @description Filtering Columns */
   select: string;
-  /** On Conflict */
+  /** @description On Conflict */
   on_conflict: string;
-  /** Ordering */
+  /** @description Ordering */
   order: string;
-  /** Limiting and Pagination */
+  /** @description Limiting and Pagination */
   range: string;
-  /** Limiting and Pagination */
+  /**
+   * @description Limiting and Pagination
+   * @default items
+   */
   rangeUnit: string;
-  /** Limiting and Pagination */
+  /** @description Limiting and Pagination */
   offset: string;
-  /** Limiting and Pagination */
+  /** @description Limiting and Pagination */
   limit: string;
-  /** likes */
+  /** @description i18n */
+  "body.i18n": definitions["i18n"];
+  /** Format: bigint */
+  "rowFilter.i18n.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.i18n.created_at": string;
+  /** Format: character varying */
+  "rowFilter.i18n.locale": string;
+  /** Format: character varying */
+  "rowFilter.i18n.key": string;
+  /** Format: character varying */
+  "rowFilter.i18n.value": string;
+  /** @description likes */
   "body.likes": definitions["likes"];
+  /** Format: bigint */
   "rowFilter.likes.id": string;
+  /** Format: text */
   "rowFilter.likes.slug": string;
+  /** Format: text */
   "rowFilter.likes.ip": string;
+  /** Format: timestamp without time zone */
   "rowFilter.likes.inserted_at": string;
-  /** lurdle_solutions */
+  /** @description lurdle_solutions */
   "body.lurdle_solutions": definitions["lurdle_solutions"];
+  /** Format: bigint */
   "rowFilter.lurdle_solutions.id": string;
+  /** Format: date */
   "rowFilter.lurdle_solutions.day": string;
+  /** Format: character varying */
   "rowFilter.lurdle_solutions.word": string;
-  /** realtime_clicks */
+  /** @description realtime_clicks */
   "body.realtime_clicks": definitions["realtime_clicks"];
+  /** Format: text */
   "rowFilter.realtime_clicks.type": string;
+  /** Format: bigint */
   "rowFilter.realtime_clicks.id": string;
+  /** Format: timestamp without time zone */
   "rowFilter.realtime_clicks.inserted_at": string;
-  /** translation_requests */
+  /** @description translation_requests */
   "body.translation_requests": definitions["translation_requests"];
+  /** Format: bigint */
   "rowFilter.translation_requests.id": string;
+  /** Format: character varying */
   "rowFilter.translation_requests.slug": string;
+  /** Format: character varying */
   "rowFilter.translation_requests.ip": string;
+  /** Format: timestamp without time zone */
   "rowFilter.translation_requests.inserted_at": string;
+  /** Format: character varying */
   "rowFilter.translation_requests.guessed_country": string;
-  /** url_redirects */
+  /** @description url_redirects */
   "body.url_redirects": definitions["url_redirects"];
+  /** Format: bigint */
   "rowFilter.url_redirects.id": string;
+  /** Format: text */
   "rowFilter.url_redirects.from": string;
+  /** Format: text */
   "rowFilter.url_redirects.to": string;
+  /** Format: text */
   "rowFilter.url_redirects.user_id": string;
+  /** Format: timestamp without time zone */
   "rowFilter.url_redirects.updated_at": string;
+  /** Format: timestamp without time zone */
   "rowFilter.url_redirects.created_at": string;
 }
 

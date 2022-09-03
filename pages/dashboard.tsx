@@ -2,17 +2,15 @@ import { Loading } from 'components/Loading'
 import { FiDownloadCloud } from 'react-icons/fi'
 import { GoRepo } from 'react-icons/go'
 import { MdCameraAlt, MdPageview } from 'react-icons/md'
-import { useRouter } from 'next/router'
-import { _ } from 'locales'
 import humanFormat from 'human-format'
 import { openLink } from 'lib/utils'
 import useSWR from 'swr'
 import { AiOutlineStar, AiOutlineUsergroupAdd } from 'react-icons/ai'
 import { getUnsplashStats, getGithubStats } from './api/stats'
-import { getPageStaticProps } from 'cms/middleware'
 import { GetStaticProps } from 'next'
 import { FunctionComponent } from 'react'
 import { PageProps } from 'types/page'
+import { useTranslation } from 'hooks/useTranslation'
 
 const Stats = ({ children, onClick }) => {
   return (
@@ -34,7 +32,7 @@ interface Props extends PageProps {
 }
 
 const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
-  const { locale } = useRouter()
+  const { _ } = useTranslation()
   const { data } = useSWR('/api/stats', (u) => fetch(u).then((r) => r.json()), {
     initialData,
   })
@@ -50,21 +48,21 @@ const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
               <strong className="ml-1 text-secondary-11">
                 {humanFormat(data.unsplash?.photos || 0)}{' '}
               </strong>
-              <span className="ml-1">{_('photos', locale)}</span>
+              <span className="ml-1">{_('photos')}</span>
             </Stat>
             <Stat>
               <MdPageview />{' '}
               <strong className="ml-1 text-secondary-11">
                 {humanFormat(data.unsplash?.views || 9000000)}{' '}
               </strong>
-              <span className="ml-1">{_('total views', locale)}</span>
+              <span className="ml-1">{_('total views')}</span>
             </Stat>
             <Stat>
               <FiDownloadCloud />{' '}
               <strong className="ml-1 text-secondary-11">
                 {humanFormat(data.unsplash?.downloads || 0)}{' '}
               </strong>
-              <span className="ml-1">{_('total downloads', locale)}</span>
+              <span className="ml-1">{_('total downloads')}</span>
             </Stat>
           </Stats>
           <Stats onClick={() => openLink('github.com/pablopunk')}>
@@ -74,21 +72,21 @@ const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
               <strong className="ml-1 text-secondary-11">
                 {humanFormat(data.github?.followers || 0)}{' '}
               </strong>
-              <span className="ml-1">{_('followers', locale)}</span>
+              <span className="ml-1">{_('followers')}</span>
             </Stat>
             <Stat>
               <GoRepo />{' '}
               <strong className="ml-1 text-secondary-11">
                 {humanFormat(data.github?.public_repos || 0)}{' '}
               </strong>
-              <span className="ml-1">{_('repos', locale)}</span>
+              <span className="ml-1">{_('repos')}</span>
             </Stat>
             <Stat>
               <AiOutlineStar />{' '}
               <strong className="ml-1 text-secondary-11">
                 +{humanFormat(180 + (data.github?.stars_received || 0))}{' '}
               </strong>
-              <span className="ml-1">{_('stars received', locale)}</span>
+              <span className="ml-1">{_('stars received')}</span>
             </Stat>
           </Stats>
         </div>

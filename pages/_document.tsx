@@ -1,7 +1,7 @@
 import Document, { Main, NextScript, Html, Head } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import { DEFAULT_LOCALE } from 'locales'
 import darkModeCode from 'dark-mode-code'
+import { i18n } from 'next.config'
 
 const htmlHello = `
 console.log(\`%c
@@ -44,7 +44,7 @@ export default class extends Document {
 
   render() {
     return (
-      <Html lang={this.props.locale || DEFAULT_LOCALE}>
+      <Html lang={this.props.locale || i18n.defaultLocale}>
         <Head>
           <script data-goatcounter="/goat" async src="/count.js"></script>
           <script

@@ -4,14 +4,14 @@ interface Props extends React.ComponentProps<'section'> {
   alt?: boolean
 }
 
-export const Section = ({ children, alt }: Props) => {
+export const Section = ({ children, alt, className }: Props) => {
   return (
     <div
       className={classnames('py-3', {
         'bg-bg-2': alt === true,
       })}
     >
-      <section>{children}</section>
+      <section className={className}>{children}</section>
     </div>
   )
 }

@@ -12,7 +12,7 @@ html {
 
 body {
   --color-bg: var(--colors-gray1);
-  --color-bg-2: var(--colors-purple3);
+  --color-bg-2: var(--colors-gray3);
   --color-fg: var(--colors-gray12);
   --color-primary-1: var(--colors-teal1);
   --color-primary-2: var(--colors-teal2);

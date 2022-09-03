@@ -1,13 +1,14 @@
 import React from 'react'
 import { Repos } from 'components/Repos'
 import { NpmCharts, fetchAllNpmData } from 'components/NpmCharts'
-import { _ } from '../locales'
 import { PageProps } from 'types/page'
 import { GetStaticProps } from 'next'
 import { getFromCache } from 'db/redis'
 import { getReposApiResponse } from './api/repos'
 import { JAMStack } from 'components/JAMStack'
 import { Section } from 'components/Section'
+import { T } from 'components/T'
+import { pageStaticProps } from 'middleware'
 
 interface Props extends PageProps {
   locale: string
@@ -17,12 +18,14 @@ interface Props extends PageProps {
   }
 }
 
-const Portfolio = ({ initialData, locale }: Props) => {
+const Portfolio = ({ initialData }: Props) => {
   return (
     <>
       <Section>
         <h1 className="text-3xl text-center">
-          {_('The power of JAMStack', locale)}
+          <T>
+            The power of <b>JAMStack</b>
+          </T>
         </h1>
         <p className="text-center mt-1 opacity-80">
           With JAMStack you get the best of dynamic React components and the
@@ -36,7 +39,7 @@ const Portfolio = ({ initialData, locale }: Props) => {
       </Section>
       <Section>
         <h2 className="text-xl">Featured repos</h2>
-        <Repos locale={locale} initialData={initialData.repos} />
+        <Repos initialData={initialData.repos} />
       </Section>
     </>
   )
@@ -45,9 +48,11 @@ const Portfolio = ({ initialData, locale }: Props) => {
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const npm = await getFromCache('npm', fetchAllNpmData)
   const repos = await getFromCache('repos', getReposApiResponse)
+  const { props: pageProps } = await pageStaticProps(ctx)
 
   return {
     props: {
+      ...pageProps,
       initialData: {
         npm,
         repos,

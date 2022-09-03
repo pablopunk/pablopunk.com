@@ -1,13 +1,12 @@
-import { DEFAULT_LOCALE } from 'locales'
+import { i18n } from 'next.config'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getPosts } from 'cms/middleware'
 
 export default async function postsApi(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
   const page = parseInt(req.query.page as string) || 1
-  const locale = (req.query.locale as string) || DEFAULT_LOCALE
+  const locale = (req.query.locale as string) || i18n.defaultLocale
   const results = await getPosts(page, req.preview, locale)
 
   if (!results.posts) {

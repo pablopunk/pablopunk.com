@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
-const { locales } = require('./locales')
 const { withSentryConfig } = require('@sentry/nextjs')
+
+const locales = ['en', 'es']
+const i18n = {
+  locales,
+  defaultLocale: 'en',
+}
 
 const buildRewrite = ({ path, dest }) => ({
   source: `/(${locales.join('|')})+/${path}`,
@@ -94,10 +99,7 @@ const rd = [
 ]
 
 const moduleExports = {
-  i18n: {
-    locales,
-    defaultLocale: 'en',
-  },
+  i18n,
   async rewrites() {
     return rw.map(buildRewrite)
   },
