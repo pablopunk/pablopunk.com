@@ -11,6 +11,7 @@ import { GetStaticProps } from 'next'
 import { FunctionComponent } from 'react'
 import { PageProps } from 'types/page'
 import { useTranslation } from 'hooks/useTranslation'
+import { pageStaticProps } from 'middleware'
 
 const Stats = ({ children, onClick }) => {
   return (
@@ -98,7 +99,7 @@ const Dashboard: FunctionComponent<Props> = ({ initialData }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
-  const sProps = await getStaticProps(ctx)
+  const sProps = await pageStaticProps(ctx)
   const [unsplash, github] = await Promise.all([
     getUnsplashStats(),
     getGithubStats(),
