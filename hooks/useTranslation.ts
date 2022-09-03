@@ -1,5 +1,6 @@
 import { I18NContext } from 'context/i18n'
 import { Translation } from 'db/supabase/types'
+import { i18n } from 'next.config'
 import { useContext } from 'react'
 
 let missingTranslations: { [key: string]: Translation } = {}
@@ -32,6 +33,10 @@ export function useTranslation() {
 
   return {
     _(key: string) {
+      if (locale === i18n.defaultLocale) {
+        return key
+      }
+
       if (!key || !translations) {
         return key
       }

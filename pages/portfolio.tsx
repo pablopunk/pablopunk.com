@@ -34,11 +34,15 @@ const Portfolio = ({ initialData }: Props) => {
         <JAMStack />
       </Section>
       <Section alt>
-        <h2 className="text-xl">Popular NPM packages</h2>
+        <h2 className="text-xl">
+          <T>Popular NPM packages</T>
+        </h2>
         <NpmCharts initialData={initialData.npm} />
       </Section>
       <Section>
-        <h2 className="text-xl">Featured repos</h2>
+        <h2 className="text-xl">
+          <T>Featured repos</T>
+        </h2>
         <Repos initialData={initialData.repos} />
       </Section>
     </>

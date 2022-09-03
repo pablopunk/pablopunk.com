@@ -11,6 +11,7 @@ import { Button } from 'components/Button'
 import useSWR from 'swr'
 import { useTranslation } from 'hooks/useTranslation'
 import { pageStaticProps } from 'middleware'
+import { T } from 'components/T'
 
 type Props = {
   initialData: Translation[]
@@ -71,7 +72,9 @@ export default function Dev({ initialData }: Props) {
 
   return (
     <>
-      <h1 className="text-3xl text-center mt-4">God mode</h1>
+      <h1 className="text-3xl text-center mt-4">
+        <T>God mode</T>
+      </h1>
       <Section className="border rounded-lg p-2 my-2 w-full bg-bg-2">
         <h2 className="text-xl mb-2 flex gap-2 justify-between">
           Translations
