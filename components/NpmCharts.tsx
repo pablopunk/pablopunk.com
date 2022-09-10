@@ -12,7 +12,7 @@ import { useTranslation } from 'hooks/useTranslation'
 
 const SSR = typeof window === 'undefined'
 
-const packages = ['nextjs-redirect', 'miny']
+const packages = ['nextjs-redirect']
 
 const apiURLForPackage = (packageName) =>
   (SSR ? 'https://api.npmjs.org' : '/api.npmjs.org') +

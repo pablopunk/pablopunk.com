@@ -5,7 +5,6 @@ import { PageProps } from 'types/page'
 import { GetStaticProps } from 'next'
 import { getFromCache } from 'db/redis'
 import { getReposApiResponse } from './api/repos'
-import { JAMStack } from 'components/JAMStack'
 import { Section } from 'components/Section'
 import { T } from 'components/T'
 import { pageStaticProps } from 'middleware'
@@ -22,25 +21,13 @@ const Portfolio = ({ initialData }: Props) => {
   return (
     <>
       <Section>
-        <h1 className="text-3xl text-center">
-          <T>
-            The power of <b>JAMStack</b>
-          </T>
-        </h1>
-        <p className="text-center mt-1 opacity-80">
-          With JAMStack you get the best of dynamic React components and the
-          speed of static HTML content
-        </p>
-        <JAMStack />
-      </Section>
-      <Section alt>
-        <h2 className="text-xl">
+        <h2 className="text-xl font-bold">
           <T>Popular NPM packages</T>
         </h2>
         <NpmCharts initialData={initialData.npm} />
       </Section>
       <Section>
-        <h2 className="text-xl">
+        <h2 className="text-xl font-bold">
           <T>Featured repos</T>
         </h2>
         <Repos initialData={initialData.repos} />
