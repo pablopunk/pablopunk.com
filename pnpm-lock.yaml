@@ -62,6 +62,7 @@ specifiers:
   react-chartjs-2: ^3.0.4
   react-dom: ^17.0.2
   react-hooks-visible: ^1.1.1
+  react-hotkeys-hook: ^3.4.7
   react-icons: 3.11.0
   react-photo-gallery: ^8.0.0
   react-simple-tooltip: ^2.6.3
@@ -114,6 +115,7 @@ dependencies:
   react-chartjs-2: 3.3.0_chart.js@3.8.0+react@17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-hooks-visible: 1.1.1_react@17.0.2
+  react-hotkeys-hook: 3.4.7_react-dom@17.0.2+react@17.0.2
   react-icons: 3.11.0_react@17.0.2
   react-photo-gallery: 8.0.0_react-dom@17.0.2+react@17.0.2
   react-simple-tooltip: 2.6.3_react@17.0.2
@@ -3571,6 +3573,10 @@ packages:
       lru-cache: 6.0.0
     dev: true
 
+  /hotkeys-js/3.9.4:
+    resolution: {integrity: sha512-2zuLt85Ta+gIyvs4N88pCYskNrxf1TFv3LR9t5mdAZIX8BcgQQ48F2opUptvHa6m8zsy5v/a0i9mWzTrlNWU0Q==}
+    dev: false
+
   /hsl-regex/1.0.0:
     resolution: {integrity: sha512-M5ezZw4LzXbBKMruP+BNANf0k+19hDQMgpzBIYnya//Al+fjNct9Wf3b1WedLqdEs2hKBvxq/jh+DsHJLj0F9A==}
     dev: false
@@ -5228,6 +5234,17 @@ packages:
       react: '>=16.8'
     dependencies:
       react: 17.0.2
+    dev: false
+
+  /react-hotkeys-hook/3.4.7_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-+bbPmhPAl6ns9VkXkNNyxlmCAIyDAcWbB76O4I0ntr3uWCRuIQf/aRLartUahe9chVMPj+OEzzfk3CQSjclUEQ==}
+    peerDependencies:
+      react: '>=16.8.1'
+      react-dom: '>=16.8.1'
+    dependencies:
+      hotkeys-js: 3.9.4
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /react-icons/3.11.0_react@17.0.2:

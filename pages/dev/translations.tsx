@@ -83,6 +83,9 @@ export default function Translations({ initialData }: Props) {
     updateTranslation({ id, key }).then(revalidate)
   const handleEditValue = (id) => (value) =>
     updateTranslation({ id, value }).then(revalidate)
+
+  const translationsToShow = data?.filter(filters) || []
+
   return (
     <div className="mt-3">
       <Section>
@@ -104,13 +107,21 @@ export default function Translations({ initialData }: Props) {
         <table>
           <thead>
             <tr>
-              <th>/</th>
-              <th>Key</th>
-              <th>Value</th>
+              {translationsToShow.length > 0 ? (
+                <>
+                  <th>/</th>
+                  <th>Key</th>
+                  <th>Value</th>
+                </>
+              ) : (
+                <th>
+                  <T>There are no translations for this language</T>
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
-            {data?.filter(filters).map((translation) => (
+            {translationsToShow.map((translation) => (
               <tr key={translation.id} className="whitespace-nowrap">
                 <td>{translation.locale}</td>
                 <EditableCell

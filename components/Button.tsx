@@ -68,8 +68,7 @@ export const Button: FunctionComponent<Props> = ({
             'text-sm': size === 'sm',
             'text-md': size === 'md',
             'text-xl': size === 'lg',
-            'min-h-[50px] min-w-[50px] md:min-h-[38px] md:min-w-[38px]':
-              rounded === true,
+            'min-h-[38px] min-w-[38px]': rounded === true,
             'bg-primary-5 text-primary-11 hover:text-primary-11 hover:bg-primary-7 rounded-full':
               !!primary || !secondary,
             'bg-secondary-5 text-secondary-11 hover:text-secondary-11 hover:bg-secondary-7 rounded-full':

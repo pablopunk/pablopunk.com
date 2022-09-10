@@ -17,7 +17,7 @@ export const Layout: FunctionComponent<PageProps> = ({
     <>
       <Meta />
       <Nav />
-      <main className="fill-height pt-7 md:pt-0">
+      <main className="fill-height">
         {isError ? (
           <div className="flex flex-col items-center justify-center mt-[30%]">
             <h1 className="text-danger text-2xl font-bold mb-2">

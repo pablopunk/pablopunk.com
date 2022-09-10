@@ -9,9 +9,9 @@ import { Tooltip } from 'components/Tooltip'
 export default function Home() {
   return (
     <div className="fill-height flex flex-col items-center justify-center gap-3">
-      <div className="flex items-center justify-center gap-3">
+      <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-3">
         <div className="flex flex-col gap-1">
-          <h1 className="text-3xl">Pablo P Varela</h1>
+          <h1 className="text-3xl font-bold">Pablo P Varela</h1>
           <p className="opacity-80 italic text-sm">
             <T>
               Full Stack Developer at <a href="https://maze.co">Maze</a>

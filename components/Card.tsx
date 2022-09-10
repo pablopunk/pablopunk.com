@@ -34,7 +34,7 @@ export const Card = ({ title, subtitle, description, link }: Props) => {
             <h3>{title}</h3>
             <h4 className="italic text-fg opacity-75 text-sm">{subtitle}</h4>
           </div>
-          <p className="text-fg">{description}</p>
+          <p className="text-fg opacity-90">{description}</p>
         </div>
       </BorderGradient>
     </LinkOrNot>

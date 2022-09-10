@@ -1,13 +1,14 @@
-import 'styles/radix-colors.css'
-import 'tailwindcss/tailwind.css'
-import 'styles/global.css'
-import React, { useEffect } from 'react'
-import Router, { useRouter } from 'next/router'
 import { Layout } from 'components/Layout'
-import SimpleReactLightbox from 'simple-react-lightbox'
+import { I18NProvider } from 'context/i18n'
 import { SupabaseProvider } from 'db/supabase/client'
 import { NextWebVitalsMetric } from 'next/app'
-import { I18NProvider } from 'context/i18n'
+import Router, { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { useHotkeys } from 'react-hotkeys-hook'
+import SimpleReactLightbox from 'simple-react-lightbox'
+import 'styles/global.css'
+import 'styles/radix-colors.css'
+import 'tailwindcss/tailwind.css'
 import { PageProps } from 'types/page'
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
@@ -36,7 +37,7 @@ const App = ({
   Component: any
   pageProps: PageProps
 }) => {
-  const { locale } = useRouter()
+  const { locale, push } = useRouter()
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -49,6 +50,11 @@ const App = ({
 
     return () => Router.events.off('routeChangeComplete', handleRouteChange)
   }, [])
+
+  useHotkeys('cmd+shift+d', (ev) => {
+    ev.preventDefault()
+    push('/dev', '/dev', { locale })
+  })
 
   return (
     <>

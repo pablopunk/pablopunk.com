@@ -1,4 +1,6 @@
+import classNames from 'classnames'
 import useTheme from 'hooks/useTheme'
+import { useTranslation } from 'hooks/useTranslation'
 import { getJson, normalizeHref } from 'lib/utils'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -9,7 +11,6 @@ import { RiContactsFill, RiMoonClearLine, RiSunLine } from 'react-icons/ri'
 import { animated, useSpring } from 'react-spring'
 import useSWR from 'swr'
 import { Button } from './Button'
-import { useTranslation } from 'hooks/useTranslation'
 
 const MAX_SONG = 21
 const MAX_ARTIST = 15
@@ -39,10 +40,8 @@ const ChangeThemeButton = () => {
       title={'Change theme'}
       rounded
       className="toggle-theme-button"
-      size="lg"
-    >
-      {theme === 'dark' ? <RiMoonClearLine /> : <RiSunLine />}
-    </Button>
+      Icon={theme === 'dark' ? RiMoonClearLine : RiSunLine}
+    />
   )
 }
 
@@ -85,23 +84,23 @@ export const Nav = () => {
 
   return (
     <div
-      className="relative z-20 flex flex-col items-center justify-between px-1 md:flex-row no-scrollbar"
+      className="relative z-20 flex items-center justify-between px-1 no-scrollbar"
       style={{ height: 'var(--nav-height)' }}
     >
-      <nav className="flex my-2 md:my-0">
+      <nav className="flex pl-2 my-2 md:my-0">
         {LINKS.map((link) => {
           const url = normalizeHref(link.href)
-          let current = asPath === '/' ? url === '/' : url.includes(asPath)
+          const isCurrentPage =
+            asPath === '/' ? url === '/' : url.includes(asPath)
 
           return (
-            <div key={url} className="px-2 py-1 text-xl font-bold uppercase">
+            <div key={url} className="text-xl font-bold uppercase">
               <Link href={url} locale={locale}>
                 <a
-                  className={
-                    current
-                      ? 'md:text-primary-10'
-                      : 'text-fg md:hover:text-primary-8'
-                  }
+                  className={classNames('mx-1', {
+                    'text-primary-10 hidden md:block ': isCurrentPage,
+                    'text-fg md:hover:text-primary-8': !isCurrentPage,
+                  })}
                 >
                   {_(link.text)}
                 </a>
@@ -152,9 +151,9 @@ export const Nav = () => {
           </animated.a>
         )}
       </nav>
-      <div className="flex mb-0 text-xl md:mt-4 md:mr-3 gap-x-2">
+      <div className="flex flex-col md:flex-row mb-0 text-xl mt-2 mr-2 gap-2 absolute md:relative right-0 top-0">
         <ChangeThemeButton />
-        <Button href="/donate" rounded size="lg" title={_('Buy me a coffee')}>
+        <Button href="/donate" rounded title={_('Buy me a coffee')}>
           <FiCoffee />
         </Button>
       </div>
