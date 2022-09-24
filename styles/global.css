@@ -75,6 +75,14 @@ body.dark {
 }
 
 body {
+  --color-danger: #e53e3e;
+}
+
+body.dark {
+  --color-danger: #fc8181;
+}
+
+body {
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --font-serif: 'DM Serif Display', serif;

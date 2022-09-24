@@ -16,8 +16,7 @@ const packages = ['nextjs-redirect']
 
 const apiURLForPackage = (packageName) =>
   (SSR ? 'https://api.npmjs.org' : '/api.npmjs.org') +
-  `/downloads/range/2010-01-01:${
-    new Date().toISOString().split('T')[0]
+  `/downloads/range/2010-01-01:${new Date().toISOString().split('T')[0]
   }/${packageName}`
 
 export const fetchAllNpmData = () =>
@@ -54,7 +53,7 @@ const PackageStat = ({ package: packageName, downloads }) => {
   return (
     <>
       <div className="flex flex-wrap items-center justify-center whitespace-nowrap">
-        <span className="mr-1 text-secondary-11">
+        <span className="mr-1 text-secondary-8">
           <HiOutlineFolderDownload />
         </span>
         <span className="mr-1">{totalDownloads(downloads)} </span>
@@ -91,7 +90,7 @@ export function NpmCharts({ initialData }) {
           <div
             key={packageData.package}
             style={{ width: '100%' }}
-            className="p-3 my-4 border-4 border-dashed rounded-md"
+            className="p-3 my-4 border-2 border-dashed rounded-md"
           >
             <PackageStat {...packageData} locale={locale} />
           </div>

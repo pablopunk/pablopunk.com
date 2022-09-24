@@ -2,7 +2,7 @@ import { Button } from 'components/neon/Button'
 import { Section } from 'components/Section'
 import { T } from 'components/T'
 import {
-  getAllTranslationsForLocale, updateTranslation
+  getAllTranslationsForLocale, removeTranslation, updateTranslation
 } from 'db/supabase/tables/i18n'
 import { Translation } from 'db/supabase/types'
 import { useTranslation } from 'hooks/useTranslation'
@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 import { useCallback, useRef, useState } from 'react'
 import { BiArrowBack } from 'react-icons/bi'
 import { FaWindowClose, FaWindowMaximize } from 'react-icons/fa'
+import { CgTrash } from 'react-icons/cg'
 import useSWR from 'swr'
 
 type Props = {
@@ -62,7 +63,7 @@ export default function Translations({ initialData }: Props) {
   const { locale } = useRouter()
   const [showMissing, setShowMissing] = useState(false)
   const { _ } = useTranslation()
-  const { data, revalidate } = useSWR(
+  const { data, revalidate, isValidating } = useSWR(
     '/api/dev/translations?locale=' + locale,
     {
       fetcher,
@@ -83,6 +84,8 @@ export default function Translations({ initialData }: Props) {
     updateTranslation({ id, key }).then(revalidate)
   const handleEditValue = (id) => (value) =>
     updateTranslation({ id, value }).then(revalidate)
+  const handleRemoveTranslation = (translation) => () =>
+    removeTranslation(translation).then(revalidate)
 
   const translationsToShow = data?.filter(filters) || []
 
@@ -136,6 +139,11 @@ export default function Translations({ initialData }: Props) {
                   value={translation.value}
                   onSave={handleEditValue(translation.id)}
                 />
+                <td>
+                  <button disabled={isValidating} className='text-danger hover:text-secondary-9 disabled:opacity-20' onClick={handleRemoveTranslation(translation)}>
+                    <CgTrash />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

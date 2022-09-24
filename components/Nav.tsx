@@ -2,8 +2,7 @@ import classNames from 'classnames'
 import { Button } from 'components/neon/Button'
 import useTheme from 'hooks/useTheme'
 import { useTranslation } from 'hooks/useTranslation'
-import { getJson, normalizeHref } from 'lib/utils'
-import Link from 'next/link'
+import { getJson } from 'lib/utils'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { FaSpotify } from 'react-icons/fa'
@@ -45,29 +44,29 @@ const ChangeThemeButton = () => {
   )
 }
 
-type Link = {
-  href: string
-  text: string
-}
-const LINKS = [
-  { href: '/', text: 'Home' },
-  {
-    href: '/portfolio',
-    text: 'Work',
-  },
-  {
-    href: '/me',
-    text: 'Bio',
-  },
-  {
-    href: '/blog',
-    text: 'Blog',
-  },
-  {
-    href: 'https://cv.pablopunk.com',
-    text: 'CV',
-  },
-]
+// type Link = {
+//   href: string
+//   text: string
+// }
+// const LINKS = [
+//   { href: '/', text: 'Home' },
+//   {
+//     href: '/portfolio',
+//     text: 'Work',
+//   },
+//   {
+//     href: '/me',
+//     text: 'Bio',
+//   },
+//   {
+//     href: '/blog',
+//     text: 'Blog',
+//   },
+//   {
+//     href: 'https://cv.pablopunk.com',
+//     text: 'CV',
+//   },
+// ]
 
 export const Nav = () => {
   const { data: nowPlaying, isValidating } = useSWR<Song>(

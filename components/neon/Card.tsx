@@ -8,9 +8,10 @@ type CTAType = Partial<ButtonProps>
 type Props = {
   title: string
   children?: ReactNode | ReactNode[]
-  Icon: IconType
+  Icon?: IconType
   secondary?: boolean
   CTA?: CTAType | CTAType[]
+  className?: string
 }
 
 export const Card = ({
@@ -19,12 +20,13 @@ export const Card = ({
   Icon,
   CTA,
   secondary,
+  className
 }: Props) => {
   const type = useMemo(() => (secondary ? 'secondary' : 'primary'), [secondary])
 
   return (
     <>
-      <article className="neon-card border-2 border-primary-8 md:max-w-[400px] p-5 bg-neutral-2 rounded-lg z-auto relative flex flex-col justify-between gap-2">
+      <article className={classNames(className, "neon-card border-2 border-primary-8 md:max-w-[400px] p-5 bg-neutral-2 rounded-lg z-auto relative flex flex-col justify-between gap-2")}>
         <div className="flex flex-col gap-2">
           <h2
             className={classNames('flex gap-1 items-center text-2xl', {
@@ -32,14 +34,15 @@ export const Card = ({
               'text-secondary-8': secondary === true,
             })}
           >
-            <Icon />
+            {Icon && <Icon />}
             <span className='font-bold'>{title}</span>
           </h2>
           <div>{children}</div>
         </div>
-        <div className="w-full flex justify-end mt-2 gap-1">
+        <div className="w-full flex justify-end mt-2 gap-2">
           {(Array.isArray(CTA) ? CTA : [CTA]).filter(Boolean).map((cta) => (
             <Button
+              key={'cta-' + cta.href || cta.text || cta.title}
               secondary={secondary}
               {...cta}
             />

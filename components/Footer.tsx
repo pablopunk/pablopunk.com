@@ -13,7 +13,7 @@ export const Footer = () => {
       <div className="flex gap-x-1">
         {locales.map((l) => {
           return (
-            <Link locale={l} href="#">
+            <Link locale={l} href="#" key={`locale-${l}`}>
               <button
                 disabled={locale === l}
                 className={classNames("rotate-[-15deg] rounded-full p-1 transition", {
