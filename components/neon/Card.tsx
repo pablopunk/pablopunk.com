@@ -1,21 +1,21 @@
-import { FaArrowRight } from 'react-icons/fa'
-import { Button } from './Button'
 import classNames from 'classnames'
 import { IconType } from 'react-icons'
 import { ReactNode, useMemo } from 'react'
+import { Button, ButtonProps } from './Button'
+
+type CTAType = Partial<ButtonProps>
 
 type Props = {
   title: string
   children?: ReactNode | ReactNode[]
-  buttonText: string
   Icon: IconType
   secondary?: boolean
+  CTA?: CTAType | CTAType[]
 }
 
 export const Card = ({
   title,
   children,
-  buttonText,
   Icon,
   CTA,
   secondary,
@@ -24,7 +24,7 @@ export const Card = ({
 
   return (
     <>
-      <article className="neon-card border-2 border-primary-8 md:max-w-[400px] p-5 bg-neutral-1 rounded-lg z-auto relative flex flex-col justify-between gap-2">
+      <article className="neon-card border-2 border-primary-8 md:max-w-[400px] p-5 bg-neutral-2 rounded-lg z-auto relative flex flex-col justify-between gap-2">
         <div className="flex flex-col gap-2">
           <h2
             className={classNames('flex gap-1 items-center text-2xl', {
@@ -33,17 +33,17 @@ export const Card = ({
             })}
           >
             <Icon />
-            <span>{title}</span>
+            <span className='font-bold'>{title}</span>
           </h2>
           <div>{children}</div>
         </div>
-        <div className="w-full flex justify-end mt-2">
-          <Button
-            text={buttonText}
-            RightIcon={FaArrowRight}
-            secondary={secondary === true}
-            href="/"
-          />
+        <div className="w-full flex justify-end mt-2 gap-1">
+          {(Array.isArray(CTA) ? CTA : [CTA]).filter(Boolean).map((cta) => (
+            <Button
+              secondary={secondary}
+              {...cta}
+            />
+          ))}
         </div>
       </article>
       <style jsx>{`

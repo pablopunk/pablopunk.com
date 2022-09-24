@@ -5,9 +5,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        fg: 'var(--color-fg)',
-        bg: 'var(--color-bg)',
-        'bg-2': 'var(--color-bg-2)',
+        'neutral-1': 'var(--color-neutral-1)',
+        'neutral-2': 'var(--color-neutral-2)',
+        'neutral-3': 'var(--color-neutral-3)',
+        'neutral-4': 'var(--color-neutral-4)',
+        'neutral-5': 'var(--color-neutral-5)',
+        'neutral-6': 'var(--color-neutral-6)',
+        'neutral-7': 'var(--color-neutral-7)',
+        'neutral-8': 'var(--color-neutral-8)',
+        'neutral-9': 'var(--color-neutral-9)',
+        'neutral-10': 'var(--color-neutral-10)',
         'primary-1': 'var(--color-primary-1)',
         'primary-2': 'var(--color-primary-2)',
         'primary-3': 'var(--color-primary-3)',
@@ -18,8 +25,6 @@ module.exports = {
         'primary-8': 'var(--color-primary-8)',
         'primary-9': 'var(--color-primary-9)',
         'primary-10': 'var(--color-primary-10)',
-        'primary-11': 'var(--color-primary-11)',
-        'primary-12': 'var(--color-primary-12)',
         'secondary-1': 'var(--color-secondary-1)',
         'secondary-2': 'var(--color-secondary-2)',
         'secondary-3': 'var(--color-secondary-3)',
@@ -30,8 +35,6 @@ module.exports = {
         'secondary-8': 'var(--color-secondary-8)',
         'secondary-9': 'var(--color-secondary-9)',
         'secondary-10': 'var(--color-secondary-10)',
-        'secondary-11': 'var(--color-secondary-11)',
-        'secondary-12': 'var(--color-secondary-12)',
         danger: 'var(--color-danger)',
       },
       gridTemplateColumns: {
@@ -45,7 +48,7 @@ module.exports = {
     },
     borderColor: (theme) => ({
       ...theme('colors'),
-      DEFAULT: 'var(--colors-gray4)',
+      DEFAULT: 'var(--color-neutral-4)',
     }),
     spacing: {
       0: '0',

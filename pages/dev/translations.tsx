@@ -1,18 +1,18 @@
-import { Translation } from 'db/supabase/types'
-import { useRouter } from 'next/router'
+import { Button } from 'components/neon/Button'
 import { Section } from 'components/Section'
-import { Button } from 'components/Button'
-import useSWR from 'swr'
-import { useTranslation } from 'hooks/useTranslation'
-import { useCallback, useRef, useState } from 'react'
-import {
-  updateTranslation,
-  getAllTranslationsForLocale,
-} from 'db/supabase/tables/i18n'
-import { GetStaticPropsContext } from 'next'
-import { pageStaticProps } from 'middleware'
 import { T } from 'components/T'
+import {
+  getAllTranslationsForLocale, updateTranslation
+} from 'db/supabase/tables/i18n'
+import { Translation } from 'db/supabase/types'
+import { useTranslation } from 'hooks/useTranslation'
+import { pageStaticProps } from 'middleware'
+import { GetStaticPropsContext } from 'next'
+import { useRouter } from 'next/router'
+import { useCallback, useRef, useState } from 'react'
 import { BiArrowBack } from 'react-icons/bi'
+import { FaWindowClose, FaWindowMaximize } from 'react-icons/fa'
+import useSWR from 'swr'
 
 type Props = {
   initialData: Translation[]
@@ -87,23 +87,27 @@ export default function Translations({ initialData }: Props) {
   const translationsToShow = data?.filter(filters) || []
 
   return (
-    <div className="mt-3">
+    <div>
       <Section>
-        <Button Icon={BiArrowBack} href="/dev">
+        <Button LeftIcon={BiArrowBack} href="/dev">
           <T>Go back</T>
         </Button>
       </Section>
-      <Section className="border rounded-lg p-2 w-full bg-bg-2">
-        <h2 className="text-xl mb-2 flex gap-2 justify-between">
-          <T>Translations</T>
+      <Section className="border rounded-lg p-2 w-full bg-neutral-2">
+        <div className='flex items-center justify-between'>
+          <h2 className="text-xl mb-2 flex gap-2 justify-between">
+            <T>Translations</T>
+          </h2>
           <Button
             onClick={() => setShowMissing(!showMissing)}
-            size="sm"
             className="inline"
+            text={showMissing ? _('Show all') : _('Show missing')}
+            LeftIcon={showMissing ? FaWindowMaximize : FaWindowClose}
+            secondary
+            size='sm'
           >
-            {showMissing ? _('Show all') : _('Show missing')}
           </Button>
-        </h2>
+        </div>
         <table>
           <thead>
             <tr>
@@ -115,7 +119,7 @@ export default function Translations({ initialData }: Props) {
                 </>
               ) : (
                 <th>
-                  <T>There are no translations for this language</T>
+                  <T>No results</T>
                 </th>
               )}
             </tr>

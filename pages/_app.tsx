@@ -6,8 +6,8 @@ import Router, { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import SimpleReactLightbox from 'simple-react-lightbox'
-import 'styles/global.css'
 import 'tailwindcss/tailwind.css'
+import 'styles/global.css'
 import { PageProps } from 'types/page'
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {

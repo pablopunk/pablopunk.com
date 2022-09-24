@@ -2,39 +2,51 @@ import { T } from 'components/T'
 import { pageStaticProps } from 'middleware'
 import { MdHomeWork, MdFace, MdLibraryBooks, MdMail } from 'react-icons/md'
 import { HiTerminal } from 'react-icons/hi'
-import { FaArrowRight, FaInstagram, FaTwitter } from 'react-icons/fa'
+import { FaArrowRight, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa'
+import { HiOutlineStar } from 'react-icons/hi'
 import { Card } from 'components/neon/Card'
-
+import { useTranslation } from 'hooks/useTranslation'
 
 export default function Home() {
+  const { _ } = useTranslation()
   return (
     <div className="flex items-center justify-center fill-height">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card title="Work" buttonText="More" Icon={MdHomeWork}>
-          I work at <b>Maze</b> as full-stack developer.
+        <Card title={_("Work")} Icon={MdHomeWork} CTA={{ text: 'CV', RightIcon: FaArrowRight, href: "https://cv.pablopunk.com" }}>
+          <T>
+            I work at <a href="https://maze.co">Maze</a> as full-stack developer.
+          </T>
         </Card>
-        <Card title="Code" buttonText="Go" Icon={HiTerminal} secondary>
-          All of my personal projects and open-source contributions can be found
-          on <b>Github</b>.
+        <Card title={_("Code")} Icon={HiTerminal} secondary CTA={[{ title: 'Github', RightIcon: FaGithub, href: 'https://github.com/pablopunk' }, {
+          text: 'Featured Repos',
+          RightIcon: HiOutlineStar,
+          href: '/code'
+        }]}>
+          <T>
+            All of my personal projects and open-source contributions can be found
+            on <b>Github</b>.
+          </T>
         </Card>
-        <Card title="Me" buttonText="Bio" Icon={MdFace} secondary>
+        <Card title={_("Me")} Icon={MdFace} secondary CTA={[{
+          RightIcon: FaTwitter,
+          title: '@pablopunk'
+        }, {
+          RightIcon: FaInstagram,
+          title: '@pablopunk'
+        }, {
+          RightIcon: MdMail,
+          title: 'pablo@pablopunk.com'
+        }]}>
           <div className='mb-1'>
-            I live and work remotely from <b>Pontevedra, Galiza</b>.
-          </div>
-          <div className='flex gap-1 items-center font-bold'>
-            <FaTwitter />
-            <span>@pablopunk</span>
-          </div>
-          <div className='flex gap-1 items-center font-bold'>
-            <FaInstagram />
-            <span>@pablopunk</span>
-          </div>
-          <div className='flex gap-1 items-center font-bold'>
-            <MdMail />
-            <span>pablo@pablopunk.com</span>
+            <T>
+              My name is Pablo Varela and I live and work remotely from <a href="https://www.google.com/search?q=pontevedra&tbm=isch">Pontevedra, Galiza</a>.
+            </T>
           </div>
         </Card>
-        <Card title="Blog" buttonText="All posts" Icon={MdLibraryBooks}>
+        <Card
+          title="Blog" Icon={MdLibraryBooks}
+          CTA={{ text: _('Latest posts'), RightIcon: FaArrowRight, href: '/blog' }}
+        >
           <div className="flex flex-col gap-1">
             <div className='flex gap-1 items-center'>
               <FaArrowRight />
@@ -50,8 +62,8 @@ export default function Home() {
             </div>
           </div>
         </Card>
-      </div >
-    </div >
+      </div>
+    </div>
   )
 }
 
