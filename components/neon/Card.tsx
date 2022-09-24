@@ -40,9 +40,9 @@ export const Card = ({
           <div>{children}</div>
         </div>
         <div className="w-full flex justify-end mt-2 gap-2">
-          {(Array.isArray(CTA) ? CTA : [CTA]).filter(Boolean).map((cta) => (
+          {(Array.isArray(CTA) ? CTA : [CTA]).filter(Boolean).map((cta, i) => (
             <Button
-              key={'cta-' + cta.href || cta.text || cta.title}
+              key={`cta-${cta.href || cta.text || cta.title}-${i}`}
               secondary={secondary}
               {...cta}
             />

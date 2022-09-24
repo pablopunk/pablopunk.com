@@ -9,7 +9,7 @@ import { useTranslation } from 'hooks/useTranslation'
 import { pageStaticProps } from 'middleware'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { BiArrowBack } from 'react-icons/bi'
 import { FaWindowClose, FaWindowMaximize } from 'react-icons/fa'
 import { CgTrash } from 'react-icons/cg'
@@ -59,6 +59,13 @@ const EditableCell = ({ value: initialValue, onSave }) => {
   )
 }
 
+const matchTranslationToSearch = (input, translation) => {
+  const search = input.toLowerCase()
+  const key = translation.key?.toLowerCase()
+  const value = translation.value?.toLowerCase()
+  return key?.includes(search) || value?.includes(search)
+}
+
 export default function Translations({ initialData }: Props) {
   const { locale } = useRouter()
   const [showMissing, setShowMissing] = useState(false)
@@ -70,14 +77,19 @@ export default function Translations({ initialData }: Props) {
       initialData,
     },
   )
+  const [searchInput, setSearchInput] = useState('')
+
   const filters = useCallback(
     (translation: Translation) => {
+      const matchesSearch = searchInput ? matchTranslationToSearch(searchInput, translation) : true
+
       if (showMissing) {
-        return !translation.value
+        return !translation.value && matchesSearch
       }
-      return true
+
+      return matchesSearch
     },
-    [showMissing],
+    [showMissing, searchInput],
   )
 
   const handleEditKey = (id) => (key) =>
@@ -86,6 +98,9 @@ export default function Translations({ initialData }: Props) {
     updateTranslation({ id, value }).then(revalidate)
   const handleRemoveTranslation = (translation) => () =>
     removeTranslation(translation).then(revalidate)
+  const handleSearchChange = (ev) => {
+    setSearchInput(ev.target.value)
+  }
 
   const translationsToShow = data?.filter(filters) || []
 
@@ -101,15 +116,18 @@ export default function Translations({ initialData }: Props) {
           <h2 className="text-xl mb-2 flex gap-2 justify-between">
             <T>Translations</T>
           </h2>
-          <Button
-            onClick={() => setShowMissing(!showMissing)}
-            className="inline"
-            text={showMissing ? _('Show all') : _('Show missing')}
-            LeftIcon={showMissing ? FaWindowMaximize : FaWindowClose}
-            secondary
-            size='sm'
-          >
-          </Button>
+          <div className='flex gap-2'>
+            <input value={searchInput} placeholder={_('Search...')} className="rounded-full px-2 py-1 bg-neutral-3" onChange={handleSearchChange} />
+            <Button
+              onClick={() => setShowMissing(!showMissing)}
+              className="inline"
+              text={showMissing ? _('Show all') : _('Show missing')}
+              LeftIcon={showMissing ? FaWindowMaximize : FaWindowClose}
+              secondary
+              size='sm'
+            >
+            </Button>
+          </div>
         </div>
         <table>
           <thead>

@@ -21,7 +21,7 @@ export default function Home() {
           </T>
         </Card>
         <Card title={_("Code")} Icon={HiTerminal} secondary CTA={[{ title: 'Github', RightIcon: FaGithub, href: 'https://github.com/pablopunk' }, {
-          text: 'Featured Repos',
+          text: _('Featured repos'),
           RightIcon: HiOutlineStar,
           href: '/code'
         }]}>
