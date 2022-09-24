@@ -39,6 +39,9 @@ module.exports = {
         '3-auto': 'auto auto auto',
         '4-auto': 'auto auto auto auto',
       },
+      transitionProperty: {
+        width: 'max-width, opacity, margin',
+      },
     },
     borderColor: (theme) => ({
       ...theme('colors'),

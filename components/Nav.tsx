@@ -10,7 +10,7 @@ import { FiCoffee } from 'react-icons/fi'
 import { RiContactsFill, RiMoonClearLine, RiSunLine } from 'react-icons/ri'
 import { animated, useSpring } from 'react-spring'
 import useSWR from 'swr'
-import { Button } from './Button'
+import { Button } from 'components/neon/Button'
 
 const MAX_SONG = 21
 const MAX_ARTIST = 15
@@ -37,10 +37,9 @@ const ChangeThemeButton = () => {
   return (
     <Button
       onClick={toggleTheme}
-      title={'Change theme'}
-      rounded
+      title='Change theme'
       className="toggle-theme-button"
-      Icon={theme === 'dark' ? RiMoonClearLine : RiSunLine}
+      RightIcon={theme === 'dark' ? RiMoonClearLine : RiSunLine}
     />
   )
 }
@@ -84,10 +83,10 @@ export const Nav = () => {
 
   return (
     <div
-      className="relative z-20 flex items-center justify-between px-1 no-scrollbar"
+      className="relative z-20 flex items-center justify-between px-1 no-scrollbar w-[100vw]"
       style={{ height: 'var(--nav-height)' }}
     >
-      <nav className="flex pl-2 my-2 md:my-0">
+      <nav className="flex justify-center pl-2 my-2 md:my-0 w-full">
         {LINKS.map((link) => {
           const url = normalizeHref(link.href)
           const isCurrentPage =
@@ -151,11 +150,9 @@ export const Nav = () => {
           </animated.a>
         )}
       </nav>
-      <div className="flex flex-col md:flex-row mb-0 text-xl mt-2 mr-2 gap-2 absolute md:relative right-0 top-0">
+      <div className="flex flex-col md:flex-row mb-0 gap-2 top-2 right-2 absolute">
         <ChangeThemeButton />
-        <Button href="/donate" rounded title={_('Buy me a coffee')}>
-          <FiCoffee />
-        </Button>
+        <Button href="/donate" title={_('Buy me a coffee')} RightIcon={FiCoffee} />
       </div>
     </div>
   )

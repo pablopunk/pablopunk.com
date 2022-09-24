@@ -7,7 +7,6 @@ import { useEffect } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import SimpleReactLightbox from 'simple-react-lightbox'
 import 'styles/global.css'
-import 'styles/radix-colors.css'
 import 'tailwindcss/tailwind.css'
 import { PageProps } from 'types/page'
 
