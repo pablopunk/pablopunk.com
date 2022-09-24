@@ -137,7 +137,7 @@ export const Nav = () => {
       )}
       <div className="flex justify-end gap-2 mr-2 w-[400px]">
         <ChangeThemeButton />
-        <Button href="/donate" title={_('Buy me a coffee')} RightIcon={FiCoffee} />
+        <Button href="https://www.buymeacoffee.com/pablopunk" title={_('Buy me a coffee')} RightIcon={FiCoffee} />
       </div>
     </nav>
   )
