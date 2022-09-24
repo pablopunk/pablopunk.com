@@ -1,6 +1,6 @@
 import { checkIfUserDidSomething, userDidSomething } from 'lib/storage'
 import { Fragment, FunctionComponent, useEffect, useState } from 'react'
-import { Button } from 'components/Button'
+import { Button } from 'components/neon/Button'
 import { Dialog, Transition } from '@headlessui/react'
 import useTranslationRequestsCount from 'db/hooks/useTranslationRequestsCount'
 import { postJson } from 'lib/utils'

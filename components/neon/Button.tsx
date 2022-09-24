@@ -61,7 +61,7 @@ export const Button = ({
         title={title || text}
       >
         {LeftIcon && <LeftIcon />}
-        {text && <span className='capitalize'>{text}</span>}
+        {text && <span className='capitalize whitespace-nowrap'>{text}</span>}
         {children}
         {title && (
           <span className={classNames(
