@@ -2,7 +2,7 @@ import { T } from 'components/T'
 import { pageStaticProps } from 'middleware'
 import { MdHomeWork, MdFace, MdLibraryBooks, MdMail } from 'react-icons/md'
 import { HiTerminal } from 'react-icons/hi'
-import { FaArrowRight, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa'
+import { FaArrowRight, FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { HiOutlineStar } from 'react-icons/hi'
 import { Card } from 'components/neon/Card'
 import { useTranslation } from 'hooks/useTranslation'
@@ -12,7 +12,10 @@ export default function Home() {
   return (
     <div className="flex items-center justify-center fill-height p-4 md:p-0">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card title={_("Work")} Icon={MdHomeWork} CTA={{ text: 'CV', RightIcon: FaArrowRight, href: "https://cv.pablopunk.com" }}>
+        <Card title={_("Work")} Icon={MdHomeWork} CTA={[
+          { title: 'LinkedIn', RightIcon: FaLinkedin, href: "https://linkedin.com/in/pablopunk" },
+          { text: 'CV', RightIcon: FaArrowRight, href: "https://cv.pablopunk.com" }
+        ]}>
           <T>
             I work at <a href="https://maze.co">Maze</a> as full-stack developer.
           </T>
