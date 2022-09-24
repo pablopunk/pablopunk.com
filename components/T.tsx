@@ -8,9 +8,6 @@ export const T = ({ children }: Props) => {
   const { _ } = useTranslation()
 
   if (typeof children === 'string') {
-    if (children.startsWith('Featured')) {
-      console.log(children)
-    }
     return <>{_(children)}</>
   }
 
