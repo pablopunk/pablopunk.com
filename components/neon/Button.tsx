@@ -2,6 +2,7 @@ import { IconType } from 'react-icons'
 import classNames from 'classnames'
 import { ReactNode, useMemo } from 'react'
 import { Size } from 'types/styles'
+import Link from 'next/link'
 
 export type ButtonProps = {
   onClick?(): void
@@ -35,7 +36,7 @@ export const Button = ({
   const iconOnly = useMemo(() => !text && !children, [text, children])
   const ButtonOrA = (props) => {
     if (typeof href === 'string') {
-      return <a {...props} {...rest} />
+      return <Link href={href}><a {...props} {...rest} /></Link>
     }
     return <button {...props} {...rest} />
   }
