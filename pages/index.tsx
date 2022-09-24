@@ -10,7 +10,7 @@ import { useTranslation } from 'hooks/useTranslation'
 export default function Home() {
   const { _ } = useTranslation()
   return (
-    <div className="flex items-center justify-center fill-height">
+    <div className="flex items-center justify-center fill-height p-4 md:p-0">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card title={_("Work")} Icon={MdHomeWork} CTA={{ text: 'CV', RightIcon: FaArrowRight, href: "https://cv.pablopunk.com" }}>
           <T>
@@ -27,7 +27,7 @@ export default function Home() {
             on <b>Github</b>.
           </T>
         </Card>
-        <Card title={_("Me")} Icon={MdFace} secondary CTA={[{
+        <Card title={_("Me")} className="order-first md:order-none" Icon={MdFace} secondary CTA={[{
           RightIcon: FaTwitter,
           title: '@pablopunk'
         }, {

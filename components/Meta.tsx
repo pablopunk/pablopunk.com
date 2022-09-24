@@ -9,7 +9,7 @@ export function Meta() {
   const { title, description, imageUrl } = useMeta()
   const { locale, defaultLocale } = useRouter()
   const siteUrl = `${SITE_URL}/${locale !== defaultLocale ? locale : ''}`
-  const titleBarColor = useCssVar('--color-bg')
+  const titleBarColor = useCssVar('--color-neutral-1')
 
   return (
     <>
