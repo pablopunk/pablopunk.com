@@ -42,10 +42,6 @@ export default function Home() {
         }, {
           RightIcon: MdMail,
           href: 'mailto:pablo@pablopunk.com'
-        }, {
-          RightIcon: FaArrowRight,
-          text: 'Bio',
-          href: '/me'
         }]}>
           <div className='mb-1'>
             <T>
