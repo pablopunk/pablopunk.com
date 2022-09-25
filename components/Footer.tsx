@@ -16,9 +16,9 @@ export const Footer = () => {
             <Link locale={l} href="#" key={`locale-${l}`}>
               <button
                 disabled={locale === l}
-                className={classNames("rotate-[-15deg] rounded-full p-1 transition border", {
+                className={classNames("rotate-[-15deg] rounded-full p-1 transition shadow-md border border-transparent", {
                   'cursor-not-allowed': locale === l,
-                  'hover:opacity-60': locale !== l,
+                  'hover:opacity-60 hover:border-primary-6': locale !== l,
                 })}
                 key={`change-locale-${l}`}
                 title={locale === l ? null : 'Change language'}

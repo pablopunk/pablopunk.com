@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { ReactNode, useMemo } from 'react'
 import { Size } from 'types/styles'
 import Link from 'next/link'
+import React from 'react'
 
 export type ButtonProps = {
   onClick?(): void
@@ -18,7 +19,7 @@ export type ButtonProps = {
   size?: Size
 }
 
-export const Button = ({
+export const Button = React.memo(({
   onClick,
   LeftIcon,
   RightIcon,
@@ -46,13 +47,14 @@ export const Button = ({
       <ButtonOrA
         className={classNames(
           className,
-          'neon-button group transition-all border-2 rounded-full py-1 px-2 cursor-pointer inline-flex items-center justify-center text-gray-100 font-bold overflow-hidden',
+          'neon-button group transition-all border-2 rounded-full py-1 px-2 inline-flex items-center justify-center text-gray-100 font-bold overflow-hidden',
           {
             'text-xs': size === 'sm',
             'gap-1': !iconOnly,
             'hover:scale-105 hover:gap-2': !iconOnly && !disabled,
             'min-w-[36px] min-h-[36px]': iconOnly,
             'opacity-50 cursor-not-allowed': disabled,
+            'cursor-pointer': !disabled,
           }
         )}
         onClick={onClick}
@@ -96,7 +98,7 @@ export const Button = ({
             inset 2px 2px 12px 2px var(--neon-shadow);
           border-radius: 999px;
         }
-        .neon-button:hover {
+        .neon-button:not([disabled]):hover {
           background: var(--neon-shadow);
           box-shadow: 0px 0px 32px 2px var(--neon-shadow),
             inset 2px 2px 12px 2px var(--neon-shadow);
@@ -104,4 +106,4 @@ export const Button = ({
       `}</style>
     </>
   )
-}
+})
