@@ -1,3 +1,5 @@
+import { formatDistanceToNow, formatDistance } from 'date-fns'
+
 export function openLink(link: string) {
   if (link.startsWith('http')) {
     window.open(link)
@@ -35,7 +37,7 @@ export function normalizeHref(url?: string) {
   return '/' + url
 }
 
-const howOldAmI = () => {
+export const howOldAmI = () => {
   const now = new Date()
   const iHadABirthDayThisYear = now.getMonth() >= 6 && now.getDate() >= 9
   const yearsSinceIWasBorn = now.getFullYear() - 1993
@@ -55,4 +57,16 @@ export function handlePlaceholders(text: string) {
   newText = YEARS_OLD(text)
 
   return newText
+}
+
+export function timeBetween(date1: Date, date2: Date) {
+  const humanFormat = formatDistance(date1, date2)
+
+  return humanFormat
+}
+
+export function timeSince(date: Date) {
+  const humanFormat = formatDistanceToNow(date)
+
+  return humanFormat
 }
