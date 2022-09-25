@@ -36,14 +36,18 @@ const Portfolio = ({ initialData }: Props) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   const npm = await getFromCache('npm', fetchAllNpmData)
   const repos = await getFromCache('repos', getReposApiResponse)
-  const { props: pageProps } = await pageStaticProps(ctx)
+  const pageProps = await pageStaticProps(ctx)
+
+  if ('redirect' in pageProps || 'notFound' in pageProps) {
+    return pageProps
+  }
 
   return {
     props: {
-      ...pageProps,
+      ...pageProps.props,
       initialData: {
         npm,
         repos,
