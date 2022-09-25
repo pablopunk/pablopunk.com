@@ -10,7 +10,7 @@ import 'tailwindcss/tailwind.css'
 import 'styles/global.css'
 import { PageProps } from 'types/page'
 import { UserProvider } from '@supabase/auth-helpers-react'
-import { supabaseClient } from '@supabase/auth-helpers-nextjs'
+import supabaseClient from 'db/supabase/client'
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   const url = process.env.NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT
