@@ -32,13 +32,19 @@ export default function Home() {
         </Card>
         <Card title={_("Me")} className="order-first md:order-none" Icon={MdFace} secondary CTA={[{
           RightIcon: FaTwitter,
-          title: '@pablopunk'
+          title: '@pablopunk',
+          href: 'https://twitter.com/pablopunk'
         }, {
           RightIcon: FaInstagram,
-          title: '@pablopunk'
+          title: '@pablopunk',
+          href: 'https://instagram.com/pablopunk'
         }, {
           RightIcon: MdMail,
-          title: 'pablo@pablopunk.com'
+          href: 'mailto:pablo@pablopunk.com'
+        }, {
+          RightIcon: FaArrowRight,
+          text: 'Bio',
+          href: '/me'
         }]}>
           <div className='mb-1'>
             <T>
