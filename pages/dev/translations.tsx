@@ -6,14 +6,15 @@ import {
 } from 'db/supabase/tables/i18n'
 import { Translation } from 'db/supabase/types'
 import { useTranslation } from 'hooks/useTranslation'
-import { pageStaticProps } from 'static-props'
-import { GetStaticPropsContext } from 'next'
+import { withAdminServerSideProps } from 'middleware'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useCallback, useRef, useState } from 'react'
 import { BiArrowBack } from 'react-icons/bi'
 import { FaWindowClose, FaWindowMaximize } from 'react-icons/fa'
 import { CgTrash } from 'react-icons/cg'
 import useSWR from 'swr'
+import { PageProps } from 'types/page'
 
 type Props = {
   initialData: Translation[]
@@ -179,9 +180,13 @@ export default function Translations({ initialData }: Props) {
   )
 }
 
-export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const initialData = await getAllTranslationsForLocale(ctx.locale)
-  const { props: pageProps } = await pageStaticProps(ctx)
+export const getServerSideProps: GetServerSideProps<PageProps> = async (ctx: GetServerSidePropsContext) => {
+  const serverSideProps = await withAdminServerSideProps(ctx)
+  if ('redirect' in serverSideProps || 'notFound' in serverSideProps) {
+    return serverSideProps
+  }
 
-  return { props: { ...pageProps, initialData } }
+  const initialData = await getAllTranslationsForLocale(ctx.locale)
+
+  return { props: { ...serverSideProps.props, initialData } }
 }

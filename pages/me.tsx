@@ -1,4 +1,4 @@
-import { pageStaticProps } from 'static-props'
+import { pageStaticProps } from 'middleware'
 import React from 'react'
 import { PageProps } from 'types/page'
 

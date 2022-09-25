@@ -1,7 +1,7 @@
 import { Button } from 'components/neon/Button'
 import { Section } from 'components/Section'
 import { T } from 'components/T'
-import { pageStaticProps } from 'static-props'
+import { withAdminServerSideProps } from 'middleware'
 import { HiTranslate } from 'react-icons/hi'
 
 export default function Dev() {
@@ -19,4 +19,4 @@ export default function Dev() {
   )
 }
 
-export const getStaticProps = pageStaticProps
+export const getServerSideProps = withAdminServerSideProps
