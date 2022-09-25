@@ -594,6 +594,186 @@ export interface paths {
       };
     };
   };
+  "/users": {
+    get: {
+      parameters: {
+        query: {
+          instance_id?: parameters["rowFilter.users.instance_id"];
+          id?: parameters["rowFilter.users.id"];
+          aud?: parameters["rowFilter.users.aud"];
+          role?: parameters["rowFilter.users.role"];
+          email?: parameters["rowFilter.users.email"];
+          encrypted_password?: parameters["rowFilter.users.encrypted_password"];
+          email_confirmed_at?: parameters["rowFilter.users.email_confirmed_at"];
+          invited_at?: parameters["rowFilter.users.invited_at"];
+          confirmation_token?: parameters["rowFilter.users.confirmation_token"];
+          confirmation_sent_at?: parameters["rowFilter.users.confirmation_sent_at"];
+          recovery_token?: parameters["rowFilter.users.recovery_token"];
+          recovery_sent_at?: parameters["rowFilter.users.recovery_sent_at"];
+          email_change_token_new?: parameters["rowFilter.users.email_change_token_new"];
+          email_change?: parameters["rowFilter.users.email_change"];
+          email_change_sent_at?: parameters["rowFilter.users.email_change_sent_at"];
+          last_sign_in_at?: parameters["rowFilter.users.last_sign_in_at"];
+          raw_app_meta_data?: parameters["rowFilter.users.raw_app_meta_data"];
+          raw_user_meta_data?: parameters["rowFilter.users.raw_user_meta_data"];
+          is_super_admin?: parameters["rowFilter.users.is_super_admin"];
+          created_at?: parameters["rowFilter.users.created_at"];
+          updated_at?: parameters["rowFilter.users.updated_at"];
+          phone?: parameters["rowFilter.users.phone"];
+          phone_confirmed_at?: parameters["rowFilter.users.phone_confirmed_at"];
+          phone_change?: parameters["rowFilter.users.phone_change"];
+          phone_change_token?: parameters["rowFilter.users.phone_change_token"];
+          phone_change_sent_at?: parameters["rowFilter.users.phone_change_sent_at"];
+          confirmed_at?: parameters["rowFilter.users.confirmed_at"];
+          email_change_token_current?: parameters["rowFilter.users.email_change_token_current"];
+          email_change_confirm_status?: parameters["rowFilter.users.email_change_confirm_status"];
+          banned_until?: parameters["rowFilter.users.banned_until"];
+          reauthentication_token?: parameters["rowFilter.users.reauthentication_token"];
+          reauthentication_sent_at?: parameters["rowFilter.users.reauthentication_sent_at"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["users"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** users */
+          users?: definitions["users"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          instance_id?: parameters["rowFilter.users.instance_id"];
+          id?: parameters["rowFilter.users.id"];
+          aud?: parameters["rowFilter.users.aud"];
+          role?: parameters["rowFilter.users.role"];
+          email?: parameters["rowFilter.users.email"];
+          encrypted_password?: parameters["rowFilter.users.encrypted_password"];
+          email_confirmed_at?: parameters["rowFilter.users.email_confirmed_at"];
+          invited_at?: parameters["rowFilter.users.invited_at"];
+          confirmation_token?: parameters["rowFilter.users.confirmation_token"];
+          confirmation_sent_at?: parameters["rowFilter.users.confirmation_sent_at"];
+          recovery_token?: parameters["rowFilter.users.recovery_token"];
+          recovery_sent_at?: parameters["rowFilter.users.recovery_sent_at"];
+          email_change_token_new?: parameters["rowFilter.users.email_change_token_new"];
+          email_change?: parameters["rowFilter.users.email_change"];
+          email_change_sent_at?: parameters["rowFilter.users.email_change_sent_at"];
+          last_sign_in_at?: parameters["rowFilter.users.last_sign_in_at"];
+          raw_app_meta_data?: parameters["rowFilter.users.raw_app_meta_data"];
+          raw_user_meta_data?: parameters["rowFilter.users.raw_user_meta_data"];
+          is_super_admin?: parameters["rowFilter.users.is_super_admin"];
+          created_at?: parameters["rowFilter.users.created_at"];
+          updated_at?: parameters["rowFilter.users.updated_at"];
+          phone?: parameters["rowFilter.users.phone"];
+          phone_confirmed_at?: parameters["rowFilter.users.phone_confirmed_at"];
+          phone_change?: parameters["rowFilter.users.phone_change"];
+          phone_change_token?: parameters["rowFilter.users.phone_change_token"];
+          phone_change_sent_at?: parameters["rowFilter.users.phone_change_sent_at"];
+          confirmed_at?: parameters["rowFilter.users.confirmed_at"];
+          email_change_token_current?: parameters["rowFilter.users.email_change_token_current"];
+          email_change_confirm_status?: parameters["rowFilter.users.email_change_confirm_status"];
+          banned_until?: parameters["rowFilter.users.banned_until"];
+          reauthentication_token?: parameters["rowFilter.users.reauthentication_token"];
+          reauthentication_sent_at?: parameters["rowFilter.users.reauthentication_sent_at"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          instance_id?: parameters["rowFilter.users.instance_id"];
+          id?: parameters["rowFilter.users.id"];
+          aud?: parameters["rowFilter.users.aud"];
+          role?: parameters["rowFilter.users.role"];
+          email?: parameters["rowFilter.users.email"];
+          encrypted_password?: parameters["rowFilter.users.encrypted_password"];
+          email_confirmed_at?: parameters["rowFilter.users.email_confirmed_at"];
+          invited_at?: parameters["rowFilter.users.invited_at"];
+          confirmation_token?: parameters["rowFilter.users.confirmation_token"];
+          confirmation_sent_at?: parameters["rowFilter.users.confirmation_sent_at"];
+          recovery_token?: parameters["rowFilter.users.recovery_token"];
+          recovery_sent_at?: parameters["rowFilter.users.recovery_sent_at"];
+          email_change_token_new?: parameters["rowFilter.users.email_change_token_new"];
+          email_change?: parameters["rowFilter.users.email_change"];
+          email_change_sent_at?: parameters["rowFilter.users.email_change_sent_at"];
+          last_sign_in_at?: parameters["rowFilter.users.last_sign_in_at"];
+          raw_app_meta_data?: parameters["rowFilter.users.raw_app_meta_data"];
+          raw_user_meta_data?: parameters["rowFilter.users.raw_user_meta_data"];
+          is_super_admin?: parameters["rowFilter.users.is_super_admin"];
+          created_at?: parameters["rowFilter.users.created_at"];
+          updated_at?: parameters["rowFilter.users.updated_at"];
+          phone?: parameters["rowFilter.users.phone"];
+          phone_confirmed_at?: parameters["rowFilter.users.phone_confirmed_at"];
+          phone_change?: parameters["rowFilter.users.phone_change"];
+          phone_change_token?: parameters["rowFilter.users.phone_change_token"];
+          phone_change_sent_at?: parameters["rowFilter.users.phone_change_sent_at"];
+          confirmed_at?: parameters["rowFilter.users.confirmed_at"];
+          email_change_token_current?: parameters["rowFilter.users.email_change_token_current"];
+          email_change_confirm_status?: parameters["rowFilter.users.email_change_confirm_status"];
+          banned_until?: parameters["rowFilter.users.banned_until"];
+          reauthentication_token?: parameters["rowFilter.users.reauthentication_token"];
+          reauthentication_sent_at?: parameters["rowFilter.users.reauthentication_sent_at"];
+        };
+        body: {
+          /** users */
+          users?: definitions["users"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
 }
 
 export interface definitions {
@@ -706,6 +886,76 @@ export interface definitions {
      */
     created_at?: string;
   };
+  users: {
+    /** Format: uuid */
+    instance_id?: string;
+    /**
+     * Format: uuid
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id?: string;
+    /** Format: character varying */
+    aud?: string;
+    /** Format: character varying */
+    role?: string;
+    /** Format: character varying */
+    email?: string;
+    /** Format: character varying */
+    encrypted_password?: string;
+    /** Format: timestamp with time zone */
+    email_confirmed_at?: string;
+    /** Format: timestamp with time zone */
+    invited_at?: string;
+    /** Format: character varying */
+    confirmation_token?: string;
+    /** Format: timestamp with time zone */
+    confirmation_sent_at?: string;
+    /** Format: character varying */
+    recovery_token?: string;
+    /** Format: timestamp with time zone */
+    recovery_sent_at?: string;
+    /** Format: character varying */
+    email_change_token_new?: string;
+    /** Format: character varying */
+    email_change?: string;
+    /** Format: timestamp with time zone */
+    email_change_sent_at?: string;
+    /** Format: timestamp with time zone */
+    last_sign_in_at?: string;
+    /** Format: jsonb */
+    raw_app_meta_data?: string;
+    /** Format: jsonb */
+    raw_user_meta_data?: string;
+    /** Format: boolean */
+    is_super_admin?: boolean;
+    /** Format: timestamp with time zone */
+    created_at?: string;
+    /** Format: timestamp with time zone */
+    updated_at?: string;
+    /** Format: character varying */
+    phone?: string;
+    /** Format: timestamp with time zone */
+    phone_confirmed_at?: string;
+    /** Format: character varying */
+    phone_change?: string;
+    /** Format: character varying */
+    phone_change_token?: string;
+    /** Format: timestamp with time zone */
+    phone_change_sent_at?: string;
+    /** Format: timestamp with time zone */
+    confirmed_at?: string;
+    /** Format: character varying */
+    email_change_token_current?: string;
+    /** Format: smallint */
+    email_change_confirm_status?: number;
+    /** Format: timestamp with time zone */
+    banned_until?: string;
+    /** Format: character varying */
+    reauthentication_token?: string;
+    /** Format: timestamp with time zone */
+    reauthentication_sent_at?: string;
+  };
 }
 
 export interface parameters {
@@ -796,6 +1046,72 @@ export interface parameters {
   "rowFilter.url_redirects.updated_at": string;
   /** Format: timestamp without time zone */
   "rowFilter.url_redirects.created_at": string;
+  /** @description users */
+  "body.users": definitions["users"];
+  /** Format: uuid */
+  "rowFilter.users.instance_id": string;
+  /** Format: uuid */
+  "rowFilter.users.id": string;
+  /** Format: character varying */
+  "rowFilter.users.aud": string;
+  /** Format: character varying */
+  "rowFilter.users.role": string;
+  /** Format: character varying */
+  "rowFilter.users.email": string;
+  /** Format: character varying */
+  "rowFilter.users.encrypted_password": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.email_confirmed_at": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.invited_at": string;
+  /** Format: character varying */
+  "rowFilter.users.confirmation_token": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.confirmation_sent_at": string;
+  /** Format: character varying */
+  "rowFilter.users.recovery_token": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.recovery_sent_at": string;
+  /** Format: character varying */
+  "rowFilter.users.email_change_token_new": string;
+  /** Format: character varying */
+  "rowFilter.users.email_change": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.email_change_sent_at": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.last_sign_in_at": string;
+  /** Format: jsonb */
+  "rowFilter.users.raw_app_meta_data": string;
+  /** Format: jsonb */
+  "rowFilter.users.raw_user_meta_data": string;
+  /** Format: boolean */
+  "rowFilter.users.is_super_admin": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.created_at": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.updated_at": string;
+  /** Format: character varying */
+  "rowFilter.users.phone": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.phone_confirmed_at": string;
+  /** Format: character varying */
+  "rowFilter.users.phone_change": string;
+  /** Format: character varying */
+  "rowFilter.users.phone_change_token": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.phone_change_sent_at": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.confirmed_at": string;
+  /** Format: character varying */
+  "rowFilter.users.email_change_token_current": string;
+  /** Format: smallint */
+  "rowFilter.users.email_change_confirm_status": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.banned_until": string;
+  /** Format: character varying */
+  "rowFilter.users.reauthentication_token": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.users.reauthentication_sent_at": string;
 }
 
 export interface operations {}

@@ -7,7 +7,7 @@ import { Footer } from './Footer'
 import { T } from 'components/T'
 import { MdHome } from 'react-icons/md'
 
-export const Layout: FunctionComponent<PageProps> = ({
+export const Page: FunctionComponent<PageProps> = ({
   children,
   statusCode,
 }) => {

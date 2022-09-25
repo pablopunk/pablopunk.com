@@ -1,10 +1,7 @@
-import { createClient } from '@supabase/supabase-js'
 import { Provider } from 'react-supabase'
+import { supabaseClient } from '@supabase/auth-helpers-nextjs'
 
-const client = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-)
+const client = supabaseClient
 
 export default client
 

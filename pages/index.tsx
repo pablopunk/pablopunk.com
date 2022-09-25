@@ -1,5 +1,5 @@
 import { T } from 'components/T'
-import { pageStaticProps } from 'middleware'
+import { pageStaticProps } from 'static-props'
 import { MdHomeWork, MdFace, MdLibraryBooks, MdMail } from 'react-icons/md'
 import { HiTerminal } from 'react-icons/hi'
 import { FaArrowRight, FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'

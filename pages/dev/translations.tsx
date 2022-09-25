@@ -6,7 +6,7 @@ import {
 } from 'db/supabase/tables/i18n'
 import { Translation } from 'db/supabase/types'
 import { useTranslation } from 'hooks/useTranslation'
-import { pageStaticProps } from 'middleware'
+import { pageStaticProps } from 'static-props'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useCallback, useRef, useState } from 'react'
@@ -117,7 +117,7 @@ export default function Translations({ initialData }: Props) {
             <T>Translations</T>
           </h2>
           <div className='flex gap-2'>
-            <input value={searchInput} placeholder={_('Search...')} className="rounded-full px-2 py-1 bg-neutral-3" onChange={handleSearchChange} />
+            <input value={searchInput} placeholder={_('Search...')} className="rounded-full px-2 py-1 bg-neutral-3 text-sm border" onChange={handleSearchChange} />
             <Button
               onClick={() => setShowMissing(!showMissing)}
               className="inline"

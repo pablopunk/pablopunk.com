@@ -1,10 +1,10 @@
-import { pageStaticProps } from 'middleware'
+import { pageStaticProps } from 'static-props'
 import React from 'react'
 import { PageProps } from 'types/page'
 
-interface Props extends PageProps {}
+interface Props extends PageProps { }
 
-export default function Blog({}: Props) {
+export default function Blog({ }: Props) {
   return <h1>Blog</h1>
 }
 

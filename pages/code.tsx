@@ -7,7 +7,7 @@ import { getFromCache } from 'db/redis'
 import { getReposApiResponse } from './api/repos'
 import { Section } from 'components/Section'
 import { T } from 'components/T'
-import { pageStaticProps } from 'middleware'
+import { pageStaticProps } from 'static-props'
 
 interface Props extends PageProps {
   locale: string

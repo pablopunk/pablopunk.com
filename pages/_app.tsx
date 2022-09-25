@@ -1,6 +1,6 @@
-import { Layout } from 'components/Layout'
+import { Page } from 'components/Page'
 import { I18NProvider } from 'context/i18n'
-import { SupabaseProvider } from 'db/supabase/client'
+// import { SupabaseProvider } from 'db/supabase/client'
 import { NextWebVitalsMetric } from 'next/app'
 import Router, { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -9,6 +9,8 @@ import SimpleReactLightbox from 'simple-react-lightbox'
 import 'tailwindcss/tailwind.css'
 import 'styles/global.css'
 import { PageProps } from 'types/page'
+import { UserProvider } from '@supabase/auth-helpers-react'
+import { supabaseClient } from '@supabase/auth-helpers-nextjs'
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   const url = process.env.NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT
@@ -57,15 +59,15 @@ const App = ({
 
   return (
     <>
-      <SupabaseProvider>
+      <UserProvider supabaseClient={supabaseClient}>
         <I18NProvider translations={pageProps.translations} locale={locale}>
-          <Layout {...pageProps}>
+          <Page {...pageProps}>
             <SimpleReactLightbox>
               <Component {...pageProps} />
             </SimpleReactLightbox>
-          </Layout>
+          </Page>
         </I18NProvider>
-      </SupabaseProvider>
+      </UserProvider>
     </>
   )
 }

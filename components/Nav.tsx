@@ -8,8 +8,9 @@ import React from 'react'
 import { FaSpotify } from 'react-icons/fa'
 import { FiCoffee } from 'react-icons/fi'
 import { MdHome } from 'react-icons/md'
-import { RiContactsFill, RiMoonClearLine, RiSunLine } from 'react-icons/ri'
+import { RiContactsFill, RiLogoutBoxLine, RiMoonClearLine, RiSunLine, RiTerminalBoxLine } from 'react-icons/ri'
 import { animated, useSpring } from 'react-spring'
+import { useUser } from '@supabase/auth-helpers-react'
 import useSWR from 'swr'
 
 const MAX_SONG = 21
@@ -81,17 +82,23 @@ export const Nav = () => {
   const { _ } = useTranslation()
   const { pathname } = useRouter()
   const locationIsHome = pathname === '/'
+  const { user } = useUser()
 
   return (
     <nav
       className="relative z-20 flex items-center justify-between no-scrollbar w-full"
       style={{ height: 'var(--nav-height)' }}
     >
-      <div className={classNames("justify-start gap-2 ml-2 w-[400px]", {
-        'opacity-0 pointer-events-none': locationIsHome,
-        'opacity-1': !locationIsHome,
-      })}>
-        <Button href="/" LeftIcon={MdHome} title={_('Go home')} />
+      <div className={classNames("flex justify-start gap-2 ml-2 w-[400px]")}>
+        {!locationIsHome && (
+          <Button href="/" LeftIcon={MdHome} title={_('Go home')} />
+        )}
+        {user && (
+          <>
+            <Button href="/api/auth/logout" title={_('Logout')} LeftIcon={RiLogoutBoxLine} />
+            <Button href="/dev" title={_('God mode')} LeftIcon={RiTerminalBoxLine} />
+          </>
+        )}
       </div>
       {nowPlaying?.isPlaying && (
         <animated.a

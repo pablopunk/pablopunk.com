@@ -1,7 +1,7 @@
 import NextErrorComponent from 'next/error'
 
 import * as Sentry from '@sentry/nextjs'
-import { pageStaticProps } from 'middleware'
+import { pageStaticProps } from 'static-props'
 
 const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
   if (!hasGetInitialPropsRun && err) {
