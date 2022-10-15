@@ -19,7 +19,6 @@ const Input = ({ post, _key, onInputChange }: { post: Post, _key: keyof Post, on
 
 const Edit = ({ onSubmit, submitText, initialData = null }) => {
   const [open, setOpen] = useState(false)
-  const { _ } = useTranslation()
   const [post, setPost] = useState(initialData ?? {})
 
   const onSubmitClicked = () => {
