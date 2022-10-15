@@ -300,6 +300,120 @@ export interface paths {
       };
     };
   };
+  "/posts": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.posts.id"];
+          created_at?: parameters["rowFilter.posts.created_at"];
+          date?: parameters["rowFilter.posts.date"];
+          title?: parameters["rowFilter.posts.title"];
+          subtitle?: parameters["rowFilter.posts.subtitle"];
+          locale?: parameters["rowFilter.posts.locale"];
+          slug?: parameters["rowFilter.posts.slug"];
+          translated_slug?: parameters["rowFilter.posts.translated_slug"];
+          body?: parameters["rowFilter.posts.body"];
+          image?: parameters["rowFilter.posts.image"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["posts"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** posts */
+          posts?: definitions["posts"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.posts.id"];
+          created_at?: parameters["rowFilter.posts.created_at"];
+          date?: parameters["rowFilter.posts.date"];
+          title?: parameters["rowFilter.posts.title"];
+          subtitle?: parameters["rowFilter.posts.subtitle"];
+          locale?: parameters["rowFilter.posts.locale"];
+          slug?: parameters["rowFilter.posts.slug"];
+          translated_slug?: parameters["rowFilter.posts.translated_slug"];
+          body?: parameters["rowFilter.posts.body"];
+          image?: parameters["rowFilter.posts.image"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.posts.id"];
+          created_at?: parameters["rowFilter.posts.created_at"];
+          date?: parameters["rowFilter.posts.date"];
+          title?: parameters["rowFilter.posts.title"];
+          subtitle?: parameters["rowFilter.posts.subtitle"];
+          locale?: parameters["rowFilter.posts.locale"];
+          slug?: parameters["rowFilter.posts.slug"];
+          translated_slug?: parameters["rowFilter.posts.translated_slug"];
+          body?: parameters["rowFilter.posts.body"];
+          image?: parameters["rowFilter.posts.image"];
+        };
+        body: {
+          /** posts */
+          posts?: definitions["posts"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/realtime_clicks": {
     get: {
       parameters: {
@@ -829,6 +943,38 @@ export interface definitions {
     /** Format: character varying */
     word?: string;
   };
+  posts: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    date?: string;
+    /** Format: character varying */
+    title?: string;
+    /** Format: character varying */
+    subtitle?: string;
+    /** Format: character varying */
+    locale?: string;
+    /** Format: character varying */
+    slug?: string;
+    /** Format: character varying */
+    translated_slug?: string;
+    /** Format: character varying */
+    body?: string;
+    /** Format: character varying */
+    image?: string;
+  };
   /** @description realtime.pablopunk.com */
   realtime_clicks: {
     /** Format: text */
@@ -1012,6 +1158,28 @@ export interface parameters {
   "rowFilter.lurdle_solutions.day": string;
   /** Format: character varying */
   "rowFilter.lurdle_solutions.word": string;
+  /** @description posts */
+  "body.posts": definitions["posts"];
+  /** Format: bigint */
+  "rowFilter.posts.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.posts.created_at": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.posts.date": string;
+  /** Format: character varying */
+  "rowFilter.posts.title": string;
+  /** Format: character varying */
+  "rowFilter.posts.subtitle": string;
+  /** Format: character varying */
+  "rowFilter.posts.locale": string;
+  /** Format: character varying */
+  "rowFilter.posts.slug": string;
+  /** Format: character varying */
+  "rowFilter.posts.translated_slug": string;
+  /** Format: character varying */
+  "rowFilter.posts.body": string;
+  /** Format: character varying */
+  "rowFilter.posts.image": string;
   /** @description realtime_clicks */
   "body.realtime_clicks": definitions["realtime_clicks"];
   /** Format: text */

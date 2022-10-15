@@ -20,6 +20,6 @@ export async function updateTranslation(translation: Translation) {
   return await client.from<Translation>(I18N_TABLE).upsert(translation)
 }
 
-export async function removeTranslation(translation: Translation) {
+export async function deleteTranslation(translation: Translation) {
   return await client.from<Translation>(I18N_TABLE).delete().match(translation)
 }

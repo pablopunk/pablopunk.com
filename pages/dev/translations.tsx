@@ -2,7 +2,7 @@ import { Button } from 'components/neon/Button'
 import { Section } from 'components/Section'
 import { T } from 'components/T'
 import {
-  getAllTranslationsForLocale, removeTranslation, updateTranslation
+  getAllTranslationsForLocale, deleteTranslation, updateTranslation
 } from 'db/supabase/tables/i18n'
 import { Translation } from 'db/supabase/types'
 import { useTranslation } from 'hooks/useTranslation'
@@ -97,8 +97,8 @@ export default function Translations({ initialData }: Props) {
     updateTranslation({ id, key }).then(revalidate)
   const handleEditValue = (id) => (value) =>
     updateTranslation({ id, value }).then(revalidate)
-  const handleRemoveTranslation = (translation) => () =>
-    removeTranslation(translation).then(revalidate)
+  const handleDeleteTranslation = (translation) => () =>
+    deleteTranslation(translation).then(revalidate)
   const handleSearchChange = (ev) => {
     setSearchInput(ev.target.value)
   }
@@ -159,7 +159,7 @@ export default function Translations({ initialData }: Props) {
                   onSave={handleEditValue(translation.id)}
                 />
                 <td>
-                  <button disabled={isValidating} className='text-danger hover:text-secondary-9 disabled:opacity-20' onClick={handleRemoveTranslation(translation)}>
+                  <button disabled={isValidating} className='text-danger hover:text-secondary-9 disabled:opacity-20' onClick={handleDeleteTranslation(translation)}>
                     <CgTrash />
                   </button>
                 </td>
