@@ -3,6 +3,7 @@ import { Markdown } from 'components/Markdown'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { FunctionComponent } from 'preact'
 import { Post } from 'db/supabase/types'
+import { Visits } from './Visits'
 
 const StyledArticle = styled.article`
   display: flex;
@@ -113,8 +114,11 @@ export const Article: FunctionComponent<Props> = ({ post }) => {
   return (
     <StyledArticle>
       <img src={post.image} alt={post.title} className="mt-4" />
-      <div className="w-full mt-3 italic font-thin text-center opacity-75">
+      <div className="w-full my-2 italic font-thin text-center opacity-75">
         {new Date(post.date).toLocaleDateString()}
+      </div>
+      <div className="flex gap-2 justify-center w-full">
+        <Visits post={post} />
       </div>
       <h1 className="w-full my-4 text-3xl font-semibold text-center">
         {post.title}
