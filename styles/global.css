@@ -90,6 +90,10 @@ body {
   background-color: var(--color-neutral-1);
 }
 
+body.dark {
+  background-color: var(--color-neutral-2);
+}
+
 body {
   margin: 0;
   padding: 0;

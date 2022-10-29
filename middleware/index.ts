@@ -2,7 +2,6 @@ import { withPageAuth } from '@supabase/auth-helpers-nextjs'
 import {
   GetServerSideProps,
   GetServerSidePropsContext,
-  GetStaticProps,
   GetStaticPropsContext,
 } from 'next'
 import { PageProps } from 'types/page'
@@ -33,9 +32,9 @@ export const withAdminServerSideProps: GetServerSideProps<PageProps> = async (
   }
 }
 
-export const pageStaticProps: GetStaticProps = async (
+export const pageStaticProps = async (
   ctx: GetStaticPropsContext,
-) => {
+): Promise<{ props: any }> => {
   return {
     props: {
       ...(await i18nStaticProps(ctx)),

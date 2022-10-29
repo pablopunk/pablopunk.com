@@ -16,7 +16,8 @@ const packages = ['nextjs-redirect']
 
 const apiURLForPackage = (packageName) =>
   (SSR ? 'https://api.npmjs.org' : '/api.npmjs.org') +
-  `/downloads/range/2010-01-01:${new Date().toISOString().split('T')[0]
+  `/downloads/range/2010-01-01:${
+    new Date().toISOString().split('T')[0]
   }/${packageName}`
 
 export const fetchAllNpmData = () =>

@@ -6,7 +6,7 @@ import { HiTranslate, HiBookOpen } from 'react-icons/hi'
 
 export default function Dev() {
   return (
-    <div className='py-4'>
+    <div className="py-4">
       <h1 className="text-3xl text-center">
         <T>God mode</T>
       </h1>

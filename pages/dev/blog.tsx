@@ -171,7 +171,7 @@ export default function Blog() {
   )
   const { _ } = useTranslation()
 
-  const onNewPost = async (post) => {
+  const onNewPost = async (post: Post) => {
     fetch('/api/posts', {
       method: 'POST',
       body: JSON.stringify({ ...post, locale }),
@@ -181,7 +181,7 @@ export default function Blog() {
     }).then(() => revalidate())
   }
 
-  const onEditPost = async (post) => {
+  const onEditPost = async (post: Post) => {
     fetch('/api/posts', {
       method: 'PUT',
       body: JSON.stringify(post),
@@ -191,7 +191,7 @@ export default function Blog() {
     }).then(() => revalidate())
   }
 
-  const onDeletePost = async (post) => {
+  const onDeletePost = async (post: Post) => {
     fetch('/api/posts', {
       method: 'DELETE',
       body: JSON.stringify(post),
@@ -200,8 +200,6 @@ export default function Blog() {
       },
     }).then(() => revalidate())
   }
-
-  console.log(data)
 
   return (
     <Section>
@@ -217,6 +215,7 @@ export default function Blog() {
           <React.Fragment key={post.id}>
             <Edit
               onSubmit={onEditPost}
+              onDelete={onDeletePost as any}
               submitText={_('Submit edit')}
               initialData={post}
             />

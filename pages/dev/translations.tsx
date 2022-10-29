@@ -2,7 +2,9 @@ import { Button } from 'components/neon/Button'
 import { Section } from 'components/Section'
 import { T } from 'components/T'
 import {
-  getAllTranslationsForLocale, deleteTranslation, updateTranslation
+  getAllTranslationsForLocale,
+  deleteTranslation,
+  updateTranslation,
 } from 'db/supabase/tables/i18n'
 import { Translation } from 'db/supabase/types'
 import { useTranslation } from 'hooks/useTranslation'
@@ -82,7 +84,9 @@ export default function Translations({ initialData }: Props) {
 
   const filters = useCallback(
     (translation: Translation) => {
-      const matchesSearch = searchInput ? matchTranslationToSearch(searchInput, translation) : true
+      const matchesSearch = searchInput
+        ? matchTranslationToSearch(searchInput, translation)
+        : true
 
       if (showMissing) {
         return !translation.value && matchesSearch
@@ -113,21 +117,25 @@ export default function Translations({ initialData }: Props) {
         </Button>
       </Section>
       <Section className="border rounded-lg p-2 w-full bg-neutral-2">
-        <div className='flex items-center justify-between'>
+        <div className="flex items-center justify-between">
           <h2 className="text-xl mb-2 flex gap-2 justify-between">
             <T>Translations</T>
           </h2>
-          <div className='flex gap-2'>
-            <input value={searchInput} placeholder={_('Search...')} className="rounded-full px-2 py-1 bg-neutral-3 text-sm border" onChange={handleSearchChange} />
+          <div className="flex gap-2">
+            <input
+              value={searchInput}
+              placeholder={_('Search...')}
+              className="rounded-full px-2 py-1 bg-neutral-3 text-sm border"
+              onChange={handleSearchChange}
+            />
             <Button
               onClick={() => setShowMissing(!showMissing)}
               className="inline"
               text={showMissing ? _('Show all') : _('Show missing')}
               LeftIcon={showMissing ? FaWindowMaximize : FaWindowClose}
               secondary
-              size='sm'
-            >
-            </Button>
+              size="sm"
+            ></Button>
           </div>
         </div>
         <table>
@@ -159,7 +167,11 @@ export default function Translations({ initialData }: Props) {
                   onSave={handleEditValue(translation.id)}
                 />
                 <td>
-                  <button disabled={isValidating} className='text-danger hover:text-secondary-9 disabled:opacity-20' onClick={handleDeleteTranslation(translation)}>
+                  <button
+                    disabled={isValidating}
+                    className="text-danger hover:text-secondary-9 disabled:opacity-20"
+                    onClick={handleDeleteTranslation(translation)}
+                  >
                     <CgTrash />
                   </button>
                 </td>
@@ -180,7 +192,9 @@ export default function Translations({ initialData }: Props) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async (ctx: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps<PageProps> = async (
+  ctx: GetServerSidePropsContext,
+) => {
   const serverSideProps = await withAdminServerSideProps(ctx)
   if ('redirect' in serverSideProps || 'notFound' in serverSideProps) {
     return serverSideProps

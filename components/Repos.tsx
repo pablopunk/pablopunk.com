@@ -63,15 +63,20 @@ export function Repos({ initialData }) {
               title={`/${repo.name}`}
               secondary={secondary}
               className="h-full"
-              CTA={[{
-                RightIcon: FaStar,
-                text: repo.stargazers_count.toString(),
-                disabled: true
-              }, { RightIcon: FaGithub, title: _('Github'), href: repo.html_url }]}
+              CTA={[
+                {
+                  RightIcon: FaStar,
+                  text: repo.stargazers_count.toString(),
+                  disabled: true,
+                },
+                {
+                  RightIcon: FaGithub,
+                  title: _('Github'),
+                  href: repo.html_url,
+                },
+              ]}
             >
-              <T>
-                {repo.description}
-              </T>
+              <T>{repo.description}</T>
             </Card>
           </div>
         )

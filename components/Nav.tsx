@@ -8,7 +8,13 @@ import React from 'react'
 import { FaSpotify } from 'react-icons/fa'
 import { FiCoffee } from 'react-icons/fi'
 import { MdHome } from 'react-icons/md'
-import { RiContactsFill, RiLogoutBoxLine, RiMoonClearLine, RiSunLine, RiTerminalBoxLine } from 'react-icons/ri'
+import {
+  RiContactsFill,
+  RiLogoutBoxLine,
+  RiMoonClearLine,
+  RiSunLine,
+  RiTerminalBoxLine,
+} from 'react-icons/ri'
 import { animated, useSpring } from 'react-spring'
 import { useUser } from '@supabase/auth-helpers-react'
 import useSWR from 'swr'
@@ -38,7 +44,7 @@ const ChangeThemeButton = () => {
   return (
     <Button
       onClick={toggleTheme}
-      title='Change theme'
+      title="Change theme"
       className="toggle-theme-button"
       RightIcon={theme === 'dark' ? RiMoonClearLine : RiSunLine}
     />
@@ -89,14 +95,22 @@ export const Nav = () => {
       className="relative z-20 flex items-center justify-between no-scrollbar w-full"
       style={{ height: 'var(--nav-height)' }}
     >
-      <div className={classNames("flex justify-start gap-2 ml-2 w-[400px]")}>
+      <div className={classNames('flex justify-start gap-2 ml-2 w-[400px]')}>
         {!locationIsHome && (
           <Button href="/" LeftIcon={MdHome} title={_('Go home')} />
         )}
         {user && (
           <>
-            <Button href="/api/auth/logout" title={_('Logout')} LeftIcon={RiLogoutBoxLine} />
-            <Button href="/dev" title={_('God mode')} LeftIcon={RiTerminalBoxLine} />
+            <Button
+              href="/api/auth/logout"
+              title={_('Logout')}
+              LeftIcon={RiLogoutBoxLine}
+            />
+            <Button
+              href="/dev"
+              title={_('God mode')}
+              LeftIcon={RiTerminalBoxLine}
+            />
           </>
         )}
       </div>
@@ -144,7 +158,11 @@ export const Nav = () => {
       )}
       <div className="flex justify-end gap-2 mr-2 w-[400px]">
         <ChangeThemeButton />
-        <Button href="https://www.buymeacoffee.com/pablopunk" title={_('Buy me a coffee')} RightIcon={FiCoffee} />
+        <Button
+          href="https://www.buymeacoffee.com/pablopunk"
+          title={_('Buy me a coffee')}
+          RightIcon={FiCoffee}
+        />
       </div>
     </nav>
   )
