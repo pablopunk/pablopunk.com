@@ -37,7 +37,7 @@ const Post = ({ post }: { post: Post }) => (
         <span className="italic opacity-80 text-sm">{post.subtitle}</span>
       </div>
     </div>
-    <div className="flex flex-col justify-between text-xs italic opacity-50">
+    <div className="flex flex-col justify-between text-xs italic opacity-50 self-start">
       <span className="whitespace-nowrap">
         {formatDistanceToNow(new Date(post.date))}
       </span>
