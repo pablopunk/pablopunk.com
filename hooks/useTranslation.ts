@@ -2,15 +2,16 @@ import { I18NContext } from 'context/i18n'
 import { Translation } from 'db/supabase/types'
 import { i18n } from 'next.config'
 import { useContext } from 'react'
+import { SITE_URL } from 'config'
 
 let missingTranslations: { [key: string]: Translation } = {}
-let scheduleTimeout
+let scheduleTimeout: any
 const scheduleRequestForMissingTranslations = () => {
   if (Object.keys(missingTranslations).length > 0 && scheduleTimeout) {
     clearTimeout(scheduleTimeout)
   }
   scheduleTimeout = setTimeout(() => {
-    fetch('/api/dev/missing-translations', {
+    fetch(SITE_URL + '/api/dev/missing-translations', {
       method: 'POST',
       body: JSON.stringify({
         translations: Object.values(missingTranslations),
