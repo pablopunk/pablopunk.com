@@ -3,7 +3,13 @@ import { Post } from 'db/supabase/types'
 import { POSTS_TABLE } from 'db/supabase/tables'
 
 export async function getAllPostsForLocale(locale: string) {
-  return client.from<Post>(POSTS_TABLE).select('id').match({ locale })
+  return client
+    .from<Post>(POSTS_TABLE)
+    .select(
+      'id, date, title, subtitle, locale, slug, translated_slug, body, image, status',
+    )
+    .match({ locale })
+    .order('date', { ascending: false })
 }
 
 export async function insertPost(post: Post) {

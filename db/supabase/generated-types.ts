@@ -314,6 +314,7 @@ export interface paths {
           translated_slug?: parameters["rowFilter.posts.translated_slug"];
           body?: parameters["rowFilter.posts.body"];
           image?: parameters["rowFilter.posts.image"];
+          status?: parameters["rowFilter.posts.status"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -374,6 +375,7 @@ export interface paths {
           translated_slug?: parameters["rowFilter.posts.translated_slug"];
           body?: parameters["rowFilter.posts.body"];
           image?: parameters["rowFilter.posts.image"];
+          status?: parameters["rowFilter.posts.status"];
         };
         header: {
           /** Preference */
@@ -398,6 +400,7 @@ export interface paths {
           translated_slug?: parameters["rowFilter.posts.translated_slug"];
           body?: parameters["rowFilter.posts.body"];
           image?: parameters["rowFilter.posts.image"];
+          status?: parameters["rowFilter.posts.status"];
         };
         body: {
           /** posts */
@@ -974,6 +977,11 @@ export interface definitions {
     body?: string;
     /** Format: character varying */
     image?: string;
+    /**
+     * Format: character varying
+     * @default draft
+     */
+    status?: string;
   };
   /** @description realtime.pablopunk.com */
   realtime_clicks: {
@@ -1180,6 +1188,8 @@ export interface parameters {
   "rowFilter.posts.body": string;
   /** Format: character varying */
   "rowFilter.posts.image": string;
+  /** Format: character varying */
+  "rowFilter.posts.status": string;
   /** @description realtime_clicks */
   "body.realtime_clicks": definitions["realtime_clicks"];
   /** Format: text */

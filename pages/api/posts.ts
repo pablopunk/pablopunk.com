@@ -1,4 +1,5 @@
 import {
+  deletePost,
   getAllPostsForLocale,
   insertPost,
   updatePost,
@@ -35,6 +36,16 @@ export default async function postsApi(
 
   if (method === 'PUT') {
     const { data, error } = await updatePost(req.body)
+    if (error) {
+      console.error(error)
+      res.status(500).json({ error })
+    } else {
+      res.status(200).json(data)
+    }
+  }
+
+  if (method === 'DELETE') {
+    const { data, error } = await deletePost(req.body)
     if (error) {
       console.error(error)
       res.status(500).json({ error })
