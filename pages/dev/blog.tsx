@@ -38,7 +38,8 @@ const TextInput = ({
   )
 }
 
-const noop = () => {}
+// eslint-disable-next-line no-unused-vars
+const noop = (post: Post) => {}
 
 const Edit = ({
   onSubmit,
@@ -75,8 +76,8 @@ const Edit = ({
   }
 
   return (
-    <article className="flex flex-col gap-2 rounded-md p-2 bg-neutral-2">
-      <h2 className="flex justify-between items-center">
+    <article className="flex flex-col gap-2 rounded-md p-2 bg-neutral-2 dark:border">
+      <h2 className="flex gap-1 justify-between items-center">
         <div
           className="flex gap-2 cursor-pointer transition hover:bg-neutral-3"
           onClick={() => setOpen(!open)}
@@ -147,14 +148,18 @@ const Edit = ({
           <textarea
             onChange={onInputChange('body')}
             value={post.body}
-            className="bg-neutral-3"
+            className="bg-neutral-3 p-1"
             placeholder="Markdown body"
             rows={10}
           />
           <div className="flex gap-2 m-2">
             <Button onClick={onSubmitClicked} text={submitText} />
             {post.id != null && (
-              <Button onClick={onDelete} text="Delete post" secondary />
+              <Button
+                onClick={() => onDelete(post)}
+                text="Delete post"
+                secondary
+              />
             )}
           </div>
         </>

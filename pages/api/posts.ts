@@ -14,7 +14,7 @@ export default async function postsApi(
 
   if (method === 'GET') {
     const { locale } = req.query as { locale: string }
-    const { data, error } = await getAllPostsForLocale(locale)
+    const { data, error } = await getAllPostsForLocale(locale, true)
 
     if (error) {
       console.error(error)
