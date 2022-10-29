@@ -118,7 +118,7 @@ export default function Home({ featuredPosts }: Props) {
           <div className="flex flex-col gap-1">
             {featuredPosts.map((post) => (
               <a
-                href=""
+                href={`/posts/${post.slug}`}
                 className="flex gap-1 items-start text-neutral-9 text-xs"
                 key={post.id}
               >
