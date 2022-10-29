@@ -23,7 +23,7 @@ export default function Blog({ posts }: Props) {
           <li key={post.id} className="my-2">
             <a
               href={`/posts/${post.slug}`}
-              className="flex bg-neutral-3 p-2 items-center justify-between rounded-lg hover:bg-neutral-4 hover:no-underline"
+              className="flex bg-neutral-2 p-2 items-center justify-between rounded-lg hover:bg-neutral-3 dark:border hover:no-underline"
             >
               <div className="flex gap-3 items-center">
                 <img
