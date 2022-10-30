@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Markdown } from 'components/Markdown'
+import { Markdown } from '@components/Markdown'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { FunctionComponent } from 'preact'
 import { Post } from 'db/supabase/types'

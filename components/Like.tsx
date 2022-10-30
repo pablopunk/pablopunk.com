@@ -1,8 +1,8 @@
-import { checkIfUserDidSomething, userDidSomething } from 'lib/storage'
+import { checkIfUserDidSomething, userDidSomething } from '@lib/storage'
 import { FunctionComponent, useEffect, useState } from 'react'
-import { Button } from 'components/neon/Button'
-import useLikes from 'db/hooks/useLikes'
-import { postJson } from 'lib/utils'
+import { Button } from '@components/neon/Button'
+import useLikes from '@db/hooks/useLikes'
+import { postJson } from '@lib/utils'
 import { RiHeart2Line } from 'react-icons/ri'
 
 type Props = {

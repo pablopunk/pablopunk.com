@@ -14,8 +14,24 @@
     "jsx": "preserve",
     "moduleResolution": "node",
     "baseUrl": ".",
+    "paths": {
+      "@components*": ["components*"],
+      "@config": ["config"],
+      "@context*": ["context*"],
+      "@db*": ["db*"],
+      "@email*": ["email*"],
+      "@hooks*": ["hooks*"],
+      "@lib*": ["lib*"],
+      "@middleware": ["middleware"],
+      "@middleware*": ["middleware*"],
+      "@next.config*": ["next.config"],
+      "@pages*": ["pages*"],
+      "@styles*": ["styles*"],
+      "@types*": ["types*"],
+      "@ui*": ["components/neon*"]
+    },
     "incremental": true
   },
   "exclude": ["node_modules", "out"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"]
+  "include": ["next-env.d.ts", "**~.ts", "**~.tsx", "**~.js"]
 }

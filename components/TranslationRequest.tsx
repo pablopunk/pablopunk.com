@@ -1,9 +1,9 @@
-import { checkIfUserDidSomething, userDidSomething } from 'lib/storage'
+import { checkIfUserDidSomething, userDidSomething } from '@lib/storage'
 import { Fragment, FunctionComponent, useEffect, useState } from 'react'
-import { Button } from 'components/neon/Button'
+import { Button } from '@components/neon/Button'
 import { Dialog, Transition } from '@headlessui/react'
-import useTranslationRequestsCount from 'db/hooks/useTranslationRequestsCount'
-import { postJson } from 'lib/utils'
+import useTranslationRequestsCount from '@db/hooks/useTranslationRequestsCount'
+import { postJson } from '@lib/utils'
 
 type Props = {
   slug: string

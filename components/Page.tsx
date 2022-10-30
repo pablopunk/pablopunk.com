@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import { Nav } from 'components/Nav'
-import { Meta } from 'components/Meta'
-import { PageProps } from 'types/page'
-import { Button } from 'components/neon/Button'
+import { Nav } from '@components/Nav'
+import { Meta } from '@components/Meta'
+import { PageProps } from '@types/page'
+import { Button } from '@components/neon/Button'
 import { Footer } from './Footer'
-import { T } from 'components/T'
+import { T } from '@components/T'
 import { MdHome } from 'react-icons/md'
 
 export const Page: FunctionComponent<PageProps> = ({

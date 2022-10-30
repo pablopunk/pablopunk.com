@@ -1,7 +1,7 @@
 import Document, { Main, NextScript, Html, Head } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import darkModeCode from 'dark-mode-code'
-import { i18n } from 'next.config'
+import { i18n } from '@next.config'
 
 const htmlHello = `
 console.log(\`%c

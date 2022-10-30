@@ -1,12 +1,12 @@
-import { Section } from 'components/Section'
-import { getAllPostsForLocale } from 'db/supabase/tables/posts'
-import { Post } from 'db/supabase/types'
-import { pageStaticProps } from 'middleware'
+import { Section } from '@components/Section'
+import { getAllPostsForLocale } from '@db/supabase/tables/posts'
+import { Post } from '@db/supabase/types'
+import { pageStaticProps } from '@middleware'
 import { GetStaticProps } from 'next'
 import React from 'react'
-import { PageProps } from 'types/page'
+import { PageProps } from '@types/page'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import { Visits } from 'components/Visits'
+import { Visits } from '@components/Visits'
 
 interface Props extends PageProps {
   posts: Post[]

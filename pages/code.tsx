@@ -1,13 +1,13 @@
 import React from 'react'
-import { Repos } from 'components/Repos'
-import { NpmCharts, fetchAllNpmData } from 'components/NpmCharts'
-import { PageProps } from 'types/page'
+import { Repos } from '@components/Repos'
+import { NpmCharts, fetchAllNpmData } from '@components/NpmCharts'
+import { PageProps } from '@types/page'
 import { GetStaticProps } from 'next'
-import { getFromCache } from 'db/redis'
+import { getFromCache } from '@db/redis'
 import { getReposApiResponse } from './api/repos'
-import { Section } from 'components/Section'
-import { T } from 'components/T'
-import { pageStaticProps } from 'middleware'
+import { Section } from '@components/Section'
+import { T } from '@components/T'
+import { pageStaticProps } from '@middleware'
 
 interface Props extends PageProps {
   locale: string
