@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { Line } from 'react-chartjs-2'
 import 'chartjs-adapter-date-fns'
-import { useCssVar } from 'hooks/useCssVar'
+import { useCssVar } from '@hooks/useCssVar'
 import * as R from 'ramda'
-import { getJson } from 'lib/utils'
-import { useTranslation } from 'hooks/useTranslation'
+import { getJson } from '@lib/utils'
+import { useTranslation } from '@hooks/useTranslation'
 
 const SSR = typeof window === 'undefined'
 
@@ -16,8 +16,7 @@ const packages = ['nextjs-redirect']
 
 const apiURLForPackage = (packageName) =>
   (SSR ? 'https://api.npmjs.org' : '/api.npmjs.org') +
-  `/downloads/range/2010-01-01:${
-    new Date().toISOString().split('T')[0]
+  `/downloads/range/2010-01-01:${new Date().toISOString().split('T')[0]
   }/${packageName}`
 
 export const fetchAllNpmData = () =>

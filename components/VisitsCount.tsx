@@ -1,5 +1,5 @@
 import { Button } from './neon/Button'
-import { useTranslation } from 'hooks/useTranslation'
+import { useTranslation } from '@hooks/useTranslation'
 import { BiLineChart } from 'react-icons/bi'
 
 export const VisitsCount = (props: { count: number }) => {

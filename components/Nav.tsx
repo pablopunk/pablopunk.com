@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { Button } from '@components/neon/Button'
+import { Button } from '@ui/Button'
 import useTheme from '@hooks/useTheme'
 import { useTranslation } from '@hooks/useTranslation'
 import { getJson } from '@lib/utils'

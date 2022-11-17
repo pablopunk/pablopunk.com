@@ -2,8 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import {
   getAllTranslationRequestsForIpAndSlug,
   insertTranslationRequest,
-} from 'db/supabase/tables/translation_requests'
-import { TranslationRequest } from 'db/supabase/types'
+} from '@db/supabase/tables/translation_requests'
+import { TranslationRequest } from '@db/supabase/types'
 import geoip from 'geoip-country'
 import { sendTranslationRequestEmail } from 'email/sendTranslationRequestEmail'
 import { sendErrorEmail } from 'email/sendErrorEmail'

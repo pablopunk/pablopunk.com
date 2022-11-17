@@ -1,6 +1,6 @@
-import { i18n } from 'next.config'
+import { i18n } from '@next.config'
 import { createContext } from 'react'
-import { PageProps } from 'types/page'
+import { PageProps } from '@types/page'
 
 export const I18NContext = createContext({
   translations: {},

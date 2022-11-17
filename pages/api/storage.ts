@@ -1,4 +1,4 @@
-import { uploadFile, deleteFile, listFiles } from 'db/supabase/storage'
+import { uploadFile, deleteFile, listFiles } from '@db/supabase/storage'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function StorageApi(

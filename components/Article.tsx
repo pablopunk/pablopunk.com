@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Markdown } from '@components/Markdown'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { FunctionComponent } from 'preact'
-import { Post } from 'db/supabase/types'
+import { Post } from '@db/supabase/types'
 import { Visits } from './Visits'
 
 const StyledArticle = styled.article`

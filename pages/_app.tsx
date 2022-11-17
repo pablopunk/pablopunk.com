@@ -1,6 +1,6 @@
 import { Page } from '@components/Page'
 import { I18NProvider } from '@context/i18n'
-// import { SupabaseProvider } from 'db/supabase/client'
+// import { SupabaseProvider } from '@db/supabase/client'
 import { NextWebVitalsMetric } from 'next/app'
 import Router, { useRouter } from 'next/router'
 import { useEffect } from 'react'

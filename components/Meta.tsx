@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { NextSeo, SocialProfileJsonLd } from 'next-seo'
 import { useRouter } from 'next/router'
-import { SITE_DESC, SITE_IMAGE, SITE_NAME, SITE_URL } from 'config'
-import { useCssVar } from 'hooks/useCssVar'
-import { useMeta } from 'hooks/useMeta'
+import { SITE_DESC, SITE_IMAGE, SITE_NAME, SITE_URL } from '@config'
+import { useCssVar } from '@hooks/useCssVar'
+import { useMeta } from '@hooks/useMeta'
 
 export function Meta() {
   const { title, description, imageUrl } = useMeta()

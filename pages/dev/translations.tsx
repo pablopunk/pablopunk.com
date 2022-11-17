@@ -1,14 +1,14 @@
-import { Button } from 'components/neon/Button'
-import { Section } from 'components/Section'
-import { T } from 'components/T'
+import { Button } from '@ui/Button'
+import { Section } from '@components/Section'
+import { T } from '@components/T'
 import {
   getAllTranslationsForLocale,
   deleteTranslation,
   updateTranslation,
-} from 'db/supabase/tables/i18n'
-import { Translation } from 'db/supabase/types'
-import { useTranslation } from 'hooks/useTranslation'
-import { withAdminServerSideProps } from 'middleware'
+} from '@db/supabase/tables/i18n'
+import { Translation } from '@db/supabase/types'
+import { useTranslation } from '@hooks/useTranslation'
+import { withAdminServerSideProps } from '@middleware'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { useCallback, useRef, useState } from 'react'
@@ -16,7 +16,7 @@ import { BiArrowBack } from 'react-icons/bi'
 import { FaWindowClose, FaWindowMaximize } from 'react-icons/fa'
 import { CgTrash } from 'react-icons/cg'
 import useSWR from 'swr'
-import { PageProps } from 'types/page'
+import { PageProps } from '@types/page'
 
 type Props = {
   initialData: Translation[]

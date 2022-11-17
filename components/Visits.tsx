@@ -1,5 +1,5 @@
-import { Post } from 'db/supabase/types'
-import { useVisitsCount } from 'hooks/useVisitsCount'
+import { Post } from '@db/supabase/types'
+import { useVisitsCount } from '@hooks/useVisitsCount'
 import { BsGraphUp } from 'react-icons/bs'
 
 export const Visits = ({ post }: { post: Post }) => {

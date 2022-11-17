@@ -1,7 +1,7 @@
-import { Button } from 'components/neon/Button'
-import { Section } from 'components/Section'
-import { T } from 'components/T'
-import { withAdminServerSideProps } from 'middleware'
+import { Button } from '@ui/Button'
+import { Section } from '@components/Section'
+import { T } from '@components/T'
+import { withAdminServerSideProps } from '@middleware'
 import { HiTranslate, HiBookOpen } from 'react-icons/hi'
 
 export default function Dev() {

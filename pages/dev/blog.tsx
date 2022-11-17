@@ -1,12 +1,12 @@
-import { Section } from 'components/Section'
+import { Section } from '@components/Section'
 import useSWR from 'swr'
-import { Post } from 'db/supabase/types'
+import { Post } from '@db/supabase/types'
 import React, { useEffect, useState } from 'react'
-import { useTranslation } from 'hooks/useTranslation'
-import { Button } from 'components/neon/Button'
+import { useTranslation } from '@hooks/useTranslation'
+import { Button } from '@ui/Button'
 import classNames from 'classnames'
 import { useRouter } from 'next/router'
-import { i18n } from 'next.config'
+import { i18n } from '@next.config'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import { RiDraftLine } from 'react-icons/ri'
 
@@ -39,7 +39,7 @@ const TextInput = ({
 }
 
 // eslint-disable-next-line no-unused-vars
-const noop = (post: Post) => {}
+const noop = (post: Post) => { }
 
 const Edit = ({
   onSubmit,
@@ -119,7 +119,7 @@ const Edit = ({
                 newDate.toISOString().split('T')[0] // will throw if date is not valid
                 setDate(new Date(ev.target.value))
                 setPost({ ...post, date: ev.target.value })
-              } catch (e) {}
+              } catch (e) { }
             }}
           />
           <TextInput _key="image" {...{ post, onInputChange }} />

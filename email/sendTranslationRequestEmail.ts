@@ -3,7 +3,7 @@ import {
   TRANSLATION_REQUEST_EMAIL_TEMPLATE,
 } from 'email/sendgrid/constants'
 import sendgrid from 'email/sendgrid/client'
-import { TranslationRequest } from 'db/supabase/types'
+import { TranslationRequest } from '@db/supabase/types'
 
 export function sendTranslationRequestEmail(
   request: TranslationRequest,

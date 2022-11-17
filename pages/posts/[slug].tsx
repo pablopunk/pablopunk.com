@@ -1,10 +1,10 @@
-import { Article } from 'components/Article'
-import { Section } from 'components/Section'
-import { getPost } from 'db/supabase/tables/posts'
-import { Post } from 'db/supabase/types'
-import { pageStaticProps } from 'middleware'
+import { Article } from '@components/Article'
+import { Section } from '@components/Section'
+import { getPost } from '@db/supabase/tables/posts'
+import { Post } from '@db/supabase/types'
+import { pageStaticProps } from '@middleware'
 import { GetStaticProps } from 'next'
-import { PageProps } from 'types/page'
+import { PageProps } from '@types/page'
 
 interface Props extends PageProps {
   post: Post

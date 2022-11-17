@@ -1,8 +1,8 @@
-import { I18NContext } from 'context/i18n'
-import { Translation } from 'db/supabase/types'
-import { i18n } from 'next.config'
+import { I18NContext } from '@context/i18n'
+import { Translation } from '@db/supabase/types'
+import { i18n } from '@next.config'
 import { useContext } from 'react'
-import { SITE_URL } from 'config'
+import { SITE_URL } from '@config'
 
 let missingTranslations: { [key: string]: Translation } = {}
 let scheduleTimeout: any

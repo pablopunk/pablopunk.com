@@ -1,7 +1,7 @@
-import { pageStaticProps } from 'middleware'
+import { pageStaticProps } from '@middleware'
 import { Chrono, TimelineItem } from 'react-chrono'
-import { useTranslation } from 'hooks/useTranslation'
-import { timeBetween, timeSince, howOldAmI } from 'lib/utils'
+import { useTranslation } from '@hooks/useTranslation'
+import { timeBetween, timeSince, howOldAmI } from '@lib/utils'
 
 const getImage = (item: string): TimelineItem['media'] => {
   return {
@@ -9,6 +9,10 @@ const getImage = (item: string): TimelineItem['media'] => {
     source: { url: `/images/timeline/${item}.jpg` },
   }
 }
+
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
+const formatTimeBetween = (date1: Date, date2: Date) => capitalize(timeBetween(date1, date2))
+const formatTimeSince = (date: Date) => capitalize(timeSince(date))
 
 export default function Portfolio() {
   const { _ } = useTranslation()
@@ -19,7 +23,7 @@ export default function Portfolio() {
       cardTitle: 'Maze',
       url: 'http://maze.co',
       cardSubtitle: _('Fullstack Developer. Product'),
-      cardDetailedText: _(`${timeSince(new Date(2021, 7))}. 100% Remote`),
+      cardDetailedText: _(`${formatTimeSince(new Date(2021, 7))}. 100% Remote`),
       media: getImage('maze'),
     },
     {
@@ -28,7 +32,7 @@ export default function Portfolio() {
       url: 'http://prezly.com',
       cardSubtitle: _('NextJS Developer. Templates'),
       cardDetailedText: _(
-        `${timeBetween(new Date(2021, 1), new Date(2021, 7))}. 100% Remote`,
+        `${formatTimeBetween(new Date(2021, 1), new Date(2021, 7))}. 100% Remote`,
       ),
       media: getImage('prezly'),
     },
@@ -38,7 +42,7 @@ export default function Portfolio() {
       url: 'http://sourcefabric.org',
       cardSubtitle: _('Fullstack Developer. Superdesk'),
       cardDetailedText: _(
-        `${timeBetween(new Date(2018, 0), new Date(2021, 1))}. 100% Remote`,
+        `${formatTimeBetween(new Date(2018, 0), new Date(2021, 1))}. 100% Remote`,
       ),
       media: getImage('sourcefabric'),
     },
@@ -48,7 +52,7 @@ export default function Portfolio() {
       url: 'https://keepcoding.io/casos-de-exito/trabajar-desarrollador-web-desde-casa/',
       cardSubtitle: _('Master in Fullstack Javascript'),
       cardDetailedText: _(
-        `${timeBetween(new Date(2017, 6), new Date(2018, 2))}. 100% Remote`,
+        `${formatTimeBetween(new Date(2017, 6), new Date(2018, 2))}. 100% Remote`,
       ),
       media: getImage('keepcoding'),
     },
@@ -58,7 +62,7 @@ export default function Portfolio() {
       url: 'http://stangds.com',
       cardSubtitle: _('Fullstack Developer. Hirescore'),
       cardDetailedText: _(
-        `${timeBetween(
+        `${formatTimeBetween(
           new Date(2016, 1),
           new Date(2018, 0),
         )}. 50% Remote / 50% Michigan`,
@@ -83,6 +87,7 @@ export default function Portfolio() {
       cardTitle: 'Ourense',
       url: 'https://www.google.com/search?q=ourense&tbm=isch',
       cardSubtitle: _('Born. That was fun.'),
+      media: getImage('born'),
       cardDetailedText: _("I'm ") + howOldAmI() + _(' years old'),
     },
   ]
@@ -126,11 +131,17 @@ export default function Portfolio() {
           padding-left: 2rem;
           padding-right: 2rem;
         }
+        * :global(div:has(p)) {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
         div :global(.rc-card-media) {
           padding: 0 !important;
         }
         div :global(.card-description) {
           padding-bottom: 2rem;
+          font-style: italic;
+          opacity: 0.8;
         }
       `}</style>
     </div>
