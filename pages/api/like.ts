@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Like } from '@db/supabase/types'
-import { sendErrorEmail } from 'email/sendErrorEmail'
+import { sendErrorEmail } from '@email/sendErrorEmail'
 import { getClientIp } from '@supercharge/request-ip'
 import { getAllLikesForIpAndSlug, insertLike } from '@db/supabase/tables/likes'
 
@@ -34,7 +34,9 @@ export default async function LikeApi(
 
     if (allLikes.length > 0) {
       // ip already liked this slug
-      return res.status(200).send({ status: 'ok' })
+      return res
+        .status(200)
+        .send({ status: 'ok', message: 'Already liked by this IP' })
     }
   }
 

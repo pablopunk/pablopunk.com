@@ -3,7 +3,12 @@ import { Markdown } from '@components/Markdown'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { FunctionComponent } from 'preact'
 import { Post } from '@db/supabase/types'
+import { useTranslation } from '@hooks/useTranslation'
 import { Visits } from './Visits'
+import { useRouter } from 'next/router'
+import { Button } from '@ui/Button'
+import { BiArrowBack } from 'react-icons/bi'
+import LikeComponent from './Like'
 
 const StyledArticle = styled.article`
   display: flex;
@@ -107,27 +112,29 @@ type Props = {
 }
 
 export const Article: FunctionComponent<Props> = ({ post }) => {
-  // const { data: visitsCount } = useSWR<number>([story], fetchNumberOfVisits, {
-  //   initialData: 0,
-  // })
+  const { locale } = useRouter()
+  const { _ } = useTranslation(locale)
 
   return (
-    <StyledArticle>
-      <img src={post.image} alt={post.title} className="mt-4" />
-      <div className="w-full my-2 italic font-thin text-center opacity-75">
-        {new Date(post.date).toLocaleDateString()}
-      </div>
-      <div className="flex gap-2 justify-center w-full">
-        <Visits post={post} />
-      </div>
-      <h1 className="w-full my-4 text-3xl font-semibold text-center">
-        {post.title}
-      </h1>
-      <div className="max-w-full">
-        <SRLWrapper>
-          <Markdown>{post.body}</Markdown>
-        </SRLWrapper>
-      </div>
-    </StyledArticle>
+    <>
+      <Button href="/blog" LeftIcon={BiArrowBack} secondary>{_('Go back')}</Button>
+      <StyledArticle>
+        <img src={post.image} alt={post.title} className="mt-4" />
+        <div className="w-full my-2 italic font-thin text-center opacity-75">
+          {new Date(post.date).toLocaleDateString()}
+        </div>
+        <div className="flex gap-3 justify-center w-full">
+          <Visits post={post} />
+          <LikeComponent slug={post.slug} />
+        </div>
+        <h1 className="w-full my-4 text-3xl font-semibold text-center">
+          {post.title}
+        </h1>
+        <div className="max-w-full">
+          <SRLWrapper>
+            <Markdown>{post.body}</Markdown>
+          </SRLWrapper>
+        </div>
+      </StyledArticle></>
   )
 }

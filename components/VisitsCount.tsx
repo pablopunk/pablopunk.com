@@ -1,4 +1,4 @@
-import { Button } from './neon/Button'
+import { Button } from '@ui/Button'
 import { useTranslation } from '@hooks/useTranslation'
 import { BiLineChart } from 'react-icons/bi'
 

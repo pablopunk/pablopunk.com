@@ -4,6 +4,9 @@ import { Button } from '@ui/Button'
 import useLikes from '@db/hooks/useLikes'
 import { postJson } from '@lib/utils'
 import { RiHeart2Line } from 'react-icons/ri'
+import { useTranslation } from '@hooks/useTranslation'
+
+const responseToJSON = (response: any) => response.json()
 
 type Props = {
   slug: string
@@ -13,6 +16,7 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
   const likeCount = useLikes(slug)
   const [alreadyLiked, setAlreadyLiked] = useState(false)
   const event = 'liked-' + slug
+  const { _ } = useTranslation()
 
   useEffect(() => {
     if (slug && checkIfUserDidSomething(event)) {
@@ -23,7 +27,7 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
   const likeThis = () => {
     setAlreadyLiked(true)
     postJson(`/api/like`, { slug })
-      .then((r) => r.json())
+      .then(responseToJSON)
       .then((response) => {
         userDidSomething(event)
         if (response?.status !== 'ok') {
@@ -43,6 +47,7 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
       onClick={likeThis}
       LeftIcon={RiHeart2Line}
       className="button-like"
+      title={_('likes')}
     >
       {likeCount}
     </Button>

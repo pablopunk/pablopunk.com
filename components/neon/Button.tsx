@@ -19,72 +19,74 @@ export type ButtonProps = {
   size?: Size
 }
 
-export const Button = React.memo(
-  ({
-    onClick,
-    LeftIcon,
-    RightIcon,
-    text,
-    children,
-    secondary,
-    title,
-    href,
-    disabled,
-    className,
-    size,
-    ...rest
-  }: ButtonProps) => {
-    const type = useMemo(
-      () => (secondary ? 'secondary' : 'primary'),
-      [secondary],
-    )
-    const iconOnly = useMemo(() => !text && !children, [text, children])
-    const ButtonOrA = (props) => {
-      if (typeof href === 'string') {
-        return (
-          <Link href={href} {...props} {...rest} />
-        )
-      }
-      return <button {...props} {...rest} />
+const ButtonComponent = ({
+  onClick,
+  LeftIcon,
+  RightIcon,
+  text,
+  children,
+  secondary,
+  title,
+  href,
+  disabled,
+  className,
+  size,
+  ...rest
+}: ButtonProps) => {
+  const type = useMemo(
+    () => (secondary ? 'secondary' : 'primary'),
+    [secondary],
+  )
+  const iconOnly = useMemo(() => !text && !children, [text, children])
+  const ButtonOrA = (props) => {
+    if (typeof href === 'string') {
+      return (
+        <Link href={href} {...props} {...rest} />
+      )
     }
+    return <button {...props} {...rest} />
+  }
 
-    return (
-      <>
-        <ButtonOrA
-          className={classNames(
-            className,
-            'neon-button group transition-all border-2 rounded-full py-1 px-2 inline-flex items-center justify-center text-gray-100 font-bold overflow-hidden',
-            {
-              'text-xs': size === 'sm',
-              'gap-1': !iconOnly,
-              'hover:scale-105 hover:gap-2': !iconOnly && !disabled,
-              'min-w-[36px] min-h-[36px]': iconOnly,
-              'opacity-50 cursor-not-allowed': disabled,
-              'cursor-pointer': !disabled,
-            },
-          )}
-          onClick={onClick}
-          href={href}
-          disabled={disabled}
-          title={title || text}
-        >
-          {LeftIcon && <LeftIcon />}
-          {text && <span className="capitalize whitespace-nowrap">{text}</span>}
-          {children}
-          {title && (
-            <span
-              className={classNames(
-                'transition-all delay-[0] whitespace-nowrap',
-                'max-w-0 opacity-0',
-                'group-hover:max-w-[600px] group-hover:opacity-100 group-hover:mx-1',
-              )}
-            >
-              {title}
-            </span>
-          )}
-          {RightIcon && <RightIcon />}
-        </ButtonOrA>
-        <style jsx>{`
+  return (
+    <>
+      <ButtonOrA
+        className={classNames(
+          className,
+          'neon-button group transition-all border-2 rounded-full py-1 px-2 inline-flex items-center justify-center text-gray-100 font-bold overflow-hidden',
+          {
+            'text-xs': size === 'sm',
+            'gap-1': !iconOnly,
+            'hover:scale-105 hover:gap-2': !iconOnly && !disabled,
+            'min-w-[36px] min-h-[36px]': iconOnly,
+            'opacity-50 cursor-not-allowed': disabled,
+            'cursor-pointer': !disabled,
+          },
+        )}
+        onClick={onClick}
+        href={href}
+        disabled={disabled}
+        title={title || text}
+      >
+        {LeftIcon && <LeftIcon />}
+        {text && <span className="capitalize whitespace-nowrap">{text}</span>}
+        {children}
+        {title && (
+          <span
+            className={classNames(
+              'transition-all delay-[0] whitespace-nowrap',
+              'max-w-0 opacity-0',
+              'group-hover:max-w-[600px] group-hover:opacity-100',
+              {
+                'group-hover:mx-1': !text && children == null
+              }
+            )}
+          >
+            {title}
+          </span>
+        )}
+        {RightIcon && <RightIcon />}
+      </ButtonOrA>
+      <style jsx>{`
           a:hover {
             text-decoration: none;
           }
@@ -112,7 +114,8 @@ export const Button = React.memo(
               inset 2px 2px 12px 2px var(--neon-shadow);
           }
         `}</style>
-      </>
-    )
-  },
-)
+    </>
+  )
+}
+
+export const Button = React.memo(ButtonComponent)

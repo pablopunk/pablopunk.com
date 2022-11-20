@@ -1,6 +1,6 @@
 import { Page } from '@components/Page'
 import { I18NProvider } from '@context/i18n'
-// import { SupabaseProvider } from '@db/supabase/client'
+import { SupabaseProvider } from '@db/supabase/client'
 import { NextWebVitalsMetric } from 'next/app'
 import Router, { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -60,13 +60,15 @@ const App = ({
   return (
     <>
       <UserProvider supabaseClient={supabaseClient}>
-        <I18NProvider translations={pageProps.translations} locale={locale}>
-          <Page {...pageProps}>
-            <SimpleReactLightbox>
-              <Component {...pageProps} />
-            </SimpleReactLightbox>
-          </Page>
-        </I18NProvider>
+        <SupabaseProvider>
+          <I18NProvider translations={pageProps.translations} locale={locale}>
+            <Page {...pageProps}>
+              <SimpleReactLightbox>
+                <Component {...pageProps} />
+              </SimpleReactLightbox>
+            </Page>
+          </I18NProvider>
+        </SupabaseProvider>
       </UserProvider>
     </>
   )

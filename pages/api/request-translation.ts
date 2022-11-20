@@ -5,8 +5,8 @@ import {
 } from '@db/supabase/tables/translation_requests'
 import { TranslationRequest } from '@db/supabase/types'
 import geoip from 'geoip-country'
-import { sendTranslationRequestEmail } from 'email/sendTranslationRequestEmail'
-import { sendErrorEmail } from 'email/sendErrorEmail'
+import { sendTranslationRequestEmail } from '@email/sendTranslationRequestEmail'
+import { sendErrorEmail } from '@email/sendErrorEmail'
 import { getClientIp } from '@supercharge/request-ip'
 
 export default async function RequestTranslationApi(

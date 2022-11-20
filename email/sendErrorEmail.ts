@@ -1,8 +1,8 @@
 import {
   DEFAULT_EMAIL_FROM,
   ERROR_EMAIL_TEMPLATE,
-} from 'email/sendgrid/constants'
-import sendgrid from 'email/sendgrid/client'
+} from '@email/sendgrid/constants'
+import sendgrid from '@email/sendgrid/client'
 
 export function sendErrorEmail(error: string) {
   const mailOptions = {

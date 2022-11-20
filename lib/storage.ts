@@ -2,7 +2,7 @@ import * as R from 'ramda'
 
 const EVENTS_STORAGE = 'user_events'
 
-const getStoredData = (key: string) => localStorage?.getItem(key)
+const getStoredData = (key: string) => localStorage?.getItem(key) || '{}'
 const setStoredData = (key: string, value: string) =>
   localStorage?.setItem(key, value)
 
