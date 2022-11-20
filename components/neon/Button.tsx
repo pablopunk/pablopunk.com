@@ -42,9 +42,7 @@ export const Button = React.memo(
     const ButtonOrA = (props) => {
       if (typeof href === 'string') {
         return (
-          <Link href={href}>
-            <a {...props} {...rest} />
-          </Link>
+          <Link href={href} {...props} {...rest} />
         )
       }
       return <button {...props} {...rest} />

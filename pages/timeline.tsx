@@ -120,6 +120,10 @@ export default function Portfolio() {
           object-fit: cover;
           padding-bottom: 1rem;
         }
+        div :global(.timeline-card-content) {
+          padding-bottom: 1rem;
+          box-shadow: 2px 2px 10px 0px var(--color-neutral-3);
+        }
         div :global(.timeline-card-content > div),
         div :global(.timeline-card-content > div > p) {
           margin: 0;
