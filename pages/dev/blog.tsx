@@ -1,6 +1,6 @@
 import { Section } from '@components/Section'
 import useSWR from 'swr'
-import { Post } from '@db/supabase/types'
+import type { Post } from '@db/supabase/types'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '@hooks/useTranslation'
 import { Button } from '@ui/Button'
@@ -48,7 +48,7 @@ const Edit = ({
   initialData = null,
 }) => {
   const [open, setOpen] = useState(false)
-  const [post, setPost] = useState(initialData ?? {})
+  const [post, setPost] = useState<Post>(initialData ?? {})
   const [date, setDate] = useState(post.date ? new Date(post.date) : new Date())
   const [checkedLocale, setCheckedLocale] = useState(i18n.defaultLocale)
 
