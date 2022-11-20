@@ -123,13 +123,15 @@ export const Article: FunctionComponent<Props> = ({ post }) => {
         <div className="w-full my-2 italic font-thin text-center opacity-75">
           {new Date(post.date).toLocaleDateString()}
         </div>
-        <div className="flex gap-3 justify-center w-full">
+        <div className="flex justify-center w-full">
           <Visits post={post} />
-          <LikeComponent slug={post.slug} />
         </div>
         <h1 className="w-full my-4 text-3xl font-semibold text-center">
           {post.title}
         </h1>
+        <div className="flex justify-end w-full">
+          <LikeComponent slug={post.slug} />
+        </div>
         <div className="max-w-full">
           <SRLWrapper>
             <Markdown>{post.body}</Markdown>

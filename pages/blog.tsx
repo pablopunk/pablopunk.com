@@ -28,11 +28,15 @@ const Post = ({ post }: { post: Post }) => (
     className="flex gap-2 bg-neutral-2 p-2 items-center justify-between rounded-lg hover:bg-neutral-3 dark:border hover:no-underline"
   >
     <div className="flex gap-3 items-center">
-      <FeaturedImage post={post} />
+      <div className="hidden md:flex">
+        <FeaturedImage post={post} />
+      </div>
       <div className="flex flex-col gap-2">
         <span className="flex gap-2">
           <h2>{post.title}</h2>
-          <Visits post={post} />
+          <div className="hidden md:flex">
+            <Visits post={post} size="xs" />
+          </div>
         </span>
         <span className="italic opacity-80 text-sm">{post.subtitle}</span>
       </div>
