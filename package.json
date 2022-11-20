@@ -49,7 +49,6 @@
     "ramda": "^0.28.0",
     "react": "18",
     "react-chartjs-2": "^3.0.4",
-    "react-chrono": "^1.19.1",
     "react-dom": "18",
     "react-hooks-visible": "^1.1.1",
     "react-hotkeys-hook": "^3.4.7",
