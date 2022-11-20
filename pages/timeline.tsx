@@ -102,8 +102,11 @@ export default function Timeline() {
       </ul>
       <style jsx>{`
         ul {
-          border-left: 6px solid var(--color-secondary-1);
-          box-shadow: -8px 0 12px -2px var(--color-secondary-2);
+          border-left: 3px solid var(--color-secondary-1);
+          box-shadow: -8px 6px 12px -2px var(--color-secondary-2);
+        }
+        :global(.dark) ul {
+          border-color: var(--color-secondary-7);
         }
         /* fix box-shadow bleeding on top */
         ul:before {
@@ -112,7 +115,6 @@ export default function Timeline() {
           top: -20px;
           width: 100%;
           position: absolute;
-          background-color: var(--color-neutral-1);
         }
         li:before {
           position: absolute;
@@ -122,6 +124,9 @@ export default function Timeline() {
           width: 10px;
           height: 5px;
           background-color: var(--color-secondary-1);
+        }
+        :global(.dark) li:before {
+          background-color: var(--color-secondary-7);
         }
       `}</style>
     </Section>
