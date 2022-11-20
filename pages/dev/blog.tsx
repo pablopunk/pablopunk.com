@@ -22,7 +22,7 @@ const TextInput = ({
   onInputChange: any
 }) => {
   const { _ } = useTranslation()
-  let displayKey = `${_key}`
+  let displayKey = `${String(_key)}`
   displayKey = displayKey.charAt(0).toUpperCase() + displayKey.slice(1)
   displayKey = displayKey.replace('_', ' ')
 
