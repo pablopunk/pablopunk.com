@@ -48,16 +48,13 @@ const Edit = ({
   initialData = null,
 }) => {
   const [open, setOpen] = useState(false)
-  const [post, setPost] = useState(initialData ?? {})
+  const [post, setPost] = useState<Post>(initialData ?? {})
   const [date, setDate] = useState(post.date ? new Date(post.date) : new Date())
   const [checkedLocale, setCheckedLocale] = useState(i18n.defaultLocale)
 
   useEffect(() => {
-    if (checkedLocale === i18n.defaultLocale && post.title?.length) {
-      const slug = post.title
-        .replace(/\s/g, '-')
-        .replace(/[^\w^-]/g, '')
-        .toLowerCase()
+    if (checkedLocale === i18n.defaultLocale && post.title?.length && post.title !== initialData?.title) {
+      const slug = post.title.replace(/\W+/g, "-").replace(/[-]+$/, "").toLowerCase()
       setPost({ ...post, slug })
     }
   }, [post.title])
