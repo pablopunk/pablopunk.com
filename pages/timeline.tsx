@@ -86,8 +86,6 @@ export default function Timeline() {
     },
   ];
 
-  console.log(items)
-
   return (
     <Section>
       <ul className='relative max-w-[400px] mx-auto py-2 rounded-lg'>
