@@ -1,7 +1,7 @@
 module.exports = {
   SITE_URL:
     process.env.NODE_ENV !== 'development'
-      ? process.env.NEXT_PUBLIC_VERCEL_URL
+      ? process.env.NEXT_PUBLIC_VERCEL_URL || 'https://pablopunk.com'
       : 'http://localhost:3000',
   SITE_NAME: 'Pablo Varela | Freelance Web Developer',
   SITE_DESC:
