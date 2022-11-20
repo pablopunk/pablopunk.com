@@ -37,6 +37,10 @@ const rw = [
     path: 'api.npmjs.org/:path*',
     dest: 'https://api.npmjs.org/:path*',
   },
+  {
+    path: 'sentry-dns',
+    dest: process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN,
+  },
 ]
 
 const rd = [
@@ -111,6 +115,7 @@ const moduleExports = {
   },
   publicRuntimeConfig: {
     dsn: process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN,
+    tunnel: '/sentry',
   },
   webpack(config, { dev, isServer }) {
     // use Preact in production
