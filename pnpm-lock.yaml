@@ -55,7 +55,7 @@ specifiers:
   nextjs-redirect: ^6.0.0
   openapi-typescript: ^4.0.2
   postcss: ^8.3.5
-  preact: ^10.5.12
+  preact: ^10.11.3
   prettier: '*'
   pretty-quick: '*'
   querystring: ^0.2.1
@@ -114,7 +114,7 @@ dependencies:
   next-seo: 4.29.0_dcors23iqtgxrhrwosgnnc4xji
   nextjs-redirect: 6.0.0_next@13.0.4+react@18.2.0
   postcss: 8.4.14
-  preact: 10.7.2
+  preact: 10.11.3
   querystring: 0.2.1
   ramda: 0.28.0
   react: 18.2.0
@@ -5097,8 +5097,8 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
-  /preact/10.7.2:
-    resolution: {integrity: sha512-GLjn0I3r6ka+NvxJUppsVFqb4V0qDTEHT/QxHlidPuClGaxF/4AI2Qti4a0cv3XMh5n1+D3hLScW10LRIm5msQ==}
+  /preact/10.11.3:
+    resolution: {integrity: sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==}
     dev: false
 
   /prelude-ls/1.2.1:
