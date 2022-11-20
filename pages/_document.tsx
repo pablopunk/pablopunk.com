@@ -13,6 +13,26 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
 </>\n
 \`, "color:royalblue");
 `
+const lwtScript = `
+  (function (m, a, z, e) {
+    var s, t;
+    try {
+      t = m.sessionStorage.getItem('maze-us');
+    } catch (err) {}
+
+    if (!t) {
+      t = new Date().getTime();
+      try {
+        m.sessionStorage.setItem('maze-us', t);
+      } catch (err) {}
+    }
+
+    s = a.createElement('script');
+    s.src = z + '?t=' + t + '&apiKey=' + e;
+    a.getElementsByTagName('head')[0].appendChild(s);
+    m.mazeUniversalSnippetApiKey = e
+  })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '387b92f6-3965-466a-aaf0-871a28a52a89');
+`
 
 export default class extends Document {
   static async getInitialProps(ctx) {
@@ -47,6 +67,11 @@ export default class extends Document {
       <Html lang={this.props.locale || i18n.defaultLocale}>
         <Head>
           <script data-goatcounter="/goat" async src="/count.js"></script>
+          <script
+            async
+            type="text/javascript"
+            dangerouslySetInnerHTML={{ __html: lwtScript }}
+          />
         </Head>
         <body>
           <Main />
