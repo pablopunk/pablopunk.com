@@ -22,9 +22,16 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const pageProps = await pageStaticProps(ctx)
   const { data: post, error } = await getPost({
     slug: ctx.params.slug as string,
+  }).catch((err: Error) => {
+    console.error(err)
+    return {}
   })
 
   if (error) console.error(error)
+
+  if (!post) {
+    return { notFound: true }
+  }
 
   return {
     props: {
