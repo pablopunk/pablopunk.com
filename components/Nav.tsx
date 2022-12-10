@@ -153,7 +153,7 @@ export const Nav = () => {
           style={spotifyStyles}
         >
           <FaSpotify className="mx-2 text-xl" />
-          <div className="pr-2">{_('Not playing anything')}</div>
+          <div className="pr-2 whitespace-nowrap">{_('Not playing anything')}</div>
         </animated.a>
       )}
       <div className="flex justify-end gap-2 mr-2 w-[400px]">

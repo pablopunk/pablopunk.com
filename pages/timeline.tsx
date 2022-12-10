@@ -94,7 +94,7 @@ export default function Timeline() {
             <div className='font-bold text-sm text-primary-7'>{item.date}</div>
             <a href={item.url}>
               <h2>{item.title}</h2>
-              <img src={item.image} alt={item.title} width="100%" className='object-cover' />
+              <img src={item.image} alt={item.title} width="100%" className='object-cover w-[400px]' />
             </a>
             <p className='text-sm opacity-70 italic'>{item.description}</p>
           </li>

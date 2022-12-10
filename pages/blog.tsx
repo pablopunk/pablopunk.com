@@ -15,10 +15,9 @@ interface Props extends PageProps {
 const FeaturedImage = ({ post }: { post: Post }) => (
   <img
     src={post.image}
-    width={50}
-    height={50}
+    width="70px"
     alt={post.title}
-    className="rounded-md object-cover w-[50px] h-[50px]"
+    className="rounded-md object-cover w-[70px]"
   />
 )
 
@@ -28,7 +27,7 @@ const Post = ({ post }: { post: Post }) => (
     className="flex gap-2 bg-neutral-2 p-2 items-center justify-between rounded-lg hover:bg-neutral-3 dark:border hover:no-underline"
   >
     <div className="flex gap-3 items-center">
-      <div className="hidden md:flex">
+      <div className="hidden md:flex min-w-[70px]">
         <FeaturedImage post={post} />
       </div>
       <div className="flex flex-col gap-2">
