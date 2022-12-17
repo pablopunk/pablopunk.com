@@ -17,33 +17,31 @@ const FeaturedImage = ({ post }: { post: Post }) => (
     src={post.image}
     width="70px"
     alt={post.title}
-    className="rounded-md object-cover w-[70px]"
+    className="rounded-md object-cover w-[70px] flex shadow-md dark:border"
   />
 )
 
 const Post = ({ post }: { post: Post }) => (
   <a
     href={`/posts/${post.slug}`}
-    className="flex gap-2 bg-neutral-2 p-2 items-center justify-between rounded-lg hover:bg-neutral-3 dark:border hover:no-underline"
+    className="flex gap-2 p-2 items-center justify-between rounded-lg hover:bg-neutral-2 hover:no-underline"
   >
-    <div className="flex gap-3 items-center">
-      <div className="hidden md:flex min-w-[70px]">
-        <FeaturedImage post={post} />
-      </div>
-      <div className="flex flex-col gap-2">
+    <div className="flex gap-3 items-center justify-between w-full">
+      <div className="flex flex-col gap-1">
         <span className="flex gap-2">
           <h2>{post.title}</h2>
           <div className="hidden md:flex">
             <Visits post={post} size="xs" />
           </div>
         </span>
-        <span className="italic opacity-80 text-sm">{post.subtitle}</span>
+        <span className="capitalize whitespace-nowrap text-xs text-neutral-5">
+          {formatDistanceToNow(new Date(post.date))}
+        </span>
+        <span className="font-normal opacity-80 text-sm">{post.subtitle}</span>
       </div>
-    </div>
-    <div className="flex flex-col justify-between text-xs italic opacity-50 self-start">
-      <span className="whitespace-nowrap">
-        {formatDistanceToNow(new Date(post.date))}
-      </span>
+      <div className="hidden md:flex min-w-[70px]">
+        <FeaturedImage post={post} />
+      </div>
     </div>
   </a>
 )

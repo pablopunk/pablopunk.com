@@ -16,7 +16,6 @@
     "baseUrl": ".",
     "paths": {
       "@components*": ["components*"],
-      "@config": ["config"],
       "@context*": ["context*"],
       "@db*": ["db*"],
       "@email*": ["email*"],

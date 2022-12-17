@@ -1,4 +1,4 @@
-import { SITE_URL } from '@config'
+import { SITE_URL } from 'config'
 import { Post } from '@db/supabase/types'
 
 const CLIENT_API = SITE_URL + '/visits/'
