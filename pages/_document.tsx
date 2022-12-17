@@ -68,6 +68,11 @@ export default class extends Document {
         <Head>
           <script data-goatcounter="/goat" async src="/count.js"></script>
           <script
+            defer
+            data-domain="pablopunk.com"
+            src="/plausible.js"
+          ></script>
+          <script
             async
             type="text/javascript"
             dangerouslySetInnerHTML={{ __html: lwtScript }}
