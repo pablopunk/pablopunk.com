@@ -30,10 +30,6 @@ const rw = [
     dest: 'https://pablopunk.goatcounter.com/count',
   },
   {
-    path: '/plausible.js',
-    dest: 'https://plausible.io/js/script.js'
-  },
-  {
     path: '/visits/:path*',
     dest: 'https://pablopunk.goatcounter.com/counter/:path*',
   },
