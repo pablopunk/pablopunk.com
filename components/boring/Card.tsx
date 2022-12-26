@@ -43,7 +43,7 @@ export const Card = ({
             <Button
               key={`cta-${cta.href || cta.text || cta.title}-${i}`}
               {...cta}
-              className="text-neutral-7"
+              className="text-neutral-7 text-sm"
             />
           ))}
         </div>
