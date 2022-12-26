@@ -1,9 +1,9 @@
-import { Post } from '@db/supabase/types'
-import { useVisitsCount } from '@hooks/useVisitsCount'
+import { Post } from '~/db/supabase/types'
+import { useVisitsCount } from '~/hooks/useVisitsCount'
 import { BsGraphUp } from 'react-icons/bs'
-import type { Size } from '@types/styles'
+import type { Size } from '~/types/styles'
 import classNames from 'classnames'
-import { useTranslation } from '@hooks/useTranslation'
+import { useTranslation } from '~/hooks/useTranslation'
 
 export const Visits = ({ post, size }: { post: Post, size?: Size }) => {
   const visits = useVisitsCount(post)

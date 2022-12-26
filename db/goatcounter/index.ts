@@ -1,5 +1,5 @@
 import { SITE_URL } from 'config'
-import { Post } from '@db/supabase/types'
+import { Post } from '~/db/supabase/types'
 
 const CLIENT_API = SITE_URL + '/visits/'
 const SERVER_API = 'https://pablopunk.goatcounter.com/counter/'

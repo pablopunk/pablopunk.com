@@ -4,7 +4,7 @@ import {
   GetServerSidePropsContext,
   GetStaticPropsContext,
 } from 'next'
-import { PageProps } from '@types/page'
+import { PageProps } from '~/types/page'
 import { i18nStaticProps } from './i18n'
 
 export const withAdminServerSideProps: GetServerSideProps<PageProps> = async (

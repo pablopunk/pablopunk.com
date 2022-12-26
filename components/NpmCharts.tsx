@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { Line } from 'react-chartjs-2'
 import 'chartjs-adapter-date-fns'
-import { useCssVar } from '@hooks/useCssVar'
+import { useCssVar } from '~/hooks/useCssVar'
 import * as R from 'ramda'
-import { getJson } from '@lib/utils'
-import { useTranslation } from '@hooks/useTranslation'
+import { getJson } from '~/lib/utils'
+import { useTranslation } from '~/hooks/useTranslation'
 
 const SSR = typeof window === 'undefined'
 

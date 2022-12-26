@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const { withSentryConfig } = require('@sentry/nextjs')
+const path = require('path')
 
 const locales = ['en', 'es']
 const i18n = {

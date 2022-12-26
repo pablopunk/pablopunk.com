@@ -3,7 +3,7 @@ import {
   getAllPostsForLocale,
   insertPost,
   updatePost,
-} from '@db/supabase/tables/posts'
+} from '~/db/supabase/tables/posts'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function postsApi(

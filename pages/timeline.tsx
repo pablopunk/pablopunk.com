@@ -1,7 +1,7 @@
-import { pageStaticProps } from '@middleware'
-import { useTranslation } from '@hooks/useTranslation'
-import { timeBetween, timeSince, howOldAmI } from '@lib/utils'
-import { Section } from '@components/Section'
+import { pageStaticProps } from '~/middleware'
+import { useTranslation } from '~/hooks/useTranslation'
+import { timeBetween, timeSince, howOldAmI } from '~/lib/utils'
+import { Section } from '~/components/Section'
 
 const getImage = (item: string) => `/images/timeline/${item}.jpg`
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)

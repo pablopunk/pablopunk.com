@@ -1,6 +1,6 @@
-import client from '@db/supabase/client'
-import { TRANSLATION_REQUESTS_TABLE } from '@db/supabase/tables'
-import { TranslationRequest } from '@db/supabase/types'
+import client from '~/db/supabase/client'
+import { TRANSLATION_REQUESTS_TABLE } from '~/db/supabase/tables'
+import { TranslationRequest } from '~/db/supabase/types'
 
 export async function getAllTranslationRequestsForIpAndSlug({
   ip,

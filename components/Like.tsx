@@ -1,10 +1,10 @@
-import { checkIfUserDidSomething, userDidSomething } from '@lib/storage'
+import { checkIfUserDidSomething, userDidSomething } from '~/lib/storage'
 import { FunctionComponent, useEffect, useState } from 'react'
-import { Button } from '@ui/Button'
-import useLikes from '@db/hooks/useLikes'
-import { postJson } from '@lib/utils'
+import { Button } from '~/components/neon/Button'
+import useLikes from '~/db/hooks/useLikes'
+import { postJson } from '~/lib/utils'
 import { RiHeart2Line } from 'react-icons/ri'
-import { useTranslation } from '@hooks/useTranslation'
+import { useTranslation } from '~/hooks/useTranslation'
 
 const responseToJSON = (response: any) => response.json()
 

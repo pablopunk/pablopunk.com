@@ -1,4 +1,4 @@
-import { T } from '@components/T'
+import { T } from '~/components/T'
 
 export default function Unauthorized() {
   return (

@@ -1,4 +1,4 @@
-import { LoginForm } from '@components/LoginForm'
+import { LoginForm } from '~/components/LoginForm'
 import { useEffect, useState } from 'react'
 
 export default function Login() {

@@ -1,6 +1,6 @@
-import { getAllTranslationsForLocale } from '@db/supabase/tables/i18n'
+import { getAllTranslationsForLocale } from '~/db/supabase/tables/i18n'
 import { GetStaticPropsContext } from 'next'
-import { PageProps } from '@types/page'
+import { PageProps } from '~/types/page'
 
 export async function i18nStaticProps(ctx: GetStaticPropsContext) {
   const translationsArray = await getAllTranslationsForLocale(ctx.locale)

@@ -1,4 +1,4 @@
-import { useAppearedOnScreen } from '@hooks/useFirstTimeVisible'
+import { useAppearedOnScreen } from '~/hooks/useFirstTimeVisible'
 import { FunctionComponent, ReactElement } from 'react'
 
 type Props = {

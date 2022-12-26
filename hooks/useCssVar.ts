@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import useTheme from '@hooks/useTheme'
+import useTheme from '~/hooks/useTheme'
 
 export const useCssVar = (cssVar: string) => {
   const theme = useTheme()

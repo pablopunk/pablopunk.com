@@ -1,4 +1,4 @@
-import { useTranslation } from '@hooks/useTranslation'
+import { useTranslation } from '~/hooks/useTranslation'
 import { ComponentProps } from 'react'
 import React from 'react'
 

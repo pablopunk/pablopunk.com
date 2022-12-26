@@ -1,7 +1,7 @@
-import { Card } from '@ui/Card'
-import { T } from '@components/T'
-import { useTranslation } from '@hooks/useTranslation'
-import { pageStaticProps } from '@middleware'
+import { Card } from '~/components/neon/Card'
+import { T } from '~/components/T'
+import { useTranslation } from '~/hooks/useTranslation'
+import { pageStaticProps } from '~/middleware'
 import {
   FaArrowRight,
   FaGithub,
@@ -14,8 +14,8 @@ import { HiOutlineStar, HiTerminal } from 'react-icons/hi'
 import { MdFace, MdHomeWork, MdLibraryBooks, MdMail } from 'react-icons/md'
 import { AiFillCalendar } from 'react-icons/ai'
 import { GetStaticProps } from 'next'
-import { getPost } from '@db/supabase/tables/posts'
-import { Post } from '@db/supabase/types'
+import { getPost } from '~/db/supabase/tables/posts'
+import { Post } from '~/db/supabase/types'
 
 type Props = {
   featuredPosts: Post[]

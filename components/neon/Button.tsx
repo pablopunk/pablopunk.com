@@ -1,7 +1,7 @@
 import { IconType } from 'react-icons'
 import classNames from 'classnames'
 import { ReactNode, useMemo } from 'react'
-import { Size } from '@types/styles'
+import { Size } from '~/types/styles'
 import Link from 'next/link'
 import React from 'react'
 
