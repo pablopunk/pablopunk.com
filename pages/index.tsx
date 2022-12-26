@@ -24,7 +24,7 @@ type Props = {
 export default function Home({ featuredPosts }: Props) {
   const { _ } = useTranslation()
   return (
-    <div className='fill-height flex items-center'>
+    <div className='fill-height flex pt-2 md:pt-0 items-start md:items-center'>
       <div className="max-w-md mx-auto px-4 py-2 flex flex-col gap-4 md:grid md:grid-cols-2 md:max-w-3xl justify-center">
         <Card
           title={_('Me')}
