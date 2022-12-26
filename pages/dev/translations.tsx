@@ -1,4 +1,4 @@
-import { Button } from '~/components/neon/Button'
+import { Button } from '~/components/boring/Button'
 import { Section } from '~/components/Section'
 import { T } from '~/components/T'
 import {
@@ -117,7 +117,7 @@ export default function Translations({ initialData }: Props) {
         </Button>
       </Section>
       <Section className="border rounded-lg p-2 w-full bg-neutral-2">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row items-center justify-between">
           <h2 className="text-xl mb-2 flex gap-2 justify-between">
             <T>Translations</T>
           </h2>

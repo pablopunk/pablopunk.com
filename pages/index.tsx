@@ -1,4 +1,4 @@
-import { Card } from '~/components/neon/Card'
+import { Card } from '~/components/boring/Card'
 import { T } from '~/components/T'
 import { useTranslation } from '~/hooks/useTranslation'
 import { pageStaticProps } from '~/middleware'
@@ -24,75 +24,27 @@ type Props = {
 export default function Home({ featuredPosts }: Props) {
   const { _ } = useTranslation()
   return (
-    <div className="flex items-center justify-center fill-height p-4 md:p-0">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card
-          title={_('Work')}
-          Icon={MdHomeWork}
-          CTA={[
-            {
-              title: 'LinkedIn',
-              RightIcon: FaLinkedin,
-              href: 'https://linkedin.com/in/pablopunk',
-            },
-            {
-              title: _('Timeline'),
-              RightIcon: AiFillCalendar,
-              href: '/timeline',
-            },
-            {
-              text: 'CV',
-              RightIcon: FaGraduationCap,
-              href: 'https://cv.pablopunk.com',
-            },
-          ]}
-        >
-          <T>
-            I work at <a href="https://maze.co">Maze</a> as full-stack
-            developer.
-          </T>
-        </Card>
-        <Card
-          title={_('Code')}
-          Icon={HiTerminal}
-          secondary
-          CTA={[
-            {
-              title: 'Github',
-              RightIcon: FaGithub,
-              href: 'https://github.com/pablopunk',
-            },
-            {
-              text: _('Featured repos'),
-              RightIcon: HiOutlineStar,
-              href: '/code',
-            },
-          ]}
-        >
-          <T>
-            All of my personal projects and open-source contributions can be
-            found on <b>Github</b>.
-          </T>
-        </Card>
+    <div className="w-full fill-height flex items-center justify-center">
+      <div className="max-w-[400px] flex flex-col gap-4">
         <Card
           title={_('Me')}
           className="order-first md:order-none"
           Icon={MdFace}
-          secondary
           CTA={[
             {
-              RightIcon: FaTwitter,
+              LeftIcon: FaTwitter,
               title: '@pablopunk',
               href: 'https://twitter.com/pablopunk',
             },
             {
-              RightIcon: FaInstagram,
+              LeftIcon: FaInstagram,
               title: '@pablopunk',
               href: 'https://instagram.com/pablopunk',
             },
             {
-              RightIcon: MdMail,
+              LeftIcon: MdMail,
               href: 'mailto:pablo@pablopunk.com',
+              title: "pablo@pablopunk.com"
             },
           ]}
         >
@@ -107,6 +59,53 @@ export default function Home({ featuredPosts }: Props) {
           </div>
         </Card>
         <Card
+          title={_('Work')}
+          Icon={MdHomeWork}
+          CTA={[
+            {
+              title: 'LinkedIn',
+              LeftIcon: FaLinkedin,
+              href: 'https://linkedin.com/in/pablopunk',
+            },
+            {
+              title: _('Timeline'),
+              LeftIcon: AiFillCalendar,
+              href: '/timeline',
+            },
+            {
+              title: 'CV',
+              LeftIcon: FaGraduationCap,
+              href: 'https://cv.pablopunk.com',
+            },
+          ]}
+        >
+          <T>
+            I work at <a href="https://maze.co">Maze</a> as full-stack
+            developer.
+          </T>
+        </Card>
+        <Card
+          title={_('Code')}
+          Icon={HiTerminal}
+          CTA={[
+            {
+              title: 'Github',
+              LeftIcon: FaGithub,
+              href: 'https://github.com/pablopunk',
+            },
+            {
+              title: _('Featured repos'),
+              LeftIcon: HiOutlineStar,
+              href: '/code',
+            },
+          ]}
+        >
+          <T>
+            All of my personal projects and open-source contributions can be
+            found on <b>Github</b>.
+          </T>
+        </Card>
+        <Card
           title="Blog"
           Icon={MdLibraryBooks}
           CTA={{
@@ -119,7 +118,7 @@ export default function Home({ featuredPosts }: Props) {
             {featuredPosts.map((post) => (
               <a
                 href={`/posts/${post.slug}`}
-                className="flex gap-1 items-start text-neutral-9 text-xs"
+                className="flex gap-1 items-start text-xs"
                 key={post.id}
               >
                 <div className="pt-[2.5px]">
@@ -143,20 +142,11 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     getPost({ id: 11 }),
   ])
 
-  if (featuredPosts.some((p) => p.error)) {
-    console.error(
-      featuredPosts
-        .map((p) => p.error)
-        .filter(Boolean)
-        .join('\n'),
-    )
-  }
-
   return {
     ...pageProps,
     props: {
       ...pageProps.props,
-      featuredPosts: featuredPosts.map((p) => p.data),
+      featuredPosts
     },
   }
 }

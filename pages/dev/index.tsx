@@ -1,4 +1,4 @@
-import { Button } from '~/components/neon/Button'
+import { Button } from '~/components/boring/Button'
 import { Section } from '~/components/Section'
 import { T } from '~/components/T'
 import { withAdminServerSideProps } from '~/middleware'

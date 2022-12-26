@@ -20,14 +20,12 @@ export default function Slug({ post }: Props) {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const pageProps = await pageStaticProps(ctx)
-  const { data: post, error } = await getPost({
+  const post = await getPost({
     slug: ctx.params.slug as string,
   }).catch((err: Error) => {
     console.error(err)
     return {}
   })
-
-  if (error) console.error(error)
 
   if (!post) {
     return { notFound: true }
@@ -43,5 +41,5 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
 export const getStaticPaths = async () => ({
   paths: [],
-  fallback: 'blocking',
+  fallback: false,
 })

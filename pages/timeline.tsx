@@ -88,10 +88,10 @@ export default function Timeline() {
 
   return (
     <Section>
-      <ul className='relative max-w-[400px] mx-auto py-2 rounded-lg'>
+      <ul className='relative max-w-[400px] mx-auto py-2'>
         {items.map((item) => (
           <li key={item.image} className="pl-3 relative first:mt-0 mt-5 flex flex-col gap-2">
-            <div className='font-bold text-sm text-primary-7'>{item.date}</div>
+            <div className='font-bold text-sm'>{item.date}</div>
             <a href={item.url}>
               <h2>{item.title}</h2>
               <img src={item.image} alt={item.title} width="100%" className='object-cover w-[400px]' />
@@ -102,11 +102,7 @@ export default function Timeline() {
       </ul>
       <style jsx>{`
         ul {
-          border-left: 3px solid var(--color-secondary-1);
-          box-shadow: -8px 6px 12px -2px var(--color-secondary-2);
-        }
-        :global(.dark) ul {
-          border-color: var(--color-secondary-7);
+          border-left: 3px solid var(--color-neutral-3);
         }
         /* fix box-shadow bleeding on top */
         ul:before {
@@ -123,10 +119,7 @@ export default function Timeline() {
           content: '';
           width: 10px;
           height: 5px;
-          background-color: var(--color-secondary-1);
-        }
-        :global(.dark) li:before {
-          background-color: var(--color-secondary-7);
+          background-color: var(--color-neutral-3);
         }
       `}</style>
     </Section>

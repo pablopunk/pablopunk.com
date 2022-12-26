@@ -5,8 +5,7 @@ import { FunctionComponent } from 'preact'
 import { Post } from '~/db/supabase/types'
 import { useTranslation } from '~/hooks/useTranslation'
 import { Visits } from './Visits'
-import { useRouter } from 'next/router'
-import { Button } from '~/components/neon/Button'
+import { Button } from '~/components/boring/Button'
 import { BiArrowBack } from 'react-icons/bi'
 import LikeComponent from './Like'
 
@@ -112,12 +111,11 @@ type Props = {
 }
 
 export const Article: FunctionComponent<Props> = ({ post }) => {
-  const { locale } = useRouter()
-  const { _ } = useTranslation(locale)
+  const { _ } = useTranslation()
 
   return (
     <>
-      <Button href="/blog" LeftIcon={BiArrowBack} secondary>{_('Go back')}</Button>
+      <Button href="/blog" LeftIcon={BiArrowBack}>{_('Go back')}</Button>
       <StyledArticle>
         <img src={post.image} alt={post.title} className="mt-4" />
         <div className="w-full my-2 italic font-thin text-center opacity-75">

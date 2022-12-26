@@ -2,7 +2,7 @@ import { supabaseClient } from '@supabase/auth-helpers-nextjs'
 import { useUser } from '@supabase/auth-helpers-react'
 import { useTranslation } from '~/hooks/useTranslation'
 import { FaGithub } from 'react-icons/fa'
-import { Button } from '~/components/neon/Button'
+import { Button } from '~/components/boring/Button'
 
 export const LoginForm = ({ error = null }) => {
   const { _ } = useTranslation()

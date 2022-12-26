@@ -34,7 +34,7 @@ const Post = ({ post }: { post: Post }) => (
             <Visits post={post} size="xs" />
           </div>
         </span>
-        <span className="capitalize whitespace-nowrap text-xs text-neutral-5">
+        <span className="capitalize whitespace-nowrap text-xs text-neutral-7">
           {formatDistanceToNow(new Date(post.date))}
         </span>
         <span className="font-normal opacity-80 text-sm">{post.subtitle}</span>

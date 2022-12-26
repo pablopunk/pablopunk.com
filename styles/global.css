@@ -9,16 +9,16 @@ html {
 }
 
 body {
-  --color-neutral-1: #f8fafc;
-  --color-neutral-2: #f1f5f9;
-  --color-neutral-3: #e2e8f0;
-  --color-neutral-4: #94a3b8;
-  --color-neutral-5: #64748b;
-  --color-neutral-6: #475569;
-  --color-neutral-7: #334155;
-  --color-neutral-8: #1e293b;
-  --color-neutral-9: #0f172a;
-  --color-neutral-10: #000000;
+  --color-neutral-1: hsl(190, 20%, 100%);
+  --color-neutral-2: hsl(190, 20%, 95%);
+  --color-neutral-3: hsl(190, 20%, 85%);
+  --color-neutral-4: hsl(190, 20%, 70%);
+  --color-neutral-5: hsl(190, 20%, 55%);
+  --color-neutral-6: hsl(190, 20%, 45%);
+  --color-neutral-7: hsl(190, 20%, 30%);
+  --color-neutral-8: hsl(190, 20%, 15%);
+  --color-neutral-9: hsl(190, 20%, 5%);
+  --color-neutral-10: hsl(190, 20%, 0%);
   --color-primary-1: #e6fdfa;
   --color-primary-2: #c3fbf4;
   --color-primary-3: #94f8eb;
@@ -42,16 +42,16 @@ body {
 }
 
 body.dark {
-  --color-neutral-1: #000000;
-  --color-neutral-2: #0f172a;
-  --color-neutral-3: #1e293b;
-  --color-neutral-4: #334155;
-  --color-neutral-5: #475569;
-  --color-neutral-6: #64748b;
-  --color-neutral-7: #94a3b8;
-  --color-neutral-8: #e2e8f0;
-  --color-neutral-9: #f1f5f9;
-  --color-neutral-10: #f8fafc;
+  --color-neutral-1: hsl(190, 20%, 0%);
+  --color-neutral-2: hsl(190, 20%, 5%);
+  --color-neutral-3: hsl(190, 20%, 15%);
+  --color-neutral-4: hsl(190, 20%, 30%);
+  --color-neutral-5: hsl(190, 20%, 45%);
+  --color-neutral-6: hsl(190, 20%, 55%);
+  --color-neutral-7: hsl(190, 20%, 70%);
+  --color-neutral-8: hsl(190, 20%, 85%);
+  --color-neutral-9: hsl(190, 20%, 95%);
+  --color-neutral-10: hsl(190, 20%, 100%);
   --color-primary-1: #036b5e;
   --color-primary-2: #048877;
   --color-primary-3: #05a994;
@@ -88,10 +88,6 @@ body {
   --font-serif: 'DM Serif Display', serif;
   color: var(--color-neutral-8);
   background-color: var(--color-neutral-1);
-}
-
-body.dark {
-  background-color: var(--color-neutral-2);
 }
 
 body {

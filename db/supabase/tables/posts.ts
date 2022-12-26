@@ -13,13 +13,20 @@ export async function getAllPostsForLocale(locale: string, preview: boolean) {
 }
 
 export async function getPost(post: Post) {
-  return client
+  const result = await client
     .from<Post>(POSTS_TABLE)
     .select(
       'id, date, title, subtitle, locale, slug, translated_slug, body, image, status',
     )
     .match(post)
     .single()
+
+  if (result.error) {
+    console.error(result.error)
+    return null
+  }
+
+  return result.data
 }
 
 export async function insertPost(post: Post) {

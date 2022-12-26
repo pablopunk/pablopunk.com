@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { Button } from '~/components/neon/Button'
+import { Button } from '~/components/boring/Button'
 import useTheme from '~/hooks/useTheme'
 import { useTranslation } from '~/hooks/useTranslation'
 import { getJson } from '~/lib/utils'
@@ -34,6 +34,7 @@ type Song = {
 const ChangeThemeButton = () => {
   const [mounted, mountedSet] = React.useState(false)
   const [theme, toggleTheme] = useTheme()
+  const { _ } = useTranslation()
 
   React.useEffect(() => mountedSet(true), [])
 
@@ -44,9 +45,10 @@ const ChangeThemeButton = () => {
   return (
     <Button
       onClick={toggleTheme}
-      title="Change theme"
+      title={_("Change theme")}
       className="toggle-theme-button"
-      RightIcon={theme === 'dark' ? RiMoonClearLine : RiSunLine}
+      RightIcon={theme === 'dark' ? RiMoonClearLine : RiSunLine
+      }
     />
   )
 }
@@ -84,7 +86,7 @@ export const Nav = () => {
     y: nowPlaying == null || isValidating ? -100 : 0,
   })
   const spotifyBoxStyles =
-    'items-center hidden text-xs transition-colors bg-primary-1 text-primary-7 border border-primary-2 rounded-md opacity-80 md:flex hover:bg-primary-3 min-h-[32px]'
+    'items-center hidden text-xs transition-colors bg-neutral-2 text-primary-7 rounded-md opacity-80 md:flex hover:bg-primary-3 min-h-[32px]'
   const { _ } = useTranslation()
   const { pathname } = useRouter()
   const locationIsHome = pathname === '/'
@@ -92,7 +94,7 @@ export const Nav = () => {
 
   return (
     <nav
-      className="relative z-20 flex items-center justify-between no-scrollbar w-full"
+      className="relative z-20 flex items-center justify-between no-scrollbar w-full px-2"
       style={{ height: 'var(--nav-height)' }}
     >
       <div className={classNames('flex justify-start gap-2 ml-2 w-[400px]')}>

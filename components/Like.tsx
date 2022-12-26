@@ -4,7 +4,6 @@ import { Button } from '~/components/neon/Button'
 import useLikes from '~/db/hooks/useLikes'
 import { postJson } from '~/lib/utils'
 import { RiHeart2Line } from 'react-icons/ri'
-import { useTranslation } from '~/hooks/useTranslation'
 
 const responseToJSON = (response: any) => response.json()
 
@@ -16,7 +15,6 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
   const likeCount = useLikes(slug)
   const [alreadyLiked, setAlreadyLiked] = useState(false)
   const event = 'liked-' + slug
-  const { _ } = useTranslation()
 
   useEffect(() => {
     if (slug && checkIfUserDidSomething(event)) {
@@ -47,7 +45,6 @@ const LikeComponent: FunctionComponent<Props> = ({ slug }) => {
       onClick={likeThis}
       LeftIcon={RiHeart2Line}
       className="button-like"
-      title={_('likes')}
     >
       {likeCount}
     </Button>

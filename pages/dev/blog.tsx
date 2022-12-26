@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import type { Post } from '~/db/supabase/types'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '~/hooks/useTranslation'
-import { Button } from '~/components/neon/Button'
+import { Button } from '~/components/boring/Button'
 import classNames from 'classnames'
 import { useRouter } from 'next/router'
 import { i18n } from '~/next.config'
@@ -87,7 +87,7 @@ const Edit = ({
             /* Change status to live or draft */
             <Button
               onClick={() => {
-                const status = post.status === 'live' ? 'draft' : 'live'
+                const status: Post['status'] = post.status === 'live' ? 'draft' : 'live'
                 const updatedPost = { ...post, status }
                 onSubmit(updatedPost)
                 setPost(updatedPost)
@@ -96,7 +96,6 @@ const Edit = ({
                 post.status === 'live' ? RiDraftLine : AiOutlineCloudUpload
               }
               title={post.status === 'live' ? 'Send to drafts' : 'Publish'}
-              secondary={post.status === 'live'}
             />
           )}
         </div>
@@ -155,7 +154,7 @@ const Edit = ({
               <Button
                 onClick={() => onDelete(post)}
                 text="Delete post"
-                secondary
+                className='text-danger'
               />
             )}
           </div>
