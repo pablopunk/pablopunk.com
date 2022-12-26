@@ -5,7 +5,8 @@ import { Section } from '~/components/Section'
 
 const getImage = (item: string) => `/images/timeline/${item}.jpg`
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
-const formatTimeBetween = (date1: Date, date2: Date) => capitalize(timeBetween(date1, date2))
+const formatTimeBetween = (date1: Date, date2: Date) =>
+  capitalize(timeBetween(date1, date2))
 const formatTimeSince = (date: Date) => capitalize(timeSince(date))
 
 export default function Timeline() {
@@ -26,7 +27,10 @@ export default function Timeline() {
       url: 'http://prezly.com',
       description: _('NextJS Developer. Templates'),
       duration: _(
-        `${formatTimeBetween(new Date(2021, 1), new Date(2021, 7))}. 100% Remote`,
+        `${formatTimeBetween(
+          new Date(2021, 1),
+          new Date(2021, 7),
+        )}. 100% Remote`,
       ),
       image: getImage('prezly'),
     },
@@ -36,7 +40,10 @@ export default function Timeline() {
       url: 'http://sourcefabric.org',
       description: _('Fullstack Developer. Superdesk'),
       duration: _(
-        `${formatTimeBetween(new Date(2018, 0), new Date(2021, 1))}. 100% Remote`,
+        `${formatTimeBetween(
+          new Date(2018, 0),
+          new Date(2021, 1),
+        )}. 100% Remote`,
       ),
       image: getImage('sourcefabric'),
     },
@@ -46,7 +53,10 @@ export default function Timeline() {
       url: 'https://keepcoding.io/casos-de-exito/trabajar-desarrollador-web-desde-casa/',
       description: _('Master in Fullstack Javascript'),
       duration: _(
-        `${formatTimeBetween(new Date(2017, 6), new Date(2018, 2))}. 100% Remote`,
+        `${formatTimeBetween(
+          new Date(2017, 6),
+          new Date(2018, 2),
+        )}. 100% Remote`,
       ),
       image: getImage('keepcoding'),
     },
@@ -84,19 +94,27 @@ export default function Timeline() {
       image: getImage('born'),
       duration: _("I'm ") + howOldAmI() + _(' years old'),
     },
-  ];
+  ]
 
   return (
     <Section>
-      <ul className='relative max-w-[400px] mx-auto py-2'>
+      <ul className="relative max-w-[400px] mx-auto py-2">
         {items.map((item) => (
-          <li key={item.image} className="pl-3 relative first:mt-0 mt-5 flex flex-col gap-2">
-            <div className='font-bold text-sm'>{item.date}</div>
+          <li
+            key={item.image}
+            className="pl-3 relative first:mt-0 mt-5 flex flex-col gap-2"
+          >
+            <div className="font-bold text-sm">{item.date}</div>
             <a href={item.url}>
               <h2>{item.title}</h2>
-              <img src={item.image} alt={item.title} width="100%" className='object-cover w-[400px]' />
+              <img
+                src={item.image}
+                alt={item.title}
+                width="100%"
+                className="object-cover w-[400px]"
+              />
             </a>
-            <p className='text-sm opacity-70 italic'>{item.description}</p>
+            <p className="text-sm opacity-70 italic">{item.description}</p>
           </li>
         ))}
       </ul>

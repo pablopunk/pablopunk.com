@@ -115,7 +115,9 @@ export const Article: FunctionComponent<Props> = ({ post }) => {
 
   return (
     <>
-      <Button href="/blog" LeftIcon={BiArrowBack}>{_('Go back')}</Button>
+      <Button href="/blog" LeftIcon={BiArrowBack}>
+        {_('Go back')}
+      </Button>
       <StyledArticle>
         <img src={post.image} alt={post.title} className="mt-4" />
         <div className="w-full my-2 italic font-thin text-center opacity-75">
@@ -135,6 +137,7 @@ export const Article: FunctionComponent<Props> = ({ post }) => {
             <Markdown>{post.body}</Markdown>
           </SRLWrapper>
         </div>
-      </StyledArticle></>
+      </StyledArticle>
+    </>
   )
 }

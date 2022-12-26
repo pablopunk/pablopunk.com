@@ -3,9 +3,7 @@ import classNames from 'classnames'
 import { ReactNode, useMemo } from 'react'
 import Link from 'next/link'
 import React from 'react'
-import {
-  Tooltip,
-} from 'react-tippy';
+import { Tooltip } from 'react-tippy'
 
 export type ButtonProps = {
   onClick?(): void
@@ -34,16 +32,19 @@ const ButtonComponent = ({
   const iconOnly = useMemo(() => !text && !children, [text, children])
   const ButtonOrA = (props) => {
     if (typeof href === 'string') {
-      return (
-        <Link href={href} {...props} {...rest} />
-      )
+      return <Link href={href} {...props} {...rest} />
     }
     return <button {...props} {...rest} />
   }
 
   return (
     <>
-      <Tooltip title={title} position="bottom" trigger="mouseenter" duration={100}>
+      <Tooltip
+        title={title}
+        position="bottom"
+        trigger="mouseenter"
+        duration={100}
+      >
         <ButtonOrA
           className={classNames(
             'group hover:no-underline hover:text-neutral-5 transition inline-flex items-center justify-center font-bold overflow-hidden',

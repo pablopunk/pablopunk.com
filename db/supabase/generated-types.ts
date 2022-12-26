@@ -4,893 +4,893 @@
  */
 
 export interface paths {
-  "/": {
+  '/': {
     get: {
       responses: {
         /** OK */
-        200: unknown;
-      };
-    };
-  };
-  "/i18n": {
+        200: unknown
+      }
+    }
+  }
+  '/i18n': {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.i18n.id"];
-          created_at?: parameters["rowFilter.i18n.created_at"];
-          locale?: parameters["rowFilter.i18n.locale"];
-          key?: parameters["rowFilter.i18n.key"];
-          value?: parameters["rowFilter.i18n.value"];
+          id?: parameters['rowFilter.i18n.id']
+          created_at?: parameters['rowFilter.i18n.created_at']
+          locale?: parameters['rowFilter.i18n.locale']
+          key?: parameters['rowFilter.i18n.key']
+          value?: parameters['rowFilter.i18n.value']
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select']
           /** Ordering */
-          order?: parameters["order"];
+          order?: parameters['order']
           /** Limiting and Pagination */
-          offset?: parameters["offset"];
+          offset?: parameters['offset']
           /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
+          limit?: parameters['limit']
+        }
         header: {
           /** Limiting and Pagination */
-          Range?: parameters["range"];
+          Range?: parameters['range']
           /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
+          'Range-Unit'?: parameters['rangeUnit']
           /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
+          Prefer?: parameters['preferCount']
+        }
+      }
       responses: {
         /** OK */
         200: {
-          schema: definitions["i18n"][];
-        };
+          schema: definitions['i18n'][]
+        }
         /** Partial Content */
-        206: unknown;
-      };
-    };
+        206: unknown
+      }
+    }
     post: {
       parameters: {
         body: {
           /** i18n */
-          i18n?: definitions["i18n"];
-        };
+          i18n?: definitions['i18n']
+        }
         query: {
           /** Filtering Columns */
-          select?: parameters["select"];
-        };
+          select?: parameters['select']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** Created */
-        201: unknown;
-      };
-    };
+        201: unknown
+      }
+    }
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.i18n.id"];
-          created_at?: parameters["rowFilter.i18n.created_at"];
-          locale?: parameters["rowFilter.i18n.locale"];
-          key?: parameters["rowFilter.i18n.key"];
-          value?: parameters["rowFilter.i18n.value"];
-        };
+          id?: parameters['rowFilter.i18n.id']
+          created_at?: parameters['rowFilter.i18n.created_at']
+          locale?: parameters['rowFilter.i18n.locale']
+          key?: parameters['rowFilter.i18n.key']
+          value?: parameters['rowFilter.i18n.value']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
+        204: never
+      }
+    }
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.i18n.id"];
-          created_at?: parameters["rowFilter.i18n.created_at"];
-          locale?: parameters["rowFilter.i18n.locale"];
-          key?: parameters["rowFilter.i18n.key"];
-          value?: parameters["rowFilter.i18n.value"];
-        };
+          id?: parameters['rowFilter.i18n.id']
+          created_at?: parameters['rowFilter.i18n.created_at']
+          locale?: parameters['rowFilter.i18n.locale']
+          key?: parameters['rowFilter.i18n.key']
+          value?: parameters['rowFilter.i18n.value']
+        }
         body: {
           /** i18n */
-          i18n?: definitions["i18n"];
-        };
+          i18n?: definitions['i18n']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/likes": {
+        204: never
+      }
+    }
+  }
+  '/likes': {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.likes.id"];
-          slug?: parameters["rowFilter.likes.slug"];
-          ip?: parameters["rowFilter.likes.ip"];
-          inserted_at?: parameters["rowFilter.likes.inserted_at"];
+          id?: parameters['rowFilter.likes.id']
+          slug?: parameters['rowFilter.likes.slug']
+          ip?: parameters['rowFilter.likes.ip']
+          inserted_at?: parameters['rowFilter.likes.inserted_at']
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select']
           /** Ordering */
-          order?: parameters["order"];
+          order?: parameters['order']
           /** Limiting and Pagination */
-          offset?: parameters["offset"];
+          offset?: parameters['offset']
           /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
+          limit?: parameters['limit']
+        }
         header: {
           /** Limiting and Pagination */
-          Range?: parameters["range"];
+          Range?: parameters['range']
           /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
+          'Range-Unit'?: parameters['rangeUnit']
           /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
+          Prefer?: parameters['preferCount']
+        }
+      }
       responses: {
         /** OK */
         200: {
-          schema: definitions["likes"][];
-        };
+          schema: definitions['likes'][]
+        }
         /** Partial Content */
-        206: unknown;
-      };
-    };
+        206: unknown
+      }
+    }
     post: {
       parameters: {
         body: {
           /** likes */
-          likes?: definitions["likes"];
-        };
+          likes?: definitions['likes']
+        }
         query: {
           /** Filtering Columns */
-          select?: parameters["select"];
-        };
+          select?: parameters['select']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** Created */
-        201: unknown;
-      };
-    };
+        201: unknown
+      }
+    }
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.likes.id"];
-          slug?: parameters["rowFilter.likes.slug"];
-          ip?: parameters["rowFilter.likes.ip"];
-          inserted_at?: parameters["rowFilter.likes.inserted_at"];
-        };
+          id?: parameters['rowFilter.likes.id']
+          slug?: parameters['rowFilter.likes.slug']
+          ip?: parameters['rowFilter.likes.ip']
+          inserted_at?: parameters['rowFilter.likes.inserted_at']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
+        204: never
+      }
+    }
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.likes.id"];
-          slug?: parameters["rowFilter.likes.slug"];
-          ip?: parameters["rowFilter.likes.ip"];
-          inserted_at?: parameters["rowFilter.likes.inserted_at"];
-        };
+          id?: parameters['rowFilter.likes.id']
+          slug?: parameters['rowFilter.likes.slug']
+          ip?: parameters['rowFilter.likes.ip']
+          inserted_at?: parameters['rowFilter.likes.inserted_at']
+        }
         body: {
           /** likes */
-          likes?: definitions["likes"];
-        };
+          likes?: definitions['likes']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/lurdle_solutions": {
+        204: never
+      }
+    }
+  }
+  '/lurdle_solutions': {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.lurdle_solutions.id"];
-          day?: parameters["rowFilter.lurdle_solutions.day"];
-          word?: parameters["rowFilter.lurdle_solutions.word"];
+          id?: parameters['rowFilter.lurdle_solutions.id']
+          day?: parameters['rowFilter.lurdle_solutions.day']
+          word?: parameters['rowFilter.lurdle_solutions.word']
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select']
           /** Ordering */
-          order?: parameters["order"];
+          order?: parameters['order']
           /** Limiting and Pagination */
-          offset?: parameters["offset"];
+          offset?: parameters['offset']
           /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
+          limit?: parameters['limit']
+        }
         header: {
           /** Limiting and Pagination */
-          Range?: parameters["range"];
+          Range?: parameters['range']
           /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
+          'Range-Unit'?: parameters['rangeUnit']
           /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
+          Prefer?: parameters['preferCount']
+        }
+      }
       responses: {
         /** OK */
         200: {
-          schema: definitions["lurdle_solutions"][];
-        };
+          schema: definitions['lurdle_solutions'][]
+        }
         /** Partial Content */
-        206: unknown;
-      };
-    };
+        206: unknown
+      }
+    }
     post: {
       parameters: {
         body: {
           /** lurdle_solutions */
-          lurdle_solutions?: definitions["lurdle_solutions"];
-        };
+          lurdle_solutions?: definitions['lurdle_solutions']
+        }
         query: {
           /** Filtering Columns */
-          select?: parameters["select"];
-        };
+          select?: parameters['select']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** Created */
-        201: unknown;
-      };
-    };
+        201: unknown
+      }
+    }
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.lurdle_solutions.id"];
-          day?: parameters["rowFilter.lurdle_solutions.day"];
-          word?: parameters["rowFilter.lurdle_solutions.word"];
-        };
+          id?: parameters['rowFilter.lurdle_solutions.id']
+          day?: parameters['rowFilter.lurdle_solutions.day']
+          word?: parameters['rowFilter.lurdle_solutions.word']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
+        204: never
+      }
+    }
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.lurdle_solutions.id"];
-          day?: parameters["rowFilter.lurdle_solutions.day"];
-          word?: parameters["rowFilter.lurdle_solutions.word"];
-        };
+          id?: parameters['rowFilter.lurdle_solutions.id']
+          day?: parameters['rowFilter.lurdle_solutions.day']
+          word?: parameters['rowFilter.lurdle_solutions.word']
+        }
         body: {
           /** lurdle_solutions */
-          lurdle_solutions?: definitions["lurdle_solutions"];
-        };
+          lurdle_solutions?: definitions['lurdle_solutions']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/posts": {
+        204: never
+      }
+    }
+  }
+  '/posts': {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.posts.id"];
-          created_at?: parameters["rowFilter.posts.created_at"];
-          date?: parameters["rowFilter.posts.date"];
-          title?: parameters["rowFilter.posts.title"];
-          subtitle?: parameters["rowFilter.posts.subtitle"];
-          locale?: parameters["rowFilter.posts.locale"];
-          slug?: parameters["rowFilter.posts.slug"];
-          translated_slug?: parameters["rowFilter.posts.translated_slug"];
-          body?: parameters["rowFilter.posts.body"];
-          image?: parameters["rowFilter.posts.image"];
-          status?: parameters["rowFilter.posts.status"];
+          id?: parameters['rowFilter.posts.id']
+          created_at?: parameters['rowFilter.posts.created_at']
+          date?: parameters['rowFilter.posts.date']
+          title?: parameters['rowFilter.posts.title']
+          subtitle?: parameters['rowFilter.posts.subtitle']
+          locale?: parameters['rowFilter.posts.locale']
+          slug?: parameters['rowFilter.posts.slug']
+          translated_slug?: parameters['rowFilter.posts.translated_slug']
+          body?: parameters['rowFilter.posts.body']
+          image?: parameters['rowFilter.posts.image']
+          status?: parameters['rowFilter.posts.status']
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select']
           /** Ordering */
-          order?: parameters["order"];
+          order?: parameters['order']
           /** Limiting and Pagination */
-          offset?: parameters["offset"];
+          offset?: parameters['offset']
           /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
+          limit?: parameters['limit']
+        }
         header: {
           /** Limiting and Pagination */
-          Range?: parameters["range"];
+          Range?: parameters['range']
           /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
+          'Range-Unit'?: parameters['rangeUnit']
           /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
+          Prefer?: parameters['preferCount']
+        }
+      }
       responses: {
         /** OK */
         200: {
-          schema: definitions["posts"][];
-        };
+          schema: definitions['posts'][]
+        }
         /** Partial Content */
-        206: unknown;
-      };
-    };
+        206: unknown
+      }
+    }
     post: {
       parameters: {
         body: {
           /** posts */
-          posts?: definitions["posts"];
-        };
+          posts?: definitions['posts']
+        }
         query: {
           /** Filtering Columns */
-          select?: parameters["select"];
-        };
+          select?: parameters['select']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** Created */
-        201: unknown;
-      };
-    };
+        201: unknown
+      }
+    }
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.posts.id"];
-          created_at?: parameters["rowFilter.posts.created_at"];
-          date?: parameters["rowFilter.posts.date"];
-          title?: parameters["rowFilter.posts.title"];
-          subtitle?: parameters["rowFilter.posts.subtitle"];
-          locale?: parameters["rowFilter.posts.locale"];
-          slug?: parameters["rowFilter.posts.slug"];
-          translated_slug?: parameters["rowFilter.posts.translated_slug"];
-          body?: parameters["rowFilter.posts.body"];
-          image?: parameters["rowFilter.posts.image"];
-          status?: parameters["rowFilter.posts.status"];
-        };
+          id?: parameters['rowFilter.posts.id']
+          created_at?: parameters['rowFilter.posts.created_at']
+          date?: parameters['rowFilter.posts.date']
+          title?: parameters['rowFilter.posts.title']
+          subtitle?: parameters['rowFilter.posts.subtitle']
+          locale?: parameters['rowFilter.posts.locale']
+          slug?: parameters['rowFilter.posts.slug']
+          translated_slug?: parameters['rowFilter.posts.translated_slug']
+          body?: parameters['rowFilter.posts.body']
+          image?: parameters['rowFilter.posts.image']
+          status?: parameters['rowFilter.posts.status']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
+        204: never
+      }
+    }
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.posts.id"];
-          created_at?: parameters["rowFilter.posts.created_at"];
-          date?: parameters["rowFilter.posts.date"];
-          title?: parameters["rowFilter.posts.title"];
-          subtitle?: parameters["rowFilter.posts.subtitle"];
-          locale?: parameters["rowFilter.posts.locale"];
-          slug?: parameters["rowFilter.posts.slug"];
-          translated_slug?: parameters["rowFilter.posts.translated_slug"];
-          body?: parameters["rowFilter.posts.body"];
-          image?: parameters["rowFilter.posts.image"];
-          status?: parameters["rowFilter.posts.status"];
-        };
+          id?: parameters['rowFilter.posts.id']
+          created_at?: parameters['rowFilter.posts.created_at']
+          date?: parameters['rowFilter.posts.date']
+          title?: parameters['rowFilter.posts.title']
+          subtitle?: parameters['rowFilter.posts.subtitle']
+          locale?: parameters['rowFilter.posts.locale']
+          slug?: parameters['rowFilter.posts.slug']
+          translated_slug?: parameters['rowFilter.posts.translated_slug']
+          body?: parameters['rowFilter.posts.body']
+          image?: parameters['rowFilter.posts.image']
+          status?: parameters['rowFilter.posts.status']
+        }
         body: {
           /** posts */
-          posts?: definitions["posts"];
-        };
+          posts?: definitions['posts']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/realtime_clicks": {
+        204: never
+      }
+    }
+  }
+  '/realtime_clicks': {
     get: {
       parameters: {
         query: {
-          type?: parameters["rowFilter.realtime_clicks.type"];
-          id?: parameters["rowFilter.realtime_clicks.id"];
-          inserted_at?: parameters["rowFilter.realtime_clicks.inserted_at"];
+          type?: parameters['rowFilter.realtime_clicks.type']
+          id?: parameters['rowFilter.realtime_clicks.id']
+          inserted_at?: parameters['rowFilter.realtime_clicks.inserted_at']
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select']
           /** Ordering */
-          order?: parameters["order"];
+          order?: parameters['order']
           /** Limiting and Pagination */
-          offset?: parameters["offset"];
+          offset?: parameters['offset']
           /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
+          limit?: parameters['limit']
+        }
         header: {
           /** Limiting and Pagination */
-          Range?: parameters["range"];
+          Range?: parameters['range']
           /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
+          'Range-Unit'?: parameters['rangeUnit']
           /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
+          Prefer?: parameters['preferCount']
+        }
+      }
       responses: {
         /** OK */
         200: {
-          schema: definitions["realtime_clicks"][];
-        };
+          schema: definitions['realtime_clicks'][]
+        }
         /** Partial Content */
-        206: unknown;
-      };
-    };
+        206: unknown
+      }
+    }
     post: {
       parameters: {
         body: {
           /** realtime_clicks */
-          realtime_clicks?: definitions["realtime_clicks"];
-        };
+          realtime_clicks?: definitions['realtime_clicks']
+        }
         query: {
           /** Filtering Columns */
-          select?: parameters["select"];
-        };
+          select?: parameters['select']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** Created */
-        201: unknown;
-      };
-    };
+        201: unknown
+      }
+    }
     delete: {
       parameters: {
         query: {
-          type?: parameters["rowFilter.realtime_clicks.type"];
-          id?: parameters["rowFilter.realtime_clicks.id"];
-          inserted_at?: parameters["rowFilter.realtime_clicks.inserted_at"];
-        };
+          type?: parameters['rowFilter.realtime_clicks.type']
+          id?: parameters['rowFilter.realtime_clicks.id']
+          inserted_at?: parameters['rowFilter.realtime_clicks.inserted_at']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
+        204: never
+      }
+    }
     patch: {
       parameters: {
         query: {
-          type?: parameters["rowFilter.realtime_clicks.type"];
-          id?: parameters["rowFilter.realtime_clicks.id"];
-          inserted_at?: parameters["rowFilter.realtime_clicks.inserted_at"];
-        };
+          type?: parameters['rowFilter.realtime_clicks.type']
+          id?: parameters['rowFilter.realtime_clicks.id']
+          inserted_at?: parameters['rowFilter.realtime_clicks.inserted_at']
+        }
         body: {
           /** realtime_clicks */
-          realtime_clicks?: definitions["realtime_clicks"];
-        };
+          realtime_clicks?: definitions['realtime_clicks']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/translation_requests": {
+        204: never
+      }
+    }
+  }
+  '/translation_requests': {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.translation_requests.id"];
-          slug?: parameters["rowFilter.translation_requests.slug"];
-          ip?: parameters["rowFilter.translation_requests.ip"];
-          inserted_at?: parameters["rowFilter.translation_requests.inserted_at"];
-          guessed_country?: parameters["rowFilter.translation_requests.guessed_country"];
+          id?: parameters['rowFilter.translation_requests.id']
+          slug?: parameters['rowFilter.translation_requests.slug']
+          ip?: parameters['rowFilter.translation_requests.ip']
+          inserted_at?: parameters['rowFilter.translation_requests.inserted_at']
+          guessed_country?: parameters['rowFilter.translation_requests.guessed_country']
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select']
           /** Ordering */
-          order?: parameters["order"];
+          order?: parameters['order']
           /** Limiting and Pagination */
-          offset?: parameters["offset"];
+          offset?: parameters['offset']
           /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
+          limit?: parameters['limit']
+        }
         header: {
           /** Limiting and Pagination */
-          Range?: parameters["range"];
+          Range?: parameters['range']
           /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
+          'Range-Unit'?: parameters['rangeUnit']
           /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
+          Prefer?: parameters['preferCount']
+        }
+      }
       responses: {
         /** OK */
         200: {
-          schema: definitions["translation_requests"][];
-        };
+          schema: definitions['translation_requests'][]
+        }
         /** Partial Content */
-        206: unknown;
-      };
-    };
+        206: unknown
+      }
+    }
     post: {
       parameters: {
         body: {
           /** translation_requests */
-          translation_requests?: definitions["translation_requests"];
-        };
+          translation_requests?: definitions['translation_requests']
+        }
         query: {
           /** Filtering Columns */
-          select?: parameters["select"];
-        };
+          select?: parameters['select']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** Created */
-        201: unknown;
-      };
-    };
+        201: unknown
+      }
+    }
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.translation_requests.id"];
-          slug?: parameters["rowFilter.translation_requests.slug"];
-          ip?: parameters["rowFilter.translation_requests.ip"];
-          inserted_at?: parameters["rowFilter.translation_requests.inserted_at"];
-          guessed_country?: parameters["rowFilter.translation_requests.guessed_country"];
-        };
+          id?: parameters['rowFilter.translation_requests.id']
+          slug?: parameters['rowFilter.translation_requests.slug']
+          ip?: parameters['rowFilter.translation_requests.ip']
+          inserted_at?: parameters['rowFilter.translation_requests.inserted_at']
+          guessed_country?: parameters['rowFilter.translation_requests.guessed_country']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
+        204: never
+      }
+    }
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.translation_requests.id"];
-          slug?: parameters["rowFilter.translation_requests.slug"];
-          ip?: parameters["rowFilter.translation_requests.ip"];
-          inserted_at?: parameters["rowFilter.translation_requests.inserted_at"];
-          guessed_country?: parameters["rowFilter.translation_requests.guessed_country"];
-        };
+          id?: parameters['rowFilter.translation_requests.id']
+          slug?: parameters['rowFilter.translation_requests.slug']
+          ip?: parameters['rowFilter.translation_requests.ip']
+          inserted_at?: parameters['rowFilter.translation_requests.inserted_at']
+          guessed_country?: parameters['rowFilter.translation_requests.guessed_country']
+        }
         body: {
           /** translation_requests */
-          translation_requests?: definitions["translation_requests"];
-        };
+          translation_requests?: definitions['translation_requests']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/url_redirects": {
+        204: never
+      }
+    }
+  }
+  '/url_redirects': {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.url_redirects.id"];
-          from?: parameters["rowFilter.url_redirects.from"];
-          to?: parameters["rowFilter.url_redirects.to"];
-          user_id?: parameters["rowFilter.url_redirects.user_id"];
-          updated_at?: parameters["rowFilter.url_redirects.updated_at"];
-          created_at?: parameters["rowFilter.url_redirects.created_at"];
+          id?: parameters['rowFilter.url_redirects.id']
+          from?: parameters['rowFilter.url_redirects.from']
+          to?: parameters['rowFilter.url_redirects.to']
+          user_id?: parameters['rowFilter.url_redirects.user_id']
+          updated_at?: parameters['rowFilter.url_redirects.updated_at']
+          created_at?: parameters['rowFilter.url_redirects.created_at']
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select']
           /** Ordering */
-          order?: parameters["order"];
+          order?: parameters['order']
           /** Limiting and Pagination */
-          offset?: parameters["offset"];
+          offset?: parameters['offset']
           /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
+          limit?: parameters['limit']
+        }
         header: {
           /** Limiting and Pagination */
-          Range?: parameters["range"];
+          Range?: parameters['range']
           /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
+          'Range-Unit'?: parameters['rangeUnit']
           /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
+          Prefer?: parameters['preferCount']
+        }
+      }
       responses: {
         /** OK */
         200: {
-          schema: definitions["url_redirects"][];
-        };
+          schema: definitions['url_redirects'][]
+        }
         /** Partial Content */
-        206: unknown;
-      };
-    };
+        206: unknown
+      }
+    }
     post: {
       parameters: {
         body: {
           /** url_redirects */
-          url_redirects?: definitions["url_redirects"];
-        };
+          url_redirects?: definitions['url_redirects']
+        }
         query: {
           /** Filtering Columns */
-          select?: parameters["select"];
-        };
+          select?: parameters['select']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** Created */
-        201: unknown;
-      };
-    };
+        201: unknown
+      }
+    }
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.url_redirects.id"];
-          from?: parameters["rowFilter.url_redirects.from"];
-          to?: parameters["rowFilter.url_redirects.to"];
-          user_id?: parameters["rowFilter.url_redirects.user_id"];
-          updated_at?: parameters["rowFilter.url_redirects.updated_at"];
-          created_at?: parameters["rowFilter.url_redirects.created_at"];
-        };
+          id?: parameters['rowFilter.url_redirects.id']
+          from?: parameters['rowFilter.url_redirects.from']
+          to?: parameters['rowFilter.url_redirects.to']
+          user_id?: parameters['rowFilter.url_redirects.user_id']
+          updated_at?: parameters['rowFilter.url_redirects.updated_at']
+          created_at?: parameters['rowFilter.url_redirects.created_at']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
+        204: never
+      }
+    }
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.url_redirects.id"];
-          from?: parameters["rowFilter.url_redirects.from"];
-          to?: parameters["rowFilter.url_redirects.to"];
-          user_id?: parameters["rowFilter.url_redirects.user_id"];
-          updated_at?: parameters["rowFilter.url_redirects.updated_at"];
-          created_at?: parameters["rowFilter.url_redirects.created_at"];
-        };
+          id?: parameters['rowFilter.url_redirects.id']
+          from?: parameters['rowFilter.url_redirects.from']
+          to?: parameters['rowFilter.url_redirects.to']
+          user_id?: parameters['rowFilter.url_redirects.user_id']
+          updated_at?: parameters['rowFilter.url_redirects.updated_at']
+          created_at?: parameters['rowFilter.url_redirects.created_at']
+        }
         body: {
           /** url_redirects */
-          url_redirects?: definitions["url_redirects"];
-        };
+          url_redirects?: definitions['url_redirects']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/users": {
+        204: never
+      }
+    }
+  }
+  '/users': {
     get: {
       parameters: {
         query: {
-          instance_id?: parameters["rowFilter.users.instance_id"];
-          id?: parameters["rowFilter.users.id"];
-          aud?: parameters["rowFilter.users.aud"];
-          role?: parameters["rowFilter.users.role"];
-          email?: parameters["rowFilter.users.email"];
-          encrypted_password?: parameters["rowFilter.users.encrypted_password"];
-          email_confirmed_at?: parameters["rowFilter.users.email_confirmed_at"];
-          invited_at?: parameters["rowFilter.users.invited_at"];
-          confirmation_token?: parameters["rowFilter.users.confirmation_token"];
-          confirmation_sent_at?: parameters["rowFilter.users.confirmation_sent_at"];
-          recovery_token?: parameters["rowFilter.users.recovery_token"];
-          recovery_sent_at?: parameters["rowFilter.users.recovery_sent_at"];
-          email_change_token_new?: parameters["rowFilter.users.email_change_token_new"];
-          email_change?: parameters["rowFilter.users.email_change"];
-          email_change_sent_at?: parameters["rowFilter.users.email_change_sent_at"];
-          last_sign_in_at?: parameters["rowFilter.users.last_sign_in_at"];
-          raw_app_meta_data?: parameters["rowFilter.users.raw_app_meta_data"];
-          raw_user_meta_data?: parameters["rowFilter.users.raw_user_meta_data"];
-          is_super_admin?: parameters["rowFilter.users.is_super_admin"];
-          created_at?: parameters["rowFilter.users.created_at"];
-          updated_at?: parameters["rowFilter.users.updated_at"];
-          phone?: parameters["rowFilter.users.phone"];
-          phone_confirmed_at?: parameters["rowFilter.users.phone_confirmed_at"];
-          phone_change?: parameters["rowFilter.users.phone_change"];
-          phone_change_token?: parameters["rowFilter.users.phone_change_token"];
-          phone_change_sent_at?: parameters["rowFilter.users.phone_change_sent_at"];
-          confirmed_at?: parameters["rowFilter.users.confirmed_at"];
-          email_change_token_current?: parameters["rowFilter.users.email_change_token_current"];
-          email_change_confirm_status?: parameters["rowFilter.users.email_change_confirm_status"];
-          banned_until?: parameters["rowFilter.users.banned_until"];
-          reauthentication_token?: parameters["rowFilter.users.reauthentication_token"];
-          reauthentication_sent_at?: parameters["rowFilter.users.reauthentication_sent_at"];
+          instance_id?: parameters['rowFilter.users.instance_id']
+          id?: parameters['rowFilter.users.id']
+          aud?: parameters['rowFilter.users.aud']
+          role?: parameters['rowFilter.users.role']
+          email?: parameters['rowFilter.users.email']
+          encrypted_password?: parameters['rowFilter.users.encrypted_password']
+          email_confirmed_at?: parameters['rowFilter.users.email_confirmed_at']
+          invited_at?: parameters['rowFilter.users.invited_at']
+          confirmation_token?: parameters['rowFilter.users.confirmation_token']
+          confirmation_sent_at?: parameters['rowFilter.users.confirmation_sent_at']
+          recovery_token?: parameters['rowFilter.users.recovery_token']
+          recovery_sent_at?: parameters['rowFilter.users.recovery_sent_at']
+          email_change_token_new?: parameters['rowFilter.users.email_change_token_new']
+          email_change?: parameters['rowFilter.users.email_change']
+          email_change_sent_at?: parameters['rowFilter.users.email_change_sent_at']
+          last_sign_in_at?: parameters['rowFilter.users.last_sign_in_at']
+          raw_app_meta_data?: parameters['rowFilter.users.raw_app_meta_data']
+          raw_user_meta_data?: parameters['rowFilter.users.raw_user_meta_data']
+          is_super_admin?: parameters['rowFilter.users.is_super_admin']
+          created_at?: parameters['rowFilter.users.created_at']
+          updated_at?: parameters['rowFilter.users.updated_at']
+          phone?: parameters['rowFilter.users.phone']
+          phone_confirmed_at?: parameters['rowFilter.users.phone_confirmed_at']
+          phone_change?: parameters['rowFilter.users.phone_change']
+          phone_change_token?: parameters['rowFilter.users.phone_change_token']
+          phone_change_sent_at?: parameters['rowFilter.users.phone_change_sent_at']
+          confirmed_at?: parameters['rowFilter.users.confirmed_at']
+          email_change_token_current?: parameters['rowFilter.users.email_change_token_current']
+          email_change_confirm_status?: parameters['rowFilter.users.email_change_confirm_status']
+          banned_until?: parameters['rowFilter.users.banned_until']
+          reauthentication_token?: parameters['rowFilter.users.reauthentication_token']
+          reauthentication_sent_at?: parameters['rowFilter.users.reauthentication_sent_at']
           /** Filtering Columns */
-          select?: parameters["select"];
+          select?: parameters['select']
           /** Ordering */
-          order?: parameters["order"];
+          order?: parameters['order']
           /** Limiting and Pagination */
-          offset?: parameters["offset"];
+          offset?: parameters['offset']
           /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
+          limit?: parameters['limit']
+        }
         header: {
           /** Limiting and Pagination */
-          Range?: parameters["range"];
+          Range?: parameters['range']
           /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
+          'Range-Unit'?: parameters['rangeUnit']
           /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
+          Prefer?: parameters['preferCount']
+        }
+      }
       responses: {
         /** OK */
         200: {
-          schema: definitions["users"][];
-        };
+          schema: definitions['users'][]
+        }
         /** Partial Content */
-        206: unknown;
-      };
-    };
+        206: unknown
+      }
+    }
     post: {
       parameters: {
         body: {
           /** users */
-          users?: definitions["users"];
-        };
+          users?: definitions['users']
+        }
         query: {
           /** Filtering Columns */
-          select?: parameters["select"];
-        };
+          select?: parameters['select']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** Created */
-        201: unknown;
-      };
-    };
+        201: unknown
+      }
+    }
     delete: {
       parameters: {
         query: {
-          instance_id?: parameters["rowFilter.users.instance_id"];
-          id?: parameters["rowFilter.users.id"];
-          aud?: parameters["rowFilter.users.aud"];
-          role?: parameters["rowFilter.users.role"];
-          email?: parameters["rowFilter.users.email"];
-          encrypted_password?: parameters["rowFilter.users.encrypted_password"];
-          email_confirmed_at?: parameters["rowFilter.users.email_confirmed_at"];
-          invited_at?: parameters["rowFilter.users.invited_at"];
-          confirmation_token?: parameters["rowFilter.users.confirmation_token"];
-          confirmation_sent_at?: parameters["rowFilter.users.confirmation_sent_at"];
-          recovery_token?: parameters["rowFilter.users.recovery_token"];
-          recovery_sent_at?: parameters["rowFilter.users.recovery_sent_at"];
-          email_change_token_new?: parameters["rowFilter.users.email_change_token_new"];
-          email_change?: parameters["rowFilter.users.email_change"];
-          email_change_sent_at?: parameters["rowFilter.users.email_change_sent_at"];
-          last_sign_in_at?: parameters["rowFilter.users.last_sign_in_at"];
-          raw_app_meta_data?: parameters["rowFilter.users.raw_app_meta_data"];
-          raw_user_meta_data?: parameters["rowFilter.users.raw_user_meta_data"];
-          is_super_admin?: parameters["rowFilter.users.is_super_admin"];
-          created_at?: parameters["rowFilter.users.created_at"];
-          updated_at?: parameters["rowFilter.users.updated_at"];
-          phone?: parameters["rowFilter.users.phone"];
-          phone_confirmed_at?: parameters["rowFilter.users.phone_confirmed_at"];
-          phone_change?: parameters["rowFilter.users.phone_change"];
-          phone_change_token?: parameters["rowFilter.users.phone_change_token"];
-          phone_change_sent_at?: parameters["rowFilter.users.phone_change_sent_at"];
-          confirmed_at?: parameters["rowFilter.users.confirmed_at"];
-          email_change_token_current?: parameters["rowFilter.users.email_change_token_current"];
-          email_change_confirm_status?: parameters["rowFilter.users.email_change_confirm_status"];
-          banned_until?: parameters["rowFilter.users.banned_until"];
-          reauthentication_token?: parameters["rowFilter.users.reauthentication_token"];
-          reauthentication_sent_at?: parameters["rowFilter.users.reauthentication_sent_at"];
-        };
+          instance_id?: parameters['rowFilter.users.instance_id']
+          id?: parameters['rowFilter.users.id']
+          aud?: parameters['rowFilter.users.aud']
+          role?: parameters['rowFilter.users.role']
+          email?: parameters['rowFilter.users.email']
+          encrypted_password?: parameters['rowFilter.users.encrypted_password']
+          email_confirmed_at?: parameters['rowFilter.users.email_confirmed_at']
+          invited_at?: parameters['rowFilter.users.invited_at']
+          confirmation_token?: parameters['rowFilter.users.confirmation_token']
+          confirmation_sent_at?: parameters['rowFilter.users.confirmation_sent_at']
+          recovery_token?: parameters['rowFilter.users.recovery_token']
+          recovery_sent_at?: parameters['rowFilter.users.recovery_sent_at']
+          email_change_token_new?: parameters['rowFilter.users.email_change_token_new']
+          email_change?: parameters['rowFilter.users.email_change']
+          email_change_sent_at?: parameters['rowFilter.users.email_change_sent_at']
+          last_sign_in_at?: parameters['rowFilter.users.last_sign_in_at']
+          raw_app_meta_data?: parameters['rowFilter.users.raw_app_meta_data']
+          raw_user_meta_data?: parameters['rowFilter.users.raw_user_meta_data']
+          is_super_admin?: parameters['rowFilter.users.is_super_admin']
+          created_at?: parameters['rowFilter.users.created_at']
+          updated_at?: parameters['rowFilter.users.updated_at']
+          phone?: parameters['rowFilter.users.phone']
+          phone_confirmed_at?: parameters['rowFilter.users.phone_confirmed_at']
+          phone_change?: parameters['rowFilter.users.phone_change']
+          phone_change_token?: parameters['rowFilter.users.phone_change_token']
+          phone_change_sent_at?: parameters['rowFilter.users.phone_change_sent_at']
+          confirmed_at?: parameters['rowFilter.users.confirmed_at']
+          email_change_token_current?: parameters['rowFilter.users.email_change_token_current']
+          email_change_confirm_status?: parameters['rowFilter.users.email_change_confirm_status']
+          banned_until?: parameters['rowFilter.users.banned_until']
+          reauthentication_token?: parameters['rowFilter.users.reauthentication_token']
+          reauthentication_sent_at?: parameters['rowFilter.users.reauthentication_sent_at']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
+        204: never
+      }
+    }
     patch: {
       parameters: {
         query: {
-          instance_id?: parameters["rowFilter.users.instance_id"];
-          id?: parameters["rowFilter.users.id"];
-          aud?: parameters["rowFilter.users.aud"];
-          role?: parameters["rowFilter.users.role"];
-          email?: parameters["rowFilter.users.email"];
-          encrypted_password?: parameters["rowFilter.users.encrypted_password"];
-          email_confirmed_at?: parameters["rowFilter.users.email_confirmed_at"];
-          invited_at?: parameters["rowFilter.users.invited_at"];
-          confirmation_token?: parameters["rowFilter.users.confirmation_token"];
-          confirmation_sent_at?: parameters["rowFilter.users.confirmation_sent_at"];
-          recovery_token?: parameters["rowFilter.users.recovery_token"];
-          recovery_sent_at?: parameters["rowFilter.users.recovery_sent_at"];
-          email_change_token_new?: parameters["rowFilter.users.email_change_token_new"];
-          email_change?: parameters["rowFilter.users.email_change"];
-          email_change_sent_at?: parameters["rowFilter.users.email_change_sent_at"];
-          last_sign_in_at?: parameters["rowFilter.users.last_sign_in_at"];
-          raw_app_meta_data?: parameters["rowFilter.users.raw_app_meta_data"];
-          raw_user_meta_data?: parameters["rowFilter.users.raw_user_meta_data"];
-          is_super_admin?: parameters["rowFilter.users.is_super_admin"];
-          created_at?: parameters["rowFilter.users.created_at"];
-          updated_at?: parameters["rowFilter.users.updated_at"];
-          phone?: parameters["rowFilter.users.phone"];
-          phone_confirmed_at?: parameters["rowFilter.users.phone_confirmed_at"];
-          phone_change?: parameters["rowFilter.users.phone_change"];
-          phone_change_token?: parameters["rowFilter.users.phone_change_token"];
-          phone_change_sent_at?: parameters["rowFilter.users.phone_change_sent_at"];
-          confirmed_at?: parameters["rowFilter.users.confirmed_at"];
-          email_change_token_current?: parameters["rowFilter.users.email_change_token_current"];
-          email_change_confirm_status?: parameters["rowFilter.users.email_change_confirm_status"];
-          banned_until?: parameters["rowFilter.users.banned_until"];
-          reauthentication_token?: parameters["rowFilter.users.reauthentication_token"];
-          reauthentication_sent_at?: parameters["rowFilter.users.reauthentication_sent_at"];
-        };
+          instance_id?: parameters['rowFilter.users.instance_id']
+          id?: parameters['rowFilter.users.id']
+          aud?: parameters['rowFilter.users.aud']
+          role?: parameters['rowFilter.users.role']
+          email?: parameters['rowFilter.users.email']
+          encrypted_password?: parameters['rowFilter.users.encrypted_password']
+          email_confirmed_at?: parameters['rowFilter.users.email_confirmed_at']
+          invited_at?: parameters['rowFilter.users.invited_at']
+          confirmation_token?: parameters['rowFilter.users.confirmation_token']
+          confirmation_sent_at?: parameters['rowFilter.users.confirmation_sent_at']
+          recovery_token?: parameters['rowFilter.users.recovery_token']
+          recovery_sent_at?: parameters['rowFilter.users.recovery_sent_at']
+          email_change_token_new?: parameters['rowFilter.users.email_change_token_new']
+          email_change?: parameters['rowFilter.users.email_change']
+          email_change_sent_at?: parameters['rowFilter.users.email_change_sent_at']
+          last_sign_in_at?: parameters['rowFilter.users.last_sign_in_at']
+          raw_app_meta_data?: parameters['rowFilter.users.raw_app_meta_data']
+          raw_user_meta_data?: parameters['rowFilter.users.raw_user_meta_data']
+          is_super_admin?: parameters['rowFilter.users.is_super_admin']
+          created_at?: parameters['rowFilter.users.created_at']
+          updated_at?: parameters['rowFilter.users.updated_at']
+          phone?: parameters['rowFilter.users.phone']
+          phone_confirmed_at?: parameters['rowFilter.users.phone_confirmed_at']
+          phone_change?: parameters['rowFilter.users.phone_change']
+          phone_change_token?: parameters['rowFilter.users.phone_change_token']
+          phone_change_sent_at?: parameters['rowFilter.users.phone_change_sent_at']
+          confirmed_at?: parameters['rowFilter.users.confirmed_at']
+          email_change_token_current?: parameters['rowFilter.users.email_change_token_current']
+          email_change_confirm_status?: parameters['rowFilter.users.email_change_confirm_status']
+          banned_until?: parameters['rowFilter.users.banned_until']
+          reauthentication_token?: parameters['rowFilter.users.reauthentication_token']
+          reauthentication_sent_at?: parameters['rowFilter.users.reauthentication_sent_at']
+        }
         body: {
           /** users */
-          users?: definitions["users"];
-        };
+          users?: definitions['users']
+        }
         header: {
           /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
+          Prefer?: parameters['preferReturn']
+        }
+      }
       responses: {
         /** No Content */
-        204: never;
-      };
-    };
-  };
+        204: never
+      }
+    }
+  }
 }
 
 export interface definitions {
@@ -901,123 +901,123 @@ export interface definitions {
      * @description Note:
      * This is a Primary Key.<pk/>
      */
-    id: number;
+    id: number
     /**
      * Format: timestamp with time zone
      * @default now()
      */
-    created_at?: string;
+    created_at?: string
     /**
      * Format: character varying
      * @default en
      */
-    locale: string;
+    locale: string
     /** Format: character varying */
-    key: string;
+    key: string
     /** Format: character varying */
-    value?: string;
-  };
+    value?: string
+  }
   likes: {
     /**
      * Format: bigint
      * @description Note:
      * This is a Primary Key.<pk/>
      */
-    id: number;
+    id: number
     /** Format: text */
-    slug?: string;
+    slug?: string
     /** Format: text */
-    ip?: string;
+    ip?: string
     /**
      * Format: timestamp without time zone
      * @default now()
      */
-    inserted_at?: string;
-  };
+    inserted_at?: string
+  }
   lurdle_solutions: {
     /**
      * Format: bigint
      * @description Note:
      * This is a Primary Key.<pk/>
      */
-    id: number;
+    id: number
     /** Format: date */
-    day?: string;
+    day?: string
     /** Format: character varying */
-    word?: string;
-  };
+    word?: string
+  }
   posts: {
     /**
      * Format: bigint
      * @description Note:
      * This is a Primary Key.<pk/>
      */
-    id: number;
+    id: number
     /**
      * Format: timestamp with time zone
      * @default now()
      */
-    created_at?: string;
+    created_at?: string
     /**
      * Format: timestamp with time zone
      * @default now()
      */
-    date?: string;
+    date?: string
     /** Format: character varying */
-    title?: string;
+    title?: string
     /** Format: character varying */
-    subtitle?: string;
+    subtitle?: string
     /** Format: character varying */
-    locale?: string;
+    locale?: string
     /** Format: character varying */
-    slug?: string;
+    slug?: string
     /** Format: character varying */
-    translated_slug?: string;
+    translated_slug?: string
     /** Format: character varying */
-    body?: string;
+    body?: string
     /** Format: character varying */
-    image?: string;
+    image?: string
     /**
      * Format: character varying
      * @default draft
      */
-    status?: string;
-  };
+    status?: string
+  }
   /** @description realtime.pablopunk.com */
   realtime_clicks: {
     /** Format: text */
-    type?: string;
+    type?: string
     /**
      * Format: bigint
      * @description Note:
      * This is a Primary Key.<pk/>
      */
-    id: number;
+    id: number
     /**
      * Format: timestamp without time zone
      * @default now()
      */
-    inserted_at?: string;
-  };
+    inserted_at?: string
+  }
   translation_requests: {
     /**
      * Format: bigint
      * @description Note:
      * This is a Primary Key.<pk/>
      */
-    id: number;
+    id: number
     /** Format: character varying */
-    slug: string;
+    slug: string
     /** Format: character varying */
-    ip?: string;
+    ip?: string
     /**
      * Format: timestamp without time zone
      * @default now()
      */
-    inserted_at?: string;
+    inserted_at?: string
     /** Format: character varying */
-    guessed_country?: string;
-  };
+    guessed_country?: string
+  }
   /** @description pablo.im */
   url_redirects: {
     /**
@@ -1025,271 +1025,271 @@ export interface definitions {
      * @description Note:
      * This is a Primary Key.<pk/>
      */
-    id: number;
+    id: number
     /** Format: text */
-    from?: string;
+    from?: string
     /** Format: text */
-    to?: string;
+    to?: string
     /** Format: text */
-    user_id?: string;
+    user_id?: string
     /** Format: timestamp without time zone */
-    updated_at?: string;
+    updated_at?: string
     /**
      * Format: timestamp without time zone
      * @default now()
      */
-    created_at?: string;
-  };
+    created_at?: string
+  }
   users: {
     /** Format: uuid */
-    instance_id?: string;
+    instance_id?: string
     /**
      * Format: uuid
      * @description Note:
      * This is a Primary Key.<pk/>
      */
-    id?: string;
+    id?: string
     /** Format: character varying */
-    aud?: string;
+    aud?: string
     /** Format: character varying */
-    role?: string;
+    role?: string
     /** Format: character varying */
-    email?: string;
+    email?: string
     /** Format: character varying */
-    encrypted_password?: string;
+    encrypted_password?: string
     /** Format: timestamp with time zone */
-    email_confirmed_at?: string;
+    email_confirmed_at?: string
     /** Format: timestamp with time zone */
-    invited_at?: string;
+    invited_at?: string
     /** Format: character varying */
-    confirmation_token?: string;
+    confirmation_token?: string
     /** Format: timestamp with time zone */
-    confirmation_sent_at?: string;
+    confirmation_sent_at?: string
     /** Format: character varying */
-    recovery_token?: string;
+    recovery_token?: string
     /** Format: timestamp with time zone */
-    recovery_sent_at?: string;
+    recovery_sent_at?: string
     /** Format: character varying */
-    email_change_token_new?: string;
+    email_change_token_new?: string
     /** Format: character varying */
-    email_change?: string;
+    email_change?: string
     /** Format: timestamp with time zone */
-    email_change_sent_at?: string;
+    email_change_sent_at?: string
     /** Format: timestamp with time zone */
-    last_sign_in_at?: string;
+    last_sign_in_at?: string
     /** Format: jsonb */
-    raw_app_meta_data?: string;
+    raw_app_meta_data?: string
     /** Format: jsonb */
-    raw_user_meta_data?: string;
+    raw_user_meta_data?: string
     /** Format: boolean */
-    is_super_admin?: boolean;
+    is_super_admin?: boolean
     /** Format: timestamp with time zone */
-    created_at?: string;
+    created_at?: string
     /** Format: timestamp with time zone */
-    updated_at?: string;
+    updated_at?: string
     /** Format: character varying */
-    phone?: string;
+    phone?: string
     /** Format: timestamp with time zone */
-    phone_confirmed_at?: string;
+    phone_confirmed_at?: string
     /** Format: character varying */
-    phone_change?: string;
+    phone_change?: string
     /** Format: character varying */
-    phone_change_token?: string;
+    phone_change_token?: string
     /** Format: timestamp with time zone */
-    phone_change_sent_at?: string;
+    phone_change_sent_at?: string
     /** Format: timestamp with time zone */
-    confirmed_at?: string;
+    confirmed_at?: string
     /** Format: character varying */
-    email_change_token_current?: string;
+    email_change_token_current?: string
     /** Format: smallint */
-    email_change_confirm_status?: number;
+    email_change_confirm_status?: number
     /** Format: timestamp with time zone */
-    banned_until?: string;
+    banned_until?: string
     /** Format: character varying */
-    reauthentication_token?: string;
+    reauthentication_token?: string
     /** Format: timestamp with time zone */
-    reauthentication_sent_at?: string;
-  };
+    reauthentication_sent_at?: string
+  }
 }
 
 export interface parameters {
   /** @description Preference */
-  preferParams: "params=single-object";
+  preferParams: 'params=single-object'
   /** @description Preference */
-  preferReturn: "return=representation" | "return=minimal" | "return=none";
+  preferReturn: 'return=representation' | 'return=minimal' | 'return=none'
   /** @description Preference */
-  preferCount: "count=none";
+  preferCount: 'count=none'
   /** @description Filtering Columns */
-  select: string;
+  select: string
   /** @description On Conflict */
-  on_conflict: string;
+  on_conflict: string
   /** @description Ordering */
-  order: string;
+  order: string
   /** @description Limiting and Pagination */
-  range: string;
+  range: string
   /**
    * @description Limiting and Pagination
    * @default items
    */
-  rangeUnit: string;
+  rangeUnit: string
   /** @description Limiting and Pagination */
-  offset: string;
+  offset: string
   /** @description Limiting and Pagination */
-  limit: string;
+  limit: string
   /** @description i18n */
-  "body.i18n": definitions["i18n"];
+  'body.i18n': definitions['i18n']
   /** Format: bigint */
-  "rowFilter.i18n.id": string;
+  'rowFilter.i18n.id': string
   /** Format: timestamp with time zone */
-  "rowFilter.i18n.created_at": string;
+  'rowFilter.i18n.created_at': string
   /** Format: character varying */
-  "rowFilter.i18n.locale": string;
+  'rowFilter.i18n.locale': string
   /** Format: character varying */
-  "rowFilter.i18n.key": string;
+  'rowFilter.i18n.key': string
   /** Format: character varying */
-  "rowFilter.i18n.value": string;
+  'rowFilter.i18n.value': string
   /** @description likes */
-  "body.likes": definitions["likes"];
+  'body.likes': definitions['likes']
   /** Format: bigint */
-  "rowFilter.likes.id": string;
+  'rowFilter.likes.id': string
   /** Format: text */
-  "rowFilter.likes.slug": string;
+  'rowFilter.likes.slug': string
   /** Format: text */
-  "rowFilter.likes.ip": string;
+  'rowFilter.likes.ip': string
   /** Format: timestamp without time zone */
-  "rowFilter.likes.inserted_at": string;
+  'rowFilter.likes.inserted_at': string
   /** @description lurdle_solutions */
-  "body.lurdle_solutions": definitions["lurdle_solutions"];
+  'body.lurdle_solutions': definitions['lurdle_solutions']
   /** Format: bigint */
-  "rowFilter.lurdle_solutions.id": string;
+  'rowFilter.lurdle_solutions.id': string
   /** Format: date */
-  "rowFilter.lurdle_solutions.day": string;
+  'rowFilter.lurdle_solutions.day': string
   /** Format: character varying */
-  "rowFilter.lurdle_solutions.word": string;
+  'rowFilter.lurdle_solutions.word': string
   /** @description posts */
-  "body.posts": definitions["posts"];
+  'body.posts': definitions['posts']
   /** Format: bigint */
-  "rowFilter.posts.id": string;
+  'rowFilter.posts.id': string
   /** Format: timestamp with time zone */
-  "rowFilter.posts.created_at": string;
+  'rowFilter.posts.created_at': string
   /** Format: timestamp with time zone */
-  "rowFilter.posts.date": string;
+  'rowFilter.posts.date': string
   /** Format: character varying */
-  "rowFilter.posts.title": string;
+  'rowFilter.posts.title': string
   /** Format: character varying */
-  "rowFilter.posts.subtitle": string;
+  'rowFilter.posts.subtitle': string
   /** Format: character varying */
-  "rowFilter.posts.locale": string;
+  'rowFilter.posts.locale': string
   /** Format: character varying */
-  "rowFilter.posts.slug": string;
+  'rowFilter.posts.slug': string
   /** Format: character varying */
-  "rowFilter.posts.translated_slug": string;
+  'rowFilter.posts.translated_slug': string
   /** Format: character varying */
-  "rowFilter.posts.body": string;
+  'rowFilter.posts.body': string
   /** Format: character varying */
-  "rowFilter.posts.image": string;
+  'rowFilter.posts.image': string
   /** Format: character varying */
-  "rowFilter.posts.status": string;
+  'rowFilter.posts.status': string
   /** @description realtime_clicks */
-  "body.realtime_clicks": definitions["realtime_clicks"];
+  'body.realtime_clicks': definitions['realtime_clicks']
   /** Format: text */
-  "rowFilter.realtime_clicks.type": string;
+  'rowFilter.realtime_clicks.type': string
   /** Format: bigint */
-  "rowFilter.realtime_clicks.id": string;
+  'rowFilter.realtime_clicks.id': string
   /** Format: timestamp without time zone */
-  "rowFilter.realtime_clicks.inserted_at": string;
+  'rowFilter.realtime_clicks.inserted_at': string
   /** @description translation_requests */
-  "body.translation_requests": definitions["translation_requests"];
+  'body.translation_requests': definitions['translation_requests']
   /** Format: bigint */
-  "rowFilter.translation_requests.id": string;
+  'rowFilter.translation_requests.id': string
   /** Format: character varying */
-  "rowFilter.translation_requests.slug": string;
+  'rowFilter.translation_requests.slug': string
   /** Format: character varying */
-  "rowFilter.translation_requests.ip": string;
+  'rowFilter.translation_requests.ip': string
   /** Format: timestamp without time zone */
-  "rowFilter.translation_requests.inserted_at": string;
+  'rowFilter.translation_requests.inserted_at': string
   /** Format: character varying */
-  "rowFilter.translation_requests.guessed_country": string;
+  'rowFilter.translation_requests.guessed_country': string
   /** @description url_redirects */
-  "body.url_redirects": definitions["url_redirects"];
+  'body.url_redirects': definitions['url_redirects']
   /** Format: bigint */
-  "rowFilter.url_redirects.id": string;
+  'rowFilter.url_redirects.id': string
   /** Format: text */
-  "rowFilter.url_redirects.from": string;
+  'rowFilter.url_redirects.from': string
   /** Format: text */
-  "rowFilter.url_redirects.to": string;
+  'rowFilter.url_redirects.to': string
   /** Format: text */
-  "rowFilter.url_redirects.user_id": string;
+  'rowFilter.url_redirects.user_id': string
   /** Format: timestamp without time zone */
-  "rowFilter.url_redirects.updated_at": string;
+  'rowFilter.url_redirects.updated_at': string
   /** Format: timestamp without time zone */
-  "rowFilter.url_redirects.created_at": string;
+  'rowFilter.url_redirects.created_at': string
   /** @description users */
-  "body.users": definitions["users"];
+  'body.users': definitions['users']
   /** Format: uuid */
-  "rowFilter.users.instance_id": string;
+  'rowFilter.users.instance_id': string
   /** Format: uuid */
-  "rowFilter.users.id": string;
+  'rowFilter.users.id': string
   /** Format: character varying */
-  "rowFilter.users.aud": string;
+  'rowFilter.users.aud': string
   /** Format: character varying */
-  "rowFilter.users.role": string;
+  'rowFilter.users.role': string
   /** Format: character varying */
-  "rowFilter.users.email": string;
+  'rowFilter.users.email': string
   /** Format: character varying */
-  "rowFilter.users.encrypted_password": string;
+  'rowFilter.users.encrypted_password': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.email_confirmed_at": string;
+  'rowFilter.users.email_confirmed_at': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.invited_at": string;
+  'rowFilter.users.invited_at': string
   /** Format: character varying */
-  "rowFilter.users.confirmation_token": string;
+  'rowFilter.users.confirmation_token': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.confirmation_sent_at": string;
+  'rowFilter.users.confirmation_sent_at': string
   /** Format: character varying */
-  "rowFilter.users.recovery_token": string;
+  'rowFilter.users.recovery_token': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.recovery_sent_at": string;
+  'rowFilter.users.recovery_sent_at': string
   /** Format: character varying */
-  "rowFilter.users.email_change_token_new": string;
+  'rowFilter.users.email_change_token_new': string
   /** Format: character varying */
-  "rowFilter.users.email_change": string;
+  'rowFilter.users.email_change': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.email_change_sent_at": string;
+  'rowFilter.users.email_change_sent_at': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.last_sign_in_at": string;
+  'rowFilter.users.last_sign_in_at': string
   /** Format: jsonb */
-  "rowFilter.users.raw_app_meta_data": string;
+  'rowFilter.users.raw_app_meta_data': string
   /** Format: jsonb */
-  "rowFilter.users.raw_user_meta_data": string;
+  'rowFilter.users.raw_user_meta_data': string
   /** Format: boolean */
-  "rowFilter.users.is_super_admin": string;
+  'rowFilter.users.is_super_admin': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.created_at": string;
+  'rowFilter.users.created_at': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.updated_at": string;
+  'rowFilter.users.updated_at': string
   /** Format: character varying */
-  "rowFilter.users.phone": string;
+  'rowFilter.users.phone': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.phone_confirmed_at": string;
+  'rowFilter.users.phone_confirmed_at': string
   /** Format: character varying */
-  "rowFilter.users.phone_change": string;
+  'rowFilter.users.phone_change': string
   /** Format: character varying */
-  "rowFilter.users.phone_change_token": string;
+  'rowFilter.users.phone_change_token': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.phone_change_sent_at": string;
+  'rowFilter.users.phone_change_sent_at': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.confirmed_at": string;
+  'rowFilter.users.confirmed_at': string
   /** Format: character varying */
-  "rowFilter.users.email_change_token_current": string;
+  'rowFilter.users.email_change_token_current': string
   /** Format: smallint */
-  "rowFilter.users.email_change_confirm_status": string;
+  'rowFilter.users.email_change_confirm_status': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.banned_until": string;
+  'rowFilter.users.banned_until': string
   /** Format: character varying */
-  "rowFilter.users.reauthentication_token": string;
+  'rowFilter.users.reauthentication_token': string
   /** Format: timestamp with time zone */
-  "rowFilter.users.reauthentication_sent_at": string;
+  'rowFilter.users.reauthentication_sent_at': string
 }
 
 export interface operations {}

@@ -13,30 +13,20 @@ type Props = {
   className?: string
 }
 
-export const Card = ({
-  title,
-  children,
-  Icon,
-  CTA,
-  className,
-}: Props) => {
+export const Card = ({ title, children, Icon, CTA, className }: Props) => {
   return (
     <>
-      <article
-        className={classNames(
-          className,
-          ''
-        )}
-      >
+      <article className={classNames(className, '')}>
         <div className="flex flex-col gap-2">
           <h2
-            className={classNames('flex gap-1 items-center text-xl text-neutral-9'
+            className={classNames(
+              'flex gap-1 items-center text-xl text-neutral-9',
             )}
           >
             {Icon && <Icon />}
             <span className="font-bold">{title}</span>
           </h2>
-          <div className='text-neutral-7 text-sm'>{children}</div>
+          <div className="text-neutral-7 text-sm">{children}</div>
         </div>
         <div className="w-full flex justify-start mt-2 gap-2">
           {(Array.isArray(CTA) ? CTA : [CTA]).filter(Boolean).map((cta, i) => (

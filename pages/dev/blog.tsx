@@ -39,7 +39,7 @@ const TextInput = ({
 }
 
 // eslint-disable-next-line no-unused-vars
-const noop = (post: Post) => { }
+const noop = (post: Post) => {}
 
 const Edit = ({
   onSubmit,
@@ -53,8 +53,15 @@ const Edit = ({
   const [checkedLocale, setCheckedLocale] = useState(i18n.defaultLocale)
 
   useEffect(() => {
-    if (checkedLocale === i18n.defaultLocale && post.title?.length && post.title !== initialData?.title) {
-      const slug = post.title.replace(/\W+/g, "-").replace(/[-]+$/, "").toLowerCase()
+    if (
+      checkedLocale === i18n.defaultLocale &&
+      post.title?.length &&
+      post.title !== initialData?.title
+    ) {
+      const slug = post.title
+        .replace(/\W+/g, '-')
+        .replace(/[-]+$/, '')
+        .toLowerCase()
       setPost({ ...post, slug })
     }
   }, [post.title])
@@ -87,7 +94,8 @@ const Edit = ({
             /* Change status to live or draft */
             <Button
               onClick={() => {
-                const status: Post['status'] = post.status === 'live' ? 'draft' : 'live'
+                const status: Post['status'] =
+                  post.status === 'live' ? 'draft' : 'live'
                 const updatedPost = { ...post, status }
                 onSubmit(updatedPost)
                 setPost(updatedPost)
@@ -115,7 +123,7 @@ const Edit = ({
                 newDate.toISOString().split('T')[0] // will throw if date is not valid
                 setDate(new Date(ev.target.value))
                 setPost({ ...post, date: ev.target.value })
-              } catch (e) { }
+              } catch (e) {}
             }}
           />
           <TextInput _key="image" {...{ post, onInputChange }} />
@@ -154,7 +162,7 @@ const Edit = ({
               <Button
                 onClick={() => onDelete(post)}
                 text="Delete post"
-                className='text-danger'
+                className="text-danger"
               />
             )}
           </div>

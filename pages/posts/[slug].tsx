@@ -45,7 +45,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   // TODO: replace when locales are supported in posts
   const posts = await getAllPostsForLocale(i18n.defaultLocale, false)
-  const paths = posts.map(post => ({
+  const paths = posts.map((post) => ({
     params: { slug: post.slug },
   }))
 

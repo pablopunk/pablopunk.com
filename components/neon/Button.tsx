@@ -33,16 +33,11 @@ const ButtonComponent = ({
   size,
   ...rest
 }: ButtonProps) => {
-  const type = useMemo(
-    () => (secondary ? 'secondary' : 'primary'),
-    [secondary],
-  )
+  const type = useMemo(() => (secondary ? 'secondary' : 'primary'), [secondary])
   const iconOnly = useMemo(() => !text && !children, [text, children])
   const ButtonOrA = (props) => {
     if (typeof href === 'string') {
-      return (
-        <Link href={href} {...props} {...rest} />
-      )
+      return <Link href={href} {...props} {...rest} />
     }
     return <button {...props} {...rest} />
   }
@@ -77,8 +72,8 @@ const ButtonComponent = ({
               'max-w-0 opacity-0',
               'group-hover:max-w-[600px] group-hover:opacity-100',
               {
-                'group-hover:mx-1': !text && children == null
-              }
+                'group-hover:mx-1': !text && children == null,
+              },
             )}
           >
             {title}
@@ -87,33 +82,33 @@ const ButtonComponent = ({
         {RightIcon && <RightIcon />}
       </ButtonOrA>
       <style jsx>{`
-          a:hover {
-            text-decoration: none;
-          }
-          .neon-button {
-            --neon-bright: var(--color-${type}-1);
-            --neon-background: var(--color-${type}-9);
-            --neon-shadow: var(--color-${type}-6);
-          }
-          :global(body.dark) .neon-button {
-            --neon-bright: var(--color-${type}-9);
-            --neon-background: var(--color-${type}-2);
-            --neon-shadow: var(--color-${type}-4);
-          }
-          .neon-button {
-            color: var(--neon-bright);
-            background: var(--neon-background);
-            border: 2px solid var(--neon-bright);
-            box-shadow: 0px 0px 16px 2px var(--neon-shadow),
-              inset 2px 2px 12px 2px var(--neon-shadow);
-            border-radius: 999px;
-          }
-          .neon-button:not([disabled]):hover {
-            background: var(--neon-shadow);
-            box-shadow: 0px 0px 32px 2px var(--neon-shadow),
-              inset 2px 2px 12px 2px var(--neon-shadow);
-          }
-        `}</style>
+        a:hover {
+          text-decoration: none;
+        }
+        .neon-button {
+          --neon-bright: var(--color-${type}-1);
+          --neon-background: var(--color-${type}-9);
+          --neon-shadow: var(--color-${type}-6);
+        }
+        :global(body.dark) .neon-button {
+          --neon-bright: var(--color-${type}-9);
+          --neon-background: var(--color-${type}-2);
+          --neon-shadow: var(--color-${type}-4);
+        }
+        .neon-button {
+          color: var(--neon-bright);
+          background: var(--neon-background);
+          border: 2px solid var(--neon-bright);
+          box-shadow: 0px 0px 16px 2px var(--neon-shadow),
+            inset 2px 2px 12px 2px var(--neon-shadow);
+          border-radius: 999px;
+        }
+        .neon-button:not([disabled]):hover {
+          background: var(--neon-shadow);
+          box-shadow: 0px 0px 32px 2px var(--neon-shadow),
+            inset 2px 2px 12px 2px var(--neon-shadow);
+        }
+      `}</style>
     </>
   )
 }
