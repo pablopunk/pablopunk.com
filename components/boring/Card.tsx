@@ -38,7 +38,7 @@ export const Card = ({
           </h2>
           <div className='text-neutral-7 text-sm'>{children}</div>
         </div>
-        <div className="w-full flex justify-start mt-2 gap-4">
+        <div className="w-full flex justify-start mt-2 gap-2">
           {(Array.isArray(CTA) ? CTA : [CTA]).filter(Boolean).map((cta, i) => (
             <Button
               key={`cta-${cta.href || cta.text || cta.title}-${i}`}

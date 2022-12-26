@@ -24,8 +24,8 @@ type Props = {
 export default function Home({ featuredPosts }: Props) {
   const { _ } = useTranslation()
   return (
-    <div className="w-full fill-height flex items-center justify-center">
-      <div className="max-w-[400px] flex flex-col gap-4">
+    <div className='fill-height flex items-center'>
+      <div className="max-w-md mx-auto px-4 py-2 flex flex-col gap-4 md:grid md:grid-cols-2 md:max-w-3xl justify-center">
         <Card
           title={_('Me')}
           className="order-first md:order-none"
@@ -85,27 +85,6 @@ export default function Home({ featuredPosts }: Props) {
           </T>
         </Card>
         <Card
-          title={_('Code')}
-          Icon={HiTerminal}
-          CTA={[
-            {
-              title: 'Github',
-              LeftIcon: FaGithub,
-              href: 'https://github.com/pablopunk',
-            },
-            {
-              title: _('Featured repos'),
-              LeftIcon: HiOutlineStar,
-              href: '/code',
-            },
-          ]}
-        >
-          <T>
-            All of my personal projects and open-source contributions can be
-            found on <b>Github</b>.
-          </T>
-        </Card>
-        <Card
           title="Blog"
           Icon={MdLibraryBooks}
           CTA={{
@@ -128,6 +107,27 @@ export default function Home({ featuredPosts }: Props) {
               </a>
             ))}
           </div>
+        </Card>
+        <Card
+          title={_('Code')}
+          Icon={HiTerminal}
+          CTA={[
+            {
+              title: 'Github',
+              LeftIcon: FaGithub,
+              href: 'https://github.com/pablopunk',
+            },
+            {
+              title: _('Featured repos'),
+              LeftIcon: HiOutlineStar,
+              href: '/code',
+            },
+          ]}
+        >
+          <T>
+            All of my personal projects and open-source contributions can be
+            found on <b>Github</b>.
+          </T>
         </Card>
       </div>
     </div>
