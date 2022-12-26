@@ -53,6 +53,7 @@ const ButtonComponent = ({
               'opacity-50 cursor-not-allowed': disabled,
               'cursor-pointer': !disabled,
             },
+            'text-xl md:text-sm',
             className,
           )}
           onClick={onClick}
