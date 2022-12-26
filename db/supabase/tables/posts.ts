@@ -3,13 +3,21 @@ import { Post } from '~/db/supabase/types'
 import { POSTS_TABLE } from '~/db/supabase/tables'
 
 export async function getAllPostsForLocale(locale: string, preview: boolean) {
-  return client
+  const result = await client
     .from<Post>(POSTS_TABLE)
     .select(
       'id, date, title, subtitle, locale, slug, translated_slug, body, image, status',
     )
+    // TODO: add match for locale when it's supported
     .match(preview ? {} : { status: 'live' })
     .order('date', { ascending: false })
+
+  if (result.error) {
+    console.error(result.error)
+    return []
+  }
+
+  return result.data
 }
 
 export async function getPost(post: Post) {

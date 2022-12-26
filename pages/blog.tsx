@@ -67,14 +67,10 @@ export default function Blog({ posts }: Props) {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const pageProps = await pageStaticProps(ctx)
-  const { data: posts, error } = await getAllPostsForLocale(
+  const posts = await getAllPostsForLocale(
     ctx.locale,
     ctx.preview,
   )
-
-  if (error) {
-    console.error(error)
-  }
 
   return {
     ...pageProps,
