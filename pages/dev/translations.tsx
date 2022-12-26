@@ -133,9 +133,7 @@ export default function Translations({ initialData }: Props) {
               className="inline"
               text={showMissing ? _('Show all') : _('Show missing')}
               LeftIcon={showMissing ? FaWindowMaximize : FaWindowClose}
-              secondary
-              size="sm"
-            ></Button>
+            />
           </div>
         </div>
         <table>

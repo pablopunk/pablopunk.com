@@ -71,6 +71,7 @@ specifiers:
   react-spring: ^9.2.4
   react-supabase: ^0.2.0
   react-text-loop: ^2.3.0
+  react-tippy: ^1.4.0
   react-use: ^17.4.0
   simple-react-lightbox: ^3.6.6
   snarkdown: ^2.0.0
@@ -127,6 +128,7 @@ dependencies:
   react-spring: 9.4.5_biqbaboplfbrettd7655fr4n2y
   react-supabase: 0.2.0_hasks4vodxoqxtljq6lpxhks7q
   react-text-loop: 2.3.0_biqbaboplfbrettd7655fr4n2y
+  react-tippy: 1.4.0
   react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
   simple-react-lightbox: 3.6.8_biqbaboplfbrettd7655fr4n2y
   snarkdown: 2.0.0
@@ -5003,6 +5005,11 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /popper.js/1.16.1:
+    resolution: {integrity: sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==}
+    deprecated: You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1
+    dev: false
+
   /postcss-js/3.0.3:
     resolution: {integrity: sha512-gWnoWQXKFw65Hk/mi2+WTQTHdPD5UJdDXZmX073EY/B3BWnYjO4F4t0VneTCnCGQ5E5GsCdMkzPaTXwl3r5dJw==}
     engines: {node: '>=10.0'}
@@ -5382,6 +5389,12 @@ packages:
       react-dom: 18.2.0_react@18.2.0
       react-fast-compare: 2.0.4
       react-motion: 0.5.2_react@18.2.0
+    dev: false
+
+  /react-tippy/1.4.0:
+    resolution: {integrity: sha512-r/hM5XK9Ztr2ZY7IWKuRmISTlUPS/R6ddz6PO2EuxCgW+4JBcGZRPU06XcVPRDCOIiio8ryBQFrXMhFMhsuaHA==}
+    dependencies:
+      popper.js: 1.16.1
     dev: false
 
   /react-universal-interface/0.6.2_react@18.2.0+tslib@2.4.0:
