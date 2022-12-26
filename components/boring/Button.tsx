@@ -50,7 +50,8 @@ const ButtonComponent = ({
             'group hover:no-underline hover:text-neutral-5 transition inline-flex items-center justify-center font-bold overflow-hidden',
             {
               'gap-1': !iconOnly,
-              'opacity-50 cursor-not-allowed': disabled,
+              'h-[32px] md:h-auto': iconOnly,
+              'opacity-60 cursor-not-allowed': disabled,
               'cursor-pointer': !disabled,
             },
             'text-xl md:text-sm',
