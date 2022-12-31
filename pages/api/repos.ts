@@ -41,7 +41,9 @@ export const getReposApiResponse = async () => {
   while (moreRepos) {
     const pageRepos: Repo[] = await fetchFromAPI(page++)
 
-    allRepos.push(...pageRepos)
+    if (Array.isArray(pageRepos)) {
+      allRepos.push(...pageRepos)
+    }
 
     if (pageRepos.length === 0) {
       moreRepos = false
