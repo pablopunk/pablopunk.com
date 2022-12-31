@@ -1,5 +1,5 @@
-import { fetchNumberOfVisits } from '~/db/goatcounter'
-import { Post } from '~/db/supabase/types'
+import { fetchNumberOfVisits } from '~/goatcounter'
+import { Post } from '~/supabase/types'
 import { useEffect, useState } from 'react'
 
 export const useVisitsCount = (post: Post) => {

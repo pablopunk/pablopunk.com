@@ -1,4 +1,4 @@
-import { getAllTranslationsForLocale } from '~/db/supabase/tables/i18n'
+import { getAllTranslationsForLocale } from '~/supabase/tables/i18n'
 import { GetStaticPropsContext } from 'next'
 import { PageProps } from '~/types/page'
 

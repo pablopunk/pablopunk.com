@@ -14,8 +14,8 @@ import { HiOutlineStar, HiTerminal } from 'react-icons/hi'
 import { MdFace, MdHomeWork, MdLibraryBooks, MdMail } from 'react-icons/md'
 import { AiFillCalendar } from 'react-icons/ai'
 import { GetStaticProps } from 'next'
-import { getPost } from '~/db/supabase/tables/posts'
-import { Post } from '~/db/supabase/types'
+import { getPost } from '~/supabase/tables/posts'
+import { Post } from '~/supabase/types'
 
 type Props = {
   featuredPosts: Post[]

@@ -1,8 +1,8 @@
 import {
   getAllTranslationsForLocale,
   insertTranslation,
-} from '~/db/supabase/tables/i18n'
-import { Translation } from '~/db/supabase/types'
+} from '~/supabase/tables/i18n'
+import { Translation } from '~/supabase/types'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function MissingTranslation(

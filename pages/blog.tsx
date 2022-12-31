@@ -1,6 +1,6 @@
 import { Section } from '~/components/Section'
-import { getAllPostsForLocale } from '~/db/supabase/tables/posts'
-import { Post } from '~/db/supabase/types'
+import { getAllPostsForLocale } from '~/supabase/tables/posts'
+import { Post } from '~/supabase/types'
 import { pageStaticProps } from '~/middleware'
 import { GetStaticProps } from 'next'
 import React from 'react'

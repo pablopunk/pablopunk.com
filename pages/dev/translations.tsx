@@ -5,8 +5,8 @@ import {
   getAllTranslationsForLocale,
   deleteTranslation,
   updateTranslation,
-} from '~/db/supabase/tables/i18n'
-import { Translation } from '~/db/supabase/types'
+} from '~/supabase/tables/i18n'
+import { Translation } from '~/supabase/types'
 import { useTranslation } from '~/hooks/useTranslation'
 import { withAdminServerSideProps } from '~/middleware'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'

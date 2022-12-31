@@ -1,6 +1,6 @@
 import { Section } from '~/components/Section'
 import useSWR from 'swr'
-import type { Post } from '~/db/supabase/types'
+import type { Post } from '~/supabase/types'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '~/hooks/useTranslation'
 import { Button } from '~/components/boring/Button'
@@ -39,7 +39,7 @@ const TextInput = ({
 }
 
 // eslint-disable-next-line no-unused-vars
-const noop = (post: Post) => {}
+const noop = (post: Post) => { }
 
 const Edit = ({
   onSubmit,
@@ -123,7 +123,7 @@ const Edit = ({
                 newDate.toISOString().split('T')[0] // will throw if date is not valid
                 setDate(new Date(ev.target.value))
                 setPost({ ...post, date: ev.target.value })
-              } catch (e) {}
+              } catch (e) { }
             }}
           />
           <TextInput _key="image" {...{ post, onInputChange }} />
