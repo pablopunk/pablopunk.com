@@ -1,4 +1,4 @@
-import { sendErrorEmail } from '~/email/sendErrorEmail'
+import { sendErrorEmail } from 'lib/email/sendErrorEmail'
 import { getNowPlaying } from '~/lib/spotify'
 
 export default async function NowPlayingApi(_, res) {

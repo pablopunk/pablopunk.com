@@ -1,1 +1,1 @@
-export { useLikes } from 'supabase/hooks'
+export { useLikes } from 'models/supabase/hooks'

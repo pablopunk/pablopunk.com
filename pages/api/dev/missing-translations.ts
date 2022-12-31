@@ -1,7 +1,7 @@
 import {
   getAllTranslationsForLocale,
   insertTranslation,
-} from '~/supabase/tables/i18n'
+} from 'models/supabase/tables/i18n'
 import { Translation } from '~/models/translation'
 import { NextApiRequest, NextApiResponse } from 'next'
 

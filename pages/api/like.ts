@@ -1,8 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Like } from '~/models/like'
-import { sendErrorEmail } from '~/email/sendErrorEmail'
+import { sendErrorEmail } from 'lib/email/sendErrorEmail'
 import { getClientIp } from '@supercharge/request-ip'
-import { getAllLikesForIpAndSlug, insertLike } from '~/supabase/tables/likes'
+import {
+  getAllLikesForIpAndSlug,
+  insertLike,
+} from 'models/supabase/tables/likes'
 
 export default async function LikeApi(
   req: NextApiRequest,

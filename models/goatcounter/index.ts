@@ -1,5 +1,4 @@
 import { SITE_URL } from 'config'
-import { Post } from '~/models/post'
 
 const CLIENT_API = SITE_URL + '/visits/'
 const SERVER_API = 'https://pablopunk.goatcounter.com/counter/'
@@ -17,10 +16,12 @@ const fetchFromAPI = async (path: string) => {
     })
 }
 
-export const fetchNumberOfVisits = async (post: Post) => {
-  const path = `/posts/${post.slug}`
+export const fetchNumberOfVisits = async (path: string) => {
   return fetchFromAPI(path)
 }
 
-export const fetchMultipleNumberOfVisits = (posts: Post[]) =>
-  Promise.all(posts.map(fetchNumberOfVisits))
+export const countVisit = async (path: string) => {
+  if (typeof window?.['goatcounter'] !== 'undefined') {
+    window['goatcounter'].count({ path })
+  }
+}

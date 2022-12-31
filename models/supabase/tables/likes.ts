@@ -1,6 +1,6 @@
-import client from '~/supabase/client'
+import client from 'models/supabase/client'
 import { Like } from '~/models/like'
-import { LIKES_TABLE } from '~/supabase/tables'
+import { LIKES_TABLE } from 'models/supabase/tables'
 
 export async function getAllLikesForIpAndSlug(slug: string, ip: string) {
   return (await client.from<Like>(LIKES_TABLE).select('id').match({ slug, ip }))

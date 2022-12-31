@@ -1,6 +1,6 @@
-import client from '~/supabase/client'
+import client from 'models/supabase/client'
 import { Post } from '~/models/post'
-import { POSTS_TABLE } from '~/supabase/tables'
+import { POSTS_TABLE } from 'models/supabase/tables'
 
 export async function getAllPostsForLocale(locale: string, preview: boolean) {
   const result = await client

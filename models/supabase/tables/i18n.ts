@@ -1,4 +1,4 @@
-import client from '~/supabase/client'
+import client from 'models/supabase/client'
 import { I18N_TABLE } from '.'
 import { Translation } from '~/models/translation'
 

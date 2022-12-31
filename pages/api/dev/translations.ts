@@ -1,4 +1,4 @@
-import { getAllTranslationsForLocale } from '~/supabase/tables/i18n'
+import { getAllTranslationsForLocale } from 'models/supabase/tables/i18n'
 import { NextApiRequest } from 'next'
 
 export default async function (req: NextApiRequest, res) {

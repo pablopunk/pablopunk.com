@@ -1,6 +1,6 @@
 import { Page } from '~/components/Page'
-import { I18NProvider } from '~/context/i18n'
-import { SupabaseProvider } from '~/supabase/client'
+import { I18NProvider } from 'hooks/context/i18n'
+import { SupabaseProvider } from 'models/supabase/client'
 import { NextWebVitalsMetric } from 'next/app'
 import Router, { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -12,6 +12,7 @@ import 'react-tippy/dist/tippy.css'
 import { PageProps } from '~/types/page'
 import { UserProvider } from '@supabase/auth-helpers-react'
 import { supabaseClient } from '@supabase/auth-helpers-nextjs'
+import { countVisit } from 'models/goatcounter'
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   const url = process.env.NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT
@@ -42,15 +43,8 @@ const App = ({
   const { locale, push } = useRouter()
 
   useEffect(() => {
-    const handleRouteChange = (url) => {
-      if (typeof window?.['goatcounter'] !== 'undefined') {
-        window['goatcounter'].count({ path: url })
-      }
-    }
-
-    Router.events.on('routeChangeComplete', handleRouteChange)
-
-    return () => Router.events.off('routeChangeComplete', handleRouteChange)
+    Router.events.on('routeChangeComplete', countVisit)
+    return () => Router.events.off('routeChangeComplete', countVisit)
   }, [])
 
   useHotkeys('cmd+shift+d', (ev) => {

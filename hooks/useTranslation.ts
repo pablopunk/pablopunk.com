@@ -1,4 +1,4 @@
-import { I18NContext } from '~/context/i18n'
+import { I18NContext } from 'hooks/context/i18n'
 import { Translation } from '~/models/translation'
 import { i18n } from '~/next.config'
 import { useContext } from 'react'

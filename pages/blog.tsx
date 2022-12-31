@@ -1,5 +1,5 @@
 import { Section } from '~/components/Section'
-import { getAllPostsForLocale } from '~/supabase/tables/posts'
+import { getAllPostsForLocale } from 'models/supabase/tables/posts'
 import { Post } from '~/models/post'
 import { pageStaticProps } from '~/middleware'
 import { GetStaticProps } from 'next'
