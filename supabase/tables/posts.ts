@@ -1,5 +1,5 @@
 import client from '~/supabase/client'
-import { Post } from '~/supabase/types'
+import { Post } from '~/models/post'
 import { POSTS_TABLE } from '~/supabase/tables'
 
 export async function getAllPostsForLocale(locale: string, preview: boolean) {
