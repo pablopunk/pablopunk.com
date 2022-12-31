@@ -1,4 +1,4 @@
-import { Translation } from '~/supabase/types'
+import { Translation } from '~/models/translation'
 
 export interface PageProps {
   statusCode?: string

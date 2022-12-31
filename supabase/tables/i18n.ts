@@ -1,6 +1,6 @@
 import client from '~/supabase/client'
 import { I18N_TABLE } from '.'
-import { Translation } from '../types'
+import { Translation } from '~/models/translation'
 
 export async function getAllTranslationsForLocale(locale: string) {
   return (

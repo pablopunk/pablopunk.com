@@ -6,7 +6,7 @@ import {
   deleteTranslation,
   updateTranslation,
 } from '~/supabase/tables/i18n'
-import { Translation } from '~/supabase/types'
+import { Translation } from '~/models/translation'
 import { useTranslation } from '~/hooks/useTranslation'
 import { withAdminServerSideProps } from '~/middleware'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'

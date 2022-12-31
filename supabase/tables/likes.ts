@@ -1,5 +1,5 @@
 import client from '~/supabase/client'
-import { Like } from '~/supabase/types'
+import { Like } from '~/models/like'
 import { LIKES_TABLE } from '~/supabase/tables'
 
 export async function getAllLikesForIpAndSlug(slug: string, ip: string) {

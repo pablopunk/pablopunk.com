@@ -1,7 +1,7 @@
 import { Article } from '~/components/Article'
 import { Section } from '~/components/Section'
 import { getPost, getAllPostsForLocale } from '~/supabase/tables/posts'
-import { Post } from '~/supabase/types'
+import { Post } from '~/models/post'
 import { pageStaticProps } from '~/middleware'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { PageProps } from '~/types/page'

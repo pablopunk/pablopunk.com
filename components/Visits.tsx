@@ -1,4 +1,4 @@
-import { Post } from '~/supabase/types'
+import { Post } from '~/models/post'
 import { useVisitsCount } from '~/hooks/useVisitsCount'
 import { BsGraphUp } from 'react-icons/bs'
 import type { Size } from '~/types/styles'

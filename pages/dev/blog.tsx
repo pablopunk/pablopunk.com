@@ -1,6 +1,6 @@
 import { Section } from '~/components/Section'
 import useSWR from 'swr'
-import type { Post } from '~/supabase/types'
+import type { Post } from '~/models/post'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '~/hooks/useTranslation'
 import { Button } from '~/components/boring/Button'

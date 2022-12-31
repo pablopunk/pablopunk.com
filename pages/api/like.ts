@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { Like } from '~/supabase/types'
+import { Like } from '~/models/like'
 import { sendErrorEmail } from '~/email/sendErrorEmail'
 import { getClientIp } from '@supercharge/request-ip'
 import { getAllLikesForIpAndSlug, insertLike } from '~/supabase/tables/likes'
