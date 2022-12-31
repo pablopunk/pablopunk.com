@@ -1,13 +1,9 @@
-import Redis from 'ioredis'
-
-let redis: any
+import { getRedisClient } from 'lib/redis'
 const isDev = process.env.NODE_ENV !== 'production'
 
-if (isDev) {
-  redis = new Redis(process.env.REDIS_URL)
-}
-
 export async function getFromCache(key: string, fetcher: () => Promise<any>) {
+  const redis = await getRedisClient()
+
   if (!redis || !isDev) {
     return fetcher().then((value) => setInCache(key, value) && value)
   }
@@ -25,6 +21,8 @@ export async function getFromCache(key: string, fetcher: () => Promise<any>) {
 }
 
 export async function setInCache(key: string, value: any) {
+  const redis = await getRedisClient()
+
   if (redis) {
     redis.set(key, JSON.stringify(value))
   }
