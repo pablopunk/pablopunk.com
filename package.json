@@ -9,7 +9,7 @@
     "lint": "eslint --ext .ts --ext .tsx .",
     "lint-fix": "eslint --fix --ext .ts --ext .tsx .",
     "prettier-staged": "pretty-quick --staged",
-    "generate-types": "openapi-typescript \"$(dotenv -- bash -c 'echo $NEXT_PUBLIC_SUPABASE_URL')/rest/v1/?apikey=$(dotenv -- bash -c 'echo $NEXT_PUBLIC_SUPABASE_ANON_KEY')\" --output db/supabase/generated-types.ts",
+    "generate-types": "openapi-typescript \"$(dotenv -- bash -c 'echo $NEXT_PUBLIC_SUPABASE_URL')/rest/v1/?apikey=$(dotenv -- bash -c 'echo $NEXT_PUBLIC_SUPABASE_ANON_KEY')\" --output models/supabase/generated-types.ts",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "test:dev": "start-server-and-test dev http://localhost:3000 cypress:open",
