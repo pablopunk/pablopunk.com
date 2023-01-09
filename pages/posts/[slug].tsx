@@ -43,6 +43,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   // const { locales } = i18n
 
+  // TODO: add locale when it's supported
   const posts = await getAllPostsForLocale(i18n.defaultLocale, false)
   const paths = posts.map((post) => ({
     params: { slug: post.slug },
