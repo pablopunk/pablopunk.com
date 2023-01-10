@@ -7,6 +7,7 @@ import React from 'react'
 import { PageProps } from '~/types/page'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import { Visits } from '~/components/Visits'
+import Link from 'next/link'
 
 interface Props extends PageProps {
   posts: Post[]
@@ -22,7 +23,7 @@ const FeaturedImage = ({ post }: { post: Post }) => (
 )
 
 const Post = ({ post }: { post: Post }) => (
-  <a
+  <Link
     href={`/posts/${post.slug}`}
     className="flex gap-2 p-2 items-center justify-between rounded-lg hover:bg-neutral-2 hover:no-underline"
   >
@@ -43,7 +44,7 @@ const Post = ({ post }: { post: Post }) => (
         <FeaturedImage post={post} />
       </div>
     </div>
-  </a>
+  </Link>
 )
 
 const PostsList = ({ posts }: { posts: Post[] }) => (
