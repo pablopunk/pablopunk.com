@@ -31,7 +31,7 @@ const lwtScript = `
     s.src = z + '?t=' + t + '&apiKey=' + e;
     a.getElementsByTagName('head')[0].appendChild(s);
     m.mazeUniversalSnippetApiKey = e
-  })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '387b92f6-3965-466a-aaf0-871a28a52a89');
+  })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '897eab31-050d-4b0c-8bc7-043ad0447d19');
 `
 
 export default class extends Document {
