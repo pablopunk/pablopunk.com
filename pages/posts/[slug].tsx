@@ -6,14 +6,22 @@ import { pageStaticProps } from '~/middleware'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { PageProps } from '~/types/page'
 import { i18n } from '~/next.config'
+import { Button } from '~/components/boring/Button'
+import { BiArrowBack } from 'react-icons/bi'
+import { useTranslation } from '~/hooks/useTranslation'
 
 interface Props extends PageProps {
   post: Post
 }
 
 export default function Slug({ post }: Props) {
+  const { _ } = useTranslation()
+
   return (
     <Section className="mt-3">
+      <Button href="/blog" LeftIcon={BiArrowBack} primary>
+        {_('Go back')}
+      </Button>
       <Article post={post} />
     </Section>
   )

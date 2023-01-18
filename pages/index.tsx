@@ -110,6 +110,7 @@ export default function Home({ featuredPosts }: Props) {
             text: _('Latest posts'),
             RightIcon: FaArrowRight,
             href: '/blog',
+            primary: true,
           }}
         >
           <div className="flex flex-col gap-1">

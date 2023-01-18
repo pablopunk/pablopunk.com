@@ -15,6 +15,7 @@ export type ButtonProps = {
   title?: string
   disabled?: boolean
   className?: string
+  primary?: boolean
 }
 
 const ButtonComponent = ({
@@ -27,10 +28,11 @@ const ButtonComponent = ({
   href,
   disabled,
   className,
+  primary,
   ...rest
 }: ButtonProps) => {
   const iconOnly = useMemo(() => !text && !children, [text, children])
-  const ButtonOrA = (props) => {
+  const ButtonOrA = (props: any) => {
     if (typeof href === 'string') {
       return <Link href={href} {...props} {...rest} />
     }
@@ -53,6 +55,7 @@ const ButtonComponent = ({
               'h-[32px] md:h-auto text-xl': iconOnly,
               'opacity-60 cursor-not-allowed': disabled,
               'cursor-pointer': !disabled,
+              'text-primary-7': !!primary,
             },
             className,
           )}

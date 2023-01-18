@@ -3,10 +3,7 @@ import { Markdown } from '~/components/Markdown'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { FunctionComponent } from 'preact'
 import { Post } from '~/models/post'
-import { useTranslation } from '~/hooks/useTranslation'
 import { Visits } from './Visits'
-import { Button } from '~/components/boring/Button'
-import { BiArrowBack } from 'react-icons/bi'
 import LikeComponent from './Like'
 
 const StyledArticle = styled.article`
@@ -111,13 +108,8 @@ type Props = {
 }
 
 export const Article: FunctionComponent<Props> = ({ post }) => {
-  const { _ } = useTranslation()
-
   return (
     <>
-      <Button href="/blog" LeftIcon={BiArrowBack}>
-        {_('Go back')}
-      </Button>
       <StyledArticle>
         <img src={post.image} alt={post.title} className="mt-4" />
         <div className="w-full my-2 italic font-thin text-center opacity-75">

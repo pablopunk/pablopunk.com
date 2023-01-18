@@ -32,7 +32,6 @@ export const Card = ({ title, children, Icon, CTA, className }: Props) => {
           <Button
             key={`cta-${cta.href || cta.text || cta.title}-${i}`}
             {...cta}
-            className="text-neutral-7"
           />
         ))}
       </div>
