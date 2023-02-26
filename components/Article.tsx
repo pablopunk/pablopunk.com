@@ -5,6 +5,7 @@ import { FunctionComponent } from 'preact'
 import { Post } from '~/models/post'
 import { Visits } from './Visits'
 import LikeComponent from './Like'
+import { useRouter } from 'next/router'
 
 const StyledArticle = styled.article`
   display: flex;
@@ -108,12 +109,13 @@ type Props = {
 }
 
 export const Article: FunctionComponent<Props> = ({ post }) => {
+  const { locale } = useRouter()
   return (
     <>
       <StyledArticle>
         <img src={post.image} alt={post.title} className="mt-4" />
         <div className="w-full my-2 italic font-thin text-center opacity-75">
-          {new Date(post.date).toLocaleDateString()}
+          {new Date(post.date).toLocaleDateString(locale)}
         </div>
         <div className="flex justify-center w-full">
           <Visits post={post} />
