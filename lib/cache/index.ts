@@ -9,7 +9,12 @@ export async function getFromCache(key: string, fetcher: () => Promise<any>) {
   }
 
   let cache = await redis.get(key)
-  cache = JSON.parse(cache)
+
+  try {
+    cache = JSON.parse(cache)
+  } catch (err) {
+    cache = null
+  }
 
   if (cache) {
     console.log('Loading from cache:', key)

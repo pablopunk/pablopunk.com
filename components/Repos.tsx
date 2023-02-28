@@ -18,8 +18,6 @@ export function Repos({ initialData }) {
   const { _ } = useTranslation()
   const { data, error } = useSWR<Repo[]>(API, fetcher, { initialData })
 
-  console.log(data)
-
   if (error && !data) {
     return <strong style={{ color: 'orangered' }}>Error fetching repos</strong>
   }

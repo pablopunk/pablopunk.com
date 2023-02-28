@@ -21,8 +21,20 @@ export const postJson = (url: string, data: any) =>
     body: JSON.stringify(data),
   })
 
-export const getJson = (url: string) =>
+export const getJson = <T>(url: string): Promise<T> =>
   fetch(url, headersForJson).then((res) => res.json())
+
+export const getMonthsAgoDate = (months) => {
+  const date = new Date()
+  date.setMonth(date.getMonth() - months)
+  return date
+}
+
+export const getDaysAgoDate = (days) => {
+  const date = new Date()
+  date.setDate(date.getDate() - days)
+  return date
+}
 
 export function normalizeHref(url?: string) {
   if (
