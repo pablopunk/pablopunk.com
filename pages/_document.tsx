@@ -29,8 +29,9 @@ const lwtScript = `
 
     s = a.createElement('script');
     s.src = z + '?t=' + t + '&apiKey=' + e;
+    s.async = true;
     a.getElementsByTagName('head')[0].appendChild(s);
-    m.mazeUniversalSnippetApiKey = e
+    m.mazeUniversalSnippetApiKey = e;
   })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '897eab31-050d-4b0c-8bc7-043ad0447d19');
 `
 
