@@ -15,6 +15,7 @@ import { MdFace, MdHomeWork, MdLibraryBooks, MdMail } from 'react-icons/md'
 import { AiFillCalendar } from 'react-icons/ai'
 import { GetStaticProps } from 'next'
 import { Post, getPost } from '~/models/post'
+import classNames from 'classnames'
 
 type Props = {
   featuredPosts: Post[]
@@ -114,10 +115,12 @@ export default function Home({ featuredPosts }: Props) {
           }}
         >
           <div className="flex flex-col gap-1">
-            {featuredPosts.map((post) => (
+            {featuredPosts.map((post, index) => (
               <a
                 href={`/posts/${post.slug}`}
-                className="flex gap-1 items-start text-xs"
+                className={classNames('flex gap-1 items-start text-xs', {
+                  'text-secondary-8': index === 0,
+                })}
                 key={post.id}
               >
                 <div className="pt-[2.5px]">
@@ -136,9 +139,9 @@ export default function Home({ featuredPosts }: Props) {
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const pageProps = await pageStaticProps(ctx)
   const featuredPosts = await Promise.all([
+    getPost({ id: 16 }),
     getPost({ id: 9 }),
     getPost({ id: 10 }),
-    getPost({ id: 11 }),
   ])
 
   return {
