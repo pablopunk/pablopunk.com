@@ -6,6 +6,7 @@ import { Post } from '~/models/post'
 import { Visits } from './Visits'
 import LikeComponent from './Like'
 import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
 
 const StyledArticle = styled.article`
   display: flex;
@@ -110,8 +111,23 @@ type Props = {
 
 export const Article: FunctionComponent<Props> = ({ post }) => {
   const { locale } = useRouter()
+
   return (
     <>
+      <NextSeo
+        title={post.title}
+        description={post.subtitle}
+        openGraph={{
+          title: post.title,
+          description: post.subtitle,
+          images: [
+            {
+              url: post.image,
+              alt: post.title,
+            },
+          ],
+        }}
+      />
       <StyledArticle>
         <img src={post.image} alt={post.title} className="mt-4" />
         <div className="w-full my-2 italic font-thin text-center opacity-75">
