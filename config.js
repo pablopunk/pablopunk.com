@@ -1,9 +1,11 @@
+const mainUrl = 'pablopunk.com'
+const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+
 module.exports = {
   SITE_URL:
-    process.env.NODE_ENV !== 'development'
-      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` ||
-        'https://pablopunk.com'
-      : 'http://localhost:3000',
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : `https://${vercelUrl || mainUrl}`,
   SITE_NAME: 'Pablo Varela | Freelance Web Developer',
   SITE_DESC:
     'Pablo Varela. Remote Web Developer. Check out my work or contact me. You can also find me on popular social networks as @pablopunk.',
