@@ -13,27 +13,27 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
 </>\n
 \`, "color:royalblue");
 `
-const lwtScript = `
-  (function (m, a, z, e) {
-    var s, t;
-    try {
-      t = m.sessionStorage.getItem('maze-us');
-    } catch (err) {}
+// const lwtScript = `
+//   (function (m, a, z, e) {
+//     var s, t;
+//     try {
+//       t = m.sessionStorage.getItem('maze-us');
+//     } catch (err) {}
 
-    if (!t) {
-      t = new Date().getTime();
-      try {
-        m.sessionStorage.setItem('maze-us', t);
-      } catch (err) {}
-    }
+//     if (!t) {
+//       t = new Date().getTime();
+//       try {
+//         m.sessionStorage.setItem('maze-us', t);
+//       } catch (err) {}
+//     }
 
-    s = a.createElement('script');
-    s.src = z + '?t=' + t + '&apiKey=' + e;
-    s.async = true;
-    a.getElementsByTagName('head')[0].appendChild(s);
-    m.mazeUniversalSnippetApiKey = e;
-  })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '897eab31-050d-4b0c-8bc7-043ad0447d19');
-`
+//     s = a.createElement('script');
+//     s.src = z + '?t=' + t + '&apiKey=' + e;
+//     s.async = true;
+//     a.getElementsByTagName('head')[0].appendChild(s);
+//     m.mazeUniversalSnippetApiKey = e;
+//   })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '897eab31-050d-4b0c-8bc7-043ad0447d19');
+// `
 
 export default class extends Document {
   static async getInitialProps(ctx) {
