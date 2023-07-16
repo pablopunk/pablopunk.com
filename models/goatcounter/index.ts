@@ -4,7 +4,6 @@ const CLIENT_API = SITE_URL + '/visits/'
 const SERVER_API = 'https://pablopunk.goatcounter.com/counter/'
 
 const fetchFromAPI = async (path: string) => {
-  console.log(CLIENT_API, SERVER_API)
   const API_URL = typeof window !== 'undefined' ? CLIENT_API : SERVER_API
 
   return fetch(API_URL + encodeURIComponent(path) + '.json')

@@ -19,7 +19,7 @@ type Downloads = {
 }
 
 type PackageStatObject = {
-  downloads: Downloads[];
+  downloads: Downloads[]
   start: string
   end: string
   package: string
@@ -27,30 +27,39 @@ type PackageStatObject = {
 
 const buildApiUrlForPackage = (packageName: string, from: Date, to: Date) =>
   (SSR ? 'https://api.npmjs.org' : '/api.npmjs.org') +
-  `/downloads/range/${from.toISOString().split('T')[0]
-  }:${to.toISOString().split('T')[0]}/${packageName}`;
+  `/downloads/range/${from.toISOString().split('T')[0]}:${
+    to.toISOString().split('T')[0]
+  }/${packageName}`
 
-type AllPackagesData = Array<{ packageName: string, total: PackageStatObject, recent: PackageStatObject }>
+type AllPackagesData = Array<{
+  packageName: string
+  total: PackageStatObject
+  recent: PackageStatObject
+}>
 
 export const fetchAllNpmData = (): Promise<AllPackagesData> => {
-  const packageStats = (packageName: string, from: Date, to: Date) => getJson<PackageStatObject>(buildApiUrlForPackage(packageName, from, to))
-  const packageStatsWithTotal =
-    name => Promise.all([
+  const packageStats = (packageName: string, from: Date, to: Date) =>
+    getJson<PackageStatObject>(buildApiUrlForPackage(packageName, from, to))
+  const packageStatsWithTotal = (name: string) =>
+    Promise.all([
       name,
-      packageStats(name, getMonthsAgoDate(1000), getDaysAgoDate(1)),
-      packageStats(name, getMonthsAgoDate(4), getDaysAgoDate(1))
+      packageStats(name, getMonthsAgoDate(12 * 10), getDaysAgoDate(1)),
+      packageStats(name, getMonthsAgoDate(4), getDaysAgoDate(1)),
     ])
 
-  return Promise.all(
-    packages.map(packageStatsWithTotal)
-  ).then(stats => stats.map(([packageName, total, recent]) => ({
-    packageName,
-    total,
-    recent
-  })))
+  return Promise.all(packages.map(packageStatsWithTotal)).then((stats) =>
+    stats.map(([packageName, total, recent]) => ({
+      packageName,
+      total,
+      recent,
+    })),
+  )
 }
 
-const convertDownloadsToChartJS = ({ downloads, color }: {
+const convertDownloadsToChartJS = ({
+  downloads,
+  color,
+}: {
   downloads: Downloads[]
   color: string
 }) => ({
@@ -69,9 +78,12 @@ const convertDownloadsToChartJS = ({ downloads, color }: {
 })
 
 const totalDownloads = (stat: PackageStatObject) =>
-  humanFormat(stat.downloads?.reduce?.((acc, curr) => acc + curr.downloads, 0) ?? 0, {
-    decimals: 1,
-  }).replace(' ', '')
+  humanFormat(
+    stat.downloads?.reduce?.((acc, curr) => acc + curr.downloads, 0) ?? 0,
+    {
+      decimals: 1,
+    },
+  ).replace(' ', '')
 
 const PackageStat = ({ package: packageName, downloads, total }) => {
   const { _ } = useTranslation()
@@ -111,39 +123,42 @@ const PackageStat = ({ package: packageName, downloads, total }) => {
 }
 
 const removeWeekends = (data: PackageStatObject['downloads']) =>
-  data.filter(entry => {
-    const dayOfWeek = new Date(entry.day).getDay();
-    return dayOfWeek !== 0 && dayOfWeek !== 6; // 0 = Sunday, 6 = Saturday
-  });
+  data.filter((entry) => {
+    const dayOfWeek = new Date(entry.day).getDay()
+    return dayOfWeek !== 0 && dayOfWeek !== 6 // 0 = Sunday, 6 = Saturday
+  })
 
 const mapStatsBetterForChart = (data: AllPackagesData[0]) => {
   return {
     ...data,
     recent: {
       ...data.recent,
-      downloads: removeWeekends(data.recent.downloads)
-    }
+      downloads: removeWeekends(data.recent.downloads),
+    },
   }
 }
 
 export function NpmCharts({ initialData }: { initialData: AllPackagesData }) {
   const { data } = useSWR('npm-stats', fetchAllNpmData, { initialData })
 
-  const dataButModifiedSoItLooksBetterInCharts = (data || [])
-    .map(mapStatsBetterForChart)
+  const dataButModifiedSoItLooksBetterInCharts = (data || []).map(
+    mapStatsBetterForChart,
+  )
 
   return (
     <>
-      {
-        dataButModifiedSoItLooksBetterInCharts.map((packageData) => (
-          <div
-            key={packageData.packageName}
-            style={{ width: '100%' }}
-            className="p-3 my-4 border-2 border-dashed rounded-md"
-          >
-            <PackageStat {...packageData.recent} total={totalDownloads(packageData.total)} />
-          </div>
-        ))}
+      {dataButModifiedSoItLooksBetterInCharts.map((packageData) => (
+        <div
+          key={packageData.packageName}
+          style={{ width: '100%' }}
+          className="p-3 my-4 border-2 border-dashed rounded-md"
+        >
+          <PackageStat
+            {...packageData.recent}
+            total={totalDownloads(packageData.total)}
+          />
+        </div>
+      ))}
     </>
   )
 }

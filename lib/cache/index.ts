@@ -17,7 +17,7 @@ export async function getFromCache(key: string, fetcher: () => Promise<any>) {
   }
 
   if (cache) {
-    console.log('Loading from cache:', key)
+    console.info('Loading from cache:', key)
     fetcher().then((value) => setInCache(key, value)) // renew cache (SWR-ish)
     return cache
   }
@@ -31,5 +31,6 @@ export async function setInCache(key: string, value: any) {
   if (redis) {
     redis.set(key, JSON.stringify(value))
   }
+
   return true
 }
