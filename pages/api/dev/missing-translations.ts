@@ -19,6 +19,10 @@ export default async function MissingTranslation(
       .json({ error: 'Missing arg in body: "translations"' })
   }
 
+  if (!missingTranslations.length) {
+    return res.status(200).json([])
+  }
+
   const translations = await getAllTranslationsForLocale(
     missingTranslations[0].locale,
   )

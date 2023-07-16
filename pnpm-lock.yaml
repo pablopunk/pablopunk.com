@@ -53,6 +53,9 @@ dependencies:
   axios:
     specifier: ^0.21.2
     version: 0.21.4(debug@4.3.2)
+  boring-avatars:
+    specifier: ^1.10.1
+    version: 1.10.1
   chart.js:
     specifier: ^3.9.1
     version: 3.9.1
@@ -245,8 +248,8 @@ packages:
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
     engines: {node: '>=6.0.0'}
     dependencies:
-      '@jridgewell/gen-mapping': 0.3.1
-      '@jridgewell/trace-mapping': 0.3.13
+      '@jridgewell/gen-mapping': 0.3.3
+      '@jridgewell/trace-mapping': 0.3.18
 
   /@babel/code-frame@7.12.11:
     resolution: {integrity: sha512-Zt1yodBx1UcyiePMSkWnU4hPqhwq7hGi2nFL1LeA3EUl+q2LQx16MISgJ0+z7dnmgvP9QtIleuETGOiOH1RcIw==}
@@ -577,7 +580,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.18.4
+      '@babel/types': 7.22.5
 
   /@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@7.22.5(@babel/core@7.22.9):
     resolution: {integrity: sha512-NP1M5Rf+u2Gw9qfSO4ihjcTGW5zXTi36ITLd4/EoAcEhIZ0yjMqmftDNl3QC19CX7olhrjpyU454g/2W7X0jvQ==}
@@ -2036,7 +2039,7 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       '@jridgewell/set-array': 1.1.1
-      '@jridgewell/sourcemap-codec': 1.4.13
+      '@jridgewell/sourcemap-codec': 1.4.14
       '@jridgewell/trace-mapping': 0.3.18
 
   /@jridgewell/resolve-uri@3.0.7:
@@ -2054,8 +2057,8 @@ packages:
   /@jridgewell/source-map@0.3.5:
     resolution: {integrity: sha512-UTYAUj/wviwdsMfzoSJspJxbkH5o1snzwX0//0ENX1u/55kkZZkcTZP6u9bwKGkv+dkk9at4m1Cpt0uY80kcpQ==}
     dependencies:
-      '@jridgewell/gen-mapping': 0.3.1
-      '@jridgewell/trace-mapping': 0.3.13
+      '@jridgewell/gen-mapping': 0.3.3
+      '@jridgewell/trace-mapping': 0.3.18
     dev: false
 
   /@jridgewell/sourcemap-codec@1.4.13:
@@ -2270,7 +2273,7 @@ packages:
       node-stream-zip: 1.15.0
       ora: 5.4.1
       prompts: 2.4.2
-      semver: 6.3.0
+      semver: 6.3.1
       strip-ansi: 5.2.0
       sudo-prompt: 9.2.1
       wcwidth: 1.0.1
@@ -2367,7 +2370,7 @@ packages:
       node-fetch: 2.6.7
       open: 6.4.0
       ora: 5.4.1
-      semver: 6.3.0
+      semver: 6.3.1
       shell-quote: 1.8.1
     transitivePeerDependencies:
       - encoding
@@ -2400,7 +2403,7 @@ packages:
       fs-extra: 8.1.0
       graceful-fs: 4.2.10
       prompts: 2.4.2
-      semver: 6.3.0
+      semver: 6.3.1
     transitivePeerDependencies:
       - '@babel/core'
       - bufferutil
@@ -3752,6 +3755,10 @@ packages:
 
   /body-scroll-lock@3.1.5:
     resolution: {integrity: sha512-Yi1Xaml0EvNA0OYWxXiYNqY24AfWkbA6w5vxE7GWxtKfzIbZM+Qw+aSmkgsbWzbHiy/RCSkUZBplVxTA+E4jJg==}
+    dev: false
+
+  /boring-avatars@1.10.1:
+    resolution: {integrity: sha512-WcgHDeLrazCR03CDPEvCchLsUecZAZvs4F6FnMiGlTEjyQQf15Q5TRl4EUaAQ1dacvhPq7lC9EOTWkCojQ6few==}
     dev: false
 
   /brace-expansion@1.1.11:
@@ -6341,7 +6348,7 @@ packages:
     resolution: {integrity: sha512-KoAW2zAmNSd3Gk88uJ56qXUWbFk787QKmjjJVOjtGFmmGSZgDBrlIL4AfQw1xyMYPNVD7dNInfIbur9B2rd/wQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
-      '@babel/code-frame': 7.16.7
+      '@babel/code-frame': 7.22.5
       '@jest/types': 29.6.1
       '@types/stack-utils': 2.0.1
       chalk: 4.1.2
@@ -7117,7 +7124,7 @@ packages:
       '@babel/plugin-transform-sticky-regex': 7.22.5(@babel/core@7.22.9)
       '@babel/plugin-transform-typescript': 7.22.9(@babel/core@7.22.9)
       '@babel/plugin-transform-unicode-regex': 7.22.5(@babel/core@7.22.9)
-      '@babel/template': 7.16.7
+      '@babel/template': 7.22.5
       babel-plugin-transform-flow-enums: 0.0.2(@babel/core@7.22.9)
       react-refresh: 0.4.3
     transitivePeerDependencies:
@@ -7189,7 +7196,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.9
       '@babel/generator': 7.22.9
-      '@babel/template': 7.16.7
+      '@babel/template': 7.22.5
       '@babel/traverse': 7.22.8
       nullthrows: 1.1.1
     transitivePeerDependencies:
@@ -7224,11 +7231,11 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      '@babel/code-frame': 7.16.7
+      '@babel/code-frame': 7.22.5
       '@babel/core': 7.22.9
       '@babel/generator': 7.22.9
       '@babel/parser': 7.22.7
-      '@babel/template': 7.16.7
+      '@babel/template': 7.22.5
       '@babel/traverse': 7.22.8
       '@babel/types': 7.22.5
       accepts: 1.3.8
@@ -8439,7 +8446,7 @@ packages:
     dependencies:
       object-assign: 4.1.1
       react: 18.2.0
-      react-is: 16.13.1
+      react-is: 18.2.0
     dev: false
 
   /react-simple-tooltip@2.6.3(react@18.2.0):
@@ -8939,6 +8946,7 @@ packages:
   /semver@6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
+    dev: true
 
   /semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}

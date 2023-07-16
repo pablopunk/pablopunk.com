@@ -1,6 +1,4 @@
-import { Card } from '~/components/boring/Card'
 import { T } from '~/components/T'
-import { useTranslation } from '~/hooks/useTranslation'
 import { pageStaticProps } from '~/middleware'
 import {
   FaArrowRight,
@@ -10,127 +8,117 @@ import {
   FaLinkedin,
   FaTwitter,
 } from 'react-icons/fa'
-import { HiOutlineStar, HiTerminal } from 'react-icons/hi'
-import { MdFace, MdHomeWork, MdLibraryBooks, MdMail } from 'react-icons/md'
-import { AiFillCalendar } from 'react-icons/ai'
+import { MdMail } from 'react-icons/md'
 import { GetStaticProps } from 'next'
 import { Post, getPost } from '~/models/post'
 import classNames from 'classnames'
+import Avatar, { AvatarProps } from 'boring-avatars'
+import { Button } from 'components/boring/Button'
+import Link from 'next/link'
+import { useRandomFromArrayInterval } from 'hooks/useRandomFromArray'
 
 type Props = {
   featuredPosts: Post[]
 }
 
 export default function Home({ featuredPosts }: Props) {
-  const { _ } = useTranslation()
+  const avatarVariant = useRandomFromArrayInterval<AvatarProps['variant']>(
+    ['pixel', 'beam', 'marble', 'sunset', 'ring', 'bauhaus'],
+    'sunset',
+    3000,
+  )
+
   return (
-    <div className="fill-height flex pt-2 md:pt-0 items-start md:items-center">
-      <div className="max-w-md mx-auto px-4 py-2 flex flex-col gap-4 md:grid md:grid-cols-2 md:max-w-3xl justify-center">
-        <Card
-          title={_('Me')}
-          Icon={MdFace}
-          CTA={[
-            {
-              LeftIcon: FaTwitter,
-              title: '@pablopunk',
-              href: 'https://twitter.com/pablopunk',
-            },
-            {
-              LeftIcon: FaInstagram,
-              title: '@pablopunk',
-              href: 'https://instagram.com/pablopunk',
-            },
-            {
-              LeftIcon: MdMail,
-              href: 'mailto:pablo@pablopunk.com',
-              title: 'pablo@pablopunk.com',
-            },
-          ]}
-        >
-          <div className="mb-1">
-            <T>
-              My name is Pablo Varela and I live and work remotely from{' '}
-              <a href="https://www.google.com/search?q=pontevedra&tbm=isch">
-                Pontevedra, Galiza
-              </a>
-              .
-            </T>
+    <div className="flex flex-col gap-3 items-start justify-center fill-height max-w-sm mx-auto px-3">
+      <div className="flex items-center gap-3 relative">
+        <Avatar
+          size={36}
+          name="Pablo Varela"
+          variant={avatarVariant}
+          colors={['#FCCB7E', '#F7A399', '#F48FB1', '#A6A1E1', '#B8E1F9']}
+        />
+        <h1 className="text-4xl font-bold whitespace-nowrap">Pablo Varela</h1>
+        <div className="flex flex-col">
+          <div className="flex gap-2 items-center justify-center">
+            <Button
+              href="https://instagram.com/pablopunk"
+              RightIcon={FaInstagram}
+              title="Instagram"
+            />
+            <Button
+              href="https://twitter.com/pablopunk"
+              RightIcon={FaTwitter}
+              title="Twitter"
+            />
+            <Button
+              href="mailto:pablo@pablopunk.com"
+              RightIcon={MdMail}
+              title="Email"
+            />
           </div>
-        </Card>
-        <Card
-          title={_('Work')}
-          Icon={MdHomeWork}
-          CTA={[
-            {
-              title: 'LinkedIn',
-              LeftIcon: FaLinkedin,
-              href: 'https://linkedin.com/in/pablopunk',
-            },
-            {
-              title: _('Timeline'),
-              LeftIcon: AiFillCalendar,
-              href: '/timeline',
-            },
-            {
-              title: 'CV',
-              LeftIcon: FaGraduationCap,
-              href: 'https://cv.pablopunk.com',
-            },
-          ]}
-        >
-          <T>
-            I work at <a href="https://maze.co">Maze</a> as full-stack
-            developer.
-          </T>
-        </Card>
-        <Card
-          title={_('Code')}
-          Icon={HiTerminal}
-          CTA={[
-            {
-              title: 'Github',
-              LeftIcon: FaGithub,
-              href: 'https://github.com/pablopunk',
-            },
-            {
-              title: _('Featured repos'),
-              LeftIcon: HiOutlineStar,
-              href: '/code',
-            },
-          ]}
-        >
-          <T>
-            All of my personal projects and open-source contributions can be
-            found on <b>Github</b>.
-          </T>
-        </Card>
-        <Card
-          title="Blog"
-          Icon={MdLibraryBooks}
-          CTA={{
-            text: _('Latest posts'),
-            RightIcon: FaArrowRight,
-            href: '/blog',
-            primary: true,
-          }}
-        >
-          <div className="flex flex-col gap-1">
-            {featuredPosts.map((post, index) => (
-              <a
-                href={`/posts/${post.slug}`}
-                className={classNames('flex gap-1 items-start text-xs', {
-                  'text-secondary-8': index === 0,
-                })}
-                key={post.id}
-              >
-                <div className="pt-[2.5px]">
-                  <FaArrowRight />
-                </div>
-                <span>{post.title}</span>
-              </a>
-            ))}
+          <div className="flex gap-2 items-center justify-center">
+            <Button
+              href="https://github.com/pablopunk"
+              RightIcon={FaGithub}
+              title="GitHub"
+            />
+            <Button
+              href="https://cv.pablopunk.com"
+              RightIcon={FaGraduationCap}
+              title="CV"
+            />
+            <Button
+              href="https://linkedin.com/in/pablopunk"
+              RightIcon={FaLinkedin}
+              title="LinkedIn"
+            />
           </div>
-        </Card>
+        </div>
+      </div>
+
+      <p className="text-sm">
+        <T>Full-stack developer at</T> <a href="https://maze.co">Maze</a>{' '}
+        <sup>
+          <Link href="/timeline">
+            <T>previous</T>
+          </Link>
+        </sup>
+      </p>
+
+      <p className="text-sm">
+        Author of{' '}
+        <a href="https://github.com/pablopunk/nextjs-redirects">
+          nextjs-redirect
+        </a>
+        <sup className="ml-1">
+          +500k{' '}
+          <Link href="/code">
+            <T>downloads</T>
+          </Link>
+        </sup>
+        <br />
+        and <a href="https://vimcolors.org">vimcolors.org</a>
+      </p>
+
+      <h3 className="border-b w-full max-w-sm mt-2">
+        <Link href="/blog">Blog</Link>
+      </h3>
+
+      <div className="flex flex-col gap-1">
+        {featuredPosts.map((post, index) => (
+          <a
+            href={`/posts/${post.slug}`}
+            className={classNames('flex gap-1 items-start text-xs', {
+              'text-secondary-8': index === 0,
+            })}
+            key={post.id}
+          >
+            <div className="pt-[2.5px]">
+              <FaArrowRight />
+            </div>
+            <span>{post.title}</span>
+          </a>
+        ))}
       </div>
     </div>
   )
