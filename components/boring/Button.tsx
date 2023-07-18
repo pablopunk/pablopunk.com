@@ -52,7 +52,7 @@ const ButtonComponent = ({
             'group hover:no-underline hover:text-neutral-5 transition inline-flex items-center justify-center font-bold overflow-hidden',
             {
               'gap-1': !iconOnly,
-              'h-[32px] md:h-auto text-xl': iconOnly,
+              'h-[32px] md:h-auto text-2xl md:text-xl': iconOnly,
               'opacity-60 cursor-not-allowed': disabled,
               'cursor-pointer': !disabled,
               'text-primary-7': !!primary,

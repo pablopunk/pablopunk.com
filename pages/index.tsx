@@ -30,15 +30,17 @@ export default function Home({ featuredPosts }: Props) {
 
   return (
     <div className="flex flex-col gap-3 items-start justify-center fill-height max-w-sm mx-auto px-3">
-      <div className="flex items-center gap-3 relative">
-        <Avatar
-          size={36}
-          name="Pablo Varela"
-          variant={avatarVariant}
-          colors={['#FCCB7E', '#F7A399', '#F48FB1', '#A6A1E1', '#B8E1F9']}
-        />
-        <h1 className="text-4xl font-bold whitespace-nowrap">Pablo Varela</h1>
-        <div className="flex flex-col">
+      <div className="flex flex-col md:flex-row items-center gap-3 relative w-full mb-4 md:mb-0">
+        <div className="flex items-center gap-3">
+          <Avatar
+            size={36}
+            name="Pablo Varela"
+            variant={avatarVariant}
+            colors={['#FCCB7E', '#F7A399', '#F48FB1', '#A6A1E1', '#B8E1F9']}
+          />
+          <h1 className="text-4xl font-bold whitespace-nowrap">Pablo Varela</h1>
+        </div>
+        <div className="flex flex-row md:flex-col justify-around w-full order-first md:order-last">
           <div className="flex gap-2 items-center justify-center">
             <Button
               href="https://instagram.com/pablopunk"
