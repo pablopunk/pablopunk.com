@@ -88,7 +88,7 @@ export default function Home({ featuredPosts }: Props) {
       </p>
 
       <p className="text-sm">
-        Author of{' '}
+        <T>Author of</T>{' '}
         <a href="https://github.com/pablopunk/nextjs-redirects">
           nextjs-redirect
         </a>
@@ -99,7 +99,7 @@ export default function Home({ featuredPosts }: Props) {
           </Link>
         </sup>
         <br />
-        and <a href="https://vimcolors.org">vimcolors.org</a>
+        <T>and</T> <a href="https://vimcolors.org">vimcolors.org</a>
       </p>
 
       <h3 className="border-b w-full max-w-sm mt-2">
