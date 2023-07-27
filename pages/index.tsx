@@ -89,7 +89,7 @@ export default function Home({ featuredPosts }: Props) {
 
       <p className="text-sm">
         <T>Author of</T>{' '}
-        <a href="https://github.com/pablopunk/nextjs-redirects">
+        <a href="https://github.com/pablopunk/nextjs-redirect">
           nextjs-redirect
         </a>
         <sup className="ml-1">
