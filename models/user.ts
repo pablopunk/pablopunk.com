@@ -1,2 +1,2 @@
-import { definitions } from 'models/supabase/generated-types'
-export type User = Partial<definitions['users']>
+import { AuthUser } from '@supabase/supabase-js'
+export type User = AuthUser

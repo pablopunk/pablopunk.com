@@ -89,7 +89,7 @@ export const Nav = () => {
   const { _ } = useTranslation()
   const { pathname } = useRouter()
   const locationIsHome = pathname === '/'
-  const { user } = useUser()
+  const user = useUser()
 
   return (
     <nav

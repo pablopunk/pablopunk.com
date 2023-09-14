@@ -1,2 +1,2 @@
-import { definitions } from 'models/supabase/generated-types'
-export type Translation = Partial<definitions['i18n']>
+import { Database } from 'models/supabase/generated-types'
+export type Translation = Database['public']['Tables']['i18n']['Row']

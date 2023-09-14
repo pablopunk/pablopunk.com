@@ -1,18 +1,18 @@
 import { Page } from '~/components/Page'
 import { I18NProvider } from 'hooks/context/i18n'
-import { SupabaseProvider } from 'models/supabase/client'
 import { NextWebVitalsMetric } from 'next/app'
 import Router, { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import SimpleReactLightbox from 'simple-react-lightbox'
 import 'tailwindcss/tailwind.css'
 import '~/styles/global.css'
 import 'react-tippy/dist/tippy.css'
 import { PageProps } from '~/types/page'
-import { UserProvider } from '@supabase/auth-helpers-react'
-import { supabaseClient } from '@supabase/auth-helpers-nextjs'
+import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import { countVisit } from 'models/goatcounter'
+import { Database } from 'models/supabase/generated-types'
+import { useBrowserSupabaseClient } from 'models/supabase/client/browser'
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   const url = process.env.NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT
@@ -41,6 +41,7 @@ const App = ({
   pageProps: PageProps
 }) => {
   const { locale, push } = useRouter()
+  const supabaseClient = useBrowserSupabaseClient()
 
   useEffect(() => {
     Router.events.on('routeChangeComplete', countVisit)
@@ -54,17 +55,15 @@ const App = ({
 
   return (
     <>
-      <UserProvider supabaseClient={supabaseClient}>
-        <SupabaseProvider>
-          <I18NProvider translations={pageProps.translations} locale={locale}>
-            <Page {...pageProps}>
-              <SimpleReactLightbox>
-                <Component {...pageProps} />
-              </SimpleReactLightbox>
-            </Page>
-          </I18NProvider>
-        </SupabaseProvider>
-      </UserProvider>
+      <SessionContextProvider supabaseClient={supabaseClient}>
+        <I18NProvider translations={pageProps.translations} locale={locale}>
+          <Page {...pageProps}>
+            <SimpleReactLightbox>
+              <Component {...pageProps} />
+            </SimpleReactLightbox>
+          </Page>
+        </I18NProvider>
+      </SessionContextProvider>
     </>
   )
 }

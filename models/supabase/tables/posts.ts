@@ -1,9 +1,14 @@
-import client from 'models/supabase/client'
 import { Post } from '~/models/post'
 import { POSTS_TABLE } from 'models/supabase/tables'
+import { getSupabaseServerClient } from '../client/server'
+import type { GetServerSidePropsContext } from 'next'
 
-export async function getAllPostsForLocale(locale: string, preview: boolean) {
-  const result = await client
+export async function getAllPostsForLocale(
+  ctx: GetServerSidePropsContext,
+  _locale: string,
+  preview: boolean,
+) {
+  const result = await getSupabaseServerClient(ctx)
     .from<Post>(POSTS_TABLE)
     .select(
       'id, date, title, subtitle, locale, slug, translated_slug, body, image, status',
@@ -20,8 +25,11 @@ export async function getAllPostsForLocale(locale: string, preview: boolean) {
   return result.data
 }
 
-export async function getPost(post: Post) {
-  const result = await client
+export async function getPost(
+  ctx: GetServerSidePropsContext,
+  post: Partial<Post>,
+) {
+  const result = await getSupabaseServerClient(ctx)
     .from<Post>(POSTS_TABLE)
     .select(
       'id, date, title, subtitle, locale, slug, translated_slug, body, image, status',
@@ -37,14 +45,17 @@ export async function getPost(post: Post) {
   return result.data
 }
 
-export async function insertPost(post: Post) {
-  return client.from<Post>(POSTS_TABLE).upsert(post)
+export async function insertPost(ctx: GetServerSidePropsContext, post: Post) {
+  return getSupabaseServerClient(ctx).from<Post>(POSTS_TABLE).upsert(post)
 }
 
-export async function updatePost(post: Post) {
-  return client.from<Post>(POSTS_TABLE).upsert(post)
+export async function updatePost(ctx: GetServerSidePropsContext, post: Post) {
+  return getSupabaseServerClient(ctx).from<Post>(POSTS_TABLE).upsert(post)
 }
 
-export async function deletePost(post: Post) {
-  return client.from<Post>(POSTS_TABLE).delete().match({ id: post.id })
+export async function deletePost(ctx: GetServerSidePropsContext, post: Post) {
+  return getSupabaseServerClient(ctx)
+    .from<Post>(POSTS_TABLE)
+    .delete()
+    .match({ id: post.id })
 }
