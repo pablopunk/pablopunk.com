@@ -1,6 +1,6 @@
 import { Section } from '~/components/Section'
 import useSWR from 'swr'
-import type { Post } from '~/models/post'
+import type { Post, PostInsert } from '~/models/post'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '~/hooks/useTranslation'
 import { Button } from '~/components/boring/Button'
@@ -10,14 +10,14 @@ import { i18n } from '~/next.config'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import { RiDraftLine } from 'react-icons/ri'
 
-const fetcher = (url) => fetch(url).then((r) => r.json())
+const fetcher = (url: string) => fetch(url).then((r) => r.json())
 
 const TextInput = ({
   post,
   _key,
   onInputChange,
 }: {
-  post: Post
+  post: PostInsert
   _key: keyof Post
   onInputChange: any
 }) => {
@@ -39,7 +39,7 @@ const TextInput = ({
 }
 
 // eslint-disable-next-line no-unused-vars
-const noop = (post: Post) => { }
+const noop = (post: PostInsert) => {}
 
 const Edit = ({
   onSubmit,
@@ -48,7 +48,7 @@ const Edit = ({
   initialData = null,
 }) => {
   const [open, setOpen] = useState(false)
-  const [post, setPost] = useState<Post>(initialData ?? {})
+  const [post, setPost] = useState<PostInsert>(initialData ?? {})
   const [date, setDate] = useState(post.date ? new Date(post.date) : new Date())
   const [checkedLocale, setCheckedLocale] = useState(i18n.defaultLocale)
 
@@ -75,7 +75,7 @@ const Edit = ({
     }
   }
 
-  const onInputChange = (key: keyof Post) => (ev) => {
+  const onInputChange = (key: keyof PostInsert) => (ev) => {
     setPost({ ...post, [key]: ev.target.value })
   }
 
@@ -123,7 +123,7 @@ const Edit = ({
                 newDate.toISOString().split('T')[0] // will throw if date is not valid
                 setDate(new Date(ev.target.value))
                 setPost({ ...post, date: ev.target.value })
-              } catch (e) { }
+              } catch (e) {}
             }}
           />
           <TextInput _key="image" {...{ post, onInputChange }} />
@@ -180,7 +180,7 @@ export default function Blog() {
   )
   const { _ } = useTranslation()
 
-  const onNewPost = async (post: Post) => {
+  const onNewPost = async (post: PostInsert) => {
     fetch('/api/posts', {
       method: 'POST',
       body: JSON.stringify({ ...post, locale }),
@@ -190,7 +190,7 @@ export default function Blog() {
     }).then(() => revalidate())
   }
 
-  const onEditPost = async (post: Post) => {
+  const onEditPost = async (post: PostInsert) => {
     fetch('/api/posts', {
       method: 'PUT',
       body: JSON.stringify(post),
@@ -200,7 +200,7 @@ export default function Blog() {
     }).then(() => revalidate())
   }
 
-  const onDeletePost = async (post: Post) => {
+  const onDeletePost = async (post: PostInsert) => {
     fetch('/api/posts', {
       method: 'DELETE',
       body: JSON.stringify(post),
@@ -220,7 +220,7 @@ export default function Blog() {
           'opacity-80': isValidating,
         })}
       >
-        {data?.map?.((post: Post) => (
+        {data?.map?.((post: PostInsert) => (
           <React.Fragment key={post.id}>
             <Edit
               onSubmit={onEditPost}

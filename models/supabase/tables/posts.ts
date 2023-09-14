@@ -1,5 +1,5 @@
 import client from 'models/supabase/client'
-import { Post } from '~/models/post'
+import { Post, PostInsert } from '~/models/post'
 import { POSTS_TABLE } from 'models/supabase/tables'
 
 export async function getAllPostsForLocale(locale: string, preview: boolean) {
@@ -20,13 +20,13 @@ export async function getAllPostsForLocale(locale: string, preview: boolean) {
   return result.data
 }
 
-export async function getPost(post: Post) {
+export async function getPost(post: PostInsert) {
   const result = await client
     .from<Post>(POSTS_TABLE)
     .select(
       'id, date, title, subtitle, locale, slug, translated_slug, body, image, status',
     )
-    .match(post)
+    .match(post as any)
     .single()
 
   if (result.error) {

@@ -9,7 +9,7 @@
     "lint": "eslint --ext .ts --ext .tsx .",
     "lint-fix": "eslint --fix --ext .ts --ext .tsx .",
     "prettier-staged": "pretty-quick --staged",
-    "generate-types": "supabase gen types typescript --project-id bwqkglcckocgwjoyuond --schema public > models/supabase/generate-types.ts",
+    "generate-types": "supabase gen types typescript --project-id bwqkglcckocgwjoyuond --schema public > ./models/supabase/generated-types.ts",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "test:dev": "start-server-and-test dev http://localhost:3000 cypress:open",
@@ -92,6 +92,7 @@
     "prettier": "*",
     "pretty-quick": "*",
     "start-server-and-test": "^1.14.0",
+    "supabase": "^1.93.0",
     "typescript": "^4.3.4"
   },
   "husky": {

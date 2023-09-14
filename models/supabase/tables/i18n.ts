@@ -1,6 +1,6 @@
 import client from 'models/supabase/client'
 import { I18N_TABLE } from '.'
-import { Translation } from '~/models/translation'
+import { Translation, TranslationInsert } from '~/models/translation'
 
 export async function getAllTranslationsForLocale(locale: string) {
   return (
@@ -12,14 +12,14 @@ export async function getAllTranslationsForLocale(locale: string) {
   ).data
 }
 
-export async function insertTranslation(translation: Translation) {
+export async function insertTranslation(translation: TranslationInsert) {
   return await client.from<Translation>(I18N_TABLE).upsert(translation)
 }
 
-export async function updateTranslation(translation: Translation) {
+export async function updateTranslation(translation: TranslationInsert) {
   return await client.from<Translation>(I18N_TABLE).upsert(translation)
 }
 
-export async function deleteTranslation(translation: Translation) {
+export async function deleteTranslation(translation: TranslationInsert) {
   return await client.from<Translation>(I18N_TABLE).delete().match(translation)
 }

@@ -1,12 +1,9 @@
 import { fetchNumberOfVisits } from 'models/goatcounter'
-import { definitions } from 'models/supabase/generated-types'
+import { Database } from 'models/supabase/generated-types'
 export { getPost } from 'models/supabase/tables/posts'
 
-type PostTable = definitions['posts']
-interface PostWithTypedState extends PostTable {
-  status: 'live' | 'draft'
-}
-export type Post = Partial<PostWithTypedState>
+export type Post = Database['public']['Tables']['posts']['Row'] & {status: 'live'|'draft'}
+export type PostInsert = Database['public']['Tables']['posts']['Insert']
 
 export const getPath = (post: Post): string => `/posts/${post.slug}`
 

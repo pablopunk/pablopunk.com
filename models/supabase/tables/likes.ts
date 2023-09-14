@@ -1,5 +1,5 @@
 import client from 'models/supabase/client'
-import { Like } from '~/models/like'
+import { Like, LikeInsert } from '~/models/like'
 import { LIKES_TABLE } from 'models/supabase/tables'
 
 export async function getAllLikesForIpAndSlug(slug: string, ip: string) {
@@ -7,6 +7,6 @@ export async function getAllLikesForIpAndSlug(slug: string, ip: string) {
     .data
 }
 
-export async function insertLike(like: Like) {
+export async function insertLike(like: LikeInsert) {
   return client.from<Like>(LIKES_TABLE).insert(like)
 }

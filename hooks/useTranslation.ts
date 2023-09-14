@@ -4,7 +4,9 @@ import { i18n } from '~/next.config'
 import { useContext } from 'react'
 import { SITE_URL } from 'config'
 
-let missingTranslations: { [key: string]: Translation } = {}
+let missingTranslations: {
+  [key: string]: Omit<Translation, 'id' | 'created_at' | 'value'>
+} = {}
 let scheduleTimeout: any
 const scheduleRequestForMissingTranslations = () => {
   if (Object.keys(missingTranslations).length > 0 && scheduleTimeout) {

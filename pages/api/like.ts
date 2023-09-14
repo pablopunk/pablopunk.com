@@ -27,7 +27,7 @@ export default async function LikeApi(
 
   const ip = getClientIp(req) || null
 
-  const like: Like = {
+  const like: Omit<Like, 'id' | 'inserted_at'> = {
     ip,
     slug,
   }
