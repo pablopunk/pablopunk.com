@@ -15,7 +15,7 @@ export default function BlogLayout({
     <>
       <nav className="p-2">
         <Link href="/" className="text-xl text-indigo-600 dark:text-indigo-400">
-          {'<-'} back
+          {'<-'} back to home
         </Link>
       </nav>
       <section className="p-2">{children}</section>
