@@ -42,7 +42,7 @@ I won't bore you with the details, but the responses usually look like this:
 
 It was actually a pretty good start. Of course it's importing stuff like `Layout` and `fetchProducts`, which we can ask it to create them for us. But first, I notice it's using `getServerSideProps`:
 
-```
+```tsx
 export const getServerSideProps: GetServerSideProps = async () => {
   const products = await fetchProducts();
 

@@ -20,7 +20,7 @@ I'm no vim expert but it's the editor I use the most (actually the only one) so 
 
 A few days ago I googled (`:help` was not enough) how to solve a problem I was having: Basically I had a JSON file with just one level, the keys were timezones (`America/New_York`) and the values were the same as their keys but I had to replace every `_` in the values with an space. But the keys would remain untouched.
 
-```
+```ts
 {
   ...
   "America/New_York": "America/New_York"
@@ -32,7 +32,7 @@ I just thought about making a regular expression that would select only the part
 
 [This answer](https://stackoverflow.com/a/34601909/4396912) on *stackoverflow* gave me the solution and I learnt to use the *positive look-behind*, i.e this piece of a *regex* `\\@<=` . The solution to my problem was:
 
-```
+```bash
 :%s/\\(:.*\\)\\@<=_/ /g
 ```
 

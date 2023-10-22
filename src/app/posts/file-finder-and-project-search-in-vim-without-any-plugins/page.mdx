@@ -36,7 +36,7 @@ Just the path of the matching files and a `1` to tell *quickfix* to go to the fi
 
 Now that we can populate a window with the results, we need a quick way of triggering this search. As I used CtrlP for a while, **I'll make `c-p` trigger this**. First, I make a function with all the code I need:
 
-~~~
+~~~sh
 function! FindFiles(filename)
   let error_file = tempname()
   silent exe '!fd -t f '.a:filename.' | xargs file | sed "s/:/:1:/" > '.error_file
@@ -50,7 +50,7 @@ Basically this will create a new "error file" to include the results and show it
 
 Now it's easy to map *control+P* to use this function:
 
-~~~
+~~~sh
 command! -nargs=1 Find call FindFiles(<q-args>)
 nmap <c-p> :Find<space>
 ~~~
@@ -67,7 +67,7 @@ To search for a term in all of our project files, **vim already comes with a gre
 
 Let's go straight to the code:
 
-~~~
+~~~sh
 set grepprg=rg\ --vimgrep
 function! Grep(...)
   return system(join([&grepprg] + a:000), ' ')
@@ -76,7 +76,7 @@ endfunction
 
 As you can see, this is less code than before but a bit more confusing. Without going into much details, the function we created, `:Grep`, takes the query as the arguments and passes that to *ripgrep*. Now we also create a command to use the function, and map it to *control+F*:
 
-~~~
+~~~sh
 command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
 nmap <c-f> :Grep<space>
 ~~~

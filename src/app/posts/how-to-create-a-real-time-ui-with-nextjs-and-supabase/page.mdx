@@ -51,7 +51,7 @@ That's it for supabase!
 
 For the client, we'll use **supabase JS client and the hooks library for react**:
 
-~~~
+~~~sh
 npm i @supabase/supabase-js react-supabase
 ~~~
 
@@ -61,14 +61,14 @@ Now go back to Supabase and copy your table tokens for the client. You can find 
 
 In my case I put them on an `.env` file:
 
-~~~
+~~~sh
 NEXT_PUBLIC_SUPABASE_URL=https://...
 NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 ~~~
 
 Now let's connect your client to supabase:
 
-~~~
+~~~sh
 import { createClient } from '@supabase/supabase-js'
 import { Provider } from 'react-supabase'
 
@@ -88,7 +88,7 @@ export function SupabaseProvider({ children }) {
 
 As you can see I'm also creating a `SupabaseProvider` to wrap your app inside it. In NextJS I do this in `pages/_app.tsx`. This will make sure all supabase hooks are connected to the created client:
 
-~~~
+~~~sh
 const App = ({ Component, pageProps }) => (
     <SupabaseProvider>
         <Component {...pageProps} />
@@ -100,7 +100,7 @@ export default App
 
 Now we can go ahead and create our own hooks. Let's create one to get the clicks in real-time. We can use the hook `useRealtime` from `react-supabase`;
 
-~~~
+~~~ts
 import { useRealtime } from 'react-supabase'
 
 export function useClicks() {
@@ -118,7 +118,7 @@ As you can see it's very simple, it just gets the data from the database and eve
 
 Let's create another hook for inserting. This one is even simpler, as there's already a `useInsert` hook:
 
-~~~
+~~~ts
 import { useInsert } from 'react-supabase'
 
 export function useInsertClicks() {
@@ -132,7 +132,7 @@ We don't really care about the data here, so we just return the `execute` functi
 
 Bored yet? Don't worry, **this is the last step. Let's create 4 buttons with 4 emojis**. The idea here is to display all 4 buttons with the number of clicks they have:
 
-~~~
+~~~ts
 const buttons = [
   {
     type: 'happy',

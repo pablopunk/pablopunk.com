@@ -32,13 +32,13 @@ I chose Redis, but any other method will work. I started with a local server, be
 
 Here’s what I had before the cache implementation:
 
-~~~
+~~~ts
 const pageData = await getPageData(slug, locale)
 ~~~
 
 I didn’t want to include the cache logic right there, so I made a helper function on another file that allowed me to use this simple approach:
 
-~~~
+~~~ts
 const pageData = await getFromCache(`${slug}-${locale}`, () =>
   getPageData(slug, locale),
 )
@@ -46,7 +46,7 @@ const pageData = await getFromCache(`${slug}-${locale}`, () =>
 
 The function `getFromCache` takes a string as an argument (the key in the database) and a function to get the data — that allows to separate the data-fetch implementation from the cache implementation:
 
-~~~
+~~~ts
 export async function getFromCache(key: string, fetcher: () => Promise<any>) {
   // don't use cache in production or redis is not connected
   if (!redis || !isDev) {
