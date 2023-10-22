@@ -1,0 +1,38 @@
+{
+  "name": "pablopunk.com",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "generate-thumbnails": "bun run src/scripts/generate-thumbnails.ts"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
+    "@next/mdx": "^13.5.6",
+    "@supabase/supabase-js": "^2.38.2",
+    "@types/mdx": "^2.0.9",
+    "classnames": "^2.3.2",
+    "highlight.js": "^11.9.0",
+    "jimp": "^0.22.10",
+    "next": "13.5.6",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "autoprefixer": "^10",
+    "eslint": "^8.52.0",
+    "eslint-plugin-react": "^7.33.2",
+    "postcss": "^8",
+    "tailwindcss": "^3",
+    "typescript": "^5"
+  }
+}
