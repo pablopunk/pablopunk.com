@@ -18,7 +18,7 @@ export default function BlogLayout({
           {'<-'} back to home
         </Link>
       </nav>
-      <section className="p-2">{children}</section>
+      <section className="mx-auto max-w-screen-md p-2">{children}</section>
     </>
   );
 }

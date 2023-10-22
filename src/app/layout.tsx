@@ -55,7 +55,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <main className="min-h-screen max-w-screen-lg p-6">
+        <main className="min-h-screen p-6">
           {children}
         </main>
       </body>

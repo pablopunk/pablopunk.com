@@ -12,7 +12,7 @@ export default function BlogLayout({
           {'<-'} back to blog
         </Link>
       </nav>
-      <section className="p-2 max-w-screen-md w-full flex flex-col gap-4">{children}</section>
+      <section className="p-2 max-w-screen-md w-full flex flex-col gap-4 mx-auto">{children}</section>
     </>
   );
 }
