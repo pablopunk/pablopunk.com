@@ -5,7 +5,7 @@ import 'highlight.js/styles/github-dark.css'
 hljs.registerLanguage('javascript', javascript);
 
 export const Code = ({ children }: React.PropsWithChildren) => {
-  const code = children.toString();
+  const code = children?.toString() || '';
 
   const highlighted = hljs.highlight(code, { language: 'javascript' }).value;
 

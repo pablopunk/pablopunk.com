@@ -3,7 +3,7 @@
 import { useState } from "react"
 import classNames from 'classnames'
 
-export const posts = [
+const posts = [
   {
     "title": "I told ChatGPT to create a passive store and now I don't code anymore",
     "slug": "i-told-chatgpt-to-create-a-passive-store-and-now-i-don-t-code-anymore",

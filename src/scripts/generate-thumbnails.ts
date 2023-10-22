@@ -1,3 +1,4 @@
+/* eslint-disable */
 const fs = require('fs');
 const path = require('path');
 const Jimp = require('jimp');
@@ -12,12 +13,13 @@ fs.readdir(sourceDir, (err: unknown, files: File[]) => {
 
   files.forEach(file => {
     Jimp.read(`${sourceDir}/${file}`)
+      // @ts-ignore
       .then(image => {
         return image
           .resize(THUMBNAIL_WIDTH, Jimp.AUTO) // Keep original aspect ratio
           .quality(70) // Set JPEG quality
           .write(`${targetDir}/${path.parse(file).name}.jpg`); // Convert to .jpg format
       })
-      .catch(err => console.log(err));
+      .catch((err: Error) => console.log(err));
   });
 });

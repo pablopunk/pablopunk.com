@@ -7,7 +7,7 @@ export function useTheme() {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     setTheme(mediaQuery.matches ? 'dark' : 'light');
 
-    const listener = (event) => {
+    const listener = (event: MediaQueryListEvent) => {
       setTheme(event.matches ? 'dark' : 'light');
     };
 
