@@ -5,9 +5,6 @@ const withMDX = require("@next/mdx")({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
-  experimental: {
-    serverActions: true,
-  },
   images: {
     remotePatterns: [
       {
@@ -15,6 +12,18 @@ const nextConfig = {
         hostname: "ik.imagekit.io",
       },
     ],
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/count.js",
+        destination: "https://gc.zgo.at/count.js",
+      },
+      {
+        source: "/goat",
+        destination: "https://pablopunk.goatcounter.com/count",
+      },
+    ];
   },
 };
 

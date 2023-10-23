@@ -7,7 +7,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "pablopunk.com",
-  description: "Remote web developer. Contact me, read my blog, or check my projects.",
+  description:
+    "Remote web developer. Contact me, read my blog, or check my projects.",
 };
 
 export default function RootLayout({
@@ -15,10 +16,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <html lang="en">
       <head>
+        <script data-goatcounter="/goat" async src="/count.js"></script>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -55,9 +56,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <main className="min-h-screen p-6">
-          {children}
-        </main>
+        <main className="min-h-screen p-6">{children}</main>
       </body>
     </html>
   );
