@@ -7,8 +7,36 @@ import site from "~/site";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.SITE_URL),
   title: site.SITE_NAME,
   description: site.SITE_DESC,
+  openGraph: {
+    type: "website",
+    title: site.SITE_NAME,
+    siteName: site.SITE_NAME,
+    description: site.SITE_DESC,
+    url: site.SITE_URL,
+    locale: "en_US",
+    images: [
+      {
+        url: site.SITE_IMAGE,
+      },
+    ],
+  },
+  twitter: {
+    title: site.SITE_NAME,
+    description: site.SITE_DESC,
+    card: "summary_large_image",
+    site: site.SITE_URL,
+    images: [
+      {
+        url: site.SITE_IMAGE,
+      },
+    ],
+  },
+  alternates: {
+    canonical: site.SITE_URL,
+  },
 };
 
 export default function RootLayout({

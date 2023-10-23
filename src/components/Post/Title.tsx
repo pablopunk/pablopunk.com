@@ -1,5 +1,5 @@
 export const H1 = ({ children }: React.PropsWithChildren) => (
-  <h1 className="font-bold font-serif text-2xl">{children}</h1>
+  <h1 className="text-center font-bold font-serif text-2xl">{children}</h1>
 );
 export const H2 = ({ children }: React.PropsWithChildren) => (
   <h2 className="font-bold font-serif text-xl border-b border-neutral-3 pb-2">
