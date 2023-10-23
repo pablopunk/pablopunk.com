@@ -1,22 +1,33 @@
 import Image from "next/image";
+import { imageKitUrl } from "~/imagekit/url";
+
+const width = 700;
+const height = 500;
 
 export const FeatureImage = ({
   src,
   alt,
 }: React.PropsWithChildren<{ src: string; alt: string }>) => {
-  const filename = src.split("/").pop()?.split(".").shift() || "";
-  const thumbnail = `/posts/thumbnails/${filename}.jpg`;
+  const imageSrc = imageKitUrl({ src, width, height });
+  const imageThumbnail = imageKitUrl({
+    src,
+    width: width / 4,
+    height: height / 4,
+    quality: 0.4,
+    blur: 5,
+  });
 
   return (
     <div className="flex justify-center">
       <Image
         className="rounded-md"
-        src={src}
-        blurDataURL={thumbnail}
+        src={imageSrc}
         alt={alt}
-        width={700}
-        height={500}
+        width={width}
+        height={height}
+        priority
         placeholder="blur"
+        blurDataURL={imageThumbnail}
       />
     </div>
   );

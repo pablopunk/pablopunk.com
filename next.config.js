@@ -1,22 +1,21 @@
-const withMDX = require('@next/mdx')({
+const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
-})
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  experimental: {
+    serverActions: true,
+  },
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'i.imgur.com',
+        protocol: "https",
+        hostname: "ik.imagekit.io",
       },
-      {
-        protocol: 'https',
-        hostname: 'a.storyblok.com'
-      }
     ],
-  }
-}
+  },
+};
 
-module.exports = withMDX(nextConfig)
+module.exports = withMDX(nextConfig);
