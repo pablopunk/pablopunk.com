@@ -68,7 +68,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 
 Now let's connect your client to supabase:
 
-~~~sh
+~~~ts
 import { createClient } from '@supabase/supabase-js'
 import { Provider } from 'react-supabase'
 
@@ -88,7 +88,7 @@ export function SupabaseProvider({ children }) {
 
 As you can see I'm also creating a `SupabaseProvider` to wrap your app inside it. In NextJS I do this in `pages/_app.tsx`. This will make sure all supabase hooks are connected to the created client:
 
-~~~sh
+~~~ts
 const App = ({ Component, pageProps }) => (
     <SupabaseProvider>
         <Component {...pageProps} />
