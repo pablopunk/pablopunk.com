@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "~/app/globals.css";
 import { BrowserTitleBarColor } from "~/components/BrowserTitleBarColor";
+import site from "~/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "pablopunk.com",
-  description:
-    "Remote web developer. Contact me, read my blog, or check my projects.",
+  title: site.SITE_NAME,
+  description: site.SITE_DESC,
 };
 
 export default function RootLayout({
@@ -56,7 +56,12 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <main className="min-h-screen p-6">{children}</main>
+        <div className="min-h-screen p-6 flex flex-col justify-between">
+          <main>{children}</main>
+          <footer className="text-sm text-neutral-5 font-bold">
+            © {site.SITE_COPYRIGHT} {new Date().getFullYear()}
+          </footer>
+        </div>
       </body>
     </html>
   );

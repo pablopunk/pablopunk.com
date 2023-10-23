@@ -36,17 +36,17 @@ I won't go into much detail, as it's not important for this project. But I used 
 
 Supabase has a very nice UI that lets you not only directly execute SQL queries, but also create and manage tables right there in your browser. For our project, we'll **create a new table** called clicks
 
-![Img](https://a.storyblok.com/f/113260/203x265/42be63dc75/captura-de-pantalla-2021-08-01-a-las-21-23-03.png)
+![Img](https://ik.imagekit.io/pablopunk/posts/captura-de-pantalla-2021-08-01-a-las-21-23-03.png)
 
-![Img](https://a.storyblok.com/f/113260/655x1002/04deecca01/captura-de-pantalla-2021-08-01-a-las-21-23-30.png)
+![Img](https://ik.imagekit.io/pablopunk/posts/captura-de-pantalla-2021-08-01-a-las-21-23-30.png)
 
 Then we'll create a row (attribute) for our data called `type` by clicking the `+` button right after the `id` column in our empty table. This will indicate the type of button the user pressed, so there will be one row per button click (another approach would be just one row per button and another column that indicates the number of clicks, but that would require to deal with insert collisions and it's out of the scope of this project).
 
-![Img](https://a.storyblok.com/f/113260/378x180/1744675632/captura-de-pantalla-2021-08-01-a-las-21-23-58.png)![Img](https://a.storyblok.com/f/113260/655x1002/04deecca01/captura-de-pantalla-2021-08-01-a-las-21-23-30.png)
+![Img](https://ik.imagekit.io/pablopunk/posts/captura-de-pantalla-2021-08-01-a-las-21-23-58.png)![Img](https://ik.imagekit.io/pablopunk/posts/captura-de-pantalla-2021-08-01-a-las-21-23-30.png)
 
 Now we need to tell supabase we want that table to handle **real-time updates**, so we'll go into the left sidebar button `Database > Replication` and there we select the `0 tables` option from `supabase_realtime`, and then toggle our table `clicks`.
 
-![Img](https://a.storyblok.com/f/113260/697x582/47e48194eb/captura-de-pantalla-2021-08-01-a-las-21-30-18.png)
+![Img](https://ik.imagekit.io/pablopunk/posts/captura-de-pantalla-2021-08-01-a-las-21-30-18.png)
 
 That's it for supabase!
 
@@ -60,7 +60,7 @@ npm i @supabase/supabase-js react-supabase
 
 Now go back to Supabase and copy your table tokens for the client. You can find those under `Settings > API`. Copy the `anon-public` key and the `URL`.
 
-![Img](https://a.storyblok.com/f/113260/1189x693/2b93e772d4/captura-de-pantalla-2021-08-01-a-las-21-25-02.png)
+![Img](https://ik.imagekit.io/pablopunk/posts/captura-de-pantalla-2021-08-01-a-las-21-25-02.png)
 
 In my case I put them on an `.env` file:
 
@@ -178,7 +178,7 @@ const Buttons = () => {
 
 Let's break this code into parts. First, you can see we **declare the 4 buttons** as an array, so we don't repeat all the HTML for each one. **Then we display those buttons** with their corresponding clicks: `clicksForType` is counting how many rows there are of the current button type. Then we insert a **new row on every click**, that's done by inserting an array of one here `insertClicks([{type}])`.
 
-![Img](https://a.storyblok.com/f/113260/447x124/56eb9cc256/captura-de-pantalla-2021-08-02-a-las-14-09-00.png)
+![Img](https://ik.imagekit.io/pablopunk/posts/captura-de-pantalla-2021-08-02-a-las-14-09-00.png)
 
 ### Demo
 
