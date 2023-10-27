@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { featuredPosts, posts } from "./blog/posts";
+import { featuredPosts } from "./blog/posts";
 import classNames from "classnames";
 
 export default function Home() {
