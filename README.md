@@ -1,5 +1,3 @@
-# pablopunk.com
+# [pablopunk.com](https://pablopunk.com)
 
-> Personal website
-
-Bye bye CMS hello all-in-code.
+If you're looking for a complex website, [I'm not that guy anymore](https://github.com/pablopunk/pablopunk.com/pull/142).
