@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { featuredPosts, posts } from "./blog/posts";
+import classNames from "classnames";
 
 export default function Home() {
   return (
@@ -28,19 +30,17 @@ export default function Home() {
           Blog {"->"}
         </Link>
         <div className="max-w-md text-neutral-7 flex flex-col gap-1">
-          <Link href="/posts/i-told-chatgpt-to-create-a-passive-store-and-now-i-don-t-code-anymore">
-            {"->"} I told ChatGPT to create a passive store and now I don{"'"}t
-            code anymore
-          </Link>
-          <Link href="/posts/how-buying-an-m1-macbook-air-saved-me-money">
-            {"->"} How buying an M1 Macbook Air saved me money
-          </Link>
-          <Link
-            href="/posts/how-to-create-a-real-time-ui-with-nextjs-and-supabase"
-            className="text-indigo-600 dark:text-indigo-400"
-          >
-            {"->"} How to create a real-time UI with NextJS and Supabase
-          </Link>
+          {featuredPosts.map((post) => (
+            <Link
+              href={`/posts/${post.slug}`}
+              key={post.slug}
+              className={classNames({
+                "text-indigo-600 dark:text-indigo-400": post.cta,
+              })}
+            >
+              {"->"} {post.title}
+            </Link>
+          ))}
         </div>
       </div>
     </section>

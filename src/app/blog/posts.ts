@@ -7,6 +7,8 @@ export type Post = {
   description: string;
   image: string;
   author: string;
+  featured?: boolean;
+  cta?: boolean;
 };
 
 const allPosts: Post[] = [
@@ -19,6 +21,7 @@ const allPosts: Post[] = [
       "Yes, it's THAT good. Since I discovered ChatGPT I don't write boilerplate or stuff I wrote hundreds of times, I ask for it. Today I wanted to make it create a store to generate passive income.",
     image:
       "https://ik.imagekit.io/pablopunk/posts/i-told-chatgpt-to-create-a-passive-store-and-now-i-don-t-code-anymore.png?updatedAt=1698057162161",
+    featured: true,
   },
   {
     title: "Developing NextJS + CMS is slow. Here's the fix",
@@ -39,22 +42,14 @@ const allPosts: Post[] = [
       "https://ik.imagekit.io/pablopunk/posts/the-best-camera-that-fits-in-your-pocket-is-not-your-smartphone.jpg?updatedAt=1698057159111",
   },
   {
-    title: "How to create a real-time UI with NextJS and Supabase",
-    slug: "how-to-create-a-real-time-ui-with-nextjs-and-supabase",
-    date: new Date("2021-08-01"),
-    description:
-      "I made a simple UI that is synced in real-time with a database. Here's how",
-    image:
-      "https://ik.imagekit.io/pablopunk/posts/how-to-create-a-real-time-ui-with-nextjs-and-supabase.gif?updatedAt=1698057154455",
-  },
-  {
-    title: "How buying an M1 Macbook Air saved me money",
+    title: "How buying an M1 Macbook Air saved me money and time",
     slug: "how-buying-an-m1-macbook-air-saved-me-money",
     date: new Date("2021-07-04"),
     description:
       "I had a 2019 16\" MacBook Pro so I didn't have any expectations about the small cheap MBA being better than my beast. I was wrong.",
     image:
       "https://ik.imagekit.io/pablopunk/posts/how-buying-an-m1-macbook-air-saved-me-money.jpg?updatedAt=1698057164242",
+    featured: true,
   },
   {
     title: "Yet another Next.js starter kit. My way.",
@@ -82,6 +77,18 @@ const allPosts: Post[] = [
     image:
       "https://ik.imagekit.io/pablopunk/posts/how-to-replace-text-in-vim-only-inside-a-specific-search.jpg?updatedAt=1698057155846",
   },
+  {
+    title: "How to create a real-time UI with NextJS and Supabase",
+    slug: "how-to-create-a-real-time-ui-with-nextjs-and-supabase",
+    date: new Date("2021-08-01"),
+    description:
+      "I made a simple UI that is synced in real-time with a database. Here's how",
+    image:
+      "https://ik.imagekit.io/pablopunk/posts/how-to-create-a-real-time-ui-with-nextjs-and-supabase.gif?updatedAt=1698057154455",
+    featured: true,
+    cta: true,
+  },
 ].map((post) => ({ ...post, author: "Pablo Varela" }));
 
 export const posts = allPosts.map(injectPostMetadata);
+export const featuredPosts = posts.filter((p) => p.featured);
