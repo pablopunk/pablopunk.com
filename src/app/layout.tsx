@@ -39,6 +39,17 @@ export const metadata: Metadata = {
   },
 };
 
+const htmlHello = `
+console.log(\`%c
+<>
+Hi! I'm Pablo, the owner of this website.
+What are you doing here? Is there something wrong?
+You can contact me at pablo@pablopunk.com
+Or open an issue/PR at github.com/pablopunk/pablopunk.com
+</>\n
+\`, "color:royalblue");
+`;
+
 export default function RootLayout({
   children,
 }: {
@@ -91,6 +102,7 @@ export default function RootLayout({
           </footer>
         </div>
       </body>
+      <script dangerouslySetInnerHTML={{ __html: htmlHello }} async />
     </html>
   );
 }
