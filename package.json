@@ -18,7 +18,7 @@
     "classnames": "^2.3.2",
     "highlight.js": "^11.9.0",
     "jimp": "^0.22.10",
-    "next": "13.5.6",
+    "next": "latest",
     "react": "^18",
     "react-dom": "^18"
   },
