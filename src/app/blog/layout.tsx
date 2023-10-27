@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import site from "~/site";
 
 export const metadata: Metadata = {
-  title: `${site.SITE_NAME} | Blog`,
+  title: `pablopunk's blog`,
   description: "Web development blog, open-source, and more.",
 };
 
