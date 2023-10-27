@@ -20,7 +20,7 @@ export const PostFeatureImage = ({ post }: { post: Post }) => {
   });
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mb-4">
       <Image
         className="rounded-md"
         src={imageSrc}

@@ -30,7 +30,7 @@ export default function BlogLayout({
           {"<-"} back to blog
         </Link>
       </nav>
-      <article className="p-2 max-w-screen-lg w-full flex flex-col gap-4 mx-auto">
+      <article className="p-2 max-w-screen-md w-full flex flex-col gap-4 mx-auto">
         <H1>{post.title}</H1>
         <i className="text-xs text-neutral-8 text-center">
           by {post.author} at {post.date.toLocaleDateString()}

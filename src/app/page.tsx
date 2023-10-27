@@ -16,8 +16,8 @@ export default function Home() {
       <div className="flex flex-col gap-1 min-w-full p-3">
         <div className="text-xl font-bold">Contact me</div>
         <p className="max-w-md text-neutral-7">
-          You can find me on <i>almost</i> every social network as @pablopunk.
-          Or{" "}
+          You can find me on <i>almost</i> every social network as{" "}
+          <b>@pablopunk</b>. Or{" "}
           <a className="font-bold" href="mailto:pablo@pablopunk.com">
             send me an email.
           </a>

@@ -1,4 +1,15 @@
-export const posts = [
+import { injectPostMetadata } from "~/utils/blogsMeta";
+
+export type Post = {
+  title: string;
+  slug: string;
+  date: Date;
+  description: string;
+  image: string;
+  author: string;
+};
+
+const allPosts: Post[] = [
   {
     title:
       "I told ChatGPT to create a passive store and now I don't code anymore",
@@ -71,9 +82,6 @@ export const posts = [
     image:
       "https://ik.imagekit.io/pablopunk/posts/how-to-replace-text-in-vim-only-inside-a-specific-search.jpg?updatedAt=1698057155846",
   },
-].map((post) => ({
-  ...post,
-  author: "Pablo Varela",
-}));
+].map((post) => ({ ...post, author: "Pablo Varela" }));
 
-export type Post = (typeof posts)[number];
+export const posts = allPosts.map(injectPostMetadata);

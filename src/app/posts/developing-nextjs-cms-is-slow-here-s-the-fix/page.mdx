@@ -1,3 +1,5 @@
+export const metadata = require('../../blog/posts.ts').posts.find(p => p.slug == "developing-nextjs-cms-is-slow-here-s-the-fix")
+
 ## **The problem**
 
 React **Fast Refresh** makes it very fast to develop components for your app. You see the changes in the code immediately. But sometimes you need to refresh the page or go to a different one, which is very slow when you are using `getStaticProps`.

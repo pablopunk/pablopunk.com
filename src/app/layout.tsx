@@ -86,7 +86,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="min-h-screen p-6 flex flex-col justify-between">
           <main>{children}</main>
-          <footer className="text-sm text-neutral-5 font-bold">
+          <footer className="text-sm text-neutral-5 font-bold pt-6">
             © {site.SITE_COPYRIGHT} {new Date().getFullYear()}
           </footer>
         </div>
