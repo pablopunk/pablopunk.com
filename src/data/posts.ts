@@ -1,4 +1,4 @@
-import { injectPostMetadata } from "~/utils/blogsMeta";
+import { injectPostMetadata } from "~/utils/postsMeta";
 
 export type Post = {
   title: string;

@@ -1,4 +1,4 @@
-import { Post } from "~/app/blog/posts";
+import { Post } from "~/data/posts";
 import site from "~/site";
 
 export const injectPostMetadata = (post: Post) => {

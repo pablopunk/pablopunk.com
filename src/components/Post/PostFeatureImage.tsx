@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Post } from "~/app/blog/posts";
-import { imageKitUrl } from "~/imagekit/url";
+import { Post } from "~/data/posts";
+import { imageKitUrl } from "~/utils/imagekit/url";
 
 const width = 700;
 const height = 500;

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import classNames from "classnames";
-import { posts } from "./posts";
+import { posts } from "~/data/posts";
 
 const keywords = ["vim", "nextjs", "supabase", "macbook", "camera"];
 

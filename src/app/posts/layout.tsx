@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { posts } from "../blog/posts";
+import { posts } from "~/data/posts";
 import { H1 } from "~/components/Post/Title";
 import { PostFeatureImage } from "~/components/Post/PostFeatureImage";
 
