@@ -2,12 +2,14 @@ import hljs from "highlight.js/lib/core";
 import typescript from "highlight.js/lib/languages/typescript";
 import bash from "highlight.js/lib/languages/bash";
 import vim from "highlight.js/lib/languages/vim";
+import lua from "highlight.js/lib/languages/lua";
 import "highlight.js/styles/atom-one-dark.css";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 hljs.registerLanguage("typescript", typescript);
 hljs.registerLanguage("bash", bash);
 hljs.registerLanguage("vim", vim);
+hljs.registerLanguage("lua", lua);
 
 export const Code = ({
   children,
@@ -33,6 +35,9 @@ export const Code = ({
     case "language-vim":
     case "language-vimscript":
       highlighted = hljs.highlight(code, { language: "vim" }).value;
+      break;
+    case "language-lua":
+      highlighted = hljs.highlight(code, { language: "lua" }).value;
       break;
     default:
       highlighted = hljs.highlight(code, { language: "typescript" }).value;

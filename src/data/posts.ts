@@ -13,6 +13,17 @@ export type Post = {
 
 const allPosts: Post[] = [
   {
+    title: "I made a Neovim plugin because I missed a feature from VSCode",
+    slug: "i-made-a-neovim-plugin-because-i-missed-a-feature-from-vscode",
+    date: new Date("2023-10-04"),
+    description:
+      "I've been using vim and neovim for years, but whenever I go back to VSCode, I always enjoy this feature.",
+    image:
+      "https://ik.imagekit.io/pablopunk/posts/before-after%20(1).png?updatedAt=1699132327673",
+    featured: true,
+    cta: true,
+  },
+  {
     title:
       "I told ChatGPT to create a passive store and now I don't code anymore",
     slug: "i-told-chatgpt-to-create-a-passive-store-and-now-i-don-t-code-anymore",
@@ -49,7 +60,6 @@ const allPosts: Post[] = [
       "I had a 2019 16\" MacBook Pro so I didn't have any expectations about the small cheap MBA being better than my beast. I was wrong.",
     image:
       "https://ik.imagekit.io/pablopunk/posts/how-buying-an-m1-macbook-air-saved-me-money.jpg?updatedAt=1698057164242",
-    featured: true,
   },
   {
     title: "Yet another Next.js starter kit. My way.",
@@ -86,7 +96,6 @@ const allPosts: Post[] = [
     image:
       "https://ik.imagekit.io/pablopunk/posts/how-to-create-a-real-time-ui-with-nextjs-and-supabase.gif?updatedAt=1698057154455",
     featured: true,
-    cta: true,
   },
 ].map((post) => ({ ...post, author: "Pablo Varela" }));
 

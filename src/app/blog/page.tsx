@@ -4,7 +4,7 @@ import { useState } from "react";
 import classNames from "classnames";
 import { posts } from "~/data/posts";
 
-const keywords = ["vim", "nextjs", "supabase", "macbook", "camera"];
+const keywords = ["vim", "neovim", "nextjs", "supabase", "macbook", "camera"];
 
 type Keywords = (typeof keywords)[number];
 
