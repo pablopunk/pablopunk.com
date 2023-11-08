@@ -1,6 +1,5 @@
 export const countVisit = (url: string) => {
-  // @ts-ignore
-  window.goatcounter.count({
+  (window as any).goatcounter.count({
     path: url,
   });
 };
