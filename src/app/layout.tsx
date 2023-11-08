@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Suspense } from "react";
 import "~/app/globals.css";
 import { BrowserTitleBarColor } from "~/components/BrowserTitleBarColor";
+import { NavigationEvents } from "~/components/NavigationEvents";
 import site from "~/site";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -103,6 +105,9 @@ export default function RootLayout({
         </div>
       </body>
       <script dangerouslySetInnerHTML={{ __html: htmlHello }} async />
+      <Suspense fallback={null}>
+        <NavigationEvents />
+      </Suspense>
     </html>
   );
 }
