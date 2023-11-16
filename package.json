@@ -16,11 +16,13 @@
     "@supabase/supabase-js": "^2.38.2",
     "@types/mdx": "^2.0.9",
     "classnames": "^2.3.2",
+    "dark-mode-code": "^1.0.1",
     "highlight.js": "^11.9.0",
     "jimp": "^0.22.10",
     "next": "latest",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hot-toast": "^2.4.1"
   },
   "devDependencies": {
     "@types/node": "^20",

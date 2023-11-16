@@ -4,8 +4,8 @@ import { featuredPosts } from "~/data/posts";
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center">
-      <div className="flex flex-col gap-1 min-w-full p-3">
+    <section className="flex flex-col items-center md:items-start justify-center">
+      <div className="flex flex-col gap-1 min-w-lg p-3">
         <h1 className="text-xl font-bold">Pablo P. Varela</h1>
         <h2 className="max-w-md text-neutral-7">
           I{"'"}m a web developer working at <a href="https://maze.co">Maze</a>.
@@ -15,7 +15,7 @@ export default function Home() {
           <a href="https://github.com/pablopunk">Github</a>.
         </p>
       </div>
-      <div className="flex flex-col gap-1 min-w-full p-3">
+      <div className="flex flex-col gap-1 min-w-lg p-3">
         <div className="text-xl font-bold">Contact me</div>
         <p className="max-w-md text-neutral-7">
           You can find me on <i>almost</i> every social network as{" "}
@@ -25,7 +25,7 @@ export default function Home() {
           </a>
         </p>
       </div>
-      <div className="flex flex-col gap-1 min-w-full p-3">
+      <div className="flex flex-col gap-1 min-w-lg p-3">
         <Link className="text-xl transition" href="/blog">
           Blog {"->"}
         </Link>

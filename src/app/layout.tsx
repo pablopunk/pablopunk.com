@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
+import { Toaster } from "react-hot-toast";
 import "~/app/globals.css";
 import { BrowserTitleBarColor } from "~/components/BrowserTitleBarColor";
 import { NavigationEvents } from "~/components/NavigationEvents";
+import { RightClickMenu } from "~/components/RightClickMenu";
 import site from "~/site";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -103,8 +105,20 @@ export default function RootLayout({
             © {site.SITE_COPYRIGHT} {new Date().getFullYear()}
           </footer>
         </div>
+        <Suspense fallback={null}>
+          <RightClickMenu />
+          <Toaster
+            toastOptions={{
+              className: "border-2 border-neutral-2 rounded-md",
+              style: {
+                background: "var(--color-neutral-1)",
+                color: "var(--color-neutral-9)",
+              },
+            }}
+          />
+        </Suspense>
+        <script dangerouslySetInnerHTML={{ __html: htmlHello }} async />
       </body>
-      <script dangerouslySetInnerHTML={{ __html: htmlHello }} async />
       <Suspense fallback={null}>
         <NavigationEvents />
       </Suspense>
