@@ -30,5 +30,5 @@ export function useTheme() {
       setTheme(newTheme);
       toast.success(`Switched to ${newTheme} mode`);
     },
-  ];
+  ] as const;
 }
