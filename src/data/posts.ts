@@ -38,6 +38,11 @@ const allPosts: Post[] = [
     image:
       "https://ik.imagekit.io/pablopunk/posts/i-told-chatgpt-to-create-a-passive-store-and-now-i-don-t-code-anymore.png?updatedAt=1698057162161",
     featured: true,
+    related: [
+      "developing-nextjs-cms-is-slow-here-s-the-fix",
+      "how-to-create-a-real-time-ui-with-nextjs-and-supabase",
+      "yet-another-next-js-starter-kit-my-way-",
+    ],
   },
   {
     title: "Developing NextJS + CMS is slow. Here's the fix",
@@ -56,6 +61,7 @@ const allPosts: Post[] = [
       "...if you know how to use it. We all have a great camera in our pocket, but it doesn't have to be the best one.",
     image:
       "https://ik.imagekit.io/pablopunk/posts/the-best-camera-that-fits-in-your-pocket-is-not-your-smartphone.jpg?updatedAt=1698057159111",
+    related: ["how-buying-an-m1-macbook-air-saved-me-money"],
   },
   {
     title: "How buying an M1 Macbook Air saved me money and time",
@@ -82,6 +88,10 @@ const allPosts: Post[] = [
     description: "You don't need Ctrl-P",
     image:
       "https://ik.imagekit.io/pablopunk/posts/file-finder-and-project-search-in-vim-without-any-plugins.jpg?updatedAt=1698057157506",
+    related: [
+      "i-made-a-neovim-plugin-because-i-missed-a-feature-from-vscode",
+      "how-to-replace-text-in-vim-only-inside-a-specific-search",
+    ],
   },
   {
     title: "How to replace text in vim only inside a specific search",
@@ -91,6 +101,10 @@ const allPosts: Post[] = [
       "Vim is so powerful it is imposible to say I know all of vim. Nobody can learn all the features of this editor, you always learn something new (almost) every day.",
     image:
       "https://ik.imagekit.io/pablopunk/posts/how-to-replace-text-in-vim-only-inside-a-specific-search.jpg?updatedAt=1698057155846",
+    related: [
+      "i-made-a-neovim-plugin-because-i-missed-a-feature-from-vscode",
+      "file-finder-and-project-search-in-vim-without-any-plugins",
+    ],
   },
   {
     title: "How to create a real-time UI with NextJS and Supabase",
@@ -104,5 +118,24 @@ const allPosts: Post[] = [
   },
 ].map((post) => ({ ...post, author: "Pablo Varela" }));
 
-export const posts = allPosts.map(injectPostMetadata);
+export const posts = allPosts.map(injectPostMetadata).map(injectRelated);
 export const featuredPosts = posts.filter((p) => p.featured);
+
+// If post A is related with B, then B is related with A automatically
+function injectRelated(post: Post) {
+  const related = post.related || [];
+  const postsThatMarkedThisOneAsRelated = allPosts.filter(
+    (p) => p.related?.includes(post.slug),
+  );
+
+  return {
+    ...post,
+    related: Array.from(
+      new Set([
+        // Remove duplicates
+        ...related,
+        ...postsThatMarkedThisOneAsRelated.map((p) => p.slug),
+      ]),
+    ),
+  };
+}

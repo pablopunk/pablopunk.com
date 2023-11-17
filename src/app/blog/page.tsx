@@ -3,6 +3,7 @@
 import { useState } from "react";
 import classNames from "classnames";
 import { posts } from "~/data/posts";
+import { DateLocale } from "~/components/Post/DateLocale";
 
 const keywords = ["vim", "neovim", "nextjs", "supabase", "macbook", "camera"];
 
@@ -35,9 +36,9 @@ export default function BlogPage() {
           <button
             key={keyword}
             className={classNames(
-              "p-2 rounded-sm text-xs transition-colors hover:bg-indigo-600 hover:text-white ",
+              "p-2 rounded-sm text-xs transition-colors hover:bg-accent-2 hover:text-white ",
               {
-                "bg-indigo-600 text-white": filters.includes(keyword),
+                "bg-accent-2 text-white": filters.includes(keyword),
                 "bg-neutral-2 text-neutral-8": !filters.includes(keyword),
               },
             )}
@@ -60,7 +61,7 @@ export default function BlogPage() {
               {"->"} {post.title}
             </a>
             <p className="text-neutral-6 text-xs">
-              {post.date.toLocaleDateString()}
+              <DateLocale date={post.date} />
             </p>
           </h2>
           <p className="text-neutral-7 mt-2">{post.description}</p>

@@ -14,7 +14,7 @@ export default function BlogLayout({
   return (
     <>
       <nav className="p-2">
-        <Link href="/" className="text-xl text-indigo-600 dark:text-indigo-400">
+        <Link href="/" className="text-xl">
           {"<-"} back to home
         </Link>
       </nav>

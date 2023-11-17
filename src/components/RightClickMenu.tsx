@@ -4,6 +4,25 @@ import { CSSProperties, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useTheme } from "~/hooks/useTheme";
 
+const ButtonOrA = ({ href, onClick, children }: any) => {
+  return (
+    <button
+      onClick={
+        onClick
+          ? onClick
+          : href
+          ? () => {
+              window?.open(href, "_blank");
+            }
+          : undefined
+      }
+      className="flex gap-2 cursor-pointer hover:bg-neutral-2 py-2 px-3 transition"
+    >
+      {children}
+    </button>
+  );
+};
+
 export const RightClickMenu = () => {
   const [theme, toggleTheme] = useTheme();
   const [menuStyle, setMenuStyle] = useState<CSSProperties>({
@@ -64,14 +83,14 @@ export const RightClickMenu = () => {
           },
         ].map(({ text, href, onClick, icon }) => (
           <li key={text}>
-            <a
+            <ButtonOrA
               href={href}
               onClick={onClick}
               className="flex gap-2 cursor-pointer hover:bg-neutral-2 py-2 px-3 hover:no-underline transition"
             >
               {icon && <span>{icon}</span>}
               <span>{text}</span>
-            </a>
+            </ButtonOrA>
           </li>
         ))}
       </ul>

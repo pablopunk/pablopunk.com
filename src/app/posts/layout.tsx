@@ -6,6 +6,7 @@ import { posts } from "~/data/posts";
 import { H1 } from "~/components/Post/Title";
 import { PostFeatureImage } from "~/components/Post/PostFeatureImage";
 import classNames from "classnames";
+import { DateLocale } from "~/components/Post/DateLocale";
 
 export default function BlogLayout({
   children,
@@ -28,26 +29,23 @@ export default function BlogLayout({
   return (
     <>
       <nav className="p-2 mb-5">
-        <Link
-          href="/blog"
-          className="text-xl text-indigo-600 dark:text-indigo-400"
-        >
+        <Link href="/blog" className="text-xl">
           {"<-"} back to blog
         </Link>
       </nav>
-      <section className="flex flex-col md:flex-row">
+      <section className="flex flex-col lg:flex-row justify-center">
         <article className="p-2 max-w-screen-md flex flex-col gap-4">
           <H1>{post.title}</H1>
           <i className="text-xs text-neutral-8 text-center">
-            by {post.author} at {post.date.toLocaleDateString()}
+            by {post.author} at <DateLocale date={post.date} />
           </i>
           <PostFeatureImage post={post} />
           {children}
         </article>
         {relatedPosts.length > 0 && (
-          <nav className="p-2 border-t-2 border-neutral-2 md:border-none mt-6 md:mt-0">
+          <nav className="p-2 border-t-2 border-neutral-2 lg:border-none mt-6 lg:mt-0 lg:max-w-sm">
             <>
-              <h2 className="text-2xl font-serif pb-1 mb-2 border-b border-neutral-2">
+              <h2 className="text-2xl font-serif pb-1 mb-2 lg:border-b border-neutral-2">
                 Related content
               </h2>
               <ul className="flex flex-col gap-2">
@@ -61,15 +59,15 @@ export default function BlogLayout({
                       >
                         <li
                           className={classNames({
-                            "text-indigo-600 dark:text-indigo-400":
-                              relatedIndex === 0,
+                            "text-accent-7":
+                              relatedIndex === 0 && relatedPosts.length > 1,
                           })}
                         >
                           <span>
                             {"->"} {relatedPost.title}{" "}
                           </span>
                           <span className="text-xs ml-1 opacity-50">
-                            {relatedPost.date.toLocaleDateString()}
+                            <DateLocale date={relatedPost.date} />
                           </span>
                         </li>
                       </Link>
