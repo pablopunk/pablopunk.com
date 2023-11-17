@@ -117,11 +117,11 @@ export default function RootLayout({
             }}
           />
         </Suspense>
+        <Suspense fallback={null}>
+          <NavigationEvents />
+        </Suspense>
         <script dangerouslySetInnerHTML={{ __html: htmlHello }} async />
       </body>
-      <Suspense fallback={null}>
-        <NavigationEvents />
-      </Suspense>
     </html>
   );
 }
