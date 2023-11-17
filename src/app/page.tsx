@@ -10,7 +10,7 @@ const Intro = () => (
   <Card>
     <h1 className="text-xl font-bold">Pablo P. Varela</h1>
     <p className="max-w-md text-neutral-7">
-      I'm a web developer working at <a href="https://maze.co">Maze</a>.
+      I{"''"}m a web developer working at <a href="https://maze.co">Maze</a>.
     </p>
     <p className="max-w-md text-neutral-7">
       I also contribute to open-source projects on{" "}
