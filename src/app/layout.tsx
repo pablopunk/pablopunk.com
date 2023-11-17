@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
@@ -120,6 +121,7 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <NavigationEvents />
         </Suspense>
+        <Analytics />
         <script dangerouslySetInnerHTML={{ __html: htmlHello }} async />
       </body>
     </html>

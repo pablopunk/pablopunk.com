@@ -15,6 +15,7 @@
     "@next/mdx": "^13.5.6",
     "@supabase/supabase-js": "^2.38.2",
     "@types/mdx": "^2.0.9",
+    "@vercel/analytics": "^1.1.1",
     "classnames": "^2.3.2",
     "dark-mode-code": "^1.0.1",
     "highlight.js": "^11.9.0",
