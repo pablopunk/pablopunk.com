@@ -4,9 +4,20 @@ import { CSSProperties, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useTheme } from "~/hooks/useTheme";
 
-const ButtonOrA = ({ href, onClick, children }: any) => {
+const ButtonOrA = ({
+  href,
+  onClick,
+  children,
+  className,
+}: {
+  href?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+  className?: string;
+}) => {
   return (
     <button
+      className={className}
       onClick={
         onClick
           ? onClick
@@ -16,7 +27,6 @@ const ButtonOrA = ({ href, onClick, children }: any) => {
             }
           : undefined
       }
-      className="flex gap-2 cursor-pointer hover:bg-neutral-2 py-2 px-3 transition"
     >
       {children}
     </button>
@@ -57,7 +67,7 @@ export const RightClickMenu = () => {
   return (
     <div
       style={menuStyle}
-      className="bg-neutral-1 text-neutral-9 min-w-[200px] border-2 border-neutral-2 rounded-md"
+      className="bg-neutral-1 text-neutral-9 text-sm font-bold min-w-[200px] border-2 border-neutral-2 rounded-md"
     >
       <ul>
         {[
@@ -86,7 +96,7 @@ export const RightClickMenu = () => {
             <ButtonOrA
               href={href}
               onClick={onClick}
-              className="flex gap-2 cursor-pointer hover:bg-neutral-2 py-2 px-3 hover:no-underline transition"
+              className="w-full flex gap-2 cursor-pointer hover:bg-neutral-2 py-2 px-3 hover:no-underline transition"
             >
               {icon && <span>{icon}</span>}
               <span>{text}</span>
