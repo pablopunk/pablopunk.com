@@ -9,6 +9,7 @@ export type Post = {
   author: string;
   featured?: boolean;
   cta?: boolean;
+  related?: Post["slug"][];
 };
 
 const allPosts: Post[] = [
@@ -22,6 +23,10 @@ const allPosts: Post[] = [
       "https://ik.imagekit.io/pablopunk/posts/before-after%20(1).png?updatedAt=1699132327673",
     featured: true,
     cta: true,
+    related: [
+      "how-to-replace-text-in-vim-only-inside-a-specific-search",
+      "file-finder-and-project-search-in-vim-without-any-plugins",
+    ],
   },
   {
     title:
