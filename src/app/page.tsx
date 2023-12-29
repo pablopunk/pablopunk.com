@@ -17,7 +17,7 @@ const Intro = () => (
       <a href="https://github.com/pablopunk">Github</a>.
     </p>
     <p className="max-w-md text-neutral-7">
-      I've made <a href="https://swiftshift.app">SwiftShift</a>,{" "}
+      I{"'"}ve made <a href="https://swiftshift.app">SwiftShift</a>,{" "}
       <a href="https://github.com/pablopunk/unclutter.nvim">unclutter.nvim</a>,{" "}
       and <a href="https://vimcolors.org">vimcolors.org</a>
     </p>
