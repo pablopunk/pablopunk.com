@@ -5,7 +5,15 @@ import classNames from "classnames";
 import { posts } from "~/data/posts";
 import { DateLocale } from "~/components/Post/DateLocale";
 
-const keywords = ["vim", "neovim", "nextjs", "supabase", "macbook", "camera"];
+const keywords = [
+  "vim",
+  "neovim",
+  "nextjs",
+  "supabase",
+  "macbook",
+  "camera",
+  "macos",
+];
 
 type Keywords = (typeof keywords)[number];
 

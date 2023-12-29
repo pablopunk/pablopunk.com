@@ -10,11 +10,16 @@ const Intro = () => (
   <Card>
     <h1 className="text-xl font-bold">Pablo P. Varela</h1>
     <p className="max-w-md text-neutral-7">
-      I{"''"}m a web developer working at <a href="https://maze.co">Maze</a>.
+      I{"'"}m a web developer working at <a href="https://maze.co">Maze</a>.
     </p>
     <p className="max-w-md text-neutral-7">
       I also contribute to open-source projects on{" "}
       <a href="https://github.com/pablopunk">Github</a>.
+    </p>
+    <p className="max-w-md text-neutral-7">
+      I've made <a href="https://swiftshift.app">SwiftShift</a>,{" "}
+      <a href="https://github.com/pablopunk/unclutter.nvim">unclutter.nvim</a>,{" "}
+      and <a href="https://vimcolors.org">vimcolors.org</a>
     </p>
   </Card>
 );

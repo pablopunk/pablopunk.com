@@ -14,6 +14,21 @@ export type Post = {
 
 const allPosts: Post[] = [
   {
+    title: "I made a macOS app for the ultimate window management",
+    slug: "i-made-a-macos-app-for-the-ultimate-window-management",
+    date: new Date("2023-12-29"),
+    description:
+      "I've been wanting to make this macOS app for a while now. It's finally here. Never search again for those tiny arrows and title bars to move/resize windows.",
+    cta: true,
+    featured: true,
+    image:
+      "https://ik.imagekit.io/pablopunk/posts/header-light.png?updatedAt=1703864993527",
+    related: [
+      "i-made-a-neovim-plugin-because-i-missed-a-feature-from-vscode",
+      "how-buying-an-m1-macbook-air-saved-me-money",
+    ],
+  },
+  {
     title: "I made a Neovim plugin because I missed a feature from VSCode",
     slug: "i-made-a-neovim-plugin-because-i-missed-a-feature-from-vscode",
     date: new Date("2023-10-04"),
@@ -22,7 +37,6 @@ const allPosts: Post[] = [
     image:
       "https://ik.imagekit.io/pablopunk/posts/before-after%20(1).png?updatedAt=1699132327673",
     featured: true,
-    cta: true,
     related: [
       "how-to-replace-text-in-vim-only-inside-a-specific-search",
       "file-finder-and-project-search-in-vim-without-any-plugins",
@@ -37,7 +51,6 @@ const allPosts: Post[] = [
       "Yes, it's THAT good. Since I discovered ChatGPT I don't write boilerplate or stuff I wrote hundreds of times, I ask for it. Today I wanted to make it create a store to generate passive income.",
     image:
       "https://ik.imagekit.io/pablopunk/posts/i-told-chatgpt-to-create-a-passive-store-and-now-i-don-t-code-anymore.png?updatedAt=1698057162161",
-    featured: true,
     related: [
       "developing-nextjs-cms-is-slow-here-s-the-fix",
       "how-to-create-a-real-time-ui-with-nextjs-and-supabase",
