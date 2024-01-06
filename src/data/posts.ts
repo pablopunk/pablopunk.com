@@ -22,7 +22,7 @@ const allPosts: Post[] = [
     cta: true,
     featured: true,
     image:
-      "https://ik.imagekit.io/pablopunk/posts/header-light.png?updatedAt=1703864993527",
+      "https://ik.imagekit.io/pablopunk/posts/header-light.png?updatedAt=1704567298684",
     related: [
       "i-made-a-neovim-plugin-because-i-missed-a-feature-from-vscode",
       "how-buying-an-m1-macbook-air-saved-me-money",

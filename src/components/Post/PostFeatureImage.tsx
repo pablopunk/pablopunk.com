@@ -2,8 +2,8 @@ import Image from "next/image";
 import { Post } from "~/data/posts";
 import { imageKitUrl } from "~/utils/imagekit/url";
 
-const width = 700;
-const height = 500;
+const width = 1280 / 2;
+const height = 720 / 2;
 
 export const PostFeatureImage = ({ post }: { post: Post }) => {
   const imageSrc = imageKitUrl({
