@@ -8,6 +8,10 @@ export const Img = ({
   HTMLImageElement
 >) => {
   return (
-    <img src={src} alt={alt} className="my-2 rounded-sm max-w-2xl mx-auto" />
+    <img
+      src={src}
+      alt={alt}
+      className="my-2 rounded-sm max-w-2xl mx-auto w-full"
+    />
   );
 };
