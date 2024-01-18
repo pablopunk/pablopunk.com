@@ -100,7 +100,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <div className="min-h-screen p-6 flex flex-col justify-between">
+        <div className="min-h-screen p-6 flex flex-col justify-between md:max-w-screen-xl mx-auto">
           <main>{children}</main>
           <footer className="text-sm text-neutral-5 font-bold pt-6">
             © {site.SITE_COPYRIGHT} {new Date().getFullYear()}

@@ -76,5 +76,9 @@ a {
 a:hover {
   color: var(--color-neutral-8);
   transition: color 0.1s ease-in-out;
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+p a {
+  color: var(--color-accent-8);
 }
