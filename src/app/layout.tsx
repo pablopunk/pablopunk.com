@@ -11,6 +11,28 @@ import site from "~/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const lwtScript = `
+(function (m, a, z, e) {
+  var s, t;
+  try {
+    t = m.sessionStorage.getItem('maze-us');
+  } catch (err) {}
+
+  if (!t) {
+    t = new Date().getTime();
+    try {
+      m.sessionStorage.setItem('maze-us', t);
+    } catch (err) {}
+  }
+
+  s = a.createElement('script');
+  s.src = z + '?apiKey=' + e;
+  s.async = true;
+  a.getElementsByTagName('head')[0].appendChild(s);
+  m.mazeUniversalSnippetApiKey = e;
+})(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '387b92f6-3965-466a-aaf0-871a28a52a89');
+`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.SITE_URL),
   title: site.SITE_NAME,
@@ -98,6 +120,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="y-TnXGhfG_A0b-ttLIV076wjdtFdEMZw6d04iwfR2Xw"
         />
+        <script async dangerouslySetInnerHTML={{ __html: lwtScript }} />
       </head>
       <body className={inter.className}>
         <div className="min-h-screen p-6 flex flex-col justify-between md:max-w-screen-xl mx-auto">
