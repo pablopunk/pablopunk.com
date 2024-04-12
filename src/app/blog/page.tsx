@@ -39,7 +39,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <div className="flex gap-2 mb-1">
+      <div className="flex gap-2 mb-1 max-w-full flex-wrap">
         {keywords.map((keyword) => (
           <button
             key={keyword}
