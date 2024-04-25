@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from "astro:content"
+import PostsList from "./PostsList.astro"
+
+interface Props {
+	post: CollectionEntry<"posts">["data"]
+	related?: CollectionEntry<"posts">[]
+}
+const { post, related } = Astro.props
+---
+
+<div class="flex flex-col lg:flex-row">
+	<article class="mx-auto flex max-w-screen-md flex-col gap-2">
+		<img src={post.image.url} alt={post.image.alt} width="700px" />
+		<h1 class="text-2xl">{post.title}</h1>
+		<span class="text-sm italic">by {post.author} on {post.pubDate.toDateString()}</span>
+		<slot class="mt-4" />
+	</article>
+
+	<aside class="mx-auto flex max-w-screen-md flex-col gap-2">
+		<h2 class="text-xl font-bold">Related Posts</h2>
+		<ul>
+			{related?.length && <PostsList posts={related} compact />}
+		</ul>
+	</aside>
+</div>
+
+<style is:global>
+	article img {
+		max-width: 90%;
+		margin: 2rem auto;
+		border-radius: 0.25rem;
+	}
+	article h1,
+	article h2,
+	article h3,
+	article h4,
+	article h5,
+	article h6 {
+		margin-top: 1rem;
+		font-family: "DM Serif Text", serif;
+		font-weight: bold;
+	}
+</style>

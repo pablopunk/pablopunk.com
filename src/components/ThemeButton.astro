@@ -1,0 +1,152 @@
+---
+
+---
+
+<div id="theme-toggle-wrapper">
+	<input type="checkbox" class="theme-toggle-checkbox" id="chk" />
+	<label id="theme-toggle-label" for="chk">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			class="icon-tabler icon-tabler-sun"
+			width="15px"
+			height="15px"
+			viewBox="0 0 24 24"
+			stroke-width="1.5"
+			stroke="currentColor"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+			<circle cx="12" cy="12" r="4"></circle>
+			<path
+				d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
+			></path>
+		</svg>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			class="icon-tabler icon-tabler-moon"
+			width="15"
+			height="15"
+			viewBox="0 0 24 24"
+			stroke-width="1.5"
+			stroke="currentColor"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+			<path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+			></path>
+		</svg>
+		<div id="theme-toggle-ball">
+			<span class="sr-only">Use dark theme</span>
+		</div>
+	</label>
+</div>
+
+<style>
+	* {
+		--background: var(--color-neutral-0);
+		--border: var(--color-neutral-2);
+
+		/* Theme toggle */
+		--toggle-ball-color: var(--color-accent-6);
+		--toggle-tabel-background: var(--color-neutral-1);
+		--sun-icon-color: #ffffff;
+	}
+
+	#theme-toggle-wrapper {
+		position: relative;
+		display: inline-block;
+	}
+
+	#theme-toggle-wrapper > div {
+		position: absolute;
+		right: 3px;
+		margin-top: 3px;
+	}
+
+	.theme-toggle-checkbox {
+		opacity: 0;
+		position: absolute;
+	}
+
+	#theme-toggle-label {
+		background-color: var(--color-neutral-0);
+		border-radius: 50px;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 7.5px;
+		position: relative;
+		width: 66px;
+		height: 30px;
+		transform: scale(1.2);
+		outline: 1px solid transparent;
+	}
+
+	:global(html:not([data-theme="dark"])) #theme-toggle-label {
+		box-shadow: 2px 2px 4px 0px var(--color-neutral-3);
+	}
+
+	#theme-toggle-label #theme-toggle-ball {
+		background-color: var(--color-accent-2);
+		border-radius: 50%;
+		position: absolute;
+		height: 30px;
+		width: 30px;
+		transform: translateX(-7.5px);
+		transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	}
+
+	.theme-toggle-checkbox:checked + #theme-toggle-label #theme-toggle-ball {
+		transform: translateX(28.5px);
+	}
+
+	.icon-tabler {
+		transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+		z-index: 10;
+	}
+
+	.icon-tabler-moon,
+	.icon-tabler-sun {
+		color: var(--color-accent-9);
+	}
+
+	@media (max-width: 768px) {
+		#theme-toggle-wrapper > div {
+			position: absolute;
+			right: 22px;
+			margin-top: 47px;
+		}
+	}
+</style>
+
+<script is:inline>
+	document.addEventListener("astro:page-load", () => {
+		const _inital = (() => {
+			const theme =
+				localStorage.getItem("theme") ||
+				(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+			document.documentElement.setAttribute("data-theme", theme)
+			document
+				.querySelectorAll(".theme-toggle-checkbox")
+				.forEach((element) => (element.checked = theme === "dark"))
+		})()
+
+		const handleToggleClick = () => {
+			const theme = document.documentElement.attributes.getNamedItem("data-theme")?.value // 'light' | 'dark'
+			document.dispatchEvent(
+				new CustomEvent("set-theme", { detail: theme === "dark" ? "light" : "dark" })
+			)
+		}
+
+		document
+			.querySelectorAll(".theme-toggle-checkbox")
+			.forEach((element) => element.addEventListener("change", handleToggleClick))
+	})
+</script>

@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content"
+import Post from "../../components/Post.astro"
+import Layout from "../../layouts/Layout.astro"
+
+export async function getStaticPaths() {
+	const blogEntries = await getCollection("posts")
+	return blogEntries.map((entry) => {
+		const related = blogEntries.filter((e) =>
+			e.data.tags.some((tag) => entry.data.tags.includes(tag))
+		)
+		return {
+			params: { slug: entry.slug },
+			props: { entry, related },
+		}
+	})
+}
+
+const { entry, related } = Astro.props
+const { Content } = await entry.render()
+---
+
+<Layout title={entry.data.title}>
+	<Post post={entry.data} related={related}>
+		<Content />
+	</Post>
+</Layout>

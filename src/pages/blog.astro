@@ -1,0 +1,14 @@
+---
+import { getCollection } from "astro:content"
+import PostsList from "components/PostsList.astro"
+import Tags from "components/Tags.astro"
+import Layout from "../layouts/Layout.astro"
+
+const posts = await getCollection("posts")
+const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())]
+---
+
+<Layout title="pablopunk's blog">
+	<Tags tags={uniqueTags} />
+	<PostsList posts={posts} />
+</Layout>

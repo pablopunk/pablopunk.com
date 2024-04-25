@@ -1,0 +1,48 @@
+---
+import "@fontsource-variable/inter"
+import "@fontsource-variable/rubik"
+import "@fontsource/dm-serif-display"
+import Themes from "astro-themes"
+import { ViewTransitions } from "astro:transitions"
+import Nav from "../components/Nav.astro"
+
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<Themes />
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body
+		class="bg-slate-1 dark:bg-slate-12 text-slate-12 dark:text-slate-1 mx-auto max-w-screen-2xl"
+	>
+		<header>
+			<Nav />
+		</header>
+		<main class="mx-auto max-w-screen-xl p-3">
+			<slot />
+		</main>
+		<style is:global>
+			body {
+				font-family: Inter, sans-serif;
+			}
+
+			a:hover {
+				transition: color 0.2s ease-in-out;
+				text-decoration: none;
+			}
+		</style>
+	</body>
+</html>

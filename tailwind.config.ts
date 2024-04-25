@@ -1,32 +1,20 @@
-import type { Config } from "tailwindcss";
-
-const cssColors = (selection: string[]) => {
-  const result: { [key: string]: string } = {};
-
-  for (const color of selection) {
-    for (let i = 1; i <= 10; i++) {
-      const shade = `${color}-${i}`;
-      result[shade] = `var(--color-${shade})`;
-    }
-  }
-
-  return result;
-};
+import type { Config } from "tailwindcss"
+import tailwindcssRadixColors from "tailwindcss-radix-colors"
+import defaultTheme from "tailwindcss/defaultTheme"
 
 const config: Config = {
-  darkMode: "class",
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        ...cssColors(["neutral", "accent"]),
-      },
-    },
-  },
-  plugins: [],
-};
-export default config;
+	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+	darkMode: ["class", "[data-theme='dark']"],
+	theme: {
+		extend: {
+			fontFamily: {
+				sans: ["Inter", ...defaultTheme.fontFamily.sans],
+				serif: ['"DM Serif Display"', ...defaultTheme.fontFamily.serif],
+				rubik: ['"Rubik"', ...defaultTheme.fontFamily.sans],
+			},
+		},
+	},
+	plugins: [tailwindcssRadixColors],
+}
+
+export default config

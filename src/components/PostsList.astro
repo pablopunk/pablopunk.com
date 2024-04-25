@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from "astro:content"
+import { getPostUrl } from "content/config"
+
+interface Props {
+	posts: CollectionEntry<"posts">[]
+	compact?: boolean
+}
+const { posts, compact } = Astro.props
+---
+
+<ul class="flex flex-col gap-4">
+	{
+		posts
+			.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+			.map((post) => (
+				<li>
+					<a href={getPostUrl(post)} class="flex items-center gap-2">
+						{compact ? null : (
+							<img
+								src={post.data.image.url}
+								alt={post.data.image.alt}
+								class="max-w-[100px] rounded-sm"
+							/>
+						)}
+						<div class="flex flex-col">
+							<h2 class="font-rubik text-xl font-bold">{post.data.title}</h2>
+							{compact ? null : <p class="max-w-screen-md text-sm">{post.data.description}</p>}
+						</div>
+					</a>
+				</li>
+			))
+	}
+</ul>
