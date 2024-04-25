@@ -9,8 +9,8 @@ const config: Config = {
 		extend: {
 			fontFamily: {
 				sans: ["Inter", ...defaultTheme.fontFamily.sans],
-				serif: ['"DM Serif Display"', ...defaultTheme.fontFamily.serif],
-				rubik: ['"Rubik"', ...defaultTheme.fontFamily.sans],
+				serif: ["\"DM Serif Display\"", ...defaultTheme.fontFamily.serif],
+				rubik: ["\"Rubik\"", ...defaultTheme.fontFamily.sans],
 			},
 		},
 	},
