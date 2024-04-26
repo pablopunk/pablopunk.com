@@ -8,6 +8,7 @@ image:
 author: Pablo Varela
 tags: [nextjs]
 ---
+
 ## **The problem**
 
 React **Fast Refresh** makes it very fast to develop components for your app. You see the changes in the code immediately. But sometimes you need to refresh the page or go to a different one, which is very slow when you are using `getStaticProps`.
@@ -26,21 +27,19 @@ I chose Redis, but any other method will work. I started with a local server, be
 
 Here’s what I had before the cache implementation:
 
-~~~ts
+```ts
 const pageData = await getPageData(slug, locale)
-~~~
+```
 
 I didn’t want to include the cache logic right there, so I made a helper function on another file that allowed me to use this simple approach:
 
-~~~ts
-const pageData = await getFromCache(`${slug}-${locale}`, () =>
-  getPageData(slug, locale),
-)
-~~~
+```ts
+const pageData = await getFromCache(`${slug}-${locale}`, () => getPageData(slug, locale))
+```
 
 The function `getFromCache` takes a string as an argument (the key in the database) and a function to get the data — that allows to separate the data-fetch implementation from the cache implementation:
 
-~~~ts
+```ts
 export async function getFromCache(key: string, fetcher: () => Promise<any>) {
   // don't use cache in production or redis is not connected
   if (!redis || !isDev) {
@@ -60,7 +59,7 @@ export async function getFromCache(key: string, fetcher: () => Promise<any>) {
   // fetch value if it's not cached (and save it)
   return fetcher().then((value) => setInCache(key, value) && value)
 }
-~~~
+```
 
 Aaaaaaaaaaand now it’s blazing fast!
 

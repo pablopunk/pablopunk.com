@@ -48,16 +48,6 @@
 </div>
 
 <style>
-	* {
-		--background: var(--color-neutral-0);
-		--border: var(--color-neutral-2);
-
-		/* Theme toggle */
-		--toggle-ball-color: var(--color-accent-6);
-		--toggle-tabel-background: var(--color-neutral-1);
-		--sun-icon-color: #ffffff;
-	}
-
 	#theme-toggle-wrapper {
 		position: relative;
 		display: inline-block;
@@ -75,7 +65,7 @@
 	}
 
 	#theme-toggle-label {
-		background-color: var(--color-neutral-0);
+		background-color: var(--teal-2);
 		border-radius: 50px;
 		cursor: pointer;
 		display: flex;
@@ -90,11 +80,12 @@
 	}
 
 	:global(html:not([data-theme="dark"])) #theme-toggle-label {
-		box-shadow: 2px 2px 4px 0px var(--color-neutral-3);
+		box-shadow: 2px 2px 4px 0px var(--slate-4);
 	}
 
 	#theme-toggle-label #theme-toggle-ball {
-		background-color: var(--color-accent-2);
+		background-color: var(--indigo-3);
+		border: 2px solid var(--indigo-5);
 		border-radius: 50%;
 		position: absolute;
 		height: 30px;
@@ -114,7 +105,7 @@
 
 	.icon-tabler-moon,
 	.icon-tabler-sun {
-		color: var(--color-accent-9);
+		color: var(--teal-11);
 	}
 
 	@media (max-width: 768px) {
@@ -128,11 +119,18 @@
 
 <script is:inline>
 	document.addEventListener("astro:page-load", () => {
+		const setTheme = (theme) => {
+			document.documentElement.setAttribute("data-theme", theme)
+			document.body.classList.add(theme === "dark" ? "dark" : "light")
+			document.body.classList.remove(theme === "dark" ? "light" : "dark")
+			localStorage.setItem("theme", theme)
+		}
+
 		const _init = (() => {
 			const theme =
 				localStorage.getItem("theme") ||
 				(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
-			document.documentElement.setAttribute("data-theme", theme)
+			setTheme(theme)
 			document
 				.querySelectorAll(".theme-toggle-checkbox")
 				.forEach((element) => (element.checked = theme === "dark"))
@@ -140,9 +138,9 @@
 
 		const handleToggleClick = () => {
 			const theme = document.documentElement.attributes.getNamedItem("data-theme")?.value // 'light' | 'dark'
-			document.dispatchEvent(
-				new CustomEvent("set-theme", { detail: theme === "dark" ? "light" : "dark" })
-			)
+			const newTheme = theme === "dark" ? "light" : "dark"
+			document.dispatchEvent(new CustomEvent("set-theme", { detail: newTheme }))
+			setTheme(newTheme)
 		}
 
 		document

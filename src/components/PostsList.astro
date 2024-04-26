@@ -9,13 +9,20 @@ interface Props {
 const { posts, compact } = Astro.props
 ---
 
-<ul class="flex flex-col gap-4">
+<ul
+	class:list={[
+		"flex flex-col",
+		{
+			"gap-4": !compact,
+		},
+	]}
+>
 	{
 		posts
 			.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
 			.map((post) => (
 				<li>
-					<a href={getPostUrl(post)} class="flex items-center gap-2">
+					<a href={getPostUrl(post)} class="group flex items-center gap-2">
 						{compact ? null : (
 							<img
 								src={post.data.image.url}
@@ -24,7 +31,17 @@ const { posts, compact } = Astro.props
 							/>
 						)}
 						<div class="flex flex-col">
-							<h2 class="font-rubik text-xl font-bold">{post.data.title}</h2>
+							<h2
+								class:list={[
+									"font-rubik font-bold transition-colors group-hover:text-accent-11",
+									{
+										"text-xl": !compact,
+									},
+								]}
+							>
+								{compact && <span>{"→"}</span>}
+								{post.data.title}
+							</h2>
 							{compact ? null : <p class="max-w-screen-md text-sm">{post.data.description}</p>}
 						</div>
 					</a>

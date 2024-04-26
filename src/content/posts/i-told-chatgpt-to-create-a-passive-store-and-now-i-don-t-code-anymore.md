@@ -8,6 +8,7 @@ image:
 author: Pablo Varela
 tags: ["ai"]
 ---
+
 I actually did it as a joke, but when you tell someone that you like them it's only a joke if they don't like you back. You know what I'm talking about.
 
 I'll try to keep it short, I did spend this morning with it, so the conversation is quite long, but its parts are not that complicated.
@@ -38,14 +39,14 @@ It was actually a pretty good start. Of course it's importing stuff like `Layout
 
 ```tsx
 export const getServerSideProps: GetServerSideProps = async () => {
-  const products = await fetchProducts();
+  const products = await fetchProducts()
 
   return {
     props: {
       products,
     },
-  };
-};
+  }
+}
 ```
 
 That means it will be SSR (server-side rendered), but I prefer using SSG (static site generator) for this project. No problem for ChatGPT!
@@ -56,7 +57,7 @@ Done! Now I want to create the Layout component. I want to use TailwindCSS, just
 
 > give me the Layout component (use tailwindcss for everything). If you want to use colors, use them in this format: className="text-primary-100 bg-secondary-700", having only a primary and a secondary color
 
-It worked but I specified that I wanted shades going from 50 to 900. OMG I'M BORING MYSELF. *Let's get to the good parts.* I generated the layout component, the product list component... So, it's time to actually get some products from the API.
+It worked but I specified that I wanted shades going from 50 to 900. OMG I'M BORING MYSELF. _Let's get to the good parts._ I generated the layout component, the product list component... So, it's time to actually get some products from the API.
 
 ## Getting products
 

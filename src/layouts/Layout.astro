@@ -2,6 +2,12 @@
 import "@fontsource-variable/inter"
 import "@fontsource-variable/rubik"
 import "@fontsource/dm-serif-display"
+import "@radix-ui/colors/indigo-dark.css"
+import "@radix-ui/colors/indigo.css"
+import "@radix-ui/colors/slate-dark.css"
+import "@radix-ui/colors/slate.css"
+import "@radix-ui/colors/teal-dark.css"
+import "@radix-ui/colors/teal.css"
 import Themes from "astro-themes"
 import { ViewTransitions } from "astro:transitions"
 import Nav from "../components/Nav.astro"
@@ -25,9 +31,7 @@ const { title } = Astro.props
 		<title>{title}</title>
 		<ViewTransitions />
 	</head>
-	<body
-		class="bg-slate-1 dark:bg-slate-12 text-slate-12 dark:text-slate-1 mx-auto max-w-screen-2xl"
-	>
+	<body class="mx-auto max-w-screen-2xl bg-neutral-1 text-neutral-12">
 		<header>
 			<Nav />
 		</header>

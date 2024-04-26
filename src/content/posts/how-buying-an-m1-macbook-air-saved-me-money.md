@@ -17,7 +17,7 @@ My plan was to try it out for a couple of weeks to see if I would suffer much fr
 
 I got my MBA and started to love the small form factor again. I was kinda hating my big-ass 16-inch macbook now, I really liked the portability even if it meant having a bit less performance. I started to install all the dev tools I needed. I thought this was gonna be the biggest issue but it wasn't. I did have some problems installing the native ARM version of [homebrew](http://brew.sh/), but I ended up installing the virtualized version. So all the tools I was using were actually virtualized (x86 binaries running on the ARM chip). How did that go performance-wise?
 
-* **A-m-a-z-i-n-g**
+- **A-m-a-z-i-n-g**
 
 I wish I still had my MBP to do the benchmarks again and show you the results. But I remember I was developing a nodejs/react project with webpack, and the compilation time was **THREE (3) TIMES FASTER ON THE VIRTUALIZED M1 CHIP**. Oh, I didn't mention this is a **1200**€ machine vs a **2700**€ one. Yes.
 

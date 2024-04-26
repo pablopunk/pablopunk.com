@@ -8,6 +8,7 @@ image:
 author: Pablo Varela
 tags: [photo]
 ---
+
 > ...if you know how to use it. We all have a great camera in our pocket, but it doesn't have to be the best camera you can fit in your pocket. Smartphones have come a long way and I really like taking pictures with mine. But let me tell you about my favorite camera that fits in my pocket.
 
 ## Micro Four Thirds

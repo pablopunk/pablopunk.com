@@ -8,12 +8,13 @@ image:
 author: Pablo Varela
 tags: [nextjs, supabase]
 ---
+
 ## The architecture
 
 First, let's talk about the pieces I used for this:
 
-* [NextJS](https://nextjs.org): The framework for React. Next has lots of cool features out of the box, but none are really important for this project, only that we can use the latest react with hooks.
-* [Supabase](https://supabase.io): The open-source alternative to Firebase. Supabase is a new tool to create databases with lots of features, but the most important one for us here is that we can subscribe to live changes in the data via web sockets. We'll use [react-supabase](https://github.com/tmm/react-supabase) hooks for that.
+- [NextJS](https://nextjs.org): The framework for React. Next has lots of cool features out of the box, but none are really important for this project, only that we can use the latest react with hooks.
+- [Supabase](https://supabase.io): The open-source alternative to Firebase. Supabase is a new tool to create databases with lots of features, but the most important one for us here is that we can subscribe to live changes in the data via web sockets. We'll use [react-supabase](https://github.com/tmm/react-supabase) hooks for that.
 
 ## Set up
 
@@ -45,9 +46,9 @@ That's it for supabase!
 
 For the client, we'll use **supabase JS client and the hooks library for react**:
 
-~~~sh
+```sh
 npm i @supabase/supabase-js react-supabase
-~~~
+```
 
 Now go back to Supabase and copy your table tokens for the client. You can find those under `Settings > API`. Copy the `anon-public` key and the `URL`.
 
@@ -55,14 +56,14 @@ Now go back to Supabase and copy your table tokens for the client. You can find 
 
 In my case I put them on an `.env` file:
 
-~~~sh
+```sh
 NEXT_PUBLIC_SUPABASE_URL=https://...
 NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-~~~
+```
 
 Now let's connect your client to supabase:
 
-~~~ts
+```ts
 import { createClient } from '@supabase/supabase-js'
 import { Provider } from 'react-supabase'
 
@@ -78,11 +79,11 @@ export default client
 export function SupabaseProvider({ children }) {
   return <Provider value={client}>{children}</Provider>
 }
-~~~
+```
 
 As you can see I'm also creating a `SupabaseProvider` to wrap your app inside it. In NextJS I do this in `pages/_app.tsx`. This will make sure all supabase hooks are connected to the created client:
 
-~~~ts
+```ts
 const App = ({ Component, pageProps }) => (
     <SupabaseProvider>
         <Component {...pageProps} />
@@ -90,43 +91,43 @@ const App = ({ Component, pageProps }) => (
 )
 
 export default App
-~~~
+```
 
 Now we can go ahead and create our own hooks. Let's create one to get the clicks in real-time. We can use the hook `useRealtime` from `react-supabase`;
 
-~~~ts
-import { useRealtime } from 'react-supabase'
+```ts
+import { useRealtime } from "react-supabase"
 
 export function useClicks() {
-  const [{ data, error }] = useRealtime('clicks', {
+  const [{ data, error }] = useRealtime("clicks", {
     select: {
-      columns: 'id,type',
+      columns: "id,type",
     },
   })
 
   return data
 }
-~~~
+```
 
 As you can see it's very simple, it just gets the data from the database and every time the table changes it will update the hook value.
 
 Let's create another hook for inserting. This one is even simpler, as there's already a `useInsert` hook:
 
-~~~ts
-import { useInsert } from 'react-supabase'
+```ts
+import { useInsert } from "react-supabase"
 
 export function useInsertClicks() {
-  const [_data, execute] = useInsert('clicks')
+  const [_data, execute] = useInsert("clicks")
 
   return execute
 }
-~~~
+```
 
 We don't really care about the data here, so we just return the `execute` function, which takes an array of elements to insert.
 
 Bored yet? Don't worry, **this is the last step. Let's create 4 buttons with 4 emojis**. The idea here is to display all 4 buttons with the number of clicks they have:
 
-~~~ts
+```ts
 const buttons = [
   {
     type: 'happy',
@@ -165,7 +166,7 @@ const Buttons = () => {
     }
   </>
 }
-~~~
+```
 
 Let's break this code into parts. First, you can see we **declare the 4 buttons** as an array, so we don't repeat all the HTML for each one. **Then we display those buttons** with their corresponding clicks: `clicksForType` is counting how many rows there are of the current button type. Then we insert a **new row on every click**, that's done by inserting an array of one here `insertClicks([{type}])`.
 

@@ -8,22 +8,23 @@ image:
 author: Pablo Varela
 tags: [nextjs]
 ---
+
 But this one without all that boilerplate that you end up removing. Just replacing it.
 
 I often come across next.js projects that aim to be a good way to start a new project but I always need to either remove lots of stuff from it or add very basic stuff (like SEO, come on).
 
 So, I started to create my own. Very simple, yet powerful by default.
 
-* [github.com/pablopunk/next-starter](https://github.com/pablopunk/next-starter)
+- [github.com/pablopunk/next-starter](https://github.com/pablopunk/next-starter)
 
 ## Features
 
-* **ALMOST EMPTY**: Easy to start. Should fit any project.
-* **TYPESCRIPT**: With the basic `tsconfig.json`.
-* **TAILWINDCSS**: JIT mode. Synced with CSS variables. Check these files for more info: `tailwind.config.js` and `components/styles.css`
-* **DARK MODE**: Automatic for user with dark mode enabled. Exposes: `window.__toggleDarkMode()` and `const [theme, toggleTheme] = useTheme()`.
-* **SEO**: Very basic SEO config with `next-seo`, taking values from `config.js`.
-* **LINTING**: Basic eslint/prettier config. Check both on `package.json`. Prettier is autorun on pre-commit with `husky`.
+- **ALMOST EMPTY**: Easy to start. Should fit any project.
+- **TYPESCRIPT**: With the basic `tsconfig.json`.
+- **TAILWINDCSS**: JIT mode. Synced with CSS variables. Check these files for more info: `tailwind.config.js` and `components/styles.css`
+- **DARK MODE**: Automatic for user with dark mode enabled. Exposes: `window.__toggleDarkMode()` and `const [theme, toggleTheme] = useTheme()`.
+- **SEO**: Very basic SEO config with `next-seo`, taking values from `config.js`.
+- **LINTING**: Basic eslint/prettier config. Check both on `package.json`. Prettier is autorun on pre-commit with `husky`.
 
 Here’s a [live demo](https://next-starter.pablopunk.com).
 
@@ -31,8 +32,8 @@ As you can see in the list, they're basic stuff that probably 90% of devs would 
 
 Go ahead and **[generate a project](https://github.com/pablopunk/next-starter/generate)** from this template! As the first steps, you can:
 
-* modify the `config.js` to fit your website (it will be the default SEO).
-* modify the color palette at `components/styles.css`
-* modify the favicon at `public/favicon.png`
+- modify the `config.js` to fit your website (it will be the default SEO).
+- modify the color palette at `components/styles.css`
+- modify the favicon at `public/favicon.png`
 
 That's it! Drop me a message on [twitter](http://twitter.com/pablopunk) or [email me](mailto:pablo@pablopunk.com) for any feedback or questions.

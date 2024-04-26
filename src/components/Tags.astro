@@ -9,23 +9,26 @@ const { tags, selected } = Astro.props
 
 <ul class="mb-5 mt-3 flex gap-2">
 	{
-		tags.map((_tag) => (
-			<li>
-				<a
-					class:list={[
-						"rounded-md px-2 py-1",
-						{
-							"bg-slate-900 text-slate-200": _tag === selected,
-						},
-						{
-							"bg-slate-200 text-slate-900": _tag !== selected,
-						},
-					]}
-					href={`/tags/${_tag}`}
-				>
-					{_tag}
-				</a>
-			</li>
-		))
+		tags.map((_tag) => {
+			const current = _tag === selected
+			return (
+				<li>
+					<a
+						class:list={[
+							"rounded-md px-2 py-1 font-mono text-sm",
+							{
+								"bg-accent-3 text-accent-11": !current,
+							},
+							{
+								"bg-accent-11 text-accent-3": current,
+							},
+						]}
+						href={current ? "/blog" : `/tags/${_tag}`}
+					>
+						#{_tag}
+					</a>
+				</li>
+			)
+		})
 	}
 </ul>
