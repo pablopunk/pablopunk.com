@@ -18,7 +18,7 @@ const url =
 
 const site = {
 	SITE_URL: url,
-	SITE_NAME: "Pablo Varela | Remote Web Developer",
+	SITE_NAME: "Pablo Varela | Remote Developer",
 	SITE_DESC:
 		"Pablo Varela. Remote Web Developer. Check out my work or contact me. You can also find me on popular social networks as @pablopunk.",
 	SITE_IMAGE: "https://ik.imagekit.io/pablopunk/yellow_small.jpg?updatedAt=1698073905261",

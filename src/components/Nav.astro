@@ -73,6 +73,7 @@ const isBlogPage = Astro.url.pathname === "/blog"
 		<a
 			href="/blog"
 			class:list={[
+				"hover:text-accent-11",
 				{
 					"border-b-2 border-transparent": !isBlogPage,
 					"border-b-2 border-accent-11 text-accent-11": isBlogPage,

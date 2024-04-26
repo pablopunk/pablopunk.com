@@ -26,7 +26,7 @@ So, I started to create my own. Very simple, yet powerful by default.
 - **SEO**: Very basic SEO config with `next-seo`, taking values from `config.js`.
 - **LINTING**: Basic eslint/prettier config. Check both on `package.json`. Prettier is autorun on pre-commit with `husky`.
 
-Here’s a [live demo](https://next-starter.pablopunk.com).
+> Here’s a [live demo](https://next-starter.pablopunk.com).
 
 As you can see in the list, they're basic stuff that probably 90% of devs would want on a new project. Don't like dark mode? Don't use it, but it's there for you. Don't like typescript? You should. Don't like tailwind? Ok then don't use the kit cause you'll hate it.
 

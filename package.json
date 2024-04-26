@@ -22,11 +22,13 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/inter": "^5.0.18",
     "@fontsource-variable/lexend": "^5.0.20",
+    "@fontsource-variable/literata": "^5.0.21",
     "@fontsource-variable/rubik": "^5.0.22",
     "@fontsource/dm-serif-display": "^5.0.20",
     "@radix-ui/colors": "^3.0.0",
     "astro": "^4.6.4",
     "astro-icon": "^1.1.0",
+    "astro-seo": "^0.8.3",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   },

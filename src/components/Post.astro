@@ -13,7 +13,7 @@ const { post, related } = Astro.props
 <div class="flex flex-col items-start gap-4 lg:flex-row">
 	<article class="mx-auto flex max-w-screen-md flex-col gap-2">
 		<Image class="w-[700px] max-w-[90vw]" src={post.image.url} alt={post.image.alt} inferSize />
-		<h1 class="text-center text-3xl">{post.title}</h1>
+		<h1 class="text-center font-serif text-3xl font-bold">{post.title}</h1>
 		<span class="mb-6 flex items-center justify-center gap-1 text-sm text-accent-11">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -63,8 +63,10 @@ const { post, related } = Astro.props
 	article {
 		max-width: 100%;
 		position: relative;
+	}
+	article p {
 		font-family:
-			"Rubik",
+			"Rubik Variable",
 			-system-ui,
 			sans-serif;
 	}
@@ -73,20 +75,22 @@ const { post, related } = Astro.props
 		margin: 2rem auto;
 		border-radius: 0.25rem;
 	}
-	article h1,
 	article h2,
 	article h3,
 	article h4,
 	article h5,
 	article h6 {
 		margin-top: 1rem;
-		font-family: "DM Serif Text", serif;
+		font-family: "Literata Variable", serif;
 		font-weight: bold;
+		color: var(--accent2-12);
 	}
 
 	article h2 {
 		font-size: 1.65rem;
+		padding-bottom: 0.5rem;
 		border-bottom: 1px solid var(--neutral-5);
+		margin-bottom: 1rem;
 	}
 	article h3 {
 		font-size: 1.35rem;
@@ -122,6 +126,7 @@ const { post, related } = Astro.props
 		border-left: 4px solid var(--accent-9);
 		font-style: italic;
 		font-size: 1.1rem;
+		margin: 0.7rem 0;
 	}
 
 	article blockquote:before {

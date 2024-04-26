@@ -25,8 +25,8 @@ const config: Config = {
 			},
 			fontFamily: {
 				sans: ["Lexend Variable", ...defaultTheme.fontFamily.sans],
-				rubik: ['"Rubik"', ...defaultTheme.fontFamily.sans],
-				serif: ['"DM Serif Display"', ...defaultTheme.fontFamily.serif],
+				rubik: ["Rubik Variable", ...defaultTheme.fontFamily.sans],
+				serif: ["Literata Variable", ...defaultTheme.fontFamily.serif],
 			},
 		},
 	},
