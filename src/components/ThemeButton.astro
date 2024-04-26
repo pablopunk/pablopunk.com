@@ -79,7 +79,7 @@
 		outline: 1px solid transparent;
 	}
 
-	:global(html:not([data-theme="dark"])) #theme-toggle-label {
+	:global(body:not(.dark)) #theme-toggle-label {
 		box-shadow: 2px 2px 4px 0px var(--slate-4);
 	}
 
@@ -120,26 +120,29 @@
 <script is:inline>
 	document.addEventListener("astro:page-load", () => {
 		const setTheme = (theme) => {
-			document.documentElement.setAttribute("data-theme", theme)
 			document.body.classList.add(theme === "dark" ? "dark" : "light")
 			document.body.classList.remove(theme === "dark" ? "light" : "dark")
 			localStorage.setItem("theme", theme)
 		}
 
-		;(() => {
-			const theme =
-				localStorage.getItem("theme") ||
-				(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
-			setTheme(theme)
-			document
-				.querySelectorAll(".theme-toggle-checkbox")
-				.forEach((element) => (element.checked = theme === "dark"))
+		const theme = (() => {
+			if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+				return localStorage.getItem("theme")
+			}
+			if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+				return "dark"
+			}
+			return "light"
 		})()
 
+		setTheme(theme)
+		document
+			.querySelectorAll(".theme-toggle-checkbox")
+			.forEach((element) => (element.checked = theme === "dark"))
+
 		const handleToggleClick = () => {
-			const theme = document.documentElement.attributes.getNamedItem("data-theme")?.value // 'light' | 'dark'
+			const theme = document.body.classList.contains("dark") ? "dark" : "light"
 			const newTheme = theme === "dark" ? "light" : "dark"
-			document.dispatchEvent(new CustomEvent("set-theme", { detail: newTheme }))
 			setTheme(newTheme)
 		}
 
@@ -147,4 +150,28 @@
 			.querySelectorAll(".theme-toggle-checkbox")
 			.forEach((element) => element.addEventListener("change", handleToggleClick))
 	})
+</script>
+
+<script>
+	document.addEventListener("astro:after-swap", () => {
+		// Prevent light/dark mode flicker on transitions
+		if (localStorage.theme === "dark") {
+			document.body.classList.remove("light")
+			document.body.classList.add("dark")
+		} else {
+			document.body.classList.remove("dark")
+			document.body.classList.add("light")
+		}
+	})
+</script>
+
+<script is:inline>
+	// Prevent light/dark mode flicker on page load
+	if (localStorage.theme === "dark") {
+		document.body.classList.remove("light")
+		document.body.classList.add("dark")
+	} else {
+		document.body.classList.remove("dark")
+		document.body.classList.add("light")
+	}
 </script>

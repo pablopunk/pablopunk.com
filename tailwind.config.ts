@@ -15,7 +15,7 @@ function getColorScale(name: string) {
 
 const config: Config = {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
-	darkMode: ["class", "[data-theme='dark']"],
+	darkMode: "class",
 	theme: {
 		extend: {
 			colors: {
@@ -25,8 +25,8 @@ const config: Config = {
 			},
 			fontFamily: {
 				sans: ["Inter", ...defaultTheme.fontFamily.sans],
-				serif: ["\"DM Serif Display\"", ...defaultTheme.fontFamily.serif],
-				rubik: ["\"Rubik\"", ...defaultTheme.fontFamily.sans],
+				serif: ['"DM Serif Display"', ...defaultTheme.fontFamily.serif],
+				rubik: ['"Rubik"', ...defaultTheme.fontFamily.sans],
 			},
 		},
 	},
