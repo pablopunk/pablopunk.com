@@ -7,7 +7,7 @@ interface Props {
 const { tags, selected } = Astro.props
 ---
 
-<ul class="mb-5 mt-3 flex gap-2">
+<ul class="mb-5 mt-3 flex flex-wrap justify-center gap-2">
 	{
 		tags.map((_tag) => {
 			const current = _tag === selected

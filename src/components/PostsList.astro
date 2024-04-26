@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
 import { getPostUrl } from "content/config"
 
@@ -14,6 +15,7 @@ const { posts, compact } = Astro.props
 		"flex flex-col",
 		{
 			"gap-4": !compact,
+			"gap-2": compact,
 		},
 	]}
 >
@@ -22,27 +24,51 @@ const { posts, compact } = Astro.props
 			.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
 			.map((post) => (
 				<li>
-					<a href={getPostUrl(post)} class="group flex items-center gap-2">
-						{compact ? null : (
-							<img
+					<a
+						href={getPostUrl(post)}
+						class="group flex max-w-[700px] items-start gap-2 rounded-xl bg-accent-2 px-4 py-3 lg:items-center"
+					>
+						{compact ? (
+							<Image
 								src={post.data.image.url}
 								alt={post.data.image.alt}
-								class="max-w-[100px] rounded-sm"
+								class="h-[50px] w-[50px] rounded-sm object-cover"
+								inferSize
 							/>
+						) : (
+							<>
+								<Image
+									src={post.data.image.url}
+									alt={post.data.image.alt}
+									class="hidden w-[150px] rounded-sm pt-2 lg:block"
+									width={150}
+									inferSize
+								/>
+								<Image
+									src={post.data.image.url}
+									alt={post.data.image.alt}
+									class="block w-[150px] rounded-sm pt-2 lg:hidden"
+									width={50}
+									inferSize
+								/>
+							</>
 						)}
-						<div class="flex flex-col">
+						<div class="flex flex-col pl-2">
 							<h2
 								class:list={[
 									"font-rubik font-bold transition-colors group-hover:text-accent-11",
 									{
-										"text-xl": !compact,
+										"text-xl lg:text-2xl": !compact,
 									},
 								]}
 							>
-								{compact && <span>{"→"}</span>}
 								{post.data.title}
 							</h2>
-							{compact ? null : <p class="max-w-screen-md text-sm">{post.data.description}</p>}
+							{compact ? null : (
+								<p class="hidden max-w-screen-md text-sm text-neutral-11 lg:block">
+									{post.data.description}
+								</p>
+							)}
 						</div>
 					</a>
 				</li>

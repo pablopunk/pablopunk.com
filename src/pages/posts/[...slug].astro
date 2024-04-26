@@ -6,9 +6,9 @@ import Layout from "../../layouts/Layout.astro"
 export async function getStaticPaths() {
 	const blogEntries = await getCollection("posts")
 	return blogEntries.map((entry) => {
-		const related = blogEntries.filter((e) =>
-			e.data.tags.some((tag) => entry.data.tags.includes(tag))
-		)
+		const related = blogEntries
+			.filter((e) => e.data.tags.some((tag) => entry.data.tags.includes(tag)))
+			.filter((e) => e.slug !== entry.slug)
 		return {
 			params: { slug: entry.slug },
 			props: { entry, related },

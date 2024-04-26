@@ -3,7 +3,7 @@ title: How buying an M1 Macbook Air saved me money and time
 pubDate: 2021-07-04
 description: I had a 2019 16\" MacBook Pro so I didn't have any expectations about the small cheap MBA being better than my beast. I was wrong.
 image:
-  url: https://ik.imagekit.io/pablopunk/posts/how-buying-an-m1-macbook-air-saved-me-money.jpg?updatedAt=1698057164242
+  url: https://ik.imagekit.io/pablopunk/posts/how-buying-an-m1-macbook-air-saved-me-money.jpg?updatedAt=1714130888479
   alt: M1 Macbook Air
 author: Pablo Varela
 tags: [mac]

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
 import PostsList from "./PostsList.astro"
 
@@ -9,23 +10,34 @@ interface Props {
 const { post, related } = Astro.props
 ---
 
-<div class="flex flex-col lg:flex-row">
+<div class="flex flex-col items-start gap-4 lg:flex-row">
 	<article class="mx-auto flex max-w-screen-md flex-col gap-2">
-		<img src={post.image.url} alt={post.image.alt} width="700px" />
-		<h1 class="text-2xl">{post.title}</h1>
-		<span class="text-sm italic">by {post.author} on {post.pubDate.toDateString()}</span>
+		<Image class="w-[700px] max-w-lg" src={post.image.url} alt={post.image.alt} inferSize />
+		<h1 class="text-center text-3xl">{post.title}</h1>
+		<span class="text-center text-sm text-accent-11"
+			>by <b>{post.author}</b> on <b>{post.pubDate.toDateString()}</b></span
+		>
 		<slot class="mt-4" />
 	</article>
 
-	<aside class="mx-auto flex max-w-screen-md flex-col gap-2">
-		<h2 class="text-xl font-bold text-accent2-11">Related Posts</h2>
-		<ul>
-			{related?.length && <PostsList posts={related} compact />}
-		</ul>
-	</aside>
+	{
+		related && related.length > 0 && (
+			<aside class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
+				<>
+					<h2 class="text-xl font-bold text-accent2-11">Related Posts</h2>
+					<ul>
+						<PostsList posts={related} compact />
+					</ul>
+				</>
+			</aside>
+		)
+	}
 </div>
 
 <style is:global>
+	article {
+		max-width: 100%;
+	}
 	article img {
 		max-width: 90%;
 		margin: 2rem auto;
@@ -40,5 +52,32 @@ const { post, related } = Astro.props
 		margin-top: 1rem;
 		font-family: "DM Serif Text", serif;
 		font-weight: bold;
+	}
+
+	article h2 {
+		font-size: 1.65rem;
+		border-bottom: 1px solid var(--slate-5);
+	}
+	article h3 {
+		font-size: 1.35rem;
+	}
+	article h4,
+	article h5,
+	article h6 {
+		font-size: 1.2rem;
+	}
+
+	article code {
+		color: var(--indigo-11);
+	}
+
+	article a {
+		color: var(--teal-11);
+		font-weight: bold;
+	}
+
+	article pre {
+		padding: 1rem;
+		border-radius: 4px;
 	}
 </style>

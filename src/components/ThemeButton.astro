@@ -126,7 +126,7 @@
 			localStorage.setItem("theme", theme)
 		}
 
-		const _init = (() => {
+		;(() => {
 			const theme =
 				localStorage.getItem("theme") ||
 				(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")

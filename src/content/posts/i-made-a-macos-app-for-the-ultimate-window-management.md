@@ -18,7 +18,6 @@ tags: [mac]
   muted
   playsInline
   poster="https://swiftshift.app/placeholder.jpg">
-
   <source src="https://swiftshift.app/demo-dark.mp4" type="video/mp4" />
 </video>
 
