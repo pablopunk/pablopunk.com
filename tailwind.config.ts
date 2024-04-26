@@ -24,9 +24,9 @@ const config: Config = {
 				neutral: getColorScale("slate"),
 			},
 			fontFamily: {
-				sans: ["Inter", ...defaultTheme.fontFamily.sans],
-				serif: ['"DM Serif Display"', ...defaultTheme.fontFamily.serif],
+				sans: ["Lexend Variable", ...defaultTheme.fontFamily.sans],
 				rubik: ['"Rubik"', ...defaultTheme.fontFamily.sans],
+				serif: ['"DM Serif Display"', ...defaultTheme.fontFamily.serif],
 			},
 		},
 	},

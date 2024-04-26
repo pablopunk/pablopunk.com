@@ -39,7 +39,7 @@ Okay, I know what you're thinking. No matter how small the camera is if the lens
 
 "**That's not pocketable!"** - You might say. And you're right. Here's where I tell you about my favorite lens: the Panasonic 20mm f1.7. Look how tiny the whole setup is!
 
-![](https://ik.imagekit.io/pablopunk/posts/gm1-20mm.JPG)![](https://ik.imagekit.io/pablopunk/posts/gm1-20mm.JPG)
+![](https://ik.imagekit.io/pablopunk/posts/gm1-20mm.JPG)
 
 ![Img](https://ik.imagekit.io/pablopunk/posts/lumix-gm1-pocket)
 

@@ -1,5 +1,5 @@
 ---
-import "@fontsource-variable/inter"
+import "@fontsource-variable/lexend"
 import "@fontsource-variable/rubik"
 import "@fontsource/dm-serif-display"
 import "@radix-ui/colors/indigo-dark.css"
@@ -38,7 +38,47 @@ const { title } = Astro.props
 		</main>
 		<style is:global>
 			body {
-				font-family: Inter, sans-serif;
+				font-family: "Lexend Variable", system-ui, sans-serif;
+
+				/* Modify these if accent is changed */
+				--accent-1: var(--teal-1);
+				--accent-2: var(--teal-2);
+				--accent-3: var(--teal-3);
+				--accent-4: var(--teal-4);
+				--accent-5: var(--teal-5);
+				--accent-6: var(--teal-6);
+				--accent-7: var(--teal-7);
+				--accent-8: var(--teal-8);
+				--accent-9: var(--teal-9);
+				--accent-10: var(--teal-10);
+				--accent-11: var(--teal-11);
+				--accent-12: var(--teal-12);
+				/* Modify these if accent2 is changed */
+				--accent2-1: var(--indigo-1);
+				--accent2-2: var(--indigo-2);
+				--accent2-3: var(--indigo-3);
+				--accent2-4: var(--indigo-4);
+				--accent2-5: var(--indigo-5);
+				--accent2-6: var(--indigo-6);
+				--accent2-7: var(--indigo-7);
+				--accent2-8: var(--indigo-8);
+				--accent2-9: var(--indigo-9);
+				--accent2-10: var(--indigo-10);
+				--accent2-11: var(--indigo-11);
+				--accent2-12: var(--indigo-12);
+				/* Modify these if neutral is changed */
+				--neutral-1: var(--slate-1);
+				--neutral-2: var(--slate-2);
+				--neutral-3: var(--slate-3);
+				--neutral-4: var(--slate-4);
+				--neutral-5: var(--slate-5);
+				--neutral-6: var(--slate-6);
+				--neutral-7: var(--slate-7);
+				--neutral-8: var(--slate-8);
+				--neutral-9: var(--slate-9);
+				--neutral-10: var(--slate-10);
+				--neutral-11: var(--slate-11);
+				--neutral-12: var(--slate-12);
 			}
 
 			a:hover {
@@ -47,7 +87,17 @@ const { title } = Astro.props
 			}
 		</style>
 		<script is:inline>
-			document.addEventListener("astro:page-load", () => {})
+			console.log(
+				`%c
+<>
+Hi! I'm Pablo, the owner of this website.
+What are you doing here? Is there something wrong?
+You can contact me at pablo@pablopunk.com
+Or open an issue/PR at github.com/pablopunk/pablopunk.com
+</>\n
+`,
+				"color:royalblue;font-size:1.5em"
+			)
 		</script>
 	</body>
 </html>
