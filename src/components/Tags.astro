@@ -17,10 +17,10 @@ const { tags, selected } = Astro.props
 						class:list={[
 							"rounded-md px-2 py-1 text-sm",
 							{
-								"bg-accent-3 text-accent-11": !current,
+								"bg-accent2-3 text-accent2-11": !current,
 							},
 							{
-								"bg-accent-11 text-accent-3": current,
+								"bg-accent2-11 text-accent2-3": current,
 							},
 						]}
 						href={current ? "/blog" : `/tags/${_tag}`}

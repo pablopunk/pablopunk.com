@@ -1,11 +1,79 @@
 ---
+import { Image } from "astro:assets"
 import ThemeButton from "./ThemeButton.astro"
+const isHomePage = Astro.url.pathname === "/"
+const isBlogPage = Astro.url.pathname === "/blog"
 ---
 
 <nav class="flex justify-between px-4 py-3">
-	<div class="flex w-full gap-2">
-		<a href="/">Home</a>
-		<a href="/blog">Blog</a>
+	<div class="flex w-full items-center gap-4 text-lg font-bold">
+		<a href="/">
+			{
+				isHomePage ? (
+					<svg
+						viewBox="0 0 80 80"
+						fill="none"
+						role="img"
+						xmlns="http://www.w3.org/2000/svg"
+						width="40"
+						height="40"
+					>
+						<>
+							<mask id=":r8p:" maskUnits="userSpaceOnUse" x="0" y="0" width="80" height="80">
+								<rect width="80" height="80" fill="#FFFFFF" rx="160" />
+							</mask>
+							<g mask="url(#:r8p:)">
+								<>
+									<rect width="80" height="80" fill="#49007e" />
+									<path
+										filter="url(#prefix__filter0_f)"
+										d="M32.414 59.35L50.376 70.5H72.5v-71H33.728L26.5 13.381l19.057 27.08L32.414 59.35z"
+										fill="#ff005b"
+										transform="translate(-6 6) rotate(-22 40 40) scale(1.3)"
+									/>
+									<path
+										filter="url(#prefix__filter0_f)"
+										d="M22.216 24L0 46.75l14.108 38.129L78 86l-3.081-59.276-22.378 4.005 12.972 20.186-23.35 27.395L22.215 24z"
+										fill="#ff7d10"
+										transform="translate(5 -5) rotate(213 40 40) scale(1.3)"
+										style="mix-blend-mode: overlay;"
+									/>
+								</>
+							</g>
+							<defs>
+								<filter
+									id="prefix__filter0_f"
+									filterUnits="userSpaceOnUse"
+									color-interpolation-filters="sRGB"
+								>
+									<>
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+										<feGaussianBlur stdDeviation="7" result="effect1_foregroundBlur" />
+									</>
+								</filter>
+							</defs>
+						</>
+					</svg>
+				) : (
+					<Image
+						src="https://1.gravatar.com/avatar/8049fccc16616a1845d5b3733973f94768a07bdddade274d4110ca3ac5ae8217?size=40"
+						inferSize
+						alt="Pablo Varela"
+						class="rounded-full border-2 border-accent-11"
+					/>
+				)
+			}</a
+		>
+		<a
+			href="/blog"
+			class:list={[
+				{
+					"border-b-2 border-transparent": !isBlogPage,
+					"border-b-2 border-accent-11 text-accent-11": isBlogPage,
+				},
+			]}>Blog</a
+		>
 	</div>
 	<ThemeButton />
 </nav>
