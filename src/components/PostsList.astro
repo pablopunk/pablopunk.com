@@ -8,6 +8,7 @@ interface Props {
 	compact?: boolean
 }
 const { posts, compact } = Astro.props
+const lazyLoadAfter = 5 // lazy load images after the first 5 posts
 ---
 
 <ul
@@ -22,7 +23,7 @@ const { posts, compact } = Astro.props
 	{
 		posts
 			.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
-			.map((post) => (
+			.map((post, postIndex) => (
 				<li>
 					<a
 						href={getPostUrl(post)}
@@ -34,6 +35,7 @@ const { posts, compact } = Astro.props
 								alt={post.data.image.alt}
 								class="h-[50px] w-[50px] rounded-sm object-cover"
 								inferSize
+								loading={postIndex <= lazyLoadAfter ? "eager" : "lazy"}
 							/>
 						) : (
 							<>
@@ -44,6 +46,7 @@ const { posts, compact } = Astro.props
 									width={150}
 									height={90}
 									inferSize
+									loading={postIndex <= lazyLoadAfter ? "eager" : "lazy"}
 								/>
 								<Image
 									src={post.data.image.url}
@@ -51,6 +54,7 @@ const { posts, compact } = Astro.props
 									class="mt-2 block rounded-sm transition-all group-hover:contrast-125 lg:hidden"
 									width={50}
 									inferSize
+									loading={postIndex <= lazyLoadAfter ? "eager" : "lazy"}
 								/>
 							</>
 						)}

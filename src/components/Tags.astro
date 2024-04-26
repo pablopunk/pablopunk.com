@@ -15,12 +15,12 @@ const { tags, selected } = Astro.props
 				<li>
 					<a
 						class:list={[
-							"rounded-md px-2 py-1 text-sm",
+							"rounded-md px-2 py-1 text-sm transition-colors",
 							{
-								"bg-accent2-3 text-accent2-11": !current,
+								"bg-accent2-3 text-accent2-11 hover:bg-accent2-6": !current,
 							},
 							{
-								"bg-accent2-11 text-accent2-3": current,
+								"bg-accent2-11 text-accent2-3 hover:text-accent2-7": current,
 							},
 						]}
 						href={current ? "/blog" : `/tags/${_tag}`}

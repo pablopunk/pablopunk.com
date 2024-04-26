@@ -12,7 +12,7 @@ const postsCollection = defineCollection({
 			alt: z.string(),
 		}),
 		tags: z.array(z.string()),
-		// related: z.array(z.string()),
+		featured: z.optional(z.boolean()),
 	}),
 })
 

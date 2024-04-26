@@ -7,6 +7,7 @@ image:
   alt: Neovim plugin
 author: Pablo Varela
 tags: [neovim, vim]
+featured: true
 ---
 
 You know that feature in VSCode where the **tabs are automatically closed when you leave them**? Only modified files (or when you double-click on the tab) are kept in the tab list.

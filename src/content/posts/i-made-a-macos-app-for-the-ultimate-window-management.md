@@ -7,6 +7,7 @@ image:
   alt: Swift Shift app
 author: Pablo Varela
 tags: [mac]
+featured: true
 ---
 
 ## Here's Swift Shift

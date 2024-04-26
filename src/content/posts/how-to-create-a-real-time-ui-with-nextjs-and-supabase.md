@@ -7,6 +7,7 @@ image:
   alt: NextJS + Supabase
 author: Pablo Varela
 tags: [nextjs, supabase]
+featured: true
 ---
 
 ## The architecture
