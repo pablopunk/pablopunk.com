@@ -123,6 +123,9 @@
 			document.body.classList.add(theme === "dark" ? "dark" : "light")
 			document.body.classList.remove(theme === "dark" ? "light" : "dark")
 			localStorage.setItem("theme", theme)
+			// set metatag theme-color
+			const bgValue = getComputedStyle(document.body).getPropertyValue("--neutral-1")
+			document.querySelector('meta[name="theme-color"]').setAttribute("content", bgValue)
 		}
 
 		const theme = (() => {
