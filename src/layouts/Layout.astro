@@ -20,9 +20,9 @@ interface Props {
 	post?: CollectionEntry<"posts">
 }
 
-let { title, post } = Astro.props
+const { title: propTitle, post } = Astro.props
 
-title = title || post?.data.title || site.SITE_NAME
+const title: string = propTitle || post?.data.title || site.SITE_NAME
 const description = post?.data.description || site.SITE_DESC
 const image = post?.data.image.url || site.SITE_IMAGE
 const url = site.SITE_URL + (post ? getPostUrl(post) : "")
@@ -69,7 +69,6 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<script data-goatcounter="/goat" async src="/count.js" is:inline></script>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
