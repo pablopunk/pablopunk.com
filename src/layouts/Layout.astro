@@ -55,6 +55,12 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
 					},
 					{ name: "twitter:title", content: title },
 					{ name: "twitter:description", content: description },
+					{ name: "twitter:card", content: "summary_large_image" },
+					{
+						name: "tags",
+						content:
+							"development,web development,programming,web design,webdev,webdevlopment,portfolio,pablopunk,nextjs,astro,site,website,javascript,programmer,typescript,react,static,fast,vercel,seo",
+					},
 				],
 			}}
 		/>
@@ -159,5 +165,7 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
 			})
 		</script>
 		<SpeedInsights />
+
+		y
 	</body>
 </html>
