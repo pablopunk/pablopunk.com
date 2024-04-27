@@ -8,6 +8,7 @@ import "@radix-ui/colors/slate-dark.css"
 import "@radix-ui/colors/slate.css"
 import "@radix-ui/colors/teal-dark.css"
 import "@radix-ui/colors/teal.css"
+import SpeedInsights from "@vercel/speed-insights/astro"
 import { SEO } from "astro-seo"
 import type { CollectionEntry } from "astro:content"
 import { ViewTransitions } from "astro:transitions"
@@ -157,5 +158,6 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
 				})
 			})
 		</script>
+		<SpeedInsights />
 	</body>
 </html>

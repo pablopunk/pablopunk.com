@@ -27,6 +27,7 @@
     "@fontsource-variable/rubik": "^5.0.22",
     "@fontsource/dm-serif-display": "^5.0.20",
     "@radix-ui/colors": "^3.0.0",
+    "@vercel/speed-insights": "^1.0.10",
     "astro": "^4.6.4",
     "astro-icon": "^1.1.0",
     "astro-seo": "^0.8.3",
