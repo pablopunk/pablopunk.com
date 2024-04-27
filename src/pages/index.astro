@@ -33,18 +33,22 @@ const featuredPosts = posts
 							Remote Developer
 						</h2>
 					</div>
-					<div class="relative mt-2 text-sm">
-						Currently working at <a
-							href="https://maze.co/"
-							class="font-bold text-accent2-11 transition-colors hover:text-accent2-12">Maze</a
-						>.
-					</div>
-					<div class="relative text-sm">
-						Previously, <a
-							href="https://cv.pablopunk.com"
-							class="font-rubik font-bold text-accent2-11 transition-colors hover:text-accent2-12"
-							>somewhere else</a
-						>.
+					<div
+						class="mt-2 flex flex-col items-start justify-start gap-1 text-sm lg:flex-row lg:items-center"
+					>
+						<div class="">
+							Currently working at <a
+								href="https://maze.co/"
+								class="font-bold text-accent2-11 transition-colors hover:text-accent2-12">Maze</a
+							>.
+						</div>
+						<div class="">
+							Previously, <a
+								href="https://cv.pablopunk.com"
+								class="font-bold text-accent2-11 transition-colors hover:text-accent2-12"
+								>somewhere else</a
+							>.
+						</div>
 					</div>
 				</div>
 			</div>
@@ -244,7 +248,7 @@ const featuredPosts = posts
 			class="flex flex-col items-center justify-center gap-4 rounded-md border border-dashed border-accent2-6 p-6"
 		>
 			<h3
-				class="w-fit bg-gradient-to-r from-accent2-11 to-neutral-12 bg-clip-text text-2xl font-bold text-transparent"
+				class="w-fit bg-gradient-to-r from-red-700 to-red-400 bg-clip-text text-2xl font-bold text-transparent dark:from-red-500 dark:to-red-300"
 			>
 				🩵 Open Source
 			</h3>
@@ -258,7 +262,7 @@ const featuredPosts = posts
 			</p>
 			<a
 				href="https://github.com/pablopunk"
-				class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-gradient-to-r from-accent-11 to-accent2-11 px-4 py-2 text-lg font-bold text-neutral-3 shadow-md transition-all hover:scale-105 hover:to-accent-11 lg:w-fit"
+				class="flex items-center justify-center gap-2 rounded-md border-2 border-accent-7 bg-gradient-to-r from-accent-11 to-accent2-11 px-4 py-2 text-lg font-bold text-neutral-3 shadow-md shadow-accent-6 transition-all hover:scale-105 hover:to-accent-11 dark:border-accent-12"
 			>
 				<svg
 					stroke="currentColor"
@@ -303,9 +307,28 @@ const featuredPosts = posts
 		<div class="mt-4">
 			<a
 				href="/blog"
-				class="flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-accent-11 to-accent2-11 px-4 py-2 text-lg font-bold text-neutral-3 shadow-md transition-all hover:scale-105 hover:to-accent-11"
+				class="flex items-center justify-center gap-2 rounded-md border-2 border-accent-7 bg-gradient-to-r from-accent-11 to-accent2-11 px-4 py-2 text-lg font-bold text-neutral-3 shadow-md shadow-accent-6 transition-all hover:scale-105 hover:to-accent-11 dark:border-accent-12"
 			>
-				See all posts
+				<span>
+					<svg
+						stroke="currentColor"
+						fill="currentColor"
+						stroke-width="0"
+						viewBox="0 0 24 24"
+						height="1em"
+						width="1em"
+						xmlns="http://www.w3.org/2000/svg"
+						data-darkreader-inline-fill=""
+						data-darkreader-inline-stroke=""
+						style="--darkreader-inline-fill: currentColor; --darkreader-inline-stroke: currentColor;"
+						><path
+							fill="none"
+							stroke-width="2"
+							d="M16,7 L19,7 L19,11 L16,11 L16,7 Z M9,15 L20,15 M9,11 L13,11 M9,7 L13,7 M6,18.5 C6,19.8807119 4.88071187,21 3.5,21 C2.11928813,21 1,19.8807119 1,18.5 L1,7 L6.02493781,7 M6,18.5 L6,3 L23,3 L23,18.5 C23,19.8807119 21.8807119,21 20.5,21 L3.5,21"
+						></path></svg
+					>
+				</span>
+				<span> See all posts </span>
 			</a>
 		</div>
 	</section>

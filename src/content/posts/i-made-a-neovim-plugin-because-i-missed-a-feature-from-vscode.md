@@ -4,6 +4,7 @@ pubDate: 2023-10-04
 description: I've been using vim and neovim for years, but whenever I go back to VSCode, I always enjoy this feature.
 image:
   url: https://ik.imagekit.io/pablopunk/posts/before-after%20(1).png?updatedAt=1699132327673
+  url_dark: https://ik.imagekit.io/pablopunk/posts/before-after-dark.png?updatedAt=1714221355345
   alt: Neovim plugin
 author: Pablo Varela
 tags: [neovim, vim]
