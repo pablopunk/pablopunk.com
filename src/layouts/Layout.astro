@@ -151,7 +151,7 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
 			}
 
 			document.addEventListener("astro:page-load", () => {
-				;(window as any as WindowWithGoatCounter).goatcounter.count({
+				;(window as any as WindowWithGoatCounter).goatcounter?.count({
 					path: location.pathname + location.search + location.hash,
 				})
 			})
