@@ -12,15 +12,13 @@ export default defineConfig({
 	image: {
 		domains: ["ik.imagekit.io", "swiftshift.app", "1.gravatar.com/avatar", "vimcolors.org"],
 	},
+	output: "static",
+	build: {
+		redirects: false,
+	},
 	redirects: {
-		"/count.js": {
-			destination: "https://gc.zgo.at/count.js",
-			status: 301,
-		},
-		"/goat": {
-			destination: "https://pablopunk.goatcounter.com/count",
-			status: 301,
-		},
+		"/count.js": "https://gc.zgo.at/count.js",
+		"/goat": "https://pablopunk.goatcounter.com/count",
 		"/es": "/",
 		"/cv": "https://cv.pablopunk.com",
 		"/books": "https://www.notion.so/Books-9de297d7668e4498a9769421d29889b8",
