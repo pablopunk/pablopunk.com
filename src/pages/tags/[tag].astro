@@ -4,6 +4,7 @@ import PostsList from "components/PostsList.astro"
 import Tags from "components/Tags.astro"
 import Layout from "layouts/Layout.astro"
 
+export const prerender = true
 export async function getStaticPaths() {
 	const allPosts = await getCollection("posts")
 	const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
