@@ -118,6 +118,7 @@
 </style>
 
 <script is:inline>
+	window._theme = "light"
 	window._setTheme = (theme) => {
 		document.body.classList.add(theme === "dark" ? "dark" : "light")
 		document.body.classList.remove(theme === "dark" ? "light" : "dark")
@@ -129,6 +130,7 @@
 		document
 			.querySelectorAll(".theme-toggle-checkbox")
 			.forEach((element) => (element.checked = theme === "dark"))
+		window._theme = theme
 	}
 </script>
 
