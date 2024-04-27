@@ -4,6 +4,7 @@ pubDate: 2023-12-29
 description: I've been wanting to make this macOS app for a while now. It's finally here. Never search again for those tiny arrows and title bars to move/resize windows.
 image:
   url: https://ik.imagekit.io/pablopunk/posts/header-light.png?updatedAt=1704567298684
+  url_dark: https://ik.imagekit.io/pablopunk/posts/header-dark.png?updatedAt=1704567298684
   alt: Swift Shift app
 author: Pablo Varela
 tags: [mac]
@@ -19,6 +20,7 @@ featured: true
   muted
   playsInline
   poster="https://swiftshift.app/placeholder.jpg">
+
   <source src="https://swiftshift.app/demo-dark.mp4" type="video/mp4" />
 </video>
 

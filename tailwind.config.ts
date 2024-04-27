@@ -20,7 +20,7 @@ const config: Config = {
 		extend: {
 			colors: {
 				accent: getColorScale("teal"),
-				accent2: getColorScale("indigo"),
+				accent2: getColorScale("iris"),
 				neutral: getColorScale("slate"),
 			},
 			fontFamily: {

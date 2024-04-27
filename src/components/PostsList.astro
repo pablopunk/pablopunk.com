@@ -69,10 +69,15 @@ const lazyLoadAfter = 5 // lazy load images after the first 5 posts
 							>
 								{post.data.title}
 							</h2>
-							{compact ? null : (
-								<p class="hidden max-w-screen-md text-sm text-neutral-11 lg:block">
-									{post.data.description}
-								</p>
+							{!compact && (
+								<>
+									<p class="text-sm font-bold text-neutral-11">
+										{new Date(post.data.pubDate).toDateString()}
+									</p>
+									<p class="hidden max-w-screen-md text-sm text-neutral-11 lg:block">
+										{post.data.description}
+									</p>
+								</>
 							)}
 						</div>
 					</a>
