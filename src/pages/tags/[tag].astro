@@ -25,15 +25,17 @@ const { posts, tags } = Astro.props
 ---
 
 <Layout title={tag}>
-	<Tags tags={tags} selected={tag} />
-	{posts.length === 0 && <p>No posts found for `{tag}`</p>}
-	{
-		posts.length > 0 && (
-			<h1 class="mb-3 text-2xl font-bold">
-				{posts.length} post{posts.length === 1 ? "" : "s"} for{" "}
-				<span class="text-accent-10">`{tag}`</span>
-			</h1>
-		)
-	}
-	<PostsList posts={posts} />
+	<section class="flex flex-col items-center">
+		{posts.length === 0 && <p>No posts found for `{tag}`</p>}
+		{
+			posts.length > 0 && (
+				<h1 class="text-2xl font-bold">
+					{posts.length} post{posts.length === 1 ? "" : "s"} for{" "}
+					<span class="text-accent-10">`{tag}`</span>
+				</h1>
+			)
+		}
+		<Tags tags={tags} selected={tag} />
+		<PostsList posts={posts} />
+	</section>
 </Layout>

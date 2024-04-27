@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets"
+
+interface Props {
+	size: number
+}
+const { size } = Astro.props
+---
+
+<ul transition:animate="fade" transition:name="logo">
+	<Image
+		src={`https://1.gravatar.com/avatar/8049fccc16616a1845d5b3733973f94768a07bdddade274d4110ca3ac5ae8217?size=${size}`}
+		width={size}
+		height={size}
+		alt="Pablo Varela"
+		class="rounded-full border-2 border-accent-11"
+		loading="eager"
+	/>
+</ul>
+
+<style>
+	@keyframes pulse {
+		0% {
+			transform: scale(0);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+	.animate-pulse {
+		animation-fill-mode: forwards; /* stop animation at 100% */
+		animation-iteration-count: 1; /* run animation once */
+		animation-duration: 0.1s;
+	}
+</style>

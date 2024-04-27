@@ -82,8 +82,8 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
 		<title>{title}</title>
 		<ViewTransitions />
 	</head>
-	<body class="mx-auto max-w-screen-2xl bg-neutral-1 pb-6 text-neutral-12">
-		<header>
+	<body class="relative mx-auto max-w-screen-2xl bg-neutral-1 pb-6 text-neutral-12">
+		<header class="sticky top-0 z-10 bg-neutral-1">
 			<Nav />
 		</header>
 		<main class="mx-auto max-w-screen-xl p-3">
@@ -165,7 +165,5 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
 			})
 		</script>
 		<SpeedInsights />
-
-		y
 	</body>
 </html>

@@ -20,12 +20,14 @@ const { post, related } = Astro.props
 						src={post.image.url_dark}
 						alt={post.image.alt}
 						inferSize
+						loading="eager"
 					/>
 					<Image
 						class="block w-[700px] max-w-[90vw] dark:hidden"
 						src={post.image.url}
 						alt={post.image.alt}
 						inferSize
+						loading="eager"
 					/>
 				</>
 			) : (

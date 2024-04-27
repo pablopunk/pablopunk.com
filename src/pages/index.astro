@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets"
 import { getCollection } from "astro:content"
+import Logo from "components/Logo.astro"
 import { getPostUrl } from "content/config"
 import Layout from "../layouts/Layout.astro"
 
@@ -16,13 +17,7 @@ const featuredPosts = posts
 		<section class="bg-dots flex flex-col items-center justify-center py-16 lg:py-44">
 			<div class="flex gap-3 lg:gap-5">
 				<div>
-					<Image
-						src="https://1.gravatar.com/avatar/8049fccc16616a1845d5b3733973f94768a07bdddade274d4110ca3ac5ae8217?size=120"
-						inferSize
-						alt="Pablo Varela"
-						class="rounded-full border-2 border-accent-11"
-						loading="eager"
-					/>
+					<Logo size={120} />
 				</div>
 				<div class="flex flex-col">
 					<div class="font-rubik text-sm text-neutral-11">@pablopunk</div>
