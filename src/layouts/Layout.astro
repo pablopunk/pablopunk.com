@@ -70,7 +70,7 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<script data-goatcounter="/goat" async src="/count.js"></script>
+		<script data-goatcounter="/goat" async src="/count.js" is:inline></script>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ViewTransitions />
@@ -145,6 +145,17 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
 `,
 				"color:royalblue;font-size:1.5em"
 			)
+		</script>
+		<script>
+			type WindowWithGoatCounter = Window & {
+				goatcounter: { count: (data: { path: string }) => void }
+			}
+
+			document.addEventListener("astro:page-load", () => {
+				;(window as any as WindowWithGoatCounter).goatcounter.count({
+					path: location.pathname + location.search + location.hash,
+				})
+			})
 		</script>
 	</body>
 </html>
