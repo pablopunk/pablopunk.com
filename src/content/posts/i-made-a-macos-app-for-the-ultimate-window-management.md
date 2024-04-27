@@ -14,15 +14,13 @@ featured: true
 ## Here's Swift Shift
 
 <video
-  className="w-full rounded-md"
-  autoPlay
-  loop
-  muted
-  playsInline
-  poster="https://swiftshift.app/placeholder.jpg">
-
-  <source src="https://swiftshift.app/demo-dark.mp4" type="video/mp4" />
-</video>
+className="w-full rounded-md"
+autoPlay
+loop
+muted
+playsInline
+poster="https://swiftshift.app/placeholder.jpg"
+src="https://swiftshift.app/demo-dark.mp4" />
 
 It's a small app that lives on your menubar and allows you to move/resize your windows
 using keyboard shortcuts.
