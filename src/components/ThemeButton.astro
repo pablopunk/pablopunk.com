@@ -118,16 +118,23 @@
 </style>
 
 <script is:inline>
-	document.addEventListener("astro:page-load", () => {
-		const setTheme = (theme) => {
-			document.body.classList.add(theme === "dark" ? "dark" : "light")
-			document.body.classList.remove(theme === "dark" ? "light" : "dark")
-			localStorage.setItem("theme", theme)
-			// set metatag theme-color
-			const bgValue = getComputedStyle(document.body).getPropertyValue("--neutral-1")
-			document.querySelector('meta[name="theme-color"]').setAttribute("content", bgValue)
-		}
+	window._setTheme = (theme) => {
+		document.body.classList.add(theme === "dark" ? "dark" : "light")
+		document.body.classList.remove(theme === "dark" ? "light" : "dark")
+		localStorage.setItem("theme", theme)
+		// set metatag theme-color
+		const bgValue = getComputedStyle(document.body).getPropertyValue("--neutral-1")
+		document.querySelector('meta[name="theme-color"]').setAttribute("content", bgValue)
+		// set the checkbox state
+		document
+			.querySelectorAll(".theme-toggle-checkbox")
+			.forEach((element) => (element.checked = theme === "dark"))
+	}
+</script>
 
+<script is:inline>
+	document.addEventListener("astro:page-load", () => {
+		const setTheme = window._setTheme
 		const theme = (() => {
 			if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
 				return localStorage.getItem("theme")
@@ -139,9 +146,6 @@
 		})()
 
 		setTheme(theme)
-		document
-			.querySelectorAll(".theme-toggle-checkbox")
-			.forEach((element) => (element.checked = theme === "dark"))
 
 		const handleToggleClick = () => {
 			const theme = document.body.classList.contains("dark") ? "dark" : "light"
@@ -177,4 +181,15 @@
 		document.body.classList.remove("dark")
 		document.body.classList.add("light")
 	}
+</script>
+
+<script is:inline>
+	// listen for changes in the OS theme
+	window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
+		if (event.matches) {
+			window._setTheme("dark")
+		} else {
+			window._setTheme("light")
+		}
+	})
 </script>
