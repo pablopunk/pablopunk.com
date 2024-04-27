@@ -1,7 +1,8 @@
+import sitemap from "@astrojs/sitemap"
 import tailwind from "@astrojs/tailwind"
 import { defineConfig } from "astro/config"
 
-import sitemap from "@astrojs/sitemap"
+import node from "@astrojs/node"
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,10 +13,10 @@ export default defineConfig({
 	image: {
 		domains: ["ik.imagekit.io", "swiftshift.app", "1.gravatar.com/avatar", "vimcolors.org"],
 	},
-	output: "static",
-	build: {
-		redirects: false,
-	},
+	output: "hybrid",
+	adapter: node({
+		mode: "standalone",
+	}),
 	redirects: {
 		"/count.js": "https://gc.zgo.at/count.js",
 		"/goat": "https://pablopunk.goatcounter.com/count",
