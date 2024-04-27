@@ -1,4 +1,4 @@
-const mainUrl = "pablopunk.com"
+export const mainUrl = "https://pablopunk.com"
 
 type NodeEnv = "development" | "production"
 interface ProcessEnv {
@@ -14,7 +14,7 @@ const vercelUrl = processEnv.NEXT_PUBLIC_VERCEL_URL
 const url =
 	processEnv.NODE_ENV === "development"
 		? "http://localhost:4321"
-		: `https://${vercelUrl || mainUrl}`
+		: `https://${vercelUrl || mainUrl.replace("https://", "")}`
 
 const site = {
 	SITE_URL: url,
