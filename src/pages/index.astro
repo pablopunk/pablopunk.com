@@ -1,0 +1,355 @@
+---
+import { Image } from "astro:assets"
+import { getCollection } from "astro:content"
+import { getPostUrl } from "content/config"
+import Layout from "../layouts/Layout.astro"
+
+const posts = await getCollection("posts")
+const featuredPosts = posts
+	.filter((post) => post.data.featured)
+	.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+---
+
+<Layout>
+	<div class="flex flex-col gap-12">
+		<section class="bg-dots flex flex-col items-center justify-center py-16 lg:py-44">
+			<div class="flex gap-3 lg:gap-5">
+				<div>
+					<Image
+						src="https://1.gravatar.com/avatar/8049fccc16616a1845d5b3733973f94768a07bdddade274d4110ca3ac5ae8217?size=120"
+						inferSize
+						alt="Pablo Varela"
+						class="rounded-full border-2 border-accent-11"
+						loading="eager"
+					/>
+				</div>
+				<div class="flex flex-col">
+					<div class="font-rubik text-sm text-neutral-11">@pablopunk</div>
+					<h1 class="relative text-2xl font-bold lg:text-5xl">Pablo Varela</h1>
+					<div>
+						<h2
+							class="bg-gradient-to-r from-accent-11 to-accent2-11 bg-clip-text text-2xl font-bold text-transparent lg:text-4xl"
+						>
+							Remote Developer
+						</h2>
+					</div>
+					<div
+						class="mt-2 flex flex-col items-start justify-start gap-1 text-sm lg:flex-row lg:items-center"
+					>
+						<div class="">
+							Currently working at <a
+								href="https://maze.co/"
+								class="font-bold text-accent2-11 transition-colors hover:text-accent2-12">Maze</a
+							>.
+						</div>
+						<div class="">
+							Previously, <a
+								href="https://cv.pablopunk.com"
+								class="font-bold text-accent2-11 transition-colors hover:text-accent2-12"
+								>somewhere else</a
+							>.
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flex w-fit gap-2">
+				{
+					[
+						{
+							name: "Twitter",
+							href: "https://twitter.com/pablopunk",
+							icon: (
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									version="1.2"
+									baseProfile="tiny"
+									viewBox="0 0 24 24"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+									data-darkreader-inline-fill=""
+									data-darkreader-inline-stroke=""
+									style="--darkreader-inline-fill: currentColor; --darkreader-inline-stroke: currentColor;"
+								>
+									<path d="M18.89 7.012c.808-.496 1.343-1.173 1.605-2.034-.786.417-1.569.703-2.351.861-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078-.715.717-1.076 1.588-1.076 2.605 0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388.549.676 1.254 1.107 2.115 1.291-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841.625.472 1.344.721 2.152.743-1.332 1.045-2.855 1.562-4.578 1.562-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974.784-1.564 1.172-3.192 1.172-4.892v-.468c.758-.57 1.371-1.212 1.84-1.921-.68.293-1.383.492-2.11.593z" />
+								</svg>
+							),
+						},
+						{
+							name: "Instagram",
+							href: "https://instagram.com/pablopunk",
+							icon: (
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 448 512"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+									data-darkreader-inline-fill=""
+									data-darkreader-inline-stroke=""
+									style="--darkreader-inline-fill: currentColor; --darkreader-inline-stroke: currentColor;"
+								>
+									<path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+								</svg>
+							),
+						},
+						{
+							name: "Email",
+							href: "mailto:pablo@pablopunk.com",
+							icon: (
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 24 24"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+									data-darkreader-inline-fill=""
+									data-darkreader-inline-stroke=""
+									style="--darkreader-inline-fill: currentColor; --darkreader-inline-stroke: currentColor;"
+								>
+									<>
+										<path fill="none" d="M0 0h24v24H0V0z" />
+										<path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
+									</>
+								</svg>
+							),
+						},
+					].map((social) => (
+						<a
+							href={social.href}
+							class="mt-6 flex items-center justify-center gap-1 rounded-full border-2 border-accent-7 bg-accent-11 px-2 py-1 text-sm text-accent-1 shadow-md shadow-accent-8 transition-all hover:scale-105 hover:bg-accent-10 hover:shadow-accent-3 dark:border-accent-12 dark:hover:shadow-accent-12"
+						>
+							{social.icon}
+							<span>{social.name}</span>
+						</a>
+					))
+				}
+			</div>
+		</section>
+	</div>
+	<section class="flex flex-col items-center justify-center gap-6 lg:flex-row lg:items-stretch">
+		<div class="w-fit">
+			<h2
+				class="mb-4 bg-gradient-to-r from-accent-11 to-accent2-11 bg-clip-text text-2xl font-bold text-transparent"
+			>
+				Featured projects
+			</h2>
+			<div class="flex flex-col justify-center gap-4">
+				{
+					[
+						{
+							name: "Swift Shift",
+							href: "https://swiftshift.app",
+							description: "Sweet window manager for macOS",
+							image:
+								"https://ik.imagekit.io/pablopunk/icons/swiftshift/128-mac.png?updatedAt=1705520877452",
+							tag: "app",
+							icon: (
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 384 512"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+									data-darkreader-inline-fill=""
+									data-darkreader-inline-stroke=""
+									style="--darkreader-inline-fill: currentColor; --darkreader-inline-stroke: currentColor;"
+								>
+									<path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+								</svg>
+							),
+						},
+						{
+							name: "unclutter.nvim",
+							href: "https://github.com/pablopunk/unclutter.nvim",
+							description: "A smart tabline that helps you focus",
+							image:
+								"https://ik.imagekit.io/pablopunk/icons/unclutter%20icon.png?updatedAt=1705521973312",
+							tag: "plugin",
+							icon: (
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									role="img"
+									viewBox="0 0 24 24"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+									data-darkreader-inline-fill=""
+									data-darkreader-inline-stroke=""
+									style="--darkreader-inline-fill: currentColor; --darkreader-inline-stroke: currentColor;"
+								>
+									<path d="M2.214 4.954v13.615L7.655 24V10.314L3.312 3.845 2.214 4.954zm4.999 17.98l-4.557-4.548V5.136l.59-.596 3.967 5.908v12.485zm14.573-4.457l-.862.937-4.24-6.376V0l5.068 5.092.034 13.385zM7.431.001l12.998 19.835-3.637 3.637L3.787 3.683 7.43 0z" />
+								</svg>
+							),
+						},
+						{
+							name: "vimcolors.org",
+							href: "https://vimcolors.org",
+							description: "Generate your own vim colorschemes",
+							image: "https://vimcolors.org/meta/favicon-96x96.png",
+							tag: "website",
+							icon: (
+								<svg
+									stroke="currentColor"
+									fill="currentColor"
+									stroke-width="0"
+									viewBox="0 0 24 24"
+									height="1em"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+									data-darkreader-inline-fill=""
+									data-darkreader-inline-stroke=""
+									style="--darkreader-inline-fill: currentColor; --darkreader-inline-stroke: currentColor;"
+								>
+									<>
+										<path fill="none" d="M0 0h24v24H0V0z" />
+										<path d="M19 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6a2 2 0 0 0-2-2zm0 14H5V8h14v10z" />
+									</>
+								</svg>
+							),
+						},
+					].map((project) => (
+						<a
+							href={project.href}
+							class="relative flex max-w-md items-center gap-3 rounded-lg border border-neutral-3 p-3 shadow-md transition-all hover:scale-105 hover:border-accent-9 hover:bg-accent-2 hover:shadow-lg"
+						>
+							<Image
+								src={project.image}
+								alt={project.name}
+								width={32}
+								height={32}
+								class="rounded-md"
+								loading="eager"
+							/>
+							<div>
+								<h3 class="font-rubik text-lg font-bold">{project.name}</h3>
+								<p class="max-w-md text-sm font-normal text-neutral-11">{project.description}</p>
+							</div>
+							<div class="absolute right-2 top-2 flex items-center gap-2 align-middle text-neutral-10">
+								<span class="text-sm">{project.tag}</span>
+								<span>{project.icon}</span>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+		<div
+			class="flex flex-col items-center justify-center gap-4 rounded-md border border-dashed border-accent2-6 p-6"
+		>
+			<h3
+				class="w-fit bg-gradient-to-r from-red-700 to-red-400 bg-clip-text text-2xl font-bold text-transparent dark:from-red-500 dark:to-red-300"
+			>
+				🩵 Open Source
+			</h3>
+			<p class="text-md max-w-md font-rubik text-lg">
+				<span class="text-accent-11">Everything I do is open-source</span>. Feel free to check out
+				my projects, open issues, or contribute to them.
+			</p>
+			<p class="text-md max-w-md font-rubik text-lg">
+				I also made several <span class="text-accent-11">contributions to others</span>, you can see
+				some of them on my GitHub profile.
+			</p>
+			<a
+				href="https://github.com/pablopunk"
+				class="flex items-center justify-center gap-2 rounded-md border-2 border-accent-7 bg-gradient-to-r from-accent-11 to-accent2-11 px-4 py-2 text-lg font-bold text-neutral-3 shadow-md shadow-accent-6 transition-all hover:scale-105 hover:to-accent-11 dark:border-accent-12"
+			>
+				<svg
+					stroke="currentColor"
+					fill="currentColor"
+					stroke-width="0"
+					viewBox="0 0 24 24"
+					height="1em"
+					width="1em"
+					xmlns="http://www.w3.org/2000/svg"
+					data-darkreader-inline-fill=""
+					data-darkreader-inline-stroke=""
+					><path
+						d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.674.111a5.34 5.34 0 0 0-.703.26 6.503 6.503 0 0 0-.661.343c-.215.127-.405.249-.573.362a9.578 9.578 0 0 0-5.143 0 13.507 13.507 0 0 0-.572-.362 6.022 6.022 0 0 0-.672-.342 4.516 4.516 0 0 0-.705-.261 2.203 2.203 0 0 0-.662-.111h-.11a.29.29 0 0 0-.11.02 5.844 5.844 0 0 0-.23.763c-.054.254-.08.513-.081.773 0 .202.017.404.051.604.033.199.086.394.16.582A3.888 3.888 0 0 0 5.702 10a4.142 4.142 0 0 0-.263 1.476 6.871 6.871 0 0 0 .292 2.12c.181.563.483 1.08.884 1.516.415.422.915.75 1.466.964.653.25 1.337.41 2.033.476a1.828 1.828 0 0 0-.452.633 2.99 2.99 0 0 0-.2.744 2.754 2.754 0 0 1-1.175.27 1.788 1.788 0 0 1-1.065-.3 2.904 2.904 0 0 1-.752-.824 3.1 3.1 0 0 0-.292-.382 2.693 2.693 0 0 0-.372-.343 1.841 1.841 0 0 0-.432-.24 1.2 1.2 0 0 0-.481-.101c-.04.001-.08.005-.12.01a.649.649 0 0 0-.162.02.408.408 0 0 0-.13.06.116.116 0 0 0-.06.1.33.33 0 0 0 .14.242c.093.074.17.131.232.171l.03.021c.133.103.261.214.382.333.112.098.213.209.3.33.09.119.168.246.231.381.073.134.15.288.231.463.188.474.522.875.954 1.145.453.243.961.364 1.476.351.174 0 .349-.01.522-.03.172-.028.343-.057.515-.091v1.743a.5.5 0 0 1-.533.521h-.062a10.286 10.286 0 1 1 6.324 0v.005z"
+					></path></svg
+				>
+				<span>Open GitHub</span>
+			</a>
+		</div>
+	</section>
+	<section class="mt-12 flex flex-col items-center justify-center gap-5">
+		<h2 class="text-3xl font-bold">Featured posts</h2>
+		<div class="flex flex-col gap-3 lg:flex-row">
+			{
+				featuredPosts.map((post) => (
+					<a
+						href={getPostUrl(post)}
+						class="group flex w-full flex-col items-center gap-4 rounded-lg p-4 transition-all hover:scale-105 hover:bg-accent-2 hover:shadow-md lg:w-1/3"
+					>
+						<Image
+							src={post.data.image.url}
+							alt={post.data.title}
+							class="h-[240px] w-full rounded-lg object-cover"
+							inferSize
+							loading="eager"
+						/>
+						<h3 class="font-rubik text-xl font-bold">{post.data.title}</h3>
+						<p class="text-sm">{post.data.description}</p>
+					</a>
+				))
+			}
+		</div>
+		<div class="mt-4">
+			<a
+				href="/blog"
+				class="flex items-center justify-center gap-2 rounded-md border-2 border-accent-7 bg-gradient-to-r from-accent-11 to-accent2-11 px-4 py-2 text-lg font-bold text-neutral-3 shadow-md shadow-accent-6 transition-all hover:scale-105 hover:to-accent-11 dark:border-accent-12"
+			>
+				<span>
+					<svg
+						stroke="currentColor"
+						fill="currentColor"
+						stroke-width="0"
+						viewBox="0 0 24 24"
+						height="1em"
+						width="1em"
+						xmlns="http://www.w3.org/2000/svg"
+						data-darkreader-inline-fill=""
+						data-darkreader-inline-stroke=""
+						style="--darkreader-inline-fill: currentColor; --darkreader-inline-stroke: currentColor;"
+						><path
+							fill="none"
+							stroke-width="2"
+							d="M16,7 L19,7 L19,11 L16,11 L16,7 Z M9,15 L20,15 M9,11 L13,11 M9,7 L13,7 M6,18.5 C6,19.8807119 4.88071187,21 3.5,21 C2.11928813,21 1,19.8807119 1,18.5 L1,7 L6.02493781,7 M6,18.5 L6,3 L23,3 L23,18.5 C23,19.8807119 21.8807119,21 20.5,21 L3.5,21"
+						></path></svg
+					>
+				</span>
+				<span> See all posts </span>
+			</a>
+		</div>
+	</section>
+
+	<style>
+		.bg-dots {
+			position: relative;
+		}
+		.bg-dots::before {
+			z-index: -1;
+			content: "";
+			position: absolute;
+			left: 0;
+			inset: 0;
+			height: 100%;
+			width: 100%;
+			background-image: radial-gradient(var(--accent-5) 1px, transparent 1px);
+			background-size: 16px 16px;
+			-webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 60%, transparent 100%);
+			mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 60%, transparent 100%);
+			background-size: 24px 24px;
+		}
+	</style>
+</Layout>

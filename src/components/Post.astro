@@ -1,0 +1,164 @@
+---
+import { Image } from "astro:assets"
+import type { CollectionEntry } from "astro:content"
+import PostsList from "./PostsList.astro"
+
+interface Props {
+	post: CollectionEntry<"posts">["data"]
+	related?: CollectionEntry<"posts">[]
+}
+const { post, related } = Astro.props
+---
+
+<div class="flex flex-col items-start gap-4 lg:flex-row">
+	<article class="mx-auto flex max-w-screen-md flex-col gap-2">
+		{
+			post.image.url_dark ? (
+				<>
+					<Image
+						class="hidden w-[700px] max-w-[90vw] dark:block"
+						src={post.image.url_dark}
+						alt={post.image.alt}
+						inferSize
+					/>
+					<Image
+						class="block w-[700px] max-w-[90vw] dark:hidden"
+						src={post.image.url}
+						alt={post.image.alt}
+						inferSize
+					/>
+				</>
+			) : (
+				<Image class="w-[700px] max-w-[90vw]" src={post.image.url} alt={post.image.alt} inferSize />
+			)
+		}
+		<h1 class="text-center font-serif text-3xl font-bold">{post.title}</h1>
+		<span class="mb-6 flex items-center justify-center gap-1 text-sm text-accent-11">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="icon icon-tabler icon-tabler-calendar-month stroke-accent-11"
+				width="20"
+				height="20"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				fill="none"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+				<path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"
+				></path>
+				<path d="M16 3v4"></path>
+				<path d="M8 3v4"></path>
+				<path d="M4 11h16"></path>
+				<path d="M7 14h.013"></path>
+				<path d="M10.01 14h.005"></path>
+				<path d="M13.01 14h.005"></path>
+				<path d="M16.015 14h.005"></path>
+				<path d="M13.015 17h.005"></path>
+				<path d="M7.01 17h.005"></path>
+				<path d="M10.01 17h.005"></path>
+			</svg>
+			by <b>{post.author}</b> on <b>{post.pubDate.toDateString()}</b></span
+		>
+		<slot />
+	</article>
+
+	{
+		related && related.length > 0 && (
+			<aside class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
+				<>
+					<h2 class="text-xl font-bold text-accent2-11">Related Posts</h2>
+					<ul>
+						<PostsList posts={related} compact />
+					</ul>
+				</>
+			</aside>
+		)
+	}
+</div>
+
+<style is:global>
+	article {
+		max-width: 100%;
+		position: relative;
+	}
+	article p {
+		font-family:
+			"Rubik Variable",
+			-system-ui,
+			sans-serif;
+	}
+	article img {
+		max-width: 90%;
+		margin: 2rem auto;
+		border-radius: 0.25rem;
+	}
+	article h2,
+	article h3,
+	article h4,
+	article h5,
+	article h6 {
+		margin-top: 1rem;
+		font-family: "Literata Variable", serif;
+		font-weight: bold;
+		color: var(--accent2-12);
+	}
+
+	article h2 {
+		font-size: 1.65rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid var(--neutral-5);
+		margin-bottom: 1rem;
+	}
+	article h3 {
+		font-size: 1.35rem;
+	}
+	article h4,
+	article h5,
+	article h6 {
+		font-size: 1.2rem;
+	}
+
+	article code {
+		color: var(--accent2-11);
+	}
+
+	article a {
+		color: var(--accent-11);
+		font-weight: bold;
+	}
+
+	article pre {
+		padding: 1rem;
+		border-radius: 4px;
+		max-width: 93vw;
+		width: 100%;
+		min-width: 100%;
+		margin: 0 auto;
+	}
+
+	article blockquote {
+		position: relative;
+		background-color: var(--accent-3);
+		padding: 0.75rem 1rem 0.75rem 2rem;
+		border-left: 4px solid var(--accent-9);
+		font-style: italic;
+		font-size: 1.1rem;
+		margin: 0.7rem 0;
+	}
+
+	article blockquote:before {
+		content: "“";
+		font-size: 2rem;
+		color: var(--accent-9);
+		position: absolute;
+		top: 0.3rem;
+		left: 0.75rem;
+	}
+
+	article ul {
+		list-style-type: square;
+		padding-left: 2rem;
+	}
+</style>

@@ -1,0 +1,161 @@
+---
+import "@fontsource-variable/lexend"
+import "@fontsource-variable/literata"
+import "@fontsource-variable/rubik"
+import "@radix-ui/colors/iris-dark.css"
+import "@radix-ui/colors/iris.css"
+import "@radix-ui/colors/slate-dark.css"
+import "@radix-ui/colors/slate.css"
+import "@radix-ui/colors/teal-dark.css"
+import "@radix-ui/colors/teal.css"
+import { SEO } from "astro-seo"
+import type { CollectionEntry } from "astro:content"
+import { ViewTransitions } from "astro:transitions"
+import { getPostUrl } from "content/config"
+import site from "site"
+import Nav from "../components/Nav.astro"
+
+interface Props {
+	title?: string
+	post?: CollectionEntry<"posts">
+}
+
+let { title, post } = Astro.props
+
+title = title || post?.data.title || site.SITE_NAME
+const description = post?.data.description || site.SITE_DESC
+const image = post?.data.image.url || site.SITE_IMAGE
+const url = site.SITE_URL + (post ? getPostUrl(post) : "")
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<SEO
+			title={title}
+			description={description}
+			canonical={url}
+			openGraph={{
+				basic: {
+					title,
+					type: "website",
+					image,
+				},
+			}}
+			twitter={{
+				creator: "@pablopunk",
+			}}
+			extend={{
+				// extending the default meta tags
+				meta: [
+					{
+						name: "twitter:image",
+						content: image,
+					},
+					{ name: "twitter:title", content: title },
+					{ name: "twitter:description", content: description },
+				],
+			}}
+		/>
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+		<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2a999d" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
+		<meta name="msapplication-TileColor" content="#00aba9" />
+		<meta name="msapplication-config" content="/favicon/browserconfig.xml" />
+
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<script data-goatcounter="/goat" async src="/count.js" is:inline></script>
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body class="mx-auto max-w-screen-2xl bg-neutral-1 pb-6 text-neutral-12">
+		<header>
+			<Nav />
+		</header>
+		<main class="mx-auto max-w-screen-xl p-3">
+			<slot />
+		</main>
+		<style is:global>
+			body {
+				font-family: "Lexend Variable", system-ui, sans-serif;
+
+				/* Modify these if accent is changed */
+				--accent-1: var(--teal-1);
+				--accent-2: var(--teal-2);
+				--accent-3: var(--teal-3);
+				--accent-4: var(--teal-4);
+				--accent-5: var(--teal-5);
+				--accent-6: var(--teal-6);
+				--accent-7: var(--teal-7);
+				--accent-8: var(--teal-8);
+				--accent-9: var(--teal-9);
+				--accent-10: var(--teal-10);
+				--accent-11: var(--teal-11);
+				--accent-12: var(--teal-12);
+				/* Modify these if accent2 is changed */
+				--accent2-1: var(--iris-1);
+				--accent2-2: var(--iris-2);
+				--accent2-3: var(--iris-3);
+				--accent2-4: var(--iris-4);
+				--accent2-5: var(--iris-5);
+				--accent2-6: var(--iris-6);
+				--accent2-7: var(--iris-7);
+				--accent2-8: var(--iris-8);
+				--accent2-9: var(--iris-9);
+				--accent2-10: var(--iris-10);
+				--accent2-11: var(--iris-11);
+				--accent2-12: var(--iris-12);
+				/* Modify these if neutral is changed */
+				--neutral-1: var(--slate-1);
+				--neutral-2: var(--slate-2);
+				--neutral-3: var(--slate-3);
+				--neutral-4: var(--slate-4);
+				--neutral-5: var(--slate-5);
+				--neutral-6: var(--slate-6);
+				--neutral-7: var(--slate-7);
+				--neutral-8: var(--slate-8);
+				--neutral-9: var(--slate-9);
+				--neutral-10: var(--slate-10);
+				--neutral-11: var(--slate-11);
+				--neutral-12: var(--slate-12);
+			}
+
+			a:hover {
+				transition: color 0.2s ease-in-out;
+				text-decoration: none;
+			}
+		</style>
+		<script is:inline>
+			// eslint-disable-next-line no-console
+			console.log(
+				`%c
+<>
+Hi! I'm Pablo, the owner of this website.
+What are you doing here? Is there something wrong?
+You can contact me at pablo@pablopunk.com
+Or open an issue/PR at github.com/pablopunk/pablopunk.com
+</>\n
+`,
+				"color:royalblue;font-size:1.5em"
+			)
+		</script>
+		<script>
+			type WindowWithGoatCounter = Window & {
+				goatcounter: { count: (data: { path: string }) => void }
+			}
+
+			document.addEventListener("astro:page-load", () => {
+				;(window as any as WindowWithGoatCounter).goatcounter.count({
+					path: location.pathname + location.search + location.hash,
+				})
+			})
+		</script>
+	</body>
+</html>

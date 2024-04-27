@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content"
+import PostsList from "components/PostsList.astro"
+import Tags from "components/Tags.astro"
+import Layout from "layouts/Layout.astro"
+
+export async function getStaticPaths() {
+	const allPosts = await getCollection("posts")
+	const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
+
+	return uniqueTags.map((tag) => {
+		const filteredPosts = allPosts.filter((post) => {
+			return post.data.tags.includes(tag)
+		})
+		return {
+			params: { tag },
+			props: { posts: filteredPosts, tags: uniqueTags },
+		}
+	})
+}
+
+const { tag } = Astro.params
+const { posts, tags } = Astro.props
+---
+
+<Layout title={tag}>
+	<Tags tags={tags} selected={tag} />
+	{posts.length === 0 && <p>No posts found for `{tag}`</p>}
+	{
+		posts.length > 0 && (
+			<h1 class="mb-3 text-2xl font-bold">
+				{posts.length} post{posts.length === 1 ? "" : "s"} for{" "}
+				<span class="text-accent-10">`{tag}`</span>
+			</h1>
+		)
+	}
+	<PostsList posts={posts} />
+</Layout>

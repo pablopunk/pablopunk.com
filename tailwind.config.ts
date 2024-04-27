@@ -1,32 +1,36 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
+import defaultTheme from "tailwindcss/defaultTheme"
 
-const cssColors = (selection: string[]) => {
-  const result: { [key: string]: string } = {};
+function getColorScale(name: string) {
+	const scale = {} as Record<string, string>
 
-  for (const color of selection) {
-    for (let i = 1; i <= 10; i++) {
-      const shade = `${color}-${i}`;
-      result[shade] = `var(--color-${shade})`;
-    }
-  }
+	for (let i = 1; i <= 12; i++) {
+		scale[i] = `var(--${name}-${i})`
+		// next line only needed if using alpha values
+		// scale[`a${i}`] = `var(--${name}-a${i})`
+	}
 
-  return result;
-};
+	return scale
+}
 
 const config: Config = {
-  darkMode: "class",
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        ...cssColors(["neutral", "accent"]),
-      },
-    },
-  },
-  plugins: [],
-};
-export default config;
+	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+	darkMode: "class",
+	theme: {
+		extend: {
+			colors: {
+				accent: getColorScale("teal"),
+				accent2: getColorScale("iris"),
+				neutral: getColorScale("slate"),
+			},
+			fontFamily: {
+				sans: ["Lexend Variable", ...defaultTheme.fontFamily.sans],
+				rubik: ["Rubik Variable", ...defaultTheme.fontFamily.sans],
+				serif: ["Literata Variable", ...defaultTheme.fontFamily.serif],
+			},
+		},
+	},
+	plugins: [],
+}
+
+export default config
