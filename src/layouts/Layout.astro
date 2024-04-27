@@ -9,48 +9,63 @@ import "@radix-ui/colors/slate.css"
 import "@radix-ui/colors/teal-dark.css"
 import "@radix-ui/colors/teal.css"
 import { SEO } from "astro-seo"
+import type { CollectionEntry } from "astro:content"
 import { ViewTransitions } from "astro:transitions"
+import { getPostUrl } from "content/config"
 import site from "site"
 import Nav from "../components/Nav.astro"
 
 interface Props {
 	title: string
+	post?: CollectionEntry<"posts">
 }
 
-const { title } = Astro.props
+let { title, post } = Astro.props
+
+title = title || post?.data.title || site.SITE_NAME
+const description = post?.data.description || site.SITE_DESC
+const image = post?.data.image.url || site.SITE_IMAGE
+const url = site.SITE_URL + (post ? getPostUrl(post) : "")
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<SEO
-			title={site.SITE_NAME}
-			description={site.SITE_DESC}
+			title={title}
+			description={description}
+			canonical={url}
 			openGraph={{
 				basic: {
-					title: site.SITE_NAME,
-					type: "portfolio",
-					image: site.SITE_IMAGE,
+					title,
+					type: "website",
+					image,
 				},
 			}}
 			twitter={{
 				creator: "@pablopunk",
 			}}
 			extend={{
-				// extending the default link tags
-				link: [{ rel: "icon", href: "/favicon.ico" }],
 				// extending the default meta tags
 				meta: [
 					{
 						name: "twitter:image",
-						content:
-							"https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+						content: image,
 					},
-					{ name: "twitter:title", content: "Tinker Tailor Soldier Spy" },
-					{ name: "twitter:description", content: "Agent" },
+					{ name: "twitter:title", content: title },
+					{ name: "twitter:description", content: description },
 				],
 			}}
 		/>
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+		<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2a999d" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
+		<meta name="msapplication-TileColor" content="#00aba9" />
+		<meta name="msapplication-config" content="/favicon/browserconfig.xml" />
+
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />

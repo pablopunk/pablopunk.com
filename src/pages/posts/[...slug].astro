@@ -20,7 +20,7 @@ const { entry, related } = Astro.props
 const { Content } = await entry.render()
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={entry.data.title} post={entry}>
 	<Post post={entry.data} related={related}>
 		<Content />
 	</Post>
