@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components"
 import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
 import PostsList from "./PostsList.astro"
@@ -10,20 +11,20 @@ interface Props {
 const { post, related } = Astro.props
 ---
 
-<div class="relative flex flex-col items-start gap-4 lg:flex-row">
-	<article class="mx-auto flex flex-col gap-2 px-3">
+<div class="relative flex max-w-[95vw] flex-col items-start gap-4 lg:flex-row">
+	<article class="mx-auto flex max-w-[700px] flex-col gap-2">
 		{
 			post.image.url_dark ? (
 				<>
 					<Image
-						class="hidden w-[700px] max-w-[90vw] dark:block"
+						class="hidden w-[600px] max-w-[90vw] dark:block"
 						src={post.image.url_dark}
 						alt={post.image.alt}
 						inferSize
 						loading="eager"
 					/>
 					<Image
-						class="block w-[700px] max-w-[90vw] dark:hidden"
+						class="block w-[600px] max-w-[90vw] dark:hidden"
 						src={post.image.url}
 						alt={post.image.alt}
 						inferSize
@@ -31,36 +32,12 @@ const { post, related } = Astro.props
 					/>
 				</>
 			) : (
-				<Image class="w-[700px] max-w-[90vw]" src={post.image.url} alt={post.image.alt} inferSize />
+				<Image class="w-[600px] max-w-[90vw]" src={post.image.url} alt={post.image.alt} inferSize />
 			)
 		}
 		<h1 class="text-center font-serif text-3xl font-bold">{post.title}</h1>
 		<span class="mb-6 flex items-center justify-center gap-1 text-sm text-accent-11">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				class="icon icon-tabler icon-tabler-calendar-month stroke-accent-11"
-				width="20"
-				height="20"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				fill="none"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-				<path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"
-				></path>
-				<path d="M16 3v4"></path>
-				<path d="M8 3v4"></path>
-				<path d="M4 11h16"></path>
-				<path d="M7 14h.013"></path>
-				<path d="M10.01 14h.005"></path>
-				<path d="M13.01 14h.005"></path>
-				<path d="M16.015 14h.005"></path>
-				<path d="M13.015 17h.005"></path>
-				<path d="M7.01 17h.005"></path>
-				<path d="M10.01 17h.005"></path>
-			</svg>
+			<Icon name="calendar" />
 			by <b>{post.author}</b> on <b>{post.pubDate.toDateString()}</b></span
 		>
 		<slot />
@@ -82,7 +59,6 @@ const { post, related } = Astro.props
 
 <style is:global>
 	article {
-		max-width: 99vw;
 		position: relative;
 	}
 	article p {
