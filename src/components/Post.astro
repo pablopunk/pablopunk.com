@@ -11,7 +11,7 @@ const { post, related } = Astro.props
 ---
 
 <div class="relative flex flex-col items-start gap-4 lg:flex-row">
-	<article class="mx-auto flex max-w-screen-md flex-col gap-2">
+	<article class="mx-auto flex flex-col gap-2 px-3">
 		{
 			post.image.url_dark ? (
 				<>
@@ -82,7 +82,7 @@ const { post, related } = Astro.props
 
 <style is:global>
 	article {
-		max-width: 100%;
+		max-width: 99vw;
 		position: relative;
 	}
 	article p {
@@ -142,6 +142,7 @@ const { post, related } = Astro.props
 	}
 
 	article blockquote {
+		max-width: 100%;
 		position: relative;
 		background-color: var(--accent-3);
 		padding: 0.75rem 1rem 0.75rem 2rem;
@@ -149,6 +150,9 @@ const { post, related } = Astro.props
 		font-style: italic;
 		font-size: 1.1rem;
 		margin: 0.7rem 0;
+		text-wrap: wrap;
+		overflow-x: auto;
+		overflow-y: hidden;
 	}
 
 	article blockquote:before {
@@ -157,7 +161,7 @@ const { post, related } = Astro.props
 		color: var(--accent-9);
 		position: absolute;
 		top: 0.3rem;
-		left: 0.75rem;
+		left: 0.5rem;
 	}
 
 	article ul {

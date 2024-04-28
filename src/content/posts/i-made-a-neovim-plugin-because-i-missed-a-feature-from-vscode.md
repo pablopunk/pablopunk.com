@@ -27,7 +27,7 @@ You're working on a large project and you're jumping through function definition
 
 Every other buffer will be closed at the time you leave it (`BufLeave`).
 
-> Sounds good? Go ahead and install it: [-\> github.com/pablopunk/unclutter.nvim \<-](https://github.com/pablopunk/unclutter.nvim)
+> Sounds good? Go ahead and install it: [github.com/pablopunk/unclutter.nvim](https://github.com/pablopunk/unclutter.nvim)
 
 Just like VSCode, you can "mark" files by saving them. **I use `<c-s>` to save a file and keep it in the list** but you can use your own mappings without the need to save the file:
 

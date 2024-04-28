@@ -4,7 +4,7 @@ import Logo from "./Logo.astro"
 import ThemeButton from "./ThemeButton.astro"
 
 const isHomePage = Astro.url.pathname === "/"
-const isBlogPage = Astro.url.pathname === "/blog"
+const isBlogPage = Astro.url.pathname === "/blog" || Astro.url.pathname.startsWith("/tags/")
 ---
 
 <nav class="mx-auto flex max-w-screen-xl justify-between px-4 py-3">

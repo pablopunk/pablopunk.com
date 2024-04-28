@@ -24,7 +24,7 @@ const { tag } = Astro.params
 const { posts, tags } = Astro.props
 ---
 
-<Layout title={tag}>
+<Layout title={tag} bgGrid>
 	<section class="flex flex-col items-center">
 		{posts.length === 0 && <p>No posts found for `{tag}`</p>}
 		{
