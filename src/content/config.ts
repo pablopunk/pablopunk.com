@@ -17,8 +17,21 @@ const postsCollection = defineCollection({
 	}),
 })
 
+const projectsCollection = defineCollection({
+	type: "data",
+	schema: z.object({
+		name: z.string(),
+		description: z.string(),
+		href: z.string(),
+		image: z.string(),
+		icon: z.string(),
+		tag: z.string(),
+	}),
+})
+
 export const collections = {
 	posts: postsCollection,
+	projects: projectsCollection,
 }
 
 export const getPostUrl = ({ slug }: { slug: string }) => `/posts/${slug}`
