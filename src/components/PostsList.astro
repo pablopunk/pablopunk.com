@@ -28,7 +28,7 @@ const lazyLoadAfter = 5 // lazy load images after the first 5 posts
 				<li>
 					<a
 						href={getPostUrl(post)}
-						class="group flex max-h-[150px] max-w-[700px] items-start gap-2 rounded-xl px-4 py-3 transition-all hover:scale-105 hover:bg-accent-3 lg:items-center"
+						class="group flex max-h-[150px] max-w-[700px] items-start gap-2 rounded-xl bg-neutral-1 px-4 py-3 transition-all hover:scale-105 hover:bg-accent-3 lg:items-center"
 					>
 						{compact ? (
 							<Image
@@ -75,7 +75,7 @@ const lazyLoadAfter = 5 // lazy load images after the first 5 posts
 									<p class="text-sm font-bold text-neutral-11">
 										{new Date(post.data.pubDate).toDateString()}
 									</p>
-									<p class="hidden max-w-screen-md text-sm text-neutral-11 lg:block">
+									<p class="hidden max-w-screen-md text-pretty text-sm text-neutral-11 lg:block">
 										{post.data.description}
 									</p>
 								</>

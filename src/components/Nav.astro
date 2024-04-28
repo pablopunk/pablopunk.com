@@ -7,7 +7,7 @@ const isHomePage = Astro.url.pathname === "/"
 const isBlogPage = Astro.url.pathname === "/blog"
 ---
 
-<nav class="flex justify-between px-4 py-3">
+<nav class="mx-auto flex max-w-screen-xl justify-between px-4 py-3">
 	<div class="flex w-full items-center gap-4 text-lg font-bold">
 		<a href="/" aria-label="Go to home page">
 			{

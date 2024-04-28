@@ -9,7 +9,7 @@ const posts = await getCollection("posts")
 const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())]
 ---
 
-<Layout title="pablopunk's blog">
+<Layout title="pablopunk's blog" bgGrid>
 	<section class="flex flex-col items-center">
 		<h1 class="text-2xl font-bold">Latest blog posts</h1>
 		<Tags tags={uniqueTags} />
