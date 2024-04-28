@@ -1,5 +1,15 @@
+import fs from "node:fs"
 import type { Config } from "tailwindcss"
 import defaultTheme from "tailwindcss/defaultTheme"
+
+const layout = fs.readFileSync("./src/layouts/Layout.astro", "utf8")
+const accent = layout.match(/--accent-1: var\(--(.+?)-1\);/)?.[1]
+const accent2 = layout.match(/--accent2-1: var\(--(.+?)-1\);/)?.[1]
+const neutral = layout.match(/--neutral-1: var\(--(.+?)-1\);/)?.[1]
+
+if (!accent || !accent2 || !neutral) {
+	throw new Error("Could not find accent or neutral color names in Layout.astro")
+}
 
 function getColorScale(name: string) {
 	const scale = {} as Record<string, string>
@@ -19,9 +29,9 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
-				accent: getColorScale("teal"),
-				accent2: getColorScale("iris"),
-				neutral: getColorScale("slate"),
+				accent: getColorScale(accent),
+				accent2: getColorScale(accent2),
+				neutral: getColorScale(neutral),
 			},
 			fontFamily: {
 				sans: ["Lexend Variable", ...defaultTheme.fontFamily.sans],
