@@ -6,18 +6,18 @@ import Layout from "layouts/Layout.astro"
 
 export const prerender = true
 export async function getStaticPaths() {
-	const allPosts = await getCollection("posts")
-	const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
+  const allPosts = await getCollection("posts")
+  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
 
-	return uniqueTags.map((tag) => {
-		const filteredPosts = allPosts.filter((post) => {
-			return post.data.tags.includes(tag)
-		})
-		return {
-			params: { tag },
-			props: { posts: filteredPosts, tags: uniqueTags },
-		}
-	})
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) => {
+      return post.data.tags.includes(tag)
+    })
+    return {
+      params: { tag },
+      props: { posts: filteredPosts, tags: uniqueTags },
+    }
+  })
 }
 
 const { tag } = Astro.params
@@ -25,17 +25,17 @@ const { posts, tags } = Astro.props
 ---
 
 <Layout title={tag} bgGrid>
-	<section class="flex flex-col items-center">
-		{posts.length === 0 && <p>No posts found for `{tag}`</p>}
-		{
-			posts.length > 0 && (
-				<h1 class="text-2xl font-bold">
-					{posts.length} post{posts.length === 1 ? "" : "s"} for{" "}
-					<span class="text-accent-10">`{tag}`</span>
-				</h1>
-			)
-		}
-		<Tags tags={tags} selected={tag} />
-		<PostsList posts={posts} />
-	</section>
+  <section class="flex flex-col items-center">
+    {posts.length === 0 && <p>No posts found for `{tag}`</p>}
+    {
+      posts.length > 0 && (
+        <h1 class="text-2xl font-bold">
+          {posts.length} post{posts.length === 1 ? "" : "s"} for{" "}
+          <span class="text-accent-10">`{tag}`</span>
+        </h1>
+      )
+    }
+    <Tags tags={tags} selected={tag} />
+    <PostsList posts={posts} />
+  </section>
 </Layout>

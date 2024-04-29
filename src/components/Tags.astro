@@ -1,34 +1,34 @@
 ---
 interface Props {
-	tags: string[]
-	selected?: string
+  tags: string[]
+  selected?: string
 }
 
 const { tags, selected } = Astro.props
 ---
 
 <ul class="mb-5 mt-3 flex flex-wrap justify-center gap-2 px-6">
-	{
-		tags.map((_tag) => {
-			const current = _tag === selected
-			return (
-				<li>
-					<a
-						class:list={[
-							"rounded-md px-2 py-1 text-sm transition-colors",
-							{
-								"bg-accent2-3 text-accent2-11 hover:bg-accent2-6": !current,
-							},
-							{
-								"bg-accent2-11 text-accent2-3 hover:text-accent2-7": current,
-							},
-						]}
-						href={current ? "/blog" : `/tags/${_tag}`}
-					>
-						#{_tag}
-					</a>
-				</li>
-			)
-		})
-	}
+  {
+    tags.map((_tag) => {
+      const current = _tag === selected
+      return (
+        <li>
+          <a
+            class:list={[
+              "rounded-md px-2 py-1 text-sm transition-colors",
+              {
+                "bg-accent2-3 text-accent2-11 hover:bg-accent2-6": !current,
+              },
+              {
+                "bg-accent2-11 text-accent2-3 hover:text-accent2-7": current,
+              },
+            ]}
+            href={current ? "/blog" : `/tags/${_tag}`}
+          >
+            #{_tag}
+          </a>
+        </li>
+      )
+    })
+  }
 </ul>

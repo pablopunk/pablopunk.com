@@ -8,48 +8,48 @@ const isBlogPage = Astro.url.pathname === "/blog" || Astro.url.pathname.startsWi
 ---
 
 <nav class="mx-auto flex max-w-screen-xl justify-between px-4 py-3">
-	<div class="flex w-full items-center gap-4 text-lg font-bold">
-		<a href="/" aria-label="Go to home page">
-			{
-				isHomePage ? (
-					<BoringAvatar />
-				) : (
-					<div class="relative">
-						<Logo size={40} />
-						<div class="absolute top-0 -z-10">
-							<BoringAvatar />
-						</div>
-					</div>
-				)
-			}
-		</a>
-		<a
-			href="/blog"
-			transition:animate="fade"
-			class:list={[
-				"hover:text-accent-11",
-				{
-					"border-b-2 border-transparent": !isBlogPage,
-					"border-b-2 border-accent-11 text-accent-11": isBlogPage,
-				},
-			]}>Blog</a
-		>
-	</div>
-	<ThemeButton />
+  <div class="flex w-full items-center gap-4 text-lg font-bold">
+    <a href="/" aria-label="Go to home page">
+      {
+        isHomePage ? (
+          <BoringAvatar />
+        ) : (
+          <div class="relative">
+            <Logo size={40} />
+            <div class="absolute top-0 -z-10">
+              <BoringAvatar />
+            </div>
+          </div>
+        )
+      }
+    </a>
+    <a
+      href="/blog"
+      transition:animate="fade"
+      class:list={[
+        "hover:text-accent-11",
+        {
+          "border-b-2 border-transparent": !isBlogPage,
+          "border-b-2 border-accent-11 text-accent-11": isBlogPage,
+        },
+      ]}>Blog</a
+    >
+  </div>
+  <ThemeButton />
 </nav>
 
 <style>
-	@keyframes pulse {
-		0% {
-			transform: scale(0);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
-	.animate-pulse {
-		animation-fill-mode: forwards; /* stop animation at 100% */
-		animation-iteration-count: 1; /* run animation once */
-		animation-duration: 0.1s;
-	}
+  @keyframes pulse {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .animate-pulse {
+    animation-fill-mode: forwards; /* stop animation at 100% */
+    animation-iteration-count: 1; /* run animation once */
+    animation-duration: 0.1s;
+  }
 </style>

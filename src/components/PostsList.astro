@@ -4,85 +4,85 @@ import type { CollectionEntry } from "astro:content"
 import { getPostUrl } from "content/config"
 
 interface Props {
-	posts: CollectionEntry<"posts">[]
-	compact?: boolean
+  posts: CollectionEntry<"posts">[]
+  compact?: boolean
 }
 const { posts, compact } = Astro.props
 const lazyLoadAfter = 5 // lazy load images after the first 5 posts
 ---
 
 <ul
-	class:list={[
-		"flex flex-col",
-		{
-			"gap-4": !compact,
-			"gap-2": compact,
-		},
-	]}
-	transition:animate="fade"
+  class:list={[
+    "flex flex-col",
+    {
+      "gap-4": !compact,
+      "gap-2": compact,
+    },
+  ]}
+  transition:animate="fade"
 >
-	{
-		posts
-			.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
-			.map((post, postIndex) => (
-				<li>
-					<a
-						href={getPostUrl(post)}
-						class="group flex max-h-[150px] max-w-[700px] items-start gap-2 rounded-xl bg-neutral-1 px-4 py-3 transition-all hover:scale-105 hover:bg-accent-3 lg:items-center"
-					>
-						{compact ? (
-							<Image
-								src={post.data.image.url}
-								alt={post.data.image.alt}
-								class="h-[50px] w-[50px] rounded-sm object-cover"
-								inferSize
-								loading={postIndex <= lazyLoadAfter ? "eager" : "lazy"}
-							/>
-						) : (
-							<>
-								<Image
-									src={post.data.image.url}
-									alt={post.data.image.alt}
-									class="hidden rounded-md transition-all group-hover:contrast-125 lg:block"
-									width={150}
-									height={90}
-									inferSize
-									loading={postIndex <= lazyLoadAfter ? "eager" : "lazy"}
-								/>
-								<Image
-									src={post.data.image.url}
-									alt={post.data.image.alt}
-									class="mt-2 block rounded-sm transition-all group-hover:contrast-125 lg:hidden"
-									width={50}
-									inferSize
-									loading={postIndex <= lazyLoadAfter ? "eager" : "lazy"}
-								/>
-							</>
-						)}
-						<div class="flex flex-col pl-2">
-							<h2
-								class:list={[
-									"font-rubik font-bold transition-colors group-hover:text-accent-11",
-									{
-										"text-xl lg:text-2xl": !compact,
-									},
-								]}
-							>
-								{post.data.title}
-							</h2>
-							{!compact && (
-								<>
-									<p class="text-sm font-bold text-neutral-11">
-										{new Date(post.data.pubDate).toDateString()}
-									</p>
-									<p class="hidden max-w-screen-md text-pretty text-sm text-neutral-11 lg:block">
-										{post.data.description}
-									</p>
-								</>
-							)}
-						</div>
-					</a>
-				</li>
-			))
-	}
+  {
+    posts
+      .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+      .map((post, postIndex) => (
+        <li>
+          <a
+            href={getPostUrl(post)}
+            class="group flex max-h-[150px] max-w-[700px] items-start gap-2 rounded-xl bg-neutral-1 px-4 py-3 transition-all hover:scale-105 hover:bg-accent-3 lg:items-center"
+          >
+            {compact ? (
+              <Image
+                src={post.data.image.url}
+                alt={post.data.image.alt}
+                class="h-[50px] w-[50px] rounded-sm object-cover"
+                inferSize
+                loading={postIndex <= lazyLoadAfter ? "eager" : "lazy"}
+              />
+            ) : (
+              <>
+                <Image
+                  src={post.data.image.url}
+                  alt={post.data.image.alt}
+                  class="hidden rounded-md transition-all group-hover:contrast-125 lg:block"
+                  width={150}
+                  height={90}
+                  inferSize
+                  loading={postIndex <= lazyLoadAfter ? "eager" : "lazy"}
+                />
+                <Image
+                  src={post.data.image.url}
+                  alt={post.data.image.alt}
+                  class="mt-2 block rounded-sm transition-all group-hover:contrast-125 lg:hidden"
+                  width={50}
+                  inferSize
+                  loading={postIndex <= lazyLoadAfter ? "eager" : "lazy"}
+                />
+              </>
+            )}
+            <div class="flex flex-col pl-2">
+              <h2
+                class:list={[
+                  "font-rubik font-bold transition-colors group-hover:text-accent-11",
+                  {
+                    "text-xl lg:text-2xl": !compact,
+                  },
+                ]}
+              >
+                {post.data.title}
+              </h2>
+              {!compact && (
+                <>
+                  <p class="text-sm font-bold text-neutral-11">
+                    {new Date(post.data.pubDate).toDateString()}
+                  </p>
+                  <p class="hidden max-w-screen-md text-pretty text-sm text-neutral-11 lg:block">
+                    {post.data.description}
+                  </p>
+                </>
+              )}
+            </div>
+          </a>
+        </li>
+      ))
+  }
 </ul>

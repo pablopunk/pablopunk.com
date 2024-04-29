@@ -10,9 +10,9 @@ const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())]
 ---
 
 <Layout title="pablopunk's blog" bgGrid>
-	<section class="flex flex-col items-center">
-		<h1 class="text-2xl font-bold">Latest blog posts</h1>
-		<Tags tags={uniqueTags} />
-		<PostsList posts={posts} />
-	</section>
+  <section class="flex flex-col items-center">
+    <h1 class="text-2xl font-bold">Latest blog posts</h1>
+    <Tags tags={uniqueTags} />
+    <PostsList posts={posts} />
+  </section>
 </Layout>

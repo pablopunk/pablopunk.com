@@ -7,7 +7,7 @@ export default {
 	quoteProps: "consistent",
 	tabWidth: 2,
 	trailingComma: "es5",
-	useTabs: true,
+	useTabs: false,
 	endOfLine: "lf",
 	arrowParens: "always",
 	plugins: [

@@ -17,9 +17,9 @@ import site from "site"
 import Nav from "../components/Nav.astro"
 
 interface Props {
-	title?: string
-	post?: CollectionEntry<"posts">
-	bgGrid?: boolean
+  title?: string
+  post?: CollectionEntry<"posts">
+  bgGrid?: boolean
 }
 
 const { title: propTitle, post, bgGrid } = Astro.props
@@ -32,125 +32,125 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<SEO
-			title={title}
-			description={description}
-			canonical={url}
-			openGraph={{
-				basic: {
-					title,
-					type: "website",
-					image,
-				},
-			}}
-			twitter={{
-				creator: "@pablopunk",
-			}}
-			extend={{
-				// extending the default meta tags
-				meta: [
-					{
-						name: "twitter:image",
-						content: image,
-					},
-					{ name: "twitter:title", content: title },
-					{ name: "twitter:description", content: description },
-					{ name: "twitter:card", content: "summary_large_image" },
-					{
-						name: "tags",
-						content:
-							"development,web development,programming,web design,webdev,webdevlopment,portfolio,pablopunk,nextjs,astro,site,website,javascript,programmer,typescript,react,static,fast,vercel,seo",
-					},
-				],
-			}}
-		/>
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2a999d" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<meta name="msapplication-TileColor" content="#00aba9" />
-		<meta name="msapplication-config" content="/favicon/browserconfig.xml" />
+  <head>
+    <SEO
+      title={title}
+      description={description}
+      canonical={url}
+      openGraph={{
+        basic: {
+          title,
+          type: "website",
+          image,
+        },
+      }}
+      twitter={{
+        creator: "@pablopunk",
+      }}
+      extend={{
+        // extending the default meta tags
+        meta: [
+          {
+            name: "twitter:image",
+            content: image,
+          },
+          { name: "twitter:title", content: title },
+          { name: "twitter:description", content: description },
+          { name: "twitter:card", content: "summary_large_image" },
+          {
+            name: "tags",
+            content:
+              "development,web development,programming,web design,webdev,webdevlopment,portfolio,pablopunk,nextjs,astro,site,website,javascript,programmer,typescript,react,static,fast,vercel,seo",
+          },
+        ],
+      }}
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2a999d" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#00aba9" />
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
 
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script data-goatcounter="/goat" async src="/count.js" is:inline></script>
-		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content="#000000" />
-		<title>{title}</title>
-		<ViewTransitions />
-	</head>
-	<body class="relative min-h-screen bg-neutral-1 pb-6 text-neutral-12">
-		{
-			bgGrid && (
-				<div class="this-is-the-grid-bg absolute bottom-0 left-0 right-0 top-0 -z-10 bg-[linear-gradient(to_right,var(--accent-3),transparent_1px),linear-gradient(to_bottom,var(--accent-3),transparent_1px)] bg-[size:18px_18px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-			)
-		}
-		<header>
-			<Nav />
-		</header>
-		<main class="mx-auto max-w-screen-xl p-3">
-			<div class="relative h-full w-full bg-slate-950"></div>
-			<slot />
-		</main>
-		<style is:global>
-			body {
-				color-scheme: dark light;
-				font-family: "Lexend Variable", system-ui, sans-serif;
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script data-goatcounter="/goat" async src="/count.js" is:inline></script>
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#000000" />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="relative min-h-screen bg-neutral-1 pb-6 text-neutral-12">
+    {
+      bgGrid && (
+        <div class="this-is-the-grid-bg absolute bottom-0 left-0 right-0 top-0 -z-10 bg-[linear-gradient(to_right,var(--accent-3),transparent_1px),linear-gradient(to_bottom,var(--accent-3),transparent_1px)] bg-[size:18px_18px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      )
+    }
+    <header>
+      <Nav />
+    </header>
+    <main class="mx-auto max-w-screen-xl p-3">
+      <div class="relative h-full w-full bg-slate-950"></div>
+      <slot />
+    </main>
+    <style is:global>
+      body {
+        color-scheme: dark light;
+        font-family: "Lexend Variable", system-ui, sans-serif;
 
-				/* Modify these if accent is changed */
-				--accent-1: var(--teal-1);
-				--accent-2: var(--teal-2);
-				--accent-3: var(--teal-3);
-				--accent-4: var(--teal-4);
-				--accent-5: var(--teal-5);
-				--accent-6: var(--teal-6);
-				--accent-7: var(--teal-7);
-				--accent-8: var(--teal-8);
-				--accent-9: var(--teal-9);
-				--accent-10: var(--teal-10);
-				--accent-11: var(--teal-11);
-				--accent-12: var(--teal-12);
-				/* Modify these if accent2 is changed */
-				--accent2-1: var(--indigo-1);
-				--accent2-2: var(--indigo-2);
-				--accent2-3: var(--indigo-3);
-				--accent2-4: var(--indigo-4);
-				--accent2-5: var(--indigo-5);
-				--accent2-6: var(--indigo-6);
-				--accent2-7: var(--indigo-7);
-				--accent2-8: var(--indigo-8);
-				--accent2-9: var(--indigo-9);
-				--accent2-10: var(--indigo-10);
-				--accent2-11: var(--indigo-11);
-				--accent2-12: var(--indigo-12);
-				/* Modify these if neutral is changed */
-				--neutral-1: var(--slate-1);
-				--neutral-2: var(--slate-2);
-				--neutral-3: var(--slate-3);
-				--neutral-4: var(--slate-4);
-				--neutral-5: var(--slate-5);
-				--neutral-6: var(--slate-6);
-				--neutral-7: var(--slate-7);
-				--neutral-8: var(--slate-8);
-				--neutral-9: var(--slate-9);
-				--neutral-10: var(--slate-10);
-				--neutral-11: var(--slate-11);
-				--neutral-12: var(--slate-12);
-			}
+        /* Modify these if accent is changed */
+        --accent-1: var(--teal-1);
+        --accent-2: var(--teal-2);
+        --accent-3: var(--teal-3);
+        --accent-4: var(--teal-4);
+        --accent-5: var(--teal-5);
+        --accent-6: var(--teal-6);
+        --accent-7: var(--teal-7);
+        --accent-8: var(--teal-8);
+        --accent-9: var(--teal-9);
+        --accent-10: var(--teal-10);
+        --accent-11: var(--teal-11);
+        --accent-12: var(--teal-12);
+        /* Modify these if accent2 is changed */
+        --accent2-1: var(--indigo-1);
+        --accent2-2: var(--indigo-2);
+        --accent2-3: var(--indigo-3);
+        --accent2-4: var(--indigo-4);
+        --accent2-5: var(--indigo-5);
+        --accent2-6: var(--indigo-6);
+        --accent2-7: var(--indigo-7);
+        --accent2-8: var(--indigo-8);
+        --accent2-9: var(--indigo-9);
+        --accent2-10: var(--indigo-10);
+        --accent2-11: var(--indigo-11);
+        --accent2-12: var(--indigo-12);
+        /* Modify these if neutral is changed */
+        --neutral-1: var(--slate-1);
+        --neutral-2: var(--slate-2);
+        --neutral-3: var(--slate-3);
+        --neutral-4: var(--slate-4);
+        --neutral-5: var(--slate-5);
+        --neutral-6: var(--slate-6);
+        --neutral-7: var(--slate-7);
+        --neutral-8: var(--slate-8);
+        --neutral-9: var(--slate-9);
+        --neutral-10: var(--slate-10);
+        --neutral-11: var(--slate-11);
+        --neutral-12: var(--slate-12);
+      }
 
-			a:hover {
-				transition: color 0.2s ease-in-out;
-				text-decoration: none;
-			}
-		</style>
-		<script is:inline>
-			// eslint-disable-next-line no-console
-			console.log(
-				`%c
+      a:hover {
+        transition: color 0.2s ease-in-out;
+        text-decoration: none;
+      }
+    </style>
+    <script is:inline>
+      // eslint-disable-next-line no-console
+      console.log(
+        `%c
 <>
 Hi! I'm Pablo, the owner of this website.
 What are you doing here? Is there something wrong?
@@ -158,20 +158,20 @@ You can contact me at pablo@pablopunk.com
 Or open an issue/PR at github.com/pablopunk/pablopunk.com
 </>\n
 `,
-				"color:#1aa;font-size:1.5em"
-			)
-		</script>
-		<script>
-			type WindowWithGoatCounter = Window & {
-				goatcounter: { count: (data: { path: string }) => void }
-			}
+        "color:#1aa;font-size:1.5em"
+      )
+    </script>
+    <script>
+      type WindowWithGoatCounter = Window & {
+        goatcounter: { count: (data: { path: string }) => void }
+      }
 
-			document.addEventListener("astro:page-load", () => {
-				;(window as any as WindowWithGoatCounter).goatcounter?.count({
-					path: location.pathname + location.search + location.hash,
-				})
-			})
-		</script>
-		<SpeedInsights />
-	</body>
+      document.addEventListener("astro:page-load", () => {
+        ;(window as any as WindowWithGoatCounter).goatcounter?.count({
+          path: location.pathname + location.search + location.hash,
+        })
+      })
+    </script>
+    <SpeedInsights />
+  </body>
 </html>
