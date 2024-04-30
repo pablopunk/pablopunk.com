@@ -146,6 +146,11 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
         transition: color 0.2s ease-in-out;
         text-decoration: none;
       }
+
+      ::selection {
+        background-color: var(--accent2-11);
+        color: var(--accent2-4);
+      }
     </style>
     <script is:inline>
       // eslint-disable-next-line no-console

@@ -98,8 +98,8 @@ const projects = (await getCollection("projects")).map((project) => project.data
               <Image
                 src={project.image}
                 alt={project.name}
-                width={32}
-                height={32}
+                width={26}
+                height={26}
                 class="rounded-md"
                 loading="eager"
               />
@@ -117,7 +117,7 @@ const projects = (await getCollection("projects")).map((project) => project.data
       </div>
     </div>
     <div
-      class="flex flex-col items-center justify-center gap-4 rounded-md border border-dashed border-accent2-6 p-6"
+      class="blob relative flex flex-col items-center justify-center gap-4 rounded-lg bg-accent2-1 p-6 dark:bg-accent2-1"
     >
       <h3
         class="w-fit bg-gradient-to-r from-red-700 to-red-400 bg-clip-text text-2xl font-bold text-transparent dark:from-red-500 dark:to-red-300"
@@ -191,5 +191,35 @@ const projects = (await getCollection("projects")).map((project) => project.data
       mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 60%, transparent 100%);
       background-size: 18px 18px;
     }
+    .blob {
+      overflow: hidden;
+    }
+    /* :global(.dark) { */
+    .blob::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      inset-inline-end: 0;
+      width: 6.25rem;
+      height: 6.25rem;
+      background: var(--accent-9);
+      border-radius: 100%;
+      filter: blur(70px);
+      opacity: 0.33;
+    }
+    .blob::after {
+      content: "";
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      inset-inline-end: 0;
+      width: 100px;
+      height: 100px;
+      background: var(--accent-9);
+      border-radius: 100%;
+      filter: blur(60px);
+      opacity: 0.33;
+    }
+    /* } */
   </style>
 </Layout>
