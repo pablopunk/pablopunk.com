@@ -80,6 +80,11 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
     <script data-goatcounter="/goat" async src="/count.js" is:inline></script>
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#000000" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
     <title>{title}</title>
     <ViewTransitions />
   </head>
@@ -177,6 +182,8 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
         })
       })
     </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" is:inline
+    ></script>
     <SpeedInsights />
   </body>
 </html>
