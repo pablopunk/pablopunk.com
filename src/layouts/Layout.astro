@@ -197,7 +197,8 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
             index = (index - 1 + links.length) % links.length
             links[index].focus()
           } else if (e.key === "0") {
-            links[0].focus()
+            index = 0
+            links[index].focus()
           } else if (e.key === ":") {
             Toastify({
               text: "LOL you think yo're inside vim??",
