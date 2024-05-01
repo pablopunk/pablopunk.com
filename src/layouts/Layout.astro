@@ -184,6 +184,37 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" is:inline
     ></script>
+    <script is:inline>
+      document.addEventListener("astro:page-load", function () {
+        // vim motions
+        const [next, prev] = ["jl", "hk"]
+        let [links, index] = [document.querySelectorAll("a[href]"), 0]
+        document.body.addEventListener("keydown", (e) => {
+          if (next.includes(e.key)) {
+            index = (index + 1) % links.length
+            links[index].focus()
+          } else if (prev.includes(e.key)) {
+            index = (index - 1 + links.length) % links.length
+            links[index].focus()
+          } else if (e.key === "0") {
+            links[0].focus()
+          } else if (e.key === ":") {
+            Toastify({
+              text: "LOL you think yo're inside vim??",
+              duration: 1000,
+              gravity: "top", // `top` or `bottom`
+              position: "center", // `left`, `center` or `right`
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              style: {
+                background: "linear-gradient(to right, var(--accent-2), var(--accent2-2))",
+                color: "var(--accent-11)",
+                border: "2px solid var(--accent-3)",
+              },
+            }).showToast()
+          }
+        })
+      })
+    </script>
     <SpeedInsights />
   </body>
 </html>
