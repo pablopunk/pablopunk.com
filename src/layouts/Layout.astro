@@ -2,19 +2,22 @@
 import Nav from "@/components/Nav.astro"
 import { getPostUrl } from "@/content/config"
 import site from "@/site"
+import SpeedInsights from "@vercel/speed-insights/astro"
+import { SEO } from "astro-seo"
+import type { CollectionEntry } from "astro:content"
+import { ViewTransitions } from "astro:transitions"
+/* Fonts */
 import "@fontsource-variable/lexend"
 import "@fontsource-variable/literata"
 import "@fontsource-variable/rubik"
+/* Radix colors */
 import "@radix-ui/colors/indigo-dark.css"
 import "@radix-ui/colors/indigo.css"
 import "@radix-ui/colors/slate-dark.css"
 import "@radix-ui/colors/slate.css"
 import "@radix-ui/colors/teal-dark.css"
 import "@radix-ui/colors/teal.css"
-import SpeedInsights from "@vercel/speed-insights/astro"
-import { SEO } from "astro-seo"
-import type { CollectionEntry } from "astro:content"
-import { ViewTransitions } from "astro:transitions"
+/* */
 
 interface Props {
   title?: string
