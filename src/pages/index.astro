@@ -71,7 +71,7 @@ const projects = (await getCollection("projects")).map((project) => project.data
           ].map((social) => (
             <a
               href={social.href}
-              class="flex items-center justify-center gap-1 rounded-full border-2 border-accent-7 bg-accent-11 px-2 py-1 text-sm text-accent-1 shadow-md shadow-accent-8 transition-all hover:scale-105 hover:bg-accent-10 hover:shadow-accent-3 dark:border-accent-12 dark:hover:shadow-accent-12"
+              class="flex items-center justify-center gap-1 rounded-md border-2 border-accent-7 bg-accent-11 px-3 py-1 text-sm text-accent-1 shadow-md shadow-accent-8 transition-all hover:scale-105 hover:bg-accent-10 hover:shadow-accent-3 dark:border-accent-12 dark:hover:shadow-accent-12"
             >
               <Icon name={social.icon} />
               <span>{social.name}</span>
@@ -88,12 +88,12 @@ const projects = (await getCollection("projects")).map((project) => project.data
       >
         Featured projects
       </h2>
-      <div class="flex flex-col justify-center gap-4">
+      <div class="flex max-w-md flex-wrap justify-center gap-4">
         {
           projects.map((project) => (
             <a
               href={project.href}
-              class="relative flex max-w-md items-start gap-3 rounded-lg bg-neutral-1 p-3 shadow-md transition-all hover:scale-105 hover:shadow-lg dark:bg-neutral-2"
+              class="relative flex w-full max-w-md items-start gap-2 rounded-lg bg-neutral-1 p-2 shadow-md transition-all hover:scale-105 hover:shadow-lg dark:bg-neutral-2"
             >
               <Image
                 src={project.image}
@@ -105,7 +105,9 @@ const projects = (await getCollection("projects")).map((project) => project.data
               />
               <div>
                 <h3 class="font-rubik text-sm font-bold">{project.name}</h3>
-                <p class="max-w-md text-xs font-normal text-neutral-11">{project.description}</p>
+                <p class="max-w-md text-pretty text-xs font-normal text-neutral-11">
+                  {project.description}
+                </p>
               </div>
               <div class="absolute right-2 top-2 flex items-center gap-2 align-middle text-xs text-neutral-10">
                 <span>{project.tag}</span>
@@ -194,7 +196,31 @@ const projects = (await getCollection("projects")).map((project) => project.data
     .blob {
       overflow: hidden;
     }
-    /* :global(.dark) { */
+
+    .blob::before,
+    .blob::after {
+      transition:
+        width 0.4s,
+        height 0.4s,
+        filter 0.4s;
+    }
+
+    :global(.dark) {
+      .blob:hover::before,
+      .blob:hover::after {
+        width: 15rem;
+        height: 15rem;
+        filter: blur(80px);
+      }
+    }
+
+    :global(.light) {
+      .blob:hover::before,
+      .blob:hover::after {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
     .blob::before {
       content: "";
       position: absolute;
