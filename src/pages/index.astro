@@ -93,22 +93,22 @@ const projects = (await getCollection("projects")).map((project) => project.data
           projects.map((project) => (
             <a
               href={project.href}
-              class="relative flex max-w-md items-center gap-3 rounded-lg bg-neutral-1 p-3 shadow-md transition-all hover:scale-105 hover:shadow-lg dark:bg-neutral-2"
+              class="relative flex max-w-md items-start gap-3 rounded-lg bg-neutral-1 p-3 shadow-md transition-all hover:scale-105 hover:shadow-lg dark:bg-neutral-2"
             >
               <Image
                 src={project.image}
                 alt={project.name}
-                width={26}
-                height={26}
+                width={16}
+                height={16}
                 class="rounded-md"
                 loading="eager"
               />
               <div>
-                <h3 class="font-rubik text-lg font-bold">{project.name}</h3>
-                <p class="max-w-md text-sm font-normal text-neutral-11">{project.description}</p>
+                <h3 class="font-rubik text-sm font-bold">{project.name}</h3>
+                <p class="max-w-md text-xs font-normal text-neutral-11">{project.description}</p>
               </div>
-              <div class="absolute right-2 top-2 flex items-center gap-2 align-middle text-neutral-10">
-                <span class="text-sm">{project.tag}</span>
+              <div class="absolute right-2 top-2 flex items-center gap-2 align-middle text-xs text-neutral-10">
+                <span>{project.tag}</span>
                 <Icon name={project.icon} />
               </div>
             </a>
