@@ -1,7 +1,7 @@
 ---
+import Post from "@./components/Post.astro"
+import Layout from "@/layouts/Layout.astro"
 import { getCollection } from "astro:content"
-import Post from "../../components/Post.astro"
-import Layout from "../../layouts/Layout.astro"
 
 export const prerender = true
 export async function getStaticPaths() {

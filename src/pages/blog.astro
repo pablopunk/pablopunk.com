@@ -1,8 +1,8 @@
 ---
+import Layout from "@/layouts/Layout.astro"
 import { getCollection } from "astro:content"
 import PostsList from "components/PostsList.astro"
 import Tags from "components/Tags.astro"
-import Layout from "../layouts/Layout.astro"
 
 export const prerender = true
 const posts = await getCollection("posts")
