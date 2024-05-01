@@ -4,7 +4,7 @@ import vercel from "@astrojs/vercel/serverless"
 import icon from "astro-icon"
 import { defineConfig } from "astro/config"
 import serviceWorker from "astrojs-service-worker"
-import { mainUrl } from "@/site"
+import { mainUrl } from "./src/site"
 
 // https://astro.build/config
 export default defineConfig({
