@@ -3,7 +3,6 @@ import tailwind from "@astrojs/tailwind"
 import vercel from "@astrojs/vercel/serverless"
 import icon from "astro-icon"
 import { defineConfig } from "astro/config"
-import serviceWorker from "astrojs-service-worker"
 import { mainUrl } from "./src/site"
 
 // https://astro.build/config
@@ -11,7 +10,7 @@ export default defineConfig({
   server: {
     host: true, // expose server to network
   },
-  integrations: [tailwind(), sitemap(), icon(), serviceWorker()],
+  integrations: [tailwind(), sitemap(), icon()],
   image: {
     domains: [
       "ik.imagekit.io",
