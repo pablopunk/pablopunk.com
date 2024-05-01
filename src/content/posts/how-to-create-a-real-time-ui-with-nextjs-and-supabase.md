@@ -3,7 +3,7 @@ title: How to create a real-time UI with NextJS and Supabase
 pubDate: 2021-08-01
 description: I made a simple UI that is synced in real-time with a database. Here's how
 image:
-  url: https://ik.imagekit.io/pablopunk/tr:w-700/posts/how-to-create-a-real-time-ui-with-nextjs-and-supabase.gif
+  url: https://ik.imagekit.io/pablopunk/posts/how-to-create-a-real-time-ui-with-nextjs-and-supabase.gif?tr=w-600,q-40
   alt: NextJS + Supabase
 author: Pablo Varela
 tags: [nextjs, supabase]
