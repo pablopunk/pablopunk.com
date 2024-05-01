@@ -1,5 +1,7 @@
 ---
 import Nav from "@/components/Nav.astro"
+import { getPostUrl } from "@/content/config"
+import site from "@/site"
 import "@fontsource-variable/lexend"
 import "@fontsource-variable/literata"
 import "@fontsource-variable/rubik"
@@ -13,8 +15,6 @@ import SpeedInsights from "@vercel/speed-insights/astro"
 import { SEO } from "astro-seo"
 import type { CollectionEntry } from "astro:content"
 import { ViewTransitions } from "astro:transitions"
-import { getPostUrl } from "content/config"
-import site from "site"
 
 interface Props {
   title?: string

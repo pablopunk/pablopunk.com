@@ -1,6 +1,6 @@
 import rss from "@astrojs/rss"
 import { getCollection } from "astro:content"
-import { getPostUrl } from "content/config"
+import { getPostUrl } from "@/content/config"
 import site from "@/site"
 
 export async function GET(context) {
