@@ -54,7 +54,7 @@ const { post, all } = Astro.props
         <>
           <h2 class="text-xl font-bold text-accent2-11">All Posts</h2>
           <ul>
-            <PostsList posts={all} compact current={post} />
+            <PostsList posts={all} compact selected={post} />
           </ul>
         </>
       </aside>

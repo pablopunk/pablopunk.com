@@ -5,11 +5,8 @@ import { getCollection } from "astro:content"
 
 export const prerender = true
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("posts")
-  return blogEntries.map((entry) => {
-    const all = blogEntries
-    // .filter((e) => e.data.tags.some((tag) => entry.data.tags.includes(tag)))
-    // .filter((e) => e.slug !== entry.slug)
+  const all = await getCollection("posts")
+  return all.map((entry) => {
     return {
       params: { slug: entry.slug },
       props: { entry, all },
