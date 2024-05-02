@@ -33,12 +33,9 @@ const { Content } = await post.render()
         related && related.length > 0 && (
           <div class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
             <>
-              <h2 class="text-xl font-bold">
-                Posts about{" "}
-                <span class="font-mono text-accent2-11">`{post.data.tags.join(",")}`</span>
-              </h2>
+              <h2 class="text-xl font-bold">Related posts</h2>
               <ul>
-                <PostsList posts={related} compact selected={post} />
+                <PostsList posts={related} compact selected={post} showTags />
               </ul>
             </>
           </div>
