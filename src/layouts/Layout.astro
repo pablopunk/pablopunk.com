@@ -6,10 +6,12 @@ import SpeedInsights from "@vercel/speed-insights/astro"
 import { SEO } from "astro-seo"
 import type { CollectionEntry } from "astro:content"
 import { ViewTransitions } from "astro:transitions"
+
 /* Fonts */
 import "@fontsource-variable/lexend"
 import "@fontsource-variable/literata"
 import "@fontsource-variable/rubik"
+
 /* Radix colors */
 import "@radix-ui/colors/indigo-dark.css"
 import "@radix-ui/colors/indigo.css"
@@ -17,6 +19,7 @@ import "@radix-ui/colors/slate-dark.css"
 import "@radix-ui/colors/slate.css"
 import "@radix-ui/colors/teal-dark.css"
 import "@radix-ui/colors/teal.css"
+
 /* */
 
 interface Props {
@@ -188,7 +191,7 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" is:inline
     ></script>
     <script is:inline>
-      document.addEventListener("astro:page-load", function () {
+      document.addEventListener("astro:page-load", () => {
         // vim motions
         const [next, prev] = ["jl", "hk"]
         let [links, index] = [document.querySelectorAll("a[href]"), 0]

@@ -55,7 +55,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["*.astro", "src/utils/serviceWorker.ts"],
+      files: ["*.astro"],
       parser: "astro-eslint-parser",
       parserOptions: {
         parser: "@typescript-eslint/parser",
@@ -78,6 +78,9 @@ module.exports = {
       // Script in `<script>` is assigned a virtual file name with the `.js` extension.
       files: ["**/*.astro/*.js", "*.astro/*.js"],
       parser: "@typescript-eslint/parser",
+      rules: {
+        "no-undef": "off",
+      },
     },
   ],
 }
