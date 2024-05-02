@@ -7,7 +7,7 @@ interface Props {
 const { size } = Astro.props
 ---
 
-<ul transition:animate="fade" transition:name="logo">
+<div transition:animate="fade" transition:name="logo">
   <Image
     src={`https://1.gravatar.com/avatar/8049fccc16616a1845d5b3733973f94768a07bdddade274d4110ca3ac5ae8217?size=${size}`}
     width={size}
@@ -16,7 +16,7 @@ const { size } = Astro.props
     class="rounded-full border-2 border-accent-11"
     loading="eager"
   />
-</ul>
+</div>
 
 <style>
   @keyframes pulse {
