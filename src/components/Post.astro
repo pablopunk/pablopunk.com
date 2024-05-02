@@ -10,33 +10,20 @@ const { post } = Astro.props
 ---
 
 <article class="mx-auto flex max-w-[700px] flex-col gap-2">
-  {
-    post.data.image.url_dark ? (
-      <>
-        <Image
-          class="hidden w-[600px] max-w-[90vw] dark:block"
-          src={post.data.image.url_dark}
-          alt={post.data.image.alt}
-          inferSize
-          loading="eager"
-        />
-        <Image
-          class="block w-[600px] max-w-[90vw] dark:hidden"
-          src={post.data.image.url}
-          alt={post.data.image.alt}
-          inferSize
-          loading="eager"
-        />
-      </>
-    ) : (
-      <Image
-        class="w-[600px] max-w-[90vw]"
-        src={post.data.image.url}
-        alt={post.data.image.alt}
-        inferSize
-      />
-    )
-  }
+  <Image
+    class="hidden w-[600px] max-w-[90vw] dark:block"
+    src={post.data.image.url_dark || post.data.image.url}
+    alt={post.data.image.alt}
+    inferSize
+    loading="eager"
+  />
+  <Image
+    class:list="block w-[600px] max-w-[90vw] dark:hidden"
+    src={post.data.image.url}
+    alt={post.data.image.alt}
+    inferSize
+    loading="eager"
+  />
   <h1 class="text-center font-serif text-3xl font-bold">{post.data.title}</h1>
   <span class="mb-6 flex items-center justify-center gap-1 text-sm text-accent-11">
     <Icon name="calendar" />

@@ -31,10 +31,11 @@ const lazyLoadAfter = 5 // lazy load images after the first 5 posts
         return (
           <li>
             <a
-              href={isSelected ? undefined : getPostUrl(post)}
+              href={getPostUrl(post)}
               class:list={[
                 "group flex max-h-[150px] max-w-[700px] items-start gap-2 rounded-xl px-4 py-3 transition-all hover:scale-105 hover:bg-accent-3 lg:items-center",
                 {
+                  "pointer-events-none": isSelected,
                   "bg-neutral-1": !isSelected,
                   "bg-accent-4": isSelected,
                 },
