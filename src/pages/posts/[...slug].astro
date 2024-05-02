@@ -1,28 +1,71 @@
 ---
 import Post from "@/components/Post.astro"
+import PostsList from "@/components/PostsList.astro"
+import Tags from "@/components/Tags.astro"
+import { getPostsTags } from "@/content/config"
 import Layout from "@/layouts/Layout.astro"
 import { getCollection } from "astro:content"
 
 export const prerender = true
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("posts")
-  return blogEntries.map((entry) => {
-    const related = blogEntries
-      .filter((e) => e.data.tags.some((tag) => entry.data.tags.includes(tag)))
-      .filter((e) => e.slug !== entry.slug)
+  const all = await getCollection("posts")
+  const tags = await getPostsTags()
+  return all.map((entry) => {
+    const related = all.filter((e) => e.data.tags.some((tag) => entry.data.tags.includes(tag)))
+    const rest = all.filter((post) => !related.some((r) => r.slug === post.slug))
     return {
       params: { slug: entry.slug },
-      props: { entry, related },
+      props: { entry, rest, related, tags },
     }
   })
 }
 
-const { entry, related } = Astro.props
-const { Content } = await entry.render()
+const { entry: post, rest, related, tags } = Astro.props
+const { Content } = await post.render()
 ---
 
-<Layout post={entry} bgGrid>
-  <Post post={entry.data} related={related}>
-    <Content />
-  </Post>
+<Layout post={post} bgGrid>
+  <div class="relative flex max-w-[95vw] flex-col items-start gap-4 lg:flex-row">
+    <div class="w-full lg:w-2/3">
+      <Post post={post}>
+        <Content />
+      </Post>
+    </div>
+    <aside class="flex w-full flex-col lg:w-1/3">
+      {
+        related && related.length > 0 && (
+          <div class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
+            <>
+              <h2 class="text-xl font-bold">Related posts</h2>
+              <ul>
+                <PostsList posts={related} compact selected={post} showTags />
+              </ul>
+            </>
+          </div>
+        )
+      }
+      {
+        rest && rest.length > 0 && (
+          <div class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
+            <>
+              <h2 class="text-xl font-bold">All Posts</h2>
+              <ul>
+                <PostsList posts={rest} compact selected={post} />
+              </ul>
+            </>
+          </div>
+        )
+      }
+      {
+        tags && (
+          <>
+            <div class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
+              <h2 class="text-xl font-bold">All tags</h2>
+              <Tags tags={tags} left />
+            </div>
+          </>
+        )
+      }
+    </aside>
+  </div>
 </Layout>

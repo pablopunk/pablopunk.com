@@ -2,60 +2,35 @@
 import { Icon } from "astro-icon/components"
 import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
-import PostsList from "./PostsList.astro"
 
 interface Props {
-  post: CollectionEntry<"posts">["data"]
-  related?: CollectionEntry<"posts">[]
+  post: CollectionEntry<"posts">
 }
-const { post, related } = Astro.props
+const { post } = Astro.props
 ---
 
-<div class="relative flex max-w-[95vw] flex-col items-start gap-4 lg:flex-row">
-  <article class="mx-auto flex max-w-[700px] flex-col gap-2">
-    {
-      post.image.url_dark ? (
-        <>
-          <Image
-            class="hidden w-[600px] max-w-[90vw] dark:block"
-            src={post.image.url_dark}
-            alt={post.image.alt}
-            inferSize
-            loading="eager"
-          />
-          <Image
-            class="block w-[600px] max-w-[90vw] dark:hidden"
-            src={post.image.url}
-            alt={post.image.alt}
-            inferSize
-            loading="eager"
-          />
-        </>
-      ) : (
-        <Image class="w-[600px] max-w-[90vw]" src={post.image.url} alt={post.image.alt} inferSize />
-      )
-    }
-    <h1 class="text-center font-serif text-3xl font-bold">{post.title}</h1>
-    <span class="mb-6 flex items-center justify-center gap-1 text-sm text-accent-11">
-      <Icon name="calendar" />
-      by <b>{post.author}</b> on <b>{post.pubDate.toDateString()}</b></span
-    >
-    <slot />
-  </article>
-
-  {
-    related && related.length > 0 && (
-      <aside class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
-        <>
-          <h2 class="text-xl font-bold text-accent2-11">Related Posts</h2>
-          <ul>
-            <PostsList posts={related} compact />
-          </ul>
-        </>
-      </aside>
-    )
-  }
-</div>
+<article class="mx-auto flex max-w-[700px] flex-col gap-2">
+  <Image
+    class="hidden w-[600px] max-w-[90vw] dark:block"
+    src={post.data.image.url_dark || post.data.image.url}
+    alt={post.data.image.alt}
+    inferSize
+    loading="eager"
+  />
+  <Image
+    class:list="block w-[600px] max-w-[90vw] dark:hidden"
+    src={post.data.image.url}
+    alt={post.data.image.alt}
+    inferSize
+    loading="eager"
+  />
+  <h1 class="text-center font-serif text-3xl font-bold">{post.data.title}</h1>
+  <span class="mb-6 flex items-center justify-center gap-1 text-sm text-accent-11">
+    <Icon name="calendar" />
+    by <b>{post.data.author}</b> on <b>{post.data.pubDate.toDateString()}</b></span
+  >
+  <slot />
+</article>
 
 <style is:global>
   article {
@@ -82,6 +57,15 @@ const { post, related } = Astro.props
     font-family: "Literata Variable", serif;
     font-weight: bold;
     color: var(--accent2-12);
+  }
+
+  article h2::before,
+  article h3::before,
+  article h4::before,
+  article h5::before,
+  article h6::before {
+    content: "#";
+    margin-right: 0.5rem;
   }
 
   article h2 {
