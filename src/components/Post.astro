@@ -2,65 +2,48 @@
 import { Icon } from "astro-icon/components"
 import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
-import PostsList from "./PostsList.astro"
 
 interface Props {
   post: CollectionEntry<"posts">
-  all?: CollectionEntry<"posts">[]
 }
-const { post, all } = Astro.props
+const { post } = Astro.props
 ---
 
-<div class="relative flex max-w-[95vw] flex-col items-start gap-4 lg:flex-row">
-  <article class="mx-auto flex max-w-[700px] flex-col gap-2">
-    {
-      post.data.image.url_dark ? (
-        <>
-          <Image
-            class="hidden w-[600px] max-w-[90vw] dark:block"
-            src={post.data.image.url_dark}
-            alt={post.data.image.alt}
-            inferSize
-            loading="eager"
-          />
-          <Image
-            class="block w-[600px] max-w-[90vw] dark:hidden"
-            src={post.data.image.url}
-            alt={post.data.image.alt}
-            inferSize
-            loading="eager"
-          />
-        </>
-      ) : (
+<article class="mx-auto flex max-w-[700px] flex-col gap-2">
+  {
+    post.data.image.url_dark ? (
+      <>
         <Image
-          class="w-[600px] max-w-[90vw]"
+          class="hidden w-[600px] max-w-[90vw] dark:block"
+          src={post.data.image.url_dark}
+          alt={post.data.image.alt}
+          inferSize
+          loading="eager"
+        />
+        <Image
+          class="block w-[600px] max-w-[90vw] dark:hidden"
           src={post.data.image.url}
           alt={post.data.image.alt}
           inferSize
+          loading="eager"
         />
-      )
-    }
-    <h1 class="text-center font-serif text-3xl font-bold">{post.data.title}</h1>
-    <span class="mb-6 flex items-center justify-center gap-1 text-sm text-accent-11">
-      <Icon name="calendar" />
-      by <b>{post.data.author}</b> on <b>{post.data.pubDate.toDateString()}</b></span
-    >
-    <slot />
-  </article>
-
-  {
-    all && all.length > 0 && (
-      <aside class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
-        <>
-          <h2 class="text-xl font-bold text-accent2-11">All Posts</h2>
-          <ul>
-            <PostsList posts={all} compact selected={post} />
-          </ul>
-        </>
-      </aside>
+      </>
+    ) : (
+      <Image
+        class="w-[600px] max-w-[90vw]"
+        src={post.data.image.url}
+        alt={post.data.image.alt}
+        inferSize
+      />
     )
   }
-</div>
+  <h1 class="text-center font-serif text-3xl font-bold">{post.data.title}</h1>
+  <span class="mb-6 flex items-center justify-center gap-1 text-sm text-accent-11">
+    <Icon name="calendar" />
+    by <b>{post.data.author}</b> on <b>{post.data.pubDate.toDateString()}</b></span
+  >
+  <slot />
+</article>
 
 <style is:global>
   article {

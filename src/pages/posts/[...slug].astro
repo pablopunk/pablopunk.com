@@ -1,5 +1,6 @@
 ---
 import Post from "@/components/Post.astro"
+import PostsList from "@/components/PostsList.astro"
 import Layout from "@/layouts/Layout.astro"
 import { getCollection } from "astro:content"
 
@@ -7,19 +8,52 @@ export const prerender = true
 export async function getStaticPaths() {
   const all = await getCollection("posts")
   return all.map((entry) => {
+    const related = all.filter((e) => e.data.tags.some((tag) => entry.data.tags.includes(tag)))
+    const allExceptRelated = all.filter((post) => !related.some((r) => r.slug === post.slug))
     return {
       params: { slug: entry.slug },
-      props: { entry, all },
+      props: { entry, all: allExceptRelated, related },
     }
   })
 }
 
-const { entry, all } = Astro.props
-const { Content } = await entry.render()
+const { entry: post, all, related } = Astro.props
+const { Content } = await post.render()
 ---
 
-<Layout post={entry} bgGrid>
-  <Post post={entry} all={all}>
-    <Content />
-  </Post>
+<Layout post={post} bgGrid>
+  <div class="relative flex max-w-[95vw] flex-col items-start gap-4 lg:flex-row">
+    <Post post={post}>
+      <Content />
+    </Post>
+    <section class="flex flex-col">
+      {
+        related && related.length > 0 && (
+          <aside class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
+            <>
+              <h2 class="text-xl font-bold">
+                Posts about{" "}
+                <span class="font-mono text-accent2-11">`{post.data.tags.join(",")}`</span>
+              </h2>
+              <ul>
+                <PostsList posts={related} compact selected={post} />
+              </ul>
+            </>
+          </aside>
+        )
+      }
+      {
+        all && all.length > 0 && (
+          <aside class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
+            <>
+              <h2 class="text-xl font-bold">All Posts</h2>
+              <ul>
+                <PostsList posts={all} compact selected={post} />
+              </ul>
+            </>
+          </aside>
+        )
+      }
+    </section>
+  </div>
 </Layout>
