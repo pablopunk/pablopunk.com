@@ -7,22 +7,22 @@ export const prerender = true
 export async function getStaticPaths() {
   const blogEntries = await getCollection("posts")
   return blogEntries.map((entry) => {
-    const related = blogEntries
+    const all = blogEntries
     // .filter((e) => e.data.tags.some((tag) => entry.data.tags.includes(tag)))
     // .filter((e) => e.slug !== entry.slug)
     return {
       params: { slug: entry.slug },
-      props: { entry, related },
+      props: { entry, all },
     }
   })
 }
 
-const { entry, related } = Astro.props
+const { entry, all } = Astro.props
 const { Content } = await entry.render()
 ---
 
 <Layout post={entry} bgGrid>
-  <Post post={entry.data} related={related}>
+  <Post post={entry.data} all={all}>
     <Content />
   </Post>
 </Layout>

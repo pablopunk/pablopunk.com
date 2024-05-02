@@ -6,9 +6,9 @@ import PostsList from "./PostsList.astro"
 
 interface Props {
   post: CollectionEntry<"posts">["data"]
-  related?: CollectionEntry<"posts">[]
+  all?: CollectionEntry<"posts">[]
 }
-const { post, related } = Astro.props
+const { post, all } = Astro.props
 ---
 
 <div class="relative flex max-w-[95vw] flex-col items-start gap-4 lg:flex-row">
@@ -44,12 +44,12 @@ const { post, related } = Astro.props
   </article>
 
   {
-    related && related.length > 0 && (
+    all && all.length > 0 && (
       <aside class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
         <>
           <h2 class="text-xl font-bold text-accent2-11">All Posts</h2>
           <ul>
-            <PostsList posts={related} compact current={post} />
+            <PostsList posts={all} compact current={post} />
           </ul>
         </>
       </aside>
