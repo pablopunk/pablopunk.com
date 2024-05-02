@@ -6,7 +6,7 @@ import type { CollectionEntry } from "astro:content"
 interface Props {
   posts: CollectionEntry<"posts">[]
   compact?: boolean
-  current?: CollectionEntry<"posts">
+  current?: CollectionEntry<"posts">["data"]
 }
 const { posts, compact, current } = Astro.props
 const lazyLoadAfter = 5 // lazy load images after the first 5 posts
