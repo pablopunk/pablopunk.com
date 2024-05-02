@@ -1,23 +1,26 @@
 ---
 import Post from "@/components/Post.astro"
 import PostsList from "@/components/PostsList.astro"
+import Tags from "@/components/Tags.astro"
+import { getPostsTags } from "@/content/config"
 import Layout from "@/layouts/Layout.astro"
 import { getCollection } from "astro:content"
 
 export const prerender = true
 export async function getStaticPaths() {
   const all = await getCollection("posts")
+  const tags = await getPostsTags()
   return all.map((entry) => {
     const related = all.filter((e) => e.data.tags.some((tag) => entry.data.tags.includes(tag)))
     const rest = all.filter((post) => !related.some((r) => r.slug === post.slug))
     return {
       params: { slug: entry.slug },
-      props: { entry, rest, related },
+      props: { entry, rest, related, tags },
     }
   })
 }
 
-const { entry: post, rest, related } = Astro.props
+const { entry: post, rest, related, tags } = Astro.props
 const { Content } = await post.render()
 ---
 
@@ -51,6 +54,16 @@ const { Content } = await post.render()
               </ul>
             </>
           </div>
+        )
+      }
+      {
+        tags && (
+          <>
+            <div class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
+              <h2 class="text-xl font-bold">All tags</h2>
+              <Tags tags={tags} left />
+            </div>
+          </>
         )
       }
     </aside>

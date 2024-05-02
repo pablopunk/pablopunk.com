@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content"
+import { defineCollection, getCollection, z } from "astro:content"
 
 const postsCollection = defineCollection({
   type: "content",
@@ -35,3 +35,8 @@ export const collections = {
 }
 
 export const getPostUrl = ({ slug }: { slug: string }) => `/posts/${slug}`
+export const getPostsTags = async () => {
+  const posts = await getCollection("posts")
+  const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())]
+  return uniqueTags
+}

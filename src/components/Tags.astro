@@ -2,12 +2,21 @@
 interface Props {
   tags: string[]
   selected?: string
+  left?: boolean
 }
 
-const { tags, selected } = Astro.props
+const { tags, selected, left } = Astro.props
 ---
 
-<ul class="mb-5 mt-3 flex flex-wrap justify-center gap-2 px-6">
+<ul
+  class:list={[
+    "mb-5 mt-3 flex flex-wrap items-center gap-2",
+    {
+      "justify-center px-6": !left,
+      "justify-start": left,
+    },
+  ]}
+>
   {
     tags.map((_tag) => {
       const current = _tag === selected

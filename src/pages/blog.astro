@@ -1,18 +1,19 @@
 ---
 import PostsList from "@/components/PostsList.astro"
 import Tags from "@/components/Tags.astro"
+import { getPostsTags } from "@/content/config"
 import Layout from "@/layouts/Layout.astro"
 import { getCollection } from "astro:content"
 
 export const prerender = true
 const posts = await getCollection("posts")
-const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())]
+const tags = await getPostsTags()
 ---
 
 <Layout title="pablopunk's blog" bgGrid>
   <section class="flex flex-col items-center">
     <h1 class="text-2xl font-bold">Latest blog posts</h1>
-    <Tags tags={uniqueTags} />
+    <Tags tags={tags} />
     <PostsList posts={posts} />
   </section>
 </Layout>
