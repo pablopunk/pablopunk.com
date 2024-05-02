@@ -28,7 +28,7 @@ const lazyLoadAfter = 5 // lazy load images after the first 5 posts
       .map((post, postIndex) => (
         <li>
           <a
-            href={getPostUrl(post)}
+            href={current?.slug === post.slug ? undefined : getPostUrl(post)}
             class:list={[
               "group flex max-h-[150px] max-w-[700px] items-start gap-2 rounded-xl px-4 py-3 transition-all hover:scale-105 hover:bg-accent-3 lg:items-center",
               {
