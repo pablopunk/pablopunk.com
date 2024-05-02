@@ -72,6 +72,15 @@ const { post } = Astro.props
     color: var(--accent2-12);
   }
 
+  article h2::before,
+  article h3::before,
+  article h4::before,
+  article h5::before,
+  article h6::before {
+    content: "#";
+    margin-right: 0.5rem;
+  }
+
   article h2 {
     font-size: 1.65rem;
     padding-bottom: 0.5rem;

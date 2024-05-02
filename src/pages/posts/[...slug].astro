@@ -9,27 +9,29 @@ export async function getStaticPaths() {
   const all = await getCollection("posts")
   return all.map((entry) => {
     const related = all.filter((e) => e.data.tags.some((tag) => entry.data.tags.includes(tag)))
-    const allExceptRelated = all.filter((post) => !related.some((r) => r.slug === post.slug))
+    const rest = all.filter((post) => !related.some((r) => r.slug === post.slug))
     return {
       params: { slug: entry.slug },
-      props: { entry, all: allExceptRelated, related },
+      props: { entry, rest, related },
     }
   })
 }
 
-const { entry: post, all, related } = Astro.props
+const { entry: post, rest, related } = Astro.props
 const { Content } = await post.render()
 ---
 
 <Layout post={post} bgGrid>
   <div class="relative flex max-w-[95vw] flex-col items-start gap-4 lg:flex-row">
-    <Post post={post}>
-      <Content />
-    </Post>
-    <section class="flex flex-col">
+    <div class="w-full lg:w-2/3">
+      <Post post={post}>
+        <Content />
+      </Post>
+    </div>
+    <aside class="flex w-full flex-col lg:w-1/3">
       {
         related && related.length > 0 && (
-          <aside class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
+          <div class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
             <>
               <h2 class="text-xl font-bold">
                 Posts about{" "}
@@ -39,21 +41,21 @@ const { Content } = await post.render()
                 <PostsList posts={related} compact selected={post} />
               </ul>
             </>
-          </aside>
+          </div>
         )
       }
       {
-        all && all.length > 0 && (
-          <aside class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
+        rest && rest.length > 0 && (
+          <div class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
             <>
               <h2 class="text-xl font-bold">All Posts</h2>
               <ul>
-                <PostsList posts={all} compact selected={post} />
+                <PostsList posts={rest} compact selected={post} />
               </ul>
             </>
-          </aside>
+          </div>
         )
       }
-    </section>
+    </aside>
   </div>
 </Layout>
