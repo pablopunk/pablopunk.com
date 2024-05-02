@@ -6,8 +6,9 @@ import type { CollectionEntry } from "astro:content"
 interface Props {
   posts: CollectionEntry<"posts">[]
   compact?: boolean
+  current?: CollectionEntry<"posts">
 }
-const { posts, compact } = Astro.props
+const { posts, compact, current } = Astro.props
 const lazyLoadAfter = 5 // lazy load images after the first 5 posts
 ---
 
@@ -28,7 +29,12 @@ const lazyLoadAfter = 5 // lazy load images after the first 5 posts
         <li>
           <a
             href={getPostUrl(post)}
-            class="group flex max-h-[150px] max-w-[700px] items-start gap-2 rounded-xl bg-neutral-1 px-4 py-3 transition-all hover:scale-105 hover:bg-accent-3 lg:items-center"
+            class:list={[
+              "group flex max-h-[150px] max-w-[700px] items-start gap-2 rounded-xl bg-neutral-1 px-4 py-3 transition-all hover:scale-105 hover:bg-accent-3 lg:items-center",
+              {
+                "bg-accent-4": current?.title === post.data.title,
+              },
+            ]}
           >
             {compact ? (
               <Image

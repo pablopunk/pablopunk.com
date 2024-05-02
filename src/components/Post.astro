@@ -47,9 +47,9 @@ const { post, related } = Astro.props
     related && related.length > 0 && (
       <aside class="mx-auto flex w-full max-w-screen-md flex-col gap-2 border-t border-neutral-5 pt-4 lg:border-none">
         <>
-          <h2 class="text-xl font-bold text-accent2-11">Related Posts</h2>
+          <h2 class="text-xl font-bold text-accent2-11">All Posts</h2>
           <ul>
-            <PostsList posts={related} compact />
+            <PostsList posts={related} compact current={post} />
           </ul>
         </>
       </aside>
