@@ -1,5 +1,6 @@
 ---
 import { getPostUrl } from "@/content/config"
+import { getImageUrl } from "@/lib/imagekit"
 import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
 
@@ -43,7 +44,7 @@ const lazyLoadAfter = 5 // lazy load images after the first 5 posts
             >
               {compact ? (
                 <Image
-                  src={post.data.image.url}
+                  src={getImageUrl(post.data.image.url, { w: 50, h: 50 })}
                   alt={post.data.image.alt}
                   class="h-[50px] w-[50px] rounded-sm object-cover"
                   inferSize
@@ -52,19 +53,20 @@ const lazyLoadAfter = 5 // lazy load images after the first 5 posts
               ) : (
                 <>
                   <Image
-                    src={post.data.image.url}
+                    src={getImageUrl(post.data.image.url, { w: 150, h: 90 })}
                     alt={post.data.image.alt}
-                    class="hidden rounded-md transition-all group-hover:contrast-125 lg:block"
+                    class="hidden rounded-md bg-cover transition-all group-hover:contrast-125 lg:block"
                     width={150}
                     height={90}
                     inferSize
                     loading={postIndex <= lazyLoadAfter ? "eager" : "lazy"}
                   />
                   <Image
-                    src={post.data.image.url}
+                    src={getImageUrl(post.data.image.url, { w: 50, h: 30 })}
                     alt={post.data.image.alt}
                     class="mt-2 block rounded-sm transition-all group-hover:contrast-125 lg:hidden"
                     width={50}
+                    height={30}
                     inferSize
                     loading={postIndex <= lazyLoadAfter ? "eager" : "lazy"}
                   />

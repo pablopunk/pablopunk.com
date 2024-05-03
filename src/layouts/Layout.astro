@@ -13,6 +13,7 @@ import "@fontsource-variable/literata"
 import "@fontsource-variable/rubik"
 
 /* Radix colors */
+import { getImageUrl } from "@/lib/imagekit"
 import "@radix-ui/colors/indigo-dark.css"
 import "@radix-ui/colors/indigo.css"
 import "@radix-ui/colors/slate-dark.css"
@@ -32,7 +33,7 @@ const { title: propTitle, post, bgGrid } = Astro.props
 
 const title: string = propTitle || post?.data.title || site.SITE_NAME
 const description = post?.data.description || site.SITE_DESC
-const image = post?.data.image.url || site.SITE_IMAGE
+const image = getImageUrl(post?.data.image.url || site.SITE_IMAGE, { w: 1200, h: 630 })
 const url = site.SITE_URL + (post ? getPostUrl(post) : "")
 ---
 

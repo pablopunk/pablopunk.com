@@ -1,4 +1,5 @@
 ---
+import { getImageUrl } from "@/lib/imagekit"
 import { Icon } from "astro-icon/components"
 import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
@@ -12,14 +13,14 @@ const { post } = Astro.props
 <article class="mx-auto flex max-w-[700px] flex-col gap-2">
   <Image
     class="hidden w-[600px] max-w-[90vw] dark:block"
-    src={post.data.image.url_dark || post.data.image.url}
+    src={getImageUrl(post.data.image.url_dark || post.data.image.url, { w: 600 })}
     alt={post.data.image.alt}
     inferSize
     loading="eager"
   />
   <Image
     class:list="block w-[600px] max-w-[90vw] dark:hidden"
-    src={post.data.image.url}
+    src={getImageUrl(post.data.image.url, { w: 600 })}
     alt={post.data.image.alt}
     inferSize
     loading="eager"
