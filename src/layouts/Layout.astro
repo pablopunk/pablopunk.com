@@ -87,11 +87,19 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
     <script data-goatcounter="/goat" async src="/count.js" is:inline></script>
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#000000" />
+    {/* --- TOASTIFY START --- */}
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    {/* In case the user has disabled JavaScript, we can still load the CSS */}
+    <noscript>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    </noscript>
+    {/* --- TOASTIFY END --- */}
     <title>{title}</title>
     <ViewTransitions />
   </head>
