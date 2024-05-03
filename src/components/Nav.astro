@@ -3,7 +3,7 @@ import BoringAvatar from "./BoringAvatar.astro"
 import Logo from "./Logo.astro"
 import ThemeButton from "./ThemeButton.astro"
 
-const isHomePage = Astro.url.pathname === "/"
+const isHomePage = Astro.url.pathname === "/" || Astro.url.pathname === "/lightbox"
 const isBlogPage = Astro.url.pathname === "/blog" || Astro.url.pathname.startsWith("/tags/")
 ---
 
@@ -15,7 +15,7 @@ const isBlogPage = Astro.url.pathname === "/blog" || Astro.url.pathname.startsWi
           <BoringAvatar />
         ) : (
           <div class="relative">
-            <Logo size={40} />
+            <Logo w={40} h={40} round />
             <div class="absolute top-0 -z-10">
               <BoringAvatar />
             </div>

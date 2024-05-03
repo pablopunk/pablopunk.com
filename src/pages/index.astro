@@ -8,20 +8,47 @@ import { Image } from "astro:assets"
 import { getCollection } from "astro:content"
 
 export const prerender = true
+export async function getStaticPaths() {
+  return [{ params: { lightbox: false } }, { params: { lightbox: true } }]
+}
+
 const posts = await getCollection("posts")
 const featuredPosts = posts
   .filter((post) => post.data.featured)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 const projects = (await getCollection("projects")).map((project) => project.data)
+
+interface Props {
+  lightbox?: boolean
+}
+const { lightbox } = Astro.props
 ---
 
 <Layout>
   <div class="flex flex-col gap-12">
     <section class="bg-dots flex flex-col items-center justify-center py-16 lg:py-44">
       <div class="mb-6 flex gap-3 lg:gap-5">
-        <div>
-          <Logo size={120} />
-        </div>
+        {
+          lightbox ? (
+            <a
+              href="/"
+              id="lightbox"
+              class="fixed inset-0 z-20 flex max-h-[100vh] max-w-[100vw] cursor-default items-center justify-center overflow-hidden bg-black/75 p-10 backdrop-blur"
+            >
+              <div class="absolute right-3 top-3 cursor-pointer rounded-full bg-red-700 p-2 text-white transition-all hover:scale-110 hover:bg-red-500">
+                <Icon name="x" />
+              </div>
+              <Logo w={1200} class="relative flex max-h-[90vh] max-w-[90vw] object-cover" />
+            </a>
+          ) : (
+            <a
+              href="/lightbox"
+              class="logo cursor-pointer transition-all hover:brightness-110 hover:contrast-125"
+            >
+              <Logo w={120} h={120} round />
+            </a>
+          )
+        }
         <div class="flex flex-col">
           <div class="font-rubik text-sm text-neutral-11">@pablopunk</div>
           <h1 class="relative text-2xl font-bold lg:text-5xl">Pablo Varela</h1>
@@ -250,3 +277,15 @@ const projects = (await getCollection("projects")).map((project) => project.data
     /* } */
   </style>
 </Layout>
+
+<script>
+  document.addEventListener("astro:page-load", () =>
+    document.querySelectorAll("#lightbox img").forEach((logo) =>
+      logo.addEventListener("click", (ev) => {
+        // prevent lightbox from closing when clicking on the image
+        ev.stopPropagation()
+        ev.preventDefault()
+      })
+    )
+  )
+</script>

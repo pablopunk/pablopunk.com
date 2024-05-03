@@ -3,24 +3,35 @@ import { getImageUrl } from "@/lib/imagekit"
 import { Image } from "astro:assets"
 
 interface Props {
-  size: number
+  w: number
+  h?: number
+  round?: boolean
+  lazy?: boolean
+  class?: string
 }
-const { size } = Astro.props
+const { w, h, round, lazy, class: classString } = Astro.props
 const MAX_SIZE = 120
 ---
 
 <div transition:animate="fade" transition:name="logo">
   <Image
-    src={`https://1.gravatar.com/avatar/8049fccc16616a1845d5b3733973f94768a07bdddade274d4110ca3ac5ae8217?size=${size}`}
     src={getImageUrl(
       "https://ik.imagekit.io/pablopunk/profile%20square.jpeg?updatedAt=1714767404769",
-      { w: MAX_SIZE, h: MAX_SIZE } // use max size instead of size to cache the biggest image all the time (good for transitions)
+      // use at least MAX_SIZE image (good for transitions)
+      { w: Math.max(w, MAX_SIZE), h: h ? Math.max(h, MAX_SIZE) : undefined }
     )}
-    width={size}
-    height={size}
+    width={w}
+    height={h || undefined}
+    inferSize
     alt="Pablo Varela"
-    class="rounded-full border-2 border-accent-11"
-    loading="eager"
+    class:list={[
+      classString,
+      {
+        "rounded-md": !round,
+        "rounded-full border-2 border-accent-11": round,
+      },
+    ]}
+    loading={lazy ? "lazy" : "eager"}
   />
 </div>
 
