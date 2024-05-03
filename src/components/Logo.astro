@@ -1,15 +1,21 @@
 ---
+import { getImageUrl } from "@/lib/imagekit"
 import { Image } from "astro:assets"
 
 interface Props {
   size: number
 }
 const { size } = Astro.props
+const MAX_SIZE = 120
 ---
 
 <div transition:animate="fade" transition:name="logo">
   <Image
     src={`https://1.gravatar.com/avatar/8049fccc16616a1845d5b3733973f94768a07bdddade274d4110ca3ac5ae8217?size=${size}`}
+    src={getImageUrl(
+      "https://ik.imagekit.io/pablopunk/profile%20square.jpeg?updatedAt=1714767404769",
+      { w: MAX_SIZE, h: MAX_SIZE } // use max size instead of size to cache the biggest image all the time (good for transitions)
+    )}
     width={size}
     height={size}
     alt="Pablo Varela"
