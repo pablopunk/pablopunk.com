@@ -1,17 +1,20 @@
 ---
+import type { Page } from "@/types"
 import BoringAvatar from "./BoringAvatar.astro"
 import Logo from "./Logo.astro"
 import ThemeButton from "./ThemeButton.astro"
 
-const isHomePage = Astro.url.pathname === "/" || Astro.url.pathname === "/lightbox"
-const isBlogPage = Astro.url.pathname === "/blog" || Astro.url.pathname.startsWith("/tags/")
+interface Props {
+  page?: Page
+}
+const { page } = Astro.props
 ---
 
 <nav class="mx-auto flex max-w-screen-xl justify-between px-4 py-3">
   <div class="flex w-full items-center gap-4 text-lg font-bold">
     <a href="/" aria-label="Go to home page">
       {
-        isHomePage ? (
+        page === "home" ? (
           <BoringAvatar />
         ) : (
           <div class="relative">
@@ -29,8 +32,8 @@ const isBlogPage = Astro.url.pathname === "/blog" || Astro.url.pathname.startsWi
       class:list={[
         "hover:text-accent-11",
         {
-          "border-b-2 border-transparent": !isBlogPage,
-          "border-b-2 border-accent-11 text-accent-11": isBlogPage,
+          "border-b-2 border-transparent": page !== "blog",
+          "border-b-2 border-accent-11 text-accent-11": page === "blog",
         },
       ]}>Blog</a
     >

@@ -14,6 +14,7 @@ import "@fontsource-variable/rubik"
 
 /* Radix colors */
 import { getImageUrl } from "@/lib/imagekit"
+import type { Page } from "@/types"
 import "@radix-ui/colors/indigo-dark.css"
 import "@radix-ui/colors/indigo.css"
 import "@radix-ui/colors/slate-dark.css"
@@ -25,11 +26,12 @@ import "@radix-ui/colors/teal.css"
 
 interface Props {
   title?: string
+  page?: Page
   post?: CollectionEntry<"posts">
   bgGrid?: boolean
 }
 
-const { title: propTitle, post, bgGrid } = Astro.props
+const { title: propTitle, post, bgGrid, page } = Astro.props
 
 const title: string = propTitle || post?.data.title || site.SITE_NAME
 const description = post?.data.description || site.SITE_DESC
@@ -110,7 +112,7 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
       )
     }
     <header>
-      <Nav />
+      <Nav page={page} />
     </header>
     <main class="mx-auto max-w-screen-xl p-3">
       <div class="relative h-full w-full bg-slate-950"></div>

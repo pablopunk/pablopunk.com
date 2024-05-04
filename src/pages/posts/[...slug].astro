@@ -24,7 +24,7 @@ const { entry: post, rest, related, tags } = Astro.props
 const { Content } = await post.render()
 ---
 
-<Layout post={post} bgGrid>
+<Layout post={post} bgGrid page="post">
   <div class="relative flex max-w-[95vw] flex-col items-start gap-4 lg:flex-row">
     <div class="w-full lg:w-2/3">
       <Post post={post}>
