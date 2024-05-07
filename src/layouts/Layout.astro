@@ -34,6 +34,7 @@ interface Props {
 const { title: propTitle, post, bgGrid, page } = Astro.props
 
 const title: string = propTitle || post?.data.title || site.SITE_NAME
+console.log(title)
 const description = post?.data.description || site.SITE_DESC
 const image = getImageUrl(post?.data.image.url || site.SITE_IMAGE, { w: 1200, h: 630 })
 const url = site.SITE_URL + (post ? getPostUrl(post) : "")
@@ -54,18 +55,16 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
         },
       }}
       twitter={{
+        title,
         creator: "@pablopunk",
+        site: "@pablopunk",
+        card: "summary_large_image",
+        description,
+        image,
       }}
       extend={{
         // extending the default meta tags
         meta: [
-          {
-            name: "twitter:image",
-            content: image,
-          },
-          { name: "twitter:title", content: title },
-          { name: "twitter:description", content: description },
-          { name: "twitter:card", content: "summary_large_image" },
           {
             name: "tags",
             content:
@@ -102,7 +101,6 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
     </noscript>
     {/* --- TOASTIFY END --- */}
-    <title>{title}</title>
     <ViewTransitions />
   </head>
   <body class="relative min-h-screen bg-neutral-1 pb-6 text-neutral-12">
