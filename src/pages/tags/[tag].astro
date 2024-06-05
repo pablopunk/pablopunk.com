@@ -1,13 +1,13 @@
 ---
+import { getCollection } from "astro:content"
 import PostsList from "@/components/PostsList.astro"
 import Tags from "@/components/Tags.astro"
 import Layout from "@/layouts/Layout.astro"
-import { getCollection } from "astro:content"
 
 export const prerender = true
 export async function getStaticPaths() {
   const allPosts = await getCollection("posts")
-  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
+  const uniqueTags = [...new Set(allPosts.flatMap((post) => post.data.tags))]
 
   return uniqueTags.map((tag) => {
     const filteredPosts = allPosts.filter((post) => {

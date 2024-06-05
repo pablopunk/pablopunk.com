@@ -1,11 +1,11 @@
 ---
+import type { CollectionEntry } from "astro:content"
+import { ViewTransitions } from "astro:transitions"
 import Nav from "@/components/Nav.astro"
 import { getPostUrl } from "@/content/config"
 import site from "@/site"
 import SpeedInsights from "@vercel/speed-insights/astro"
 import { SEO } from "astro-seo"
-import type { CollectionEntry } from "astro:content"
-import { ViewTransitions } from "astro:transitions"
 
 /* Fonts */
 import "@fontsource-variable/lexend"
@@ -36,7 +36,10 @@ const { title: propTitle, post, bgGrid, page } = Astro.props
 const title: string = propTitle || post?.data.title || site.SITE_NAME
 console.log(title)
 const description = post?.data.description || site.SITE_DESC
-const image = getImageUrl(post?.data.image.url || site.SITE_IMAGE, { w: 1200, h: 630 })
+const image = getImageUrl(post?.data.image.url || site.SITE_IMAGE, {
+  w: 1200,
+  h: 630,
+})
 const url = site.SITE_URL + (post ? getPostUrl(post) : "")
 ---
 

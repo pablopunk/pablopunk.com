@@ -1,11 +1,11 @@
 ---
+import { Image } from "astro:assets"
+import { getCollection } from "astro:content"
 import Logo from "@/components/Logo.astro"
 import { getPostUrl } from "@/content/config"
 import Layout from "@/layouts/Layout.astro"
 import { getImageUrl } from "@/lib/imagekit"
 import { Icon } from "astro-icon/components"
-import { Image } from "astro:assets"
-import { getCollection } from "astro:content"
 
 export const prerender = true
 
@@ -13,7 +13,9 @@ const posts = await getCollection("posts")
 const featuredPosts = posts
   .filter((post) => post.data.featured)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-const projects = (await getCollection("projects")).map((project) => project.data)
+const projects = (await getCollection("projects")).map(
+  (project) => project.data,
+)
 
 interface Props {
   lightbox?: boolean
