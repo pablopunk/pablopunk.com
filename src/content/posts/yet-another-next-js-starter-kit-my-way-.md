@@ -6,7 +6,7 @@ image:
   url: https://ik.imagekit.io/pablopunk/posts/yet-another-next-js-starter-kit-my-way-.png?updatedAt=1698057160491
   alt: Next.js starter kit
 author: Pablo Varela
-tags: [nextjs]
+tags: [nextjs, webdev]
 ---
 
 But this one without all that boilerplate that you end up removing. Just replacing it.

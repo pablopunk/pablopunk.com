@@ -6,7 +6,7 @@ image:
   url: https://ik.imagekit.io/pablopunk/posts/how-to-create-a-real-time-ui-with-nextjs-and-supabase.gif
   alt: NextJS + Supabase
 author: Pablo Varela
-tags: [nextjs, supabase]
+tags: [nextjs, webdev, supabase]
 featured: true
 ---
 

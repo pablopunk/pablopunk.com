@@ -6,7 +6,7 @@ image:
   url: https://ik.imagekit.io/pablopunk/posts/developing-nextjs-cms-is-slow-here-s-the-fix.gif?updatedAt=1698057165875
   alt: NextJS + CMS
 author: Pablo Varela
-tags: [nextjs]
+tags: [nextjs, webdev]
 ---
 
 ## **The problem**
