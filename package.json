@@ -9,8 +9,7 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"check": "astro check && tsc --noEmit",
-		"lint": "biome check src",
-		"lint:fix": "biome check --write src",
+		"format": "biome check --write src",
 		"type:check": "tsc --noEmit",
 		"prepare": "husky"
 	},
