@@ -86,6 +86,11 @@ const { lightbox } = Astro.props
               icon: "twitter",
             },
             {
+              name: "Bluesky",
+              href: "https://bsky.app/profile/pablopunk.com",
+              icon: "bsky",
+            },
+            {
               name: "Instagram",
               href: "https://instagram.com/pablopunk",
               icon: "instagram",
@@ -98,7 +103,7 @@ const { lightbox } = Astro.props
           ].map((social) => (
             <a
               href={social.href}
-              class="flex items-center justify-center gap-1 rounded-md border-2 border-accent-7 bg-accent-11 px-3 py-1 text-sm text-accent-1 shadow-md shadow-accent-8 transition-all hover:scale-105 hover:bg-accent-10 hover:shadow-accent-3 dark:border-accent-12 dark:hover:shadow-accent-12"
+              class="flex items-center justify-center gap-1 rounded-md border-2 border-accent-7 bg-accent-10 px-3 py-1 text-sm text-white shadow-md shadow-accent-8 transition-all hover:scale-105 hover:bg-accent-9 hover:shadow-accent-3 dark:border-accent-12 dark:hover:shadow-accent-12"
             >
               <Icon name={social.icon} />
               <span>{social.name}</span>
