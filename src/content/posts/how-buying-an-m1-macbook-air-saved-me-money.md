@@ -33,6 +33,8 @@ I actually **never missed the MBP.** Maybe the speakers are better, when I use
 
 Oh, and I did save some generic benchmarks when I had both at home. Here they are (geekbench):
 
-![Img](https://ik.imagekit.io/pablopunk/posts/captura_de_pantalla_2021-01-24_a_las_19-11-12.png)![Img](https://ik.imagekit.io/pablopunk/posts/captura_de_pantalla_2021-01-24_a_las_19-11-12.png)
+![Img](https://ik.imagekit.io/pablopunk/posts/captura_de_pantalla_2021-01-24_a_las_19-11-12.png)
+
+![Img](https://ik.imagekit.io/pablopunk/posts/captura_de_pantalla_2021-01-24_a_las_19-12-02.png)
 
 If you have any comments or questions ping me on [twitter](https://twitter.com/pablopunk) or [email me](mailto:pablo@pablopunk.com).
