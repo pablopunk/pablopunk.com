@@ -1,7 +1,8 @@
 import { defineCollection, getCollection, z } from "astro:content"
+import { glob } from "astro/loaders"
 
 const postsCollection = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/posts" }),
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
@@ -18,7 +19,7 @@ const postsCollection = defineCollection({
 })
 
 const projectsCollection = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.json", base: "./src/content/projects" }),
   schema: z.object({
     name: z.string(),
     description: z.string(),
@@ -34,7 +35,7 @@ export const collections = {
   projects: projectsCollection,
 }
 
-export const getPostUrl = ({ slug }: { slug: string }) => `/posts/${slug}`
+export const getPostUrl = ({ id }: { id: string }) => `/posts/${id}`
 export const getPostsTags = async () => {
   const posts = await getCollection("posts")
   const uniqueTags = [...new Set(posts.flatMap((post) => post.data.tags))]

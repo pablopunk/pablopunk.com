@@ -1,9 +1,9 @@
 ---
-import { getCollection } from "astro:content"
+import { getCollection, render } from "astro:content"
 import Post from "@/components/Post.astro"
 import PostsList from "@/components/PostsList.astro"
 import Tags from "@/components/Tags.astro"
-import { getPostsTags } from "@/content/config"
+import { getPostsTags } from "@/content.config"
 import Layout from "@/layouts/Layout.astro"
 
 export const prerender = true
@@ -14,18 +14,16 @@ export async function getStaticPaths() {
     const related = all.filter((e) =>
       e.data.tags.some((tag) => entry.data.tags.includes(tag)),
     )
-    const rest = all.filter(
-      (post) => !related.some((r) => r.slug === post.slug),
-    )
+    const rest = all.filter((post) => !related.some((r) => r.id === post.id))
     return {
-      params: { slug: entry.slug },
+      params: { slug: entry.id },
       props: { entry, rest, related, tags },
     }
   })
 }
 
 const { entry: post, rest, related, tags } = Astro.props
-const { Content } = await post.render()
+const { Content } = await render(post)
 ---
 
 <Layout post={post} bgGrid page="post">

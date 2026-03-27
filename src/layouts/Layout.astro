@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content"
-import { ViewTransitions } from "astro:transitions"
+import { ClientRouter } from "astro:transitions"
 import Nav from "@/components/Nav.astro"
-import { getPostUrl } from "@/content/config"
+import { getPostUrl } from "@/content.config"
 import site from "@/site"
 import SpeedInsights from "@vercel/speed-insights/astro"
 import { SEO } from "astro-seo"
@@ -106,7 +106,7 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
     </noscript>
     {/* --- TOASTIFY END --- */}
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body class="relative min-h-screen bg-neutral-1 pb-6 text-neutral-12">
     {

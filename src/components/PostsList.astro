@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
-import { getPostUrl } from "@/content/config"
+import { getPostUrl } from "@/content.config"
 import { getImageUrl } from "@/lib/imagekit"
 
 interface Props {
@@ -28,7 +28,7 @@ const lazyLoadAfter = 5 // lazy load images after the first 5 posts
     posts
       .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
       .map((post, postIndex) => {
-        const isSelected = selected?.slug === post.slug
+        const isSelected = selected?.id === post.id
         return (
           <li>
             <a
