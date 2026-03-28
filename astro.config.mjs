@@ -10,7 +10,13 @@ export default defineConfig({
   server: {
     host: true, // expose server to network
   },
-  integrations: [tailwind(), sitemap(), icon()],
+  integrations: [
+    tailwind(),
+    sitemap({
+      filter: (page) => !page.includes("404") && !page.includes("lightbox"),
+    }),
+    icon(),
+  ],
   image: {
     domains: [
       "ik.imagekit.io",
