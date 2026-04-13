@@ -1,0 +1,8 @@
+{
+  "name": "Mousetrap",
+  "href": "https://github.com/pablopunk/mousetrap",
+  "description": "Control your mouse with the keyboard on macOS.",
+  "image": "https://github.com/pablopunk/mousetrap/blob/main/assets/AppIcon.png?raw=true", 
+  "tag": "app",
+  "icon": "apple"
+}
