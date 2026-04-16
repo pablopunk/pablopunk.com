@@ -210,20 +210,10 @@ const { lightbox } = Astro.props
   </section>
 
   <style>
-    /* Hide featured project cards until Motion reveals them.
-       Falls back to visible if JS is off or the user prefers reduced motion. */
     [data-motion-project] {
-      opacity: 0;
-      transform: perspective(1000px) rotateX(-12deg) scale(0.98);
       transform-origin: top center;
       backface-visibility: hidden;
-      will-change: opacity, transform;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      [data-motion-project] {
-        opacity: 1;
-        transform: none;
-      }
+      will-change: transform, box-shadow;
     }
 
     .bg-dots {
@@ -319,26 +309,24 @@ const { lightbox } = Astro.props
     if (!cards.length) return
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    if (prefersReduced) {
-      cards.forEach((el) => {
-        el.style.opacity = "1"
-        el.style.transform = "none"
-      })
-      return
-    }
+    if (prefersReduced) return
 
     animate(
       cards,
       {
-        opacity: [0, 1],
         transform: [
-          "perspective(1000px) rotateX(-12deg) scale(0.98)",
+          "perspective(1000px) rotateX(-8deg) scale(0.985)",
           "perspective(1000px) rotateX(0deg) scale(1)",
+        ],
+        boxShadow: [
+          "0 4px 10px rgba(0, 0, 0, 0.04)",
+          "0 10px 24px rgba(0, 0, 0, 0.1)",
+          "0 4px 10px rgba(0, 0, 0, 0.04)",
         ],
       },
       {
-        duration: 0.28,
-        delay: stagger(0.03),
+        duration: 0.42,
+        delay: stagger(0.05),
         ease: [0.22, 1, 0.36, 1],
       },
     )
