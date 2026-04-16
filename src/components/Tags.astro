@@ -23,6 +23,8 @@ const { tags, selected, left } = Astro.props
       return (
         <li>
           <a
+            data-motion-tag
+            data-motion-tag-selected={current ? "true" : undefined}
             class:list={[
               "rounded-md px-2 py-1 text-sm transition-colors",
               {
@@ -41,3 +43,71 @@ const { tags, selected, left } = Astro.props
     })
   }
 </ul>
+
+<style>
+  [data-motion-tag] {
+    opacity: 0;
+    transform: translateY(6px);
+    will-change: opacity, transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-motion-tag] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  import { animate, stagger } from "motion"
+
+  const prefersReducedMotion = () =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+  const animateTagEntrance = () => {
+    const tags = document.querySelectorAll<HTMLElement>("[data-motion-tag]")
+    if (!tags.length || prefersReducedMotion()) return
+
+    animate(
+      tags,
+      {
+        opacity: [0, 1],
+        transform: ["translateY(6px)", "translateY(0)"],
+      },
+      {
+        duration: 0.18,
+        delay: stagger(0.025),
+        ease: [0.22, 1, 0.36, 1],
+      },
+    )
+  }
+
+  const animateSelectedTag = () => {
+    const selectedTag = document.querySelector<HTMLElement>("[data-motion-tag-selected='true']")
+    if (!selectedTag || prefersReducedMotion()) return
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        animate(
+          selectedTag,
+          {
+            scale: [1, 1.06, 1],
+            boxShadow: [
+              "0 0 0 0 rgba(59, 130, 246, 0)",
+              "0 0 0 6px rgba(59, 130, 246, 0.18)",
+              "0 0 0 0 rgba(59, 130, 246, 0)",
+            ],
+          },
+          {
+            duration: 0.55,
+            ease: [0.22, 1, 0.36, 1],
+          },
+        )
+      })
+    })
+  }
+
+  document.addEventListener("astro:page-load", animateTagEntrance)
+  document.addEventListener("astro:after-swap", animateSelectedTag)
+</script>
