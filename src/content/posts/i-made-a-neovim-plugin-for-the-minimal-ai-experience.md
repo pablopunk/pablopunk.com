@@ -3,7 +3,7 @@ title: The only AI plugin that fits Neovim
 pubDate: 2026-02-07
 description: All plugins are trying to imitate every IDE feature, while IDEs are trending towards the cli simplicity.
 image:
-  url: https://ik.imagekit.io/pablopunk/posts/pi.nvim.asciinema.gif
+  url: https://ik.imagekit.io/pablopunk/posts/asciinema.gif
   alt: pi.nvim plugin demo
 author: Pablo Varela
 tags: [neovim, vim, ai]
