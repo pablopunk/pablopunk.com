@@ -21,6 +21,8 @@ export default defineConfig({
     domains: [
       "ik.imagekit.io",
       "swiftshift.app",
+      "www.swiftshift.app",
+      "spotifin.app",
       "1.gravatar.com/avatar",
       "vimcolors.org",
       "raycast.com",

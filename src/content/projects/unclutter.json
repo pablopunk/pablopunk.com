@@ -1,8 +1,0 @@
-{
-  "name": "unclutter.nvim",
-  "href": "https://github.com/pablopunk/unclutter.nvim",
-  "description": "A smart tabline for Neovim that helps you focus.",
-  "image": "https://ik.imagekit.io/pablopunk/icons/unclutter%20icon.png?tr=w-16",
-  "tag": "plugin",
-  "icon": "neovim"
-}

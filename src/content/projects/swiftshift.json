@@ -2,7 +2,8 @@
   "name": "Swift Shift",
   "href": "https://swiftshift.app",
   "description": "Sweet window manager. Never look for those tiny arrows again.",
-  "image": "https://www.swiftshift.app/favicon/favicon-16x16.png",
+  "image": "https://www.swiftshift.app/favicon/favicon-32x32.png",
   "tag": "app",
-  "icon": "apple"
+  "icon": "apple",
+  "stars": 641
 }

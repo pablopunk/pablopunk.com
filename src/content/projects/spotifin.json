@@ -1,0 +1,9 @@
+{
+  "name": "Spotifin",
+  "href": "https://spotifin.app",
+  "description": "A free, open-source, Spotify-style music player for your Jellyfin library.",
+  "image": "https://spotifin.app/icons/Icon-192.png",
+  "tag": "app",
+  "icon": "music",
+  "stars": 0
+}

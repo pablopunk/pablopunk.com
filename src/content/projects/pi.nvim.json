@@ -1,0 +1,9 @@
+{
+  "name": "pi.nvim",
+  "href": "https://github.com/pablopunk/pi.nvim",
+  "description": "The most minimal AI coding agent, now in Neovim.",
+  "image": "/projects/pi-nvim.svg",
+  "tag": "plugin",
+  "icon": "neovim",
+  "stars": 264
+}

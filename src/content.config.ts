@@ -28,6 +28,7 @@ const projectsCollection = defineCollection({
     image: z.string(),
     icon: z.string(),
     tag: z.string(),
+    stars: z.number(),
   }),
 })
 
