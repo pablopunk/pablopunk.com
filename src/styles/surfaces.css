@@ -230,6 +230,14 @@ a.surface-tag:hover {
   background: var(--accent2-12);
 }
 
+body:has(#lightbox[open]) {
+  overflow: hidden;
+}
+
+#lightbox::backdrop {
+  background: transparent;
+}
+
 :where(.surface-button, .surface-card, .surface-tag):focus-visible {
   outline: 2px solid var(--accent-9);
   outline-offset: 3px;

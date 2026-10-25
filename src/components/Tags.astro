@@ -37,32 +37,29 @@ const { tags, selected, left } = Astro.props
   }
 </ul>
 
-<style>
-  [data-motion-tag] {
-    opacity: 0;
-    transform: translateY(6px);
-    will-change: opacity, transform;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    [data-motion-tag] {
-      opacity: 1;
-      transform: none;
-    }
-  }
-</style>
-
 <script>
   import { animate, stagger } from "motion"
 
-  const prefersReducedMotion = () =>
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+  let tagEntrance: ReturnType<typeof animate> | undefined
+  let selectedAnimation: ReturnType<typeof animate> | undefined
+
+  const stopAnimations = () => {
+    tagEntrance?.stop()
+    selectedAnimation?.stop()
+    tagEntrance = undefined
+    selectedAnimation = undefined
+  }
 
   const animateTagEntrance = () => {
     const tags = document.querySelectorAll<HTMLElement>("[data-motion-tag]")
-    if (!tags.length || prefersReducedMotion()) return
+    if (!tags.length) return
 
-    animate(
+    tagEntrance?.stop()
+    tagEntrance = undefined
+    if (reducedMotion.matches) return
+
+    tagEntrance = animate(
       tags,
       {
         opacity: [0, 1],
@@ -78,11 +75,12 @@ const { tags, selected, left } = Astro.props
 
   const animateSelectedTag = () => {
     const selectedTag = document.querySelector<HTMLElement>("[data-motion-tag-selected='true']")
-    if (!selectedTag || prefersReducedMotion()) return
+    if (!selectedTag || reducedMotion.matches) return
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        animate(
+        selectedAnimation?.stop()
+        selectedAnimation = animate(
           selectedTag,
           {
             scale: [1, 1.06, 1],
@@ -101,6 +99,19 @@ const { tags, selected, left } = Astro.props
     })
   }
 
+  reducedMotion.addEventListener("change", (event) => {
+    if (!event.matches) return
+
+    stopAnimations()
+    document.querySelectorAll<HTMLElement>("[data-motion-tag]").forEach((tag) => {
+      tag.style.opacity = "1"
+      tag.style.transform = "none"
+      tag.style.removeProperty("scale")
+      tag.style.removeProperty("box-shadow")
+    })
+  })
+
+  document.addEventListener("astro:before-swap", stopAnimations)
   document.addEventListener("astro:page-load", animateTagEntrance)
   document.addEventListener("astro:after-swap", animateSelectedTag)
 </script>

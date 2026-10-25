@@ -4,6 +4,13 @@ export const initializeInteractiveDots = () => {
   const { signal } = controller
   const cleanups: (() => void)[] = []
 
+  type Dot = {
+    element: SVGCircleElement
+    x: number
+    y: number
+    transform: string
+  }
+
   for (const surface of document.querySelectorAll<HTMLElement>(
     ".surface-button--primary, .bg-dots",
   )) {
@@ -13,23 +20,40 @@ export const initializeInteractiveDots = () => {
     const radius = isHero ? 90 : 60
     let width = 0
     let height = 0
+    let gridOffsetX = 0
+    let gridOffsetY = 0
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
     svg.classList.add("interactive-dots", isHero ? "hero-dots" : "cta-dots")
     svg.setAttribute("aria-hidden", "true")
     surface.prepend(svg)
 
-    let dots: { element: SVGCircleElement; x: number; y: number }[] = []
+    let columns: Dot[][] = []
+    let displacedDots = new Set<Dot>()
     let frame = 0
     let cursor: { x: number; y: number } | null = null
-    let displaced = false
+
+    const resetDisplacedDots = () => {
+      for (const dot of displacedDots) {
+        if (dot.transform) {
+          dot.transform = ""
+          dot.element.style.transform = ""
+        }
+      }
+      displacedDots.clear()
+    }
 
     const resize = () => {
       width = surface.clientWidth + overflow
       height = surface.clientHeight + overflow
+      gridOffsetX = (width % spacing) / 2
+      gridOffsetY = (height % spacing) / 2
       svg.setAttribute("viewBox", `0 0 ${width} ${height}`)
-      dots = []
+      cursor = null
+      resetDisplacedDots()
+      columns = []
       svg.replaceChildren()
-      for (let x = (width % spacing) / 2; x < width; x += spacing) {
+      for (let x = gridOffsetX; x < width; x += spacing) {
+        const column: Dot[] = []
         for (let y = (height % spacing) / 2; y < height; y += spacing) {
           const element = document.createElementNS(
             svg.namespaceURI,
@@ -38,10 +62,10 @@ export const initializeInteractiveDots = () => {
           element.setAttribute("cx", String(x))
           element.setAttribute("cy", String(y))
           svg.append(element)
-          dots.push({ element, x, y })
+          column.push({ element, x, y, transform: "" })
         }
+        columns.push(column)
       }
-      displaced = false
     }
 
     const update = () => {
@@ -61,19 +85,60 @@ export const initializeInteractiveDots = () => {
         x < width + radius &&
         y > -radius &&
         y < height + radius
-      if (!nearby && !displaced) return
-
-      for (const dot of dots) {
-        const dx = dot.x - x
-        const dy = dot.y - y
-        const distance = Math.hypot(dx, dy)
-        const force = nearby
-          ? Math.max(0, 1 - distance / radius) ** 2 * (isHero ? 36 : 28)
-          : 0
-        const angle = distance > 0.01 ? Math.atan2(dy, dx) : -Math.PI / 2
-        dot.element.style.transform = `translate(${Math.cos(angle) * force}px, ${Math.sin(angle) * force}px)`
+      if (!nearby) {
+        resetDisplacedDots()
+        return
       }
-      displaced = nearby
+
+      const firstColumn = Math.max(
+        0,
+        Math.ceil((x - radius - gridOffsetX) / spacing),
+      )
+      const lastColumn = Math.min(
+        columns.length - 1,
+        Math.floor((x + radius - gridOffsetX) / spacing),
+      )
+      const firstRow = Math.max(
+        0,
+        Math.ceil((y - radius - gridOffsetY) / spacing),
+      )
+      const lastRow = Math.floor((y + radius - gridOffsetY) / spacing)
+      const nextDisplaced = new Set<Dot>()
+
+      for (
+        let columnIndex = firstColumn;
+        columnIndex <= lastColumn;
+        columnIndex++
+      ) {
+        const column = columns[columnIndex]
+        const endRow = Math.min(column.length - 1, lastRow)
+
+        for (let rowIndex = firstRow; rowIndex <= endRow; rowIndex++) {
+          const dot = column[rowIndex]
+          const dx = dot.x - x
+          const dy = dot.y - y
+          const distance = Math.hypot(dx, dy)
+          if (distance >= radius) continue
+
+          const force =
+            Math.max(0, 1 - distance / radius) ** 2 * (isHero ? 36 : 28)
+          const angle = distance > 0.01 ? Math.atan2(dy, dx) : -Math.PI / 2
+          const transform = `translate(${Math.cos(angle) * force}px, ${Math.sin(angle) * force}px)`
+          if (dot.transform !== transform) {
+            dot.element.style.transform = transform
+            dot.transform = transform
+          }
+          nextDisplaced.add(dot)
+        }
+      }
+
+      for (const dot of displacedDots) {
+        if (!nextDisplaced.has(dot) && dot.transform) {
+          dot.element.style.transform = ""
+          dot.transform = ""
+        }
+      }
+      displacedDots = nextDisplaced
     }
 
     const schedule = () => {
@@ -106,8 +171,31 @@ export const initializeInteractiveDots = () => {
       },
       { signal },
     )
-    window.addEventListener("scroll", schedule, { signal, passive: true })
-    reducedMotion.addEventListener("change", schedule, { signal })
+    window.addEventListener(
+      "scroll",
+      () => {
+        cursor = null
+        schedule()
+      },
+      { signal, passive: true },
+    )
+    window.addEventListener(
+      "resize",
+      () => {
+        cursor = null
+        resetDisplacedDots()
+        schedule()
+      },
+      { signal },
+    )
+    reducedMotion.addEventListener(
+      "change",
+      () => {
+        if (reducedMotion.matches) cursor = null
+        schedule()
+      },
+      { signal },
+    )
     const observer = new ResizeObserver(resize)
     observer.observe(surface)
     resize()

@@ -119,18 +119,20 @@ import { Icon } from "astro-icon/components"
       const theme = document.body.classList.contains("dark") ? "dark" : "light"
       const newTheme = theme === "dark" ? "light" : "dark"
       setTheme(newTheme)
-      Toastify({
-        text: `${newTheme.charAt(0).toUpperCase()}${newTheme.slice(1)} mode enabled!`,
-        duration: 1000,
-        gravity: "top", // `top` or `bottom`
-        position: "center", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-          background: "linear-gradient(to right, var(--accent-2), var(--accent2-2))",
-          color: "var(--accent-11)",
-          border: "2px solid var(--accent-3)",
-        },
-      }).showToast()
+      if (typeof window.Toastify === "function") {
+        window.Toastify({
+          text: `${newTheme.charAt(0).toUpperCase()}${newTheme.slice(1)} mode enabled!`,
+          duration: 1000,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+            background: "linear-gradient(to right, var(--accent-2), var(--accent2-2))",
+            color: "var(--accent-11)",
+            border: "2px solid var(--accent-3)",
+          },
+        }).showToast()
+      }
     }
 
     document

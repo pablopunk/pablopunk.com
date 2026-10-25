@@ -3,7 +3,6 @@ import type { CollectionEntry } from "astro:content"
 import { ClientRouter } from "astro:transitions"
 import Nav from "@/components/Nav.astro"
 import "@/styles/surfaces.css"
-import { getPostUrl } from "@/content.config"
 import site from "@/site"
 import SpeedInsights from "@vercel/speed-insights/astro"
 import { SEO } from "astro-seo"
@@ -41,7 +40,7 @@ const image = getImageUrl(post?.data.image.url || site.SITE_IMAGE, {
   w: 1200,
   h: 630,
 })
-const url = site.SITE_URL + (post ? getPostUrl(post) : "")
+const url = new URL(Astro.url.pathname, site.SITE_URL).toString()
 ---
 
 <!doctype html>
@@ -87,7 +86,6 @@ const url = site.SITE_URL + (post ? getPostUrl(post) : "")
     <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
 
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script data-goatcounter="/goat" async src="/count.js" is:inline></script>
     <meta name="generator" content={Astro.generator} />
@@ -185,9 +183,11 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
     <script>
       import { initializeTilt } from "@/lib/tilt"
       import { initializeInteractiveDots } from "@/lib/interactive-dots"
+      import { initializeLightbox } from "@/lib/lightbox"
 
       document.addEventListener("astro:page-load", initializeTilt)
       document.addEventListener("astro:page-load", initializeInteractiveDots)
+      document.addEventListener("astro:page-load", initializeLightbox)
 
       type WindowWithGoatCounter = Window & {
         goatcounter: { count: (data: { path: string }) => void }
@@ -207,6 +207,8 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
         const [next, prev] = ["jl", "hk"]
         let [links, index] = [document.querySelectorAll("a[href]"), 0]
         document.body.addEventListener("keydown", (e) => {
+          if (document.querySelector("dialog[open]")) return
+
           if (next.includes(e.key)) {
             index = (index + 1) % links.length
             links[index].focus()
@@ -217,7 +219,9 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
             index = 0
             links[index].focus()
           } else if (e.key === ":") {
-            Toastify({
+            if (typeof window.Toastify !== "function") return
+
+            window.Toastify({
               text: "LOL you think yo're inside vim??",
               duration: 1000,
               gravity: "top", // `top` or `bottom`

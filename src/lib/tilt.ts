@@ -2,8 +2,6 @@ import { animate } from "motion"
 
 export const initializeTilt = () => {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
-  if (reducedMotion.matches) return
-
   const controller = new AbortController()
   const { signal } = controller
   document.addEventListener("astro:before-swap", () => controller.abort(), {
