@@ -197,10 +197,22 @@ const { lightbox } = Astro.props
             <Image
               src={getImageUrl(post.data.image.url, { h: 240, q: 80 })}
               alt={post.data.title}
-              class="h-[240px] w-full rounded-lg object-cover"
+              class:list={[
+                "h-[240px] w-full rounded-lg object-cover",
+                { "dark:hidden": post.data.image.url_dark },
+              ]}
               inferSize
               loading="eager"
             />
+            {post.data.image.url_dark && (
+              <Image
+                src={getImageUrl(post.data.image.url_dark, { h: 240, q: 80 })}
+                alt={post.data.title}
+                class="hidden h-[240px] w-full rounded-lg object-cover dark:block"
+                inferSize
+                loading="eager"
+              />
+            )}
             <h3 class="font-rubik text-xl font-bold">{post.data.title}</h3>
             <p class="text-sm">{post.data.description}</p>
           </a>
