@@ -1,0 +1,252 @@
+@property --cta-dot-radius {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0.75px;
+}
+
+/* Shared surface geometry, borders, and interaction states. Colors follow Radix themes. */
+body {
+  --button-highlight: color-mix(in srgb, var(--accent-8), white 35%);
+  --radius-control: 0.375rem;
+  --radius-card: 0.5rem;
+  --border-subtle: var(--neutral-5);
+  --border-interactive: var(--accent-7);
+  --surface-card: var(--neutral-2);
+  --surface-hover: var(--accent-3);
+  --surface-selected: var(--accent-4);
+  --surface-highlight: rgb(255 255 255 / 0.85);
+  --surface-top-border: var(--neutral-3);
+  --shadow-surface: inset 0 1px 0 var(--surface-highlight),
+    0 1px 1px rgb(0 0 0 / 0.14), 0 2px 3px rgb(0 0 0 / 0.06);
+  --shadow-raised: inset 0 1px 0 var(--surface-highlight),
+    0 2px 2px rgb(0 0 0 / 0.18), 0 4px 6px rgb(0 0 0 / 0.08);
+}
+
+body.dark {
+  --surface-highlight: rgb(255 255 255 / 0.09);
+  --surface-top-border: var(--neutral-7);
+}
+
+.surface-button,
+.surface-card,
+.surface-tag {
+  border: 1px solid var(--border-subtle);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.surface-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-color: var(--accent-8);
+  border-radius: var(--radius-control);
+  padding: 0.5rem 1rem;
+  background: var(--accent-2);
+  color: var(--accent-12);
+  font-weight: 700;
+  border-top-color: var(--button-highlight);
+  box-shadow:
+    inset 0 1px 0 var(--button-highlight),
+    0 1px 1px rgb(0 0 0 / 0.14),
+    0 2px 3px rgb(0 0 0 / 0.06);
+}
+
+.surface-button--icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+}
+
+.surface-button:hover {
+  background: var(--accent-4);
+  border-color: var(--accent-8);
+  border-top-color: var(--button-highlight);
+  box-shadow:
+    inset 0 1px 0 var(--button-highlight),
+    0 2px 2px rgb(0 0 0 / 0.18),
+    0 4px 6px rgb(0 0 0 / 0.08);
+}
+
+.surface-button--primary {
+  --cta-highlight: var(--button-highlight);
+  --cta-dot: color-mix(in srgb, var(--accent-11) 24%, transparent);
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(var(--accent-4), var(--accent-3));
+  border-color: var(--accent-8);
+  border-inline-width: 2px;
+  border-top-color: var(--cta-highlight);
+  border-bottom-color: var(--accent-8);
+  color: var(--accent-12);
+  box-shadow:
+    inset 0 1px 0 var(--cta-highlight),
+    inset 0 -1px 0 var(--accent-5),
+    0 2px 0 var(--accent-6),
+    0 3px 5px rgb(0 0 0 / 0.18);
+}
+
+.surface-button--primary::before,
+.surface-button--primary .cta-dots {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(
+    circle,
+    var(--cta-dot) var(--cta-dot-radius),
+    transparent calc(var(--cta-dot-radius) + 0.25px)
+  );
+  opacity: 0.55;
+  transition: --cta-dot-radius 0.12s ease-out, opacity 0.12s ease-out, transform 0.12s ease-out;
+  background-size: 12px 12px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 40%, transparent 72%);
+  mask-image: radial-gradient(ellipse at center, #000 40%, transparent 72%);
+}
+
+.surface-button--primary:is(:hover, :focus-visible)::before,
+.surface-button--primary:is(:hover, :focus-visible) .cta-dots {
+  --cta-dot-radius: 1.25px;
+  --cta-dot: color-mix(in srgb, var(--accent-11) 45%, transparent);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.surface-button--primary:has(.cta-dots)::before {
+  display: none;
+}
+
+.surface-button--primary .cta-dots {
+  width: calc(100% + 48px);
+  height: calc(100% + 48px);
+  background-image: none;
+  fill: var(--cta-dot);
+}
+
+.interactive-dots circle {
+  r: 0.75px;
+  transition: transform 0.12s ease-out, r 0.12s ease-out;
+}
+
+.bg-dots:has(.hero-dots)::before {
+  display: none;
+}
+
+.hero-dots {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  fill: var(--accent-5);
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 60%, transparent 100%);
+}
+
+.hero-dots circle {
+  r: 1px;
+}
+
+.surface-button--primary:is(:hover, :focus-visible) .cta-dots circle {
+  r: 1.25px;
+}
+
+.surface-button--primary:hover {
+  background: linear-gradient(var(--accent-5), var(--accent-4));
+  border-color: var(--accent-8);
+  border-top-color: var(--cta-highlight);
+  box-shadow:
+    inset 0 1px 0 var(--cta-highlight),
+    inset 0 -1px 0 var(--accent-6),
+    0 2px 0 var(--accent-7),
+    0 4px 7px rgb(0 0 0 / 0.22);
+}
+
+.surface-button--primary:active {
+  background: var(--accent-4);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.18);
+  translate: 0 2px;
+}
+
+.surface-button--small {
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.surface-card {
+  border-radius: var(--radius-card);
+  background: var(--surface-card);
+  border-top-color: var(--surface-top-border);
+  box-shadow: var(--shadow-surface);
+}
+
+.surface-card--interactive:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-interactive);
+  box-shadow: var(--shadow-raised);
+}
+
+.surface-card[aria-current="page"] {
+  background: var(--surface-selected);
+  border-color: var(--border-interactive);
+}
+
+.surface-card--tinted {
+  background: var(--accent2-2);
+  border-color: var(--accent2-5);
+}
+
+.surface-tag {
+  display: inline-block;
+  border-color: var(--accent2-6);
+  border-radius: var(--radius-control);
+  padding: 0.25rem 0.5rem;
+  background: var(--accent2-3);
+  box-shadow: inset 0 1px 0 var(--surface-highlight);
+  color: var(--accent2-11);
+}
+
+a.surface-tag:hover {
+  background: var(--accent2-5);
+  border-color: var(--accent2-8);
+}
+
+.surface-tag[aria-current="page"] {
+  background: var(--accent2-11);
+  border-color: var(--accent2-11);
+  color: var(--accent2-1);
+}
+
+.surface-tag[aria-current="page"]:hover {
+  background: var(--accent2-12);
+}
+
+:where(.surface-button, .surface-card, .surface-tag):focus-visible {
+  outline: 2px solid var(--accent-9);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-button,
+  .surface-button--primary::before,
+  .surface-button--primary .cta-dots,
+  .interactive-dots circle,
+  .surface-card,
+  .surface-tag {
+    transition: none;
+  }
+
+  .surface-button--primary:is(:hover, :focus-visible)::before,
+  .surface-button--primary:is(:hover, :focus-visible) .cta-dots {
+    transform: none;
+  }
+}

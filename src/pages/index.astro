@@ -29,19 +29,24 @@ const { lightbox } = Astro.props
       <div class="mb-6 flex gap-3 lg:gap-5">
         {
           lightbox ? (
-            <a
-              href="/"
+            <div
               id="lightbox"
               class="fixed inset-0 z-20 flex max-h-[100vh] max-w-[100vw] cursor-default items-center justify-center overflow-hidden bg-black/75 p-10 backdrop-blur"
             >
-              <div class="absolute right-3 top-3 cursor-pointer rounded-full bg-red-700 p-2 text-white transition-all hover:scale-110 hover:bg-red-500">
+              <a href="/" class="absolute inset-0" aria-hidden="true" tabindex="-1" />
+              <a
+                href="/"
+                aria-label="Close image"
+                class="surface-button surface-button--icon absolute right-3 top-3 z-10"
+              >
                 <Icon name="x" />
-              </div>
+              </a>
               <Logo w={1200} class="relative flex max-h-[90vh] max-w-[90vw] object-cover" />
-            </a>
+            </div>
           ) : (
             <a
               href="/lightbox"
+              data-motion-profile
               class="logo cursor-pointer transition-all hover:brightness-110 hover:contrast-125"
             >
               <Logo w={120} h={120} round />
@@ -103,7 +108,7 @@ const { lightbox } = Astro.props
           ].map((social) => (
             <a
               href={social.href}
-              class="flex items-center justify-center gap-1 rounded-md border-2 border-accent-7 bg-accent-1 px-3 py-1 text-sm text-accent-12 shadow-md shadow-accent-8 transition-all hover:scale-105 hover:bg-accent-3 hover:shadow-accent-3 dark:border-accent-12 dark:text-white dark:hover:shadow-accent-12"
+              class="surface-button surface-button--small"
             >
               <Icon name={social.icon} />
               <span>{social.name}</span>
@@ -126,7 +131,7 @@ const { lightbox } = Astro.props
             <a
               href={project.href}
               data-motion-project
-              class="relative flex w-full max-w-md items-start gap-2 rounded-lg bg-neutral-1 p-2 shadow-md transition-all hover:scale-105 hover:shadow-lg dark:bg-neutral-2"
+              class="surface-card surface-card--interactive relative flex w-full max-w-md items-start gap-2 p-2"
             >
               <Image
                 src={project.image}
@@ -152,7 +157,7 @@ const { lightbox } = Astro.props
       </div>
     </div>
     <div
-      class="blob relative flex flex-col items-center justify-center gap-4 rounded-lg bg-accent2-1 p-6 dark:bg-accent2-1"
+      class="surface-card surface-card--tinted blob relative flex flex-col items-center justify-center gap-4 p-6"
     >
       <h3
         class="w-fit bg-gradient-to-r from-red-700 to-red-400 bg-clip-text text-2xl font-bold text-transparent dark:from-red-500 dark:to-red-300"
@@ -169,7 +174,7 @@ const { lightbox } = Astro.props
       </p>
       <a
         href="https://github.com/pablopunk"
-        class="z-10 flex items-center justify-center gap-2 rounded-md border-2 border-accent-7 bg-gradient-to-r from-accent-11 to-accent2-11 px-6 py-2 text-lg font-bold text-neutral-3 shadow-md shadow-accent-6 transition-all hover:scale-105 hover:to-accent-11 dark:border-accent-12"
+        class="z-10 surface-button surface-button--primary px-6 text-lg"
       >
         <Icon name="github" />
         <span>Open GitHub</span>
@@ -183,7 +188,7 @@ const { lightbox } = Astro.props
         featuredPosts.map((post) => (
           <a
             href={getPostUrl(post)}
-            class="group flex w-full flex-col items-center gap-4 rounded-lg p-4 transition-all hover:scale-105 hover:bg-accent-2 hover:shadow-md lg:w-1/3"
+            class="surface-card surface-card--interactive group flex w-full flex-col items-center gap-4 p-4 lg:w-1/3"
           >
             <Image
               src={getImageUrl(post.data.image.url, { h: 240, q: 80 })}
@@ -201,7 +206,7 @@ const { lightbox } = Astro.props
     <div class="mt-4">
       <a
         href="/blog"
-        class="flex items-center justify-center gap-2 rounded-md border-2 border-accent-7 bg-gradient-to-r from-accent-11 to-accent2-11 px-6 py-2 text-lg font-bold text-neutral-3 shadow-md shadow-accent-6 transition-all hover:scale-105 hover:to-accent-11 dark:border-accent-12"
+        class="surface-button surface-button--primary px-6 text-lg"
       >
         <Icon name="blog" />
         <span>See all posts</span>
@@ -211,9 +216,9 @@ const { lightbox } = Astro.props
 
   <style>
     [data-motion-project] {
-      transform-origin: top center;
+      transform-origin: center;
       backface-visibility: hidden;
-      will-change: transform, box-shadow;
+      will-change: transform;
     }
 
     .bg-dots {
@@ -290,18 +295,6 @@ const { lightbox } = Astro.props
 </Layout>
 
 <script>
-  document.addEventListener("astro:page-load", () =>
-    document.querySelectorAll("#lightbox img").forEach((logo) =>
-      logo.addEventListener("click", (ev) => {
-        // prevent lightbox from closing when clicking on the image
-        ev.stopPropagation()
-        ev.preventDefault()
-      })
-    )
-  )
-</script>
-
-<script>
   import { animate, stagger } from "motion"
 
   const reveal = () => {
@@ -317,11 +310,6 @@ const { lightbox } = Astro.props
         transform: [
           "perspective(1000px) rotateX(-8deg) scale(0.985)",
           "perspective(1000px) rotateX(0deg) scale(1)",
-        ],
-        boxShadow: [
-          "0 4px 10px rgba(0, 0, 0, 0.04)",
-          "0 10px 24px rgba(0, 0, 0, 0.1)",
-          "0 4px 10px rgba(0, 0, 0, 0.04)",
         ],
       },
       {

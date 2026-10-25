@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content"
 import { ClientRouter } from "astro:transitions"
 import Nav from "@/components/Nav.astro"
+import "@/styles/surfaces.css"
 import { getPostUrl } from "@/content.config"
 import site from "@/site"
 import SpeedInsights from "@vercel/speed-insights/astro"
@@ -182,6 +183,12 @@ Or open an issue/PR at github.com/pablopunk/pablopunk.com
       )
     </script>
     <script>
+      import { initializeTilt } from "@/lib/tilt"
+      import { initializeInteractiveDots } from "@/lib/interactive-dots"
+
+      document.addEventListener("astro:page-load", initializeTilt)
+      document.addEventListener("astro:page-load", initializeInteractiveDots)
+
       type WindowWithGoatCounter = Window & {
         goatcounter: { count: (data: { path: string }) => void }
       }

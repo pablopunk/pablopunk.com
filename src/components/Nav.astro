@@ -28,6 +28,8 @@ const { page } = Astro.props
     </a>
     <a
       href="/blog"
+      data-blog-link
+      aria-label="Blog"
       transition:animate="fade"
       class:list={[
         "hover:text-accent-11",
@@ -35,11 +37,50 @@ const { page } = Astro.props
           "border-b-2 border-transparent": page !== "blog",
           "border-b-2 border-accent-11 text-accent-11": page === "blog",
         },
-      ]}>Blog</a
-    >
+      ]}
+    ><span aria-hidden="true">{[..."Blog"].map((letter) => <span data-blog-letter class="inline-block">{letter}</span>)}</span></a>
   </div>
   <ThemeButton />
 </nav>
+
+<script>
+  import { animate } from "motion"
+
+  document.addEventListener("astro:page-load", () => {
+    const link = document.querySelector<HTMLElement>("[data-blog-link]")
+    if (!link) return
+
+    const letters = link.querySelectorAll<HTMLElement>("[data-blog-letter]")
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const controller = new AbortController()
+    const { signal } = controller
+    let hovered = false
+    let focused = false
+
+    const update = () => {
+      const expanded = !reducedMotion.matches && (hovered || focused)
+      letters.forEach((letter, index) => {
+        animate(
+          letter,
+          { x: expanded ? (index - (letters.length - 1) / 2) * 5 : 0 },
+          reducedMotion.matches
+            ? { duration: 0 }
+            : { type: "spring", stiffness: 350, damping: 14 },
+        )
+      })
+    }
+
+    link.addEventListener("pointerenter", (event) => {
+      hovered = event.pointerType === "mouse"
+      update()
+    }, { signal })
+    link.addEventListener("pointerleave", () => { hovered = false; update() }, { signal })
+    link.addEventListener("focus", () => { focused = link.matches(":focus-visible"); update() }, { signal })
+    link.addEventListener("blur", () => { focused = false; update() }, { signal })
+    reducedMotion.addEventListener("change", update, { signal })
+    document.addEventListener("astro:before-swap", () => controller.abort(), { once: true, signal })
+  })
+</script>
 
 <style>
   @keyframes pulse {
