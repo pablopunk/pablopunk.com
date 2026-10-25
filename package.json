@@ -13,6 +13,8 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"check": "astro check && tsc --noEmit",
+		"test": "playwright test",
+		"lint": "biome check src tests playwright.config.ts",
 		"format": "biome check --write src",
 		"type:check": "tsc --noEmit",
 		"prepare": "husky"
@@ -37,6 +39,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.0",
+		"@playwright/test": "^1.64.1",
 		"@types/node": "^20.12.7",
 		"husky": "^9.0.11",
 		"lint-staged": "^15.2.2"
