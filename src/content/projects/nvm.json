@@ -1,0 +1,9 @@
+{
+  "name": "Nevermind",
+  "href": "https://nvm.fyi",
+  "description": "A command palette that extends itself. Really.",
+  "image": "https://nvm.fyi/icon.png",
+  "tag": "app",
+  "icon": "raycast",
+  "stars": 3
+}
