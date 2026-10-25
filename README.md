@@ -23,20 +23,27 @@ Use these commands before submitting changes:
 
 ```sh
 pnpm check
+pnpm lint
 pnpm build
-pnpm exec biome check src
+pnpm exec playwright install chromium
 pnpm test
 ```
 
 `pnpm check` runs Astro diagnostics and TypeScript. `pnpm build` runs the check
-and creates the production build. Biome checks source files without writing
-changes. The test lane provides the `pnpm test` script.
+and creates the production build. `pnpm lint` runs Biome without writing
+changes. `pnpm test` runs route and browser regression tests in Chromium against
+the Astro development server.
 
 For dependency updates, run `pnpm audit` or `pnpm audit --json`, then check each
 finding against its installed dependency path and the upstream advisory. Severity
 alone does not show whether an issue is reachable in the deployed site. Prefer
 supported package updates; use narrow, same-major pnpm overrides only when an
 upstream dependency has not yet incorporated a compatible patch.
+
+`pnpm peers check` reports that `@astrojs/tailwind@6.0.2` declares Astro
+`^3.0.0 || ^4.0.0 || ^5.0.0`, while this project uses Astro 7.4.2. The local
+check, lint, build, and browser gates pass with this combination; revisit the
+peer warning when the adapter declares support for the installed Astro version.
 
 The current audit has one moderate exception: `postcss-selector-parser@6.1.4`
 (`GHSA-rj75-hqrm-r3gf`) is used by Tailwind 3 during builds. Its fix is in

@@ -1,9 +1,25 @@
-import { expect, test } from "@playwright/test"
-import { blockExternalRequests } from "./helpers"
+import { type Page, expect, test } from "@playwright/test"
+import {
+  blockExternalRequests,
+  circleTransformsAreIdentity,
+  hasDisplacedCircle,
+} from "./helpers"
 
 test.beforeEach(async ({ page, baseURL }) => {
   await blockExternalRequests(page, baseURL)
 })
+
+const expectLightboxCleanup = async (page: Page) => {
+  await expect
+    .poll(() =>
+      page.evaluate(() => ({
+        htmlOverflow: document.documentElement.style.overflow,
+        bodyOverflow: document.body.style.overflow,
+        inertElements: document.querySelectorAll("[inert]").length,
+      })),
+    )
+    .toEqual({ htmlOverflow: "", bodyOverflow: "", inertElements: 0 })
+}
 
 test("tags are visible with JavaScript disabled", async ({
   browser,
@@ -27,32 +43,37 @@ test("tags are visible with JavaScript disabled", async ({
   await page.close()
 })
 
-test("client navigation repeatedly installs one SVG per eligible home surface", async ({
+test("three client navigation cycles keep one SVG per eligible home surface", async ({
   page,
 }) => {
-  for (let cycle = 0; cycle < 2; cycle += 1) {
-    await page.goto("/")
+  await page.goto("/")
+
+  const assertOneSvgPerSurface = async () => {
     const eligibleSurfaces = page.locator(".surface-button--primary, .bg-dots")
     await expect(eligibleSurfaces).toHaveCount(3)
-    await expect(
-      page.locator(".interactive-dots"),
-      `client navigation cycle ${cycle} should initialize every home surface`,
-    ).toHaveCount(3)
+    await expect(page.locator(".interactive-dots")).toHaveCount(3)
+    await expect
+      .poll(() =>
+        eligibleSurfaces.evaluateAll((surfaces) =>
+          surfaces.every(
+            (surface) =>
+              surface.querySelectorAll(":scope > svg.interactive-dots")
+                .length === 1,
+          ),
+        ),
+      )
+      .toBe(true)
+  }
 
+  for (let cycle = 0; cycle < 3; cycle += 1) {
+    await assertOneSvgPerSurface()
     await page.getByRole("link", { name: "Blog" }).click()
     await expect(page).toHaveURL(/\/blog$/)
     await page.locator("[data-motion-tag]").first().click()
     await expect(page).toHaveURL(/\/tags\//)
     await page.getByRole("link", { name: "Go to home page" }).click()
     await expect(page).toHaveURL(/\/$/)
-
-    await expect(
-      page.locator(".interactive-dots"),
-      `client navigation cycle ${cycle} should reinitialize every home surface`,
-    ).toHaveCount(3)
-    await expect(page.locator(".interactive-dots")).toHaveCount(
-      await page.locator(".surface-button--primary, .bg-dots").count(),
-    )
+    await assertOneSvgPerSurface()
   }
 })
 
@@ -94,49 +115,31 @@ test("interactive dots repel the pointer and reset after it leaves", async ({
     bounds.x + bounds.width / 2,
     bounds.y + bounds.height / 2,
   )
-  await expect
-    .poll(() =>
-      dots
-        .locator("circle")
-        .evaluateAll((circles) =>
-          circles.some(
-            (circle) =>
-              (circle as SVGCircleElement).style.transform &&
-              (circle as SVGCircleElement).style.transform !==
-                "translate(0px, 0px)",
-          ),
-        ),
-    )
-    .toBe(true)
+  await expect.poll(() => hasDisplacedCircle(dots)).toBe(true)
 
   const viewport = page.viewportSize()
   if (!viewport) throw new Error("Browser viewport should be configured")
   await page.mouse.move(viewport.width - 1, viewport.height - 1)
-  await expect
-    .poll(() =>
-      dots
-        .locator("circle")
-        .evaluateAll(
-          (circles) =>
-            circles.length > 0 &&
-            circles.every(
-              (circle) =>
-                (circle as SVGCircleElement).style.transform ===
-                "translate(0px, 0px)",
-            ),
-        ),
-    )
-    .toBe(true)
+  await expect.poll(() => circleTransformsAreIdentity(dots)).toBe(true)
 })
 
-test("reduced motion disables live tilt movement", async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: "no-preference" })
+test("initial reduced motion blocks tilt until no-preference enables it", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" })
   await page.goto("/")
   const profile = page.locator("[data-motion-profile]")
   const bounds = await profile.boundingBox()
   expect(bounds).toBeTruthy()
   if (!bounds) throw new Error("Profile surface should have a bounding box")
   const initialBounds = bounds
+  await page.mouse.move(
+    bounds.x + bounds.width - 2,
+    bounds.y + bounds.height / 2,
+  )
+  await expect.poll(() => profile.boundingBox()).toEqual(initialBounds)
+
+  await page.emulateMedia({ reducedMotion: "no-preference" })
   await page.mouse.move(
     bounds.x + bounds.width - 2,
     bounds.y + bounds.height / 2,
@@ -172,50 +175,16 @@ test("reduced motion disables interactive dots movement", async ({ page }) => {
     dotsBounds.x + dotsBounds.width / 2,
     dotsBounds.y + dotsBounds.height / 2,
   )
-  await expect
-    .poll(() =>
-      dots.locator("circle").evaluateAll((circles) =>
-        circles.some((circle) => {
-          const transform = (circle as SVGCircleElement).style.transform
-          return Boolean(transform) && transform !== "translate(0px, 0px)"
-        }),
-      ),
-    )
-    .toBe(true)
+  await expect.poll(() => hasDisplacedCircle(dots)).toBe(true)
 
   await page.emulateMedia({ reducedMotion: "reduce" })
-  await expect
-    .poll(() =>
-      dots
-        .locator("circle")
-        .evaluateAll((circles) =>
-          circles.every(
-            (circle) =>
-              (circle as SVGCircleElement).style.transform ===
-              "translate(0px, 0px)",
-          ),
-        ),
-    )
-    .toBe(true)
+  await expect.poll(() => circleTransformsAreIdentity(dots)).toBe(true)
 
   await page.mouse.move(
     dotsBounds.x + dotsBounds.width / 2 + 5,
     dotsBounds.y + dotsBounds.height / 2 + 5,
   )
-  await expect
-    .poll(() =>
-      dots
-        .locator("circle")
-        .evaluateAll((circles) =>
-          circles.every(
-            (circle) =>
-              !(circle as SVGCircleElement).style.transform ||
-              (circle as SVGCircleElement).style.transform ===
-                "translate(0px, 0px)",
-          ),
-        ),
-    )
-    .toBe(true)
+  await expect.poll(() => circleTransformsAreIdentity(dots)).toBe(true)
 })
 
 test("tags stay visible across a live reduced-motion preference change", async ({
@@ -254,6 +223,8 @@ test("tags stay visible across a live reduced-motion preference change", async (
 test("theme toggle works when Toastify's CDN is unavailable", async ({
   page,
 }) => {
+  const pageErrors: string[] = []
+  page.on("pageerror", (error) => pageErrors.push(error.message))
   await page.route("https://cdn.jsdelivr.net/**", (route) => route.abort())
   await page.goto("/")
   await page.evaluate(() => localStorage.setItem("theme", "light"))
@@ -261,6 +232,8 @@ test("theme toggle works when Toastify's CDN is unavailable", async ({
 
   await page.locator("#theme-toggle-label").click()
   await expect(page.locator("body")).toHaveClass(/dark/)
+  await page.keyboard.press("Shift+Semicolon")
+  await expect.poll(() => pageErrors).toEqual([])
 })
 
 test("lightbox traps focus, closes on Escape, and restores its opener", async ({
@@ -273,15 +246,32 @@ test("lightbox traps focus, closes on Escape, and restores its opener", async ({
 
   const dialog = page.getByRole("dialog")
   await expect(dialog).toBeVisible()
-  await expect(dialog).toHaveAttribute("aria-modal", "true")
+  await expect(dialog).toHaveJSProperty("open", true)
+  await expect
+    .poll(() => dialog.evaluate((element) => element.matches(":modal")))
+    .toBe(true)
+  await expect(page.locator("body > header")).toHaveJSProperty("inert", true)
+  await expect
+    .poll(() =>
+      page.locator("html").evaluate((element) => element.style.overflow),
+    )
+    .toBe("hidden")
+  await expect
+    .poll(() =>
+      page.locator("body").evaluate((element) => element.style.overflow),
+    )
+    .toBe("hidden")
   const closeButton = page.getByRole("link", { name: "Close image" })
   await expect(closeButton).toBeFocused()
   await page.keyboard.press("Tab")
+  await expect(dialog.locator(":focus")).toHaveCount(1)
+  await page.keyboard.press("Shift+Tab")
   await expect(dialog.locator(":focus")).toHaveCount(1)
 
   await page.keyboard.press("Escape")
   await expect(page).toHaveURL(/\/$/)
   await expect(page.locator('a[href="/lightbox"]')).toBeFocused()
+  await expectLightboxCleanup(page)
 })
 
 test("direct lightbox navigation supports focus containment and its close link", async ({
@@ -290,6 +280,9 @@ test("direct lightbox navigation supports focus containment and its close link",
   await page.goto("/lightbox")
   const dialog = page.getByRole("dialog")
   await expect(dialog).toBeVisible()
+  await expect
+    .poll(() => dialog.evaluate((element) => element.matches(":modal")))
+    .toBe(true)
   await expect(dialog.locator(":focus")).toHaveCount(1)
 
   await page.keyboard.press("Tab")
@@ -301,4 +294,55 @@ test("direct lightbox navigation supports focus containment and its close link",
   await expect(page.getByRole("dialog")).toBeVisible()
   await page.getByRole("link", { name: "Close image" }).click()
   await expect(page).toHaveURL(/\/$/)
+  await expectLightboxCleanup(page)
+})
+
+test("repeated lightbox backdrop and close navigation release modal state", async ({
+  page,
+}) => {
+  await page.goto("/")
+
+  for (const closeWithBackdrop of [true, false, true]) {
+    await page.locator('a[data-motion-profile][href="/lightbox"]').click()
+    const dialog = page.getByRole("dialog")
+    await expect(dialog).toBeVisible()
+    await expect
+      .poll(() => dialog.evaluate((element) => element.matches(":modal")))
+      .toBe(true)
+
+    if (closeWithBackdrop) {
+      await page
+        .locator('#lightbox a[aria-hidden="true"]')
+        .click({ position: { x: 8, y: 8 } })
+    } else {
+      await page.getByRole("link", { name: "Close image" }).click()
+    }
+
+    await expect(page).toHaveURL(/\/$/)
+    await expectLightboxCleanup(page)
+  }
+})
+
+test("lightbox close and backdrop links work without JavaScript", async ({
+  browser,
+  baseURL,
+}) => {
+  if (!baseURL) throw new Error("Playwright baseURL should be configured")
+  const page = await browser.newPage({ javaScriptEnabled: false })
+  await blockExternalRequests(page, baseURL)
+  const lightboxUrl = new URL("/lightbox", baseURL).href
+  const homeUrl = new URL("/", baseURL).href
+
+  const directResponse = await page.goto(lightboxUrl)
+  expect(directResponse?.status()).toBe(200)
+  await expect(page.locator("#lightbox")).toBeVisible()
+  await page.getByRole("link", { name: "Close image" }).click()
+  await expect(page).toHaveURL(homeUrl)
+
+  const backdropResponse = await page.goto(lightboxUrl)
+  expect(backdropResponse?.status()).toBe(200)
+  await expect(page.locator("#lightbox")).toBeVisible()
+  await page.mouse.click(8, 8)
+  await expect(page).toHaveURL(homeUrl)
+  await page.close()
 })

@@ -20,10 +20,11 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm exec astro dev --host 127.0.0.1 --port 4318 --strictPort",
+    command: "pnpm exec astro dev --host 127.0.0.1 --port 4318 --ignore-lock",
     url: baseURL,
     reuseExistingServer: false,
     timeout: 120_000,
-    // Browser tests exercise the dev server; the separate build gate checks production output.
+    // Astro 7 auto-backgrounds in agent sessions; --ignore-lock keeps this process in the foreground.
+    // Browser tests use the dev server; the separate build gate checks production output.
   },
 })

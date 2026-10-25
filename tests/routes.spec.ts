@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises"
 import { expect, test } from "@playwright/test"
 import { blockExternalRequests } from "./helpers"
 
+const productionOrigin = "https://pablopunk.com"
 const cameraRedirectSource =
   "/posts/la-mejor-camara-que-cabe-en-tu-bolsillo-no-es-tu-smartphone"
 
@@ -12,7 +13,6 @@ test.beforeEach(async ({ page, baseURL }) => {
 test("RSS serves valid XML with the site home and ordered absolute post links", async ({
   page,
   request,
-  baseURL,
 }) => {
   const feedResponse = await request.get("/rss.xml")
   expect(feedResponse.status()).toBe(200)
@@ -25,6 +25,7 @@ test("RSS serves valid XML with the site home and ordered absolute post links", 
     .getAttribute("href")
   expect(homeCanonical).toBeTruthy()
   if (!homeCanonical) throw new Error("Home page should have a canonical URL")
+  expect(new URL(homeCanonical).origin).toBe(productionOrigin)
 
   const blogResponse = await page.goto("/blog")
   expect(blogResponse?.status()).toBe(200)
@@ -65,14 +66,14 @@ test("RSS serves valid XML with the site home and ordered absolute post links", 
   expect(parsedFeed.channelDescription?.trim()).toBeTruthy()
   if (!parsedFeed.channelLink)
     throw new Error("RSS channel should have a home link")
-  expect(parsedFeed.channelLink).toBe(new URL(homeCanonical, baseURL).href)
+  expect(parsedFeed.channelLink).toBe(new URL("/", productionOrigin).href)
   expect(parsedFeed.items).toHaveLength(blogPosts.length)
   expect(
     parsedFeed.items.every(
       (item) =>
         item.title &&
         item.link &&
-        new URL(item.link).protocol.startsWith("http") &&
+        new URL(item.link).origin === productionOrigin &&
         item.guid === item.link &&
         item.pubDate &&
         !Number.isNaN(Date.parse(item.pubDate)),
@@ -89,6 +90,14 @@ test("RSS serves valid XML with the site home and ordered absolute post links", 
       new URL(item.link as string).pathname.replace(/\/$/, ""),
     ),
   ).toEqual(blogPosts.map((post) => post.path))
+  const publishedDates = parsedFeed.items.map((item) =>
+    Date.parse(item.pubDate as string),
+  )
+  expect(
+    publishedDates.every(
+      (date, index) => index === 0 || publishedDates[index - 1] >= date,
+    ),
+  ).toBe(true)
 })
 
 const metadataRoutes = [
@@ -99,9 +108,11 @@ const metadataRoutes = [
     name: "post",
     path: "/posts/the-best-camera-that-fits-in-your-pocket-is-not-your-smartphone",
   },
+  // /lightbox intentionally keeps a self-canonical URL despite using the home layout.
+  { name: "lightbox", path: "/lightbox" },
 ]
 
-test("home, blog, tag, and post canonical URLs match their route paths", async ({
+test("home, blog, tag, post, and lightbox canonicals match their route paths", async ({
   page,
 }) => {
   for (const { name, path } of metadataRoutes) {
@@ -116,14 +127,15 @@ test("home, blog, tag, and post canonical URLs match their route paths", async (
       `${name} should have an absolute canonical URL`,
     ).toBeTruthy()
     if (canonical) {
-      expect
-        .soft(new URL(canonical).pathname.replace(/\/$/, "") || "/")
-        .toBe(path.replace(/\/$/, "") || "/")
+      expect(new URL(canonical).origin).toBe(productionOrigin)
+      expect(new URL(canonical).pathname.replace(/\/$/, "") || "/").toBe(
+        path.replace(/\/$/, "") || "/",
+      )
     }
   }
 })
 
-test("home, blog, tag, and post have one nonplaceholder description", async ({
+test("home, blog, tag, post, and lightbox have one nonplaceholder description", async ({
   page,
 }) => {
   for (const { name, path } of metadataRoutes) {
