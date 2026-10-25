@@ -5,3 +5,13 @@ allowBuilds:
   '@biomejs/biome': true
   esbuild: true
   sharp: true
+
+overrides:
+  brace-expansion: 5.0.12
+  esbuild: 0.28.2
+  fast-uri: 3.1.9
+  path-to-regexp: 6.3.0
+  source-map-js: 1.2.2
+  svgo: 4.1.0
+  undici: 8.12.3
+  zod: 4.6.7
