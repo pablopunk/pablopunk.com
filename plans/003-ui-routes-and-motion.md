@@ -1,0 +1,36 @@
+# Plan 003: Correct UI fallbacks, metadata, redirect, lightbox and bound dots work
+## Status
+Priority P1; effort M; risk MED; depends on none; category bug/accessibility/perf; planned at df54ba1, 2026-10-25.
+## Drift check
+Run git diff --stat df54ba1..HEAD -- src/components/Tags.astro src/layouts/Layout.astro src/site.ts src/pages/index.astro src/lib src/styles/surfaces.css vercel.json.
+## Why this matters
+Tags are invisible without JS; blog/tag canonicals point home; a camera redirect misses /posts/; the overlay leaves obscured links focusable. Dots visit the entire grid per mouse frame even though a small neighborhood moves. Fix behavior while preserving the user-approved design.
+## Current state and excerpts
+Tags.astro:41: [data-motion-tag] { opacity:0; transform:translateY(6px); will-change:opacity,transform; }. Motion entrance explicitly animates opacity:[0,1].
+Layout.astro:44: const url = site.SITE_URL + (post ? getPostUrl(post) : ""); :90 adds <meta name="description" content="Astro description" />. site.ts uses DEV localhost and NEXT_PUBLIC_VERCEL_URL; canonicals should use stable mainUrl (https://pablopunk.com).
+vercel.json:115 destination "/the-best-camera-that-fits-in-your-pocket-is-not-your-smartphone" lacks /posts/.
+index.astro:32–45 renders #lightbox as fixed div, close <a href="/" aria-label="Close image" class="surface-button surface-button--icon ...">, backdrop anchor and Logo1200. Profile trigger is a[href="/lightbox"][data-motion-profile]. src/pages/lightbox.astro renders index with lightbox prop.
+interactive-dots.ts:66 loops all dots calculating hypot/atan2 and setting transform each nearby frame; each surface has separate document pointermove listener. 18px hero,12px CTA grids; radius90/60, force36/28, overflow0/48. CSS fallback must remain. tilt.ts initially returns entirely on reducedMotion.matches; later disabling reduced motion never enables it until navigation.
+ThemeButton.astro unconditionally calls async CDN Toastify, as does Layout vim shortcut; blocked script throws after theme already changes.
+## Scope
+Only src/components/Tags.astro, src/components/ThemeButton.astro, src/layouts/Layout.astro, src/site.ts, src/pages/index.astro, src/pages/lightbox.astro, src/lib/interactive-dots.ts, src/lib/tilt.ts, src/lib/lightbox.ts (new if needed), src/styles/surfaces.css, vercel.json. No package/dependency/test framework/CI changes. New temporary verification outside tracked tree is fine in isolated worktree.
+## Shared context and conventions
+This is pablopunk.com's Astro 6 / TypeScript / Tailwind 3 site, deployed with the Vercel adapter. All normal HTML pages are prerendered; RSS is currently SSR. Current commit df54ba1. Node 24 is required. mise.toml pins pnpm 11.23.0; the mise shim can refuse untrusted new worktrees. Run mise trust in YOUR disposable checkout, then use pnpm; direct binary fallback is /home/pol/.local/share/mise/installs/pnpm/11.23.0/pnpm. Do not use Bun: its tracked lock differs from pnpm.
+Match two-space TypeScript indentation, double quotes, no semicolons; src/lib/tilt.ts is a convention exemplar with exported initializer, AbortController cleanup on astro:before-swap, reduced-motion checks. Keep the existing surface appearance, strength of tilts, and dotted animation.
+Exact existing commands: pnpm check = astro check && tsc --noEmit; pnpm build = astro check && astro build; pnpm exec biome check src (check only). No tests currently exist. Run git diff --check too. Build/install artifacts are allowed inside this disposable worktree.
+## Git workflow
+Work only in your assigned isolated worktree. Commit logical changes there using plain imperative messages, e.g. "Repair RSS generation". Do not merge, push, open PRs, or modify the parent checkout. Skip updating plans/README.md: reviewer owns it. Report worktree path, branch, commit SHAs and exact commands/results.
+## STOP conditions
+Stop and report after two failed reasonable attempts at the same verification; if required changes exceed scope; or if credentials/private service access are required. Do not mask failures or weaken tests. Document minimal compatible adaptations. Never copy secret values.
+
+## Steps
+1. Use CSS-visible default tags, let JS keyframes provide entrance, and handle live reduced-motion changes cleanly (no invisible tags or lingering active animation). Verify no-JS and preference transitions through a browser or temporary assertion harness.
+2. Set canonical from current pathname plus stable production origin; home and lightbox may intentionally share home canonical; remove placeholder duplicate description. Preserve post metadata and do not add speculative SEO. Correct camera redirect destination. Verify rendered home/blog/tag/post/lightbox each has expected canonical and one description; request corrected destination gets200.
+3. Make lightbox a real modal using native dialog or complete equivalent, keeping close link design and direct /lightbox support. Initial focus on close; contain focus; Escape/backdrop/close navigate home; background inert and scroll locked while open; restore profile trigger focus after client return when appropriate. Preserve Astro transitions and no-JS close/backdrop navigation. Clean up event listeners/inert/scroll on swap. Verify repeated open/close, direct URL, Tab/Shift+Tab/Escape, and background accessibility.
+4. Guard optional Toastify global calls when CDN is absent; theme/Vim navigation must still work. Match existing tone/appearance; no new notification system. Fix initial-reduced-motion tilt setup so toggling preference enables/disables immediately. Verify blocked script, live preference changes, no runtime errors.
+5. Profile dots at desktop size first and record number of visited/written circles and approximate frame timing with a temporary browser instrument or benchmark, avoiding undocumented permanent debug hooks. If frame time material OR full-grid traversal confirmed waste, restrict update to grid neighborhood plus previously displaced dots; avoid rewriting unchanged transforms; share scheduling where practical; reset correctly on leave, blur, scroll, resize and reduced motion. Do not change density, force, fade, hover speed, strengths, or replace with canvas without evidence. Verify displacement/reset and bounded per-frame writes; report measured results with hardware/viewport caveat. Keep code simple; no broad motion architecture rewrite.
+## Test plan / done criteria
+Run pnpm check, pnpm exec biome check src, pnpm build, git diff --check. A parallel lane adds browser regression tests; independently exercise above scenarios with product-native T3 preview if available (preview_status then preview_open; use agent-owned tab and explicit port), or supported browser fallback only if unavailable. Verify lightbox no-JS links remain usable, CSS dots fallback intact, no duplicate grids after repeated client navigation. Commit changes. Include full verification evidence and honest unmeasured limitations.
+## Maintenance notes
+The modal is route-backed, not an in-page state widget; preserve route/transition behavior. SVG coordinate normalization under tilt remains approximate; avoid broad geometry work. Tests from plan002 must be rerun on integrated framework upgrade.
+
