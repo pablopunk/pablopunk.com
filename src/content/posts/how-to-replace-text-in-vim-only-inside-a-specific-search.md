@@ -25,10 +25,10 @@ A few days ago I googled (`:help` was not enough) how to solve a problem I was h
 
 I just thought about making a regular expression that would select only the part after `:` on each line. The problem was that I didn't know how to perform the replace **only** on this result.
 
-[This answer](https://stackoverflow.com/a/34601909/4396912) on _stackoverflow_ gave me the solution and I learnt to use the _positive look-behind_, i.e this piece of a _regex_ `\\@<=` . The solution to my problem was:
+[This answer](https://stackoverflow.com/a/34601909/4396912) on _stackoverflow_ gave me the solution and I learnt to use the _positive look-behind_, i.e this piece of a _regex_ `\@<=` . The solution to my problem was:
 
 ```bash
-:%s/\\(:.*\\)\\@<=_/ /g
+:%s/\(:.*\)\@<=_/ /g
 ```
 
 This command replaces only the `_` in the values, and not in the keys, because it selects all that appears after `:` with this part `:.*`
