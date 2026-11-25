@@ -7,7 +7,6 @@ image:
   alt: Mousetrap keyboard grid overlay
 author: Pablo Varela
 tags: [mac, productivity]
-featured: true
 ---
 
 I've tried a few apps to use the mouse with the keyboard on macOS and none of them really worked for me.
